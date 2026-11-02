@@ -129,6 +129,14 @@ try {
       await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight)); await page.waitForTimeout(250);
       assert.equal(await sweepState(), 'paused', `${label}: sweep pauses off screen`);
       await page.evaluate(() => scrollTo(0, 0)); await page.waitForTimeout(250);
+      assert.equal(await sweepState(), 'running', `${label}: sweep resumes in view`);
+      // The hero pause control (WCAG 2.2.2) also stops the sweep; resuming restarts it.
+      const toggle = page.locator('[data-hero] [data-toggle]');
+      await toggle.focus(); await page.keyboard.press('Enter');
+      assert.equal(await toggle.getAttribute('aria-pressed'), 'true');
+      assert.equal(await sweepState(), 'paused', `${label}: pause control stops the sweep`);
+      await page.keyboard.press('Enter');
+      assert.equal(await sweepState(), 'running', `${label}: play control resumes the sweep`);
       // Resize: natural reflow, no wrappers, underline follows the new lines.
       const other = width === 1440 ? 390 : 1440;
       await page.setViewportSize({ width: other, height: 900 }); await page.waitForTimeout(300);

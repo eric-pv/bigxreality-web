@@ -262,6 +262,8 @@ const clips = heroClips;
   .eyebrow :global(.type-visual > span.last::after) { animation:hero-caret 1.1s steps(1) 3 forwards; animation-delay:calc(var(--i) * 55ms); }
   .sweep { animation:hud-sweep 9s linear infinite paused; }
   .hud[data-in-view] .sweep { animation-play-state:running; }
+  /* The hero's pause control (WCAG 2.2.2) stops the sweep together with the footage. */
+  [data-hero]:has([data-toggle][aria-pressed="true"]) .hud .sweep { animation-play-state:paused; }
 }
 @keyframes hud-lock { from { opacity:0; transform:var(--from); } to { opacity:1; transform:none; } }
 @keyframes hud-sweep { from { transform:translateY(-100%); } to { transform:translateY(0); } }
