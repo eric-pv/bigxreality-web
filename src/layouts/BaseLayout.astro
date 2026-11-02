@@ -56,6 +56,8 @@ const langLinks = Object.fromEntries(
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>document.documentElement.classList.replace("no-js", "js");</script>
+    <!-- Hero entrance pre-state before first paint; if the motion controller has not taken over within 1.5 s, content shows as is. -->
+    <script is:inline>(function(h){if(!matchMedia("(prefers-reduced-motion: no-preference)").matches)return;h.classList.add("motion-ready");setTimeout(function(){if(!h.classList.contains("motion-live"))h.classList.remove("motion-ready")},1500)})(document.documentElement);</script>
     <SeoHead
       lang={p.lang} title={p.title} description={p.description} pathTemplate={p.pathTemplate}
       alternates={p.alternates} noindex={noindex} breadcrumbs={p.breadcrumbs}

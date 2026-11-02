@@ -1,0 +1,162 @@
+// Home tactical-HUD motion: content-first enhancement checks (run after `npm run build`).
+// Covers: no-JS / slow-JS / failed-JS visibility, reduced motion (no new animation, final state),
+// aria-hidden decorations, single binding across astro:page-load / pageshow, resize reflow,
+// key-phrase underline placement and off-screen pausing of slow loops.
+import assert from 'node:assert/strict';
+import { chromium } from 'playwright-core';
+import { startPreview, CHROMIUM } from './lib/serve.mjs';
+
+const server = await startPreview(4411), browser = await chromium.launch({ executablePath: CHROMIUM });
+const LANGS = ['tw', 'en', 'jp'], WIDTHS = [1440, 390];
+const heroText = page => page.evaluate(() => {
+  const h1 = document.querySelector('[data-hero] h1'), eyebrow = document.querySelector('[data-hero] .eyebrow');
+  return { title: h1.textContent.trim(), eyebrow: eyebrow.textContent.trim(), titleOpacity: getComputedStyle(h1).opacity, eyebrowOpacity: getComputedStyle(eyebrow).opacity };
+});
+/** Animations (CSS or WAAPI) currently attached to hero elements, other than the footage cross-fade. */
+const heroAnimations = page => page.evaluate(() => document.getAnimations()
+  .filter(a => a.effect?.target instanceof Element && a.effect.target.closest('[data-hero]') && a.effect.target.tagName !== 'VIDEO' && a.playState !== 'finished')
+  .map(a => a.animationName ?? 'waapi'));
+/** Rects of the second phrase measured independently of the implementation. */
+const expectedKey = page => page.evaluate(() => {
+  const h1 = document.querySelector('[data-hero] h1'), text = h1.textContent;
+  const marks = [...text.matchAll(/[．・]|\.(?=\s|$)/g)].map(m => m.index);
+  if (!marks.length) return [];
+  const start = text.slice(marks[0] + 1).search(/\S/) + marks[0] + 1, end = (marks[1] ?? text.length);
+  const walker = document.createTreeWalker(h1, NodeFilter.SHOW_TEXT), range = document.createRange(), origin = h1.getBoundingClientRect();
+  let index = 0; const rows = new Map();
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) for (let i = 0; i < node.length; i++, index++) {
+    if (index < start || index >= end || /\s/.test(node.data[i])) continue;
+    range.setStart(node, i); range.setEnd(node, i + 1); const r = range.getBoundingClientRect(), row = Math.round(r.top);
+    const k = [...rows.keys()].find(t => Math.abs(t - row) < r.height / 2) ?? row, cur = rows.get(k);
+    rows.set(k, cur ? { left: Math.min(cur.left, r.left), right: Math.max(cur.right, r.right) } : { left: r.left, right: r.right });
+  }
+  return [...rows.values()].map(r => ({ left: Math.round(r.left - origin.left), width: Math.round(r.right - r.left) }));
+});
+const drawnKey = page => page.locator('[data-hero] .hero-key i').evaluateAll(bars => bars.map(b => ({ left: Math.round(parseFloat(b.style.left)), width: Math.round(parseFloat(b.style.width)) })));
+const sameKey = (actual, expected, label) => {
+  assert.equal(actual.length, expected.length, `${label}: underline segments`);
+  actual.forEach((a, i) => { assert.ok(Math.abs(a.left - expected[i].left) <= 1 && Math.abs(a.width - expected[i].width) <= 1, `${label}: underline ${JSON.stringify(a)} ≠ ${JSON.stringify(expected[i])}`); });
+};
+let cases = 0;
+try {
+  for (const lang of LANGS) for (const width of WIDTHS) {
+    const url = `${server.base}/${lang}/`, label = `${lang}@${width}`;
+    // Server HTML: the final title/eyebrow text, no motion classes.
+    const ssr = await (await fetch(url)).text();
+    assert.ok(!/motion-ready|data-motion=|hero-key|type-visual/.test(ssr.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '')), `${label}: SSR markup carries no motion state`);
+
+    // 1. No JS: everything visible, static HUD only.
+    {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, javaScriptEnabled: false, reducedMotion: 'no-preference' });
+      const page = await ctx.newPage(); await page.goto(url);
+      const t = await heroText(page);
+      assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1'], `${label}: no-JS hero copy visible`);
+      assert.equal(await page.locator('html.motion-ready').count(), 0);
+      assert.equal(await page.locator('[data-hero] .hud[aria-hidden="true"]').count(), 1);
+      await ctx.close();
+    }
+    // 2. Main JS fails or is slow: the head fallback reveals the copy by 1.5 s; late JS never hides it again.
+    for (const mode of ['abort', 'slow']) {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
+      const page = await ctx.newPage();
+      await page.route(/\/_astro\/.*\.js$/, route => mode === 'abort' ? route.abort() : setTimeout(() => route.continue().catch(() => {}), 2500));
+      await page.goto(url, { waitUntil: 'commit' });
+      await page.waitForTimeout(1700);
+      let t = await heroText(page);
+      assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1'], `${label}: copy visible when JS ${mode}`);
+      assert.equal(await page.locator('html.motion-ready').count(), 0, `${label}: fallback cleared pre-state (${mode})`);
+      if (mode === 'slow') {
+        await page.waitForFunction(() => !!window.bxrMotionDispose, null, { timeout: 10000 });
+        t = await heroText(page);
+        assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1'], `${label}: late JS keeps copy visible`);
+        assert.equal(await page.locator('[data-hero][data-motion]').count(), 0, `${label}: late JS does not replay the entrance`);
+      }
+      await ctx.close();
+    }
+    // 3. Reduced motion: no new animation at all, final state immediately.
+    {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+      const page = await ctx.newPage(); await page.goto(url); await page.waitForFunction(() => !!window.bxrMotionDispose);
+      const t = await heroText(page);
+      assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1'], `${label}: reduced-motion copy visible`);
+      assert.deepEqual(await heroAnimations(page), [], `${label}: reduced motion has no hero animations`);
+      assert.equal(await page.locator('[data-hero] .sweep').evaluate(el => getComputedStyle(el).display), 'none');
+      assert.equal(await page.locator('[data-hero][data-motion], html.motion-ready').count(), 0);
+      await ctx.close();
+    }
+    // 4. Full motion.
+    {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
+      const page = await ctx.newPage(); const errors = []; page.on('pageerror', e => errors.push(e.message));
+      await page.addInitScript(() => {
+        window.heroEnter = 0; window.titleSamples = new Set();
+        document.addEventListener('animationstart', e => { if (e.animationName === 'bxr-enter' && e.target.closest('[data-hero]')) window.heroEnter++; });
+      });
+      await page.goto(url);
+      await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
+      const during = await heroText(page);
+      await page.waitForFunction(() => document.querySelector('[data-hero]').dataset.motion === 'done', null, { timeout: 5000 });
+      const after = await heroText(page);
+      assert.equal(during.title, after.title, `${label}: H1 text unchanged during the entrance`);
+      assert.equal(after.eyebrow.replace(/\s+/g, ' ').includes(after.eyebrow), true);
+      // Accessible names: the H1 and eyebrow read as their full strings, once.
+      const snapshot = await page.locator('[data-hero] .inner').ariaSnapshot();
+      const eyebrowText = await page.locator('[data-hero] .eyebrow .visually-hidden').textContent();
+      assert.ok(snapshot.includes(`paragraph: ${eyebrowText}`), `${label}: eyebrow read once in full\n${snapshot}`);
+      assert.ok(!/paragraph: [^\n]*_/.test(snapshot), `${label}: caret not exposed`);
+      assert.equal(await page.locator('[data-hero] h1').evaluate(h => [...h.children].map(c => c.className).join(',')), 'typeset,hero-key is-drawn', `${label}: H1 structure`);
+      assert.equal(await page.locator('[data-hero] h1').evaluate(h => h.getAttribute('style') ?? ''), '');
+      // Decorations: aria-hidden, no pointer events, not focusable.
+      for (const sel of ['.hud', '.hero-key', '.type-visual']) assert.equal(await page.locator(`[data-hero] ${sel}`).getAttribute('aria-hidden'), 'true', `${label}: ${sel} aria-hidden`);
+      for (const sel of ['.hud', '.hero-key']) assert.equal(await page.locator(`[data-hero] ${sel}`).evaluate(el => getComputedStyle(el).pointerEvents), 'none', `${label}: ${sel} pointer-events`);
+      assert.equal(await page.locator('[data-hero] .hud [tabindex], [data-hero] .hero-key [tabindex]').count(), 0);
+      // Underline sits under the second phrase (all three titles have separators).
+      sameKey(await drawnKey(page), await expectedKey(page), label);
+      assert.ok((await drawnKey(page)).length > 0, `${label}: underline drawn`);
+      // Shared entrance controller never animates the hero a second time.
+      assert.equal(await page.evaluate(() => window.heroEnter), 0, `${label}: .motion-enter not applied in hero`);
+      // Re-dispatched lifecycle events do not re-bind or replay.
+      await page.evaluate(() => { window.knownAnimations = new Set(document.getAnimations()); for (let i = 0; i < 3; i++) document.dispatchEvent(new Event('astro:page-load')); window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: false })); });
+      await page.waitForTimeout(100);
+      assert.deepEqual(await page.evaluate(() => ({
+        visual: document.querySelectorAll('[data-hero] .type-visual').length, spoken: document.querySelectorAll('[data-hero] .eyebrow .visually-hidden').length,
+        key: document.querySelectorAll('[data-hero] .hero-key').length, motion: document.querySelector('[data-hero]').dataset.motion,
+      })), { visual: 1, spoken: 1, key: 1, motion: 'done' }, `${label}: single binding after astro:page-load`);
+      assert.deepEqual(await page.evaluate(() => document.getAnimations().filter(a => !window.knownAnimations.has(a) && a.effect?.target?.closest?.('[data-hero]') && a.effect.target.tagName !== 'VIDEO').map(a => a.animationName ?? 'waapi')), [], `${label}: no replay after astro:page-load`);
+      // Slow loop runs on screen, pauses off screen.
+      const sweepState = () => page.locator('[data-hero] .sweep').evaluate(el => el.getAnimations()[0]?.playState);
+      assert.equal(await sweepState(), 'running', `${label}: sweep runs in view`);
+      await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight)); await page.waitForTimeout(250);
+      assert.equal(await sweepState(), 'paused', `${label}: sweep pauses off screen`);
+      await page.evaluate(() => scrollTo(0, 0)); await page.waitForTimeout(250);
+      // Resize: natural reflow, no wrappers, underline follows the new lines.
+      const other = width === 1440 ? 390 : 1440;
+      await page.setViewportSize({ width: other, height: 900 }); await page.waitForTimeout(300);
+      const ref = await browser.newContext({ viewport: { width: other, height: 900 }, javaScriptEnabled: false });
+      const refPage = await ref.newPage(); await refPage.goto(url);
+      const height = h => h.locator('[data-hero] h1').evaluate(el => Math.round(el.getBoundingClientRect().height));
+      assert.equal(await height(page), await height(refPage), `${label}→${other}: H1 reflows like the server HTML`);
+      await ref.close();
+      sameKey(await drawnKey(page), await expectedKey(page), `${label}→${other}`);
+      assert.deepEqual(errors, []);
+      await ctx.close();
+    }
+    // 5. Mid-entrance resize and preference change finish immediately in the final state.
+    {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
+      const page = await ctx.newPage(); await page.goto(url);
+      await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
+      await page.setViewportSize({ width: width - 120, height: 900 });
+      await page.waitForFunction(() => document.querySelector('[data-hero]').dataset.motion === 'done', null, { timeout: 1000 });
+      assert.deepEqual((await heroAnimations(page)).filter(n => !['hud-sweep', 'hero-type', 'hero-caret', 'hero-caret-step', 'hud-lock', 'hero-key'].includes(n)), [], `${label}: resize cancels the line reveal`);
+      await page.goto(url); await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await page.waitForFunction(() => document.querySelector('[data-hero]').dataset.motion === 'done', null, { timeout: 1000 });
+      assert.deepEqual(await heroAnimations(page), [], `${label}: reduce mid-entrance leaves no animation`);
+      const t = await heroText(page); assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1']);
+      await ctx.close();
+    }
+    cases++;
+  }
+  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, key-phrase underline, off-screen pause.`);
+} finally { await browser.close(); server.stop(); }
