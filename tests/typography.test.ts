@@ -25,3 +25,18 @@ test('closing and opening CJK punctuation stay with the protected phrase',()=>{
 test('brand separators remain with the preceding phrase',()=>{
  assert.ok(typographyParts('真實應變．守護未來','tw').some(p=>p.text==='真實應變．'));
 });
+
+test('compound terms are protected as a whole instead of splitting at a shorter term',()=>{
+ const s='反制無人機訓練';const parts=typographyParts(s,'tw');assert.equal(parts.map(p=>p.text).join(''),s);
+ assert.ok(parts.some(p=>p.keep&&p.text==='反制無人機'));assert.ok(!parts.some(p=>p.text==='無人機'));
+ assert.ok(typeset('反制無人機','tw').includes('<span class="type-phrase">反制無人機</span>'));
+});
+
+test('exhibition name stays as two independent groups so it can wrap between them',()=>{
+ assert.deepEqual(typographyParts('台北國際航太暨國防工業展','tw').filter(p=>p.keep).map(p=>p.text),['台北國際航太','國防工業展']);
+});
+
+test('ampersand terms match on raw text and are escaped exactly once',()=>{
+ const out=typeset('Fire & Disaster','en');assert.equal(out,'<span class="type-phrase">Fire &amp; Disaster</span>');assert.ok(!out.includes('&amp;amp;'));
+ assert.ok(!typesetHtml('<p>Fire &amp; Disaster</p>','en').includes('&amp;amp;'));
+});
