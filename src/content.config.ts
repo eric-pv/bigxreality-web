@@ -270,6 +270,11 @@ const pages = defineCollection({
   schema: (ctx) =>
     z.object({
       translationStatus,
+      /**
+       * TW only, and read only by pages routed through getLocalized (today: privacy). true = the page
+       * is not built and its Footer legal link stays hidden. Other fixed pages ignore it.
+       */
+      draft: z.boolean().default(false),
       seo: z.object({ title: text, description: text }),
       hero: z.object({
         eyebrow: text,

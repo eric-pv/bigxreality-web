@@ -3403,6 +3403,11 @@ collections:
               - translated
             default: source
           - &a118
+            name: draft
+            label: 草稿（TW 控制是否公開）
+            widget: hidden
+            required: false
+          - &a119
             name: seo
             label: SEO
             required: true
@@ -3417,7 +3422,7 @@ collections:
                 label: 描述
                 required: true
                 widget: text
-          - &a119
+          - &a120
             name: hero
             label: 頁首
             required: true
@@ -3460,7 +3465,7 @@ collections:
                 label: imageCaption
                 required: false
                 widget: string
-          - &a120
+          - &a121
             name: closing
             label: closing
             required: false
@@ -3471,7 +3476,7 @@ collections:
                 label: 標題
                 required: true
                 widget: string
-          - &a121
+          - &a122
             name: highlights
             label: highlights
             required: false
@@ -3498,7 +3503,7 @@ collections:
                     required: true
                     widget: text
                 min: 1
-          - &a122
+          - &a123
             name: cta
             label: cta
             required: false
@@ -3517,7 +3522,7 @@ collections:
                 label: button
                 required: false
                 widget: string
-          - &a123
+          - &a124
             name: body
             label: 完整內文
             widget: markdown
@@ -3541,6 +3546,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: contact
         label: contact
         file: src/content/pages/tw/contact.md
@@ -3557,6 +3563,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: insights
         label: insights
         file: src/content/pages/tw/insights.md
@@ -3573,6 +3580,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: investors
         label: investors
         file: src/content/pages/tw/investors.md
@@ -3589,6 +3597,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: news
         label: news
         file: src/content/pages/tw/news.md
@@ -3605,6 +3614,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: partners
         label: partners
         file: src/content/pages/tw/partners.md
@@ -3621,6 +3631,30 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
+      - name: privacy
+        label: privacy
+        file: src/content/pages/tw/privacy.md
+        fields:
+          - name: translationStatus
+            label: 翻譯狀態
+            required: true
+            widget: select
+            options: *a117
+            default: source
+          - &a125
+            name: draft
+            label: 草稿（TW 控制是否公開）
+            required: false
+            default: true
+            widget: boolean
+            hint: TW 控制前台公開：勾選表示不公開（頁面不建置，頁尾也不顯示連結）。取消勾選前須完成法務審閱、刪除草稿標註並完成 EN／JP 翻譯。
+          - *a119
+          - *a120
+          - *a121
+          - *a122
+          - *a123
+          - *a124
       - name: products
         label: products
         file: src/content/pages/tw/products.md
@@ -3637,6 +3671,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: search
         label: search
         file: src/content/pages/tw/search.md
@@ -3653,6 +3688,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: solutions
         label: solutions
         file: src/content/pages/tw/solutions.md
@@ -3669,6 +3705,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: tags
         label: tags
         file: src/content/pages/tw/tags.md
@@ -3685,6 +3722,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: team
         label: team
         file: src/content/pages/tw/team.md
@@ -3701,6 +3739,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
   - name: pages-en
     label: 固定頁面 · English（EN）
     format: frontmatter
@@ -3723,6 +3762,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: company
         label: company
         file: src/content/pages/en/company.md
@@ -3739,6 +3779,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: contact
         label: contact
         file: src/content/pages/en/contact.md
@@ -3755,6 +3796,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: insights
         label: insights
         file: src/content/pages/en/insights.md
@@ -3771,6 +3813,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: investors
         label: investors
         file: src/content/pages/en/investors.md
@@ -3787,6 +3830,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: news
         label: news
         file: src/content/pages/en/news.md
@@ -3803,6 +3847,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: partners
         label: partners
         file: src/content/pages/en/partners.md
@@ -3819,6 +3864,24 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
+      - name: privacy
+        label: privacy
+        file: src/content/pages/en/privacy.md
+        fields:
+          - name: translationStatus
+            label: 翻譯狀態
+            required: true
+            widget: select
+            options: *a117
+            default: pending
+          - *a125
+          - *a119
+          - *a120
+          - *a121
+          - *a122
+          - *a123
+          - *a124
       - name: products
         label: products
         file: src/content/pages/en/products.md
@@ -3835,6 +3898,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: search
         label: search
         file: src/content/pages/en/search.md
@@ -3851,6 +3915,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: solutions
         label: solutions
         file: src/content/pages/en/solutions.md
@@ -3867,6 +3932,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: tags
         label: tags
         file: src/content/pages/en/tags.md
@@ -3883,6 +3949,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: team
         label: team
         file: src/content/pages/en/team.md
@@ -3899,6 +3966,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
   - name: pages-jp
     label: 固定頁面 · 日本語（JP）
     format: frontmatter
@@ -3921,6 +3989,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: company
         label: company
         file: src/content/pages/jp/company.md
@@ -3937,6 +4006,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: contact
         label: contact
         file: src/content/pages/jp/contact.md
@@ -3953,6 +4023,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: insights
         label: insights
         file: src/content/pages/jp/insights.md
@@ -3969,6 +4040,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: investors
         label: investors
         file: src/content/pages/jp/investors.md
@@ -3985,6 +4057,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: news
         label: news
         file: src/content/pages/jp/news.md
@@ -4001,6 +4074,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: partners
         label: partners
         file: src/content/pages/jp/partners.md
@@ -4017,6 +4091,24 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
+      - name: privacy
+        label: privacy
+        file: src/content/pages/jp/privacy.md
+        fields:
+          - name: translationStatus
+            label: 翻譯狀態
+            required: true
+            widget: select
+            options: *a117
+            default: pending
+          - *a125
+          - *a119
+          - *a120
+          - *a121
+          - *a122
+          - *a123
+          - *a124
       - name: products
         label: products
         file: src/content/pages/jp/products.md
@@ -4033,6 +4125,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: search
         label: search
         file: src/content/pages/jp/search.md
@@ -4049,6 +4142,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: solutions
         label: solutions
         file: src/content/pages/jp/solutions.md
@@ -4065,6 +4159,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: tags
         label: tags
         file: src/content/pages/jp/tags.md
@@ -4081,6 +4176,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
       - name: team
         label: team
         file: src/content/pages/jp/team.md
@@ -4097,6 +4193,7 @@ collections:
           - *a121
           - *a122
           - *a123
+          - *a124
   - name: tags-tw
     label: 文章標籤 · 繁體中文（TW）
     folder: src/content/tags/tw
@@ -4114,22 +4211,22 @@ collections:
         label: 翻譯狀態
         required: true
         widget: select
-        options: &a124
+        options: &a126
           - source
           - pending
           - translated
         default: source
-      - &a125
+      - &a127
         name: name
         label: 名稱
         required: true
         widget: string
-      - &a126
+      - &a128
         name: description
         label: 描述
         required: false
         widget: text
-      - &a127
+      - &a129
         name: body
         label: 完整內文
         widget: markdown
@@ -4154,11 +4251,11 @@ collections:
         label: 翻譯狀態
         required: true
         widget: select
-        options: *a124
+        options: *a126
         default: pending
-      - *a125
-      - *a126
       - *a127
+      - *a128
+      - *a129
   - name: tags-jp
     label: 文章標籤 · 日本語（JP）
     folder: src/content/tags/jp
@@ -4176,11 +4273,11 @@ collections:
         label: 翻譯狀態
         required: true
         widget: select
-        options: *a124
+        options: *a126
         default: pending
-      - *a125
-      - *a126
       - *a127
+      - *a128
+      - *a129
   - name: investor-items-tw
     label: 投資人資訊 · 繁體中文（TW）
     folder: src/content/investor-items/tw
@@ -4198,19 +4295,19 @@ collections:
         label: 翻譯狀態
         required: true
         widget: select
-        options: &a128
+        options: &a130
           - source
           - pending
           - translated
         default: source
-      - &a129
+      - &a131
         name: draft
         label: 草稿（TW 控制是否公開）
         required: false
         default: true
         widget: boolean
         hint: TW 控制前台公開：勾選表示下架／未公開。CMS 的 Save Draft 只儲存審核分支；Publish 合併 main 後，仍需取消此勾選並完成三語及 CI 才會在官網顯示。
-      - &a130
+      - &a132
         name: publishDate
         label: 發布日期（未知請留空）
         required: true
@@ -4219,7 +4316,7 @@ collections:
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a131
+      - &a133
         name: module
         label: module
         required: true
@@ -4232,12 +4329,12 @@ collections:
           - announcements
           - briefings
           - contact
-      - &a132
+      - &a134
         name: category
         label: 分類
         required: false
         widget: string
-      - &a133
+      - &a135
         name: order
         label: 排序
         required: false
@@ -4245,17 +4342,17 @@ collections:
         value_type: int
         min: -9007199254740991
         max: 9007199254740991
-      - &a134
+      - &a136
         name: title
         label: 標題
         required: true
         widget: string
-      - &a135
+      - &a137
         name: summary
         label: 摘要
         required: false
         widget: text
-      - &a136
+      - &a138
         name: attachments
         label: attachments
         required: false
@@ -4271,7 +4368,7 @@ collections:
             label: url
             required: true
             widget: string
-      - &a137
+      - &a139
         name: body
         label: 完整內文
         widget: markdown
@@ -4296,10 +4393,8 @@ collections:
         label: 翻譯狀態
         required: true
         widget: select
-        options: *a128
+        options: *a130
         default: pending
-      - *a129
-      - *a130
       - *a131
       - *a132
       - *a133
@@ -4307,6 +4402,8 @@ collections:
       - *a135
       - *a136
       - *a137
+      - *a138
+      - *a139
   - name: investor-items-jp
     label: 投資人資訊 · 日本語（JP）
     folder: src/content/investor-items/jp
@@ -4324,10 +4421,8 @@ collections:
         label: 翻譯狀態
         required: true
         widget: select
-        options: *a128
+        options: *a130
         default: pending
-      - *a129
-      - *a130
       - *a131
       - *a132
       - *a133
@@ -4335,6 +4430,8 @@ collections:
       - *a135
       - *a136
       - *a137
+      - *a138
+      - *a139
   - name: news-media
     label: 新聞共用圖集與影片（進階）
     files:
@@ -4357,7 +4454,7 @@ collections:
                       - type: string
                         pattern: ^\d{4}-\d{2}-\d{2}$
                       - type: "null"
-                  cover: &a139
+                  cover: &a141
                     type: object
                     required:
                       - filename
@@ -4368,7 +4465,7 @@ collections:
                         pattern: ^[a-z0-9-]+\.(jpg|jpeg|png)$
                       approved:
                         type: boolean
-                      alt: &a138
+                      alt: &a140
                         type: object
                         properties:
                           tw:
@@ -4378,11 +4475,11 @@ collections:
                           jp:
                             type: string
                         additionalProperties: false
-                      caption: *a138
+                      caption: *a140
                     additionalProperties: false
                   gallery:
                     type: array
-                    items: *a139
+                    items: *a141
                   videos:
                     type: array
                     items:
@@ -4403,7 +4500,7 @@ collections:
                           type: boolean
                         approved:
                           type: boolean
-                        title: *a138
+                        title: *a140
                         poster:
                           type: string
                       additionalProperties: false

@@ -1,0 +1,42 @@
+---
+/**
+ * /[lang]/privacy/ — privacy policy (fixed page src/content/pages/<lang>/privacy.md, body = policy text).
+ * Built only while the TW file is not a draft (getLocalized applies TW `draft`); while it is a draft
+ * no language gets a page, and the Footer legal link stays hidden (lib/navigation.ts LEGAL_LINKS).
+ * EN / JP files marked translationStatus: pending are built noindex with the translation banner.
+ */
+import { LANGS, localePath, type Lang } from "../../../i18n";
+import { getUi } from "../../../lib/ui";
+import { getLocalized } from "../../../lib/content";
+import { isEditorialPlaceholder as isPending } from "../../../lib/pending";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import Prose from "../../../components/Prose.astro";
+
+export async function getStaticPaths() {
+  const built = await Promise.all(LANGS.map(async (lang) => (await getLocalized("pages", lang)).find((e) => e.slug === "privacy")));
+  const alternates = LANGS.filter((_, i) => built[i]);
+  return LANGS.flatMap((lang, i) => (built[i] ? [{ params: { lang }, props: { entry: built[i]!, alternates } }] : []));
+}
+
+const { entry, alternates } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const ui = getUi(lang);
+const copy = entry.loc.data;
+const title = isPending(copy.hero.title) ? ui.footer.privacy : copy.hero.title;
+const breadcrumbs = [
+  { name: ui.home, path: localePath(lang) },
+  { name: title, path: localePath(lang, "privacy") },
+];
+---
+<BaseLayout
+  lang={lang} title={copy.seo.title} description={copy.seo.description} pathTemplate="/{lang}/privacy/" alternates={alternates}
+  pendingTranslation={entry.pendingTranslation} headerTheme="dark" breadcrumbs={breadcrumbs}
+>
+  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={title} description={copy.hero.description} />
+  <section class="section">
+    <div class="container">
+      <Prose html={entry.loc.rendered?.html ?? ""} />
+    </div>
+  </section>
+</BaseLayout>
