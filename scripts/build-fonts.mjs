@@ -12,6 +12,14 @@
 // range (e.g. typed into the search box) use the next font of the stack.
 // EmDash/bootstrap builds read content that is not in Git and keep every rule.
 //
+// The unicode-range lists are most of each stylesheet's bytes (fontsource spells every
+// subset as hundreds of single code points). Within a family, a kept rule's gaps that hold
+// no code point of another kept rule of that family are folded into its ranges: the code
+// points in such a gap belong to a dropped subset or to no subset, so they fall back to
+// the next font either way (now after the browser finds the glyph missing in the file).
+// Every character of a kept subset still selects the same file. The rules are written
+// without line breaks and without the default `font-style: normal`; font-display stays.
+//
 // B612 Mono is a single @font-face in src/styles/global.css (the browser fetches
 // it only on pages that render .t-tech / code text); only its file is copied here.
 import { mkdir, readFile, writeFile, copyFile, readdir, rm } from "node:fs/promises";
@@ -41,6 +49,32 @@ function faces(css) {
   }));
 }
 const covers = (face, cp) => face.ranges.some(([a, b]) => cp >= a && cp <= b);
+const hex = (n) => n.toString(16);
+
+/** Rules of one family with their unicode-range folded over gaps no other kept rule uses. */
+function compact(kept) {
+  const owner = new Int16Array(0x110000); // 0: no kept rule, i + 1: rule i only, -1: several
+  kept.forEach((face, i) => {
+    for (const [a, b] of face.ranges) for (let cp = a; cp <= b; cp++) owner[cp] = owner[cp] && owner[cp] !== i + 1 ? -1 : i + 1;
+  });
+  const free = (lo, hi, id) => {
+    for (let cp = lo; cp <= hi; cp++) if (owner[cp] !== 0 && owner[cp] !== id) return false;
+    return true;
+  };
+  return kept.map((face, i) => {
+    const ranges = [];
+    for (const r of [...face.ranges].sort((x, y) => x[0] - y[0])) {
+      const last = ranges.at(-1);
+      if (last && free(last[1] + 1, r[0] - 1, i + 1)) last[1] = Math.max(last[1], r[1]);
+      else ranges.push([...r]);
+    }
+    const range = ranges.map(([a, b]) => (a === b ? `U+${hex(a)}` : `U+${hex(a)}-${hex(b)}`)).join(",");
+    return face.rule
+      .replace(/unicode-range:\s*[^;]+;/, `unicode-range: ${range};`)
+      .replace(/\s*font-style:\s*normal;/, "")
+      .replace(/\s*\n\s*/g, "");
+  });
+}
 
 await mkdir(out, { recursive: true });
 // Stylesheets from an earlier layout (one per family) must not linger in public/.
@@ -72,10 +106,12 @@ for (const lang of LANGS) {
   for (const key of stacks[lang]) {
     // Noto Sans TC keeps every rule a jp character needs too: it is also the CJK fallback of --font-mono.
     const kept = byFamily[key].filter((face) => !used || used.some((cp) => covers(face, cp)));
-    rules.push(...kept.map((x) => x.rule));
+    rules.push(...compact(kept));
     console.log(`fonts: ${lang}.css ${families.find((f) => f.key === key).to} ${kept.length}/${byFamily[key].length} rules`);
   }
-  await writeFile(path.join(out, `${lang}.css`), rules.join("\n") + "\n");
+  const text = rules.join("\n") + "\n";
+  await writeFile(path.join(out, `${lang}.css`), text);
+  console.log(`fonts: ${lang}.css ${(text.length / 1024).toFixed(1)} KB`);
 }
 
 async function gitTextChars() {
