@@ -46,12 +46,13 @@ const collections=Object.keys(names).map(name=>({name,label:names[name],folder:`
 const pages=collections.find(c=>c.name==='pages');delete pages.filter;delete pages.folder;delete pages.create;delete pages.identifier_field;delete pages.slug;delete pages.summary;
 const {readdir}=await import('node:fs/promises');
 // Fixed pages: only routes that go through getLocalized read TW `draft` (today: privacy, still under
-// legal review). Other fixed pages keep the field hidden so the CMS never offers a switch that does nothing.
+// legal review). Other fixed pages have no `draft` key in Git and omit the field, so the CMS never offers a
+// switch that does nothing. (A `hidden` widget with `required` is rejected by Sveltia's config validation,
+// which made qa:sveltia, and therefore every main deployment, fail.)
 const DRAFT_PAGES=new Set(['privacy']);
 const draftField=pages.fields.find(f=>f.name==='draft');
 const pageDraft={...draftField,hint:'TW 控制前台公開：勾選表示不公開（頁面不建置，頁尾也不顯示連結）。取消勾選前須完成法務審閱、刪除草稿標註並完成 EN／JP 翻譯。'};
-const hiddenDraft={name:'draft',label:draftField.label,widget:'hidden',required:false};
-const pageFields=name=>pages.fields.map(f=>f!==draftField?f:DRAFT_PAGES.has(name)?pageDraft:hiddenDraft);
+const pageFields=name=>pages.fields.flatMap(f=>f!==draftField?[f]:DRAFT_PAGES.has(name)?[pageDraft]:[]);
 pages.files=(await readdir(new URL('src/content/pages/tw/',root))).filter(n=>n.endsWith('.md')&&n!=='history.md').sort().map(filename=>({name:filename.slice(0,-3),label:filename.slice(0,-3),file:`src/content/pages/{{locale}}/${filename}`,i18n:true,fields:pageFields(filename.slice(0,-3))}));delete pages.fields;delete pages.delete;delete pages.extension;
 // Keep the existing dynamic map intact. One custom JSON object preserves all IDs and future entries.
 collections.push({name:'news-media',label:'新聞共用圖集與影片（進階）',files:[{name:'registry',label:'新聞媒體資料',file:'src/data/news-media.json',format:'bxr-media-json',fields:[{name:'body',label:'媒體對應表',widget:'bxr-value',required:true,value_schema:mediaSchema,hint:'完整沿用現有 mediaId→媒體物件。圖檔在 src/assets/images/news/，filename 只填檔名；approved=true 且三語 alt 完整才顯示。'}]}]});

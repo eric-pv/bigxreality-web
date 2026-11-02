@@ -1,7 +1,10 @@
-import rules from '../data/typography.json' with { type: 'json' };
+import rawRules from '../data/typography.json' with { type: 'json' };
 export type TypographyLang = 'tw'|'en'|'jp';
 export interface HeadingGroup { text:string; groups:string[] }
 export interface TypographyRule { terms:string[]; headings?:HeadingGroup[] }
+// typography.json is edited in Sveltia. Its JSON-inferred type changes with the data (an empty optional
+// `headings` list is omitted on save), so type it by the declared schema instead of by today's file.
+const rules=rawRules as Partial<Record<TypographyLang,TypographyRule>>;
 export function typographyParts(text:string, lang:string, custom?:TypographyRule):Array<{text:string;keep:boolean;group?:boolean}> {
  const rule=custom??rules[lang as TypographyLang];
  if(!rule)return [{text,keep:false}];
