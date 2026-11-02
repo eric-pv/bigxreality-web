@@ -10,7 +10,7 @@ const groups = clientLogoGroups(Astro.props.lang);
   {groups.map(group => <section class="logo-category" aria-labelledby={`logos-${group.id}`} data-logo-category={group.id}>
     <h2 id={`logos-${group.id}`} class="t-h3"><Text value={group.label} /></h2>
     <ul role="list" class="logo-grid">{group.items.map(logo => <li data-logo-file={logo.file}>
-      <Picture src={logo.image} formats={['webp']} fallbackFormat="png" widths={[160,240,320,480].filter(w=>w<logo.image.width).concat(Math.min(logo.image.width,640))} sizes="(max-width: 767px) calc(50vw - 56px), 210px" width={logo.image.width} height={logo.image.height} alt={logo.alt} loading="lazy" decoding="async" />
+      <Picture src={logo.image} formats={['webp']} fallbackFormat="webp" widths={[160,240,320,480].filter(w=>w<logo.image.width).concat(Math.min(logo.image.width,640))} sizes="(max-width: 767px) calc(50vw - 56px), 210px" width={logo.image.width} height={logo.image.height} alt={logo.alt} loading="lazy" decoding="async" />
     </li>)}</ul>
   </section>)}
 </div>

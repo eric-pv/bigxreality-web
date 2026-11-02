@@ -43,7 +43,7 @@ landing:
     images:
       - need: リアルな消火器ボンベの実物写真（4:3）
         ratio: 16 / 9
-        src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.png
+        src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.webp
         alt: VRヘッドセットを装着した訓練参加者が消火器訓練機器を操作
       - need: グリップとホースノズルのクローズアップ（4:3）
         ratio: 4 / 3

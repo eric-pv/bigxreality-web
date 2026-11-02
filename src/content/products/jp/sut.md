@@ -11,7 +11,7 @@ hero:
   englishName: Small Unit Tactical Training System
   tagline: 基礎操作から小隊の連携、さらにシステム間の統合訓練まで発展させられる戦術訓練システム
   image:
-    src: ../../../assets/images/products/sut-squad-vr-tactical-training.jpg
+    src: ../../../assets/images/products/sut-squad-vr-tactical-training.webp
     alt: VRヘッドセットを装着し、戦術装備を身に着けて訓練用の銃を持った4名の訓練生が、車両シミュレーターの前に立っている様子
 summary: 主に約1〜4名の小部隊による戦術訓練を対象としています。
 landing:

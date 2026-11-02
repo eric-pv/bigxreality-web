@@ -25,7 +25,7 @@ const originals={'.git/HEAD':'ref: refs/heads/main\n','src/data/news-media.json'
 async function collect(folder){for(const item of await readdir(path.join(repo,folder),{withFileTypes:true})){const file=folder+'/'+item.name;if(item.isDirectory())await collect(file);else if(file.endsWith('.md'))originals[file]=await readFile(path.join(repo,file),'utf8');}}
 if(existsSync(path.join(repo,'src/data/typography.json')))originals['src/data/typography.json']=await readFile(path.join(repo,'src/data/typography.json'),'utf8');
 await collect('src/content');
-const imageNames=(await readdir(path.join(repo,'src/assets/images/clients'))).filter(n=>n.endsWith('.png'));
+const imageNames=(await readdir(path.join(repo,'src/assets/images/clients'))).filter(n=>n.endsWith('.webp'));
 const image=await readFile(path.join(repo,'src/assets/images/clients',imageNames[0]));
 try{
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];
@@ -84,13 +84,13 @@ try{
  await page.getByRole('main',{name:/隔離測試文章/}).waitFor();
  await page.getByRole('button',{name:'Create New Entry'}).first().click();
  await page.getByRole('textbox',{name:'標題',exact:true}).fill('bxr-cms-browser-qa');
- await page.getByRole('group',{name:/測試圖片.*Field/}).locator('input[type=file]').first().setInputFiles({name:'bxr-cms-upload.png',mimeType:'image/png',buffer:image});
+ await page.getByRole('group',{name:/測試圖片.*Field/}).locator('input[type=file]').first().setInputFiles({name:'bxr-cms-upload.webp',mimeType:'image/webp',buffer:image});
  await page.getByRole('textbox',{name:'內文',exact:true}).fill('BXR isolated browser test.');
  await page.getByRole('button',{name:'Save',exact:true}).click();
  await page.getByRole('row',{name:/bxr-cms-browser-qa/}).waitFor();
  let clone=await readClone(),saved=textOf(clone,'cms-test-content/bxr-cms-browser-qa.md');
  assert.ok(saved.includes('BXR isolated browser test.'));
- const asset=Object.keys(clone).find(p=>p.startsWith('cms-test-media/')&&p.endsWith('.png'));assert.ok(asset);
+ const asset=Object.keys(clone).find(p=>p.startsWith('cms-test-media/')&&p.endsWith('.webp'));assert.ok(asset);
  assert.deepEqual(Buffer.from(clone[asset]),image);
  await page.getByRole('row',{name:/bxr-cms-browser-qa/}).click();
  await page.getByRole('textbox',{name:'內文',exact:true}).fill('BXR isolated edit verified.');
@@ -107,7 +107,7 @@ try{
  const coverGroup=await reveal(page.getByRole('group',{name:/封面.*Field/}));
  await coverGroup.getByRole('checkbox').check();
  await coverGroup.getByRole('button',{name:'Expand',exact:true}).click();
- await (await reveal(coverGroup.locator('input[type=file]'))).setInputFiles({name:'bxr-news-upload.png',mimeType:'image/png',buffer:image});
+ await (await reveal(coverGroup.locator('input[type=file]'))).setInputFiles({name:'bxr-news-upload.webp',mimeType:'image/webp',buffer:image});
  await (await reveal(coverGroup.getByRole('textbox',{name:'替代文字',exact:true}))).fill('BXR isolated existing logo upload test');
  await page.getByRole('button',{name:'Save',exact:true}).click();
  await page.getByRole('row').filter({hasText:raw.title}).first().waitFor();

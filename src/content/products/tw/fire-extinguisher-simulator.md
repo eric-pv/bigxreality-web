@@ -42,7 +42,7 @@ landing:
     images:
       - need: 擬真滅火器鋼瓶實際照片（4:3）
         ratio: 16 / 9
-        src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.png
+        src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.webp
         alt: 配戴 VR 頭盔的學員操作滅火器訓練設備
       - need: 握柄與軟管噴嘴局部特寫（4:3）
         ratio: 4 / 3

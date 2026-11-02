@@ -4,12 +4,12 @@ const original=inventory.map(item=>({...item,sha256:crypto.createHash('sha256').
 fs.writeFileSync('docs/reviews/visual-copy/MEDIA-INVENTORY.json',JSON.stringify(original,null,2));
 const rows=[['location','source','change','pending']];
 rows.push(['首頁 Hero','public/video/hero/hero-1.{mp4,webm}; hero-2.{mp4,webm}','整段原始畫面、背景延伸、依序播放與鍵盤控制','原始素材不變']);
-rows.push(['三語產品總覽 Hero','src/assets/images/products/military-simulation-training.jpg','替換點雲視覺；原 Astro frontmatter 圖片欄位','']);
-rows.push(['滅火器整合做法','src/assets/images/products/vr-fire-extinguisher-training-trainee.png','使用既有對應產品訓練視覺','噴嘴特寫、教學畫面及成果畫面仍待提供']);
+rows.push(['三語產品總覽 Hero','src/assets/images/products/military-simulation-training.webp','替換點雲視覺；原 Astro frontmatter 圖片欄位','']);
+rows.push(['滅火器整合做法','src/assets/images/products/vr-fire-extinguisher-training-trainee.webp','使用既有對應產品訓練視覺','噴嘴特寫、教學畫面及成果畫面仍待提供']);
 rows.push(['新聞首頁／列表','文章原有 title/category/date','文字型文章封面；保留 CMS cover / news-media 優先來源','30 篇正式封面仍待上傳，不以其他訓練圖代替']);
 rows.push(['核心技術 overview/xr/training-design/system-integration/domain-expertise','現有 police-box/SUT/police/military 素材','僅作相應應用領域背景；實際產品名稱保留於 alt','']);
-rows.push(['核心技術 digital-simulation','smart-city-3d-digital-twin.jpeg','沿用既有概念圖並顯示概念視覺標籤','AI 專屬介面缺圖，採純文字 Hero']);
-rows.push(['核心技術 decision-visualization','wargaming-table-team-planning-discussion.jpeg','沿用既有兵棋圖台素材','原有素材的 AI／合成來源標記請公司確認']);
+rows.push(['核心技術 digital-simulation','smart-city-3d-digital-twin.webp','沿用既有概念圖並顯示概念視覺標籤','AI 專屬介面缺圖，採純文字 Hero']);
+rows.push(['核心技術 decision-visualization','wargaming-table-team-planning-discussion.webp','沿用既有兵棋圖台素材','原有素材的 AI／合成來源標記請公司確認']);
 for(const item of original.filter(i=>i.file.startsWith('src/assets/images/products/')))rows.push(['產品／解決方案／相關卡片',item.file,'共用16:9、依原圖 contain 或受控 cover；保留來源與 alt','既有標記為 illustration 的素材顯示概念視覺；其餘來源判定依公司確認']);
 const csv=rows.map(r=>r.map(v=>'"'+v.replaceAll('"','""')+'"').join(',')).join('\n')+'\n';fs.writeFileSync('docs/reviews/visual-copy/IMAGE-CHANGES.csv',csv);
 const media=JSON.parse(fs.readFileSync('src/data/news-media.json','utf8'));

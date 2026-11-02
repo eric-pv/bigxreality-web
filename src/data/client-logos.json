@@ -1,6 +1,6 @@
 [
   {
-    "file": "中華民國國防部.png",
+    "file": "中華民國國防部.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -16,7 +16,7 @@
     "order": 1
   },
   {
-    "file": "中華民國海軍.png",
+    "file": "中華民國海軍.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -32,7 +32,7 @@
     "order": 2
   },
   {
-    "file": "中華民國海軍陸戰隊.png",
+    "file": "中華民國海軍陸戰隊.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -48,7 +48,7 @@
     "order": 3
   },
   {
-    "file": "陸軍步兵訓練指揮部.png",
+    "file": "陸軍步兵訓練指揮部.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -64,7 +64,7 @@
     "order": 4
   },
   {
-    "file": "內政部警政署.png",
+    "file": "內政部警政署.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -80,7 +80,7 @@
     "order": 5
   },
   {
-    "file": "刑事警察局.png",
+    "file": "刑事警察局.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -96,7 +96,7 @@
     "order": 6
   },
   {
-    "file": "保安警察第一總隊.png",
+    "file": "保安警察第一總隊.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -112,7 +112,7 @@
     "order": 7
   },
   {
-    "file": "台灣縣市警察局.png",
+    "file": "台灣縣市警察局.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -128,7 +128,7 @@
     "order": 8
   },
   {
-    "file": "中央警察大學.png",
+    "file": "中央警察大學.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -144,7 +144,7 @@
     "order": 9
   },
   {
-    "file": "臺灣警察專科學校.png",
+    "file": "臺灣警察專科學校.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -160,7 +160,7 @@
     "order": 10
   },
   {
-    "file": "台北市政府消防局.png",
+    "file": "台北市政府消防局.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -176,7 +176,7 @@
     "order": 11
   },
   {
-    "file": "國家中山科學研究院.png",
+    "file": "國家中山科學研究院.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -192,7 +192,7 @@
     "order": 1
   },
   {
-    "file": "工業技術研究院.png",
+    "file": "工業技術研究院.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -208,7 +208,7 @@
     "order": 2
   },
   {
-    "file": "國家災害防救科技中心.png",
+    "file": "國家災害防救科技中心.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -224,7 +224,7 @@
     "order": 3
   },
   {
-    "file": "中華民國交通部.png",
+    "file": "中華民國交通部.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -240,7 +240,7 @@
     "order": 1
   },
   {
-    "file": "經濟部工業局.png",
+    "file": "經濟部工業局.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -256,7 +256,7 @@
     "order": 2
   },
   {
-    "file": "勞動部勞動力發展署.png",
+    "file": "勞動部勞動力發展署.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -272,7 +272,7 @@
     "order": 3
   },
   {
-    "file": "勞動部職業安全衛生署.png",
+    "file": "勞動部職業安全衛生署.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -288,7 +288,7 @@
     "order": 4
   },
   {
-    "file": "南部科學園區.png",
+    "file": "南部科學園區.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -304,7 +304,7 @@
     "order": 5
   },
   {
-    "file": "台灣中油股份有限公司.png",
+    "file": "台灣中油股份有限公司.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -320,7 +320,7 @@
     "order": 6
   },
   {
-    "file": "台灣電力公司.png",
+    "file": "台灣電力公司.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -336,7 +336,7 @@
     "order": 7
   },
   {
-    "file": "桃園國際機場股份有限公司.png",
+    "file": "桃園國際機場股份有限公司.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -352,7 +352,7 @@
     "order": 8
   },
   {
-    "file": "台灣國家級新創品牌.png",
+    "file": "台灣國家級新創品牌.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -368,7 +368,7 @@
     "order": 9
   },
   {
-    "file": "台灣國防產業發展協會.png",
+    "file": "台灣國防產業發展協會.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -384,7 +384,7 @@
     "order": 1
   },
   {
-    "file": "台灣防災產業協會.png",
+    "file": "台灣防災產業協會.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {
@@ -400,7 +400,7 @@
     "order": 2
   },
   {
-    "file": "台灣虛擬及擴增實境產業協會.png",
+    "file": "台灣虛擬及擴增實境產業協會.webp",
     "enabled": true,
     "publicationReview": "approved",
     "alt": {

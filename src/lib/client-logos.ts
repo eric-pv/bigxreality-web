@@ -4,7 +4,7 @@ import type { Lang } from '../i18n';
 import { getUi } from './ui';
 
 export const CLIENT_CATEGORIES = ['defense-public-safety', 'research-technology', 'government-public-enterprises', 'industry-professional-associations'] as const;
-const images = import.meta.glob<{ default: ImageMetadata }>('../assets/images/clients/*.png', { eager: true });
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/images/clients/*.webp', { eager: true });
 
 /** One ordered list drives the home counts and the existing partner page. */
 export function clientLogoGroups(lang: Lang) {
