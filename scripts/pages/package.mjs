@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 // Package the tested Git-based static client for the official GitHub Pages mount.
 // Historical adapter output is dist/client; only this static artifact is deployed.
-import { cp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { parse } from "yaml";
 import { publicSiteRoot, publicBasePath } from "../../src/lib/public-url.ts";
+import { reachableAstro } from "./astro-refs.mjs";
 
 const base = (process.argv[2] ?? publicBasePath).replace(/\/?$/, "/");
 if(base!==publicBasePath)throw new Error('Pages base must match src/data/site.json, not a second URL setting');
@@ -21,7 +22,23 @@ if(cms.backend?.branch!=='main'||cms.publish_mode!=='editorial_workflow')throw n
 if (!existsSync(path.join(SRC, "index.html")) && !existsSync(path.join(SRC, "en"))) throw new Error("dist/client not found: run `npm run build` first");
 
 await rm(OUT, { recursive: true, force: true });
-await cp(SRC, OUT, { recursive: true });
+// _astro/ also holds legacy adapter/EmDash chunks (PluginRegistry, CodeEditor, messages-*) and
+// unused originals of optimized images. Only files reachable from the published pages are copied;
+// pagefind/, fonts/, media/, video/ and admin/ are copied unchanged.
+const ASTRO = path.join(SRC, "_astro");
+const { reachable, unreachable } = await reachableAstro(SRC);
+await cp(SRC, OUT, { recursive: true, filter: (p) => p !== ASTRO && !p.startsWith(ASTRO + path.sep) });
+await mkdir(path.join(OUT, "_astro"), { recursive: true });
+for (const name of reachable) await cp(path.join(ASTRO, name), path.join(OUT, "_astro", name));
+const sizeOf = async (names) => { let n = 0; for (const f of names) n += (await stat(path.join(ASTRO, f))).size; return n; };
+const excluded = await Promise.all([...unreachable].sort().map(async (name) => ({ name, bytes: (await stat(path.join(ASTRO, name))).size })));
+const report = { generatedAt: new Date().toISOString(), source: "dist/client/_astro", kept: { files: reachable.size, bytes: await sizeOf(reachable) },
+  excluded: { files: excluded.length, bytes: excluded.reduce((n, f) => n + f.bytes, 0), byType: {} }, files: excluded };
+for (const f of excluded) { const t = (report.excluded.byType[path.extname(f.name).slice(1).toLowerCase()] ??= { files: 0, bytes: 0 }); t.files++; t.bytes += f.bytes; }
+await mkdir(path.join(REPO, ".qa"), { recursive: true });
+await writeFile(path.join(REPO, ".qa/pages-astro-excluded.json"), JSON.stringify(report, null, 2) + "\n");
+const mb = (b) => (b / 1048576).toFixed(1) + " MB";
+console.log(`pages: _astro kept ${reachable.size} file(s) ${mb(report.kept.bytes)}, excluded ${excluded.length} unreferenced ${mb(report.excluded.bytes)} → .qa/pages-astro-excluded.json`);
 
 // "/x" but not "//host" and not already "/base/x"
 const rel = (u) => u.startsWith("/") && !u.startsWith("//") && !u.startsWith(base) ? base + u.slice(1) : u;

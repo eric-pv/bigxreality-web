@@ -8,6 +8,7 @@ import path from "node:path";
 import { chromium } from "playwright-core";
 import { CHROMIUM } from "../lib/serve.mjs";
 import { publicSiteRoot, publicBasePath } from "../../src/lib/public-url.ts";
+import { astroReferences } from "./astro-refs.mjs";
 
 const base = (process.argv[2] ?? publicBasePath).replace(/\/?$/, "/");
 const ROOT = path.resolve(import.meta.dirname, "../../dist-pages");
@@ -60,6 +61,11 @@ for(const f of pages){const html=await readFile(f,'utf8');if(!/\/(tw|en|jp)\//.t
 check('public SEO URLs stay on the Pages site',badSeoUrls.length===0,badSeoUrls.slice(0,5).join(' '));
 check("no TEST FIXTURE content", fixtures === 0, `${fixtures} page(s)`);
 check("every internal link and asset resolves under the base path", broken.size===0,[...broken].slice(0,10).join(" "));
+// package.mjs copies only reachable _astro files: every /_astro/ reference in HTML, JS (static and
+// dynamic imports, Vite preload/__vite__mapDeps lists) and CSS url() must exist in the artifact.
+const astroRefs=await astroReferences(ROOT),astroMissing=[];
+for(const r of astroRefs){try{if(!(await stat(path.join(ROOT,'_astro',r.name))).isFile())astroMissing.push(r);}catch{astroMissing.push(r);}}
+check(`all ${new Set(astroRefs.map(r=>r.name)).size} referenced _astro files are present`,astroRefs.length>0&&astroMissing.length===0,astroMissing.slice(0,10).map(r=>`${r.from} → _astro/${r.name}`).join(" "));
 const robots=await readFile(path.join(ROOT,'robots.txt'),'utf8');
 check('robots permits the official website',!/^Disallow:\s*\/\s*$/m.test(robots)&&robots.includes(`Sitemap: ${publicSiteRoot}/sitemap.xml`));
 const sitemap=await readFile(path.join(ROOT,'sitemap.xml'),'utf8'),locations=[...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
