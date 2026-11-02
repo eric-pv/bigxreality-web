@@ -101,7 +101,7 @@ const website = {
             <article class="feature feature--lead">
               <div class="feature-media">
                 {lead.image
-                  ? <ProductImage src={lead.image.src} alt={lead.image.alt} sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) calc(100vw - 80px), (max-width: 1279px) 48vw, 684px" />
+                  ? <ProductImage src={lead.image.src} alt={lead.image.alt} sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) calc(100vw - 80px), (max-width: 1279px) calc(100vw - 162px), 684px" />
                   : <ImagePlaceholder label={ui.imagePending} />}
               </div>
               <div class="feature-body">
@@ -118,7 +118,7 @@ const website = {
                 <article class="feature feature--row">
                   <div class="feature-media">
                     {p.image
-                      ? <ProductImage src={p.image.src} alt={p.image.alt} sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 38vw, 205px" />
+                      ? <ProductImage src={p.image.src} alt={p.image.alt} sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 38vw, (max-width: 1279px) calc(42vw - 68px), 205px" />
                       : <ImagePlaceholder label={ui.imagePending} />}
                   </div>
                   <div class="feature-body">
@@ -260,6 +260,11 @@ const website = {
   .cta-secondary:hover { background: rgb(255 255 255 / 0.12); }
   .cta :focus-visible { outline-color: var(--bxr-white); }
 
+  /* 1024–1279: a 7/5 split leaves the side cards ~150px of text, so CJK product names break per character. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .showcase { grid-template-columns: minmax(0, 1fr); gap: var(--content-gap); }
+    .solutions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 1023px) {
     .value, .tech-grid, .showcase { grid-template-columns: minmax(0, 1fr); gap: var(--content-gap); }
     .solutions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
