@@ -3,6 +3,7 @@ declare global { interface Window { bxrMotionDispose?: () => void } }
 
 /* Home hero entrance (once per element). The HTML keeps the full text; these helpers only add
    aria-hidden visual layers or temporary line wrappers that are removed when the entrance ends. */
+const COUNT_MS = 1200;
 const LINE_MS = 700, LINE_STAGGER = 120, LINE_START = 150, KEY_MS = 500, TYPE_STEP = 55;
 interface HeroRun { title: HTMLElement; timer: number; finish: () => void }
 type CharBox = { node: Text; offset: number; rect: DOMRect; index: number };
@@ -67,6 +68,29 @@ export function installMotion() {
   let loops: IntersectionObserver | undefined;
   let resize: ResizeObserver | undefined;
   let hero: HeroRun | undefined;
+  let counters: IntersectionObserver | undefined;
+  /** Running count-ups: element → restore. The server HTML always holds the final value. */
+  const counting = new Map<HTMLElement, () => void>();
+  const countUp = (el: HTMLElement) => {
+    const final = el.textContent?.trim() ?? '';
+    if (!/^\d+$/.test(final) || el.dataset.counted) return;
+    el.dataset.counted = 'true';
+    const target = Number(final);
+    const visual = Object.assign(document.createElement('span'), { className: 'count-visual', textContent: '0' });
+    visual.setAttribute('aria-hidden', 'true');
+    visual.style.minWidth = `${final.length}ch`;
+    el.replaceChildren(visual, Object.assign(document.createElement('span'), { className: 'visually-hidden', textContent: final }));
+    let frame = 0;
+    const restore = () => { cancelAnimationFrame(frame); counting.delete(el); el.textContent = final; };
+    counting.set(el, restore);
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / COUNT_MS, 1);
+      visual.textContent = String(Math.round(target * (1 - (1 - p) ** 3)));
+      if (p < 1) frame = requestAnimationFrame(tick); else restore();
+    };
+    frame = requestAnimationFrame(tick);
+  };
   const html = document.documentElement;
   const clear = () => {
     epoch++;
@@ -74,6 +98,9 @@ export function installMotion() {
     intersection?.disconnect();
     mutations?.disconnect();
     loops?.disconnect();
+    counters?.disconnect();
+    counters = undefined;
+    counting.forEach(restore => restore());
     resize?.disconnect();
     tracking?.abort();
     intersection = undefined;
@@ -183,6 +210,18 @@ export function installMotion() {
       for (const entry of entries) entry.target.toggleAttribute('data-in-view', entry.isIntersecting);
     });
     main.querySelectorAll('[data-motion-loop]').forEach(el => loops!.observe(el));
+    // Count-ups start just before the number scrolls in, so the final value is not seen first.
+    counters = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const el = entry.target as HTMLElement, style = getComputedStyle(el);
+        counters?.unobserve(el);
+        // Start once the digits' own face is ready: a mid-count font swap would change their width.
+        const start = () => { if (generation === epoch && !preference.matches) countUp(el); };
+        if (document.fonts) document.fonts.load(`${style.fontSize} ${style.fontFamily}`).then(start, start); else start();
+      }
+    }, { rootMargin: '0px 0px 5% 0px' });
+    main.querySelectorAll('[data-count]:not([data-counted])').forEach(el => counters!.observe(el));
     if (animateHero) enterHero(heroRoot!);
     else if (heroRoot?.dataset.motion === 'done') trackKey(heroRoot.querySelector<HTMLElement>('.title')!);
     html.classList.remove('motion-ready');
