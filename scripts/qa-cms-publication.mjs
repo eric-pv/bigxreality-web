@@ -4,6 +4,7 @@ import {execFileSync} from 'node:child_process';
 import {mkdtemp, mkdir, readFile, writeFile, symlink, access} from 'node:fs/promises';
 import path from 'node:path';
 import {stringify} from 'yaml';
+import {publicSiteRoot} from '../src/lib/public-url.ts';
 
 const root=path.resolve(import.meta.dirname,'..');
 const git=(cwd,...args)=>execFileSync('git',args,{cwd,encoding:'utf8'}).trim();
@@ -31,7 +32,7 @@ async function stage(name,published){
       const html=await readFile(file,'utf8');
       assert.ok(html.includes(`${marker} updated ${lang}`));
       assert.ok(html.includes('Isolated updated body.'));
-      assert.ok(html.includes(`https://magician-eric.github.io/bigxreality-web/${lang}/news/${id}/`));
+      assert.ok(html.includes(`${publicSiteRoot}/${lang}/news/${id}/`));
     }
     assert.ok(await present(path.join(dir,`dist/client/${lang}/products/sut/index.html`)));
     assert.ok(await present(path.join(dir,`dist/client/${lang}/news/news-01-ds-2025/index.html`)));

@@ -13,7 +13,12 @@ import { reachableAstro } from "./astro-refs.mjs";
 const base = (process.argv[2] ?? publicBasePath).replace(/\/?$/, "/");
 if(base!==publicBasePath)throw new Error('Pages base must match src/data/site.json, not a second URL setting');
 if((process.env.BXR_CONTENT_SOURCE??'markdown')!=='markdown'||process.env.BXR_PREVIEW==='1'||process.env.WORKERS_CI)throw new Error('Official Pages packaging accepts Git Markdown only; no EmDash, fixture, bootstrap or preview mode');
-if (!/^\/[a-z0-9._-]+\/$/i.test(base)) throw new Error(`base path must look like /name/ (got ${base})`);
+// "/" for a custom domain or a <user>.github.io site, "/name/" for a project site (current).
+if (!/^\/(?:[a-z0-9._-]+\/)?$/i.test(base)) throw new Error(`base path must be / or /name/ (got ${base})`);
+const host = new URL(publicSiteRoot).hostname;
+const githubIo = /\.github\.io$/i.test(host);
+// GitHub Pages serves a custom domain at its root only.
+if (!githubIo && base !== "/") throw new Error(`custom domain ${host} must be published at the domain root, not ${base}`);
 const REPO = path.resolve(import.meta.dirname, "../..");
 const SRC = path.join(REPO, "dist/client");
 const OUT = path.join(REPO, "dist-pages");
@@ -27,7 +32,9 @@ await rm(OUT, { recursive: true, force: true });
 // pagefind/, fonts/, media/, video/ and admin/ are copied unchanged.
 const ASTRO = path.join(SRC, "_astro");
 const { reachable, unreachable } = await reachableAstro(SRC);
-await cp(SRC, OUT, { recursive: true, filter: (p) => p !== ASTRO && !p.startsWith(ASTRO + path.sep) });
+// _redirects and _headers are Cloudflare adapter files; GitHub Pages ignores them, so they are not published.
+const PAGES_IGNORED = new Set(["_redirects", "_headers"].map((f) => path.join(SRC, f)));
+await cp(SRC, OUT, { recursive: true, filter: (p) => !PAGES_IGNORED.has(p) && p !== ASTRO && !p.startsWith(ASTRO + path.sep) });
 await mkdir(path.join(OUT, "_astro"), { recursive: true });
 for (const name of reachable) await cp(path.join(ASTRO, name), path.join(OUT, "_astro", name));
 const sizeOf = async (names) => { let n = 0; for (const f of names) n += (await stat(path.join(ASTRO, f))).size; return n; };
@@ -73,7 +80,9 @@ await writeFile(path.join(OUT, "index.html"), redirect(start));
 const notFound = await readFile(path.join(OUT, "404.html"), "utf8").catch(() => "");
 if (!notFound.includes("data-not-found") || !notFound.includes('name="robots" content="noindex"')) throw new Error("dist/client/404.html (src/pages/404.astro) missing or indexable");
 await writeFile(path.join(OUT, ".nojekyll"), "");
-console.log(`pages: ${files} file(s) rebased to ${base} → dist-pages/`);
+// A custom domain needs CNAME at the artifact root; a github.io address must not have one.
+if (!githubIo) await writeFile(path.join(OUT, "CNAME"), host + "\n");
+console.log(`pages: ${files} file(s) rebased to ${base} → dist-pages/${githubIo ? "" : ` (CNAME ${host})`}`);
 
 const git=(args)=>execFileSync('git',args,{cwd:REPO,encoding:'utf8'}).trim();
 const commit=git(['rev-parse','HEAD']);

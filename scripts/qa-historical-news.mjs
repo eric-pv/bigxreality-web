@@ -5,6 +5,7 @@ import {marked} from 'marked';
 import {chromium} from 'playwright-core';
 import {parseHistoricalNews} from './lib/historical-news.mjs';
 import {startPreview,CHROMIUM} from './lib/serve.mjs';
+import {publicSiteRoot} from '../src/lib/public-url.ts';
 const records=parseHistoricalNews(fs.readFileSync(new URL('../docs/sources/BXR_NEWS_TRILINGUAL_EXPANDED_V2_2026-10-27.txt',import.meta.url),'utf8'));
 const images=JSON.parse(fs.readFileSync(new URL('../src/data/news-media.json',import.meta.url),'utf8'));
 const current=(id,lang)=>{const source=fs.readFileSync(`src/content/news/${lang}/${id}.md`,'utf8');const split=source.split(/^---\s*$/m);return {...parseYaml(split[1]),body:split.slice(2).join('---').trim()};};
@@ -22,7 +23,7 @@ try{
    links.push(...pageLinks);
    assert.equal(await page.locator('#article-grid .editorial-cover').count(),pageLinks.filter(href=>!ready(href.split('/').filter(Boolean).at(-1),lang)).length);
    assert.ok(!(await page.locator('main').innerText()).includes('[待翻譯]'));
-   assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://magician-eric.github.io/bigxreality-web'+route);
+   assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),publicSiteRoot+route);
   }
   assert.equal(new Set(links).size,published.filter(id=>fs.existsSync(`src/content/news/${lang}/${id}.md`)).length);
   for(const r of records){

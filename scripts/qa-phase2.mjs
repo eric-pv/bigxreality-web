@@ -3,6 +3,7 @@ import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright-core";
 import { startPreview, CHROMIUM, DIST } from "./lib/serve.mjs";
+import { publicSiteRoot } from "../src/lib/public-url.ts";
 
 if (!DIST.includes("fixtures")) {
   console.error("Run with QA_DIST=dist-fixtures/client after `npm run build:fixtures`.");
@@ -19,7 +20,7 @@ const check = (name, ok, detail = "") => {
 // static output
 check("news page 1 has one spotlight plus ten rows", (html("tw/news").match(/data-news-id=/g) ?? []).length === 11 && html("tw/news").includes("data-news-featured"));
 check("news page 2 exists, no /page/1/", existsSync(path.join(DIST, "tw/news/page/2/index.html")) && !existsSync(path.join(DIST, "tw/news/page/1")));
-check("page 2 canonical points to itself", html("tw/news/page/2").includes('rel="canonical" href="https://magician-eric.github.io/bigxreality-web/tw/news/page/2/"'));
+check("page 2 canonical points to itself", html("tw/news/page/2").includes(`rel="canonical" href="${publicSiteRoot}/tw/news/page/2/"`));
 check("page 2 hreflang only for languages with a page 2", !html("tw/news/page/2").includes('rel="alternate" hreflang="en"'));
 check("case studies are not paged", !existsSync(path.join(DIST, "tw/cases/page")));
 check("unapproved case study not built", !existsSync(path.join(DIST, "tw/cases/fixture-case-unapproved")));

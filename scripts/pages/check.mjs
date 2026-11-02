@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Checks dist-pages/ the way GitHub Pages serves it (under /bigxreality-web/):
+// Checks dist-pages/ the way GitHub Pages serves it (under the base path of src/data/site.json's url:
+// /bigxreality-web/ for the project site today, / for a custom domain):
 // every internal link and asset resolves, public canonical URLs use the official mount, robots allows crawling,
 // the sitemap is present, no TEST FIXTURE content is published, and search works.
 import { readFile, readdir, stat } from "node:fs/promises";
@@ -65,6 +66,12 @@ check('sitemap lists official URLs',locations.length>0&&locations.every(url=>url
 const notFound=await readFile(path.join(ROOT,'404.html'),'utf8').catch(()=>'');
 check('404.html is the built noindex page with TW/EN/JP return links',notFound.includes('data-not-found')&&/name="robots" content="noindex"/.test(notFound)&&['tw','en','jp'].every(l=>['',"products/","solutions/","contact/","search/"].every(r=>notFound.includes(`href="${base}${l}/${r}"`))));
 check('404 is not in the sitemap',!locations.some(u=>/\/404(?:\.html|\/)?$/.test(u)));
+const host=new URL(publicSiteRoot).hostname,githubIo=/\.github\.io$/i.test(host);
+const cname=await readFile(path.join(ROOT,'CNAME'),'utf8').catch(()=>null);
+check(githubIo?'no CNAME for a github.io address':`CNAME is ${host}`,githubIo?cname===null:cname?.trim()===host,String(cname));
+check('base path is / or /name/ and agrees with the site URL',base===publicBasePath&&(base==='/'||githubIo));
+const ignored=[];for(const f of ['_redirects','_headers'])if(await stat(path.join(ROOT,f)).then(()=>true,()=>false))ignored.push(f);
+check('no _redirects/_headers (GitHub Pages ignores them)',ignored.length===0,ignored.join(' '));
 check('CMS stays noindex',/name="robots" content="noindex"/.test(await readFile(path.join(ROOT,'admin/index.html'),'utf8')));
 check("all three languages built", ["en", "tw", "jp"].every((l) => pages.some((p) => p.includes(`${path.sep}${l}${path.sep}products${path.sep}`))));
 
