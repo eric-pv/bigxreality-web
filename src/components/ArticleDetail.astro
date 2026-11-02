@@ -13,10 +13,11 @@ import { newsMedia } from "../lib/news-media";
 import NewsGallery from "./NewsGallery.astro";
 import NewsVideos from "./NewsVideos.astro";
 import { isPending } from "../lib/pending";
+import { pageOgImage } from "../lib/og-image";
 import ProductImage from "./ProductImage.astro";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
 import { articleTechnologyLinks } from "../lib/technologies";
-import { Picture, getImage } from "astro:assets";
+import { Picture } from "astro:assets";
 import { getEntry } from "astro:content";
 import { HTML_LANG, INTL_LOCALE, localePath, segmentOf, type Lang } from "../i18n";
 import { availableLangs, getLocalized } from "../lib/content";
@@ -55,6 +56,8 @@ const csrTopics = collection === "news" ? csrCategories(base) : [];
 const csr = csrCopy(lang);
 const media = newsMedia(newsImageId, lang);
 const cover = media.cover ?? (base.cover && { src: base.cover.src, alt: d.cover?.alt ?? base.cover.alt });
+// og:image and the Article schema image: this article's own cover with this language's own alt.
+const og = pageOgImage(base.seo?.ogImage ?? cover?.src, media.cover ? media.cover.alt : d.cover?.alt, article.pendingTranslation);
 // Imported TXT punctuation is authoritative: avoid Astro's automatic smart-quote substitutions.
 const historicalImport = collection === "news" && "articleId" in base && !!base.articleId;
 const html = historicalImport ? marked.parse(article.loc.body ?? "", { async: false }) : (article.loc.rendered?.html ?? "");
@@ -79,7 +82,6 @@ const copy = (await getEntry("pages", `${lang}/${collection}`))?.data;
 
 // JSON-LD never carries placeholder text.
 const clean = (s: string | undefined) => (s && !s.includes("[待") ? plain(s) : undefined);
-const ldImage = cover ? publicUrl((await getImage({ src: cover.src, width: 1280, format: "jpg" })).src).toString() : undefined;
 const articleLd: Record<string, unknown> = {
   "@type": collection === "news" && news?.category !== "insight" ? "NewsArticle" : "Article",
   headline: clean(d.title),
@@ -89,7 +91,6 @@ const articleLd: Record<string, unknown> = {
   inLanguage: HTML_LANG[lang],
   url: publicUrl(articleHref(article)).toString(),
   publisher: { "@id": `${site.url}/#organization` },
-  ...(ldImage ? { image: ldImage } : {}),
   ...(clean(author) ? { author: { "@type": "Person", name: clean(author) } } : { author: { "@id": `${site.url}/#organization` } }),
   ...(tagLinks.length ? { keywords: tagLinks.map((x) => plain(x.name)).join(", ") } : {}),
 };
@@ -107,8 +108,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
   currentResource={collection}
   fallbackPath={`/{lang}/${segmentOf(collection)}/`}
   breadcrumbs={breadcrumbs}
-  ogImage={base.seo?.ogImage ?? cover?.src}
-  ogImageAlt={cover?.alt}
+  {...og}
   article={{ published: base.publishDate, modified: base.updatedAt, tags: tagLinks.map((x) => x.name) }}
   structuredData={[articleLd]}
   search={{ type: collection, date: base.publishDate }}

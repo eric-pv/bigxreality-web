@@ -1,6 +1,16 @@
 /* Design tokens: the only source for color, spacing, layout and motion values. */
 @import "../../design-source/BXR_Web_Tokens_v1.0.css";
 
+/* --font-mono face (copied by scripts/build-fonts.mjs). Declared here instead of in its own
+   stylesheet: the browser fetches the file only on pages that render B612 Mono text. */
+@font-face {
+  font-family: "B612 Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/fonts/b612-mono-latin-400-normal.woff2) format("woff2");
+}
+
 /*
  * Type scale and component sizes from BXR Web Design System v1.0
  * (P.09 type scale, P.10 Chinese setting and web extensions, P.11 grid,

@@ -8,7 +8,8 @@ import { publicUrl } from '../lib/public-url.ts';
  * A section without data is not rendered, heading included. Results show only what the
  * case record contains; nothing is calculated or filled in.
  */
-import { Picture, getImage } from "astro:assets";
+import { Picture } from "astro:assets";
+import { pageOgImage } from "../lib/og-image";
 import { HTML_LANG, INTL_LOCALE, localePath, type Lang } from "../i18n";
 import { availableLangs } from "../lib/content";
 import { articleHref, tagMap, type Article } from "../lib/articles";
@@ -42,6 +43,8 @@ const client = clientLabel(article);
 const view = (await toViews([article], lang as Lang))[0];
 
 const cover = view.cover;
+// og:image and the Article schema image: this case's own cover with this language's own alt.
+const og = pageOgImage(base.seo?.ogImage ?? cover?.src, d.cover?.alt, article.pendingTranslation);
 const fmt = (date: Date) => new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
 const iso = (date: Date) => date.toISOString().slice(0, 10);
 const html = article.loc.rendered?.html ?? "";
@@ -73,7 +76,6 @@ const breadcrumbs = [
   { name: d.title, path: articleHref(article) },
 ];
 const clean = (v: string | undefined) => (v && !v.includes("[待") ? plain(v) : undefined);
-const ldImage = cover ? publicUrl((await getImage({ src: cover.src, width: 1280, format: "jpg" })).src).toString() : undefined;
 const articleLd: Record<string, unknown> = {
   "@type": "Article",
   headline: clean(d.title),
@@ -84,7 +86,6 @@ const articleLd: Record<string, unknown> = {
   url: publicUrl(articleHref(article)).toString(),
   publisher: { "@id": `${site.url}/#organization` },
   author: { "@id": `${site.url}/#organization` },
-  ...(ldImage ? { image: ldImage } : {}),
 };
 for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete articleLd[k];
 
@@ -109,8 +110,7 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
   current="resources" currentResource="case-studies"
   fallbackPath="/{lang}/cases/"
   breadcrumbs={breadcrumbs}
-  ogImage={base.seo?.ogImage ?? cover?.src}
-  ogImageAlt={cover?.alt}
+  {...og}
   article={{ published: published, modified: base.updatedAt, tags: tagLinks.map((x) => x.name) }}
   structuredData={[articleLd]}
   search={{ type: "case-studies", date: published }}

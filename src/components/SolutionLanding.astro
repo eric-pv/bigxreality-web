@@ -26,6 +26,7 @@ import CtaBand from "./CtaBand.astro";
 import CtaGroup from "./CtaGroup.astro";
 import RelatedCases from "./RelatedCases.astro";
 import { primaryImage } from '../data/primary-images';
+import { pageOgImage } from "../lib/og-image";
 import Text from "./Text.astro";
 
 interface Props {
@@ -50,6 +51,11 @@ const assignedHero = base.landing?.heroImage?.src
   : L.heroImage?.src ? L.heroImage : undefined;
 const hero = assignedHero ?? (uploadedHero ? { ...L.heroImage, ...uploadedHero } : L.heroImage);
 const heroReady = hero?.src && hero.alt;
+// og:image uses the same hero, but only with this language's own alt (the tw alt never stands in).
+const heroOwnAlt = base.landing?.heroImage?.src ? L.heroImage?.alt
+  : base.image ? d.image?.alt
+  : L.heroImage?.src ? L.heroImage.alt
+  : uploadedHero?.alt;
 
 const allSolutions = await getLocalized("solutions", lang);
 const parent = base.parent ? allSolutions.find((s) => s.slug === base.parent) : undefined;
@@ -74,7 +80,7 @@ let n = alternatingSections(L);
 const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
 const backLabel = ui.backToSolutions;
 const backHref = localePath(lang, "solutions");
-const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
+const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined), heroOwnAlt, pendingTranslation);
 ---
 <BaseLayout
   lang={lang}
@@ -87,8 +93,7 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
   current="solutions"
   fallbackPath="/{lang}/solutions/"
   breadcrumbs={breadcrumbs}
-  ogImage={ogImage}
-  ogImageAlt={heroReady ? hero!.alt : undefined}
+  {...og}
   search={{ type: "solutions" }}
 >
   <PageHero

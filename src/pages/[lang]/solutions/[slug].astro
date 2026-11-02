@@ -24,6 +24,7 @@ import CardArticle from "../../../components/CardArticle.astro";
 import CtaBand from "../../../components/CtaBand.astro";
 import FormButton from "../../../components/FormButton.astro";
 import SolutionLanding from "../../../components/SolutionLanding.astro";
+import { pageOgImage } from "../../../lib/og-image";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -85,8 +86,7 @@ const cta = d.cta ?? page?.cta;
   current="solutions"
   fallbackPath="/{lang}/solutions/"
   breadcrumbs={breadcrumbs}
-  ogImage={base.seo?.ogImage ?? heroImage?.src}
-  ogImageAlt={heroImage?.alt}
+  {...pageOgImage(base.seo?.ogImage ?? heroImage?.src, d.image?.alt, solution.pendingTranslation)}
   search={{ type: "solutions" }}
 >
   <PageHero

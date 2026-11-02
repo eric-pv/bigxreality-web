@@ -9,6 +9,7 @@ import { getUi } from "../../../lib/ui";
 import { site } from "../../../lib/site";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { technologyMedia } from "../../../lib/technology-media";
+import { pageOgImage } from "../../../lib/og-image";
 import PageHero from "../../../components/PageHero.astro";
 export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
 const lang = Astro.params.lang as Lang;
@@ -20,7 +21,7 @@ const imageSlotLabel = { tw: "核心技術圖片位置", en: "Core technologies 
 const breadcrumbs = [{ name: ui.home, path: localePath(lang) }, { name: content.title, path: localePath(lang, "technologies") }];
 const structuredData = [{ "@type": "CollectionPage", name: content.title, description: content.seo.description, url: publicUrl(localePath(lang, "technologies")).href, mainEntity: { "@type": "ItemList", itemListElement: TECHNOLOGY_IDS.map((id, index) => ({ "@type": "ListItem", position: index + 1, name: content.technologies[id].title, ...(live(id) ? { url: publicUrl(localePath(lang, "technologies", id)).href } : {}) })) } }];
 ---
-<BaseLayout hidePendingFooter lang={lang} title={content.seo.title} description={content.seo.description} pathTemplate="/{lang}/technologies/" alternates={[...LANGS]} headerTheme="dark" current="technologies" breadcrumbs={breadcrumbs} structuredData={structuredData}>
+<BaseLayout hidePendingFooter lang={lang} title={content.seo.title} description={content.seo.description} pathTemplate="/{lang}/technologies/" alternates={[...LANGS]} headerTheme="dark" current="technologies" breadcrumbs={breadcrumbs} structuredData={structuredData} {...pageOgImage(technologyMedia("overview",lang)?.src, technologyMedia("overview",lang)?.alt)}>
   <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={content.eyebrow} title={content.title} lead={content.lead} description={content.intro.join("\n\n")} image={technologyMedia("overview",lang)} imageBadge={technologyMedia("overview",lang)?.illustration ? ({tw:"概念視覺",en:"Concept visual",jp:"コンセプトビジュアル"}[lang]) : undefined} />
   <section class="section technology-overview" aria-label={content.title}>
     <div class="container">

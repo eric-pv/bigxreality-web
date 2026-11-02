@@ -1,0 +1,20 @@
+---
+/**
+ * Web font loading for one page language (stylesheets written by scripts/build-fonts.mjs).
+ * - Each language loads only its own stylesheet, without blocking render; text shows in the
+ *   fallback font until it arrives (font-display: swap). jp.css carries Noto Sans JP plus
+ *   the Noto Sans TC rules its characters need (TC is the fallback of the Japanese and mono
+ *   stacks); tw/en load no Japanese rules.
+ * - No woff2 is preloaded. Every tw first screen needs 10–13 Noto Sans TC subsets (25–80 KB
+ *   each), and Chrome holds the first paint for preloaded fonts: in Lighthouse (mobile) even a
+ *   single preload moved /tw/ FCP from ~2.1 s to ~5 s with no CLS gain (tw CLS is already ~0).
+ * - B612 Mono is declared in global.css and fetched only where it renders.
+ * Paths are root-relative like every other asset; scripts/pages/package.mjs rebases them.
+ */
+import type { Lang } from "../i18n";
+
+interface Props { lang: Lang }
+const css = `/fonts/${Astro.props.lang}.css`;
+---
+<link rel="preload" href={css} as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href={css} /></noscript>

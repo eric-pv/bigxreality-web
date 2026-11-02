@@ -5,13 +5,13 @@ import { getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import { DEFAULT_LANG, HREFLANG, LANGS, OG_LOCALE, HTML_LANG, type Lang } from "../i18n";
 import { site, companyName } from "../lib/site";
-import { isPending } from "../lib/pending";
+import { isEditorialPlaceholder, isPending } from "../lib/pending";
 import { plain } from "../lib/text";
 import { indexablePages } from "../lib/indexable-pages";
 import { seoTitle } from "../lib/seo-title";
 
 export interface Crumb { name: string; path: string }
-export interface ProductLd { name: string; description: string; code?: string; image?: string }
+export interface ProductLd { name: string; description: string; code?: string }
 /** Article metadata: og:type=article tags. */
 export interface ArticleMeta { published?: Date; modified?: Date; tags: string[] }
 
@@ -42,7 +42,8 @@ const indexable = await indexablePages();
 const seoAlternates = noindex ? [] : alternates.filter(l => indexable.some(p => p.lang === l && p.path === pathTemplate));
 const desc = plain(description);
 
-const approvedImage = ogImage && ogImageAlt && !isPending(ogImageAlt) ? ogImage : undefined;
+// Only the page's own image with this language's approved alt; [待提供]／[待翻譯] keeps the site fallback.
+const approvedImage = ogImage && ogImageAlt?.trim() && !isEditorialPlaceholder(ogImageAlt) ? ogImage : undefined;
 const og = approvedImage
   ? abs((await getImage({ src: approvedImage, width: 1200, height: 630, fit: "cover", format: "jpg" })).src)
   : abs("/icon-512.png");
@@ -78,7 +79,8 @@ if (product) {
   };
   // JSON-LD never carries placeholder text.
   if (!product.description.includes("[待")) p.description = plain(product.description);
-  if (product.image) p.image = abs(product.image);
+  // Same 1200×630 file as og:image; no page image, no schema image.
+  if (approvedImage) p.image = og;
   graph.push(p);
 }
 const principal = structuredData.some(node => ["WebPage", "CollectionPage", "Article", "NewsArticle"].includes(String(node["@type"])));
@@ -91,6 +93,11 @@ for (const node of structuredData) {
   // An untranslated heading ("[待翻譯] …") is not this page's language; url and description still identify the page.
   if (typeof node.name === "string" && node.name.includes("[待")) delete node.name;
   if (type === "WebPage" || type === "CollectionPage") node.description ??= desc;
+  // Articles carry the same 1200×630 file as og:image, or no image.
+  if (type === "Article" || type === "NewsArticle") {
+    if (approvedImage) node.image = og;
+    else delete node.image;
+  }
 }
 graph.push(...structuredData);
 const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");

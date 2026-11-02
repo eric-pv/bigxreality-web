@@ -18,6 +18,7 @@ import CardProduct from "../../../components/CardProduct.astro";
 import CtaBand from "../../../components/CtaBand.astro";
 import FormButton from "../../../components/FormButton.astro";
 import Text from "../../../components/Text.astro";
+import { pageOgImage } from "../../../lib/og-image";
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -51,8 +52,7 @@ const pending = copy.translationStatus === "pending";
   headerTheme="dark"
   current="products"
   breadcrumbs={breadcrumbs}
-  ogImage={heroImage?.src}
-  ogImageAlt={heroImage?.alt}
+  {...pageOgImage(heroImage?.src, copy.hero.image?.alt, pending)}
 >
   <PageHero
     breadcrumbs={breadcrumbs}

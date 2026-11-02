@@ -28,6 +28,7 @@ import LandingSections from "./LandingSections.astro";
 import { alternatingSections } from "../lib/landing";
 import { casesAbout } from "../lib/cases";
 import { primaryImage } from '../data/primary-images';
+import { pageOgImage } from "../lib/og-image";
 import Text from "./Text.astro";
 import FaqAccordion from "./FaqAccordion.astro";
 import { faqLd } from "../lib/faq";
@@ -59,6 +60,12 @@ const assignedHero = base.landing?.heroImage?.src
   : L.heroImage?.src ? L.heroImage : undefined;
 const hero = assignedHero ?? (uploadedHero ? { ...L.heroImage, ...uploadedHero } : L.heroImage);
 const heroReady = hero?.src && hero.alt;
+// og:image uses the same hero, but only with this language's own alt (the tw alt never stands in).
+const heroOwnAlt = base.landing?.heroImage?.src ? L.heroImage?.alt
+  : base.hero.image ? d.hero.image?.alt
+  : L.heroImage?.src ? L.heroImage.alt
+  : uploadedHero?.alt;
+const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined), heroOwnAlt, pendingTranslation);
 
 // Related products / solutions: only entries that have a built page in this language.
 // Confirmed integrations (either direction) come first, then the products this one lists
@@ -99,6 +106,7 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
   breadcrumbs={breadcrumbs}
   search={{ type: "products" }}
   structuredData={faqStructured}
+  {...og}
   product={{ name: d.hero.name, description: d.seo?.description ?? L.subheadline, code: base.hero.code }}
 >
   <PageHero

@@ -10,6 +10,7 @@ import { isNoIndexBuild } from "../lib/content-source";
 import BackToTop from "../components/BackToTop.astro";
 import Footer from "../components/Footer.astro";
 import Text from "../components/Text.astro";
+import FontLinks from "../components/FontLinks.astro";
 import type { ImageMetadata } from "astro";
 
 interface Props {
@@ -64,14 +65,7 @@ const langLinks = Object.fromEntries(
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <!-- Font CSS is large (CJK unicode-range subsets); load it without blocking render. Text shows in the fallback font until it arrives (font-display: swap). -->
-    <link rel="preload" href="/fonts/noto-sans-tc.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    {p.lang === "jp" && <link rel="preload" href="/fonts/noto-sans-jp.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />}
-    <link rel="stylesheet" href="/fonts/b612-mono.css" />
-    <noscript>
-      <link rel="stylesheet" href="/fonts/noto-sans-tc.css" />
-      {p.lang === "jp" && <link rel="stylesheet" href="/fonts/noto-sans-jp.css" />}
-    </noscript>
+    <FontLinks lang={p.lang} />
   </head>
   <body>
     <a class="skip-link" href="#main"><Text value={ui.skipToContent} /></a>

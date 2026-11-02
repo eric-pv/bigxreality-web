@@ -5,7 +5,6 @@
  * rendered with the marker visible. Products with a `landing` block use the sales
  * landing page instead (components/ProductLanding.astro).
  */
-import { getImage } from "astro:assets";
 import { LANGS, localePath, type Lang } from "../../../i18n";
 import { getLocalized, availableLangs, integratedProducts, validateRelations } from "../../../lib/content";
 import { articlesAbout, articleHref, tagNames } from "../../../lib/articles";
@@ -25,6 +24,7 @@ import CtaBand from "../../../components/CtaBand.astro";
 import FormButton from "../../../components/FormButton.astro";
 import Text from "../../../components/Text.astro";
 import ProductLanding from "../../../components/ProductLanding.astro";
+import { pageOgImage } from "../../../lib/og-image";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -79,7 +79,8 @@ const breadcrumbs = [
   { name: ui.nav.products, path: localePath(lang, "products") },
   { name: d.hero.name, path: localePath(lang, "products", slug) },
 ];
-const jsonLdImage = heroImage ? (await getImage({ src: heroImage.src, width: 1280, format: "jpg" })).src : undefined;
+// og:image and the Product schema image: this page's hero with this language's own alt.
+const og = pageOgImage(base.seo?.ogImage ?? heroImage?.src, d.hero.image?.alt, product.pendingTranslation);
 const t = ui.product.deployment;
 const amount = (v: number | string | undefined, unit: string) => (v === undefined ? undefined : isPending(v) ? v : `${v} ${unit}`);
 const personnel =
@@ -108,10 +109,9 @@ const deploymentRows = [
   headerTheme="dark"
   current="products"
   breadcrumbs={breadcrumbs}
-  ogImage={base.seo?.ogImage ?? heroImage?.src}
-  ogImageAlt={heroImage?.alt}
+  {...og}
   search={{ type: "products" }}
-  product={{ name: d.hero.name, description: d.seo?.description ?? d.hero.tagline, code: base.hero.code, image: jsonLdImage }}
+  product={{ name: d.hero.name, description: d.seo?.description ?? d.hero.tagline, code: base.hero.code }}
 >
   <!-- 1 Hero -->
   <PageHero
