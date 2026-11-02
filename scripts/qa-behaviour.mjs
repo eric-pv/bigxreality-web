@@ -5,6 +5,7 @@ import { chromium } from "playwright-core";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { startPreview, CHROMIUM, DIST } from "./lib/serve.mjs";
+import { publicSiteRoot } from "../src/lib/public-url.ts";
 
 const { base, stop } = await startPreview(4331);
 const browser = await chromium.launch({ executablePath: CHROMIUM });
@@ -67,7 +68,7 @@ try {
   await page.goto(`${base}/tw/products/sut/`, { waitUntil: "networkidle" });
   const alt = await page.$$eval('link[rel=alternate][hreflang]', (ls) => ls.map((l) => `${l.hreflang} ${l.href}`));
   check("hreflang en / zh-TW / ja / x-default", ["en", "zh-TW", "ja", "x-default"].every((h) => alt.some((a) => a.startsWith(h + " "))), alt.join(", "));
-  check("canonical", (await page.$eval("link[rel=canonical]", (l) => l.href)) === "https://magician-eric.github.io/bigxreality-web/tw/products/sut/");
+  check("canonical", (await page.$eval("link[rel=canonical]", (l) => l.href)) === `${publicSiteRoot}/tw/products/sut/`);
   check("html lang zh-Hant-TW", (await page.getAttribute("html", "lang")) === "zh-Hant-TW");
   check("source page is indexable", (await page.locator('meta[name=robots]').count()) === 0);
   const ld = JSON.parse(await page.$eval('script[type="application/ld+json"]', (s) => s.textContent));

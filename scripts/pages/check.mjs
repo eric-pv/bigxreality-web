@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-// Checks dist-pages/ the way GitHub Pages serves it (under /bigxreality-web/):
+// Checks dist-pages/ the way GitHub Pages serves it (under the base path of src/data/site.json's url:
+// /bigxreality-web/ for the project site today, / for a custom domain):
 // every internal link and asset resolves, public canonical URLs use the official mount, robots allows crawling,
 // the sitemap is present, no TEST FIXTURE content is published, and search works.
 import { readFile, readdir, stat } from "node:fs/promises";
-import { createServer } from "node:http";
 import path from "node:path";
 import { chromium } from "playwright-core";
-import { CHROMIUM } from "../lib/serve.mjs";
+import { CHROMIUM, resolveUnder, startPages } from "../lib/serve.mjs";
 import { publicSiteRoot, publicBasePath } from "../../src/lib/public-url.ts";
+import { astroReferences } from "./astro-refs.mjs";
 
 const base = (process.argv[2] ?? publicBasePath).replace(/\/?$/, "/");
 const ROOT = path.resolve(import.meta.dirname, "../../dist-pages");
@@ -16,14 +17,7 @@ const check = (name, ok, detail = "") => {
   if (!ok) failed++;
   console.log(`${ok ? "ok  " : "FAIL"} ${name}${ok || !detail ? "" : `  — ${detail}`}`);
 };
-const resolve = async (urlPath) => {
-  let p = decodeURIComponent(urlPath.split(/[?#]/)[0]);
-  if (!p.startsWith(base)) return null;
-  p = p.slice(base.length - 1);
-  if (p.endsWith("/")) p += "index.html";
-  const file = path.join(ROOT, p);
-  try { return file.startsWith(ROOT) && (await stat(file)).isFile() ? file : null; } catch { return null; }
-};
+const resolve = (urlPath) => resolveUnder(ROOT, base, urlPath);
 
 // static checks
 const pages = [];
@@ -60,22 +54,30 @@ for(const f of pages){const html=await readFile(f,'utf8');if(!/\/(tw|en|jp)\//.t
 check('public SEO URLs stay on the Pages site',badSeoUrls.length===0,badSeoUrls.slice(0,5).join(' '));
 check("no TEST FIXTURE content", fixtures === 0, `${fixtures} page(s)`);
 check("every internal link and asset resolves under the base path", broken.size===0,[...broken].slice(0,10).join(" "));
+// package.mjs copies only reachable _astro files: every /_astro/ reference in HTML, JS (static and
+// dynamic imports, Vite preload/__vite__mapDeps lists) and CSS url() must exist in the artifact.
+const astroRefs=await astroReferences(ROOT),astroMissing=[];
+for(const r of astroRefs){try{if(!(await stat(path.join(ROOT,'_astro',r.name))).isFile())astroMissing.push(r);}catch{astroMissing.push(r);}}
+check(`all ${new Set(astroRefs.map(r=>r.name)).size} referenced _astro files are present`,astroRefs.length>0&&astroMissing.length===0,astroMissing.slice(0,10).map(r=>`${r.from} → _astro/${r.name}`).join(" "));
 const robots=await readFile(path.join(ROOT,'robots.txt'),'utf8');
 check('robots permits the official website',!/^Disallow:\s*\/\s*$/m.test(robots)&&robots.includes(`Sitemap: ${publicSiteRoot}/sitemap.xml`));
 const sitemap=await readFile(path.join(ROOT,'sitemap.xml'),'utf8'),locations=[...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
 check('sitemap lists official URLs',locations.length>0&&locations.every(url=>url.startsWith(publicSiteRoot+'/')));
+const notFound=await readFile(path.join(ROOT,'404.html'),'utf8').catch(()=>'');
+check('404.html is the built noindex page with TW/EN/JP return links',notFound.includes('data-not-found')&&/name="robots" content="noindex"/.test(notFound)&&['tw','en','jp'].every(l=>['',"products/","solutions/","contact/","search/"].every(r=>notFound.includes(`href="${base}${l}/${r}"`))));
+check('404 is not in the sitemap',!locations.some(u=>/\/404(?:\.html|\/)?$/.test(u)));
+const host=new URL(publicSiteRoot).hostname,githubIo=/\.github\.io$/i.test(host);
+const cname=await readFile(path.join(ROOT,'CNAME'),'utf8').catch(()=>null);
+check(githubIo?'no CNAME for a github.io address':`CNAME is ${host}`,githubIo?cname===null:cname?.trim()===host,String(cname));
+check('base path is / or /name/ and agrees with the site URL',base===publicBasePath&&(base==='/'||githubIo));
+const ignored=[];for(const f of ['_redirects','_headers'])if(await stat(path.join(ROOT,f)).then(()=>true,()=>false))ignored.push(f);
+check('no _redirects/_headers (GitHub Pages ignores them)',ignored.length===0,ignored.join(' '));
 check('CMS stays noindex',/name="robots" content="noindex"/.test(await readFile(path.join(ROOT,'admin/index.html'),'utf8')));
 check("all three languages built", ["en", "tw", "jp"].every((l) => pages.some((p) => p.includes(`${path.sep}${l}${path.sep}products${path.sep}`))));
 
 // browser checks
-const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".avif": "image/avif", ".woff2": "font/woff2", ".wasm": "application/wasm", ".txt": "text/plain", ".xml": "application/xml" };
-const server = createServer(async (req, res) => {
-  const file = await resolve(req.url ?? "/");
-  if (!file) return res.writeHead(404).end("404");
-  res.writeHead(200, { "content-type": TYPES[path.extname(file)] ?? "application/octet-stream" }).end(await readFile(file));
-});
-await new Promise((r) => server.listen(4340, "127.0.0.1", r));
-const origin = "http://127.0.0.1:4340";
+const server = await startPages({ root: ROOT, base, port: 4340 });
+const origin = server.origin;
 const browser = await chromium.launch({ executablePath: CHROMIUM });
 try {
   const page = await browser.newPage();
@@ -97,9 +99,23 @@ try {
   await page.waitForFunction(() => document.querySelector("[data-status]")?.textContent !== "", null, { timeout: 10000 }).catch(() => {});
   const hrefs = await page.$$eval(".result a", (as) => as.map((a) => a.getAttribute("href")));
   check("search works and links stay inside the official site", hrefs.includes(`${base}tw/solutions/police/`), JSON.stringify(hrefs));
+  // GitHub Pages answers every missing path with <base>404.html; the page picks the language.
+  const expectLang = { "tw/no-such-page/": "tw", "en/no-such-page/": "en", "jp/products/no-such-product/": "jp", "no-such-page/": "tw" };
+  const HTML_LANG = { tw: "zh-Hant-TW", en: "en", jp: "ja-JP" };
+  for (const [p, lang] of Object.entries(expectLang)) {
+    const res = await page.goto(`${origin}${base}${p}`, { waitUntil: "networkidle" });
+    const state = await page.evaluate(() => ({ lang: document.documentElement.lang, visible: [...document.querySelectorAll("[data-nf-lang]")].filter((b) => !b.hidden).map((b) => b.dataset.nfLang), home: document.querySelector("[data-nf-lang]:not([hidden]) [data-nf-link=home]")?.getAttribute("href") }));
+    check(`404 for /${p} shows ${lang.toUpperCase()}`, res.status() === 404 && state.lang === HTML_LANG[lang] && state.visible.join() === lang && state.home === `${base}${lang}/`, JSON.stringify({ status: res.status(), ...state }));
+  }
+  const noJs = await browser.newContext({ javaScriptEnabled: false });
+  const plain = await noJs.newPage();
+  await plain.goto(`${origin}${base}en/no-such-page/`);
+  const homes = await plain.$$eval("[data-nf-lang]:not([hidden]) [data-nf-link=home]", (as) => as.map((a) => a.getAttribute("href")));
+  check("404 without JavaScript shows TW/EN/JP return links", homes.join() === ["tw", "en", "jp"].map((l) => `${base}${l}/`).join(), JSON.stringify(homes));
+  await noJs.close();
 } finally {
   await browser.close();
-  server.close();
+  server.stop();
 }
 console.log(failed ? `FAIL: ${failed}` : "PASS");
 process.exit(failed ? 1 : 0);

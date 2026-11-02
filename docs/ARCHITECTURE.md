@@ -100,6 +100,14 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 - 正式網址單一來源：`src/data/site.json` 的 url。`public-url.ts` 統一 canonical、hreflang、Schema、sitemap 的絕對 URL；原有 slug／相對路由不改。
 - `/admin/`、待翻譯與應排除的頁面保留 noindex；正式公開內容不再全站 noindex。測試資料不得出現在正式 artifact。
 
+### Pages 封裝與 GitHub Pages 限制
+
+- base 只由 site.json 的 url 推導：github.io 專案子路徑為 `/bigxreality-web/`（現行）；正式網域（預定 `https://www.bigxreality.com`）為根目錄 `/`。封裝、檢查與 QA 腳本兩種 base 都支援；自訂網域只能發布在網域根目錄。切換網域須另行確認，並同步 Sveltia 產生器中的 `site_url`／`display_url`。
+- url 為自訂網域時，artifact 根目錄會產生 `CNAME`（內容為 hostname）；github.io 位址不產生。robots.txt、sitemap.xml 永遠位於 artifact 根目錄，也就是 base 所在位置。
+- GitHub Pages 只提供靜態檔案，**不讀取** Cloudflare 的 `_redirects`、`_headers`，也沒有伺服器端轉址、自訂回應標頭或快取規則。因此 Pages artifact 不包含這兩個檔案；需要的轉址只能用靜態 HTML（如根目錄 `index.html` 的 meta refresh），快取由 GitHub Pages 預設決定。不可依賴它們實作安全標頭或 301。
+- GitHub Pages 對任何不存在的路徑只回應 base 下的同一個 `404.html`（`src/pages/404.astro` 建置，noindex，不列入 sitemap），由頁內 inline script 依路徑的 `/tw/`、`/en/`、`/jp/` 前綴切換語言，無前綴為 TW；不支援 JS 時顯示三語返回連結。
+- `dist/client/_astro/` 含舊 adapter／EmDash 殘留 chunk 與未使用的影像原檔。封裝只複製由 HTML、`admin/`、CSS `url()`、JS import／Vite preload 可達的檔案，排除清單寫入 `.qa/pages-astro-excluded.json`；`pages:check` 要求所有被引用的 `_astro` 檔案都存在。這不是卸載舊套件，卸載依 LEGACY-REMOVAL-PLAN 另行進行。
+
 ### 版本與失敗追查
 
 - `.../build-info.json` 記錄 commit、contentDigest、CMS branch、來源、建置時間與 Actions run URL。

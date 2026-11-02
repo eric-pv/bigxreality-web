@@ -464,5 +464,14 @@
   },
   "homeSections": {
     "products": "注目の製品"
+  },
+  "notFound": {
+    "title": "[待翻譯] 找不到頁面",
+    "eyebrow": "404",
+    "heading": "[待翻譯] 找不到這個頁面",
+    "description": "[待翻譯] 您要找的頁面可能已移除、改名，或網址輸入有誤。",
+    "metaDescription": "[待翻譯] Big x Reality 找不到您要開啟的頁面。",
+    "linksLabel": "[待翻譯] 返回網站",
+    "home": "[待翻譯] 返回首頁"
   }
 }
