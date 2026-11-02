@@ -4,7 +4,7 @@
  * and legal links. The menu comes from src/lib/navigation.ts (shared with the Header): items with
  * a submenu open as a collapsed disclosure (<details>), the others are plain links. Contact
  * details and social links come from site settings (src/lib/site.ts); social links show only once
- * real URLs are set, legal links only once their page exists.
+ * real URLs are set, legal links only once their page is published (TW not a draft; navigation.ts).
  */
 import { localePath, type Lang } from "../i18n";
 import { getUi } from "../lib/ui";
@@ -20,7 +20,8 @@ const { lang, hidePending = false } = Astro.props;
 const ui = getUi(lang);
 const year = new Date().getFullYear();
 const menu = navigation(lang);
-const legal = legalLinks(lang).filter((l) => l.href);
+// Only links whose page is built: a draft legal page (e.g. privacy under review) is left out.
+const legal = (await legalLinks(lang)).filter((l) => l.href);
 const { contact } = site;
 const tel = phoneHref();
 const show = (value: string) => !hidePending || (!!value.trim() && !isPending(value));

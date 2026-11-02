@@ -11,9 +11,13 @@
  * - `status`    "planned" = the page is not built yet: it keeps its place in the menu but is shown
  *               as plain text, never as a link (no 404s). "published" pages must exist in
  *               src/pages/[lang]/ — the build fails otherwise.
+ * - `page`      (legal links only) slug in the `pages` collection whose TW `draft` gates the link:
+ *               while the TW file is a draft the route builds no page, so the link is resolved as
+ *               "planned" (no href) and the Footer leaves it out.
  */
 import { localePath, type Lang } from "../i18n";
 import { getUi, type Ui } from "./ui";
+import { getLocalized } from "./content";
 
 import { DOMAINS, PRODUCT_DOMAINS } from "./domains";
 import { LIVE_TECHNOLOGY_IDS, technologyName, technologyHref, type TechnologyId } from "./technologies";
@@ -28,6 +32,7 @@ interface NavNode {
   order: number;
   enabled: boolean;
   status: PageStatus;
+  page?: string;
   children?: readonly NavNode[];
 }
 
@@ -56,9 +61,9 @@ export const NAVIGATION = [
   },
 ] as const satisfies readonly NavNode[];
 
-/** Legal links in the Footer's bottom row (not part of the menu). Same status rules. */
+/** Legal links in the Footer's bottom row (not part of the menu). Same status rules, plus `page`. */
 export const LEGAL_LINKS = [
-  { id: "privacy", label: "footer.privacy", route: ["privacy"], order: 10, enabled: true, status: "planned" },
+  { id: "privacy", label: "footer.privacy", route: ["privacy"], page: "privacy", order: 10, enabled: true, status: "published" },
 ] as const satisfies readonly NavNode[];
 
 type Top = (typeof NAVIGATION)[number];
@@ -112,6 +117,9 @@ export function navigation(lang: Lang): NavItem[] {
   return resolve(lang, NAVIGATION);
 }
 
-export function legalLinks(lang: Lang): NavItem[] {
-  return resolve(lang, LEGAL_LINKS);
+/** Legal links for one language; a link whose `page` is a TW draft (or not built in `lang`) has no href. */
+export async function legalLinks(lang: Lang): Promise<NavItem[]> {
+  const built = new Set((await getLocalized("pages", lang)).map((e) => e.slug));
+  const nodes: readonly NavNode[] = LEGAL_LINKS;
+  return resolve(lang, nodes.map((n) => (n.page && !built.has(n.page) ? { ...n, status: "planned" as const } : n)));
 }
