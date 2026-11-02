@@ -67,6 +67,19 @@ try{
   await walk(root);return out;
  });
  const textOf=(clone,file)=>Buffer.from(clone[file]??[]).toString('utf8');
+ // Sveltia mounts editor fields lazily as they scroll into view. Step through the editor (not only to its
+ // end, which leaves mid-form fields unmounted) until the field exists, then bring it into view.
+ const reveal=async(locator,timeout=45000)=>{
+  const end=Date.now()+timeout;
+  while(await locator.count()===0){
+   if(Date.now()>end)throw new Error('CMS field did not mount: '+locator);
+   await page.evaluate(()=>document.querySelectorAll('*').forEach(el=>{if(el.scrollHeight>el.clientHeight+100&&getComputedStyle(el).overflowY!=='visible'){const top=el.scrollTop;el.scrollTop=top+el.clientHeight*0.7;if(el.scrollTop===top)el.scrollTop=0;}}));
+   await page.waitForTimeout(200);
+  }
+  // Hidden controls (e.g. the file input behind a drop zone) exist but cannot be scrolled to.
+  if(await locator.first().isVisible())await locator.first().scrollIntoViewIfNeeded();
+  return locator.first();
+ };
  await page.getByRole('treeitem',{name:'隔離測試文章（不會顯示於官網）',exact:true}).click();
  await page.getByRole('main',{name:/隔離測試文章/}).waitFor();
  await page.getByRole('button',{name:'Create New Entry'}).first().click();
@@ -90,16 +103,12 @@ try{
  const raw=parse(originals[`src/content/news/tw/${id}.md`].split(/^---\s*$/m)[1]);
  await page.getByRole('row').filter({hasText:raw.title}).first().click();
  // Sveltia lazily mounts off-screen fields; scroll the editor to the Markdown field.
- for(let i=0;i<12&&await page.getByRole('textbox',{name:'完整內文',exact:true}).count()===0;i++){
-  await page.getByRole('group',{name:'Content Editor'}).evaluate(root=>root.querySelectorAll('*').forEach(el=>{if(el.scrollHeight>el.clientHeight+100)el.scrollTop=el.scrollHeight;}));
-  await page.waitForTimeout(150);
- }
- const body=page.getByRole('textbox',{name:'完整內文',exact:true}).first();await body.fill('BXR local TW test only.');
- const coverGroup=page.getByRole('group',{name:/封面.*Field/}).first();
+ const body=await reveal(page.getByRole('textbox',{name:'完整內文',exact:true}));await body.fill('BXR local TW test only.');
+ const coverGroup=await reveal(page.getByRole('group',{name:/封面.*Field/}));
  await coverGroup.getByRole('checkbox').check();
  await coverGroup.getByRole('button',{name:'Expand',exact:true}).click();
- await coverGroup.locator('input[type=file]').first().setInputFiles({name:'bxr-news-upload.png',mimeType:'image/png',buffer:image});
- await coverGroup.getByRole('textbox',{name:'替代文字',exact:true}).fill('BXR isolated existing logo upload test');
+ await (await reveal(coverGroup.locator('input[type=file]'))).setInputFiles({name:'bxr-news-upload.png',mimeType:'image/png',buffer:image});
+ await (await reveal(coverGroup.getByRole('textbox',{name:'替代文字',exact:true}))).fill('BXR isolated existing logo upload test');
  await page.getByRole('button',{name:'Save',exact:true}).click();
  await page.getByRole('row').filter({hasText:raw.title}).first().waitFor();
  clone=await readClone();const schemas=loadSchemas();
@@ -120,11 +129,7 @@ try{
   await page.getByRole('button',{name:'Create New Entry'}).first().click();
   await page.getByRole('textbox',{name:'標題',exact:true}).fill('bxr-cms-draft-qa');
   await page.getByRole('textbox',{name:'摘要',exact:true}).fill(`Isolated ${lang} draft, never published.`);
-  for(let i=0;i<12&&await page.getByRole('group',{name:/分類.*Field/}).count()===0;i++){
-   await page.getByRole('group',{name:'Content Editor'}).evaluate(root=>root.querySelectorAll('*').forEach(el=>{if(el.scrollHeight>el.clientHeight+100)el.scrollTop=el.scrollHeight;}));
-   await page.waitForTimeout(150);
-  }
-  await page.getByRole('group',{name:/分類.*Field/}).getByRole('combobox').click();
+  await (await reveal(page.getByRole('group',{name:/分類.*Field/}).getByRole('combobox'))).click();
   await page.getByRole('option',{name:'company',exact:true}).click();
   await page.getByRole('button',{name:'Save',exact:true}).click();
   await page.getByRole('row',{name:/bxr-cms-draft-qa/}).waitFor();
@@ -134,7 +139,7 @@ try{
  }
  await page.getByRole('treeitem',{name:'新聞共用圖集與影片（進階）',exact:true}).click();
  await page.getByRole('row').filter({hasText:'新聞媒體資料'}).first().click();
- const mediaInput=page.getByRole('textbox',{name:'媒體對應表',exact:true});
+ const mediaInput=await reveal(page.getByRole('textbox',{name:'媒體對應表',exact:true}));
  const mediaMap=JSON.parse(await mediaInput.inputValue());
  assert.deepEqual(mediaMap,JSON.parse(originals['src/data/news-media.json']));
  await mediaInput.fill('{ invalid');assert.equal(await mediaInput.getAttribute('aria-invalid'),'true');
@@ -178,4 +183,8 @@ try{
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await page.screenshot({path:path.join(cache,'login-mobile.png')});
  console.log('PASS: real pinned CMS config loads at /admin/ and Pages subpath; token form; local-clone create/edit/image-byte upload; existing article save plus three new draft news siblings, correct optional fields, unchanged translations and lossless media JSON save; typography JSON edit with unchanged language lists; isolated deletion; mobile login. Live GitHub auth/write not tested.');
+}catch(error){
+ // Keep the screen of a failed run for diagnosis (uploaded with the CI log artifacts when present).
+ for(const p of browser.contexts().flatMap(c=>c.pages()))await p.screenshot({path:path.join(cache,'failure.png'),fullPage:true}).catch(()=>{});
+ throw error;
 }finally{await browser.close();server.close();}

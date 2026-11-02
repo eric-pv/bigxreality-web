@@ -17,7 +17,8 @@ function photo(entry:NewsPhoto|undefined,lang:Lang){
   return src?{src,alt:entry.alt![lang],caption:entry.caption?.[lang]}:undefined;
 }
 export function newsMedia(id:string|undefined,lang:Lang){
-  const record=id?(records as Record<string,NewsMediaRecord>)[id]:undefined;
+  // CMS-edited JSON: type by the declared record shape, not by the inferred type of the current data.
+  const record=id?(records as unknown as Record<string,NewsMediaRecord>)[id]:undefined;
   const videos=(record?.videos??[]).flatMap<ResolvedNewsVideo>(video=>{
     if(video.type==='local'){
       if(!video.approved||!/^\/media\/news\/[a-z0-9-]+\.(mp4|webm)$/.test(video.url)||!existsSync(resolve('public',video.url.slice(1))))return [];

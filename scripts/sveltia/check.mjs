@@ -15,9 +15,10 @@ for(const lang of ['tw','en','jp'])assert.ok(config.collections.some(c=>c.name==
 assert.ok(config.output.omit_empty_optional_fields);
 assert.ok(!config.media_libraries.default.config.transformations);
 const schemas=loadSchemas();let fields=0,files=0;
-function coverage(schema,configured,trace){
+function coverage(schema,configured,trace,omitted=new Set()){
  const s=unwrap(schema).schema,d=s._def;
  if(d.type==='object')for(const[k,v]of Object.entries(s.shape)){
+  if(omitted.has(k))continue;
   const f=configured.find(f=>f.name===k);assert.ok(f,`Missing CMS field ${trace}.${k}`);fields++;
   const inner=unwrap(v).schema;
   if(inner._def.type==='object')coverage(v,f.fields,`${trace}.${k}`);
@@ -37,7 +38,17 @@ function rawCoverage(value,schema,trace){
 for(const collection of config.collections){
  const name=collection.name.replace(/-(tw|en|jp)$/,'');
  if(!schemas[name])continue;
- coverage(schemas[name],collection.fields??collection.files[0].fields,collection.name);
+ if(collection.fields)coverage(schemas[name],collection.fields,collection.name);
+ // Fixed pages: `draft` is offered only where the route reads it (privacy). Omitting it elsewhere is safe
+ // only while no language file of that page holds a draft value that a CMS save could drop.
+ else for(const file of collection.files){
+  const omitted=new Set(name==='pages'&&!file.fields.some(f=>f.name==='draft')?['draft']:[]);
+  for(const lang of omitted.size?['tw','en','jp']:[]){
+   const md=new URL(`src/content/pages/${lang}/${file.name}.md`,root);
+   if(existsSync(md))assert.equal(parse((await readFile(md,'utf8')).split(/^---\s*$/m)[1])?.draft,undefined,`pages/${lang}/${file.name}.md has draft but the CMS omits the field`);
+  }
+  coverage(schemas[name],file.fields,`${collection.name}.${file.name}`,omitted);
+ }
  for(const lang of [collection.name.split('-').at(-1)]){
   const folder=new URL(`src/content/${name}/${lang}/`,root);if(!existsSync(folder))continue;
   for(const filename of (await readdir(folder)).filter(n=>n.endsWith('.md'))){
