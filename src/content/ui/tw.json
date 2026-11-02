@@ -464,5 +464,14 @@
   },
   "homeSections": {
     "products": "精選產品"
+  },
+  "notFound": {
+    "title": "找不到頁面",
+    "eyebrow": "404",
+    "heading": "找不到這個頁面",
+    "description": "您要找的頁面可能已移除、改名，或網址輸入有誤。",
+    "metaDescription": "Big x Reality 找不到您要開啟的頁面。",
+    "linksLabel": "返回網站",
+    "home": "返回首頁"
   }
 }

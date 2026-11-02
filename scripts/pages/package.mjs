@@ -68,7 +68,10 @@ await walk(OUT);
 const redirect = (to) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Big x Reality</title><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="${to}"></head><body><a href="${to}">${to}</a></body></html>\n`;
 const start = existsSync(path.join(OUT, "tw", "index.html")) ? `${base}tw/` : `${base}tw/products/`;
 await writeFile(path.join(OUT, "index.html"), redirect(start));
-await writeFile(path.join(OUT, "404.html"), redirect(start).replace("<title>Big x Reality</title>", "<title>404 · Big x Reality</title>").replace(/<meta http-equiv[^>]+>/, ""));
+// GitHub Pages serves <base>/404.html for every missing path: the built src/pages/404.astro,
+// rebased by walk() above like every other page.
+const notFound = await readFile(path.join(OUT, "404.html"), "utf8").catch(() => "");
+if (!notFound.includes("data-not-found") || !notFound.includes('name="robots" content="noindex"')) throw new Error("dist/client/404.html (src/pages/404.astro) missing or indexable");
 await writeFile(path.join(OUT, ".nojekyll"), "");
 console.log(`pages: ${files} file(s) rebased to ${base} → dist-pages/`);
 
