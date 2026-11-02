@@ -114,8 +114,7 @@
       "Police BOX",
       "MUM-T",
       "On-sited"
-    ],
-    "headings": []
+    ]
   },
   "en": {
     "terms": [
@@ -132,8 +131,7 @@
       "Smart City",
       "Wargaming Table",
       "Fire & Disaster"
-    ],
-    "headings": []
+    ]
   },
   "jp": {
     "terms": [
@@ -194,8 +192,8 @@
       "インタラクション",
       "アーキテクチャ",
       "MUM-T",
-      "On-sited"
-    ],
-    "headings": []
+      "On-sited",
+      "打造"
+    ]
   }
 }
