@@ -8,6 +8,13 @@
  * - No woff2 is preloaded. Every tw first screen needs 10–13 Noto Sans TC subsets (25–80 KB
  *   each), and Chrome holds the first paint for preloaded fonts: in Lighthouse (mobile) even a
  *   single preload moved /tw/ FCP from ~2.1 s to ~5 s with no CLS gain (tw CLS is already ~0).
+ *   Re-measured 2026-11-02: tc latin + tc-122 on /tw/ → FCP 2.0 → 6.5 s; on /jp/, jp latin +
+ *   jp-119 (kana) removed the hero's font-swap shift (CLS 0.197 → 0) but LCP (the hero poster)
+ *   went 3.3 → 4.7 s, and jp latin alone made FCP 2.7 → 4.8 s with CLS still 0.18.
+ * - A per-language file, not inline @font-face: inlining (measured 2026-11-02, Lighthouse
+ *   mobile) moved 18–39 KB gzip into every uncached HTML response, left the unused-CSS bytes
+ *   and the /jp/ CLS unchanged, and gave no consistent FCP/LCP gain; the file is cached
+ *   across pages and does not block render.
  * - B612 Mono is declared in global.css and fetched only where it renders.
  * Paths are root-relative like every other asset; scripts/pages/package.mjs rebases them.
  */
