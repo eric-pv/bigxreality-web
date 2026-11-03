@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "../styles/motion.css";
+import "../styles/tactical.css";
 import MicroInteractions from "../components/MicroInteractions.astro";
 import { HTML_LANG, LANGS, localePath, type Lang } from "../i18n";
 import { getUi } from "../lib/ui";
@@ -41,7 +42,7 @@ interface Props {
   search?: { type: "products" | "solutions" | "news" | "insights" | "case-studies"; date?: Date };
 }
 const p = Astro.props;
-// TEST FIXTURE and bootstrap builds are never indexable, whatever the page says.
+// TEST FIXTURE and preview builds are never indexable, whatever the page says.
 const noindex = !!(p.pendingTranslation || p.noindex || isNoIndexBuild());
 // Search follows the content rules only, so TEST FIXTURE builds can exercise search.
 const searchable = !!p.search && !p.pendingTranslation && !p.noindex;

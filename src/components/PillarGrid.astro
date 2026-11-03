@@ -7,6 +7,7 @@ const { items } = Astro.props;
 <ul role="list" class="pillars" style={`--cols: ${Math.min(items.length, 3)}`}>
   {items.map((p, i) => (
     <li class="pillar">
+      <span class="beam" aria-hidden="true"><span></span></span>
       <span class="t-tech idx" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
       <h3 class="t-h3"><Text value={p.title} /></h3>
       <p class="text"><Text value={p.description} /></p>
@@ -20,4 +21,22 @@ const { items } = Astro.props;
   .pillar h3 { color: var(--bxr-white); }
   .text { margin: 0; color: var(--bxr-ash); }
   @media (max-width: 1023px) { .pillars { grid-template-columns: 1fr; } }
+</style>
+<style>
+  /* Tactical: faint blueprint grid, a red beam once around the frame on hover / keyboard focus, number glitch once. */
+  .pillar { position: relative; isolation: isolate; overflow: hidden; }
+  .pillar::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .06; background: var(--tac-grid-bg); pointer-events: none; }
+  .beam { position: absolute; inset: 0; padding: 1px; overflow: hidden; pointer-events: none; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+  .beam > span { position: absolute; left: 50%; top: 50%; width: 160%; aspect-ratio: 1; opacity: 0; transform: translate(-50%, -50%);
+    background: conic-gradient(from 0deg, transparent 0 70%, color-mix(in srgb, var(--bxr-red) 40%, transparent) 86%, var(--bxr-red) 96%, transparent); }
+  .idx { justify-self: start; }
+  @media (prefers-reduced-motion: no-preference) {
+    .pillar:focus-within .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
+    .pillar:focus-within .idx { animation: tech-glitch 180ms steps(1) 1; }
+  }
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .pillar:hover .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
+    .pillar:hover .idx { animation: tech-glitch 180ms steps(1) 1; }
+  }
+  @media (prefers-reduced-motion: reduce) { .beam { display: none; } }
 </style>

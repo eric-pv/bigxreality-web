@@ -29,10 +29,10 @@ const clips = heroClips;
             <source data-src={`${c.src}.mp4`} type="video/mp4" />
           </video>
         ))}
-        <span class="scan" aria-hidden="true"><span class="sweep"></span></span>
+        <span class="scan tac-scan" aria-hidden="true"><span class="sweep tac-sweep"></span></span>
       </div>
-      <span class="fog" aria-hidden="true"></span>
-      <span class="hud" aria-hidden="true"><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span></span>
+      <span class="fog tac-fog" aria-hidden="true"></span>
+      <span class="hud tac-hud" aria-hidden="true"><span class="corner tac-corner tac-tl"></span><span class="corner tac-corner tac-tr"></span><span class="corner tac-corner tac-bl"></span><span class="corner tac-corner tac-br"></span></span>
     </div>
   </div>
   <div class="container inner">
@@ -227,26 +227,14 @@ const clips = heroClips;
 .stage-media { z-index:0; }
 .shade { z-index:1; }
 .fog { z-index:2; pointer-events:none; display:none; }
-.hud { z-index:3; pointer-events:none; overflow:hidden; --corner:28px; --corner-gap:16px; }
+.hud { z-index:3; }
 .media .stage video { inset:0; width:100%; height:100%; object-fit:contain; object-position:50% 50%; }
-.scan { pointer-events:none; overflow:hidden; }
-.scan::before { content:""; position:absolute; inset:0; opacity:.06;
-  background:repeating-linear-gradient(180deg,var(--bxr-white) 0 1px,transparent 1px 4px),
-    linear-gradient(90deg,var(--bxr-white) 1px,transparent 1px) 0 0/64px 64px,
-    linear-gradient(180deg,var(--bxr-white) 1px,transparent 1px) 0 0/64px 64px; }
-.sweep { position:absolute; inset:0; transform:translateY(-100%); }
-.sweep::after { content:""; position:absolute; inset:auto 0 0; height:56px; border-bottom:1px solid color-mix(in srgb,var(--bxr-red) 55%,transparent);
-  background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--bxr-red) 10%,transparent)); }
-.corner { position:absolute; width:var(--corner); height:var(--corner); border:0 solid var(--bxr-red); }
-.tl { top:0; left:0; border-width:2px 0 0 2px; --from:translate(calc(-1 * var(--corner-gap)),calc(-1 * var(--corner-gap))); }
-.tr { top:0; right:0; border-width:2px 2px 0 0; --from:translate(var(--corner-gap),calc(-1 * var(--corner-gap))); }
-.bl { bottom:0; left:0; border-width:0 0 2px 2px; --from:translate(calc(-1 * var(--corner-gap)),var(--corner-gap)); }
-.br { bottom:0; right:0; border-width:0 2px 2px 0; --from:translate(var(--corner-gap),var(--corner-gap)); }
+/* Corners, scan texture, sweep and haze come from src/styles/tactical.css (.tac-*); only the hero's placement is here. */
 @media(min-width:1200px) {
  .media { container-type:size;
    --stage-w:min(70cqw, 100cqh * 16 / 9); --stage-top:calc((100cqh - var(--stage-w) * 9 / 16) / 2);
    /* Soft entry into the background: transparent → opaque across the left ~30 %, light fade top and bottom. */
-   --stage-fade-x:linear-gradient(90deg,transparent,#000 30%);
+   --stage-fade-x:var(--tac-fade-start);
    --stage-mask:var(--stage-fade-x),linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent); }
  .stage { inset:auto 0 auto auto; top:var(--stage-top); width:var(--stage-w); aspect-ratio:16 / 9; }
  .stage-media { mask-image:var(--stage-mask); mask-composite:intersect; }
@@ -254,12 +242,8 @@ const clips = heroClips;
     ≤ 0.11 opaque over the copy column, the right pair is fully visible. */
  .hud { mask-image:var(--stage-fade-x); }
  /* Haze over the transition band: background-colour gradient plus faint grain, itself masked so it has no edge. */
- .fog { display:block; inset:-4% auto -4% -8%; width:50%;
-   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 160px 160px,
-     linear-gradient(90deg,color-mix(in srgb,var(--bxr-black) 60%,transparent),color-mix(in srgb,var(--bxr-black) 25%,transparent) 60%,transparent);
-   mask-image:linear-gradient(90deg,transparent,#000 25%,#000 50%,transparent),linear-gradient(180deg,transparent,#000 20%,#000 80%,transparent); mask-composite:intersect; }
+ .fog { display:block; inset:-4% auto -4% -8%; width:50%; }
 }
-@media(max-width:767px) { .hud { --corner:14px; --corner-gap:8px; } }
 
 .title { position:relative; }
 .eyebrow :global(.type-visual > span) { position:relative; }
@@ -276,20 +260,14 @@ const clips = heroClips;
   /* Loops: one pass, then a ~5 s rest, repeating — only while the hero is on screen. */
   .eyebrow :global(.type-visual > span.last::after) { animation:hero-caret 6.5s step-end infinite paused; animation-delay:calc(var(--i) * 55ms); }
   [data-hero][data-in-view] .eyebrow :global(.type-visual > span.last::after) { animation-play-state:running; }
-  .sweep { animation:hud-sweep 8s linear infinite paused; }
-  [data-hero][data-in-view] .sweep { animation-play-state:running; }
   /* The hero's pause control (WCAG 2.2.2) stops the sweep together with the footage. */
   [data-hero]:has([data-toggle][aria-pressed="true"]) .sweep { animation-play-state:paused; }
 }
-@keyframes hud-lock { from { opacity:0; transform:var(--from); } to { opacity:1; transform:none; } }
-/* 8 s: 3 s top-to-bottom pass, then hidden for 5 s. */
-@keyframes hud-sweep { 0% { transform:translateY(-100%); opacity:1; } 37.5% { transform:translateY(0); opacity:1; } 40% { transform:translateY(0); opacity:0; } 40.1%, 100% { transform:translateY(-100%); opacity:0; } }
 @keyframes hero-type { from { opacity:0; } to { opacity:1; } }
 @keyframes hero-caret-step { from { opacity:1; } to { opacity:0; } }
 /* 6.5 s: three blinks in 1.5 s, then steady for 5 s. */
 @keyframes hero-caret { 0% { opacity:1; } 3.85% { opacity:0; } 7.7% { opacity:1; } 11.55% { opacity:0; } 15.4% { opacity:1; } 19.25% { opacity:0; } 23.1%, 100% { opacity:1; } }
 @media (prefers-reduced-motion: reduce) {
-  .sweep { display:none; }
   .corner, .eyebrow :global(.type-visual > span), .eyebrow :global(.type-visual > span::after) { animation:none !important; transform:none !important; clip-path:none !important; opacity:1 !important; }
   .eyebrow :global(.type-visual > span:not(.last)::after) { content:none; }
 }

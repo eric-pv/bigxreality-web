@@ -10,7 +10,6 @@
 // brings its subset back. tw files are the structural source and can surface on
 // every language; en/jp files only on their own. Characters outside every kept
 // range (e.g. typed into the search box) use the next font of the stack.
-// EmDash/bootstrap builds read content that is not in Git and keep every rule.
 //
 // The unicode-range lists are most of each stylesheet's bytes (fontsource spells every
 // subset as hundreds of single code points). Within a family, a kept rule's gaps that hold
@@ -96,16 +95,15 @@ for (const f of families) {
   await Promise.all(files.map((n) => copyFile(path.join(dir, "files", n), path.join(out, n))));
 }
 
-// Characters per language. null = keep every rule.
-const source = process.env.BXR_CONTENT_SOURCE ?? "markdown";
-const chars = source === "emdash" || source === "bootstrap" ? null : await gitTextChars();
+// Characters per language (all content is in Git).
+const chars = await gitTextChars();
 
 for (const lang of LANGS) {
   const rules = [];
-  const used = chars && [...chars[lang]];
+  const used = [...chars[lang]];
   for (const key of stacks[lang]) {
     // Noto Sans TC keeps every rule a jp character needs too: it is also the CJK fallback of --font-mono.
-    const kept = byFamily[key].filter((face) => !used || used.some((cp) => covers(face, cp)));
+    const kept = byFamily[key].filter((face) => used.some((cp) => covers(face, cp)));
     rules.push(...compact(kept));
     console.log(`fonts: ${lang}.css ${families.find((f) => f.key === key).to} ${kept.length}/${byFamily[key].length} rules`);
   }

@@ -6,7 +6,7 @@ import { startPreview, CHROMIUM, DIST } from "./lib/serve.mjs";
 import { publicSiteRoot } from "../src/lib/public-url.ts";
 
 if (!DIST.includes("fixtures")) {
-  console.error("Run with QA_DIST=dist-fixtures/client after `npm run build:fixtures`.");
+  console.error("Run with QA_DIST=dist-fixtures after `npm run build:fixtures`.");
   process.exit(2);
 }
 const html = (p) => readFileSync(path.join(DIST, p, "index.html"), "utf8");

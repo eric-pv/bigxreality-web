@@ -35,7 +35,7 @@ const listingLd={
 };
 ---
 <BaseLayout lang={lang} title={title} description={suffix?`${copy.seo.description} ${suffix}`:copy.seo.description} pathTemplate={path} alternates={alternates} fallbackPath="/{lang}/news/" noindex={filtered||own.length===0} pendingTranslation={copy.translationStatus==='pending'} current="resources" currentResource="news" headerTheme="dark" breadcrumbs={breadcrumbs} structuredData={own.length?[listingLd]:[]}>
- <div class="news-heading"><PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} title={ui.nav.news} description={ui.newsListing.intro} /></div>
+ <div class="news-heading"><PageHero decor={false} breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} title={ui.nav.news} description={ui.newsListing.intro} /></div>
  <section class="section archive"><div class="container">
   <div class="filters">
    <nav aria-label={ui.newsListing.categories} class="category-filter"><ul role="list"><li><a href={linkCategory()} aria-current={!filter.category?'true':undefined}>{ui.newsListing.all}</a></li>{categories.map(id=><li><a href={linkCategory(id)} aria-current={filter.category===id?'true':undefined}>{categoryLabel(id)}</a></li>)}</ul></nav>

@@ -19,7 +19,7 @@ npm run check:sitemap
 npm run qa:links
 ```
 
-技術頁驗收讀取 `dist/client` 的實際 HTML，測試三語總覽及九個詳細頁、完整文案、區塊／段落／清單數量、單一 H1、SEO、canonical、hreflang、BreadcrumbList、索引與 sitemap、FAQ 初始 HTML／鍵盤／單項展開，以及手機 390px、平板 820px、桌面 1440px 的水平溢位與 FAQ 操作。它也檢查相關文章最多六篇、語言與日期順序、文章反向連結與 Article 結構化資料（有文章時）。
+技術頁驗收讀取 `dist` 的實際 HTML，測試三語總覽及九個詳細頁、完整文案、區塊／段落／清單數量、單一 H1、SEO、canonical、hreflang、BreadcrumbList、索引與 sitemap、FAQ 初始 HTML／鍵盤／單項展開，以及手機 390px、平板 820px、桌面 1440px 的水平溢位與 FAQ 操作。它也檢查相關文章最多六篇、語言與日期順序、文章反向連結與 Article 結構化資料（有文章時）。
 
 驗收產生 `.qa/technologies-content-audit.md`，列出逐頁三語區塊、段落、FAQ、圖片／Alt、CTA 與 SEO 比對。依業主最新要求，技術頁只保留圖片位置，不插入或新增圖片；Hero 與相關產品／解決方案／文章卡片沿用既有圖片位置元件，提供當語 aria-label。技術頁不展示缺少資料的 Footer 聯絡欄位；其他既有頁面的預設行為維持不變。每次執行重建報告，失敗會保留非零結束碼。報告的數量檢查能找出遺漏，不能取代翻譯語意與宣稱的人工審閱。
 
@@ -40,26 +40,11 @@ Fixture 模式只用於驗證文章關聯，所有測試頁維持 noindex，不�
 
 沿用既有 `insights` 技術文章與資源中心，文章的 `technologyTags` 是固定 ID 陣列，可同時標記多個技術。技術頁採共用查詢，只呈現符合語言、已發布且有內容的最新六篇文章，沒有文章時不渲染整個列表。文章反向連結對三項已公開技術導向獨立頁，其餘四項導向總覽的對應技術錨點，不連到尚未建立的頁面。
 
-正式網站公開頁是預先建置 HTML；CMS 更新需經發布事件觸發既有重建流程，再由 Workers Builds 以 `BXR_CONTENT_SOURCE=emdash` 拉取已發布內容。只有儲存草稿不會改變已發布關聯；修改標籤後必須再次發布。既有插件處理所有集合（包括 insights）的發布、取消發布與刪除事件，採兩分鐘 debounce，最長等待十分鐘後呼叫 hook。Deploy Hook 在後台 Plugins → Big x Reality → Settings 設定，細節見 [DEPLOY.md](DEPLOY.md)。本開發不直接變更正式 CMS 資料、憑證或部署設定。
+正式網站公開頁是預先建置的靜態 HTML，內容只來自 Git `main`。在 Sveltia（`/admin/`）編輯 insights 文章的 `technologyTags` 後，草稿先存到 `cms/*` 審核分支；合併進 `main` 並通過 CI 後，GitHub Actions 重新建置並發布到 GitHub Pages，技術頁的相關文章與反向連結隨之更新。只儲存草稿不會改變已發布關聯。流程細節見 [ARCHITECTURE.md](ARCHITECTURE.md) 與 [DEPLOY.md](DEPLOY.md)。
 
-本地與 fixture 的驗收不等同於正式發布驗收。正式環境需由業主確認 Deploy Hook 與 CMS build 唯讀憑證，發布／更新一篇已授權測試文章並確認重建成功，再核對對應語言技術頁新增／移除關聯、排序與文章反向連結。未執行此正式操作時，交付報告必須明確保留此驗證項目，不能宣稱已確認正式內容發布成功。
+本地與 fixture 的驗收不等同於正式發布驗收。正式環境仍需在 Sveltia 對一篇已授權測試文章修改標籤、經 PR 合併，並在 Pages 部署後核對對應語言技術頁新增／移除關聯、排序與文章反向連結。
 
-### 既有 CMS 的增量欄位更新
-
-CMS 使用既有 `insights` 集合的非翻譯、多選欄位 `technology_tags`，載入後對應網站資料的 `technologyTags`。繁中來源保存結構標籤，各語文章保留各自正文與翻譯狀態。新 seed 已包含此選填欄位；未設定標籤的舊文章維持原有行為，不會被自動加入任何技術分類。
-
-```bash
-# 對應你已啟動的本機 Astro CMS 埠（script 預設為 4400）
-export EMDASH_URL=http://127.0.0.1:4321
-# 只讀檢查現有欄位與提案，不改 schema 或文章
-node scripts/cms/technology-tags.mjs
-# 僅在自己的本機 CMS 套用缺少的選填欄位
-node scripts/cms/technology-tags.mjs --apply
-```
-
-腳本只新增缺少的欄位，重複執行不重複新增；若現有同名欄位規格不同則停止，不覆蓋既有 schema。遠端寫入另需業主確認及明確 `--allow-remote`，本次沒有執行遠端操作。正式環境請使用既有安全憑證注入，不要把 token 寫進命令、文件或 Git。
-
-本次已執行 `tests/cms/technology-tags.mjs` 的真實本機 CMS 整合測試：建立暫時三語文章、發布、變更標籤但不發布、再次發布，透過真正 EmDash loader 讀 HTTP CMS 資料並執行共用查詢，確認英文使用獨立正文、日文 pending 被排除，以及發布事件確實更新既有重建任務的排程與 payload（`reason: publish`、`collection: insights`），並非僅以舊任務存在判定成功。暫時文章及測試 token 已清除。此驗證補足純 Markdown fixture 的範圍，但不代表正式遠端 Deploy Hook 已呼叫或正式網站已部署。
+> 歷史紀錄：本段原本描述的 EmDash／Cloudflare Workers 重建流程、`scripts/cms/technology-tags.mjs` 與 `tests/cms/technology-tags.mjs` 已隨舊架構移除（見 [LEGACY-REMOVAL-PLAN.md](LEGACY-REMOVAL-PLAN.md)），內容保留在 Git 歷史。
 
 ## 本次驗證紀錄
 
@@ -95,10 +80,7 @@ node scripts/cms/technology-tags.mjs --apply
 | `src/components/RelatedTechnologyArticles.astro` | 最新六篇同語相關技術文章，空列表不渲染 |
 | `src/components/ArticleDetail.astro` | 既有技術文章反向連結 |
 | `src/components/Footer.astro`、`src/layouts/BaseLayout.astro` | 技術頁選用隱藏缺少資料欄位；沿用既有 Footer 與 SEO |
-| `src/content.config.ts`、`src/lib/emdash/loader.ts` | 接入 `technologyTags`／CMS `technology_tags`，兼容舊文章 |
-| `seed/seed.json`、`emdash-env.d.ts` | 選填多選標籤的 CMS seed 與型別 |
-| `scripts/cms/import-markdown.mjs` | 既有匯入流程保留技術標籤 |
-| `scripts/cms/technology-tags.mjs` | 預設只讀、可重複執行的增量 schema 更新工具 |
+| `src/content.config.ts` | 接入 `technologyTags`，兼容舊文章 |
 | `src/pages/sitemap.xml.ts` | 加入完整三語總覽及九個詳細頁 |
 | `tests/technologies.test.ts` | 標籤篩選、日期排序、語言狀態與雙向連結測試 |
 | `tests/cms/technology-tags.mjs` | 真實本機 CMS → loader → 查詢 → 重建任務驗證 |

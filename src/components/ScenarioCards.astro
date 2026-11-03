@@ -41,3 +41,12 @@ const { items, focusLabel, needPrefix, fallbackLabel, badge } = Astro.props;
   @media (max-width: 1023px) { .card { flex-basis: calc((100% - var(--gutter)) / 2); } }
   @media (max-width: 767px) { .card { flex-basis: 100%; } }
 </style>
+<style>
+  /* Same feedback as the home product cards: image 1.05 inside its clipped frame, red gradient from the bottom. */
+  .card :global(.asset-frame)::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0;
+    background: linear-gradient(0deg, color-mix(in srgb, var(--bxr-red) 42%, transparent), transparent 55%); transition: opacity var(--dur-standard) var(--ease-precise); }
+  .card :global(.asset-frame img) { transition: transform var(--dur-standard) var(--ease-precise); }
+  .card:hover :global(.asset-frame)::after, .card:focus-within :global(.asset-frame)::after { opacity: 1; }
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) { .card:hover :global(.asset-frame img) { transform: scale(1.05); } }
+  @media (prefers-reduced-motion: reduce) { .card :global(.asset-frame)::after, .card :global(.asset-frame img) { transition: none; } }
+</style>

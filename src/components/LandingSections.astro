@@ -34,7 +34,7 @@ const needsLinks = !!L.featured || (L.blocks ?? []).some((b: any) => b.kind === 
 const solutions = needsLinks ? await getLocalized("solutions", lang) : [];
 const products = needsLinks ? await getLocalized("products", lang) : [];
 let n = 0;
-const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
+const alt = () => (n++ % 2 === 1 ? "section section--alt tac-ruler" : (n > 1 ? "section tac-ruler" : "section"));
 ---
   <!-- Training challenge: heading and introduction beside the numbered problems -->
   {L.challenge && (

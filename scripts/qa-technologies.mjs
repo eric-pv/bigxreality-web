@@ -1,5 +1,5 @@
 // Inspect actual prerendered HTML and exercise the shared FAQ at three viewport sizes.
-// Usage: node scripts/qa-technologies.mjs (or QA_DIST=dist-fixtures/client ...).
+// Usage: node scripts/qa-technologies.mjs (or QA_DIST=dist-fixtures ...).
 import { chromium } from 'playwright-core';
 import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
