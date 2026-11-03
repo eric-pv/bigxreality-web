@@ -36,8 +36,8 @@ interface Props {
   /** Tactical decoration (HUD on images, blueprint on text-only heroes). Off for pages kept out of a redesign. */
   decor?: boolean;
   /** Sibling pages (e.g. the solution landings) share one hero layout: the image box is always 16:9 at the same
-   *  place, the complete image is contained in it (never cropped), and the copy is top-aligned so breadcrumb and H1
-   *  never shift. */
+   *  place, the image fills it (cover, cropped around its focus point, centred), and the copy is top-aligned so
+   *  breadcrumb and H1 never shift. */
   uniformMedia?: boolean;
 }
 const { scenePosition = "60% 0%", sceneHeadroom = 24, sceneFit = "cover", variant = "split", breadcrumbs, breadcrumbLabel, eyebrow, kicker, title, subtitle, lead, description, image, imageCaption, imagePending, imageBadge, decor = true, uniformMedia = false } = Astro.props;
@@ -47,8 +47,10 @@ const label = distinctLabel(eyebrow, kicker, title);
 const [heroPx, heroPy] = scenePosition.split(/\s+/).map((v) => Math.min(Math.max(parseFloat(v) / 100, 0), 1));
 const sub = distinctLabel(subtitle, kicker, title);
 const uniform = uniformMedia && !!image;
+// Crop focus for uniform heroes: the image's approved focus point, horizontally centred.
+const crop = image ? `50% ${imagePresentation(image.src).position.split(/\s+/)[1] ?? "50%"}` : "50% 50%";
 ---
-<section class:list={["page-hero", `hero--${variant}`, { "has-decor": decor, "media-uniform": uniform }]} data-theme="dark" data-hero-variant={variant} data-scene-fit={sceneFit} data-hero-uniform={uniform ? "" : undefined} data-motion-loop={decor && image ? "" : undefined} style={`--hero-scene-fit:${sceneFit};--hero-headroom:${sceneHeadroom}px;--hero-focus:${scenePosition};--hero-px:${heroPx};--hero-py:${heroPy}`}>
+<section class:list={["page-hero", `hero--${variant}`, { "has-decor": decor, "media-uniform": uniform }]} data-theme="dark" data-hero-variant={variant} data-scene-fit={sceneFit} data-hero-uniform={uniform ? "" : undefined} data-motion-loop={decor && image ? "" : undefined} style={`--hero-scene-fit:${sceneFit};--hero-headroom:${sceneHeadroom}px;--hero-focus:${scenePosition};--hero-px:${heroPx};--hero-py:${heroPy}${uniform ? `;--hero-crop:${crop}` : ""}`}>
   {decor && !image && <span class="tac-blueprint" aria-hidden="true"></span>}
   <div class:list={["container", "grid", { "no-media": !image }]}>
     <div class="copy">
@@ -169,17 +171,20 @@ const uniform = uniformMedia && !!image;
 .has-decor > .tac-blueprint ~ .container { position:relative; z-index:1; }
 </style>
 <style>
-/* uniformMedia: every sibling hero shows the same 16:9 image box (HUD corners, scan, size and position) at every width;
-   the frame decides the size, not each source file's ratio. The image stays complete (contain, no crop) inside that
-   box, right-aligned on desktop so a narrower source leaves its margin on the copy side over the blurred backdrop. Copy starts at the same height on every page. */
+/* uniformMedia: every sibling hero shows the same 16:9 image box (size, position, HUD corners) at every width;
+   the frame decides the size, not each source file's ratio. The image fills that box (cover) and is cropped around
+   its approved focus point (primary-images position, horizontally centred), so no page shows bars or an offset
+   picture. Copy starts at the same height on every page. */
 .media-uniform .media :global(.asset-frame) { --ar:1.7778 !important; }
-/* The <img> keeps its own ratio (height-limited, never wider than the box) so the soft-edge mask follows the real
-   picture edges; contain guards the rare source wider than 16:9. */
-.media-uniform .media :global(.asset-fit img), .media-uniform.has-decor.hero--scene[data-scene-fit] .media :global(.asset-fit img) { object-fit:contain !important; inset:0 auto auto 50%; width:auto; height:100%; max-width:100%; translate:-50% 0; }
+.media-uniform .media :global(.asset-fit img), .media-uniform.has-decor.hero--scene[data-scene-fit] .media :global(.asset-fit img) { object-fit:cover !important; object-position:var(--hero-crop) !important; }
 @media(min-width:1024px) {
  .media-uniform.hero--scene { align-items:start; }
- .media-uniform .media :global(.asset-fit img), .media-uniform.has-decor.hero--scene[data-scene-fit] .media :global(.asset-fit img) { inset:0 0 auto auto; translate:none; }
  /* Fixed frame (hero min-height 560 − 2 × 16) so longer EN/JP copy that grows the hero never resizes the image. */
  .media-uniform.has-decor.hero--scene[data-scene-fit="contain"] .media :global(.asset-frame) { height:528px; }
 }
+</style>
+<style>
+/* Stacked (mobile/tablet) heroes: the image is always centred in its frame. The desktop scene focus (right-aligned
+   beside the copy) must not leak into the single-column layout, where it pushed narrower images to one side. */
+@media(max-width:1023px) { .has-decor.page-hero .media :global(.asset-frame) { --px:.5 !important; --py:.5 !important; } }
 </style>
