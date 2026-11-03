@@ -30,7 +30,7 @@ const breadcrumbs = [
 >
   <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={isPending(copy.hero.title)?ui.nav.aboutUs:copy.hero.title} description={copy.hero.description && !isPending(copy.hero.description)?copy.hero.description:copy.seo.description} />
   {copy.closing && (
-    <CtaBand id="company-slogan" title={copy.closing.title}>
+    <CtaBand id="company-slogan" stripes title={copy.closing.title}>
       <a class="btn btn--primary" href={localePath(lang, "contact")}><Text value={ui.contact} /></a>
     </CtaBand>
   )}
