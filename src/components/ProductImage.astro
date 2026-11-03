@@ -2,9 +2,13 @@
 import { Picture, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { imagePresentation } from '../data/primary-images';
-/** sizes: the slot's real rendered width per breakpoint; the default fits a three-column card grid. */
-interface Props { src:ImageMetadata;alt:string;loading?:'eager'|'lazy';priority?:boolean;showType?:boolean;sizes?:string }
-const {src,alt,loading='lazy',priority=false,showType=true,sizes='(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 50vw, 384px'}=Astro.props;
+/** sizes: the slot's real rendered width per breakpoint; the default fits a three-column card grid.
+ *  ambient: sub-page treatment — the image sits in .asset-fit, a box sized to its exact visible area
+ *  (container query on the frame, aspect ratio known at build time), with soft edges over a stronger
+ *  blurred backdrop of the same image instead of dark letterbox bars. Never crops or stretches.
+ *  The default slot renders inside .asset-fit (e.g. HUD corners that must match the visible image). */
+interface Props { src:ImageMetadata;alt:string;loading?:'eager'|'lazy';priority?:boolean;showType?:boolean;sizes?:string;ambient?:boolean }
+const {src,alt,loading='lazy',priority=false,showType=true,sizes='(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 50vw, 384px',ambient=false}=Astro.props;
 const presentation=imagePresentation(src);
 const typeLabel=({tw:"概念視覺",en:"Concept visual",jp:"コンセプトビジュアル"} as Record<string,string>)[Astro.params.lang??"en"]??"Concept visual";
 // avif/webp sources; the original format stays the <img> fallback. No width above the original is generated.
@@ -12,19 +16,35 @@ const widths=[320,480,640,800,1024,1280,1600].filter(w=>w<src.width).concat(src.
 const fallbackFormat=src.format==='jpg'?'jpeg':src.format;
 // The blurred backdrop only shows around 'contain' images (opaque 'cover' images hide it). Under an 18px blur
 // a 64px webp written into the HTML is enough and needs no client script.
-const backdrop=presentation.fit==='contain'?await getImage({src,width:Math.min(64,src.width),format:'webp'}):undefined;
+const backdrop=(presentation.fit==='contain'||ambient)?await getImage({src,width:Math.min(64,src.width),format:'webp'}):undefined;
+const [px,py]=presentation.position.split(/\s+/).map(v=>parseFloat(v)/100);
+const vars=[backdrop&&`--asset-backdrop:url('${backdrop.src}')`,ambient&&`--ar:${(src.width/src.height).toFixed(4)};--px:${px};--py:${py}`].filter(Boolean).join(';');
+const picture={src,alt,formats:['avif','webp'],fallbackFormat,widths,sizes,width:src.width,height:src.height,loading,decoding:'async',fetchpriority:priority?'high':undefined,style:`object-fit:${presentation.fit};object-position:${presentation.position}`,'data-primary-image':presentation.file};
 ---
-<span class="asset-frame" style={backdrop&&`--asset-backdrop:url('${backdrop.src}')`}>
- <Picture src={src} alt={alt} formats={['avif','webp']} fallbackFormat={fallbackFormat} widths={widths} sizes={sizes} width={src.width} height={src.height}
-  loading={loading} decoding="async" fetchpriority={priority?'high':undefined}
-  style={`object-fit:${presentation.fit};object-position:${presentation.position}`} data-primary-image={presentation.file} />
+{ambient ? (
+<span class:list={['asset-frame','is-ambient',{'is-cover':presentation.fit==='cover'}]} style={vars}>
+ <span class="asset-fit"><Picture {...picture as any} /><slot /></span>
  {showType && presentation.illustration && <span class="asset-kind">{typeLabel}</span>}
 </span>
+) : (
+<span class="asset-frame" style={vars||undefined}>
+ <Picture {...picture as any} />
+ {showType && presentation.illustration && <span class="asset-kind">{typeLabel}</span>}
+</span>
+)}
 <style>
 .asset-frame { display:block;position:relative;isolation:isolate;width:100%;height:100%;overflow:hidden;background:#0b0f14; }
 .asset-frame::before { content:'';position:absolute;inset:-20px;z-index:-1;background-image:var(--asset-backdrop);background-size:cover;background-position:center;filter:blur(18px);opacity:.3; }
 .asset-kind { position:absolute;right:8px;bottom:8px;z-index:2;padding:3px 7px;font-size:11px;line-height:1.5;color:white;background:rgb(11 15 20 / .8); }
 .asset-frame :global(picture) { display:contents; }
 .asset-frame :global(img) { display:block;width:100%;height:100%;position:relative; }
+/* Ambient: exact visible box (contain), soft edges, the same image as a fuller blurred backdrop. */
+.is-ambient { container-type:size; }
+.is-ambient::before { inset:0;filter:blur(40px) saturate(1.15);opacity:.4;
+  mask-image:var(--ambient-edge-x,linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)),var(--ambient-edge-y,linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent));mask-composite:intersect; }
+.asset-fit { position:absolute;display:block;
+  width:min(100cqw, 100cqh * var(--ar));height:min(100cqh, 100cqw / var(--ar));
+  left:calc((100cqw - min(100cqw, 100cqh * var(--ar))) * var(--px));top:calc((100cqh - min(100cqh, 100cqw / var(--ar))) * var(--py)); }
+.is-cover .asset-fit { inset:0;width:auto;height:auto; }
+.is-ambient:not(.is-cover) .asset-fit :global(img) { mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linear-gradient(180deg,transparent,#000 6%,#000 94%,transparent);mask-composite:intersect; }
 </style>
-

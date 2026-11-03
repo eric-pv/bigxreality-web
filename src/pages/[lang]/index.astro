@@ -307,11 +307,7 @@ const website = {
 /* 04 Core technologies: blueprint grid + slow glow (decorative, behind the content). */
 .tech { position: relative; isolation: isolate; overflow: hidden; }
 .tech::before, .tech::after { content: ""; position: absolute; pointer-events: none; z-index: -1; }
-.tech::before { inset: 0; opacity: .07;
-  background: linear-gradient(90deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 128px 128px,
-    linear-gradient(180deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 128px 128px,
-    linear-gradient(90deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 32px 32px,
-    linear-gradient(180deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 32px 32px;
+.tech::before { inset: 0; opacity: .07; background: var(--tac-grid-bg);
   mask-image: radial-gradient(ellipse at 60% 50%, black, transparent 80%); }
 .tech::after { width: 70vmax; height: 70vmax; left: 30%; top: 50%; margin: -35vmax 0 0 -35vmax; border-radius: 50%;
   background: radial-gradient(circle, color-mix(in srgb, var(--bxr-red) 10%, transparent), transparent 62%); }
@@ -333,19 +329,7 @@ const website = {
   .tech-list li:hover .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
   .tech-list li:hover .num { animation: tech-glitch 180ms steps(1) 1; }
 }
-@keyframes tech-drift { 0%, 100% { transform: translate(-6vmax, -4vmax); } 27.3%, 50% { transform: translate(8vmax, 5vmax); } 77.3% { transform: translate(-6vmax, -4vmax); } }
-@keyframes tech-beam {
-  0% { opacity: 0; transform: translate(-50%, -50%) rotate(0deg); }
-  12%, 82% { opacity: 1; }
-  100% { opacity: 0; transform: translate(-50%, -50%) rotate(360deg); }
-}
-@keyframes tech-glitch {
-  0% { transform: translateX(-2px); clip-path: inset(15% 0 50% 0); }
-  25% { transform: translateX(2px); clip-path: inset(55% 0 8% 0); }
-  50% { transform: translateX(-1px); clip-path: inset(0 0 65% 0); }
-  75% { transform: translateX(1px); clip-path: inset(40% 0 20% 0); }
-  100% { transform: none; clip-path: none; }
-}
+/* Keyframes tech-drift / tech-beam / tech-glitch: src/styles/tactical.css. */
 @media (prefers-reduced-motion: reduce) {
   .beam { display: none; }
   .tech::after, .num { animation: none !important; transform: none !important; }
@@ -370,16 +354,14 @@ const website = {
 /* Section seams (white / grey / graphite): a thin red ruler with minor and major ticks. Static decoration. */
 .ruled { position: relative; }
 .ruled::before, .ruled--end::after { content: ""; position: absolute; left: 0; right: 0; height: 7px; pointer-events: none; opacity: .55;
-  background: linear-gradient(var(--bxr-red), var(--bxr-red)) 0 0 / 100% 1px no-repeat,
-    repeating-linear-gradient(90deg, var(--bxr-red) 0 1px, transparent 1px 16px) 0 0 / 100% 4px no-repeat,
-    repeating-linear-gradient(90deg, var(--bxr-red) 0 1px, transparent 1px 128px) 0 0 / 100% 7px no-repeat; }
+  background: var(--tac-ruler-bg); }
 .ruled::before { top: 0; }
 .ruled--end::after { bottom: 0; transform: scaleY(-1); }
 
 /* 08 CTA: slow diagonal stripes (opacity 0.05) and a radar ring on the main button, both only while on screen. */
 .cta { position: relative; isolation: isolate; overflow: hidden; }
 .cta::before { content: ""; position: absolute; inset: 0 -48px 0 -48px; z-index: -1; pointer-events: none; opacity: .05;
-  background: repeating-linear-gradient(135deg, var(--bxr-white) 0 2px, transparent 2px 22px); }
+  background: var(--tac-stripes-bg); }
 .cta-primary { position: relative; }
 .cta-primary::after { content: ""; position: absolute; inset: -1px; border: 1px solid var(--bxr-white); border-radius: inherit; pointer-events: none; opacity: 0; }
 @media (prefers-reduced-motion: no-preference) {
@@ -389,8 +371,7 @@ const website = {
   /* 6.5 s: one 1.5 s pulse, then 5 s still; only while the band is on screen. */
   .cta[data-in-view] .cta-primary::after { animation: cta-radar 6.5s var(--ease-precise) infinite; }
 }
-@keyframes cta-stripes { 0% { transform: translateX(0); } 54.5%, 100% { transform: translateX(31.11px); } }
-@keyframes cta-radar { 0% { opacity: .7; transform: scale(1); } 23%, 100% { opacity: 0; transform: scale(1.18, 1.45); } }
+/* Keyframes cta-stripes / cta-radar: src/styles/tactical.css. */
 @media (prefers-reduced-motion: reduce) {
   .feature-media::after, .more .arrow { transition: none; }
   .feature .feature-media :global(img), .more .arrow { transform: none !important; }
