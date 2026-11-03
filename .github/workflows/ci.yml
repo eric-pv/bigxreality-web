@@ -16,10 +16,10 @@ jobs:
       BXR_CONTENT_SOURCE: markdown
       BXR_PREVIEW: "0"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .node-version
           cache: npm
@@ -39,6 +39,7 @@ jobs:
       - name: Build
         run: npm run build
       - run: npm run qa:technologies
+      - run: npm run qa:technologies-overview-layout
       - run: npm run qa:news-preview
       - run: npm run qa:news-media
       - run: npm run qa:csr
@@ -48,7 +49,7 @@ jobs:
       - run: npm run qa:typography
       - run: npm run qa:media-composition
       - name: Visual review artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: visual-copy-review
@@ -90,10 +91,13 @@ jobs:
           echo "Commit: $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
           echo "CMS target: main; source: Git Markdown; hosting: GitHub Pages" >> "$GITHUB_STEP_SUMMARY"
           echo "Pages publication requires every build-and-test step to pass." >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-pages-artifact@v3
+      # v5 wraps upload-artifact v7 (Node 24). Since v4 it drops dotfiles by default; keep the
+      # packager's .nojekyll so the artifact contents stay identical to what pages:check verified.
+      - uses: actions/upload-pages-artifact@v5
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           path: dist-pages
+          include-hidden-files: true
   deploy-pages:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build-and-test
@@ -106,4 +110,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
