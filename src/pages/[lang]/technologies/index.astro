@@ -52,7 +52,9 @@ const structuredData = [{ "@type": "CollectionPage", name: content.title, descri
 <style>
   /* Tactical list: mono index; on hover or keyboard focus a red rule slides in on the left and the arrow steps out.
      ≥ 1280 px a thumbnail of the technology's existing image fades in on the right (AI simulation, with no image yet,
-     shows a blueprint tile instead). Decorative only. */
+     shows a blueprint tile instead). Decorative only. The thumbnail has its own reserved grid column between the copy
+     and the explore link, so revealing it never covers text or the link; below 1280 px there is no room for that
+     column and the thumbnail stays hidden (scripts/qa-technologies-overview-layout.mjs guards this). */
   .technology { position: relative; }
   .technology::before { content: ""; position: absolute; left: -16px; top: var(--space-4); bottom: var(--space-4); width: 2px; background: var(--bxr-red); opacity: 0; transform: scaleY(.4); transform-origin: 50% 0; transition: opacity var(--dur-standard) var(--ease-precise), transform var(--dur-standard) var(--ease-precise); pointer-events: none; }
   .index { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
@@ -61,7 +63,9 @@ const structuredData = [{ "@type": "CollectionPage", name: content.title, descri
   .technology:hover::before, .technology:focus-within::before { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: no-preference) { .technology:hover .arrow, .technology:focus-within .arrow { transform: translate(3px, -3px); } }
   @media (min-width: 1280px) {
-    .thumb { display: block; position: absolute; right: 180px; top: 50%; width: 200px; aspect-ratio: 16 / 9; margin-top: -56px; overflow: hidden; pointer-events: none; opacity: 0; transform: translateX(8px); transition: opacity var(--dur-standard) var(--ease-precise), transform var(--dur-standard) var(--ease-precise); }
+    .technology { grid-template-columns: 64px minmax(0, 1fr) 200px auto; }
+    .thumb { display: block; grid-column: 3; align-self: center; position: relative; width: 200px; aspect-ratio: 16 / 9; overflow: hidden; pointer-events: none; opacity: 0; transform: translateX(8px); transition: opacity var(--dur-standard) var(--ease-precise), transform var(--dur-standard) var(--ease-precise); }
+    .explore { grid-column: 4; }
     .technology:hover .thumb, .technology:focus-within .thumb { opacity: 1; transform: none; }
   }
   .thumb-blueprint { position: absolute; inset: 0; background: var(--bxr-graphite); }

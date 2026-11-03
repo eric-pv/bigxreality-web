@@ -41,6 +41,7 @@
     "postbuild": "node scripts/build-search.mjs",
     "qa:search": "QA_DIST=dist-fixtures node scripts/qa-search.mjs",
     "qa:technologies": "node scripts/qa-technologies.mjs",
+    "qa:technologies-overview-layout": "node scripts/qa-technologies-overview-layout.mjs",
     "check:sitemap": "node scripts/check-sitemap.mjs",
     "qa:phase2": "QA_DIST=dist-fixtures node scripts/qa-phase2.mjs",
     "qa:ui-language": "node scripts/qa-ui-language.mjs",
