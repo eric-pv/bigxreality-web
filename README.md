@@ -1,6 +1,6 @@
 # bigxreality-web
 
-Big x Reality 官網：Astro＋GitHub main＋Sveltia CMS＋GitHub Actions＋GitHub Pages。唯一架構規範：[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。舊 EmDash／Cloudflare 不是正式 CMS 或部署；仍有待清理的建置耦合，詳移除計畫。
+Big x Reality 官網：Astro＋GitHub main＋Sveltia CMS＋GitHub Actions＋GitHub Pages。唯一架構規範：[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。建置為純靜態輸出，不使用 Cloudflare 或 EmDash（舊架構已移除，外部資源退役見 [docs/LEGACY-REMOVAL-PLAN.md](docs/LEGACY-REMOVAL-PLAN.md)）。
 
 ## 本機執行
 

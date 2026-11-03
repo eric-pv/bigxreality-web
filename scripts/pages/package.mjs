@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Package the tested Git-based static client for the official GitHub Pages mount.
-// Historical adapter output is dist/client; only this static artifact is deployed.
+// Package the tested Git-based static build (dist/) for the official GitHub Pages mount.
+// Only this static artifact is deployed.
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
@@ -12,7 +12,7 @@ import { reachableAstro } from "./astro-refs.mjs";
 
 const base = (process.argv[2] ?? publicBasePath).replace(/\/?$/, "/");
 if(base!==publicBasePath)throw new Error('Pages base must match src/data/site.json, not a second URL setting');
-if((process.env.BXR_CONTENT_SOURCE??'markdown')!=='markdown'||process.env.BXR_PREVIEW==='1'||process.env.WORKERS_CI)throw new Error('Official Pages packaging accepts Git Markdown only; no EmDash, fixture, bootstrap or preview mode');
+if((process.env.BXR_CONTENT_SOURCE??'markdown')!=='markdown'||process.env.BXR_PREVIEW==='1')throw new Error('Official Pages packaging accepts Git Markdown only; no fixture or preview mode');
 // "/" for a custom domain or a <user>.github.io site, "/name/" for a project site (current).
 if (!/^\/(?:[a-z0-9._-]+\/)?$/i.test(base)) throw new Error(`base path must be / or /name/ (got ${base})`);
 const host = new URL(publicSiteRoot).hostname;
@@ -20,26 +20,24 @@ const githubIo = /\.github\.io$/i.test(host);
 // GitHub Pages serves a custom domain at its root only.
 if (!githubIo && base !== "/") throw new Error(`custom domain ${host} must be published at the domain root, not ${base}`);
 const REPO = path.resolve(import.meta.dirname, "../..");
-const SRC = path.join(REPO, "dist/client");
+const SRC = path.join(REPO, "dist");
 const OUT = path.join(REPO, "dist-pages");
 const cms=parse(await readFile(path.join(REPO,'public/admin/config.yml'),'utf8'));
 if(cms.backend?.branch!=='main'||cms.publish_mode!=='editorial_workflow')throw new Error('CMS must target main using editorial_workflow before publication');
-if (!existsSync(path.join(SRC, "index.html")) && !existsSync(path.join(SRC, "en"))) throw new Error("dist/client not found: run `npm run build` first");
+if (!existsSync(path.join(SRC, "index.html")) && !existsSync(path.join(SRC, "en"))) throw new Error("dist not found: run `npm run build` first");
 
 await rm(OUT, { recursive: true, force: true });
-// _astro/ also holds legacy adapter/EmDash chunks (PluginRegistry, CodeEditor, messages-*) and
-// unused originals of optimized images. Only files reachable from the published pages are copied;
+// _astro/ also holds unused originals of optimized images and build-only chunks. Only files
+// reachable from the published pages are copied;
 // pagefind/, fonts/, media/, video/ and admin/ are copied unchanged.
 const ASTRO = path.join(SRC, "_astro");
 const { reachable, unreachable } = await reachableAstro(SRC);
-// _redirects and _headers are Cloudflare adapter files; GitHub Pages ignores them, so they are not published.
-const PAGES_IGNORED = new Set(["_redirects", "_headers"].map((f) => path.join(SRC, f)));
-await cp(SRC, OUT, { recursive: true, filter: (p) => !PAGES_IGNORED.has(p) && p !== ASTRO && !p.startsWith(ASTRO + path.sep) });
+await cp(SRC, OUT, { recursive: true, filter: (p) => p !== ASTRO && !p.startsWith(ASTRO + path.sep) });
 await mkdir(path.join(OUT, "_astro"), { recursive: true });
 for (const name of reachable) await cp(path.join(ASTRO, name), path.join(OUT, "_astro", name));
 const sizeOf = async (names) => { let n = 0; for (const f of names) n += (await stat(path.join(ASTRO, f))).size; return n; };
 const excluded = await Promise.all([...unreachable].sort().map(async (name) => ({ name, bytes: (await stat(path.join(ASTRO, name))).size })));
-const report = { generatedAt: new Date().toISOString(), source: "dist/client/_astro", kept: { files: reachable.size, bytes: await sizeOf(reachable) },
+const report = { generatedAt: new Date().toISOString(), source: "dist/_astro", kept: { files: reachable.size, bytes: await sizeOf(reachable) },
   excluded: { files: excluded.length, bytes: excluded.reduce((n, f) => n + f.bytes, 0), byType: {} }, files: excluded };
 for (const f of excluded) { const t = (report.excluded.byType[path.extname(f.name).slice(1).toLowerCase()] ??= { files: 0, bytes: 0 }); t.files++; t.bytes += f.bytes; }
 await mkdir(path.join(REPO, ".qa"), { recursive: true });
@@ -78,7 +76,7 @@ await writeFile(path.join(OUT, "index.html"), redirect(start));
 // GitHub Pages serves <base>/404.html for every missing path: the built src/pages/404.astro,
 // rebased by walk() above like every other page.
 const notFound = await readFile(path.join(OUT, "404.html"), "utf8").catch(() => "");
-if (!notFound.includes("data-not-found") || !notFound.includes('name="robots" content="noindex"')) throw new Error("dist/client/404.html (src/pages/404.astro) missing or indexable");
+if (!notFound.includes("data-not-found") || !notFound.includes('name="robots" content="noindex"')) throw new Error("dist/404.html (src/pages/404.astro) missing or indexable");
 await writeFile(path.join(OUT, ".nojekyll"), "");
 // A custom domain needs CNAME at the artifact root; a github.io address must not have one.
 if (!githubIo) await writeFile(path.join(OUT, "CNAME"), host + "\n");

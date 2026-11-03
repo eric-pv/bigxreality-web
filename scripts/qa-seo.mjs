@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { parse as parseYaml } from 'yaml';
 import { chromium } from 'playwright-core';
+import sharp from 'sharp';
 import { CHROMIUM, DIST } from './lib/serve.mjs';
 const approved = JSON.parse(await fs.readFile(new URL('../tests/fixtures/seo-approved.json', import.meta.url), 'utf8'));
 const newsImages = JSON.parse(await fs.readFile(new URL('../src/data/news-media.json', import.meta.url), 'utf8'));
@@ -70,6 +71,9 @@ try {
       for(const name of ['viewport','description','robots','twitter:card','twitter:title','twitter:description','twitter:image'])assert.ok((html.match(new RegExp(`<meta name="${name}"`,'g'))??[]).length<=1,'duplicate meta '+name);
       for(const prop of ['og:title','og:description','og:url','og:type','og:image','og:image:alt','og:locale','og:site_name'])assert.equal((html.match(new RegExp(`<meta property="${prop}"`,'g'))??[]).length,1,'meta '+prop);
       assert.equal(html.match(/property="og:url" content="([^"]+)"/)?.[1],abs,'og:url');
+      // og:image:width/height describe the file actually written, in the 1.91:1 social-card ratio.
+      const ogW=html.match(/property="og:image:width" content="(\d+)"/)?.[1], ogH=html.match(/property="og:image:height" content="(\d+)"/)?.[1];
+      if(ogW||ogH){const meta=await sharp(path.join(DIST,decodeURIComponent(artifactPath(html.match(/property="og:image" content="([^"]+)"/)[1])))).metadata();assert.deepEqual([meta.width,meta.height],[+ogW,+ogH],'og:image file size matches og:image:width/height');assert.ok(Math.abs(meta.width/meta.height-1200/630)<0.01,'og:image is 1.91:1');assert.ok(meta.width<=1200,'og:image at most 1200 px wide');}
       for(const [code] of m.alternates)assert.ok(['zh-TW','en','ja','x-default'].includes(code),'hreflang code '+code);
       const blocks=[...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map(x=>JSON.parse(x[1]));
       const nodes=blocks.flatMap(b=>b['@graph']??[b]);

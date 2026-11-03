@@ -1,7 +1,6 @@
 import { z } from "astro/zod";
-import backup from "../data/site.json";
+import siteSettings from "../data/site.json";
 import { PENDING, isPending } from "./pending";
-import { contentSource } from "./content-source";
 import type { Lang } from "../i18n";
 
 const pending = z.literal(PENDING);
@@ -31,10 +30,8 @@ const schema = z.object({
   }),
 });
 
-// Git site.json is the official authority. The following override is historical
-// EmDash recovery support only; official Pages builds reject that source profile.
-const fromCms = Object.values(import.meta.glob<{ default: unknown }>("../data/.cms-site.json", { eager: true }))[0]?.default;
-export const site = schema.parse(contentSource() === "emdash" && fromCms ? fromCms : backup);
+// Git src/data/site.json is the only source of the site settings.
+export const site = schema.parse(siteSettings);
 export type FormKind = keyof typeof site.forms;
 
 /**

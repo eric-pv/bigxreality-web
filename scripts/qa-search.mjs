@@ -4,7 +4,7 @@ import { chromium } from "playwright-core";
 import { startPreview, CHROMIUM } from "./lib/serve.mjs";
 
 if (!process.env.QA_DIST?.includes("fixtures")) {
-  console.error("Run with QA_DIST=dist-fixtures/client after `npm run build:fixtures`.");
+  console.error("Run with QA_DIST=dist-fixtures after `npm run build:fixtures`.");
   process.exit(2);
 }
 const { base, stop } = await startPreview();

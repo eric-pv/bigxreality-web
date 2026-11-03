@@ -44,8 +44,14 @@ const desc = plain(description);
 
 // Only the page's own image with this language's approved alt; [待提供]／[待翻譯] keeps the site fallback.
 const approvedImage = ogImage && ogImageAlt?.trim() && !isEditorialPlaceholder(ogImageAlt) ? ogImage : undefined;
-const og = approvedImage
-  ? abs((await getImage({ src: approvedImage, width: 1200, height: 630, fit: "cover", format: "jpg" })).src)
+// 1200×630 (1.91:1) social card, cropped from the centre. Images are never enlarged, so a
+// smaller source gives the largest 1.91:1 crop it holds, and og:image:width/height state
+// the size of the file actually written.
+const OG_W = 1200, OG_H = 630;
+const ogWidth = approvedImage ? Math.min(OG_W, approvedImage.width, Math.floor((approvedImage.height * OG_W) / OG_H)) : 0;
+const ogSize = approvedImage ? { width: ogWidth, height: Math.round((ogWidth * OG_H) / OG_W) } : undefined;
+const og = approvedImage && ogSize
+  ? abs((await getImage({ src: approvedImage, ...ogSize, fit: "cover", format: "jpg" })).src)
   : abs("/icon-512.png");
 
 const org: Record<string, unknown> = {
@@ -79,7 +85,7 @@ if (product) {
   };
   // JSON-LD never carries placeholder text.
   if (!product.description.includes("[待")) p.description = plain(product.description);
-  // Same 1200×630 file as og:image; no page image, no schema image.
+  // Same file as og:image; no page image, no schema image.
   if (approvedImage) p.image = og;
   graph.push(p);
 }
@@ -93,7 +99,7 @@ for (const node of structuredData) {
   // An untranslated heading ("[待翻譯] …") is not this page's language; url and description still identify the page.
   if (typeof node.name === "string" && node.name.includes("[待")) delete node.name;
   if (type === "WebPage" || type === "CollectionPage") node.description ??= desc;
-  // Articles carry the same 1200×630 file as og:image, or no image.
+  // Articles carry the same file as og:image, or no image.
   if (type === "Article" || type === "NewsArticle") {
     if (approvedImage) node.image = og;
     else delete node.image;
@@ -119,8 +125,8 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 <meta property="og:locale" content={OG_LOCALE[lang]} />
 {LANGS.filter((l) => l !== lang && seoAlternates.includes(l)).map((l) => <meta property="og:locale:alternate" content={OG_LOCALE[l]} />)}
 <meta property="og:image" content={og} />
-{approvedImage && <meta property="og:image:width" content="1200" />}
-{approvedImage && <meta property="og:image:height" content="630" />}
+{ogSize && <meta property="og:image:width" content={String(ogSize.width)} />}
+{ogSize && <meta property="og:image:height" content={String(ogSize.height)} />}
 <meta property="og:image:alt" content={approvedImage && ogImageAlt ? plain(ogImageAlt) : site.brand} />
 <meta name="twitter:card" content={approvedImage ? "summary_large_image" : "summary"} />
 <meta name="twitter:title" content={fullTitle} />

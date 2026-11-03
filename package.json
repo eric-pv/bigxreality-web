@@ -8,7 +8,7 @@
   },
   "scripts": {
     "predev": "npm run assets",
-    "prebuild": "node scripts/cms/check-source.mjs && npm run assets && node scripts/cms/pull-site.mjs",
+    "prebuild": "npm run assets",
     "assets": "node scripts/build-fonts.mjs && node scripts/make-favicons.mjs",
     "dev": "astro dev",
     "build": "astro build",
@@ -37,14 +37,12 @@
     "qa:faq": "node scripts/qa-faq.mjs",
     "test": "node --test \"tests/**/*.test.ts\"",
     "qa:lighthouse": "node scripts/qa-lighthouse.mjs",
-    "cms:import": "node scripts/cms/import-markdown.mjs",
-    "build:emdash": "BXR_CONTENT_SOURCE=emdash npm run build",
     "build:fixtures": "BXR_CONTENT_SOURCE=fixtures npm run build",
     "postbuild": "node scripts/build-search.mjs",
-    "qa:search": "QA_DIST=dist-fixtures/client node scripts/qa-search.mjs",
+    "qa:search": "QA_DIST=dist-fixtures node scripts/qa-search.mjs",
     "qa:technologies": "node scripts/qa-technologies.mjs",
     "check:sitemap": "node scripts/check-sitemap.mjs",
-    "qa:phase2": "QA_DIST=dist-fixtures/client node scripts/qa-phase2.mjs",
+    "qa:phase2": "QA_DIST=dist-fixtures node scripts/qa-phase2.mjs",
     "qa:ui-language": "node scripts/qa-ui-language.mjs",
     "qa:csr": "node scripts/qa-csr.mjs",
     "qa:client-logos": "node scripts/qa-client-logos.mjs",
@@ -64,19 +62,12 @@
     "qa:inquiry-poc": "node scripts/qa-inquiry-poc.mjs"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "14.3.4",
     "@astrojs/react": "7.1.0",
-    "@cloudflare/kumo": "2.6.0",
-    "@emdash-cms/cloudflare": "1.3.1",
     "@fontsource-variable/noto-sans-jp": "5.3.1",
     "@fontsource-variable/noto-sans-tc": "5.3.1",
     "@fontsource/b612-mono": "5.3.0",
     "@phosphor-icons/react": "2.1.10",
     "astro": "7.3.8",
-    "bxr-cms": "file:plugins/bxr-cms",
-    "emdash": "1.3.1",
-    "github-slugger": "2.0.0",
-    "kysely": "0.29.7",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "sharp": "0.35.5"
@@ -84,16 +75,11 @@
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@axe-core/playwright": "4.14.0",
-    "@cloudflare/workers-types": "5.20261019.1",
     "lighthouse": "13.5.0",
     "marked": "17.0.6",
     "pagefind": "1.5.2",
     "playwright-core": "1.64.1",
     "typescript": "5.9.3",
-    "wrangler": "4.151.2",
     "yaml": "2.9.1"
-  },
-  "emdash": {
-    "seed": "seed/seed.json"
   }
 }
