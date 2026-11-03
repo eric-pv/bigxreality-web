@@ -60,6 +60,8 @@ const clips = heroClips;
     const toggle = root.querySelector<HTMLButtonElement>("[data-toggle]")!;
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    // The site-wide "pause animations" choice (header control, stored per visitor) also holds the looping footage.
+    const globallyOff = () => document.documentElement.classList.contains('motion-off');
     const controller = new AbortController(), options = { signal: controller.signal };
     let current = 0, paused = false, switching = false;
     const load = (video: HTMLVideoElement) => {
@@ -72,7 +74,7 @@ const clips = heroClips;
       toggle.setAttribute("aria-label", (paused ? toggle.dataset.play : toggle.dataset.pause)!);
     };
     const show = async (index: number) => {
-      if (switching || paused || motion.matches || saveData || document.hidden) return;
+      if (switching || paused || motion.matches || saveData || globallyOff() || document.hidden) return;
       switching = true;
       const next = clips[index]; load(next);
       next.currentTime = 0;
@@ -104,19 +106,20 @@ const clips = heroClips;
     toggle.addEventListener('click',()=>{
       paused = !paused; updateControl();
       if(paused) clips.forEach(video=>video.pause());
-      else { if(motion.matches || saveData) { paused=true;updateControl(); } else if(clips[current].ended) void show((current+1)%clips.length); else {load(clips[current]);clips[current].play().catch(()=>{});} }
+      else { if(motion.matches || saveData || globallyOff()) { paused=true;updateControl(); } else if(clips[current].ended) void show((current+1)%clips.length); else {load(clips[current]);clips[current].play().catch(()=>{});} }
     },options);
     const applyPreference = () => {
-      if(motion.matches || saveData){clips.forEach(video=>video.pause());paused=true;updateControl();}
+      if(motion.matches || saveData || globallyOff()){clips.forEach(video=>video.pause());paused=true;updateControl();}
       else {paused=false;updateControl();void show(current);}
     };
     motion.addEventListener('change',applyPreference,options);
+    document.addEventListener('bxr:motion-change',applyPreference,options);
     document.addEventListener('visibilitychange',()=>{
       if(document.hidden) clips.forEach(video=>video.pause());
-      else if(!paused&&!motion.matches&&!saveData) { if(clips[current].ended)void show((current+1)%clips.length);else clips[current].play().catch(()=>{}); }
+      else if(!paused&&!motion.matches&&!saveData&&!globallyOff()) { if(clips[current].ended)void show((current+1)%clips.length);else clips[current].play().catch(()=>{}); }
     },options);
     window.addEventListener('pagehide',()=>clips.forEach(video=>video.pause()),options);
-    window.addEventListener('pageshow',event=>{if(event.persisted&&!paused&&!motion.matches&&!saveData)clips[current].play().catch(()=>{});},options);
+    window.addEventListener('pageshow',event=>{if(event.persisted&&!paused&&!motion.matches&&!saveData&&!globallyOff())clips[current].play().catch(()=>{});},options);
     document.addEventListener('astro:before-swap',()=>{controller.abort();clips.forEach(video=>video.pause());},{once:true,signal:controller.signal});
     applyPreference();
   }
