@@ -30,7 +30,11 @@ const cornerFit = page => page.evaluate(() => {
   for (const el of document.querySelectorAll('[data-hero] .inner :is(.eyebrow, .title, .subtitle, .desc)')) { range.selectNodeContents(el); texts.push(...range.getClientRects()); }
   texts.push(...[...document.querySelectorAll('[data-hero] .actions a')].map(a => a.getBoundingClientRect()));
   const hit = (a, b) => a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
-  return { error: Math.max(...['left', 'top', 'right', 'bottom'].map(k => Math.abs(box[k] - vis[k]))), overlaps: cs.filter(c => texts.some(t => hit(c, t))).length };
+  // Effective opacity of a corner = the stage's horizontal fade at its right-most pixel (same gradient as the footage, ≥ 1200 px).
+  const stage = document.querySelector('[data-hero] .stage').getBoundingClientRect(), fades = getComputedStyle(document.querySelector('[data-hero] .hud')).maskImage !== 'none';
+  const alpha = c => fades ? Math.min(Math.max((c.right - stage.left) / (stage.width * 0.3), 0), 1) : 1;
+  const onText = cs.filter(c => texts.some(t => hit(c, t)));
+  return { error: Math.max(...['left', 'top', 'right', 'bottom'].map(k => Math.abs(box[k] - vis[k]))), maxOnText: onText.length ? Math.max(...onText.map(alpha)) : 0 };
 });
 let cases = 0;
 try {
@@ -108,7 +112,7 @@ try {
       // The HUD corners frame the footage's rendered area exactly (≤ 2 px), at every width and language.
       const fit = await cornerFit(page);
       assert.ok(fit.error <= 2, `${label}: corners match the visible footage (error ${fit.error.toFixed(1)} px)`);
-      if (fit.overlaps) console.log(`NOTE ${label}: ${fit.overlaps} corner(s) touch the copy column (owner decision pending)`);
+      assert.ok(fit.maxOnText <= 0.15, `${label}: corners over copy stay ≤ 0.15 opaque (${fit.maxOnText})`);
       // Shared entrance controller never animates the hero a second time.
       assert.equal(await page.evaluate(() => window.heroEnter), 0, `${label}: .motion-enter not applied in hero`);
       // Re-dispatched lifecycle events do not re-bind or replay.
@@ -357,11 +361,11 @@ try {
       await setHidden(true); assert.equal(await running(), 0, `${label}: background tab pauses all animation`);
       await setHidden(false); assert.ok(await running() > 0, `${label}: animation resumes in the foreground`);
       // Pause control.
-      const toggle = page.locator('[data-motion-toggle]');
+      const toggle = page.locator('.site-header [data-motion-toggle]');
       if (width >= 1280) {
         assert.ok(await toggle.isVisible(), `${label}: desktop pause control visible next to the language switch`);
-        const geo = await page.evaluate(() => { const b = document.querySelector('[data-motion-toggle]').getBoundingClientRect(), l = document.querySelector('.langs').getBoundingClientRect(), s = document.querySelector('.tools .icon-link').getBoundingClientRect();
-          return { w: b.width, h: b.height, right: b.right, langs: l.left, search: s.right, color: getComputedStyle(document.querySelector('[data-motion-toggle]')).color, muted: getComputedStyle(document.querySelector('.langs a:not([aria-current])')).color }; });
+        const geo = await page.evaluate(() => { const b = document.querySelector('.site-header [data-motion-toggle]').getBoundingClientRect(), l = document.querySelector('.langs').getBoundingClientRect(), s = document.querySelector('.tools .icon-link').getBoundingClientRect();
+          return { w: b.width, h: b.height, right: b.right, langs: l.left, search: s.right, color: getComputedStyle(document.querySelector('.site-header [data-motion-toggle]')).color, muted: getComputedStyle(document.querySelector('.langs a:not([aria-current])')).color }; });
         assert.ok(geo.w >= 24 && geo.h >= 24 && geo.right <= geo.langs + 0.5 && geo.right - geo.w >= geo.search - 0.5 && geo.color === geo.muted, `${label}: 24 px target in the gap, muted colour ${JSON.stringify(geo)}`);
         // Nothing else in the header moved: compare with the same page without JS (control hidden).
         const rects = pg => pg.evaluate(() => [...document.querySelectorAll('.site-header .logo, .nav-list > li, .tools .icon-link, .langs a, .tools .contact')].map(e => { const r = e.getBoundingClientRect(); return [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)].join(); }));
@@ -381,12 +385,12 @@ try {
       await page.waitForTimeout(100);
       assert.deepEqual(await page.evaluate(() => document.getAnimations().filter(a => a.playState === 'running' && !(a instanceof CSSTransition) && a.effect?.target?.tagName !== 'VIDEO').map(a => a.animationName ?? `waapi:${a.effect?.target?.className}`)), [], `${label}: paused — no animation runs (interaction transitions excepted)`);
       await page.goto(`${url}products/`);
-      assert.equal(await page.locator('[data-motion-toggle]').getAttribute('aria-pressed'), 'true', `${label}: pause persists across pages`);
+      assert.equal(await page.locator('.site-header [data-motion-toggle]').getAttribute('aria-pressed'), 'true', `${label}: pause persists across pages`);
       assert.equal(await page.evaluate(() => document.documentElement.classList.contains('motion-off') && !document.documentElement.classList.contains('motion-ready')), true);
       await page.goto(url); await page.waitForFunction(() => !!window.bxrMotionDispose);
       assert.deepEqual(await page.evaluate(() => ({ motion: document.querySelector('[data-hero]').dataset.motion ?? null, count: document.querySelectorAll('.count-visual').length, opacity: getComputedStyle(document.querySelector('[data-hero] h1')).opacity })), { motion: null, count: 0, opacity: '1' }, `${label}: paused page shows the final state`);
       if (width < 1280) await page.locator('.menu-toggle').click();
-      await page.locator('[data-motion-toggle]').click();
+      await page.locator('.site-header [data-motion-toggle]').click();
       assert.equal(await page.evaluate(() => !document.documentElement.classList.contains('motion-off') && localStorage.getItem('bxr-motion')), null, `${label}: resume clears the stored choice`);
       assert.deepEqual(errors, []);
       // Underlines: every phrase group inside an underlined link carries the underline, with no skip-ink gaps.
@@ -401,7 +405,7 @@ try {
       const rctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
       const rp = await rctx.newPage(); await rp.goto(url); await rp.waitForFunction(() => !!window.bxrMotionDispose);
       if (width < 1280) await rp.locator('.menu-toggle').click();
-      const rt = rp.locator('[data-motion-toggle]');
+      const rt = rp.locator('.site-header [data-motion-toggle]');
       if (await rt.isVisible()) { await rt.click({ force: true }); assert.deepEqual([await rt.getAttribute('aria-pressed'), await rt.getAttribute('aria-disabled'), await rp.evaluate(() => localStorage.getItem('bxr-motion'))], ['true', 'true', null], `${label}: reduced motion keeps the control paused`); }
       await rctx.close();
       // Storage unavailable: no error, the control still works for this page.
@@ -410,21 +414,36 @@ try {
       const sp = await sctx.newPage(); const serr = []; sp.on('pageerror', e => serr.push(e.message));
       await sp.goto(url); await sp.waitForFunction(() => !!window.bxrMotionDispose);
       if (width < 1280) await sp.locator('.menu-toggle').click();
-      await sp.locator('[data-motion-toggle]').click();
+      await sp.locator('.site-header [data-motion-toggle]').click();
       assert.equal(await sp.evaluate(() => document.documentElement.classList.contains('motion-off')), true);
       assert.deepEqual(serr, [], `${label}: no error without localStorage`);
       await sctx.close();
-      // Corner fit at the other desktop widths.
+      // Narrow desktops: control in the header gap at 1140–1279 (tool gaps only), in the footer at 1024–1139.
+      if (width === 1440) for (const w of [1024, 1139, 1140, 1279]) {
+        const c3 = await browser.newContext({ viewport: { width: w, height: 800 }, reducedMotion: 'no-preference' });
+        const p3 = await c3.newPage(); await p3.goto(url); await p3.waitForFunction(() => !!window.bxrMotionDispose);
+        const st = await p3.evaluate(() => {
+          const vis = e => !!e && !e.hidden && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0;
+          const h = document.querySelector('.site-header [data-motion-toggle]'), f = document.querySelector('.site-footer [data-motion-toggle]'), bar = document.querySelector('.site-header .bar');
+          const b = h.getBoundingClientRect(), others = [...document.querySelectorAll('.tools .icon-link, .langs a, .tools .contact')].map(e => e.getBoundingClientRect());
+          return { header: vis(h), footer: vis(f), w: b.width, h: b.height, overlap: others.some(o => b.left < o.right - .5 && o.left < b.right - .5 && b.top < o.bottom && o.top < b.bottom),
+            overflow: bar.scrollWidth > bar.clientWidth + 1, rows: new Set([...document.querySelectorAll('.nav-list > li')].map(li => Math.round(li.getBoundingClientRect().top))).size };
+        });
+        const header = w >= 1140;
+        assert.ok(st.header === header && st.footer === !header && !st.overflow && st.rows === 1 && (!header || (st.w >= 24 && st.h >= 24 && !st.overlap)), `${lang}@${w}: pause control placement ${JSON.stringify(st)}`);
+        await c3.close();
+      }
+      // Corner fit at the other desktop widths; the left pair fades with the footage (≤ 0.15 opaque over copy).
       if (width === 1440) for (const w of [1280, 1920]) {
         const c2 = await browser.newContext({ viewport: { width: w, height: 900 }, reducedMotion: 'no-preference' });
         const p2 = await c2.newPage(); await p2.goto(url); await p2.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'done');
         const fit = await cornerFit(p2);
         assert.ok(fit.error <= 2, `${lang}@${w}: corners match the visible footage (error ${fit.error.toFixed(1)} px)`);
-        if (fit.overlaps) console.log(`NOTE ${lang}@${w}: ${fit.overlaps} corner(s) touch the copy column (owner decision pending)`);
+        assert.ok(fit.maxOnText <= 0.15, `${lang}@${w}: corners over copy stay ≤ 0.15 opaque (${fit.maxOnText})`);
         await c2.close();
       }
     }
     cases++;
   }
-  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, no title underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static; header blur/progress (menu-safe), product-card feedback on hover + keyboard, static rulers, CTA stripes + radar on-screen only, inline-SVG news texture; HUD corners = rendered footage ±2 px at 1280/1440/1920/390; loops one pass + ≥ 4.5 s rest; background tab pauses; header pause control (desktop gap / mobile menu, persisted, reduced-locked, storage-safe); continuous underlines.`);
+  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, no title underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static; header blur/progress (menu-safe), product-card feedback on hover + keyboard, static rulers, CTA stripes + radar on-screen only, inline-SVG news texture; HUD corners = rendered footage ±2 px at 1280/1440/1920/390, left pair ≤ 0.15 over copy; loops one pass + ≥ 4.5 s rest; background tab pauses; header pause control (desktop gap ≥ 1140 / footer 1024–1139 / mobile menu, persisted, reduced-locked, storage-safe); continuous underlines.`);
 } finally { await browser.close(); server.stop(); }

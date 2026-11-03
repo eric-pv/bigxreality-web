@@ -243,9 +243,13 @@ const clips = heroClips;
  .media { container-type:size;
    --stage-w:min(70cqw, 100cqh * 16 / 9); --stage-top:calc((100cqh - var(--stage-w) * 9 / 16) / 2);
    /* Soft entry into the background: transparent → opaque across the left ~30 %, light fade top and bottom. */
-   --stage-mask:linear-gradient(90deg,transparent,#000 30%),linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent); }
+   --stage-fade-x:linear-gradient(90deg,transparent,#000 30%);
+   --stage-mask:var(--stage-fade-x),linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent); }
  .stage { inset:auto 0 auto auto; top:var(--stage-top); width:var(--stage-w); aspect-ratio:16 / 9; }
  .stage-media { mask-image:var(--stage-mask); mask-composite:intersect; }
+ /* The corners follow the footage's horizontal fade exactly (same gradient, same positions): the left pair stays
+    ≤ 0.11 opaque over the copy column, the right pair is fully visible. */
+ .hud { mask-image:var(--stage-fade-x); }
  /* Haze over the transition band: background-colour gradient plus faint grain, itself masked so it has no edge. */
  .fog { display:block; inset:-4% auto -4% -8%; width:50%;
    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 160px 160px,

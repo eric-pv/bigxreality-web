@@ -329,12 +329,18 @@ const t = (key: "motionToggle" | "motionToggleMenu" | "motionReducedNote") => ((
   .motion-toggle[aria-pressed="true"] .i-play { display: block; }
   .motion-toggle[aria-disabled="true"] { cursor: default; }
   .motion-toggle:not([aria-disabled="true"]) .motion-toggle-note { display: none; }
-  @media (min-width: 1280px) {
+  @media (min-width: 1140px) {
     .motion-toggle { position: absolute; right: 100%; top: 50%; width: 24px; height: 24px; margin-top: -12px; }
     .motion-toggle-menu { display: none; }
   }
-  /* 1024–1279 px: the header gaps are 8–16 px, too narrow for a 24 px target without moving other items (pending decision). */
-  @media (min-width: 1024px) and (max-width: 1279px) { .motion-toggle { display: none !important; } }
+  /* 1140–1279 px: redistribute the tool-area gaps only (16 + 16 → 24 + 8), so the tool area keeps its width and the
+     logo and main menu do not move; the 24 px gap left of the language switch holds the control. */
+  @media (min-width: 1140px) and (max-width: 1279px) {
+    .tools { gap: 8px; }
+    .langs-wrap { margin-left: 16px; }
+  }
+  /* 1024–1139 px: the gaps are 8 px and the English menu has no slack, so the control lives in the footer here. */
+  @media (min-width: 1024px) and (max-width: 1139px) { .motion-toggle { display: none !important; } }
   @media (max-width: 1023px) {
     .langs-wrap { gap: var(--space-3); flex-wrap: wrap; }
     .motion-toggle { min-width: 44px; min-height: 44px; padding-inline: var(--space-1); }
