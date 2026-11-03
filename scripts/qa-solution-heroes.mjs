@@ -28,6 +28,8 @@ try {
       const rows = [];
       for (const slug of slugs) {
         await page.goto(`${base}/${lang}/solutions/${slug}/`, { waitUntil: 'networkidle' });
+        // Measure the settled layout: wait for finite entrance animations (the HUD scan loop is infinite and skipped).
+        await page.evaluate(() => Promise.all(document.getAnimations().filter((x) => x.effect?.getComputedTiming().iterations !== Infinity).map((x) => x.finished.catch(() => {}))));
         const m = await page.evaluate(() => {
           const hero = document.querySelector('.page-hero');
           const img = hero?.querySelector('.media .asset-fit img');
