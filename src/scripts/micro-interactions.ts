@@ -1,10 +1,14 @@
 /** One controller per document, including when a router re-executes the entry script. */
 declare global { interface Window { bxrMotionDispose?: () => void } }
 
-/* Home hero entrance (once per element). The HTML keeps the full text; these helpers only add
-   aria-hidden visual layers or temporary line wrappers that are removed when the entrance ends. */
+/* Home hero entrance (once per element). The HTML keeps the full text; the eyebrow gets an aria-hidden
+   visual layer and the H1 a clip-path animation on itself — no text nodes are cloned or moved. */
 const COUNT_MS = 1200;
-const LINE_MS = 700, LINE_STAGGER = 120, LINE_START = 150, KEY_MS = 500, TYPE_STEP = 55;
+const LINE_MS = 700, LINE_STAGGER = 120, LINE_START = 150;
+/** Site-wide "pause animations" choice (WCAG 2.2.2). Read before first paint by the head script in BaseLayout. */
+const MOTION_KEY = 'bxr-motion';
+const readStoredOff = () => { try { return localStorage.getItem(MOTION_KEY) === 'off'; } catch { return false; } };
+const storeOff = (off: boolean) => { try { if (off) localStorage.setItem(MOTION_KEY, 'off'); else localStorage.removeItem(MOTION_KEY); } catch { /* storage unavailable: the choice lasts for this page only */ } };
 interface HeroRun { title: HTMLElement; timer: number; finish: () => void }
 type CharBox = { node: Text; offset: number; rect: DOMRect; index: number };
 function measureChars(root: HTMLElement): CharBox[] {
@@ -12,7 +16,6 @@ function measureChars(root: HTMLElement): CharBox[] {
   const range = document.createRange(), boxes: CharBox[] = [];
   let index = 0;
   for (let node = walker.nextNode() as Text | null; node; node = walker.nextNode() as Text | null) {
-    if (node.parentElement?.closest('.hero-key')) continue;
     for (let offset = 0; offset < node.length; offset++, index++) {
       if (/\s/.test(node.data[offset])) continue;
       range.setStart(node, offset); range.setEnd(node, offset + 1);
@@ -30,30 +33,6 @@ function groupLines(boxes: CharBox[]) {
     else lines.push([box]);
   }
   return lines;
-}
-/** Second phrase of the title, split on the title's own separators (．/・/". "). None found → no underline. */
-function keyPhrase(text: string): [number, number] | undefined {
-  const separator = /[．・]|\.(?=\s|$)/g, marks = [...text.matchAll(separator)].map(m => m.index!);
-  if (!marks.length || marks[0] >= text.length - 1) return;
-  let start = marks[0] + 1;
-  while (start < text.length && /\s/.test(text[start])) start++;
-  let end = marks[1] ?? text.length;
-  while (end > start && /\s/.test(text[end - 1])) end--;
-  return end > start ? [start, end] : undefined;
-}
-function placeKey(title: HTMLElement, key: HTMLElement) {
-  const span = keyPhrase(title.textContent ?? '');
-  if (!span) { key.replaceChildren(); return 0; }
-  const origin = title.getBoundingClientRect();
-  const lines = groupLines(measureChars(title).filter(box => box.index >= span[0] && box.index < span[1]));
-  key.replaceChildren(...lines.map(line => {
-    const bar = document.createElement('i');
-    const left = Math.min(...line.map(b => b.rect.left)), right = Math.max(...line.map(b => b.rect.right));
-    const bottom = Math.max(...line.map(b => b.rect.bottom));
-    bar.style.cssText = `left:${left - origin.left}px;top:${bottom - origin.top + 2}px;width:${right - left}px`;
-    return bar;
-  }));
-  return lines.length;
 }
 export function installMotion() {
   window.bxrMotionDispose?.();
@@ -92,6 +71,9 @@ export function installMotion() {
     frame = requestAnimationFrame(tick);
   };
   const html = document.documentElement;
+  if (readStoredOff()) html.classList.add('motion-off');
+  /** System reduced motion, or the visitor's own pause: either way no new animation runs. */
+  const motionOff = () => preference.matches || html.classList.contains('motion-off');
   const clear = () => {
     epoch++;
     hero?.finish();
@@ -122,22 +104,18 @@ export function installMotion() {
       if (!el.contains(document.activeElement)) intersection?.observe(el);
     }
   };
-  /** Keeps the drawn underline (and a running line reveal) aligned when the title reflows: resize or web-font swap. */
+  /** A running line reveal follows reflow: a width change finishes it, a web-font swap refits its bands. */
   let tracking: AbortController | undefined;
-  const trackKey = (title: HTMLElement, onReflow?: () => void) => {
-    const key = title.querySelector<HTMLElement>(':scope > .hero-key');
-    if (!key) return;
+  const trackTitle = (title: HTMLElement, refit: () => void) => {
     tracking = new AbortController();
-    const reflow = () => { placeKey(title, key); onReflow?.(); };
     let width = title.offsetWidth;
     if ('ResizeObserver' in window) {
       resize = new ResizeObserver(() => {
-        if (title.offsetWidth !== width) { width = title.offsetWidth; hero?.finish(); }
-        reflow();
+        if (title.offsetWidth !== width) { width = title.offsetWidth; hero?.finish(); } else refit();
       });
       resize.observe(title);
     }
-    document.fonts?.addEventListener('loadingdone', reflow, { signal: tracking.signal });
+    document.fonts?.addEventListener('loadingdone', refit, { signal: tracking.signal });
   };
   const enterHero = (root: HTMLElement) => {
     const title = root.querySelector<HTMLElement>('.title'), eyebrow = root.querySelector<HTMLElement>('.eyebrow');
@@ -155,12 +133,7 @@ export function installMotion() {
       return glyph;
     }));
     eyebrow.replaceChildren(spoken, visual);
-    // Title: underline the second phrase, then reveal each rendered line bottom-up with one clip-path
-    // animation on the H1 itself. No text nodes are cloned or moved, so nothing needs restoring.
-    const key = Object.assign(document.createElement('span'), { className: 'hero-key' });
-    key.setAttribute('aria-hidden', 'true');
-    title.append(key);
-    const keyLines = placeKey(title, key);
+    // Title: reveal each rendered line bottom-up with one clip-path animation on the H1 itself.
     const pad = 16, ease = (x: number) => 1 - (1 - x) ** 4;
     let bands: number[][] = [];
     // Each rendered line is a band that grows upward from its bottom edge, eased like --ease-precise.
@@ -177,8 +150,6 @@ export function installMotion() {
     const keyframes = frames();
     const linesEnd = LINE_START + Math.max(bands.length - 1, 0) * LINE_STAGGER + LINE_MS;
     const reveal = bands.length ? title.animate(keyframes, { duration: linesEnd - LINE_START, delay: LINE_START, fill: 'backwards' }) : undefined;
-    key.style.setProperty('--d', `${linesEnd - 100}ms`);
-    const total = keyLines ? linesEnd - 100 + KEY_MS : linesEnd;
     const run: HeroRun = {
       title, timer: 0,
       finish: () => {
@@ -186,14 +157,23 @@ export function installMotion() {
         if (hero !== run) return;
         hero = undefined;
         reveal?.cancel();
-        key.classList.add('is-drawn');
+        tracking?.abort();
+        resize?.disconnect();
         root.dataset.motion = 'done';
       },
     };
     hero = run;
-    run.timer = window.setTimeout(run.finish, total + 50);
+    run.timer = window.setTimeout(run.finish, linesEnd + 50);
     // Line count can change when the web font arrives mid-entrance: refit the bands, same timing.
-    trackKey(title, () => { if (hero === run && reveal?.effect instanceof KeyframeEffect) reveal.effect.setKeyframes(frames()); });
+    trackTitle(title, () => { if (hero === run && reveal?.effect instanceof KeyframeEffect) reveal.effect.setKeyframes(frames()); });
+  };
+  /** The header's pause control mirrors the effective state; under system reduced motion it stays "paused". */
+  const syncToggle = () => {
+    for (const button of document.querySelectorAll<HTMLButtonElement>('[data-motion-toggle]')) {
+      button.hidden = false;
+      button.setAttribute('aria-pressed', String(motionOff()));
+      if (preference.matches) button.setAttribute('aria-disabled', 'true'); else button.removeAttribute('aria-disabled');
+    }
   };
   const initialize = () => {
     const next = document.querySelector<HTMLElement>('main');
@@ -202,7 +182,8 @@ export function installMotion() {
     html.classList.add('motion-live');
     const heroRoot = next?.querySelector<HTMLElement>('[data-hero]');
     const animateHero = !!heroRoot && !heroRoot.dataset.motion && html.classList.contains('motion-ready');
-    if (!next || preference.matches || !('IntersectionObserver' in window)) { html.classList.remove('motion-ready'); return; }
+    syncToggle();
+    if (!next || motionOff() || !('IntersectionObserver' in window)) { html.classList.remove('motion-ready'); return; }
     main = next;
     const generation = epoch;
     // Slow loops (sweep lines, drifting glows) only run while their section is on screen.
@@ -217,16 +198,15 @@ export function installMotion() {
         const el = entry.target as HTMLElement, style = getComputedStyle(el);
         counters?.unobserve(el);
         // Start once the digits' own face is ready: a mid-count font swap would change their width.
-        const start = () => { if (generation === epoch && !preference.matches) countUp(el); };
+        const start = () => { if (generation === epoch && !motionOff()) countUp(el); };
         if (document.fonts) document.fonts.load(`${style.fontSize} ${style.fontFamily}`).then(start, start); else start();
       }
     }, { rootMargin: '0px 0px 5% 0px' });
     main.querySelectorAll('[data-count]:not([data-counted])').forEach(el => counters!.observe(el));
     if (animateHero) enterHero(heroRoot!);
-    else if (heroRoot?.dataset.motion === 'done') trackKey(heroRoot.querySelector<HTMLElement>('.title')!);
     html.classList.remove('motion-ready');
     intersection = new IntersectionObserver(entries => {
-      if (generation !== epoch || preference.matches) return;
+      if (generation !== epoch || motionOff()) return;
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         intersection?.unobserve(entry.target);
@@ -253,7 +233,38 @@ export function installMotion() {
     const group = (event.target as Element).closest(selector);
     if (group) { intersection?.unobserve(group); group.classList.remove('motion-enter'); }
   }, { signal: events.signal });
+  // Header: scrolled state after 40 px and a reading-progress bar. One passive listener, rAF-throttled;
+  // it only writes a class and a custom property used by transform, so no layout work per frame.
+  let headerFrame = 0;
+  const updateHeader = () => {
+    headerFrame = 0;
+    const header = document.querySelector<HTMLElement>('[data-site-header]');
+    if (!header) return;
+    const root = document.scrollingElement ?? html, max = root.scrollHeight - innerHeight;
+    header.classList.toggle('is-scrolled', scrollY > 40);
+    header.style.setProperty('--read', max > 0 ? Math.min(Math.max(scrollY / max, 0), 1).toFixed(4) : '0');
+  };
+  const queueHeader = () => { if (!headerFrame) headerFrame = requestAnimationFrame(updateHeader); };
+  window.addEventListener('scroll', queueHeader, { passive: true, signal: events.signal });
+  window.addEventListener('resize', queueHeader, { passive: true, signal: events.signal });
+  document.addEventListener('astro:page-load', queueHeader, { signal: events.signal });
+  window.addEventListener('pageshow', queueHeader, { signal: events.signal });
+  events.signal.addEventListener('abort', () => cancelAnimationFrame(headerFrame));
+  queueHeader();
   preference.addEventListener('change', () => { clear(); initialize(); }, { signal: events.signal });
+  // Pause animations (header button): stops loops, shows entrances in their final state, persists across pages.
+  document.addEventListener('click', event => {
+    const button = (event.target as Element | null)?.closest?.('[data-motion-toggle]');
+    if (!button || preference.matches) return;
+    const off = !html.classList.contains('motion-off');
+    html.classList.toggle('motion-off', off);
+    storeOff(off);
+    clear(); initialize();
+  }, { signal: events.signal });
+  // A background tab pauses every CSS loop; they resume where they were.
+  const syncHidden = () => html.classList.toggle('motion-tab-hidden', document.hidden);
+  document.addEventListener('visibilitychange', syncHidden, { signal: events.signal });
+  syncHidden();
   window.addEventListener('pagehide', clear, { signal: events.signal });
   window.addEventListener('pageshow', event => {
     if (event.persisted) clear();

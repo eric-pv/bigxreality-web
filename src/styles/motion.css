@@ -24,3 +24,7 @@ main a:not(.btn) { transition: color var(--feedback-duration) var(--ease-precise
   [data-interactive-card], [data-interactive-card] img, .btn, .back-to-top, .motion-enter { transform: none !important; }
   .motion-enter, .site-header .sub { animation: none !important; }
 }
+/* Visitor pause (header control, WCAG 2.2.2): no CSS animation runs; every entrance is already in its final state.
+   Interaction transitions (hover, focus) stay. A background tab only freezes animations, which resume on return. */
+:root.motion-off *, :root.motion-off *::before, :root.motion-off *::after { animation: none !important; }
+:root.motion-tab-hidden *, :root.motion-tab-hidden *::before, :root.motion-tab-hidden *::after { animation-play-state: paused !important; }

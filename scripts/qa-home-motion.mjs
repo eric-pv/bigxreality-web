@@ -16,34 +16,33 @@ const heroText = page => page.evaluate(() => {
 const heroAnimations = page => page.evaluate(() => document.getAnimations()
   .filter(a => a.effect?.target instanceof Element && a.effect.target.closest('[data-hero]') && a.effect.target.tagName !== 'VIDEO' && a.playState !== 'finished')
   .map(a => a.animationName ?? 'waapi'));
-/** Rects of the second phrase measured independently of the implementation. */
-const expectedKey = page => page.evaluate(() => {
-  const h1 = document.querySelector('[data-hero] h1'), text = h1.textContent;
-  const marks = [...text.matchAll(/[．・]|\.(?=\s|$)/g)].map(m => m.index);
-  if (!marks.length) return [];
-  const start = text.slice(marks[0] + 1).search(/\S/) + marks[0] + 1, end = (marks[1] ?? text.length);
-  const walker = document.createTreeWalker(h1, NodeFilter.SHOW_TEXT), range = document.createRange(), origin = h1.getBoundingClientRect();
-  let index = 0; const rows = new Map();
-  for (let node = walker.nextNode(); node; node = walker.nextNode()) for (let i = 0; i < node.length; i++, index++) {
-    if (index < start || index >= end || /\s/.test(node.data[i])) continue;
-    range.setStart(node, i); range.setEnd(node, i + 1); const r = range.getBoundingClientRect(), row = Math.round(r.top);
-    const k = [...rows.keys()].find(t => Math.abs(t - row) < r.height / 2) ?? row, cur = rows.get(k);
-    rows.set(k, cur ? { left: Math.min(cur.left, r.left), right: Math.max(cur.right, r.right) } : { left: r.left, right: r.right });
-  }
-  return [...rows.values()].map(r => ({ left: Math.round(r.left - origin.left), width: Math.round(r.right - r.left) }));
+/** Union of the four HUD corners vs the footage's rendered (object-fit) rectangle, in px. */
+const cornerFit = page => page.evaluate(() => {
+  const v = document.querySelector('[data-hero] [data-clip].is-on') ?? document.querySelector('[data-hero] .poster');
+  const b = v.getBoundingClientRect(), ar = (v.videoWidth || v.naturalWidth || 16) / (v.videoHeight || v.naturalHeight || 9);
+  const pos = getComputedStyle(v).objectPosition.split(' ').map(p => parseFloat(p) / 100);
+  const w = Math.min(b.width, b.height * ar), h = w / ar, vis = { left: b.x + (b.width - w) * pos[0], top: b.y + (b.height - h) * pos[1], right: 0, bottom: 0 };
+  vis.right = vis.left + w; vis.bottom = vis.top + h;
+  const cs = [...document.querySelectorAll('[data-hero] .corner')].map(c => c.getBoundingClientRect());
+  const box = { left: Math.min(...cs.map(c => c.left)), top: Math.min(...cs.map(c => c.top)), right: Math.max(...cs.map(c => c.right)), bottom: Math.max(...cs.map(c => c.bottom)) };
+  // Corners that touch copy or controls in the text column (reported, pending the owner's decision).
+  const range = document.createRange(), texts = [];
+  for (const el of document.querySelectorAll('[data-hero] .inner :is(.eyebrow, .title, .subtitle, .desc)')) { range.selectNodeContents(el); texts.push(...range.getClientRects()); }
+  texts.push(...[...document.querySelectorAll('[data-hero] .actions a')].map(a => a.getBoundingClientRect()));
+  const hit = (a, b) => a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+  // Effective opacity of a corner = the stage's horizontal fade at its right-most pixel (same gradient as the footage, ≥ 1200 px).
+  const stage = document.querySelector('[data-hero] .stage').getBoundingClientRect(), fades = getComputedStyle(document.querySelector('[data-hero] .hud')).maskImage !== 'none';
+  const alpha = c => fades ? Math.min(Math.max((c.right - stage.left) / (stage.width * 0.3), 0), 1) : 1;
+  const onText = cs.filter(c => texts.some(t => hit(c, t)));
+  return { error: Math.max(...['left', 'top', 'right', 'bottom'].map(k => Math.abs(box[k] - vis[k]))), maxOnText: onText.length ? Math.max(...onText.map(alpha)) : 0 };
 });
-const drawnKey = page => page.locator('[data-hero] .hero-key i').evaluateAll(bars => bars.map(b => ({ left: Math.round(parseFloat(b.style.left)), width: Math.round(parseFloat(b.style.width)) })));
-const sameKey = (actual, expected, label) => {
-  assert.equal(actual.length, expected.length, `${label}: underline segments`);
-  actual.forEach((a, i) => { assert.ok(Math.abs(a.left - expected[i].left) <= 1 && Math.abs(a.width - expected[i].width) <= 1, `${label}: underline ${JSON.stringify(a)} ≠ ${JSON.stringify(expected[i])}`); });
-};
 let cases = 0;
 try {
   for (const lang of LANGS) for (const width of WIDTHS) {
     const url = `${server.base}/${lang}/`, label = `${lang}@${width}`;
     // Server HTML: the final title/eyebrow text, no motion classes.
     const ssr = await (await fetch(url)).text();
-    assert.ok(!/motion-ready|data-motion=|hero-key|type-visual/.test(ssr.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '')), `${label}: SSR markup carries no motion state`);
+    assert.ok(!/motion-ready|data-motion=|type-visual/.test(ssr.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '')), `${label}: SSR markup carries no motion state`);
 
     // 1. No JS: everything visible, static HUD only.
     {
@@ -104,15 +103,16 @@ try {
       const eyebrowText = await page.locator('[data-hero] .eyebrow .visually-hidden').textContent();
       assert.ok(snapshot.includes(`paragraph: ${eyebrowText}`), `${label}: eyebrow read once in full\n${snapshot}`);
       assert.ok(!/paragraph: [^\n]*_/.test(snapshot), `${label}: caret not exposed`);
-      assert.equal(await page.locator('[data-hero] h1').evaluate(h => [...h.children].map(c => c.className).join(',')), 'typeset,hero-key is-drawn', `${label}: H1 structure`);
+      assert.equal(await page.locator('[data-hero] h1').evaluate(h => [...h.children].map(c => c.className).join(',')), 'typeset', `${label}: H1 structure — no underline or wrappers`);
       assert.equal(await page.locator('[data-hero] h1').evaluate(h => h.getAttribute('style') ?? ''), '');
       // Decorations: aria-hidden, no pointer events, not focusable.
-      for (const sel of ['.hud', '.hero-key', '.type-visual']) assert.equal(await page.locator(`[data-hero] ${sel}`).getAttribute('aria-hidden'), 'true', `${label}: ${sel} aria-hidden`);
-      for (const sel of ['.hud', '.hero-key']) assert.equal(await page.locator(`[data-hero] ${sel}`).evaluate(el => getComputedStyle(el).pointerEvents), 'none', `${label}: ${sel} pointer-events`);
-      assert.equal(await page.locator('[data-hero] .hud [tabindex], [data-hero] .hero-key [tabindex]').count(), 0);
-      // Underline sits under the second phrase (all three titles have separators).
-      sameKey(await drawnKey(page), await expectedKey(page), label);
-      assert.ok((await drawnKey(page)).length > 0, `${label}: underline drawn`);
+      for (const sel of ['.hud', '.scan', '.fog', '.type-visual']) assert.equal(await page.locator(`[data-hero] ${sel}`).getAttribute('aria-hidden'), 'true', `${label}: ${sel} aria-hidden`);
+      for (const sel of ['.hud', '.scan', '.fog']) assert.equal(await page.locator(`[data-hero] ${sel}`).evaluate(el => getComputedStyle(el).pointerEvents), 'none', `${label}: ${sel} pointer-events`);
+      assert.equal(await page.locator('[data-hero] .hud [tabindex], [data-hero] .scan [tabindex]').count(), 0);
+      // The HUD corners frame the footage's rendered area exactly (≤ 2 px), at every width and language.
+      const fit = await cornerFit(page);
+      assert.ok(fit.error <= 2, `${label}: corners match the visible footage (error ${fit.error.toFixed(1)} px)`);
+      assert.ok(fit.maxOnText <= 0.15, `${label}: corners over copy stay ≤ 0.15 opaque (${fit.maxOnText})`);
       // Shared entrance controller never animates the hero a second time.
       assert.equal(await page.evaluate(() => window.heroEnter), 0, `${label}: .motion-enter not applied in hero`);
       // Re-dispatched lifecycle events do not re-bind or replay.
@@ -121,7 +121,7 @@ try {
       assert.deepEqual(await page.evaluate(() => ({
         visual: document.querySelectorAll('[data-hero] .type-visual').length, spoken: document.querySelectorAll('[data-hero] .eyebrow .visually-hidden').length,
         key: document.querySelectorAll('[data-hero] .hero-key').length, motion: document.querySelector('[data-hero]').dataset.motion,
-      })), { visual: 1, spoken: 1, key: 1, motion: 'done' }, `${label}: single binding after astro:page-load`);
+      })), { visual: 1, spoken: 1, key: 0, motion: 'done' }, `${label}: single binding after astro:page-load`);
       assert.deepEqual(await page.evaluate(() => document.getAnimations().filter(a => !window.knownAnimations.has(a) && a.effect?.target?.closest?.('[data-hero]') && a.effect.target.tagName !== 'VIDEO').map(a => a.animationName ?? 'waapi')), [], `${label}: no replay after astro:page-load`);
       // Slow loop runs on screen, pauses off screen.
       const sweepState = () => page.locator('[data-hero] .sweep').evaluate(el => el.getAnimations()[0]?.playState);
@@ -145,7 +145,7 @@ try {
       const height = h => h.locator('[data-hero] h1').evaluate(el => Math.round(el.getBoundingClientRect().height));
       assert.equal(await height(page), await height(refPage), `${label}→${other}: H1 reflows like the server HTML`);
       await ref.close();
-      sameKey(await drawnKey(page), await expectedKey(page), `${label}→${other}`);
+      assert.ok((await cornerFit(page)).error <= 2, `${label}→${other}: corners follow the footage after resize`);
       assert.deepEqual(errors, []);
       await ctx.close();
     }
@@ -156,7 +156,7 @@ try {
       await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
       await page.setViewportSize({ width: width - 120, height: 900 });
       await page.waitForFunction(() => document.querySelector('[data-hero]').dataset.motion === 'done', null, { timeout: 1000 });
-      assert.deepEqual((await heroAnimations(page)).filter(n => !['hud-sweep', 'hero-type', 'hero-caret', 'hero-caret-step', 'hud-lock', 'hero-key'].includes(n)), [], `${label}: resize cancels the line reveal`);
+      assert.deepEqual((await heroAnimations(page)).filter(n => !['hud-sweep', 'hero-type', 'hero-caret', 'hero-caret-step', 'hud-lock'].includes(n)), [], `${label}: resize cancels the line reveal`);
       await page.goto(url); await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.waitForFunction(() => document.querySelector('[data-hero]').dataset.motion === 'done', null, { timeout: 1000 });
@@ -256,7 +256,194 @@ try {
       assert.equal(await page.locator(`${card(2)} .beam > span`).evaluate(el => getComputedStyle(el).opacity), '0', `${label}: beam hidden at rest`);
       await ctx.close();
     }
+    // 8. Phase 4: header scroll state + progress, product-card feedback, section rulers, CTA loops, news cover texture.
+    {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference', hasTouch: width < 1024 });
+      const page = await ctx.newPage(); await page.goto(url); await page.waitForFunction(() => !!window.bxrMotionDispose);
+      const header = page.locator('[data-site-header]');
+      const headerState = () => header.evaluate(h => ({ scrolled: h.classList.contains('is-scrolled'), solid: getComputedStyle(h, '::before').opacity,
+        blur: getComputedStyle(h, '::after').backdropFilter, own: getComputedStyle(h).backdropFilter, read: Number(getComputedStyle(h).getPropertyValue('--read') || 0) }));
+      let st = await headerState();
+      assert.deepEqual([st.scrolled, st.solid, st.read], [false, '1', 0], `${label}: header solid at top`);
+      assert.equal(await header.locator('.read-progress').getAttribute('aria-hidden'), 'true');
+      assert.equal(await header.locator('.read-progress').evaluate(el => getComputedStyle(el).pointerEvents), 'none');
+      await page.evaluate(() => scrollTo(0, 120)); await page.waitForTimeout(400);
+      st = await headerState();
+      assert.ok(st.scrolled && st.solid === '0' && st.blur.includes('blur') && st.own === 'none', `${label}: translucent blurred header after 40 px ${JSON.stringify(st)}`);
+      await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight)); await page.waitForTimeout(300);
+      assert.ok((await headerState()).read > 0.99, `${label}: progress reaches the end`);
+      if (width < 1024) {
+        // Mobile menu: opaque header and a fixed panel still anchored to the viewport.
+        await page.evaluate(() => scrollTo(0, 400)); await page.waitForTimeout(200);
+        await page.locator('.menu-toggle').click();
+        const open = await page.evaluate(() => { const h = document.querySelector('[data-site-header]'), m = document.querySelector('#site-menu').getBoundingClientRect();
+          return { solid: getComputedStyle(h, '::before').opacity, blur: getComputedStyle(h, '::after').backdropFilter, top: Math.round(m.top), bottom: Math.round(m.bottom), header: Math.round(h.getBoundingClientRect().bottom) }; });
+        await page.waitForTimeout(250);
+        const settled = await header.evaluate(h => getComputedStyle(h, '::before').opacity);
+        assert.ok(settled === '1' && open.blur === 'none' && Math.abs(open.top - open.header) <= 1 && open.bottom === 900, `${label}: open menu keeps an opaque header and viewport-fixed panel ${JSON.stringify(open)}`);
+        await page.locator('.menu-toggle').click();
+      }
+      await page.evaluate(() => scrollTo(0, 0)); await page.waitForTimeout(250);
+      assert.equal((await headerState()).scrolled, false, `${label}: back to solid at the top`);
+      // Product cards (home lead + /products/ card): 1.05 inside a clipped frame, red gradient, arrow +4 px; no size change.
+      const lead = page.locator('.feature--lead');
+      await lead.scrollIntoViewIfNeeded();
+      const before = await lead.boundingBox();
+      const hoverState = () => lead.evaluate(card => ({ img: getComputedStyle(card.querySelector('.feature-media img')).transform, wash: getComputedStyle(card.querySelector('.feature-media'), '::after').opacity,
+        arrow: getComputedStyle(card.querySelector('.more .arrow')).transform, clip: getComputedStyle(card.querySelector('.feature-media')).overflow }));
+      if (width >= 1024) {
+        await lead.hover(); await page.waitForTimeout(600);
+        const h = await hoverState();
+        assert.ok(h.img.startsWith('matrix(1.05') && h.wash === '1' && h.arrow === 'matrix(1, 0, 0, 1, 4, 0)' && h.clip === 'hidden', `${label}: lead card hover ${JSON.stringify(h)}`);
+        assert.deepEqual(await lead.boundingBox(), before, `${label}: hover does not change card size`);
+        await page.mouse.move(0, 0);
+      }
+      await lead.locator('h3 a').focus(); await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Tab'); await page.waitForTimeout(600);
+      const k = await hoverState();
+      assert.ok(k.img.startsWith('matrix(1.05') && k.wash === '1' && k.arrow === 'matrix(1, 0, 0, 1, 4, 0)', `${label}: keyboard focus gives the same card feedback ${JSON.stringify(k)}`);
+      // Section rulers: static, decorative.
+      const rulers = await page.locator('.ruled').evaluateAll(els => els.map(el => [getComputedStyle(el, '::before').pointerEvents, getComputedStyle(el, '::before').animationName]));
+      assert.deepEqual(rulers, [['none', 'none'], ['none', 'none']], `${label}: two static ruler seams + one closing ruler`);
+      assert.equal(await page.locator('.ruled--end').evaluate(el => getComputedStyle(el, '::after').content), '""');
+      // CTA: stripes run only on screen; the radar ring pulses a finite three times.
+      const cta = page.locator('section.cta');
+      const ctaAnims = () => cta.evaluate(el => el.getAnimations({ subtree: true }).map(a => ({ name: a.animationName, state: a.playState, n: a.effect.getComputedTiming().iterations })));
+      await page.evaluate(() => scrollTo(0, 0)); await page.waitForTimeout(250);
+      assert.equal((await ctaAnims()).find(a => a.name === 'cta-stripes')?.state, 'paused', `${label}: CTA stripes paused off screen`);
+      await cta.scrollIntoViewIfNeeded(); await page.waitForTimeout(250);
+      const on = await ctaAnims();
+      assert.equal(on.find(a => a.name === 'cta-stripes')?.state, 'running', `${label}: CTA stripes run in view`);
+      assert.equal(on.find(a => a.name === 'cta-radar')?.state, 'running', `${label}: radar pulse runs in view`);
+      assert.equal(await cta.evaluate(el => [getComputedStyle(el, '::before').pointerEvents, getComputedStyle(el.querySelector('.cta-primary'), '::after').pointerEvents].join()), 'none,none');
+      // News cover texture: inline SVG, no extra request.
+      const cover = page.locator('.editorial-cover').first();
+      if (await cover.count()) assert.ok((await cover.evaluate(el => getComputedStyle(el).backgroundImage)).includes('data:image/svg+xml'), `${label}: contour texture is inline SVG`);
+      await ctx.close();
+      // /products/ card.
+      if (width >= 1024) {
+        const pctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
+        const pp = await pctx.newPage(); await pp.goto(`${url}products/`);
+        const card = pp.locator('[data-interactive-card]').first(); await card.scrollIntoViewIfNeeded(); await card.hover(); await pp.waitForTimeout(600);
+        const c = await card.evaluate(el => ({ img: getComputedStyle(el.querySelector('.media img')).transform, wash: getComputedStyle(el.querySelector('.media'), '::after').opacity, clip: getComputedStyle(el.querySelector('.media')).overflow }));
+        assert.ok(c.img.startsWith('matrix(1.05') && c.wash === '1' && c.clip === 'hidden', `${label}: CardProduct hover ${JSON.stringify(c)}`);
+        await pctx.close();
+      }
+      // Reduced motion: no Phase 4 animation or transform; header still works without transitions.
+      const rctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+      const rp = await rctx.newPage(); await rp.goto(url); await rp.waitForFunction(() => !!window.bxrMotionDispose);
+      await rp.locator('section.cta').scrollIntoViewIfNeeded(); await rp.waitForTimeout(300);
+      assert.deepEqual(await rp.locator('section.cta, [data-site-header]').evaluateAll(els => els.flatMap(el => el.getAnimations({ subtree: true }).map(a => a.animationName))), [], `${label}: reduced motion — no CTA/header animation`);
+      if (width >= 1024) { await rp.locator('.feature--lead').hover(); await rp.waitForTimeout(400); assert.equal(await rp.locator('.feature--lead .feature-media img').evaluate(el => getComputedStyle(el).transform), 'none', `${label}: reduced motion — no image zoom`); }
+      await rp.evaluate(() => scrollTo(0, 300)); await rp.waitForTimeout(200);
+      assert.equal(await rp.locator('[data-site-header]').evaluate(h => h.classList.contains('is-scrolled') && getComputedStyle(h, '::before').transitionDuration), '0s', `${label}: reduced motion — header state without transition`);
+      await rctx.close();
+    }
+    // 9. Loops (one pass, then ≥ 4.5 s still), background-tab pause, the header pause control, unbroken underlines.
+    {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference', hasTouch: width < 1024 });
+      const page = await ctx.newPage(); const errors = []; page.on('pageerror', e => errors.push(e.message));
+      await page.goto(url); await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'done');
+      await page.locator('section.cta').scrollIntoViewIfNeeded(); await page.waitForTimeout(250);
+      const loops = await page.evaluate(() => document.getAnimations().filter(a => a.animationName && a.effect.getComputedTiming().iterations === Infinity).map(a => {
+        const t = a.effect.getComputedTiming(), frames = a.effect.getKeyframes(), key = f => `${f.transform ?? ''}|${f.opacity ?? ''}`;
+        let rest = 0; for (let i = 1; i < frames.length; i++) if (key(frames[i]) === key(frames[i - 1])) rest = Math.max(rest, (frames[i].computedOffset - frames[i - 1].computedOffset) * t.duration);
+        return { name: a.animationName, duration: t.duration, rest: Math.round(rest) };
+      }));
+      const want = { 'hud-sweep': 8000, 'hero-caret': 6500, 'tech-drift': 22000, 'cta-stripes': 11000, 'cta-radar': 6500 };
+      for (const [name, duration] of Object.entries(want)) {
+        const loop = loops.find(l => l.name === name);
+        assert.ok(loop && loop.duration === duration && loop.rest >= 4500, `${label}: ${name} = ${duration} ms with a ≥ 4.5 s rest ${JSON.stringify(loop)}`);
+      }
+      // Background tab: every running animation freezes, and resumes on return.
+      const running = () => page.evaluate(() => document.getAnimations().filter(a => a.playState === 'running').length);
+      assert.ok(await running() > 0);
+      const setHidden = h => page.evaluate(h => { Object.defineProperty(document, 'hidden', { value: h, configurable: true }); document.dispatchEvent(new Event('visibilitychange')); }, h);
+      await setHidden(true); assert.equal(await running(), 0, `${label}: background tab pauses all animation`);
+      await setHidden(false); assert.ok(await running() > 0, `${label}: animation resumes in the foreground`);
+      // Pause control.
+      const toggle = page.locator('.site-header [data-motion-toggle]');
+      if (width >= 1280) {
+        assert.ok(await toggle.isVisible(), `${label}: desktop pause control visible next to the language switch`);
+        const geo = await page.evaluate(() => { const b = document.querySelector('.site-header [data-motion-toggle]').getBoundingClientRect(), l = document.querySelector('.langs').getBoundingClientRect(), s = document.querySelector('.tools .icon-link').getBoundingClientRect();
+          return { w: b.width, h: b.height, right: b.right, langs: l.left, search: s.right, color: getComputedStyle(document.querySelector('.site-header [data-motion-toggle]')).color, muted: getComputedStyle(document.querySelector('.langs a:not([aria-current])')).color }; });
+        assert.ok(geo.w >= 24 && geo.h >= 24 && geo.right <= geo.langs + 0.5 && geo.right - geo.w >= geo.search - 0.5 && geo.color === geo.muted, `${label}: 24 px target in the gap, muted colour ${JSON.stringify(geo)}`);
+        // Nothing else in the header moved: compare with the same page without JS (control hidden).
+        const rects = pg => pg.evaluate(() => [...document.querySelectorAll('.site-header .logo, .nav-list > li, .tools .icon-link, .langs a, .tools .contact')].map(e => { const r = e.getBoundingClientRect(); return [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)].join(); }));
+        const ref = await browser.newContext({ viewport: { width, height: 900 }, javaScriptEnabled: false }); const rp = await ref.newPage(); await rp.goto(url);
+        assert.deepEqual(await rects(page), await rects(rp), `${label}: header items keep their positions`);
+        await ref.close();
+        await toggle.focus(); await page.keyboard.press('Enter');
+      } else {
+        assert.equal(await toggle.isVisible(), false, `${label}: no pause control on the phone header row`);
+        await page.locator('.menu-toggle').click();
+        assert.ok(await toggle.isVisible(), `${label}: pause control in the open menu`);
+        const box = await toggle.boundingBox(); assert.ok(box.width >= 44 && box.height >= 44, `${label}: 44 px target in the menu`);
+        await toggle.focus(); await page.keyboard.press('Space');
+      }
+      assert.equal(await toggle.getAttribute('aria-pressed'), 'true', `${label}: pressed = paused`);
+      assert.equal(await page.evaluate(() => document.documentElement.classList.contains('motion-off') && localStorage.getItem('bxr-motion')), 'off');
+      await page.waitForTimeout(100);
+      assert.deepEqual(await page.evaluate(() => document.getAnimations().filter(a => a.playState === 'running' && !(a instanceof CSSTransition) && a.effect?.target?.tagName !== 'VIDEO').map(a => a.animationName ?? `waapi:${a.effect?.target?.className}`)), [], `${label}: paused — no animation runs (interaction transitions excepted)`);
+      await page.goto(`${url}products/`);
+      assert.equal(await page.locator('.site-header [data-motion-toggle]').getAttribute('aria-pressed'), 'true', `${label}: pause persists across pages`);
+      assert.equal(await page.evaluate(() => document.documentElement.classList.contains('motion-off') && !document.documentElement.classList.contains('motion-ready')), true);
+      await page.goto(url); await page.waitForFunction(() => !!window.bxrMotionDispose);
+      assert.deepEqual(await page.evaluate(() => ({ motion: document.querySelector('[data-hero]').dataset.motion ?? null, count: document.querySelectorAll('.count-visual').length, opacity: getComputedStyle(document.querySelector('[data-hero] h1')).opacity })), { motion: null, count: 0, opacity: '1' }, `${label}: paused page shows the final state`);
+      if (width < 1280) await page.locator('.menu-toggle').click();
+      await page.locator('.site-header [data-motion-toggle]').click();
+      assert.equal(await page.evaluate(() => !document.documentElement.classList.contains('motion-off') && localStorage.getItem('bxr-motion')), null, `${label}: resume clears the stored choice`);
+      assert.deepEqual(errors, []);
+      // Underlines: every phrase group inside an underlined link carries the underline, with no skip-ink gaps.
+      if (width >= 1024) {
+        const broken = async () => page.evaluate(() => [...document.querySelectorAll('main a')].filter(a => getComputedStyle(a).textDecorationLine.includes('underline'))
+          .flatMap(a => [...a.querySelectorAll('.type-phrase, .type-group')].filter(g => !getComputedStyle(g).textDecorationLine.includes('underline') || getComputedStyle(g).textDecorationSkipInk !== 'none').map(() => a.textContent.trim())));
+        assert.deepEqual(await broken(), [], `${label}: resting underlines are continuous`);
+        for (const link of await page.locator('.tech-list a').all()) { await link.hover(); assert.deepEqual(await broken(), [], `${label}: hover underline is continuous on ${await link.textContent()}`); }
+      }
+      await ctx.close();
+      // System reduced motion: the control shows "paused" and cannot switch animation on.
+      const rctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+      const rp = await rctx.newPage(); await rp.goto(url); await rp.waitForFunction(() => !!window.bxrMotionDispose);
+      if (width < 1280) await rp.locator('.menu-toggle').click();
+      const rt = rp.locator('.site-header [data-motion-toggle]');
+      if (await rt.isVisible()) { await rt.click({ force: true }); assert.deepEqual([await rt.getAttribute('aria-pressed'), await rt.getAttribute('aria-disabled'), await rp.evaluate(() => localStorage.getItem('bxr-motion'))], ['true', 'true', null], `${label}: reduced motion keeps the control paused`); }
+      await rctx.close();
+      // Storage unavailable: no error, the control still works for this page.
+      const sctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
+      await sctx.addInitScript(() => Object.defineProperty(window, 'localStorage', { get() { throw new DOMException('denied', 'SecurityError'); } }));
+      const sp = await sctx.newPage(); const serr = []; sp.on('pageerror', e => serr.push(e.message));
+      await sp.goto(url); await sp.waitForFunction(() => !!window.bxrMotionDispose);
+      if (width < 1280) await sp.locator('.menu-toggle').click();
+      await sp.locator('.site-header [data-motion-toggle]').click();
+      assert.equal(await sp.evaluate(() => document.documentElement.classList.contains('motion-off')), true);
+      assert.deepEqual(serr, [], `${label}: no error without localStorage`);
+      await sctx.close();
+      // Narrow desktops: control in the header gap at 1140–1279 (tool gaps only), in the footer at 1024–1139.
+      if (width === 1440) for (const w of [1024, 1139, 1140, 1279]) {
+        const c3 = await browser.newContext({ viewport: { width: w, height: 800 }, reducedMotion: 'no-preference' });
+        const p3 = await c3.newPage(); await p3.goto(url); await p3.waitForFunction(() => !!window.bxrMotionDispose);
+        const st = await p3.evaluate(() => {
+          const vis = e => !!e && !e.hidden && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0;
+          const h = document.querySelector('.site-header [data-motion-toggle]'), f = document.querySelector('.site-footer [data-motion-toggle]'), bar = document.querySelector('.site-header .bar');
+          const b = h.getBoundingClientRect(), others = [...document.querySelectorAll('.tools .icon-link, .langs a, .tools .contact')].map(e => e.getBoundingClientRect());
+          return { header: vis(h), footer: vis(f), w: b.width, h: b.height, overlap: others.some(o => b.left < o.right - .5 && o.left < b.right - .5 && b.top < o.bottom && o.top < b.bottom),
+            overflow: bar.scrollWidth > bar.clientWidth + 1, rows: new Set([...document.querySelectorAll('.nav-list > li')].map(li => Math.round(li.getBoundingClientRect().top))).size };
+        });
+        const header = w >= 1140;
+        assert.ok(st.header === header && st.footer === !header && !st.overflow && st.rows === 1 && (!header || (st.w >= 24 && st.h >= 24 && !st.overlap)), `${lang}@${w}: pause control placement ${JSON.stringify(st)}`);
+        await c3.close();
+      }
+      // Corner fit at the other desktop widths; the left pair fades with the footage (≤ 0.15 opaque over copy).
+      if (width === 1440) for (const w of [1280, 1920]) {
+        const c2 = await browser.newContext({ viewport: { width: w, height: 900 }, reducedMotion: 'no-preference' });
+        const p2 = await c2.newPage(); await p2.goto(url); await p2.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'done');
+        const fit = await cornerFit(p2);
+        assert.ok(fit.error <= 2, `${lang}@${w}: corners match the visible footage (error ${fit.error.toFixed(1)} px)`);
+        assert.ok(fit.maxOnText <= 0.15, `${lang}@${w}: corners over copy stay ≤ 0.15 opaque (${fit.maxOnText})`);
+        await c2.close();
+      }
+    }
     cases++;
   }
-  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, key-phrase underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static.`);
+  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, no title underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static; header blur/progress (menu-safe), product-card feedback on hover + keyboard, static rulers, CTA stripes + radar on-screen only, inline-SVG news texture; HUD corners = rendered footage ±2 px at 1280/1440/1920/390, left pair ≤ 0.15 over copy; loops one pass + ≥ 4.5 s rest; background tab pauses; header pause control (desktop gap ≥ 1140 / footer 1024–1139 / mobile menu, persisted, reduced-locked, storage-safe); continuous underlines.`);
 } finally { await browser.close(); server.stop(); }

@@ -47,7 +47,6 @@ const H = `h${headingLevel}` as "h2" | "h3";
   .card { position: relative; display: flex; flex-direction: column; height: 100%; border: 1px solid var(--divider); background: var(--surface); }
   .media { overflow: hidden; aspect-ratio: 16 / 9; }
   .media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-standard) var(--ease-precise); }
-  .card:hover .media :global(img) { transform: scale(1.02); }
   .body { display: grid; gap: var(--space-1); padding: var(--card-padding); align-content: start; }
   .tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0 0 var(--space-1); padding: 0; list-style: none; }
   .title a { color: var(--ink); text-decoration: none; transition: color var(--dur-micro) var(--ease-precise); }
@@ -61,3 +60,18 @@ const H = `h${headingLevel}` as "h2" | "h3";
 </style>
 
 <style>.body { display: flex; flex-direction: column; flex: 1; } .summary { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } .more { margin-top: auto; padding-top: var(--space-2); }</style>
+<style>
+  /* Hover/keyboard feedback: image grows inside its clipped frame (no layout change), a red gradient rises from the bottom. */
+  .media { position: relative; }
+  .media::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: linear-gradient(0deg, color-mix(in srgb, var(--bxr-red) 42%, transparent), transparent 55%);
+    transition: opacity var(--dur-standard) var(--ease-precise); }
+  @media (prefers-reduced-motion: no-preference) {
+    .card:has(.title a:focus-visible) .media :global(img) { transform: scale(1.05); }
+  }
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .card:hover .media :global(img) { transform: scale(1.05); }
+  }
+  .card:hover .media::after, .card:has(.title a:focus-visible) .media::after { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .media::after { transition: none; } .card .media :global(img) { transition: none; transform: none; } }
+</style>
