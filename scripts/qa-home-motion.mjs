@@ -164,7 +164,62 @@ try {
       const t = await heroText(page); assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1']);
       await ctx.close();
     }
+    // 6. Partner statistics (home + partners page): final values in HTML, count-up only as enhancement.
+    for (const path of ['', 'company/partners/']) {
+      const page_url = `${url}${path}`, where = `${label} /${path}`;
+      const html = await (await fetch(page_url)).text();
+      const finals = [...html.matchAll(/<dd data-count[^>]*>(\d+)<\/dd>/g)].map(m => m[1]);
+      assert.equal(finals.length, 4, `${where}: four plain final values in HTML`);
+      const values = page => page.locator('[data-partner-statistics] dd').evaluateAll(dds => dds.map(dd => ({ text: dd.textContent.trim(), children: dd.children.length })));
+      const plain = finals.map(text => ({ text, children: 0 }));
+      for (const [mode, options] of [['no-JS', { javaScriptEnabled: false }], ['reduced', { reducedMotion: 'reduce' }]]) {
+        const ctx = await browser.newContext({ viewport: { width, height: 900 }, ...options });
+        const page = await ctx.newPage(); await page.goto(page_url);
+        await page.locator('[data-partner-statistics]').scrollIntoViewIfNeeded(); await page.waitForTimeout(400);
+        assert.deepEqual(await values(page), plain, `${where}: ${mode} shows the final values only`);
+        await ctx.close();
+      }
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
+      const page = await ctx.newPage(); await page.goto(page_url); await page.waitForFunction(() => !!window.bxrMotionDispose);
+      const stats = page.locator('[data-partner-statistics]');
+      if (await stats.evaluate(el => el.getBoundingClientRect().top > innerHeight * 1.1))
+        assert.equal(await stats.locator('.count-visual').count(), 0, `${where}: nothing counts before it is near the viewport`);
+      await stats.scrollIntoViewIfNeeded();
+      await page.waitForFunction(() => document.querySelectorAll('[data-partner-statistics] .count-visual').length === 4);
+      const sample = () => stats.locator('dd').evaluateAll(dds => dds.map(dd => ({
+        hidden: dd.querySelector('.count-visual')?.getAttribute('aria-hidden'), spoken: dd.querySelector('.visually-hidden')?.textContent,
+        width: dd.querySelector('.count-visual')?.getBoundingClientRect().width, font: getComputedStyle(dd).fontVariantNumeric,
+      })));
+      const samples = [];
+      for (let i = 0; i < 5; i++) { samples.push(await sample()); await page.waitForTimeout(120); }
+      for (const [i, final] of finals.entries()) {
+        const runs = samples.map(s => s[i]).filter(s => s.width !== undefined);
+        assert.ok(runs.length >= 2, `${where}: count-up observed`);
+        assert.ok(runs.every(r => r.hidden === 'true' && r.spoken === final && r.font.includes('tabular-nums')), `${where}: visual digits aria-hidden, final value spoken`);
+        assert.ok(Math.max(...runs.map(r => r.width)) - Math.min(...runs.map(r => r.width)) < 0.5, `${where}: digit width stable while counting`);
+      }
+      await page.waitForFunction(() => document.querySelectorAll('[data-partner-statistics] .count-visual').length === 0, null, { timeout: 2500 });
+      assert.deepEqual(await values(page), plain, `${where}: back to the plain final values`);
+      await page.evaluate(() => { for (let i = 0; i < 3; i++) document.dispatchEvent(new Event('astro:page-load')); scrollTo(0, 0); });
+      await stats.scrollIntoViewIfNeeded(); await page.waitForTimeout(300);
+      assert.equal(await stats.locator('.count-visual').count(), 0, `${where}: counts once, no re-binding`);
+      if (!path) {
+        // Home layout: four equal columns across the container (2×2 on phones) with 1 px dividers.
+        const geometry = await stats.evaluate(section => {
+          const dl = section.querySelector('dl').getBoundingClientRect(), container = section.closest('.container');
+          const inner = container.getBoundingClientRect().width - parseFloat(getComputedStyle(container).paddingLeft) - parseFloat(getComputedStyle(container).paddingRight);
+          const cells = [...section.querySelectorAll('dl > div')].map(d => d.getBoundingClientRect());
+          return { dl: dl.width, inner, widths: cells.map(c => Math.round(c.width)), rows: new Set(cells.map(c => Math.round(c.top))).size,
+            dividers: [...section.querySelectorAll('dl > div')].map(d => getComputedStyle(d).borderInlineStartWidth) };
+        });
+        assert.ok(Math.abs(geometry.dl - geometry.inner) < 1, `${where}: statistics fill the container (${geometry.dl} / ${geometry.inner})`);
+        assert.equal(new Set(geometry.widths).size, 1, `${where}: equal columns ${geometry.widths}`);
+        assert.equal(geometry.rows, width < 768 ? 2 : 1, `${where}: ${width < 768 ? '2×2' : 'four columns'}`);
+        assert.deepEqual(geometry.dividers, width < 768 ? ['0px', '1px', '0px', '1px'] : ['0px', '1px', '1px', '1px'], `${where}: 1 px dividers`);
+      }
+      await ctx.close();
+    }
     cases++;
   }
-  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, key-phrase underline, off-screen pause.`);
+  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, key-phrase underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout.`);
 } finally { await browser.close(); server.stop(); }
