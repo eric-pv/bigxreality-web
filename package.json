@@ -30,6 +30,7 @@
     "qa:header": "node scripts/qa-header.mjs",
     "qa:footer": "node scripts/qa-footer.mjs",
     "qa:solutions": "node scripts/qa-solutions.mjs",
+    "qa:solution-heroes": "node scripts/qa-solution-heroes.mjs",
     "qa:team": "node scripts/qa-team-page.mjs",
     "qa:company": "node scripts/qa-company.mjs",
     "qa:english": "node scripts/qa-english.mjs",

@@ -97,6 +97,7 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
   search={{ type: "solutions" }}
 >
   <PageHero
+    uniformMedia
     variant={heroPresentation("solutions", slug, !!heroReady)}
     sceneFit={heroSceneFit("solutions", slug)}
     sceneHeadroom={heroSceneHeadroom("solutions", slug)}
