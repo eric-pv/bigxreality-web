@@ -48,6 +48,7 @@ export function installMotion() {
   let resize: ResizeObserver | undefined;
   let hero: HeroRun | undefined;
   let counters: IntersectionObserver | undefined;
+  let reveals: IntersectionObserver | undefined;
   /** Running count-ups: element → restore. The server HTML always holds the final value. */
   const counting = new Map<HTMLElement, () => void>();
   const countUp = (el: HTMLElement) => {
@@ -82,6 +83,8 @@ export function installMotion() {
     loops?.disconnect();
     counters?.disconnect();
     counters = undefined;
+    reveals?.disconnect();
+    reveals = undefined;
     counting.forEach(restore => restore());
     resize?.disconnect();
     tracking?.abort();
@@ -205,6 +208,11 @@ export function installMotion() {
       }
     }, { rootMargin: '0px 0px 5% 0px' });
     main.querySelectorAll('[data-count]:not([data-counted])').forEach(el => counters!.observe(el));
+    // One-shot content reveals (flow lines, staggered lists): a class, once, just before they scroll in.
+    reveals = new IntersectionObserver(entries => {
+      for (const entry of entries) if (entry.isIntersecting) { reveals?.unobserve(entry.target); entry.target.classList.add('is-revealed'); }
+    }, { rootMargin: '0px 0px 5% 0px' });
+    main.querySelectorAll('[data-reveal]:not(.is-revealed)').forEach(el => reveals!.observe(el));
     if (animateHero) enterHero(heroRoot!);
     html.classList.remove('motion-ready');
     intersection = new IntersectionObserver(entries => {
