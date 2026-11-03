@@ -104,3 +104,10 @@ const labels = Astro.props.labels ?? ui.filter;
   .status { flex-basis: 100%; color: var(--ink-muted); min-height: 1lh; }
   @media (max-width: 767px) { .search { flex-basis: 100%; } }
 </style>
+<style>
+  /* Selected chip: small HUD corners (decorative pseudo-elements; aria-pressed and keyboard behaviour unchanged). */
+  .chip { position: relative; }
+  .chip[aria-pressed="true"]::before, .chip[aria-pressed="true"]::after { content: ""; position: absolute; width: 6px; height: 6px; border: 0 solid var(--bxr-red); pointer-events: none; }
+  .chip[aria-pressed="true"]::before { top: -3px; left: -3px; border-width: 2px 0 0 2px; }
+  .chip[aria-pressed="true"]::after { bottom: -3px; right: -3px; border-width: 0 2px 2px 0; }
+</style>
