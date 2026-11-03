@@ -260,6 +260,8 @@ export function installMotion() {
     html.classList.toggle('motion-off', off);
     storeOff(off);
     clear(); initialize();
+    // Components with their own media (the hero footage) follow the same choice.
+    document.dispatchEvent(new CustomEvent('bxr:motion-change', { detail: { off } }));
   }, { signal: events.signal });
   // A background tab pauses every CSS loop; they resume where they were.
   const syncHidden = () => html.classList.toggle('motion-tab-hidden', document.hidden);

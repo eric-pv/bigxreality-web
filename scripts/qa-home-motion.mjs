@@ -383,15 +383,18 @@ try {
       assert.equal(await toggle.getAttribute('aria-pressed'), 'true', `${label}: pressed = paused`);
       assert.equal(await page.evaluate(() => document.documentElement.classList.contains('motion-off') && localStorage.getItem('bxr-motion')), 'off');
       await page.waitForTimeout(100);
+      assert.equal(await page.evaluate(() => [...document.querySelectorAll('[data-hero] [data-clip]')].every(v => v.paused)), true, `${label}: pause also stops the hero footage`);
       assert.deepEqual(await page.evaluate(() => document.getAnimations().filter(a => a.playState === 'running' && !(a instanceof CSSTransition) && a.effect?.target?.tagName !== 'VIDEO').map(a => a.animationName ?? `waapi:${a.effect?.target?.className}`)), [], `${label}: paused — no animation runs (interaction transitions excepted)`);
       await page.goto(`${url}products/`);
       assert.equal(await page.locator('.site-header [data-motion-toggle]').getAttribute('aria-pressed'), 'true', `${label}: pause persists across pages`);
       assert.equal(await page.evaluate(() => document.documentElement.classList.contains('motion-off') && !document.documentElement.classList.contains('motion-ready')), true);
       await page.goto(url); await page.waitForFunction(() => !!window.bxrMotionDispose);
       assert.deepEqual(await page.evaluate(() => ({ motion: document.querySelector('[data-hero]').dataset.motion ?? null, count: document.querySelectorAll('.count-visual').length, opacity: getComputedStyle(document.querySelector('[data-hero] h1')).opacity })), { motion: null, count: 0, opacity: '1' }, `${label}: paused page shows the final state`);
+      assert.equal(await page.locator('[data-hero] source[src]').count(), 0, `${label}: stored pause never starts (or downloads) the footage`);
       if (width < 1280) await page.locator('.menu-toggle').click();
       await page.locator('.site-header [data-motion-toggle]').click();
       assert.equal(await page.evaluate(() => !document.documentElement.classList.contains('motion-off') && localStorage.getItem('bxr-motion')), null, `${label}: resume clears the stored choice`);
+      await page.waitForFunction(() => { const v = document.querySelector('[data-hero] [data-clip].is-on'); return v && !v.paused; }, null, { timeout: 15000 });
       assert.deepEqual(errors, []);
       // Underlines: every phrase group inside an underlined link carries the underline, with no skip-ink gaps.
       if (width >= 1024) {
