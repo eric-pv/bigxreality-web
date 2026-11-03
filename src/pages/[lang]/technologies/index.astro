@@ -11,6 +11,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { technologyMedia } from "../../../lib/technology-media";
 import { pageOgImage } from "../../../lib/og-image";
 import PageHero from "../../../components/PageHero.astro";
+import ProductImage from "../../../components/ProductImage.astro";
 export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
 const lang = Astro.params.lang as Lang;
 const content = overviewContent[lang];
@@ -29,7 +30,8 @@ const structuredData = [{ "@type": "CollectionPage", name: content.title, descri
         {TECHNOLOGY_IDS.map((id, index) => <li class:list={["technology", { live: live(id) }]} data-technology-id={id} id={id}>
           <span class="index t-tech" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
           <div class="copy"><h2 class="t-h2">{live(id) ? <a href={localePath(lang, "technologies", id)}><Text value={content.technologies[id].title} /></a> : <Text value={content.technologies[id].title} />}</h2><p><Text value={content.technologies[id].description} /></p></div>
-          {live(id) && <a class="explore" href={localePath(lang, "technologies", id)} aria-label={`${labels[lang]} · ${content.technologies[id].title}`}>{labels[lang]} <span aria-hidden="true">↗</span></a>}
+          <span class="thumb" aria-hidden="true">{technologyMedia(id, lang) ? <ProductImage src={technologyMedia(id, lang)!.src} alt="" showType={false} sizes="240px" /> : <span class="thumb-blueprint"><span class="tac-hud"><span class="tac-corner tac-tl"></span><span class="tac-corner tac-tr"></span><span class="tac-corner tac-bl"></span><span class="tac-corner tac-br"></span></span></span>}</span>
+          {live(id) && <a class="explore" href={localePath(lang, "technologies", id)} aria-label={`${labels[lang]} · ${content.technologies[id].title}`}>{labels[lang]} <span class="arrow" aria-hidden="true">↗</span></a>}
         </li>)}
       </ol>
     </div>
@@ -46,4 +48,24 @@ const structuredData = [{ "@type": "CollectionPage", name: content.title, descri
   .copy p { max-width: 46rem; color: var(--ink-muted); }
   .explore { min-height: 44px; display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--fs-small); }
   @media (max-width: 767px) { .technology { grid-template-columns: 28px minmax(0, 1fr); gap: var(--space-2); } .explore { grid-column: 2; } }
+</style>
+<style>
+  /* Tactical list: mono index; on hover or keyboard focus a red rule slides in on the left and the arrow steps out.
+     ≥ 1280 px a thumbnail of the technology's existing image fades in on the right (AI simulation, with no image yet,
+     shows a blueprint tile instead). Decorative only. */
+  .technology { position: relative; }
+  .technology::before { content: ""; position: absolute; left: -16px; top: var(--space-4); bottom: var(--space-4); width: 2px; background: var(--bxr-red); opacity: 0; transform: scaleY(.4); transform-origin: 50% 0; transition: opacity var(--dur-standard) var(--ease-precise), transform var(--dur-standard) var(--ease-precise); pointer-events: none; }
+  .index { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .arrow { display: inline-block; transition: transform var(--dur-standard) var(--ease-precise); }
+  .thumb { display: none; }
+  .technology:hover::before, .technology:focus-within::before { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: no-preference) { .technology:hover .arrow, .technology:focus-within .arrow { transform: translate(3px, -3px); } }
+  @media (min-width: 1280px) {
+    .thumb { display: block; position: absolute; right: 180px; top: 50%; width: 200px; aspect-ratio: 16 / 9; margin-top: -56px; overflow: hidden; pointer-events: none; opacity: 0; transform: translateX(8px); transition: opacity var(--dur-standard) var(--ease-precise), transform var(--dur-standard) var(--ease-precise); }
+    .technology:hover .thumb, .technology:focus-within .thumb { opacity: 1; transform: none; }
+  }
+  .thumb-blueprint { position: absolute; inset: 0; background: var(--bxr-graphite); }
+  .thumb-blueprint::before { content: ""; position: absolute; inset: 0; opacity: .12; background: var(--tac-grid-bg); }
+  .thumb-blueprint .tac-hud { --corner: 14px; }
+  @media (prefers-reduced-motion: reduce) { .technology::before, .arrow, .thumb { transition: none; } }
 </style>

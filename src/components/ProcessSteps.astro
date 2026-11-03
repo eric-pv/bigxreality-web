@@ -4,9 +4,9 @@ import Text from "./Text.astro";
 interface Props { items: { title: string; description?: string }[] }
 const { items } = Astro.props;
 ---
-<ol role="list" class="steps" style={`--cols: ${Math.min(Math.max(items.length, 2), 4)}`}>
+<ol role="list" class="steps" data-reveal style={`--cols: ${Math.min(Math.max(items.length, 2), 4)}`}>
   {items.map((s, i) => (
-    <li class="step">
+    <li class="step" style={`--i:${i}`}>
       <span class="t-tech num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
       <h3 class="t-h4"><Text value={s.title} /></h3>
       {s.description && <p class="t-muted"><Text value={s.description} /></p>}
@@ -19,4 +19,16 @@ const { items } = Astro.props;
   .num { color: var(--ink-muted); }
   @media (max-width: 1023px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 767px) { .steps { grid-template-columns: 1fr; } }
+</style>
+<style>
+  /* One-shot reveal (motion controller class): a red rule draws over each step's top line, numbers in turn. */
+  .step { position: relative; }
+  .step::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--bxr-red); pointer-events: none; }
+  .num { font-family: var(--font-mono); }
+  @media (prefers-reduced-motion: no-preference) {
+    .steps.is-revealed .step::before { animation: steps-draw 700ms var(--ease-precise) both; animation-delay: calc(var(--i) * 220ms); }
+    .steps.is-revealed .num { animation: steps-num 360ms var(--ease-precise) both; animation-delay: calc(120ms + var(--i) * 220ms); }
+  }
+  @keyframes steps-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+  @keyframes steps-num { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 </style>

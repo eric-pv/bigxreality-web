@@ -33,13 +33,18 @@ interface Props {
   imagePending?: string;
   /** Label drawn bottom-right on illustrations (情境示意圖). */
   imageBadge?: string;
+  /** Tactical decoration (HUD on images, blueprint on text-only heroes). Off for pages kept out of a redesign. */
+  decor?: boolean;
 }
-const { scenePosition = "60% 0%", sceneHeadroom = 24, sceneFit = "cover", variant = "split", breadcrumbs, breadcrumbLabel, eyebrow, kicker, title, subtitle, lead, description, image, imageCaption, imagePending, imageBadge } = Astro.props;
+const { scenePosition = "60% 0%", sceneHeadroom = 24, sceneFit = "cover", variant = "split", breadcrumbs, breadcrumbLabel, eyebrow, kicker, title, subtitle, lead, description, image, imageCaption, imagePending, imageBadge, decor = true } = Astro.props;
 const conceptBadge = imageBadge ?? (image && imagePresentation(image.src).illustration ? ({tw:"概念視覺",en:"Concept visual",jp:"コンセプトビジュアル"} as Record<string,string>)[Astro.params.lang??"en"] : undefined);
 const label = distinctLabel(eyebrow, kicker, title);
+// The hero's own focus point, as 0–1 fractions, places the visible-image box the way object-position placed the image.
+const [heroPx, heroPy] = scenePosition.split(/\s+/).map((v) => Math.min(Math.max(parseFloat(v) / 100, 0), 1));
 const sub = distinctLabel(subtitle, kicker, title);
 ---
-<section class:list={["page-hero", `hero--${variant}`]} data-theme="dark" data-hero-variant={variant} data-scene-fit={sceneFit} style={`--hero-scene-fit:${sceneFit};--hero-headroom:${sceneHeadroom}px;--hero-focus:${scenePosition}`}>
+<section class:list={["page-hero", `hero--${variant}`, { "has-decor": decor }]} data-theme="dark" data-hero-variant={variant} data-scene-fit={sceneFit} data-motion-loop={decor && image ? "" : undefined} style={`--hero-scene-fit:${sceneFit};--hero-headroom:${sceneHeadroom}px;--hero-focus:${scenePosition};--hero-px:${heroPx};--hero-py:${heroPy}`}>
+  {decor && !image && <span class="tac-blueprint" aria-hidden="true"></span>}
   <div class:list={["container", "grid", { "no-media": !image }]}>
     <div class="copy">
       <Breadcrumb items={breadcrumbs} label={breadcrumbLabel} />
@@ -53,7 +58,10 @@ const sub = distinctLabel(subtitle, kicker, title);
     </div>
     {(image) && <figure class="media">
       {image ? (
-        <ProductImage src={image.src} alt={image.alt} loading="eager" priority showType={false} sizes="(max-width: 1023px) calc(100vw - 32px), (max-width: 1439px) 70vw, 940px" />
+        <ProductImage src={image.src} alt={image.alt} loading="eager" priority showType={false} ambient={decor} sizes="(max-width: 1023px) calc(100vw - 32px), (max-width: 1439px) 70vw, 940px">
+          {decor && <span class="tac-scan hero-scan" aria-hidden="true"><span class="tac-sweep"></span></span>}
+          {decor && <span class="tac-hud hero-hud" aria-hidden="true"><span class="tac-corner tac-tl"></span><span class="tac-corner tac-tr"></span><span class="tac-corner tac-bl"></span><span class="tac-corner tac-br"></span></span>}
+        </ProductImage>
       ) : imagePending && <ImagePlaceholder label={imagePending} />}
       {image && conceptBadge && <span class="badge t-caption">{conceptBadge}</span>}
       {image && imageCaption && <figcaption class="t-tech"><Text value={imageCaption} /></figcaption>}
@@ -119,4 +127,39 @@ const sub = distinctLabel(subtitle, kicker, title);
  .hero--scene .media :global(.asset-frame) { height:auto; }
  .hero--equipment .media,.hero--interface .media { margin-top:12px; }
 }
+</style>
+<style>
+/* Tactical sub-page hero (decor). ProductImage's .asset-fit is the image's exact visible box; the image inside gets
+   soft edges (its own mask), the blurred backdrop of the same image fades out at the frame edge, so there is no hard
+   box. HUD corners and the scan layer sit in .asset-fit, unmasked except on the copy side, where the corners fade with
+   the image's own edge (same gradient, same box). Text-only heroes get a static blueprint grid and tick scale. */
+.has-decor { --hero-fade-copy:linear-gradient(90deg,transparent,#000 14%); --hero-img-x:linear-gradient(90deg,transparent,#000 14%,#000 97%,transparent);
+  --hero-img-y:linear-gradient(180deg,transparent,#000 6%,#000 94%,transparent); }
+.has-decor .media :global(.asset-frame) { background:transparent; aspect-ratio:16 / 9; height:auto; }
+.has-decor .media :global(.asset-fit img), .has-decor.hero--scene[data-scene-fit] .media :global(.asset-fit img) { position:absolute; inset:0; top:0; right:0; width:100%; height:100%; max-width:none; max-height:none; aspect-ratio:auto;
+  mask-image:var(--hero-img-x),var(--hero-img-y) !important; mask-composite:intersect; }
+.hero-scan, .hero-hud { z-index:1; }
+.has-decor .hero-hud { mask-image:var(--hero-fade-copy); }
+/* The hero decides the fit (contain unless a cover context below), not the image's catalogue default. */
+.has-decor .media :global(.asset-fit) { inset:auto; width:min(100cqw, 100cqh * var(--ar)); height:min(100cqh, 100cqw / var(--ar));
+  left:calc((100cqw - min(100cqw, 100cqh * var(--ar))) * var(--px)); top:calc((100cqh - min(100cqh, 100cqw / var(--ar))) * var(--py)); }
+.has-decor.hero--scene .media :global(.asset-frame) { --px:var(--hero-px) !important; --py:var(--hero-py) !important; }
+/* split = 16:9 frame; the image keeps its own fit (inline object-fit wins there), so only cover images fill it. */
+.has-decor.hero--split .media :global(.is-cover .asset-fit) { inset:0; width:auto; height:auto; left:0; top:0; }
+@media(min-width:1024px) {
+ .has-decor.hero--equipment .media :global(.asset-frame), .has-decor.hero--interface .media :global(.asset-frame) { max-height:480px; }
+ /* Scene: the image is the hero background. Cover fills it under the copy gradient; contain sits in the right 70 %. */
+ .has-decor.hero--scene .media :global(.asset-frame) { aspect-ratio:auto; height:100%; --ambient-edge-x:linear-gradient(90deg,transparent,#000 20%,#000 97%,transparent); }
+ .has-decor.hero--scene[data-scene-fit="cover"] .media :global(.asset-fit) { inset:0; width:auto; height:auto; left:0; top:0; }
+ .has-decor.hero--scene[data-scene-fit="cover"] .media :global(.asset-fit img) { mask-image:none !important; }
+ .has-decor.hero--scene[data-scene-fit="cover"] .hero-hud { mask-image:var(--tac-fade-start); }
+ .has-decor.hero--scene[data-scene-fit="contain"] .media :global(.asset-frame) { position:absolute; right:0; top:16px; width:70%; height:calc(100% - 32px); --px:1 !important; --py:.5 !important; }
+ .has-decor.hero--scene[data-scene-fit="contain"] { --hero-img-x:linear-gradient(90deg,transparent,#000 20%,#000 97%,transparent); --hero-fade-copy:linear-gradient(90deg,transparent,#000 20%); }
+}
+@media(max-width:1023px) {
+ .has-decor { --hero-img-x:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); --hero-img-y:linear-gradient(180deg,transparent,#000 4%,#000 96%,transparent); }
+ .has-decor .hero-hud { mask-image:none; }
+}
+.has-decor.page-hero:has(> .tac-blueprint) { position:relative; isolation:isolate; overflow:hidden; }
+.has-decor > .tac-blueprint ~ .container { position:relative; z-index:1; }
 </style>

@@ -34,7 +34,7 @@ const H = `h${headingLevel}` as "h2" | "h3";
 <article data-interactive-card class="card">
   <div class="media">
     {resolvedImage
-      ? <ProductImage src={resolvedImage.src} alt={resolvedImage.alt} />
+      ? <ProductImage src={resolvedImage.src} alt={resolvedImage.alt} ambient />
       : <ImagePlaceholder label={ui.imagePending} />}
   </div>
   <div class="body">

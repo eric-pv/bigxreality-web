@@ -1,0 +1,94 @@
+/*
+ * Tactical HUD visual language, shared by the home page and the sub-pages.
+ * Decoration only: every element using these classes is aria-hidden and has no pointer events.
+ * Animated properties are transform / opacity / clip-path only. Loops run only inside a
+ * [data-motion-loop][data-in-view] ancestor (set by src/scripts/micro-interactions.ts), never under
+ * prefers-reduced-motion, and the site-wide pause (:root.motion-off, motion.css) stops all of them.
+ */
+:root {
+  /* Faint grid + scanline texture over footage or images. */
+  --tac-scan-bg: repeating-linear-gradient(180deg, var(--bxr-white) 0 1px, transparent 1px 4px),
+    linear-gradient(90deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(180deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 64px 64px;
+  /* Blueprint grid: 128 px major, 32 px minor lines. */
+  --tac-grid-bg: linear-gradient(90deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 128px 128px,
+    linear-gradient(180deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 128px 128px,
+    linear-gradient(90deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(180deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 32px 32px;
+  /* Red ruler with minor (16 px) and major (128 px) ticks. */
+  --tac-ruler-bg: linear-gradient(var(--bxr-red), var(--bxr-red)) 0 0 / 100% 1px no-repeat,
+    repeating-linear-gradient(90deg, var(--bxr-red) 0 1px, transparent 1px 16px) 0 0 / 100% 4px no-repeat,
+    repeating-linear-gradient(90deg, var(--bxr-red) 0 1px, transparent 1px 128px) 0 0 / 100% 7px no-repeat;
+  /* Diagonal stripes; one period along x is 22px / sin 45° ≈ 31.11px. */
+  --tac-stripes-bg: repeating-linear-gradient(135deg, var(--bxr-white) 0 2px, transparent 2px 22px);
+  /* Haze: background-colour gradient plus faint grain (inline SVG noise, no image file). */
+  --tac-fog-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 160px 160px,
+    linear-gradient(90deg, color-mix(in srgb, var(--bxr-black) 60%, transparent), color-mix(in srgb, var(--bxr-black) 25%, transparent) 60%, transparent);
+  /* Horizontal fade used by soft-edged media and by the HUD corners that sit next to copy. */
+  --tac-fade-start: linear-gradient(90deg, transparent, #000 30%);
+}
+
+/* HUD frame: four red L corners on an element's exact box. */
+.tac-hud { position: absolute; inset: 0; pointer-events: none; overflow: hidden; --corner: 28px; --corner-gap: 16px; }
+.tac-hud--fade-start { mask-image: var(--tac-fade-start); }
+.tac-corner { position: absolute; width: var(--corner); height: var(--corner); border: 0 solid var(--bxr-red); }
+.tac-tl { top: 0; left: 0; border-width: 2px 0 0 2px; --from: translate(calc(-1 * var(--corner-gap)), calc(-1 * var(--corner-gap))); }
+.tac-tr { top: 0; right: 0; border-width: 2px 2px 0 0; --from: translate(var(--corner-gap), calc(-1 * var(--corner-gap))); }
+.tac-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; --from: translate(calc(-1 * var(--corner-gap)), var(--corner-gap)); }
+.tac-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; --from: translate(var(--corner-gap), var(--corner-gap)); }
+@media (max-width: 767px) { .tac-hud { --corner: 14px; --corner-gap: 8px; } }
+
+/* Scan layer: texture (opacity 0.06) and a red sweep line (8 s: 3 s pass, 5 s rest). */
+.tac-scan { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.tac-scan::before { content: ""; position: absolute; inset: 0; opacity: .06; background: var(--tac-scan-bg); }
+.tac-sweep { position: absolute; inset: 0; transform: translateY(-100%); }
+.tac-sweep::after { content: ""; position: absolute; inset: auto 0 0; height: 56px; border-bottom: 1px solid color-mix(in srgb, var(--bxr-red) 55%, transparent);
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--bxr-red) 10%, transparent)); }
+
+/* Haze over a soft media edge; itself masked so it has no edge. */
+.tac-fog { position: absolute; pointer-events: none; background: var(--tac-fog-bg);
+  mask-image: linear-gradient(90deg, transparent, #000 25%, #000 50%, transparent), linear-gradient(180deg, transparent, #000 20%, #000 80%, transparent); mask-composite: intersect; }
+
+/* Static blueprint decoration for text-only dark headers: grid on the right, a tick scale in the corner. */
+.tac-blueprint { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.tac-blueprint::before { content: ""; position: absolute; inset: 0; opacity: .07; background: var(--tac-grid-bg);
+  mask-image: linear-gradient(90deg, transparent 35%, #000 70%), linear-gradient(180deg, transparent, #000 25%, #000 75%, transparent); mask-composite: intersect; }
+.tac-blueprint::after { content: ""; position: absolute; right: var(--margin); bottom: var(--space-4); width: min(28vw, 280px); height: 48px; opacity: .5;
+  background: var(--tac-ruler-bg), linear-gradient(var(--bxr-red), var(--bxr-red)) 100% 0 / 1px 100% no-repeat,
+    repeating-linear-gradient(180deg, var(--bxr-red) 0 1px, transparent 1px 12px) 100% 0 / 6px 100% no-repeat;
+  transform: scaleY(-1); }
+@media (max-width: 767px) {
+  .tac-blueprint::before { mask-image: linear-gradient(90deg, transparent 60%, #000), linear-gradient(180deg, transparent, #000 25%, #000 75%, transparent); }
+  .tac-blueprint::after { width: 40vw; height: 32px; bottom: var(--space-2); }
+}
+
+/* Section seam ruler (static). */
+.tac-ruler { position: relative; }
+.tac-ruler::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 7px; pointer-events: none; opacity: .55; background: var(--tac-ruler-bg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tac-sweep { animation: hud-sweep 8s linear infinite paused; }
+  [data-motion-loop][data-in-view] .tac-sweep { animation-play-state: running; }
+}
+@media (prefers-reduced-motion: reduce) { .tac-sweep { display: none; } }
+
+@keyframes hud-lock { from { opacity: 0; transform: var(--from); } to { opacity: 1; transform: none; } }
+/* 8 s: 3 s top-to-bottom pass, then hidden for 5 s. */
+@keyframes hud-sweep { 0% { transform: translateY(-100%); opacity: 1; } 37.5% { transform: translateY(0); opacity: 1; } 40% { transform: translateY(0); opacity: 0; } 40.1%, 100% { transform: translateY(-100%); opacity: 0; } }
+/* 22 s: 6 s drift → 5 s rest → 6 s drift back → 5 s rest. */
+@keyframes tech-drift { 0%, 100% { transform: translate(-6vmax, -4vmax); } 27.3%, 50% { transform: translate(8vmax, 5vmax); } 77.3% { transform: translate(-6vmax, -4vmax); } }
+/* A red beam once around a 1 px frame (rotating conic layer masked to the border). */
+@keyframes tech-beam {
+  0% { opacity: 0; transform: translate(-50%, -50%) rotate(0deg); }
+  12%, 82% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes tech-glitch {
+  0% { transform: translateX(-2px); clip-path: inset(15% 0 50% 0); }
+  25% { transform: translateX(2px); clip-path: inset(55% 0 8% 0); }
+  50% { transform: translateX(-1px); clip-path: inset(0 0 65% 0); }
+  75% { transform: translateX(1px); clip-path: inset(40% 0 20% 0); }
+  100% { transform: none; clip-path: none; }
+}
+@keyframes cta-stripes { 0% { transform: translateX(0); } 54.5%, 100% { transform: translateX(31.11px); } }
+@keyframes cta-radar { 0% { opacity: .7; transform: scale(1); } 23%, 100% { opacity: 0; transform: scale(1.18, 1.45); } }

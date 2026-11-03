@@ -20,9 +20,9 @@ interface Props {
 const { steps, stepLabel, needPrefix, fallbackLabel, badge } = Astro.props;
 const ICONS = ["target", "team", "variation", "review"] as const;
 ---
-<ol role="list" class="flow" style={`--cols: ${Math.min(steps.length, 4)}`}>
+<ol role="list" class="flow" data-reveal style={`--cols: ${Math.min(steps.length, 4)}`}>
   {steps.map((s, i) => (
-    <li class="step">
+    <li class="step" style={`--i:${i}`}>
       <span class="node"><FlowIcon name={s.icon ?? ICONS[i % ICONS.length]} /></span>
       <div class="body">
         <p class="t-label label"><Text value={stepLabel} /> {String(i + 1).padStart(2, "0")}</p>
@@ -46,4 +46,14 @@ const ICONS = ["target", "team", "variation", "review"] as const;
     .step { grid-template-columns: 64px 1fr; gap: var(--space-3); align-items: start; }
     .step::before { top: 64px; bottom: calc(-1 * var(--space-5)); left: 31px; right: auto; width: 2px; height: auto; background: repeating-linear-gradient(180deg, var(--bxr-ash) 0 6px, transparent 6px 12px); }
   }
+</style>
+<style>
+  /* One-shot reveal (class from the motion controller): each connector draws left → right, icons in turn. */
+  @media (prefers-reduced-motion: no-preference) {
+    .flow.is-revealed .step::before { animation: flow-draw 700ms var(--ease-precise) both; animation-delay: calc(200ms + var(--i) * 220ms); }
+    .flow.is-revealed .node { animation: flow-node 420ms var(--ease-precise) both; animation-delay: calc(var(--i) * 220ms); }
+  }
+  @keyframes flow-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+  @keyframes flow-node { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+  @media (max-width: 1023px) { @keyframes flow-draw { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } } }
 </style>
