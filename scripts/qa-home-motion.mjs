@@ -219,7 +219,44 @@ try {
       }
       await ctx.close();
     }
+    // 7. Core technologies: blueprint grid + slow glow (paused off screen); one-shot beam/glitch on hover or keyboard focus.
+    {
+      const animationsIn = (page, sel) => page.locator(sel).evaluateAll(els => els.flatMap(el => el.getAnimations({ subtree: true }).map(a => ({ name: a.animationName, state: a.playState, iterations: a.effect.getComputedTiming().iterations }))));
+      const glow = page => page.locator('section.tech').evaluate(el => el.getAnimations({ subtree: true }).find(a => a.animationName === 'tech-drift')?.playState);
+      const reduced = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+      let page = await reduced.newPage(); await page.goto(url);
+      await page.locator('section.tech').scrollIntoViewIfNeeded(); await page.locator('.tech-list li').first().hover(); await page.waitForTimeout(150);
+      assert.deepEqual(await animationsIn(page, 'section.tech'), [], `${label}: reduced motion — no tech animations`);
+      assert.equal(await page.locator('.tech-list .beam').first().evaluate(el => getComputedStyle(el).display), 'none');
+      await reduced.close();
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
+      page = await ctx.newPage(); await page.goto(url); await page.waitForFunction(() => !!window.bxrMotionDispose);
+      // Decorations: aria-hidden, no pointer events, tab order = the four technology links only.
+      assert.equal(await page.locator('.tech-list .beam[aria-hidden="true"]').count(), 4);
+      assert.deepEqual(await page.locator('.tech-list .beam').evaluateAll(els => [...new Set(els.map(el => getComputedStyle(el).pointerEvents))]), ['none']);
+      assert.deepEqual(await page.locator('section.tech').evaluate(el => [getComputedStyle(el, '::before').pointerEvents, getComputedStyle(el, '::after').pointerEvents]), ['none', 'none']);
+      assert.equal(await page.locator('.tech-list').evaluate(el => [...el.querySelectorAll('*')].filter(n => n.tabIndex >= 0 && !n.closest('[aria-hidden="true"]')).length), 4, `${label}: tab order unchanged`);
+      assert.equal(await glow(page), 'paused', `${label}: glow paused off screen`);
+      await page.locator('section.tech').scrollIntoViewIfNeeded(); await page.waitForTimeout(250);
+      assert.equal(await glow(page), 'running', `${label}: glow drifts in view`);
+      const card = n => `.tech-list li:nth-child(${n})`;
+      const oneShot = async (sel, how) => {
+        const list = await animationsIn(page, sel);
+        const beam = list.find(a => a.name === 'tech-beam'), glitch = list.find(a => a.name === 'tech-glitch');
+        assert.ok(beam && glitch, `${label}: ${how} plays beam + glitch (${JSON.stringify(list)})`);
+        assert.equal(beam.iterations, 1, `${label}: beam runs once`); assert.equal(glitch.iterations, 1, `${label}: glitch runs once`);
+      };
+      if (width >= 1024) { await page.locator(card(1)).hover(); await page.waitForTimeout(60); await oneShot(card(1), 'hover'); await page.mouse.move(0, 0); }
+      // Keyboard: focus the link in card 2 with Tab from the card 1 link.
+      await page.locator(`${card(1)} a`).focus(); await page.keyboard.press('Tab');
+      assert.equal(await page.evaluate(() => document.activeElement.closest('li')?.matches('.tech-list li:nth-child(2)')), true);
+      await page.waitForTimeout(60); await oneShot(card(2), 'keyboard focus');
+      await page.waitForTimeout(1400);
+      assert.deepEqual((await animationsIn(page, card(2))).filter(a => a.state === 'running'), [], `${label}: no looping after one pass`);
+      assert.equal(await page.locator(`${card(2)} .beam > span`).evaluate(el => getComputedStyle(el).opacity), '0', `${label}: beam hidden at rest`);
+      await ctx.close();
+    }
     cases++;
   }
-  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, key-phrase underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout.`);
+  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, key-phrase underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static.`);
 } finally { await browser.close(); server.stop(); }

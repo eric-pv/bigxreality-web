@@ -136,7 +136,7 @@ const website = {
     </section>
 
     <!-- 04 Core technologies -->
-    <section class="section block tech" data-theme="dark" aria-labelledby="h-tech">
+    <section class="section block tech" data-theme="dark" aria-labelledby="h-tech" data-motion-loop>
       <div class="container tech-grid">
         <div class="tech-copy">
           <p class="t-label eyebrow">{copy.technologies.eyebrow}</p>
@@ -147,6 +147,7 @@ const website = {
         <ol role="list" class="tech-list">
           {homeConfig.featuredTechnologies.map((id, i) => (
             <li>
+              <span class="beam" aria-hidden="true"><span></span></span>
               <span class="t-tech num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
               <h3 class="t-h4"><a href={technologyHref(id, lang)}><Text value={technologyName(id, lang)} /></a></h3>
               <p class="t-small muted-dark"><Text value={copy.technologies.items[id]} /></p>
@@ -302,4 +303,51 @@ const website = {
 <style>
 .feature-media { position:relative;min-height:0;flex-shrink:0; }
 .feature-media :global(.asset-frame) { position:absolute;inset:0; }
+</style>
+<style>
+/* 04 Core technologies: blueprint grid + slow glow (decorative, behind the content). */
+.tech { position: relative; isolation: isolate; overflow: hidden; }
+.tech::before, .tech::after { content: ""; position: absolute; pointer-events: none; z-index: -1; }
+.tech::before { inset: 0; opacity: .07;
+  background: linear-gradient(90deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 128px 128px,
+    linear-gradient(180deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 128px 128px,
+    linear-gradient(90deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(180deg, var(--bxr-white) 1px, transparent 1px) 0 0 / 32px 32px;
+  mask-image: radial-gradient(ellipse at 60% 50%, black, transparent 80%); }
+.tech::after { width: 70vmax; height: 70vmax; left: 30%; top: 50%; margin: -35vmax 0 0 -35vmax; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--bxr-red) 10%, transparent), transparent 62%); }
+/* Tech cards: a red beam runs once around the frame on hover or keyboard focus; the number glitches once. */
+.tech-list li { position: relative; }
+.beam { position: absolute; inset: 0; padding: 1px; overflow: hidden; pointer-events: none;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.beam > span { position: absolute; left: 50%; top: 50%; width: 160%; aspect-ratio: 1; opacity: 0; transform: translate(-50%, -50%);
+  background: conic-gradient(from 0deg, transparent 0 70%, color-mix(in srgb, var(--bxr-red) 40%, transparent) 86%, var(--bxr-red) 96%, transparent); }
+.num { display: inline-block; justify-self: start; }
+@media (prefers-reduced-motion: no-preference) {
+  .tech::after { animation: tech-drift 24s ease-in-out infinite alternate paused; }
+  .tech[data-in-view]::after { animation-play-state: running; }
+  .tech-list li:has(a:focus-visible) .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
+  .tech-list li:has(a:focus-visible) .num { animation: tech-glitch 180ms steps(1) 1; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .tech-list li:hover .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
+  .tech-list li:hover .num { animation: tech-glitch 180ms steps(1) 1; }
+}
+@keyframes tech-drift { from { transform: translate(-6vmax, -4vmax); } to { transform: translate(8vmax, 5vmax); } }
+@keyframes tech-beam {
+  0% { opacity: 0; transform: translate(-50%, -50%) rotate(0deg); }
+  12%, 82% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes tech-glitch {
+  0% { transform: translateX(-2px); clip-path: inset(15% 0 50% 0); }
+  25% { transform: translateX(2px); clip-path: inset(55% 0 8% 0); }
+  50% { transform: translateX(-1px); clip-path: inset(0 0 65% 0); }
+  75% { transform: translateX(1px); clip-path: inset(40% 0 20% 0); }
+  100% { transform: none; clip-path: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .beam { display: none; }
+  .tech::after, .num { animation: none !important; transform: none !important; }
+}
 </style>
