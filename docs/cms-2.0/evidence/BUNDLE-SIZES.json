@@ -1,0 +1,26 @@
+{
+  "tool": "esbuild 0.25.12; browser esm; es2022; gzip",
+  "rows": [
+    {
+      "name": "tiptap",
+      "minifiedJsBytes": 466576,
+      "gzipBytes": 146848,
+      "entry": "export {Editor} from '@tiptap/core';export {default as StarterKit} from '@tiptap/starter-kit';export {default as Image} from '@tiptap/extension-image';export {Markdown} from '@tiptap/markdown';",
+      "excludes": "Application shell, toolbar UI, styles, uploads, i18n, sanitization and GitHub adapter; not whole-admin size"
+    },
+    {
+      "name": "blocknote",
+      "minifiedJsBytes": 611976,
+      "gzipBytes": 191334,
+      "entry": "export {BlockNoteEditor} from '@blocknote/core';",
+      "excludes": "Application shell, toolbar UI, styles, uploads, i18n, sanitization and GitHub adapter; not whole-admin size"
+    },
+    {
+      "name": "milkdown",
+      "minifiedJsBytes": 368810,
+      "gzipBytes": 112680,
+      "entry": "export {Editor} from '@milkdown/kit/core';export {commonmark} from '@milkdown/kit/preset/commonmark';",
+      "excludes": "Application shell, toolbar UI, styles, uploads, i18n, sanitization and GitHub adapter; not whole-admin size"
+    }
+  ]
+}

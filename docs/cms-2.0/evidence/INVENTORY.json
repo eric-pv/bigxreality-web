@@ -1,0 +1,310 @@
+{
+  "baseline": "6f5935c68a1e530dc40c37a49ba96b9dedcc4803",
+  "collections": [
+    {
+      "name": "news-tw",
+      "label": "最新消息 · 繁體中文（TW）",
+      "folder": "src/content/news/tw",
+      "files": 0
+    },
+    {
+      "name": "news-en",
+      "label": "最新消息 · English（EN）",
+      "folder": "src/content/news/en",
+      "files": 0
+    },
+    {
+      "name": "news-jp",
+      "label": "最新消息 · 日本語（JP）",
+      "folder": "src/content/news/jp",
+      "files": 0
+    },
+    {
+      "name": "insights-tw",
+      "label": "技術專欄 · 繁體中文（TW）",
+      "folder": "src/content/insights/tw",
+      "files": 0
+    },
+    {
+      "name": "insights-en",
+      "label": "技術專欄 · English（EN）",
+      "folder": "src/content/insights/en",
+      "files": 0
+    },
+    {
+      "name": "insights-jp",
+      "label": "技術專欄 · 日本語（JP）",
+      "folder": "src/content/insights/jp",
+      "files": 0
+    },
+    {
+      "name": "products-tw",
+      "label": "產品介紹 · 繁體中文（TW）",
+      "folder": "src/content/products/tw",
+      "files": 0
+    },
+    {
+      "name": "products-en",
+      "label": "產品介紹 · English（EN）",
+      "folder": "src/content/products/en",
+      "files": 0
+    },
+    {
+      "name": "products-jp",
+      "label": "產品介紹 · 日本語（JP）",
+      "folder": "src/content/products/jp",
+      "files": 0
+    },
+    {
+      "name": "solutions-tw",
+      "label": "解決方案 · 繁體中文（TW）",
+      "folder": "src/content/solutions/tw",
+      "files": 0
+    },
+    {
+      "name": "solutions-en",
+      "label": "解決方案 · English（EN）",
+      "folder": "src/content/solutions/en",
+      "files": 0
+    },
+    {
+      "name": "solutions-jp",
+      "label": "解決方案 · 日本語（JP）",
+      "folder": "src/content/solutions/jp",
+      "files": 0
+    },
+    {
+      "name": "case-studies-tw",
+      "label": "案例研究 · 繁體中文（TW）",
+      "folder": "src/content/case-studies/tw",
+      "files": 0
+    },
+    {
+      "name": "case-studies-en",
+      "label": "案例研究 · English（EN）",
+      "folder": "src/content/case-studies/en",
+      "files": 0
+    },
+    {
+      "name": "case-studies-jp",
+      "label": "案例研究 · 日本語（JP）",
+      "folder": "src/content/case-studies/jp",
+      "files": 0
+    },
+    {
+      "name": "pages-tw",
+      "label": "固定頁面 · 繁體中文（TW）",
+      "folder": null,
+      "files": 13
+    },
+    {
+      "name": "pages-en",
+      "label": "固定頁面 · English（EN）",
+      "folder": null,
+      "files": 13
+    },
+    {
+      "name": "pages-jp",
+      "label": "固定頁面 · 日本語（JP）",
+      "folder": null,
+      "files": 13
+    },
+    {
+      "name": "tags-tw",
+      "label": "文章標籤 · 繁體中文（TW）",
+      "folder": "src/content/tags/tw",
+      "files": 0
+    },
+    {
+      "name": "tags-en",
+      "label": "文章標籤 · English（EN）",
+      "folder": "src/content/tags/en",
+      "files": 0
+    },
+    {
+      "name": "tags-jp",
+      "label": "文章標籤 · 日本語（JP）",
+      "folder": "src/content/tags/jp",
+      "files": 0
+    },
+    {
+      "name": "investor-items-tw",
+      "label": "投資人資訊 · 繁體中文（TW）",
+      "folder": "src/content/investor-items/tw",
+      "files": 0
+    },
+    {
+      "name": "investor-items-en",
+      "label": "投資人資訊 · English（EN）",
+      "folder": "src/content/investor-items/en",
+      "files": 0
+    },
+    {
+      "name": "investor-items-jp",
+      "label": "投資人資訊 · 日本語（JP）",
+      "folder": "src/content/investor-items/jp",
+      "files": 0
+    },
+    {
+      "name": "news-media",
+      "label": "新聞共用圖集與影片（進階）",
+      "folder": null,
+      "files": 1
+    },
+    {
+      "name": "typography",
+      "label": "多語文字換行",
+      "folder": null,
+      "files": 1
+    },
+    {
+      "name": "cms-test",
+      "label": "隔離測試文章（不會顯示於官網）",
+      "folder": "cms-test-content",
+      "files": 0
+    }
+  ],
+  "cmsCollectionCount": 27,
+  "markdownFiles": 186,
+  "uniqueEntries": 62,
+  "byCollection": {
+    "news": {
+      "tw": 30,
+      "en": 30,
+      "jp": 30
+    },
+    "pages": {
+      "tw": 14,
+      "en": 14,
+      "jp": 14
+    },
+    "products": {
+      "tw": 12,
+      "en": 12,
+      "jp": 12
+    },
+    "solutions": {
+      "tw": 6,
+      "en": 6,
+      "jp": 6
+    }
+  },
+  "fieldOccurrences": 2504,
+  "rawIdentifierOccurrences": 1227,
+  "uniqueRawIdentifiers": [
+    "answer",
+    "application",
+    "approach",
+    "approval",
+    "approved",
+    "area",
+    "attachments",
+    "audience",
+    "author",
+    "background",
+    "blocks",
+    "brochure",
+    "button",
+    "capabilities",
+    "caption",
+    "cardHeadline",
+    "cardLabel",
+    "cards",
+    "casesIntro",
+    "challenge",
+    "challenges",
+    "client",
+    "closing",
+    "code",
+    "components",
+    "content",
+    "cta",
+    "ctaLabel",
+    "dateCandidate",
+    "dateNote",
+    "dateReviewNote",
+    "dateSource",
+    "dateUnconfirmed",
+    "demo",
+    "deployment",
+    "disclosure",
+    "domain",
+    "endDate",
+    "englishName",
+    "event",
+    "eyebrow",
+    "faq",
+    "flow",
+    "focus",
+    "gallery",
+    "group",
+    "headline",
+    "heroDescription",
+    "heroImage",
+    "highlights",
+    "howItWorks",
+    "icon",
+    "image",
+    "imageCaption",
+    "images",
+    "importNote",
+    "integratedOps",
+    "intro",
+    "item",
+    "items",
+    "kind",
+    "label",
+    "lead",
+    "location",
+    "module",
+    "need",
+    "note",
+    "notes",
+    "ogImage",
+    "outcomes",
+    "parent",
+    "personnel",
+    "pillars",
+    "product",
+    "products",
+    "question",
+    "ratio",
+    "related",
+    "relatedCaseStudies",
+    "relatedInsights",
+    "relatedNews",
+    "relatedProducts",
+    "relatedSolutions",
+    "results",
+    "scenarios",
+    "setupTime",
+    "solution",
+    "source",
+    "sourceCategory",
+    "sourceNote",
+    "startDate",
+    "status",
+    "steps",
+    "subheadline",
+    "substitute",
+    "tagline",
+    "tags",
+    "technologyTags",
+    "term",
+    "type",
+    "url",
+    "value",
+    "values"
+  ],
+  "assets": 46,
+  "assetBytes": 8324210,
+  "mediaRecords": 30,
+  "approvedCovers": 0,
+  "registryUsageLinks": 0,
+  "limitations": [
+    "Remote PR states/roles/deployed SHA are not inferred from local files",
+    "translationStatus is a declared state, not a translation quality assessment",
+    "No editorial content is rewritten or saved",
+    "Asset-use completeness excludes dynamically constructed arbitrary strings"
+  ]
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "name": "@tiptap/markdown",
+    "version": "3.32.2",
+    "license": "MIT",
+    "unpackedBytes": 493708,
+    "integrity": "sha512-sV/TZS8CC37FV+XinyfI5RyVVKvF2FuPu1efSKTdk3itPY1+a6Sxa+4G63ylLn1TCiKr19d7CuJ4yXmqJmJJ/w==",
+    "repository": {
+      "url": "https://github.com/ueberdosis/tiptap",
+      "type": "git",
+      "directory": "packages/markdown"
+    },
+    "source": "https://registry.npmjs.org/@tiptap%2Fmarkdown/latest",
+    "checkedDate": "2026-11-03"
+  },
+  {
+    "name": "@blocknote/core",
+    "version": "0.57.0",
+    "license": "MPL-2.0",
+    "unpackedBytes": 4928176,
+    "integrity": "sha512-zoNZwhhP/eL8T3aSZ4+lKJ/2Xs3aJYrF21AC3BiEgvb8hKX4VDAXq7iOMWTvgIcrDh05fpWfX7ZRqbXVc+3SKg==",
+    "repository": {
+      "url": "git+https://github.com/TypeCellOS/BlockNote.git",
+      "type": "git",
+      "directory": "packages/core"
+    },
+    "source": "https://registry.npmjs.org/@blocknote%2Fcore/latest",
+    "checkedDate": "2026-11-03"
+  },
+  {
+    "name": "@milkdown/kit",
+    "version": "7.23.0",
+    "license": "MIT",
+    "unpackedBytes": 121709,
+    "integrity": "sha512-WNu4cZXY33l224gLuyRWaQdPDotsPJ3yBn0+FGobaqH6aEt8G/QxIC1MIUV8Uxj07lMP6aIfaW4ilNLTjAMCmw==",
+    "repository": {
+      "url": "git+https://github.com/Milkdown/milkdown.git",
+      "type": "git",
+      "directory": "packages/milkdown"
+    },
+    "source": "https://registry.npmjs.org/@milkdown%2Fkit/latest",
+    "checkedDate": "2026-11-03"
+  },
+  {
+    "name": "@sveltia/cms",
+    "version": "0.257.0",
+    "license": "MIT",
+    "unpackedBytes": 60417304,
+    "integrity": "sha512-9+MxZM3DzLILW0p7atCzX0dBz1qznW9aQzVThzpbiL7DZtzJzTLTRfklLxPkR/srke83c5N9dZvIJiSg64Cf9Q==",
+    "repository": {
+      "url": "git+https://github.com/sveltia/sveltia-cms.git",
+      "type": "git"
+    },
+    "source": "https://registry.npmjs.org/@sveltia%2Fcms/latest",
+    "checkedDate": "2026-11-03"
+  }
+]
