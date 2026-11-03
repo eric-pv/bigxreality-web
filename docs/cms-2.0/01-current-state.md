@@ -18,7 +18,7 @@ flowchart LR
   Templates --> Build
 ```
 
-CI 與 deploy 的設定可從 `.github/workflows/ci.yml` 確認，但無法只從它推定真人登入、GitHub 分支規則、某次 PR 或線上部署已成功。舊 EmDash／Cloudflare integration 仍有 build 耦合，這次不清除、不啟用、不新增服務。
+CI 與 deploy 的設定可從 `.github/workflows/ci.yml` 確認，但無法只從它推定真人登入、GitHub 分支規則、某次 PR 或線上部署已成功。完稿時 main 的 PR #72 已移除 EmDash／Cloudflare integration、adapter／Worker／相關依賴，現在為 Astro static output、dist／dist-fixtures；只有 markdown／fixtures 來源。這是他人已合併的變更，本規劃不重新引入、不重複清除。外部服務／資料是否已退役仍不能由程式推定。
 
 ## Collections 與位置
 

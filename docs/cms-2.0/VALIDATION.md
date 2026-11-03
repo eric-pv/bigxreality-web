@@ -37,3 +37,5 @@ Native app 初輪因 POC 設定／測試 selector 未完成而失敗，修正為
 沒有更換 /admin、設定或依賴；沒有修改正文、路徑、registry、binary、前台設計、schema、SEO 或 Actions；沒有合併 PR／部署；沒有新 server、CMS、資料庫或付費服務。根 build／TypeScript／全站 QA 不作為本次新 CMS 的能力證明：正式程式未變，Phase 0 使用針對性的隔離測試。後續切換必須執行完整既有 QA 與真人驗收。
 
 官方網站文件 403，改以可讀官方固定版 source／registry／套件 API 驗證，詳 REFERENCES。Phase 0 交付後停止正式 CMS 開發，待管理者確認。
+
+完稿期間 main 已合併 #73 與 #72；同步到 eed1fbb 後重跑只讀盤點，Markdown／媒體數量與原始 bytes 不變。最新 main 的獨立驗證 Build、219 files 型別檢查與 46 個單元測試亦通過；不將此與 CMS2 未開發的 UI 混為一談。

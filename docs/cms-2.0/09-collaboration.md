@@ -2,7 +2,7 @@
 
 ## 本次保護
 
-分支從 main 6f5935c 建立；只新增 docs/cms-2.0。沒有修改 AGENTS、正式 config／generator／schema、root package／lock、Actions、src/content、registry 或媒體，也沒有將本地試驗 ref 推遠端。
+分支從 main 6f5935c 建立，完稿時同步到 eed1fbb，保留他人已合併的 #73 視覺與 #72 靜態建置；本 PR 相對 main 只新增 docs/cms-2.0。沒有修改 AGENTS、正式 config／generator／schema、root package／lock、Actions、src/content、registry 或媒體，也沒有將本地試驗 ref 推遠端。
 
 所有盤點綁定 SHA。管理者同步上傳的新聞照片／影片、Claude 的子頁視覺改版仍可繼續；不能因快照未列素材就重命名、補寫、覆蓋或刪除。提出文件 PR 前再確認 remote main 動態，但不為了數字追新而將他人檔案複製回舊版。
 

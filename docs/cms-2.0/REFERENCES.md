@@ -4,7 +4,7 @@
 
 ## 專案來源
 
-所有現況與數量固定於 main `6f5935c68a1e530dc40c37a49ba96b9dedcc4803`。重要程式：src/content.config.ts、scripts/sveltia/generate.mjs／schema.mjs／check.mjs／qa-browser.mjs、public/admin/index.html／bootstrap.js／value-tools.js、src/lib/content.ts／news-media.ts／news-video.ts、src/components/ArticleDetail.astro／Prose.astro／NewsGallery.astro／NewsVideos.astro、.github/workflows/ci.yml。
+初始調查 main `6f5935c68a1e530dc40c37a49ba96b9dedcc4803`，完稿同步 `eed1fbbdcd1bc17ba139318610934e313ae3de3f` 並重跑盤點。#72 移除舊建置耦合、#73 子頁樣式均保留；內容與媒體 snapshot 相同。重要程式：src/content.config.ts、scripts/sveltia/generate.mjs／schema.mjs／check.mjs／qa-browser.mjs、public/admin/index.html／bootstrap.js／value-tools.js、src/lib/content.ts／news-media.ts／news-video.ts、src/components/ArticleDetail.astro／Prose.astro／NewsGallery.astro／NewsVideos.astro、.github/workflows/ci.yml。
 
 ## Sveltia 固定版官方原始碼
 
