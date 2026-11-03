@@ -36,7 +36,8 @@ const currentSub: string | undefined = currentResource ?? currentCompany;
 const entries = navigation(lang);
 const langNames: Record<Lang, string> = { en: "English", tw: "繁體中文", jp: "日本語" };
 ---
-<header class="site-header" data-theme={theme}>
+<header class="site-header" data-theme={theme} data-site-header>
+  <span class="read-progress" aria-hidden="true"></span>
   <div class="container bar">
     <a class="logo" href={localePath(lang)} aria-label={ui.logoHome}><Logo theme={theme} /></a>
 
@@ -288,4 +289,19 @@ const langNames: Record<Lang, string> = { en: "English", tw: "繁體中文", jp:
     :global(.no-js) .menu { display: flex; position: static; padding: 0; }
   }
   :global(html.menu-open) { overflow: hidden; }
+</style>
+<style>
+  /* Scrolled state + reading progress (src/scripts/micro-interactions.ts sets .is-scrolled and --read).
+     Two background layers so only opacity changes: a solid one that fades out after ~40 px of scroll,
+     and a translucent one whose blur is switched on only while scrolled (iOS cost). backdrop-filter sits on a
+     pseudo-element, never on the header, so the fixed mobile menu keeps the viewport as its containing block. */
+  .site-header { background: transparent; isolation: isolate; }
+  .site-header::before, .site-header::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+  .site-header::after { background: color-mix(in srgb, var(--surface) 82%, transparent); }
+  .site-header::before { background: var(--surface); transition: opacity var(--feedback-duration, 180ms) var(--ease-precise); }
+  .site-header.is-scrolled:not(.is-open)::before { opacity: 0; }
+  .site-header.is-scrolled:not(.is-open)::after { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  .read-progress { position: absolute; inset: 0 0 auto; height: 2px; z-index: 1; pointer-events: none; background: var(--bxr-red);
+    transform: scaleX(var(--read, 0)); transform-origin: 0 50%; }
+  @media (prefers-reduced-motion: reduce) { .site-header::before { transition: none; } }
 </style>

@@ -93,7 +93,7 @@ const website = {
     </section>
 
     <!-- 03 Featured products -->
-    <section class="section section--alt block" aria-labelledby="h-products">
+    <section class="section section--alt block ruled ruled--end" aria-labelledby="h-products">
       <div class="container">
         <SectionHead id="h-products" eyebrow={copy.products.eyebrow} title={ui.homeSections.products} description={copy.products.description} />
         <div class="showcase">
@@ -108,7 +108,7 @@ const website = {
                 <p class="t-small t-muted"><Text value={lead.title} /></p>
                 <h3 class="t-h3"><a href={lead.href}><Text value={lead.name} /></a></h3>
                 <p class="t-small t-muted"><Text value={lead.description} /></p>
-                <p class="more" aria-hidden="true"><Text value={copy.products.more} /> →</p>
+                <p class="more" aria-hidden="true"><Text value={copy.products.more} /> <span class="arrow">→</span></p>
               </div>
             </article>
           )}
@@ -158,7 +158,7 @@ const website = {
     </section>
 
     <!-- 05 Solutions -->
-    <section class="section block" aria-labelledby="h-solutions">
+    <section class="section block ruled" aria-labelledby="h-solutions">
       <div class="container">
         <SectionHead id="h-solutions" eyebrow={copy.solutions.eyebrow} title={ui.nav.solutions} description={copy.solutions.description} viewAll={{ href: localePath(lang, "solutions"), label: copy.solutions.viewAll }} />
         <ul role="list" class="solutions">
@@ -184,7 +184,7 @@ const website = {
     <LatestNews lang={lang} items={news} copy={copy.news} viewAllHref={localePath(lang, "news")} />
 
     <!-- 08 Contact -->
-    <section class="cta" aria-labelledby="h-cta">
+    <section class="cta" aria-labelledby="h-cta" data-motion-loop>
       <div class="container cta-inner">
         <div class="cta-copy">
           <h2 class="t-h2" id="h-cta"><Text value={copy.cta.title} /></h2>
@@ -217,7 +217,6 @@ const website = {
   :global(.section--alt) .feature { background: var(--bxr-white); }
   .feature-media { overflow: hidden; aspect-ratio: 16 / 9; }
   .feature-media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-standard) var(--ease-precise); }
-  .feature:hover .feature-media :global(img) { transform: scale(1.02); }
   .feature-media:has(:global(.placeholder)) { aspect-ratio: auto; }
   .feature-body { display: grid; gap: var(--space-1); padding: var(--card-padding); align-content: start; }
   .feature h3 a { color: var(--ink); text-decoration: none; }
@@ -349,5 +348,51 @@ const website = {
 @media (prefers-reduced-motion: reduce) {
   .beam { display: none; }
   .tech::after, .num { animation: none !important; transform: none !important; }
+}
+</style>
+<style>
+/* 03 Featured product cards: same feedback as CardProduct; the lead card's arrow steps 4 px right. */
+.feature-media::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: linear-gradient(0deg, color-mix(in srgb, var(--bxr-red) 42%, transparent), transparent 55%);
+  transition: opacity var(--dur-standard) var(--ease-precise); }
+.more .arrow { display: inline-block; transition: transform var(--dur-standard) var(--ease-precise); }
+.feature:hover .feature-media::after, .feature:has(h3 a:focus-visible) .feature-media::after { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .feature:has(h3 a:focus-visible) .feature-media :global(img) { transform: scale(1.05); }
+  .feature:has(h3 a:focus-visible) .more .arrow { transform: translateX(4px); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .feature:hover .feature-media :global(img) { transform: scale(1.05); }
+  .feature:hover .more .arrow { transform: translateX(4px); }
+}
+
+/* Section seams (white / grey / graphite): a thin red ruler with minor and major ticks. Static decoration. */
+.ruled { position: relative; }
+.ruled::before, .ruled--end::after { content: ""; position: absolute; left: 0; right: 0; height: 7px; pointer-events: none; opacity: .55;
+  background: linear-gradient(var(--bxr-red), var(--bxr-red)) 0 0 / 100% 1px no-repeat,
+    repeating-linear-gradient(90deg, var(--bxr-red) 0 1px, transparent 1px 16px) 0 0 / 100% 4px no-repeat,
+    repeating-linear-gradient(90deg, var(--bxr-red) 0 1px, transparent 1px 128px) 0 0 / 100% 7px no-repeat; }
+.ruled::before { top: 0; }
+.ruled--end::after { bottom: 0; transform: scaleY(-1); }
+
+/* 08 CTA: slow diagonal stripes (opacity 0.05) and a radar ring on the main button, both only while on screen. */
+.cta { position: relative; isolation: isolate; overflow: hidden; }
+.cta::before { content: ""; position: absolute; inset: 0 -48px 0 -48px; z-index: -1; pointer-events: none; opacity: .05;
+  background: repeating-linear-gradient(135deg, var(--bxr-white) 0 2px, transparent 2px 22px); }
+.cta-primary { position: relative; }
+.cta-primary::after { content: ""; position: absolute; inset: -1px; border: 1px solid var(--bxr-white); border-radius: inherit; pointer-events: none; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  /* One stripe period along x is 22px / sin 45° ≈ 31.11px, so the loop is seamless. */
+  .cta::before { animation: cta-stripes 12s linear infinite paused; }
+  .cta[data-in-view]::before { animation-play-state: running; }
+  /* Three pulses each time the band comes into view, then still (finite, < 10 s). */
+  .cta[data-in-view] .cta-primary::after { animation: cta-radar 3s var(--ease-precise) 3; }
+}
+@keyframes cta-stripes { from { transform: translateX(0); } to { transform: translateX(31.11px); } }
+@keyframes cta-radar { 0% { opacity: .7; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.18, 1.45); } }
+@media (prefers-reduced-motion: reduce) {
+  .feature-media::after, .more .arrow { transition: none; }
+  .feature .feature-media :global(img), .more .arrow { transform: none !important; }
+  .cta::before, .cta-primary::after { animation: none !important; }
 }
 </style>

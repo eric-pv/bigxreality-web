@@ -256,7 +256,89 @@ try {
       assert.equal(await page.locator(`${card(2)} .beam > span`).evaluate(el => getComputedStyle(el).opacity), '0', `${label}: beam hidden at rest`);
       await ctx.close();
     }
+    // 8. Phase 4: header scroll state + progress, product-card feedback, section rulers, CTA loops, news cover texture.
+    {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference', hasTouch: width < 1024 });
+      const page = await ctx.newPage(); await page.goto(url); await page.waitForFunction(() => !!window.bxrMotionDispose);
+      const header = page.locator('[data-site-header]');
+      const headerState = () => header.evaluate(h => ({ scrolled: h.classList.contains('is-scrolled'), solid: getComputedStyle(h, '::before').opacity,
+        blur: getComputedStyle(h, '::after').backdropFilter, own: getComputedStyle(h).backdropFilter, read: Number(getComputedStyle(h).getPropertyValue('--read') || 0) }));
+      let st = await headerState();
+      assert.deepEqual([st.scrolled, st.solid, st.read], [false, '1', 0], `${label}: header solid at top`);
+      assert.equal(await header.locator('.read-progress').getAttribute('aria-hidden'), 'true');
+      assert.equal(await header.locator('.read-progress').evaluate(el => getComputedStyle(el).pointerEvents), 'none');
+      await page.evaluate(() => scrollTo(0, 120)); await page.waitForTimeout(400);
+      st = await headerState();
+      assert.ok(st.scrolled && st.solid === '0' && st.blur.includes('blur') && st.own === 'none', `${label}: translucent blurred header after 40 px ${JSON.stringify(st)}`);
+      await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight)); await page.waitForTimeout(300);
+      assert.ok((await headerState()).read > 0.99, `${label}: progress reaches the end`);
+      if (width < 1024) {
+        // Mobile menu: opaque header and a fixed panel still anchored to the viewport.
+        await page.evaluate(() => scrollTo(0, 400)); await page.waitForTimeout(200);
+        await page.locator('.menu-toggle').click();
+        const open = await page.evaluate(() => { const h = document.querySelector('[data-site-header]'), m = document.querySelector('#site-menu').getBoundingClientRect();
+          return { solid: getComputedStyle(h, '::before').opacity, blur: getComputedStyle(h, '::after').backdropFilter, top: Math.round(m.top), bottom: Math.round(m.bottom), header: Math.round(h.getBoundingClientRect().bottom) }; });
+        await page.waitForTimeout(250);
+        const settled = await header.evaluate(h => getComputedStyle(h, '::before').opacity);
+        assert.ok(settled === '1' && open.blur === 'none' && Math.abs(open.top - open.header) <= 1 && open.bottom === 900, `${label}: open menu keeps an opaque header and viewport-fixed panel ${JSON.stringify(open)}`);
+        await page.locator('.menu-toggle').click();
+      }
+      await page.evaluate(() => scrollTo(0, 0)); await page.waitForTimeout(250);
+      assert.equal((await headerState()).scrolled, false, `${label}: back to solid at the top`);
+      // Product cards (home lead + /products/ card): 1.05 inside a clipped frame, red gradient, arrow +4 px; no size change.
+      const lead = page.locator('.feature--lead');
+      await lead.scrollIntoViewIfNeeded();
+      const before = await lead.boundingBox();
+      const hoverState = () => lead.evaluate(card => ({ img: getComputedStyle(card.querySelector('.feature-media img')).transform, wash: getComputedStyle(card.querySelector('.feature-media'), '::after').opacity,
+        arrow: getComputedStyle(card.querySelector('.more .arrow')).transform, clip: getComputedStyle(card.querySelector('.feature-media')).overflow }));
+      if (width >= 1024) {
+        await lead.hover(); await page.waitForTimeout(600);
+        const h = await hoverState();
+        assert.ok(h.img.startsWith('matrix(1.05') && h.wash === '1' && h.arrow === 'matrix(1, 0, 0, 1, 4, 0)' && h.clip === 'hidden', `${label}: lead card hover ${JSON.stringify(h)}`);
+        assert.deepEqual(await lead.boundingBox(), before, `${label}: hover does not change card size`);
+        await page.mouse.move(0, 0);
+      }
+      await lead.locator('h3 a').focus(); await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Tab'); await page.waitForTimeout(600);
+      const k = await hoverState();
+      assert.ok(k.img.startsWith('matrix(1.05') && k.wash === '1' && k.arrow === 'matrix(1, 0, 0, 1, 4, 0)', `${label}: keyboard focus gives the same card feedback ${JSON.stringify(k)}`);
+      // Section rulers: static, decorative.
+      const rulers = await page.locator('.ruled').evaluateAll(els => els.map(el => [getComputedStyle(el, '::before').pointerEvents, getComputedStyle(el, '::before').animationName]));
+      assert.deepEqual(rulers, [['none', 'none'], ['none', 'none']], `${label}: two static ruler seams + one closing ruler`);
+      assert.equal(await page.locator('.ruled--end').evaluate(el => getComputedStyle(el, '::after').content), '""');
+      // CTA: stripes run only on screen; the radar ring pulses a finite three times.
+      const cta = page.locator('section.cta');
+      const ctaAnims = () => cta.evaluate(el => el.getAnimations({ subtree: true }).map(a => ({ name: a.animationName, state: a.playState, n: a.effect.getComputedTiming().iterations })));
+      await page.evaluate(() => scrollTo(0, 0)); await page.waitForTimeout(250);
+      assert.equal((await ctaAnims()).find(a => a.name === 'cta-stripes')?.state, 'paused', `${label}: CTA stripes paused off screen`);
+      await cta.scrollIntoViewIfNeeded(); await page.waitForTimeout(250);
+      const on = await ctaAnims();
+      assert.equal(on.find(a => a.name === 'cta-stripes')?.state, 'running', `${label}: CTA stripes run in view`);
+      assert.equal(on.find(a => a.name === 'cta-radar')?.n, 3, `${label}: radar pulse is finite`);
+      assert.equal(await cta.evaluate(el => [getComputedStyle(el, '::before').pointerEvents, getComputedStyle(el.querySelector('.cta-primary'), '::after').pointerEvents].join()), 'none,none');
+      // News cover texture: inline SVG, no extra request.
+      const cover = page.locator('.editorial-cover').first();
+      if (await cover.count()) assert.ok((await cover.evaluate(el => getComputedStyle(el).backgroundImage)).includes('data:image/svg+xml'), `${label}: contour texture is inline SVG`);
+      await ctx.close();
+      // /products/ card.
+      if (width >= 1024) {
+        const pctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
+        const pp = await pctx.newPage(); await pp.goto(`${url}products/`);
+        const card = pp.locator('[data-interactive-card]').first(); await card.scrollIntoViewIfNeeded(); await card.hover(); await pp.waitForTimeout(600);
+        const c = await card.evaluate(el => ({ img: getComputedStyle(el.querySelector('.media img')).transform, wash: getComputedStyle(el.querySelector('.media'), '::after').opacity, clip: getComputedStyle(el.querySelector('.media')).overflow }));
+        assert.ok(c.img.startsWith('matrix(1.05') && c.wash === '1' && c.clip === 'hidden', `${label}: CardProduct hover ${JSON.stringify(c)}`);
+        await pctx.close();
+      }
+      // Reduced motion: no Phase 4 animation or transform; header still works without transitions.
+      const rctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+      const rp = await rctx.newPage(); await rp.goto(url); await rp.waitForFunction(() => !!window.bxrMotionDispose);
+      await rp.locator('section.cta').scrollIntoViewIfNeeded(); await rp.waitForTimeout(300);
+      assert.deepEqual(await rp.locator('section.cta, [data-site-header]').evaluateAll(els => els.flatMap(el => el.getAnimations({ subtree: true }).map(a => a.animationName))), [], `${label}: reduced motion — no CTA/header animation`);
+      if (width >= 1024) { await rp.locator('.feature--lead').hover(); await rp.waitForTimeout(400); assert.equal(await rp.locator('.feature--lead .feature-media img').evaluate(el => getComputedStyle(el).transform), 'none', `${label}: reduced motion — no image zoom`); }
+      await rp.evaluate(() => scrollTo(0, 300)); await rp.waitForTimeout(200);
+      assert.equal(await rp.locator('[data-site-header]').evaluate(h => h.classList.contains('is-scrolled') && getComputedStyle(h, '::before').transitionDuration), '0s', `${label}: reduced motion — header state without transition`);
+      await rctx.close();
+    }
     cases++;
   }
-  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, key-phrase underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static.`);
+  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, key-phrase underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static; header blur/progress (menu-safe), product-card feedback on hover + keyboard, static rulers, CTA stripes on-screen only + finite radar, inline-SVG news texture.`);
 } finally { await browser.close(); server.stop(); }

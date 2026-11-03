@@ -253,6 +253,24 @@ export function installMotion() {
     const group = (event.target as Element).closest(selector);
     if (group) { intersection?.unobserve(group); group.classList.remove('motion-enter'); }
   }, { signal: events.signal });
+  // Header: scrolled state after 40 px and a reading-progress bar. One passive listener, rAF-throttled;
+  // it only writes a class and a custom property used by transform, so no layout work per frame.
+  let headerFrame = 0;
+  const updateHeader = () => {
+    headerFrame = 0;
+    const header = document.querySelector<HTMLElement>('[data-site-header]');
+    if (!header) return;
+    const root = document.scrollingElement ?? html, max = root.scrollHeight - innerHeight;
+    header.classList.toggle('is-scrolled', scrollY > 40);
+    header.style.setProperty('--read', max > 0 ? Math.min(Math.max(scrollY / max, 0), 1).toFixed(4) : '0');
+  };
+  const queueHeader = () => { if (!headerFrame) headerFrame = requestAnimationFrame(updateHeader); };
+  window.addEventListener('scroll', queueHeader, { passive: true, signal: events.signal });
+  window.addEventListener('resize', queueHeader, { passive: true, signal: events.signal });
+  document.addEventListener('astro:page-load', queueHeader, { signal: events.signal });
+  window.addEventListener('pageshow', queueHeader, { signal: events.signal });
+  events.signal.addEventListener('abort', () => cancelAnimationFrame(headerFrame));
+  queueHeader();
   preference.addEventListener('change', () => { clear(); initialize(); }, { signal: events.signal });
   window.addEventListener('pagehide', clear, { signal: events.signal });
   window.addEventListener('pageshow', event => {
