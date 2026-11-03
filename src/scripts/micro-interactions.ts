@@ -172,7 +172,9 @@ export function installMotion() {
     for (const button of document.querySelectorAll<HTMLButtonElement>('[data-motion-toggle]')) {
       button.hidden = false;
       button.setAttribute('aria-pressed', String(motionOff()));
-      if (preference.matches) button.setAttribute('aria-disabled', 'true'); else button.removeAttribute('aria-disabled');
+      // Under system reduced motion the control is locked; its note explains why (a description, not part of the name).
+      if (preference.matches) { button.setAttribute('aria-disabled', 'true'); if (button.dataset.noteId) button.setAttribute('aria-describedby', button.dataset.noteId); }
+      else { button.removeAttribute('aria-disabled'); button.removeAttribute('aria-describedby'); }
     }
   };
   const initialize = () => {

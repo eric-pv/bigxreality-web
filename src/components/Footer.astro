@@ -18,8 +18,6 @@ import Text from "./Text.astro";
 interface Props { lang: Lang; hidePending?: boolean }
 const { lang, hidePending = false } = Astro.props;
 const ui = getUi(lang);
-/* Pause-control copy from the UI dictionary; the key name shows until the owner supplies the text. */
-const t = (key: "motionToggle" | "motionToggleMenu" | "motionReducedNote") => ((ui as unknown as Record<string, unknown>)[key] as string | undefined) ?? key;
 const year = new Date().getFullYear();
 const menu = navigation(lang);
 // Only links whose page is built: a draft legal page (e.g. privacy under review) is left out.
@@ -100,13 +98,13 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
   <div class="container copyright t-caption">
     <p>© {year} <Text value={holder} /> <Text value={ui.footer.rights} /></p>
     <!-- Pause animations, 1024–1139 px only (the header has no room for a 24 px target at those widths). -->
-    <button type="button" class="motion-toggle-footer" data-motion-toggle aria-pressed="false" hidden>
+    <button type="button" class="motion-toggle-footer" data-motion-toggle data-note-id="motion-note-footer" aria-pressed="false" hidden>
       <svg class="i-pause" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 3h2.5v10H4zM9.5 3H12v10H9.5z" fill="currentColor" /></svg>
       <svg class="i-play" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4.5 2.5l9 5.5-9 5.5z" fill="currentColor" /></svg>
-      <span class="visually-hidden">{t("motionToggle")}</span>
-      <span aria-hidden="true">{t("motionToggleMenu")}</span>
-      <span class="visually-hidden motion-toggle-note">{t("motionReducedNote")}</span>
+      <span class="visually-hidden">{ui.motionToggle}</span>
+      <span aria-hidden="true">{ui.motionToggleMenu}</span>
     </button>
+    <span id="motion-note-footer" hidden>{ui.motionReducedNote}</span>
   </div>
 </footer>
 
@@ -186,5 +184,4 @@ details.group { width: auto; }
   .motion-toggle-footer .i-play, .motion-toggle-footer[aria-pressed="true"] .i-pause { display: none; }
   .motion-toggle-footer[aria-pressed="true"] .i-play { display: block; }
   .motion-toggle-footer[aria-disabled="true"] { cursor: default; }
-  .motion-toggle-footer:not([aria-disabled="true"]) .motion-toggle-note { display: none; }
 </style>

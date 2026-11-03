@@ -35,8 +35,6 @@ const ui = getUi(lang);
 const currentSub: string | undefined = currentResource ?? currentCompany;
 const entries = navigation(lang);
 const langNames: Record<Lang, string> = { en: "English", tw: "繁體中文", jp: "日本語" };
-/* Copy for the pause control comes from the UI dictionary; until the owner supplies it, the key name shows. */
-const t = (key: "motionToggle" | "motionToggleMenu" | "motionReducedNote") => ((ui as unknown as Record<string, unknown>)[key] as string | undefined) ?? key;
 ---
 <header class="site-header" data-theme={theme} data-site-header>
   <span class="read-progress" aria-hidden="true"></span>
@@ -96,13 +94,13 @@ const t = (key: "motionToggle" | "motionToggleMenu" | "motionReducedNote") => ((
             ))}
           </ul>
           <!-- Pause animations (WCAG 2.2.2). Wired by src/scripts/micro-interactions.ts; hidden without JS, where nothing loops. -->
-          <button type="button" class="motion-toggle" data-motion-toggle aria-pressed="false" hidden>
+          <button type="button" class="motion-toggle" data-motion-toggle data-note-id="motion-note-header" aria-pressed="false" hidden>
             <svg class="i-pause" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 3h2.5v10H4zM9.5 3H12v10H9.5z" fill="currentColor" /></svg>
             <svg class="i-play" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4.5 2.5l9 5.5-9 5.5z" fill="currentColor" /></svg>
-            <span class="visually-hidden">{t("motionToggle")}</span>
-            <span class="motion-toggle-menu" aria-hidden="true">{t("motionToggleMenu")}</span>
-            <span class="visually-hidden motion-toggle-note">{t("motionReducedNote")}</span>
+            <span class="visually-hidden">{ui.motionToggle}</span>
+            <span class="motion-toggle-menu" aria-hidden="true">{ui.motionToggleMenu}</span>
           </button>
+          <span id="motion-note-header" hidden>{ui.motionReducedNote}</span>
         </div>
         <a class="btn btn--secondary btn--sm contact" href={localePath(lang, "contact")}><Text value={ui.contact} /></a>
       </div>
@@ -328,7 +326,6 @@ const t = (key: "motionToggle" | "motionToggleMenu" | "motionReducedNote") => ((
   .motion-toggle .i-play, .motion-toggle[aria-pressed="true"] .i-pause { display: none; }
   .motion-toggle[aria-pressed="true"] .i-play { display: block; }
   .motion-toggle[aria-disabled="true"] { cursor: default; }
-  .motion-toggle:not([aria-disabled="true"]) .motion-toggle-note { display: none; }
   @media (min-width: 1140px) {
     .motion-toggle { position: absolute; right: 100%; top: 50%; width: 24px; height: 24px; margin-top: -12px; }
     .motion-toggle-menu { display: none; }

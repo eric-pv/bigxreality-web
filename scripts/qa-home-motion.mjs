@@ -5,6 +5,8 @@
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright-core';
 import { startPreview, CHROMIUM } from './lib/serve.mjs';
+import { readFileSync } from 'node:fs';
+const UI = Object.fromEntries(['tw', 'en', 'jp'].map(l => [l, JSON.parse(readFileSync(`src/content/ui/${l}.json`, 'utf8'))]));
 
 const server = await startPreview(4411), browser = await chromium.launch({ executablePath: CHROMIUM });
 const LANGS = ['tw', 'en', 'jp'], WIDTHS = [1440, 390];
@@ -436,6 +438,36 @@ try {
         assert.ok(st.header === header && st.footer === !header && !st.overflow && st.rows === 1 && (!header || (st.w >= 24 && st.h >= 24 && !st.overlap)), `${lang}@${w}: pause control placement ${JSON.stringify(st)}`);
         await c3.close();
       }
+      // Pause-control copy: name = motionToggle, visible label = motionToggleMenu and part of the name (WCAG 2.5.3),
+      // single line and untruncated in the 390 px menu and the 1024–1139 px footer; reduced-motion note is a description.
+      if (width === 1440) for (const [w, where] of [[1440, 'header'], [1100, 'footer'], [390, 'menu']]) {
+        const c4 = await browser.newContext({ viewport: { width: w, height: 844 }, reducedMotion: 'no-preference', hasTouch: w < 1024 });
+        const p4 = await c4.newPage(); await p4.goto(url); await p4.waitForFunction(() => !!window.bxrMotionDispose);
+        if (where === 'menu') await p4.locator('.menu-toggle').click();
+        const btn = p4.locator(where === 'footer' ? '.site-footer [data-motion-toggle]' : '.site-header [data-motion-toggle]');
+        if (where === 'footer') await btn.scrollIntoViewIfNeeded();
+        const snap = await btn.ariaSnapshot();
+        const name = snap.match(/button "([^"]*)"/)?.[1];
+        assert.equal(name, UI[lang].motionToggle, `${lang} ${where}: accessible name = motionToggle (${snap})`);
+        if (where !== 'header') {
+          const label = await btn.evaluate(b => { const v = [...b.querySelectorAll('[aria-hidden="true"]')].find(e => e.tagName === 'SPAN' && e.offsetWidth > 0);
+            return { text: v.textContent, lines: v.getClientRects().length, tall: v.getBoundingClientRect().height > parseFloat(getComputedStyle(v).fontSize) * 1.8, cut: v.scrollWidth > v.clientWidth + 1 || b.getBoundingClientRect().right > innerWidth };
+          });
+          assert.equal(label.text, UI[lang].motionToggleMenu, `${lang} ${where}: visible label = motionToggleMenu`);
+          assert.ok(name.includes(label.text), `${lang} ${where}: visible label is part of the accessible name (2.5.3)`);
+          assert.ok(label.lines === 1 && !label.tall && !label.cut, `${lang} ${where}: label on one line, not truncated ${JSON.stringify(label)}`);
+        }
+        assert.equal(await btn.getAttribute('aria-describedby'), null);
+        await c4.close();
+        const r4 = await browser.newContext({ viewport: { width: w, height: 844 }, reducedMotion: 'reduce', hasTouch: w < 1024 });
+        const q4 = await r4.newPage(); await q4.goto(url); await q4.waitForFunction(() => !!window.bxrMotionDispose);
+        if (where === 'menu') await q4.locator('.menu-toggle').click();
+        const rb = q4.locator(where === 'footer' ? '.site-footer [data-motion-toggle]' : '.site-header [data-motion-toggle]');
+        const note = await rb.evaluate(b => { const id = b.getAttribute('aria-describedby'); return id && document.getElementById(id)?.textContent; });
+        assert.equal(note, UI[lang].motionReducedNote, `${lang} ${where}: reduced-motion note is the button's description`);
+        assert.equal((await rb.ariaSnapshot()).match(/button "([^"]*)"/)?.[1], UI[lang].motionToggle, `${lang} ${where}: name unchanged under reduced motion`);
+        await r4.close();
+      }
       // Corner fit at the other desktop widths; the left pair fades with the footage (≤ 0.15 opaque over copy).
       if (width === 1440) for (const w of [1280, 1920]) {
         const c2 = await browser.newContext({ viewport: { width: w, height: 900 }, reducedMotion: 'no-preference' });
@@ -448,5 +480,5 @@ try {
     }
     cases++;
   }
-  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, no title underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static; header blur/progress (menu-safe), product-card feedback on hover + keyboard, static rulers, CTA stripes + radar on-screen only, inline-SVG news texture; HUD corners = rendered footage ±2 px at 1280/1440/1920/390, left pair ≤ 0.15 over copy; loops one pass + ≥ 4.5 s rest; background tab pauses; header pause control (desktop gap ≥ 1140 / footer 1024–1139 / mobile menu, persisted, reduced-locked, storage-safe); continuous underlines.`);
+  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, no title underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static; header blur/progress (menu-safe), product-card feedback on hover + keyboard, static rulers, CTA stripes + radar on-screen only, inline-SVG news texture; HUD corners = rendered footage ±2 px at 1280/1440/1920/390, left pair ≤ 0.15 over copy; loops one pass + ≥ 4.5 s rest; background tab pauses; header pause control (desktop gap ≥ 1140 / footer 1024–1139 / mobile menu, persisted, reduced-locked, storage-safe); continuous underlines; pause-control copy (name ⊇ visible label, one line, reduced note as description).`);
 } finally { await browser.close(); server.stop(); }
