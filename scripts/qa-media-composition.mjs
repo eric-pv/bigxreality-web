@@ -21,7 +21,7 @@ try{
   for(const frame of await page.locator('.news-card .media, .feature-media, [data-block="latest-news"] .media').all()){
    const box=await frame.boundingBox();if(box&&box.height>0)assert.ok(Math.abs(box.width/box.height-16/9)<.035,`${route} @${width}: 16:9 thumbnail`);
   }
-  for(const hero of await page.locator('.hero--scene img,.hero--equipment img,.hero--interface img').all())assert.equal(await hero.evaluate(img=>getComputedStyle(img).objectFit),'contain');
+  for(const hero of await page.locator('.hero--scene img,.hero--equipment img,.hero--interface img').all())assert.equal(await hero.evaluate(img=>getComputedStyle(img).objectFit),await hero.evaluate(img=>img.closest('[data-hero-uniform]')?'cover':'contain'));
   assert.equal(await page.locator('main .brand-default:visible').count(),0,route+' repeated BXR placeholder');
   checked++;
  } console.log(`checked width ${width}: ${checked} page/viewports`); }
