@@ -108,6 +108,11 @@ h1, h2, h3, h4 { text-wrap: balance; overflow-wrap: break-word; word-break: norm
 
 /* Links: light = Text Red + underline; dark = white + underline; hover removes underline (P.12) */
 a { color: var(--link); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+/* Underlines run unbroken under a link's whole text. The typesetting groups (.type-phrase / .type-group) are
+   inline-blocks, and CSS never propagates a decoration into atomic inlines, so they inherit it explicitly;
+   skip-ink is off so CJK and descender glyphs do not cut gaps into the line. */
+a { text-decoration-skip-ink: none; }
+:where(a) :where(span) { text-decoration: inherit; }
 a:hover { text-decoration: none; }
 
 /* Focus: 2px ring, 2px offset (P.06, P.20) */

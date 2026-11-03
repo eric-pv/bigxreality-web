@@ -18,12 +18,17 @@ try{
   assert.equal(await p.locator('[data-client-logos], [data-logo-pause]').count(),0);
   assert.equal(await p.locator('img').evaluateAll(imgs=>imgs.some(img=>img.src.includes('/clients/')||img.closest('.client-logos'))),false);
   const stats=p.locator('[data-partner-statistics]');assert.deepEqual(await stats.locator('dd').allTextContents(),expected.map(String));
-  assert.ok(await stats.evaluate(e=>e.getBoundingClientRect().width<=760));
+  // Home (embedded): the statistics fill the container; four columns in one row, 2×2 on phones.
+  const fill=await stats.evaluate(e=>{const c=e.closest('.container'),cs=getComputedStyle(c),inner=c.getBoundingClientRect().width-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+   const rows=new Set([...e.querySelectorAll('dl > div')].map(d=>Math.round(d.getBoundingClientRect().top))).size;return{width:e.getBoundingClientRect().width,inner,rows};});
+  assert.ok(Math.abs(fill.width-fill.inner)<1,`home statistics fill the container ${JSON.stringify(fill)}`);assert.equal(fill.rows,width>=768?1:2);
   assert.equal(await stats.locator('dl').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length),width>=768?4:2);
   assert.ok(await p.evaluate(()=>{const m=document.querySelector('[data-partner-statistics]'),s=document.querySelector('#h-solutions').closest('section');return s.nextElementSibling===m.closest("[data-home-partners]");}));
   assert.equal(await stats.locator('img, button, script').count(),0);
   await p.goto(`${server.base}/${lang}/company/`);assert.equal(await p.locator('[data-client-logos]').count(),0);
   await p.goto(`${server.base}/${lang}/company/partners/`);const wall=p.locator('[data-client-logos="partners"]');
+  // Partners page (non-embedded): the centred statistics keep their 760 px limit.
+  assert.ok(await p.locator('[data-partner-statistics]').evaluate(e=>!e.classList.contains('embedded')&&e.getBoundingClientRect().width<=760));
   assert.equal(await wall.locator('img').count(),26);assert.equal(await wall.locator('img').first().getAttribute('alt'),'中華民國國防部');
   const groups=wall.locator('.logo-category');assert.equal(await groups.count(),4);
   for(let i=0;i<4;i++){
@@ -36,5 +41,5 @@ try{
   assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   if(lang==='tw'&&width!==768){await p.screenshot({path:`/tmp/bxr-partners-${width}.png`,fullPage:true});await p.goto(`${server.base}/${lang}/`);await stats.screenshot({path:`/tmp/bxr-statistics-${width}.png`});}
  }
- assert.deepEqual(errors,[]);console.log('PASS: 26 unique logos in exact 11/3/9/3 groups/order, first Ministry of National Defense; TW/EN/JP × 1440/768/390; home 760px/4-column/2×2 statistics without logos, About without logos, partner 4/2 grids and no captions, valid images.');
+ assert.deepEqual(errors,[]);console.log('PASS: 26 unique logos in exact 11/3/9/3 groups/order, first Ministry of National Defense; TW/EN/JP × 1440/768/390; home full-container 4-column/2×2 statistics, partners-page 760px statistics without logos, About without logos, partner 4/2 grids and no captions, valid images.');
 }finally{await browser.close();server.stop();}

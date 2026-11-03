@@ -323,7 +323,8 @@ const website = {
   background: conic-gradient(from 0deg, transparent 0 70%, color-mix(in srgb, var(--bxr-red) 40%, transparent) 86%, var(--bxr-red) 96%, transparent); }
 .num { display: inline-block; justify-self: start; }
 @media (prefers-reduced-motion: no-preference) {
-  .tech::after { animation: tech-drift 24s ease-in-out infinite alternate paused; }
+  /* 22 s: 6 s drift → 5 s rest → 6 s drift back → 5 s rest. */
+  .tech::after { animation: tech-drift 22s ease-in-out infinite paused; }
   .tech[data-in-view]::after { animation-play-state: running; }
   .tech-list li:has(a:focus-visible) .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
   .tech-list li:has(a:focus-visible) .num { animation: tech-glitch 180ms steps(1) 1; }
@@ -332,7 +333,7 @@ const website = {
   .tech-list li:hover .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
   .tech-list li:hover .num { animation: tech-glitch 180ms steps(1) 1; }
 }
-@keyframes tech-drift { from { transform: translate(-6vmax, -4vmax); } to { transform: translate(8vmax, 5vmax); } }
+@keyframes tech-drift { 0%, 100% { transform: translate(-6vmax, -4vmax); } 27.3%, 50% { transform: translate(8vmax, 5vmax); } 77.3% { transform: translate(-6vmax, -4vmax); } }
 @keyframes tech-beam {
   0% { opacity: 0; transform: translate(-50%, -50%) rotate(0deg); }
   12%, 82% { opacity: 1; }
@@ -382,14 +383,14 @@ const website = {
 .cta-primary { position: relative; }
 .cta-primary::after { content: ""; position: absolute; inset: -1px; border: 1px solid var(--bxr-white); border-radius: inherit; pointer-events: none; opacity: 0; }
 @media (prefers-reduced-motion: no-preference) {
-  /* One stripe period along x is 22px / sin 45° ≈ 31.11px, so the loop is seamless. */
-  .cta::before { animation: cta-stripes 12s linear infinite paused; }
+  /* 11 s: one stripe period (22px / sin 45° ≈ 31.11px, seamless) in 6 s, then 5 s still. */
+  .cta::before { animation: cta-stripes 11s ease-in-out infinite paused; }
   .cta[data-in-view]::before { animation-play-state: running; }
-  /* Three pulses each time the band comes into view, then still (finite, < 10 s). */
-  .cta[data-in-view] .cta-primary::after { animation: cta-radar 3s var(--ease-precise) 3; }
+  /* 6.5 s: one 1.5 s pulse, then 5 s still; only while the band is on screen. */
+  .cta[data-in-view] .cta-primary::after { animation: cta-radar 6.5s var(--ease-precise) infinite; }
 }
-@keyframes cta-stripes { from { transform: translateX(0); } to { transform: translateX(31.11px); } }
-@keyframes cta-radar { 0% { opacity: .7; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.18, 1.45); } }
+@keyframes cta-stripes { 0% { transform: translateX(0); } 54.5%, 100% { transform: translateX(31.11px); } }
+@keyframes cta-radar { 0% { opacity: .7; transform: scale(1); } 23%, 100% { opacity: 0; transform: scale(1.18, 1.45); } }
 @media (prefers-reduced-motion: reduce) {
   .feature-media::after, .more .arrow { transition: none; }
   .feature .feature-media :global(img), .more .arrow { transform: none !important; }
