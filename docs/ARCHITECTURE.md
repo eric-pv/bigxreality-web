@@ -35,7 +35,7 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 - 開發分支：送 PR 到 `main`，不直接合併正式站。
 - `cms/*`：Sveltia editorial workflow 的待審內容版本。
 - `feature/sveltia-cms`：歷史整合分支，保留資料與 Git 歷史，不再作 CMS 正式讀寫目標，也不直接覆蓋或重設它。
-- 正式建置明確使用 `BXR_CONTENT_SOURCE=markdown`、`BXR_PREVIEW=0`；Pages packager 拒絕 EmDash／bootstrap／fixtures／preview 及 Workers CI 產物。
+- 正式建置明確使用 `BXR_CONTENT_SOURCE=markdown`、`BXR_PREVIEW=0`；程式只接受 markdown 與 fixtures 兩種來源，Pages packager 拒絕 fixtures／preview 產物。
 - 測試 fixture 只存在 `tests/fixtures/` 與 `dist-fixtures/`；它不是第二套正式內容來源，不能上傳為 Pages artifact。
 
 本次已完成 main 與歷史分支比對，見 [同步診斷](audits/cms-sync-2026-10-30/SYNC-DIAGNOSIS.md)。若在切換期間出現新 feature-only 提交、cms 草稿或未儲存表單，先保存兩版並逐檔核對，禁止以任一整個分支覆蓋另一個分支。
@@ -95,7 +95,7 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 - PR：執行 build-and-test 與 Pages artifact 檢查，不部署。
 - main push／對 main 的手動 workflow：檢查成功後上傳 `dist-pages/`，deploy-pages 以同一 workflow 的 artifact 部署；不是另外再從另一分支建置。
 - Node 版本來自 `.node-version`（22 系列）；本機需支援原生 TypeScript 腳本，建議至少 22.18 並與 CI 同版。
-- `npm ci`；`npm run pages:build` 會從 Git 內容建置、封裝與驗證。一般 `npm run build` 的中間輸出目前仍是 `dist/client/`。
+- `npm ci`；`npm run pages:build` 會從 Git 內容建置、封裝與驗證。一般 `npm run build` 是 Astro 純靜態輸出（`output: "static"`），產物在 `dist/`；測試 fixture 產物在 `dist-fixtures/`。
 - `scripts/pages/package.mjs` 是目前唯一專案子路徑封裝入口。不得同時再加一套會重複 prefix 的 URL 改寫流程。
 - 正式網址單一來源：`src/data/site.json` 的 url。`public-url.ts` 統一 canonical、hreflang、Schema、sitemap 的絕對 URL；原有 slug／相對路由不改。
 - `/admin/`、待翻譯與應排除的頁面保留 noindex；正式公開內容不再全站 noindex。測試資料不得出現在正式 artifact。
@@ -104,9 +104,9 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 
 - base 只由 site.json 的 url 推導：github.io 專案子路徑為 `/bigxreality-web/`（現行）；正式網域（預定 `https://www.bigxreality.com`）為根目錄 `/`。封裝、檢查與 QA 腳本兩種 base 都支援；自訂網域只能發布在網域根目錄。切換網域須另行確認，並同步 Sveltia 產生器中的 `site_url`／`display_url`。
 - url 為自訂網域時，artifact 根目錄會產生 `CNAME`（內容為 hostname）；github.io 位址不產生。robots.txt、sitemap.xml 永遠位於 artifact 根目錄，也就是 base 所在位置。
-- GitHub Pages 只提供靜態檔案，**不讀取** Cloudflare 的 `_redirects`、`_headers`，也沒有伺服器端轉址、自訂回應標頭或快取規則。因此 Pages artifact 不包含這兩個檔案；需要的轉址只能用靜態 HTML（如根目錄 `index.html` 的 meta refresh），快取由 GitHub Pages 預設決定。不可依賴它們實作安全標頭或 301。
+- GitHub Pages 只提供靜態檔案，不讀取 `_redirects`、`_headers`，也沒有伺服器端轉址、自訂回應標頭或快取規則。建置不產生這兩個檔案，`pages:check` 也禁止它們出現；需要的轉址只能用靜態 HTML（如根目錄 `index.html` 的 meta refresh），快取由 GitHub Pages 預設決定。不可依賴它們實作安全標頭或 301。
 - GitHub Pages 對任何不存在的路徑只回應 base 下的同一個 `404.html`（`src/pages/404.astro` 建置，noindex，不列入 sitemap），由頁內 inline script 依路徑的 `/tw/`、`/en/`、`/jp/` 前綴切換語言，無前綴為 TW；不支援 JS 時顯示三語返回連結。
-- `dist/client/_astro/` 含舊 adapter／EmDash 殘留 chunk 與未使用的影像原檔。封裝只複製由 HTML、`admin/`、CSS `url()`、JS import／Vite preload 可達的檔案，排除清單寫入 `.qa/pages-astro-excluded.json`；`pages:check` 要求所有被引用的 `_astro` 檔案都存在。這不是卸載舊套件，卸載依 LEGACY-REMOVAL-PLAN 另行進行。
+- `dist/_astro/` 含未使用的影像原檔等建置中間檔。封裝只複製由 HTML、`admin/`、CSS `url()`、JS import／Vite preload 可達的檔案，排除清單寫入 `.qa/pages-astro-excluded.json`；`pages:check` 要求所有被引用的 `_astro` 檔案都存在。
 
 ### 版本與失敗追查
 
@@ -123,13 +123,13 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 
 GitHub Actions 由平台提供 GITHUB_SHA／REF／RUN_ID／TOKEN；deploy job 只需要 Pages write 與 id-token write，build job contents read。個人 CMS PAT 只用於管理員自己的受信任瀏覽器。
 
-`EMDASH_URL`、`EMDASH_TOKEN`、`CF_ACCESS_CLIENT_ID/SECRET`、`DEPLOY_HOOK_URL`、`EMDASH_ENCRYPTION_KEY`、`WORKERS_CI` 不屬於正式 Pages 流程需求；待舊架構確認、備份與停用後移除相應舊設定，不把值貼進文件。
+程式已不讀取 `EMDASH_URL`、`EMDASH_TOKEN`、`CF_ACCESS_CLIENT_ID/SECRET`、`DEPLOY_HOOK_URL`、`EMDASH_ENCRYPTION_KEY`、`WORKERS_CI`。若 GitHub 或 Cloudflare 上仍存有這些舊設定，由管理者在外部服務退役時一併刪除，不把值貼進文件。
 
-## 8. 尚待清理的歷史耦合
+## 8. 已移除的歷史架構
 
-Astro config 仍有 Cloudflare adapter／EmDash integration，與部分舊腳本、型別、依賴。它們是待移除的**建置耦合**，不是正式 CMS／託管平台；Pages 只發布 client 靜態產物，不上傳 server／Worker。
+2026-11-03 起，程式已不含 Cloudflare adapter、EmDash integration／loader、Worker、wrangler 設定與相關套件；Astro 為純靜態輸出，建置過程不連線任何遠端 CMS 或 Cloudflare 服務。
 
-本次先修正同步並驗收，不假稱已完成卸載。詳 [舊架構安全移除計畫](LEGACY-REMOVAL-PLAN.md)。未驗證外部內容與備份前，不刪 Worker、D1 或 R2；不因檔案存在就認定服務正在使用，也不因 Pages 未用到就推論外部資源沒有資料。
+外部資源（Cloudflare Worker、D1 `bxr-cms`、R2 `bxr-media`、Workers Builds 的 GitHub 連線）不由程式移除，退役步驟與資料確認見 [舊架構移除計畫](LEGACY-REMOVAL-PLAN.md)。未驗證外部內容與備份前，不刪 Worker、D1 或 R2；也不因 Pages 未用到就推論外部資源沒有資料。
 
 ## 9. 開發與驗收規範
 

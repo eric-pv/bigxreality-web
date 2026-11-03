@@ -8,7 +8,6 @@ import { PENDING } from "./lib/pending";
 import { DOMAINS, PRODUCT_DOMAINS } from "./lib/domains";
 import { INVESTOR_MODULES, PARTNER_CATEGORIES } from "./lib/company";
 import { contentSource } from "./lib/content-source";
-import { emdashLoader } from "./lib/emdash/loader";
 
 /*
  * Entry ids are `<lang>/<slug>` (lang = URL segment en / tw / jp) whatever the source.
@@ -16,14 +15,13 @@ import { emdashLoader } from "./lib/emdash/loader";
  * entry only; see docs/PLAN.md §2.1. Relations store bare slugs and are checked at
  * build time in src/lib/content.ts (unknown slugs fail the build).
  *
- * Official content comes from Git Markdown. EmDash is a legacy recovery path only;
- * see src/lib/content-source.ts. Both produce exactly the same entry shapes.
+ * Official content comes from Git Markdown; TEST FIXTURE builds read tests/fixtures/content
+ * (see src/lib/content-source.ts). Both produce exactly the same entry shapes.
  */
 
 const source = contentSource();
 const FOLDER: Record<string, string> = { "case-studies": "case-studies" };
-function loader(collection: string, emdashCollection: string) {
-  if (source === "emdash") return emdashLoader(emdashCollection);
+function loader(collection: string) {
   const folder = FOLDER[collection] ?? collection;
   const fixture = `./tests/fixtures/content/${folder}`;
   const base = source === "fixtures" && existsSync(fixture) ? fixture : `./src/content/${folder}`;
@@ -181,7 +179,7 @@ const landing = (ctx: SchemaContext) => z.object({
 });
 
 const products = defineCollection({
-  loader: loader("products", "products"),
+  loader: loader("products"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -233,7 +231,7 @@ const products = defineCollection({
 
 /** Market domains. Overview text is the Markdown body; related products and articles are reverse lookups. */
 const solutions = defineCollection({
-  loader: loader("solutions", "solutions"),
+  loader: loader("solutions"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -266,7 +264,7 @@ const solutions = defineCollection({
 
 /** Copy for fixed page templates (one entry per page per language). */
 const pages = defineCollection({
-  loader: loader("pages", "pages"),
+  loader: loader("pages"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -296,7 +294,7 @@ const pages = defineCollection({
 
 /** Fixed tag list; articles can only use these (docs/PHASE-2-PLAN.md §3.5). */
 const tags = defineCollection({
-  loader: loader("tags", "tags"),
+  loader: loader("tags"),
   schema: z.object({ translationStatus, name: text, description: text.optional() }),
 });
 
@@ -322,7 +320,7 @@ const articleBase = (ctx: SchemaContext) =>
 export const NEWS_CATEGORIES = ["event", "product", "insight", "company", "exhibition", "award", "product-launch", "partnership", "media"] as const;
 
 const news = defineCollection({
-  loader: loader("news", "news"),
+  loader: loader("news"),
   schema: (ctx) =>
     articleBase(ctx).extend({
       // Historical news may lack a known publication date; never coerce null to 1970.
@@ -348,7 +346,7 @@ const news = defineCollection({
 });
 
 const insights = defineCollection({
-  loader: loader("insights", "insights"),
+  loader: loader("insights"),
   schema: (ctx) => articleBase(ctx).extend({ author: text.optional(), technologyTags: z.array(z.enum(TECHNOLOGY_IDS)).default([]) }),
 });
 
@@ -356,7 +354,7 @@ const insights = defineCollection({
 const CASE_DOMAINS = [...DOMAINS, "other"] as const;
 
 const caseStudies = defineCollection({
-  loader: loader("case-studies", "case_studies"),
+  loader: loader("case-studies"),
   schema: (ctx) =>
     articleBase(ctx).extend({
       /**
@@ -381,7 +379,7 @@ const caseStudies = defineCollection({
 
 /** Company history: one entry per milestone (date is YYYY or YYYY-MM). */
 const milestones = defineCollection({
-  loader: loader("milestones", "milestones"),
+  loader: loader("milestones"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -395,7 +393,7 @@ const milestones = defineCollection({
 
 /** Management team: only people who agreed to be listed. */
 const team = defineCollection({
-  loader: loader("team", "team_members"),
+  loader: loader("team"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -410,7 +408,7 @@ const team = defineCollection({
 
 /** Partners. An entry is public only with the partner's authorisation (approval), like case studies. */
 const partners = defineCollection({
-  loader: loader("partners", "partners"),
+  loader: loader("partners"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -432,7 +430,7 @@ const partners = defineCollection({
  * Only officially approved, public material belongs here.
  */
 const investorItems = defineCollection({
-  loader: loader("investor-items", "investor_items"),
+  loader: loader("investor-items"),
   schema: z.object({
     translationStatus,
     draft: z.boolean().default(false),

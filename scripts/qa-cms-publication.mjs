@@ -15,7 +15,7 @@ await symlink(path.join(root,'node_modules'),path.join(dir,'node_modules'),'dir'
 const id='bxr-cms-isolated-qa', marker='BXR CMS ISOLATED QA';
 const before=git(root,'diff','HEAD','--','src/content','src/assets','public/media','public/video');
 const env={...process.env,BXR_CONTENT_SOURCE:'markdown',BXR_PREVIEW:'0'};
-delete env.GITHUB_SHA;delete env.GITHUB_ACTIONS;delete env.WORKERS_CI;
+delete env.GITHUB_SHA;delete env.GITHUB_ACTIONS;
 const results=[];
 async function present(file){try{await access(file);return true;}catch{return false;}}
 async function stage(name,published){
@@ -23,9 +23,9 @@ async function stage(name,published){
   git(dir,'-c','user.name=BXR isolated QA','-c','user.email=qa@example.invalid','commit','-m',name);
   const log=execFileSync('npm',['run','build'],{cwd:dir,env,encoding:'utf8',maxBuffer:32*1024*1024});
   await writeFile(path.join(dir,`${name}.log`),log);
-  const sitemap=await readFile(path.join(dir,'dist/client/sitemap.xml'),'utf8');
+  const sitemap=await readFile(path.join(dir,'dist/sitemap.xml'),'utf8');
   for(const lang of ['tw','en','jp']){
-    const file=path.join(dir,`dist/client/${lang}/news/${id}/index.html`);
+    const file=path.join(dir,`dist/${lang}/news/${id}/index.html`);
     assert.equal(await present(file),published,`${name}: ${lang} route`);
     assert.equal(sitemap.includes(`/${lang}/news/${id}/`),published,`${name}: ${lang} sitemap`);
     if(published){
@@ -34,8 +34,8 @@ async function stage(name,published){
       assert.ok(html.includes('Isolated updated body.'));
       assert.ok(html.includes(`${publicSiteRoot}/${lang}/news/${id}/`));
     }
-    assert.ok(await present(path.join(dir,`dist/client/${lang}/products/sut/index.html`)));
-    assert.ok(await present(path.join(dir,`dist/client/${lang}/news/news-01-ds-2025/index.html`)));
+    assert.ok(await present(path.join(dir,`dist/${lang}/products/sut/index.html`)));
+    assert.ok(await present(path.join(dir,`dist/${lang}/news/news-01-ds-2025/index.html`)));
   }
   results.push({stage:name,pass:true,commit:git(dir,'rev-parse','HEAD')});
   await writeFile(path.join(dir,'RESULTS.json'),JSON.stringify(results,null,2));

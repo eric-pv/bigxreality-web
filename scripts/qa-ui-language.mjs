@@ -1,7 +1,7 @@
 // Interface language checks for the three languages (npm run build first).
 // 1. The UI dictionaries (src/content/ui/*.json): same keys, no empty / undefined / null values,
 //    no English words in TW / JP labels unless they are brand, product or technical names.
-// 2. The built pages (dist/client): interface text (navigation, labels, buttons, headings, cards,
+// 2. The built pages (dist): interface text (navigation, labels, buttons, headings, cards,
 //    placeholders, aria labels) on TW / JP pages uses the page language; no label repeats the
 //    heading next to it; no card carries a second name or a domain code; product category
 //    tags use one wording per language.
@@ -22,7 +22,7 @@ const ALLOW = [
   "TW", "EN", "JP", "English", "Serious Games", "Extended Reality", "CQB",
   // Brand tagline (site.json), kept in English in every language by the brand guidelines.
   "Turn Every Drill into Real",
-  // Marker on TEST FIXTURE content (QA_DIST=dist-fixtures/client); never built for production.
+  // Marker on TEST FIXTURE content (QA_DIST=dist-fixtures); never built for production.
   ...(process.env.QA_DIST?.includes("fixtures") ? ["TEST FIXTURE"] : []),
 ];
 /** Latin runs that are allowed whatever they contain: e-mail addresses, domains, digits with units (3D, 16:9). */
