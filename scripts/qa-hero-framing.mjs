@@ -15,7 +15,7 @@ try{
    const frame=await image.evaluate(img=>{const rect=img.getBoundingClientRect(),root=img.closest('.page-hero').getBoundingClientRect(),style=getComputedStyle(img);return {fit:style.objectFit,top:rect.top-root.top,bottom:rect.bottom-root.bottom,width:rect.width,height:rect.height};});
    assert.equal(frame.fit,'contain',url+' retains complete scene or equipment');
    assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,url);
-   if(collection==='solutions'&&slug==='fire-rescue')assert.equal(await image.getAttribute('data-primary-image'),'vr-fire-extinguisher-training-trainee.png');
+   if(collection==='solutions'&&slug==='fire-rescue')assert.equal(await image.getAttribute('data-primary-image'),'vr-fire-extinguisher-training-trainee.webp');
    if(lang==='tw'&&[1440,390].includes(width)&&['sut','military','fire-rescue'].includes(slug))await hero.screenshot({path:`/tmp/bxr-framing-${slug}-${width}.png`});heroes++;
   }
   await v.goto(`${server.base}/${lang}/`);assert.deepEqual(await v.locator('[data-clip] source[type="video/mp4"]').evaluateAll(es=>es.map(e=>e.dataset.src)),['/video/hero/hero-1.mp4','/video/hero/hero-2.mp4']);
@@ -26,7 +26,7 @@ try{
   assert.equal(await first.evaluate(el=>getComputedStyle(el).objectFit),'contain');
   if(lang==='tw'&&[1440,390].includes(width))await v.locator('[data-hero]').screenshot({path:`/tmp/bxr-framing-home-${width}.png`});
   await v.locator('[data-toggle]').focus();await v.locator('[data-toggle]').click();assert.equal(await v.locator('[data-toggle]').getAttribute('aria-pressed'),'true');await v.locator('[data-toggle]').click();await first.evaluate(el=>el.currentTime=el.duration-.05);await v.waitForFunction(()=>document.querySelector('[data-hero]').getAttribute('data-current-clip')==='1');
-  for(const route of ['', 'solutions/']){await p.goto(`${server.base}/${lang}/${route}`);assert.ok(await p.locator('img[data-primary-image="vr-fire-extinguisher-training-trainee.png"]').count());}
+  for(const route of ['', 'solutions/']){await p.goto(`${server.base}/${lang}/${route}`);assert.ok(await p.locator('img[data-primary-image="vr-fire-extinguisher-training-trainee.webp"]').count());}
   videos++;
  }
  assert.deepEqual(errors,[]);console.log(`PASS: ${heroes} trilingual scene/equipment/interface Heroes with complete subjects and reviewed framing; ${videos} home viewports verify 1→2 video order, top framing, full 16:9 mobile footage with no dark shade, pause/next controls and shared fire cover.`);

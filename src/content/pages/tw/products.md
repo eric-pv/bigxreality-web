@@ -10,7 +10,7 @@ hero:
   title: 產品
   description: "[待提供]"
   image:
-    src: ../../../assets/images/products/military-simulation-training.jpg
+    src: ../../../assets/images/products/military-simulation-training.webp
     alt: 模擬訓練場域中的小隊與訓練設備
 cta:
   title: "[待提供]"

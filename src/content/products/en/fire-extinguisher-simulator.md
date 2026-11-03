@@ -70,7 +70,7 @@ landing:
     images:
       - need: Photo of the realistic extinguisher cylinder (4:3)
         ratio: 16 / 9
-        src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.png
+        src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.webp
         alt: A trainee wearing a VR headset operates fire extinguisher training
           equipment
       - need: Close-up of the handle and hose nozzle (4:3)

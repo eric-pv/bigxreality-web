@@ -12,7 +12,7 @@ hero:
   title: Products
   description: "[待提供]"
   image:
-    src: ../../../assets/images/products/military-simulation-training.jpg
+    src: ../../../assets/images/products/military-simulation-training.webp
     alt: Training personnel and equipment in a simulation training facility
 cta:
   title: "[待提供]"

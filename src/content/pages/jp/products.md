@@ -10,7 +10,7 @@ hero:
   title: 製品情報
   description: "[待提供]"
   image:
-    src: ../../../assets/images/products/military-simulation-training.jpg
+    src: ../../../assets/images/products/military-simulation-training.webp
     alt: シミュレーション訓練施設の訓練参加者と機器
 cta:
   title: "[待提供]"

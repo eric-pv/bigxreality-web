@@ -6,9 +6,9 @@ import { chromium } from 'playwright-core';
 import { startPreview, CHROMIUM } from './lib/serve.mjs';
 const config=JSON.parse(fs.readFileSync('src/data/client-logos.json','utf8'));
 const expected=[11,3,9,3];
-const expectedFiles=[['中華民國國防部','中華民國海軍','中華民國海軍陸戰隊','陸軍步兵訓練指揮部','內政部警政署','刑事警察局','保安警察第一總隊','台灣縣市警察局','中央警察大學','臺灣警察專科學校','台北市政府消防局'],['國家中山科學研究院','工業技術研究院','國家災害防救科技中心'],['中華民國交通部','經濟部工業局','勞動部勞動力發展署','勞動部職業安全衛生署','南部科學園區','台灣中油股份有限公司','台灣電力公司','桃園國際機場股份有限公司','台灣國家級新創品牌'],['台灣國防產業發展協會','台灣防災產業協會','台灣虛擬及擴增實境產業協會']].map(group=>group.map(name=>`${name}.png`));
+const expectedFiles=[['中華民國國防部','中華民國海軍','中華民國海軍陸戰隊','陸軍步兵訓練指揮部','內政部警政署','刑事警察局','保安警察第一總隊','台灣縣市警察局','中央警察大學','臺灣警察專科學校','台北市政府消防局'],['國家中山科學研究院','工業技術研究院','國家災害防救科技中心'],['中華民國交通部','經濟部工業局','勞動部勞動力發展署','勞動部職業安全衛生署','南部科學園區','台灣中油股份有限公司','台灣電力公司','桃園國際機場股份有限公司','台灣國家級新創品牌'],['台灣國防產業發展協會','台灣防災產業協會','台灣虛擬及擴增實境產業協會']].map(group=>group.map(name=>`${name}.webp`));
 assert.deepEqual(config.map(row=>row.file),expectedFiles.flat());
-assert.deepEqual(fs.readdirSync('src/assets/images/clients').filter(name=>name.endsWith('.png')).sort(),expectedFiles.flat().sort());
+assert.deepEqual(fs.readdirSync('src/assets/images/clients').filter(name=>name.endsWith('.webp')).sort(),expectedFiles.flat().sort());
 const hashes=new Map();for(const row of config){const pixels=await sharp(`src/assets/images/clients/${row.file}`).ensureAlpha().raw().toBuffer({resolveWithObject:true});const hash=crypto.createHash('sha256').update(JSON.stringify(pixels.info)).update(pixels.data).digest('hex');assert.ok(!hashes.has(hash),`Duplicate: ${row.file}`);hashes.set(hash,row.file);}
 const server=await startPreview(4374),browser=await chromium.launch({executablePath:CHROMIUM});
 try{
