@@ -10,8 +10,11 @@ try{
   assert.equal((await page.goto(server.base+route)).status(),200,route);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${route} @${width}: overflow`);
   for(const img of await page.locator('main img').all()){
-   await img.scrollIntoViewIfNeeded();await img.evaluate(img=>img.decode());
-   const m=await img.evaluate(img=>({width:img.naturalWidth,alt:img.alt,decorative:!!img.closest('.sector-tag'),w:img.getBoundingClientRect().width,h:img.getBoundingClientRect().height,fit:getComputedStyle(img).objectFit}));
+   // Responsive decorative thumbnails can be display:none. Still load/decode every source,
+   // but only scroll rendered images into view (hidden elements cannot be scrolled to).
+   if(await img.isVisible())await img.scrollIntoViewIfNeeded();
+   await img.evaluate(async img=>{img.loading='eager';await img.decode();});
+   const m=await img.evaluate(img=>({width:img.naturalWidth,alt:img.alt,decorative:img.hasAttribute('alt')&&!!img.closest('.sector-tag, [aria-hidden="true"]'),w:img.getBoundingClientRect().width,h:img.getBoundingClientRect().height,fit:getComputedStyle(img).objectFit}));
    assert.ok(m.width>0&&(m.alt.trim()||m.decorative),`${route} image decode/alt`);
    if(m.w&&m.h)assert.ok(['contain','cover','fill'].includes(m.fit));images++;
   }

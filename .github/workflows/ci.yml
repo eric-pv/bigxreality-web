@@ -76,11 +76,11 @@ jobs:
       # TEST FIXTURE content: pages, search and accessibility of phase 2 templates
       - name: Build test fixtures
         run: npm run build:fixtures
-      - run: QA_DIST=dist-fixtures/client npm run qa:technologies
+      - run: QA_DIST=dist-fixtures npm run qa:technologies
       - run: npm run qa:phase2
-      - run: QA_DIST=dist-fixtures/client npm run qa:company
+      - run: QA_DIST=dist-fixtures npm run qa:company
       - run: npm run qa:search
-      - run: QA_DIST=dist-fixtures/client npm run qa:a11y -- /tw/solutions/police/ /tw/news/ /tw/news/fixture-news-02/ /tw/cases/fixture-case-1/ /tw/tags/xr-training/ /tw/search/
+      - run: QA_DIST=dist-fixtures npm run qa:a11y -- /tw/solutions/police/ /tw/news/ /tw/news/fixture-news-02/ /tw/cases/fixture-case-1/ /tw/tags/xr-training/ /tw/search/
       - name: Package the verified Pages artifact
         run: npm run pages:package && npm run pages:check
       - name: Publish build summary

@@ -1,0 +1,10 @@
+{
+  "scope": "Local synthetic Git semantics; NOT a real GitHub GraphQL/PR/network acceptance test",
+  "threeFileSingleCommit": true,
+  "unpublishedPreparedObjectDoesNotChangeBranch": true,
+  "staleHeadRejected": true,
+  "operationMarkerReadable": true,
+  "repository": "/tmp/bxr-cms2-cas-RNIPoD",
+  "baseline": "4ea206eb31f941ea66445ed171901f9950568139",
+  "published": "062724f33482f1e6ed8b6b98e48705d4a972f95f"
+}

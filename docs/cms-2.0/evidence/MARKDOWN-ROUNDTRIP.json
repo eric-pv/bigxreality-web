@@ -1,0 +1,1995 @@
+{
+  "scope": "Read-only corpus plus synthetic fixtures. Tiptap MarkdownManager, not a completed visual editor.",
+  "versions": {
+    "tiptap": "3.32.2",
+    "marked": "17.0.6"
+  },
+  "repositoryFiles": 186,
+  "syntheticFixtures": 12,
+  "byteDifferences": 109,
+  "semanticDifferences": 7,
+  "guardPass": 198,
+  "scalarPatchPreservedBomCrlfCommentsUnknownFields": true,
+  "rows": [
+    {
+      "id": "src/content/news/en/news-01-ds-2025.md",
+      "bodyBytes": 1172,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-02-gbp-cover.md",
+      "bodyBytes": 1513,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-03-leadership-uncertainty.md",
+      "bodyBytes": 1348,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-04-seecat-2025.md",
+      "bodyBytes": 804,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-05-tadte-2025.md",
+      "bodyBytes": 1011,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-06-military-forum-2025.md",
+      "bodyBytes": 910,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-07-indo-defence.md",
+      "bodyBytes": 913,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-08-fire-agency-2025.md",
+      "bodyBytes": 1506,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-09-seecat-earlier.md",
+      "bodyBytes": 1241,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-10-xr-shooting-sports.md",
+      "bodyBytes": 1281,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-11-sushi-tech-2024.md",
+      "bodyBytes": 790,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-12-asia-xr-awards-2023.md",
+      "bodyBytes": 1001,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-13-future-combat.md",
+      "bodyBytes": 815,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-15-media-visit-2026.md",
+      "bodyBytes": 1150,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-16-seecat-2026.md",
+      "bodyBytes": 1333,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-17-defense-education-2026.md",
+      "bodyBytes": 1091,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-18-decision-training-2026.md",
+      "bodyBytes": 1145,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-19-cna-simulation-2026.md",
+      "bodyBytes": 1172,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-20-taipei-education-expo-2026.md",
+      "bodyBytes": 1155,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-21-forum-22-2026.md",
+      "bodyBytes": 1274,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-22-dsa-2026.md",
+      "bodyBytes": 1083,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-23-songshan-school-2025.md",
+      "bodyBytes": 1022,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-24-new-office-2025.md",
+      "bodyBytes": 1533,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-25-defense-expo-preview-2025.md",
+      "bodyBytes": 971,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-26-disaster-resilience-2025.md",
+      "bodyBytes": 1078,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-27-military-simulation-overview-2025.md",
+      "bodyBytes": 1156,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-28-fire-extinguisher-launch-2025.md",
+      "bodyBytes": 969,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-29-xr-defense-platform-2025.md",
+      "bodyBytes": 1028,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-30-baseball-csr-2025.md",
+      "bodyBytes": 804,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/en/news-31-trap-shooting-championship-2024.md",
+      "bodyBytes": 860,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-01-ds-2025.md",
+      "bodyBytes": 1357,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-02-gbp-cover.md",
+      "bodyBytes": 1608,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-03-leadership-uncertainty.md",
+      "bodyBytes": 1550,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-04-seecat-2025.md",
+      "bodyBytes": 802,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-05-tadte-2025.md",
+      "bodyBytes": 1120,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-06-military-forum-2025.md",
+      "bodyBytes": 963,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-07-indo-defence.md",
+      "bodyBytes": 953,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-08-fire-agency-2025.md",
+      "bodyBytes": 1593,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-09-seecat-earlier.md",
+      "bodyBytes": 1225,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-10-xr-shooting-sports.md",
+      "bodyBytes": 1338,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-11-sushi-tech-2024.md",
+      "bodyBytes": 893,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-12-asia-xr-awards-2023.md",
+      "bodyBytes": 908,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-13-future-combat.md",
+      "bodyBytes": 955,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-15-media-visit-2026.md",
+      "bodyBytes": 1102,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-16-seecat-2026.md",
+      "bodyBytes": 1251,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-17-defense-education-2026.md",
+      "bodyBytes": 1205,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-18-decision-training-2026.md",
+      "bodyBytes": 1142,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-19-cna-simulation-2026.md",
+      "bodyBytes": 1203,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-20-taipei-education-expo-2026.md",
+      "bodyBytes": 1096,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-21-forum-22-2026.md",
+      "bodyBytes": 1214,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-22-dsa-2026.md",
+      "bodyBytes": 1113,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-23-songshan-school-2025.md",
+      "bodyBytes": 1012,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-24-new-office-2025.md",
+      "bodyBytes": 1427,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-25-defense-expo-preview-2025.md",
+      "bodyBytes": 1049,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-26-disaster-resilience-2025.md",
+      "bodyBytes": 1044,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-27-military-simulation-overview-2025.md",
+      "bodyBytes": 1230,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-28-fire-extinguisher-launch-2025.md",
+      "bodyBytes": 970,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-29-xr-defense-platform-2025.md",
+      "bodyBytes": 1105,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-30-baseball-csr-2025.md",
+      "bodyBytes": 801,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/jp/news-31-trap-shooting-championship-2024.md",
+      "bodyBytes": 926,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-01-ds-2025.md",
+      "bodyBytes": 941,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-02-gbp-cover.md",
+      "bodyBytes": 1198,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-03-leadership-uncertainty.md",
+      "bodyBytes": 996,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-04-seecat-2025.md",
+      "bodyBytes": 597,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-05-tadte-2025.md",
+      "bodyBytes": 736,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-06-military-forum-2025.md",
+      "bodyBytes": 632,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-07-indo-defence.md",
+      "bodyBytes": 709,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-08-fire-agency-2025.md",
+      "bodyBytes": 1278,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-09-seecat-earlier.md",
+      "bodyBytes": 1001,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-10-xr-shooting-sports.md",
+      "bodyBytes": 940,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-11-sushi-tech-2024.md",
+      "bodyBytes": 596,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-12-asia-xr-awards-2023.md",
+      "bodyBytes": 862,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-13-future-combat.md",
+      "bodyBytes": 659,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-15-media-visit-2026.md",
+      "bodyBytes": 1030,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-16-seecat-2026.md",
+      "bodyBytes": 1191,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-17-defense-education-2026.md",
+      "bodyBytes": 975,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-18-decision-training-2026.md",
+      "bodyBytes": 993,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-19-cna-simulation-2026.md",
+      "bodyBytes": 984,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-20-taipei-education-expo-2026.md",
+      "bodyBytes": 874,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-21-forum-22-2026.md",
+      "bodyBytes": 1088,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-22-dsa-2026.md",
+      "bodyBytes": 937,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-23-songshan-school-2025.md",
+      "bodyBytes": 868,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-24-new-office-2025.md",
+      "bodyBytes": 1279,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-25-defense-expo-preview-2025.md",
+      "bodyBytes": 822,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-26-disaster-resilience-2025.md",
+      "bodyBytes": 891,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-27-military-simulation-overview-2025.md",
+      "bodyBytes": 942,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-28-fire-extinguisher-launch-2025.md",
+      "bodyBytes": 814,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-29-xr-defense-platform-2025.md",
+      "bodyBytes": 812,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-30-baseball-csr-2025.md",
+      "bodyBytes": 678,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/news/tw/news-31-trap-shooting-championship-2024.md",
+      "bodyBytes": 796,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/pages/en/case-studies.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/company.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/contact.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/history.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/insights.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/investors.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/news.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/partners.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/privacy.md",
+      "bodyBytes": 12,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/pages/en/products.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/search.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/solutions.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/tags.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/en/team.md",
+      "bodyBytes": 1408,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/pages/jp/case-studies.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/company.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/contact.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/history.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/insights.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/investors.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/news.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/partners.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/privacy.md",
+      "bodyBytes": 12,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/pages/jp/products.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/search.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/solutions.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/tags.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/jp/team.md",
+      "bodyBytes": 1623,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/pages/tw/case-studies.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/company.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/contact.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/history.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/insights.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/investors.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/news.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/partners.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/privacy.md",
+      "bodyBytes": 6954,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/pages/tw/products.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/search.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/solutions.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/tags.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/pages/tw/team.md",
+      "bodyBytes": 1116,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/products/en/fire-extinguisher-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/full-scale-police-training.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/hmmwv-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/machine-gun-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/mortar-observation.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/police-box.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/sniper-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/sut.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/tactical-boat-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/uav.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/usv.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/en/wargaming-table.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/fire-extinguisher-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/full-scale-police-training.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/hmmwv-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/machine-gun-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/mortar-observation.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/police-box.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/sniper-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/sut.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/tactical-boat-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/uav.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/usv.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/jp/wargaming-table.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/fire-extinguisher-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/full-scale-police-training.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/hmmwv-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/machine-gun-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/mortar-observation.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/police-box.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/sniper-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/sut.md",
+      "bodyBytes": 231,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "src/content/products/tw/tactical-boat-simulator.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/uav.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/usv.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/products/tw/wargaming-table.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/en/fire-rescue.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/en/military.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/en/mum-t.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/en/nova.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/en/police.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/en/smart-city.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/jp/fire-rescue.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/jp/military.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/jp/mum-t.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/jp/nova.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/jp/police.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/jp/smart-city.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/tw/fire-rescue.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/tw/military.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/tw/mum-t.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/tw/nova.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/tw/police.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "src/content/solutions/tw/smart-city.md",
+      "bodyBytes": 0,
+      "tiptapBytesEqual": true,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Candidate subset only; explicit edit verification still required"
+    },
+    {
+      "id": "synthetic:basic",
+      "bodyBytes": 93,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:quote",
+      "bodyBytes": 27,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:single-image",
+      "bodyBytes": 76,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:double-images",
+      "bodyBytes": 143,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": false,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:gallery-directive",
+      "bodyBytes": 55,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:youtube",
+      "bodyBytes": 105,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": false,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:local-video",
+      "bodyBytes": 138,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": false,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:divider",
+      "bodyBytes": 20,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": true,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:cta",
+      "bodyBytes": 90,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": false,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:unknown-html",
+      "bodyBytes": 89,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": false,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:gfm-table",
+      "bodyBytes": 51,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": false,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    },
+    {
+      "id": "synthetic:raw-security",
+      "bodyBytes": 41,
+      "tiptapBytesEqual": false,
+      "tiptapRenderedHtmlEqual": false,
+      "error": "",
+      "sourceGuardNoOpEqual": true,
+      "sourceGuardEditRetainsOriginalPrefix": true,
+      "decision": "Keep original raw source; visual import is not automatically safe"
+    }
+  ]
+}

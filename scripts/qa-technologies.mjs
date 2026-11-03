@@ -1,5 +1,5 @@
 // Inspect actual prerendered HTML and exercise the shared FAQ at three viewport sizes.
-// Usage: node scripts/qa-technologies.mjs (or QA_DIST=dist-fixtures/client ...).
+// Usage: node scripts/qa-technologies.mjs (or QA_DIST=dist-fixtures ...).
 import { chromium } from 'playwright-core';
 import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -89,12 +89,12 @@ try {
     check(`${url}: BreadcrumbList agrees with visible breadcrumb`, initial.graphs.some((g) => g['@type'] === 'BreadcrumbList' && g.itemListElement.at(-1)?.item === `${publicSiteRoot}${url}`) && await page.locator('main nav.breadcrumb [aria-current="page"]').count() === 1);
     check(`${url}: no untranslated markers or writing instructions`, !/\[待[^\]]*\]|Attention|Interest|Desire|^Action$|AIDA/.test(initial.main));
     check(`${url}: entire page has no pending translation/content markers`, !/\[待[^\]]*\]/.test(initial.fullText));
-    check(`${url}: content images have descriptive alt; decorative sector icons use empty alt`, await page.locator('main img').evaluateAll((imgs) => imgs.every((img) => img.hasAttribute('alt') && (img.alt.trim().length > 0 || !!img.closest('.sector-tag')))));
+    check(`${url}: content images have descriptive alt; explicitly hidden decorative images may use empty alt`, await page.locator('main img').evaluateAll((imgs) => imgs.every((img) => img.hasAttribute('alt') && (img.alt.trim().length > 0 || !!img.closest('.sector-tag, [aria-hidden="true"]')))));
     if (lang === 'en') check(`${url}: English content image alternatives are localized`, await page.locator('main img').evaluateAll((imgs) => imgs.every((img) => !/[\u3400-\u9fff]/.test(img.alt))));
     check(`${url}: heading hierarchy never skips a level`, await page.locator('main').evaluate((main) => { let previous = 0; return [...main.querySelectorAll('h1,h2,h3,h4,h5,h6')].every((h) => { const level = Number(h.tagName[1]); const ok = level <= previous + 1; previous = level; return ok; }); }));
     check(`${url}: Hero uses relevant supplied media or a text-led layout`, await page.locator('.page-hero .placeholder').count() === 0 && (await page.locator('.page-hero img').count()) === (slug === 'ai-simulation' ? 0 : 1));
     for(const image of await page.locator('main img').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(img=>img.decode());}
-    check(`${url}: supplied images decode with localized alt`, await page.locator('main img').evaluateAll(imgs=>imgs.every(img=>img.complete&&img.naturalWidth>0&&(img.alt.trim()||img.closest('.sector-tag')))));
+    check(`${url}: supplied images decode with localized alt`, await page.locator('main img').evaluateAll(imgs=>imgs.every(img=>img.complete&&img.naturalWidth>0&&(img.alt.trim()||img.closest('.sector-tag, [aria-hidden="true"]')))));
     if (slug) {
       const normalizedInitial = text(initial.main);
       const allCopy = [...headings(data), ...paragraphs(data), ...data.sections.flatMap((s) => s.bullets ?? []), data.primaryCta, data.secondaryCta, data.closing.cta];

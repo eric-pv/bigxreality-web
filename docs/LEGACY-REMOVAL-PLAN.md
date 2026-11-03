@@ -1,52 +1,49 @@
-# 舊架構安全移除計畫（待流程驗收及確認後執行）
+# 舊架構（Cloudflare／EmDash）移除紀錄與外部退役步驟
 
-本文件只定義清理依賴與順序，不是第二套架構。唯一架構見 ARCHITECTURE.md。本次不刪任何外部資源；無法讀取 Cloudflare 帳戶或真人 GitHub 發布時，不宣稱完成外部退役。
+唯一架構見 [ARCHITECTURE.md](ARCHITECTURE.md)。業主於 2026-11-03 確認正式站不使用 Cloudflare。本文件分兩部分：已在程式中完成的移除，以及仍需管理者在外部服務操作的退役步驟。
 
-修正前逐檔與套件分類： [盤點快照](audits/architecture-baseline-2026-10-30/README.md)。快照固定在 main 7c9602b，不代表本 PR 後仍保留 preview.yml；下列依賴先決條件優先。
+## 一、程式移除（已完成，2026-11-03）
 
-## 目前已確認的呼叫鏈
+### 移除的檔案與設定
 
-- astro.config.mjs 無條件載入 @astrojs/cloudflare、EmDash、D1／R2 adapter、bxr-cms plugin，所以即使 Pages 讀 Git，直接卸載仍會讓 build 失敗。
-- src/content.config.ts 匯入 emdashLoader，content-source 還有 emdash／bootstrap／fixtures／markdown；正式 Pages 已固定 markdown 並拒絕其他模式。
-- src/lib/site.ts 的 .cms-site.json 是舊 EmDash 覆寫；Pages 的 Git 模式不走它。
-- src/worker.ts／live.config.ts／middleware.ts／wrangler.jsonc／seed／.emdash 是舊 runtime、schema 與部署。
-- scripts/cms/* 是舊匯入與遠端抓取；scripts/sveltia/* 才是唯一正式 CMS 工具，不能一起刪。
-- React 仍被 Footer 的 @phosphor-icons/react/dist/ssr 使用，不能以「移除 CMS」為由刪除 React renderer。
-- tests/search-tokenize.test.ts 同時包含正式搜尋與 EmDash Portable Text 測試；只能拆出後者，不能整檔刪除。
-- scripts/lib/cms-content.mjs 讀的是目前 Git Markdown，雖檔名有 cms，並非 EmDash loader，應保留。
-
-## 建議保留
-
-Astro、React SSR 圖示所需依賴、Sharp、字型、Markdown、Pagefind、Sveltia App／產生器／自訂欄位、Git 內容與媒體、三語規則、SEO／版型／無障礙／發布驗證。fixtures 是非發布測試，不是第二 CMS。
-
-## 建議移除／重寫（尚未執行）
-
-| 項目 | 先決條件／影響 |
+| 項目 | 說明 |
 | --- | --- |
-| @astrojs/cloudflare、@emdash-cms/cloudflare、emdash、bxr-cms | 先移除 Astro integration、loader 匯入、Worker/live config 與相關測試，驗證純靜態輸出 |
-| @cloudflare/kumo、kysely | 未找到前台直接引用，但 EmDash 仍間接使用；拆舊依賴後由 npm 重建 lock，不手刪共享套件 |
-| github-slugger | 目前只用於 Portable Text 轉換與其測試；搜尋分詞仍保留 |
-| wrangler、@cloudflare/workers-types | Worker 與 provider 專用型別／工具移除後卸載 |
-| src/lib/emdash/*、src/live.config.ts、src/worker.ts | 舊內容與 API 沒有正式依賴、資料已比對備份後移除 |
-| scripts/cms/*、plugins/bxr-cms/*、seed/seed.json、.emdash、emdash-env.d.ts | 確認無待匯入的唯一資料與使用者依賴；必要資料先封存 |
-| src/middleware.ts、Astro manual i18n 設定 | 現有前台用 src/i18n 自有三語路由；先驗證移除 CMS locale 後的三語與路由，再移除舊 middleware |
-| content-source／site override | 只保留正式 Git 與隔離測試，不刪 draft／翻譯／日期／核准等公開資格檢查 |
-| 舊環境變數與部署文件 | 新流程正式驗收後，清除不用的 secret／Hook／Workers CI 設定；不列印 secret 值 |
-| 舊 dist/client 中間輸出 | 移除 adapter 後變 dist；同步修改 build-search、serve／QA 的 11 個舊輸出路徑，不先刪子路徑封裝功能 |
+| `@astrojs/cloudflare`、`@emdash-cms/cloudflare`、`emdash`、`bxr-cms`（`plugins/bxr-cms/`） | Astro adapter、EmDash integration 與發布 hook 插件 |
+| `@cloudflare/kumo`、`kysely`、`github-slugger` | 只被 EmDash 或其 Portable Text 轉換使用 |
+| `wrangler`、`@cloudflare/workers-types` | Worker 工具與型別 |
+| `wrangler.jsonc`、`src/worker.ts`、`src/live.config.ts`、`src/middleware.ts` | Worker 進入點、D1／R2／Cron 綁定、EmDash live collection、`/_emdash` 回應標頭 |
+| `src/lib/emdash/*`、`emdash-env.d.ts`、`seed/seed.json`、`.emdash/` | EmDash loader、API client、Portable Text、產生型別、schema seed 與 migration 紀錄 |
+| `scripts/cms/*`、`tests/cms/*`、`tests/cms-plugin.test.ts` | EmDash 匯入、遠端抓取、bootstrap 檢查與本機 CMS 整合測試 |
+| Astro manual i18n 設定 | 只是 EmDash 的 CMS locale；前台三語路由由 `src/i18n` 與 `[lang]` 自行處理 |
+| `BXR_CONTENT_SOURCE` 的 `emdash`／`bootstrap`、`WORKERS_CI` | 程式只接受 `markdown`（正式）與 `fixtures`（測試） |
+| `src/data/.cms-site.json` 覆寫 | 網站設定只讀 Git `src/data/site.json` |
 
-## 外部狀態仍需確認
+### 保留的部分
 
-GitHub Pages 實際來源／最新成功部署、main 分支保護、Sveltia 真人授權與 PR；Cloudflare Worker 是否仍對外、D1 是否有唯一內容、R2 是否有未進 Git 的素材、DNS／custom domain／Deploy Hook。wrangler 的綁定不是資源真的已建立或正在使用的證明。
+Astro、`@astrojs/react` 與 React（Footer 圖示的 SSR 仍需要）、Sharp、字型、Markdown、Pagefind、Sveltia App／產生器／自訂欄位、Git 內容與媒體、三語規則、SEO／版型／無障礙／發布驗證。`scripts/lib/cms-content.mjs` 讀的是 Git Markdown，與 EmDash 無關。歷史文件（`docs/PHASE-2-PLAN.md`、`docs/spikes/emdash/`、`docs/audits/` 等）是當時的紀錄，不代表現行架構，保留不改。
 
-## 執行順序
+### 建置的變更
 
-1. 先完成 CMS→main→Actions→Pages 的真人隔離驗收，保存正式部署 SHA、內容／媒體指紋及分支差異。
-2. 核對外部 Worker／D1／R2／路由。備份設定、D1 匯出與 R2 清單／原始媒體，將唯一資料逐項比對後遷移；不自動拿任一份覆寫 Git。
-3. 在另一個獨立清理分支拆 Astro／loader／runtime 呼叫鏈，再卸載套件與更新 lock。
-4. 改成明確 static build，維持原網址與唯一 base，調整搜尋／測試輸出路徑。通過產品、方案、三語、新聞、CMS、媒體、SEO、Pages 驗證。
-5. PR 人工審核後發布；確認 Pages 版本與 main 一致，且不再需要 Cloudflare 資料。
-6. 由管理者依核准範圍停用外部自動建置／Hook，再退役服務。刪 D1／R2／Worker 是獨立的不可逆操作門檻，未確認前不執行。
+- `astro.config.mjs` 改為 `output: "static"`，不使用 adapter。輸出位置由 `dist/client/` 改為 `dist/`（fixture 為 `dist-fixtures/`）；搜尋索引、QA 伺服器、Pages 封裝與 CI 的路徑已同步更新。
+- 根目錄 `/` 由 Astro 產生 meta refresh 頁（原本是 Cloudflare 專用的 `_redirects`）；Pages 封裝照舊改寫為正式起始頁。建置不再產生 `_redirects`、`_headers`、`.assetsignore`。
+- CSS 的瀏覽器目標固定為 Vite 的 baseline（Chrome／Edge 111、Firefox 114、Safari／iOS 16.4）。原本由 Cloudflare 的建置環境間接決定；不固定的話，`-webkit-backdrop-filter`、`-webkit-mask-*` 等 Safari 前綴會被省略。
+- 圖片改由 Astro 內建的 Sharp 服務在建置時產生（原本經 Cloudflare 的 workerd 圖片服務）。寬度現在精確等於 srcset 宣告值（舊服務部分輸出少 1px，例如 320w 實際 319px）；畫面內容相同。
+- og:image 不再放大小圖：來源寬度不足 1200px 時，輸出來源可容納的最大 1.91:1 裁切，`og:image:width/height` 寫實際尺寸。目前影響戰術快艇模擬器（810×425）與全尺寸警用訓練場（1024×538）兩頁的三語版本；舊建置把這兩張圖放大成 1200×630。
+- 與移除前的 main 逐檔比對：294 個 HTML 頁面除上述 og 尺寸（6 頁）與 inline CSS 前綴外完全相同，content digest 相同。
+
+## 二、外部退役步驟（需管理者在 Cloudflare 後台操作）
+
+程式已不需要任何 Cloudflare 資源，但外部服務本身不會因為程式移除而消失。依序執行：
+
+1. **停用自動建置（可立即執行，不影響資料）**：Cloudflare 後台 → Workers & Pages → `bigxreality-web` → Settings → Builds → 中斷 Git repository 連線。完成後 GitHub commit 不再出現失敗的 `Workers Builds: bigxreality-web` 檢查。
+2. **確認 D1 與 R2 是否有唯一資料**：
+   - D1 `bxr-cms`：檢查是否有內容；若有，先匯出備份，逐項比對 Git 中是否已有對應內容。
+   - R2 `bxr-media`：列出物件；若有 Git 中沒有的原始媒體，先下載保存。
+   - 不自動拿任一份資料覆寫 Git。
+3. **確認沒有對外流量**：Worker 是否綁定自訂網域或路由、DNS 是否指向它。正式網域切換到 GitHub Pages 前，不要移除仍在服務的設定。
+4. **清除舊憑證**：刪除 Cloudflare 上的 Deploy Hook、API token，以及 GitHub repository secrets／variables 中的 `EMDASH_*`、`CF_ACCESS_*`、`DEPLOY_HOOK_URL` 等（如果存在）。
+5. **刪除資源（不可逆，最後執行）**：確認第 2、3 步後，再刪除 Worker、D1、R2。這一步需要業主另外核准。
 
 ## 回復
 
-程式／設定由原始提交與 Git revert 回復；舊分支不重設。保留最後成功 Pages artifact 與來源 SHA，可重新執行該版本的工作流程。外部資料靠事前匯出與平台備份回復，Git revert 不能復原已刪資料庫／bucket；不得未備份就刪服務。沒有證據證明使用的外部系統，不繼續作為正式架構，但在資料確認前也不擅自銷毀。
+程式由 Git revert 回復；外部資料只能靠第 2 步的事前匯出與平台備份回復，Git revert 不能復原已刪的資料庫或 bucket。

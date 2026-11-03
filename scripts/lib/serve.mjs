@@ -7,8 +7,8 @@ import path from "node:path";
 
 // Pre-installed Chromium in the dev container; elsewhere (CI) Playwright's own download.
 export const CHROMIUM = process.env.CHROMIUM_PATH ?? (existsSync("/opt/pw-browsers/chromium") ? "/opt/pw-browsers/chromium" : undefined);
-// QA_DIST=dist-fixtures/client runs the QA scripts against the TEST FIXTURE build.
-export const DIST = path.resolve(import.meta.dirname, "../..", process.env.QA_DIST ?? "dist/client");
+// QA_DIST=dist-fixtures runs the QA scripts against the TEST FIXTURE build.
+export const DIST = path.resolve(import.meta.dirname, "../..", process.env.QA_DIST ?? "dist");
 
 const TYPES = {
   ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".json": "application/json",
