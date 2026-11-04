@@ -18,6 +18,11 @@ landing:
 
 
     針對教官及訓練單位，方案亦可結合適用系統的課程編輯、訓練紀錄及成果檢討功能，協助建立更完整的教學流程'
+  introImage:
+    need: 警勤模擬訓練實況：學員演練與教官監看（16:9）
+    ratio: 16 / 9
+    src: ../../../assets/images/products/police-team-vr-training-instructor-monitoring.webp
+    alt: 四名學員配戴 VR 頭盔、持模擬手槍演練，教官於旁透過螢幕監看訓練數據
   heroImage:
     need: 警勤模擬主視覺：訓練場景（16:9）
     ratio: 16 / 9
@@ -39,22 +44,22 @@ landing:
       - title: 警用裝備操作訓練
         content: 依據不同課程及系統配置，搭配警棍、辣椒水罐、電擊槍及手槍等模擬裝備，協助學員熟悉操作方式及使用觀念
         image:
-          need: 訓練設備畫面（3:2）
-          ratio: 3 / 2
+          need: 訓練設備畫面（16:9）
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-training-equipment-case.webp
           alt: 警勤模擬訓練設備收納箱，內含 VR 頭盔、訓練用手槍、警棍、彈匣及控制器
       - title: 基礎訓練
         content: 以單一警具操作及身體協調為起點，透過循序漸進的課程，引導學員建立基本操作能力
         image:
-          need: 基礎訓練畫面（3:2）
-          ratio: 3 / 2
+          need: 基礎訓練畫面（16:9）
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-basic-pistol-range-training.webp
           alt: 基礎訓練畫面：學員於模擬靶場以手槍對人形靶進行射擊練習
       - title: 進階訓練
         content: 在較複雜的模擬場景中，結合基礎訓練所學，練習面對不同環境與人物行為時的應變判斷
         image:
-          need: 進階訓練畫面（3:2）
-          ratio: 3 / 2
+          need: 進階訓練畫面（16:9）
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-advanced-street-scenario-training.webp
           alt: 進階訓練畫面：學員於模擬街道便利商店前，面對廂型車旁的蒙面嫌疑人
       - title: 言語降級訓練
@@ -63,23 +68,31 @@ landing:
 
           適用系統可由教官扮演或操作情境角色，依實際版本功能配置'
         image:
-          need: 言語降級訓練畫面（3:2）
-          ratio: 3 / 2
+          need: 言語降級訓練畫面（16:9）
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-baton-verbal-de-escalation-training.webp
+          alt: 言語降級訓練畫面：學員手持警棍，於模擬街道商店前面對情緒不穩的民眾
       - title: 情境模擬訓練
         content: 透過不同預設狀況與模擬環境，練習觀察、應變及適當的武力使用判斷
         image:
-          need: 情境模擬訓練畫面（3:2）
-          ratio: 3 / 2
+          need: 情境模擬訓練畫面（16:9）
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-train-carriage-scenario-training.webp
+          alt: 情境模擬訓練畫面：學員持手槍進入列車車廂，面對倒地乘務員旁的可疑人物
       - title: 課程編輯與教學安排
         content: 透過適用系統的課程編輯功能，讓教官依據訓練目標規劃情境與任務流程，支援不同課程需求
         image:
-          need: 課程編輯畫面（3:2）
-          ratio: 3 / 2
+          need: 課程編輯畫面（16:9）
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-course-results-tablet.webp
+          alt: 教官以平板檢視武力使用判斷訓練的課程與結算資訊
       - title: 訓練後成果檢討
         content: 運用適用系統的訓練紀錄與成果資訊，協助教官及學員回顧操作過程、討論判斷方式並調整訓練重點
         image:
-          need: 訓練後學習畫面（3:2）
-          ratio: 3 / 2
+          need: 訓練後學習畫面（16:9）
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-instructor-after-action-review.webp
+          alt: 教官手持平板，與學員對照螢幕上的訓練路徑俯視圖進行成果檢討
   flow:
     title: 從基礎操作到情境應變，建立循序漸進的警勤訓練流程
     steps:

@@ -41,36 +41,36 @@ landing:
 
         訓練内容は操作手順、照準と射撃の考え方、さまざまなシミュレーションシナリオでの応用練習に重点を置いています'
       image:
-        need: 武器・装備の操作訓練の画面（3:2）
-        ratio: 3 / 2
+        need: 武器・装備の操作訓練の画面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/mortar-observation-xr-training.webp
         alt: 模擬戦場環境で迫撃砲を操作し、観測と射撃の訓練を行う訓練生
     - title: 戦術・限定空間訓練
       content: SUT 小部隊戦術訓練システムにより、シミュレーション上の市街地、建物、その他の任務環境で、小隊の移動、環境の観察、戦術上の連携を練習します
       image:
-        need: 戦術・限定空間訓練の画面（3:2）
-        ratio: 3 / 2
+        need: 戦術・限定空間訓練の画面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/confined-space-tactical-training-pair.webp
         alt: VR ヘッドセットを装着し訓練用小銃を構えた2名の訓練生が、屋内の限定空間で戦術移動を練習
     - title: 車両運転シミュレーション
       content: シミュレーション操作機器、没入型環境、適用可能なモーションプラットフォームを組み合わせ、ハンヴィーや高速艇などの車両のシミュレーション訓練を提供します
       image:
-        need: 車両運転シミュレーションの画面（3:2）
-        ratio: 3 / 2
+        need: 車両運転シミュレーションの画面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/humvee-driving-simulator-instructor-illustration.webp
         alt: VR ヘッドセットを装着した訓練生がハンヴィー運転シミュレーターに乗車し、車上の射手が機関銃を操作、そばで教官が指導
     - title: 兵棋演習と指揮訓練
       content: 3次元の戦場状況表示と兵棋演習テーブルにより、指揮官による任務計画、兵力の配置、戦術的な兵棋演習を支援します
       image:
-        need: 兵棋演習と指揮訓練の画面（3:2）
-        ratio: 3 / 2
+        need: 兵棋演習と指揮訓練の画面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/wargaming-table-team-planning-discussion.webp
         alt: 兵棋演習テーブルを囲み、3D 戦場状況をもとに任務計画を検討する指揮要員
     - title: 無人システムのシミュレーション訓練
       content: ドローンと無人艇に関わるシミュレーションシステムにより、さまざまな無人機の任務の訓練を提供し、実際のシステムの能力に応じて情報連携のニーズへと広げます
       image:
-        need: 無人システムのシミュレーション訓練の画面（3:2）
-        ratio: 3 / 2
+        need: 無人システムのシミュレーション訓練の画面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/usv-vr-training-operation.webp
         alt: マルチスクリーンのコンソールで無人艇シミュレーション任務を操作するオペレーター
     - title: 訓練後のデータ分析
@@ -79,8 +79,8 @@ landing:
 
         教官と訓練生が訓練の要点を検討し、その後のカリキュラムを調整することで、毎回のシミュレーション訓練を具体的な改善の根拠として積み重ねます'
       image:
-        need: 訓練後のデータ分析の画面（3:2）
-        ratio: 3 / 2
+        need: 訓練後のデータ分析の画面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: FIM-92 スティンガーミサイル模擬訓練システムの戦場状況画面の前で任務説明を行う2名の隊員
     - title: システム間の連携と統合作戦の統合

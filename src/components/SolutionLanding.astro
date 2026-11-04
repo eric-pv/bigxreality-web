@@ -28,6 +28,7 @@ import RelatedCases from "./RelatedCases.astro";
 import { primaryImage } from '../data/primary-images';
 import { pageOgImage } from "../lib/og-image";
 import Text from "./Text.astro";
+import MediaSlot from "./MediaSlot.astro";
 
 interface Props {
   lang: Lang;
@@ -115,7 +116,7 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
     <CtaGroup slot="actions" actions={cta.hero} />
   </PageHero>
 
-  <section class="section landing-overview" aria-labelledby="landing-overview-title"><div class="container narrow"><h2 class="t-h2" id="landing-overview-title"><Text value={L.headline} /></h2>{L.intro?.split(/\n\s*\n/).map(paragraph => <p><Text value={paragraph} /></p>)}</div></section>
+  <section class="section landing-overview" aria-labelledby="landing-overview-title"><div class="container narrow"><h2 class="t-h2" id="landing-overview-title"><Text value={L.headline} /></h2>{L.intro?.split(/\n\s*\n/).map(paragraph => <p><Text value={paragraph} /></p>)}{L.introImage?.src && L.introImage.alt && <div class="intro-media"><MediaSlot media={L.introImage} ratio="3 / 2" fallbackLabel={t.placeholders.hero} needPrefix={t.mediaNeed} badge={t.illustrationLabel} sizes="(max-width: 767px) 100vw, 860px" /></div>}</div></section>
 
   <LandingSections lang={lang} L={L} />
 
@@ -169,4 +170,4 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
   @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
 </style>
 
-<style>.landing-overview .narrow { display: grid; gap: var(--space-3); } .landing-overview p { line-height: 1.8; }</style>
+<style>.landing-overview .narrow { display: grid; gap: var(--space-3); } .landing-overview p { line-height: 1.8; } .landing-overview .intro-media { margin-top: var(--space-3); }</style>

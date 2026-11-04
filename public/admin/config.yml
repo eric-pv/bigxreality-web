@@ -925,6 +925,70 @@ collections:
             label: intro
             required: false
             widget: text
+          - name: introImage
+            label: introImage
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: src
+                label: 圖片
+                required: false
+                widget: image
+                multiple: false
+                choose_url: false
+              - name: alt
+                label: 替代文字
+                required: false
+                widget: string
+              - name: need
+                label: need
+                required: false
+                widget: string
+              - name: caption
+                label: caption
+                required: false
+                widget: string
+              - name: ratio
+                label: ratio
+                required: false
+                widget: select
+                options:
+                  - 16 / 9
+                  - 3 / 2
+                  - 4 / 3
+                  - 4 / 5
+                  - 1 / 1
+              - name: kind
+                label: kind
+                required: false
+                widget: select
+                options:
+                  - approved
+                  - illustration
+              - name: status
+                label: status
+                required: false
+                widget: select
+                options:
+                  - public
+                  - withheld
+              - name: substitute
+                label: substitute
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: src
+                    label: 圖片
+                    required: true
+                    widget: image
+                    multiple: false
+                    choose_url: false
+                  - name: alt
+                    label: 替代文字
+                    required: true
+                    widget: string
           - name: heroImage
             label: heroImage
             required: false
@@ -2093,6 +2157,70 @@ collections:
             label: intro
             required: false
             widget: text
+          - name: introImage
+            label: introImage
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: src
+                label: 圖片
+                required: false
+                widget: image
+                multiple: false
+                choose_url: false
+              - name: alt
+                label: 替代文字
+                required: false
+                widget: string
+              - name: need
+                label: need
+                required: false
+                widget: string
+              - name: caption
+                label: caption
+                required: false
+                widget: string
+              - name: ratio
+                label: ratio
+                required: false
+                widget: select
+                options:
+                  - 16 / 9
+                  - 3 / 2
+                  - 4 / 3
+                  - 4 / 5
+                  - 1 / 1
+              - name: kind
+                label: kind
+                required: false
+                widget: select
+                options:
+                  - approved
+                  - illustration
+              - name: status
+                label: status
+                required: false
+                widget: select
+                options:
+                  - public
+                  - withheld
+              - name: substitute
+                label: substitute
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: src
+                    label: 圖片
+                    required: true
+                    widget: image
+                    multiple: false
+                    choose_url: false
+                  - name: alt
+                    label: 替代文字
+                    required: true
+                    widget: string
           - name: heroImage
             label: heroImage
             required: false

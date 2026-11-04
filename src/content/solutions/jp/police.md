@@ -18,6 +18,11 @@ landing:
 
 
     教官と訓練部隊に向けて、本ソリューションは適用可能なシステムの課程編集、訓練記録、成果の振り返りの機能と組み合わせることもでき、より充実した指導の流れの構築を支援します'
+  introImage:
+    need: 警察シミュレーション訓練の様子：訓練生の演習と教官の確認（16:9）
+    ratio: 16 / 9
+    src: ../../../assets/images/products/police-team-vr-training-instructor-monitoring.webp
+    alt: VR ヘッドセットを装着した4名の訓練生が模擬拳銃で訓練し、教官が画面で訓練データを確認
   heroImage:
     need: 警察業務シミュレーションのメインビジュアル：訓練シーン（16:9）
     ratio: 16 / 9
@@ -39,22 +44,22 @@ landing:
       - title: 警察装備の操作訓練
         content: 課程とシステム構成に応じて、警棒、催涙スプレー、スタンガン、拳銃などのシミュレーション装備を組み合わせ、訓練生が操作方法と使用の考え方に慣れることができるよう支援します
         image:
-          need: 訓練機器の画面（3:2）
-          ratio: 3 / 2
+          need: 訓練機器の画面（16:9）
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-training-equipment-case.webp
           alt: VR ヘッドセット、訓練用拳銃、警棒、弾倉、コントローラーを収めた警察シミュレーション訓練機材ケース
       - title: 基礎訓練
         content: 単一の警察装備の操作と身体の協調を出発点に、段階的な課程を通じて訓練生が基本的な操作能力を築けるよう導きます
         image:
-          need: 基礎訓練の画面（3:2）
-          ratio: 3 / 2
+          need: 基礎訓練の画面（16:9）
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-basic-pistol-range-training.webp
           alt: 基礎訓練の画面：模擬射撃場で人型標的に向けて拳銃射撃を練習する訓練生
       - title: 上級訓練
         content: より複雑なシミュレーションの場面で、基礎訓練で学んだことを組み合わせ、さまざまな環境や人物の行動に直面した際の対応判断を練習します
         image:
-          need: 上級訓練の画面（3:2）
-          ratio: 3 / 2
+          need: 上級訓練の画面（16:9）
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-advanced-street-scenario-training.webp
           alt: 上級訓練の画面：模擬街路のコンビニ前で、バンのそばにいる覆面の容疑者に対応する訓練生
       - title: 言葉による沈静化（デエスカレーション）訓練
@@ -63,23 +68,31 @@ landing:
 
           適用可能なシステムでは、教官がシナリオの登場人物を演じたり操作したりでき、実際のバージョンの機能に応じて構成します'
         image:
-          need: 言葉による沈静化訓練の画面（3:2）
-          ratio: 3 / 2
+          need: 言葉による沈静化訓練の画面（16:9）
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-baton-verbal-de-escalation-training.webp
+          alt: 言語による鎮静化訓練の画面：模擬街路の店舗前で、警棒を持つ訓練生が興奮した市民に対応
       - title: シナリオシミュレーション訓練
         content: さまざまな事前設定の状況とシミュレーション環境を通じて、観察、対応、適切な武力行使の判断を練習します
         image:
-          need: シナリオシミュレーション訓練の画面（3:2）
-          ratio: 3 / 2
+          need: シナリオシミュレーション訓練の画面（16:9）
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-train-carriage-scenario-training.webp
+          alt: 状況シミュレーション訓練の画面：拳銃を構えた訓練生が列車の車内に入り、倒れた乗務員のそばにいる不審者に対応
       - title: 課程編集と指導計画
         content: 適用可能なシステムの課程編集機能により、教官が訓練目標に応じてシナリオと任務の流れを計画でき、さまざまな課程のニーズに対応します
         image:
-          need: 課程編集の画面（3:2）
-          ratio: 3 / 2
+          need: 課程編集の画面（16:9）
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-course-results-tablet.webp
+          alt: タブレットで武力行使判断訓練のカリキュラムと結果情報を確認する教官
       - title: 訓練後の成果の振り返り
         content: 適用可能なシステムの訓練記録と成果の情報を活用し、教官と訓練生が操作の過程を振り返り、判断の方法を討議し、訓練の重点を調整できるよう支援します
         image:
-          need: 訓練後の学習の画面（3:2）
-          ratio: 3 / 2
+          need: 訓練後の学習の画面（16:9）
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-instructor-after-action-review.webp
+          alt: タブレットを持つ教官が、画面上の訓練ルートの俯瞰図を見ながら訓練生と成果を振り返る
   flow:
     title: 基礎的な操作からシナリオへの対応まで、段階的な警察訓練の流れを構築
     steps:

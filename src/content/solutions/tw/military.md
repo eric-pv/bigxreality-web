@@ -41,36 +41,36 @@ landing:
 
         訓練內容著重操作程序、瞄準與射擊觀念，以及不同模擬情境中的應用練習'
       image:
-        need: 武器裝備操作訓練畫面（3:2）
-        ratio: 3 / 2
+        need: 武器裝備操作訓練畫面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/mortar-observation-xr-training.webp
         alt: 學員在模擬戰場環境中操作迫擊砲進行觀測與射擊訓練
     - title: 戰術與限制空間訓練
       content: 透過 SUT 小部隊戰術訓練系統，在模擬城鎮、建築物及其他任務環境中，進行小隊移動、環境觀察與戰術協同練習
       image:
-        need: 戰術與限制空間訓練畫面（3:2）
-        ratio: 3 / 2
+        need: 戰術與限制空間訓練畫面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/confined-space-tactical-training-pair.webp
         alt: 兩名學員頭戴 VR 頭盔、手持訓練用步槍，在室內場地進行限制空間戰術移動訓練
     - title: 載具駕駛模擬
       content: 結合模擬操作設備、沉浸式環境與適用的動感平台，提供悍馬車及快艇等載具的模擬訓練應用
       image:
-        need: 載具駕駛模擬畫面（3:2）
-        ratio: 3 / 2
+        need: 載具駕駛模擬畫面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/humvee-driving-simulator-instructor-illustration.webp
         alt: 學員頭戴 VR 頭盔坐上悍馬車駕駛模擬器，車頂射手操作機槍，旁有教官指導
     - title: 兵棋推演與指揮訓練
       content: 透過三維戰場態勢及兵棋圖台，協助指揮人員進行任務規劃、兵力部署與戰術推演
       image:
-        need: 兵棋推演與指揮訓練畫面（3:2）
-        ratio: 3 / 2
+        need: 兵棋推演與指揮訓練畫面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/wargaming-table-team-planning-discussion.webp
         alt: 指揮人員圍繞兵棋圖台，對照三維戰場態勢進行任務規劃討論
     - title: 無人系統模擬訓練
       content: 透過無人機及無人船相關模擬系統，提供不同無人載具任務的訓練應用，並依實際系統能力延伸資訊協同需求
       image:
-        need: 無人系統模擬訓練畫面（3:2）
-        ratio: 3 / 2
+        need: 無人系統模擬訓練畫面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/usv-vr-training-operation.webp
         alt: 操作人員透過多螢幕控制台進行無人船模擬任務操作
     - title: 訓練後數據分析
@@ -79,8 +79,8 @@ landing:
 
         協助教官與學員檢討訓練重點並調整後續課程，讓每一次模擬訓練都能累積具體的改善依據'
       image:
-        need: 訓練後數據分析畫面（3:2）
-        ratio: 3 / 2
+        need: 訓練後數據分析畫面（16:9）
+        ratio: 16 / 9
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: 兩名官兵在 FIM-92 刺針飛彈模擬訓練系統的戰場態勢畫面前進行任務說明
     - title: 跨系統協同與聯戰整合

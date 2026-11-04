@@ -32,6 +32,11 @@ landing:
     For instructors and training units, the solution can also be combined with
     the course editing, training records and results review functions of
     applicable systems to help build a more complete teaching process'
+  introImage:
+    need: 'Police simulation training in action: trainees drilling while the instructor monitors (16:9)'
+    ratio: 16 / 9
+    src: ../../../assets/images/products/police-team-vr-training-instructor-monitoring.webp
+    alt: Four trainees in VR headsets drill with simulated pistols while an instructor monitors training data on a screen
   heroImage:
     need: 'Police simulation key visual: training scene (16:9)'
     ratio: 16 / 9
@@ -60,8 +65,8 @@ landing:
           spray canisters, conducted-energy weapons and handguns support
           equipment-operation practice and understanding of use concepts
         image:
-          need: Training equipment view (3:2)
-          ratio: 3 / 2
+          need: Training equipment view (16:9)
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-training-equipment-case.webp
           alt: Police simulation training kit case holding a VR headset, training pistol, baton, magazine and controllers
       - title: Basic Training
@@ -69,8 +74,8 @@ landing:
           physical coordination, a progressive course guides trainees in
           building basic operating skills
         image:
-          need: Basic training view (3:2)
-          ratio: 3 / 2
+          need: Basic training view (16:9)
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-basic-pistol-range-training.webp
           alt: 'Basic training view: a trainee practises pistol shooting at silhouette targets on a simulated range'
       - title: Advanced Training
@@ -78,8 +83,8 @@ landing:
           response-judgement practice across different environments and
           behaviours
         image:
-          need: Advanced training view (3:2)
-          ratio: 3 / 2
+          need: Advanced training view (16:9)
+          ratio: 16 / 9
           src: ../../../assets/images/products/police-advanced-street-scenario-training.webp
           alt: 'Advanced training view: a trainee faces a masked suspect beside a van outside a simulated convenience store'
       - title: Verbal De-escalation Training
@@ -92,28 +97,36 @@ landing:
           character, configured according to the functions of the actual
           version'
         image:
-          need: Verbal de-escalation training view (3:2)
-          ratio: 3 / 2
+          need: Verbal de-escalation training view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-baton-verbal-de-escalation-training.webp
+          alt: 'Verbal de-escalation training view: a trainee holding a baton faces an agitated civilian outside a simulated shopfront'
       - title: Scenario Simulation Training
         content: Different preset situations and simulated environments are used to
           practise observation, response and appropriate use-of-force decisions
         image:
-          need: Scenario simulation training view (3:2)
-          ratio: 3 / 2
+          need: Scenario simulation training view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-train-carriage-scenario-training.webp
+          alt: 'Scenario simulation training view: a trainee with a pistol enters a train carriage and faces a suspect beside a fallen conductor'
       - title: Course Editing and Lesson Planning
         content: The course editing function of applicable systems lets instructors plan
           scenarios and mission processes according to training objectives,
           supporting different course needs
         image:
-          need: Course editing view (3:2)
-          ratio: 3 / 2
+          need: Course editing view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-course-results-tablet.webp
+          alt: An instructor reviews course and results information for use-of-force judgement training on a tablet
       - title: Post-Training Results Review
         content: The training records and results information of applicable systems help
           instructors and trainees review the operating process, discuss
           judgement and adjust the training focus
         image:
-          need: Post-training learning view (3:2)
-          ratio: 3 / 2
+          need: Post-training learning view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/police-instructor-after-action-review.webp
+          alt: An instructor with a tablet reviews the session with a trainee using a top-down view of the training route on screen
   flow:
     title: From Basic Operation to Scenario Response, a Progressive Police Training
       Process

@@ -41,36 +41,36 @@ landing:
 
         Training focuses on operating procedures, aiming and shooting concepts, and applied practice in different simulated scenarios'
       image:
-        need: Weapons and equipment operation training view (3:2)
-        ratio: 3 / 2
+        need: Weapons and equipment operation training view (16:9)
+        ratio: 16 / 9
         src: ../../../assets/images/products/mortar-observation-xr-training.webp
         alt: Trainees operating a mortar during observation and firing training in a simulated battlefield
     - title: Tactical and Confined-Space Training
       content: With the SUT Small Unit Tactical Training System, squads practise movement, environmental observation and tactical coordination in simulated urban areas, buildings and other mission environments
       image:
-        need: Tactical and confined-space training view (3:2)
-        ratio: 3 / 2
+        need: Tactical and confined-space training view (16:9)
+        ratio: 16 / 9
         src: ../../../assets/images/products/confined-space-tactical-training-pair.webp
         alt: Two trainees wearing VR headsets with training rifles practise tactical movement in an indoor confined-space area
     - title: Vehicle Driving Simulation
       content: Combines simulated operating equipment, immersive environments and applicable motion platforms to provide simulation training for vehicles such as the Humvee and speedboats
       image:
-        need: Vehicle driving simulation view (3:2)
-        ratio: 3 / 2
+        need: Vehicle driving simulation view (16:9)
+        ratio: 16 / 9
         src: ../../../assets/images/products/humvee-driving-simulator-instructor-illustration.webp
         alt: Trainees in VR headsets aboard the Humvee driving simulator, with a roof gunner on the machine gun and an instructor alongside
     - title: Wargaming and Command Training
       content: A 3D battlefield situation display and the wargaming table help commanders with mission planning, force deployment and tactical wargaming
       image:
-        need: Wargaming and command training view (3:2)
-        ratio: 3 / 2
+        need: Wargaming and command training view (16:9)
+        ratio: 16 / 9
         src: ../../../assets/images/products/wargaming-table-team-planning-discussion.webp
         alt: Commanders gathered around the wargaming table discussing mission planning against a 3D battlefield view
     - title: Unmanned Systems Simulation Training
       content: Drone and unmanned vessel simulation systems provide training for different unmanned vehicle missions and extend information coordination needs according to actual system capabilities
       image:
-        need: Unmanned systems simulation training view (3:2)
-        ratio: 3 / 2
+        need: Unmanned systems simulation training view (16:9)
+        ratio: 16 / 9
         src: ../../../assets/images/products/usv-vr-training-operation.webp
         alt: An operator running an unmanned surface vessel simulation mission at a multi-screen console
     - title: Post-Training Data Analysis
@@ -79,8 +79,8 @@ landing:
 
         Instructors and trainees can then discuss key points and adjust follow-up courses, turning every simulation session into concrete grounds for improvement'
       image:
-        need: Post-training data analysis view (3:2)
-        ratio: 3 / 2
+        need: Post-training data analysis view (16:9)
+        ratio: 16 / 9
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: Two service members briefing a mission in front of the battlefield situation display of the FIM-92 Stinger simulation training system
     - title: Cross-System Coordination and Joint Integration
