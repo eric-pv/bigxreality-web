@@ -52,44 +52,54 @@ landing:
 
         実際の接続条件に基づいて、エネルギー、温湿度、設備の状態などの情報を統合できる可能性を評価します'
       image:
-        need: スマートビルディングの画面（3:2）
-        ratio: 3 / 2
+        need: スマートビルディングの画面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/smart-building-3d-energy-dashboard.webp
+        alt: スマートビル管理の画面：電力・水道・空気品質などの情報パネルを備えた3D 建物モデル
     - title: スマート交通分析
       content: '3次元の場所と交通データの可視化により、道路、車の流れ、交通環境の理解を支援し、交通シミュレーションと計画への活用へと広げます
 
 
         リアルタイムの信号制御、交通予測、データの接続などの機能は、プロジェクトの条件に応じて評価する必要があります'
       image:
-        need: スマート交通の画面（3:2）
-        ratio: 3 / 2
+        need: スマート交通の画面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/smart-traffic-light-rail-3d-visualization.webp
+        alt: スマート交通分析の画面：3D の街路を走るライトレールと、流量・速度推移・リアルタイム位置のグラフ
     - title: スマート消防と災害対応
       content: 3次元のシーン、没入型シミュレーション、関連する訓練ツールを組み合わせ、火災の認識、災害対応、救助訓練への活用の方向性を提供します
       image:
-        need: スマート消防の画面（3:2）
-        ratio: 3 / 2
+        need: スマート消防の画面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/smart-fire-vr-firefighter-training.webp
+        alt: スマート消防シミュレーションの画面：空気呼吸器を装着した消防士が火災の室内に進入
     - title: スマートエアサイド運転
       content: 没入型シミュレーションと適用可能な操作機器を活用し、空港のグランドハンドリングと作業車両の教育訓練への活用を計画して、実地の操作訓練を補います
       image:
-        need: スマートエアサイドの画面（3:2）
-        ratio: 3 / 2
+        need: スマートエアサイドの画面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/smart-airside-airport-3d-scene.webp
+        alt: スマート空港エアサイドの画面：空港ターミナル、エプロン、航空機の3D シーン
     - title: 災害の早期警戒と対応
       content: 3次元の地形、場所のモデル、適用可能なデータの可視化の方法により、災害シナリオの表示、対応教育、意思決定支援への活用の方向性を計画します
       image:
-        need: 災害対応の画面（3:2）
-        ratio: 3 / 2
+        need: 災害対応の画面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/disaster-warning-mountain-village-3d-analysis.webp
+        alt: 災害予警・対応の画面：山間集落の3D 地形モデルと、人流・人口分布の情報
     - title: スマート港湾管理
       content: '港湾の3次元環境と情報の可視化を基盤として、船舶、設備、作業エリア、港湾管理の情報を統合した活用を探ります
 
 
         AIS、貨物の流れ、リアルタイムの設備監視などの機能は、実際のプロジェクトの接続条件に応じて確認する必要があります'
       image:
-        need: スマート港湾の画面（3:2）
-        ratio: 3 / 2
+        need: スマート港湾の画面（16:9）
+        ratio: 16 / 9
     - title: スマートスポーツ訓練
       content: 没入型シミュレーションとインタラクティブな技術により、スポーツ技能、射撃競技、その他の適用可能な訓練への活用を広げます
       image:
-        need: スマートスポーツの画面（3:2）
-        ratio: 3 / 2
+        need: スマートスポーツの画面（16:9）
+        ratio: 16 / 9
   values:
     title: 導入価値
     cards:

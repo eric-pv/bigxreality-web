@@ -54,44 +54,54 @@ landing:
 
         依實際介接條件評估能源、溫濕度與設備狀態等資訊的整合可能'
       image:
-        need: 智慧建築畫面（3:2）
-        ratio: 3 / 2
+        need: 智慧建築畫面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/smart-building-3d-energy-dashboard.webp
+        alt: 智慧建築管理畫面：三維建築模型搭配用電、用水及空氣品質等資訊面板
     - title: 智慧交通分析
       content: '透過三維場域與交通資料視覺化，協助理解道路、車流及交通環境，延伸交通模擬與規劃應用
 
 
         即時號誌控制、交通預測及資料介接等功能需依專案條件評估'
       image:
-        need: 智慧交通畫面（3:2）
-        ratio: 3 / 2
+        need: 智慧交通畫面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/smart-traffic-light-rail-3d-visualization.webp
+        alt: 智慧交通分析畫面：三維街道中的輕軌列車，搭配流量、速度趨勢及即時位置圖表
     - title: 智慧消防與災害應變
       content: 結合三維場景、沉浸式模擬及相關訓練工具，提供火災認知、災害應變與救援訓練的應用方向
       image:
-        need: 智慧消防畫面（3:2）
-        ratio: 3 / 2
+        need: 智慧消防畫面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/smart-fire-vr-firefighter-training.webp
+        alt: 智慧消防模擬畫面：消防員配戴空氣呼吸器進入起火的室內場景
     - title: 智慧空側駕駛
       content: 運用沉浸式模擬及適用的操作設備，規劃機場地勤與作業車輛的教育訓練應用，補充實地操作訓練
       image:
-        need: 智慧空側畫面（3:2）
-        ratio: 3 / 2
+        need: 智慧空側畫面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/smart-airside-airport-3d-scene.webp
+        alt: 智慧空側畫面：機場航廈、停機坪與航機的三維場景
     - title: 災害預警與應變
       content: 透過三維地形、場域模型及適用的資料視覺化方式，規劃災害情境呈現、應變教育與決策輔助的應用方向
       image:
-        need: 災害應變畫面（3:2）
-        ratio: 3 / 2
+        need: 災害應變畫面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/disaster-warning-mountain-village-3d-analysis.webp
+        alt: 災害預警與應變畫面：山區部落三維地形模型，搭配人流與人口分布資訊
     - title: 智慧港埠管理
       content: '以港口三維環境及資訊視覺化為基礎，探索船舶、設備、作業區域與港埠管理資訊的整合應用
 
 
         AIS、貨物流向及即時設備監測等功能，需依實際專案介接條件確認'
       image:
-        need: 智慧港埠畫面（3:2）
-        ratio: 3 / 2
+        need: 智慧港埠畫面（16:9）
+        ratio: 16 / 9
     - title: 智慧運動訓練
       content: 透過沉浸式模擬與互動技術，延伸運動技能、射擊運動及其他適用的訓練應用
       image:
-        need: 智慧運動畫面（3:2）
-        ratio: 3 / 2
+        need: 智慧運動畫面（16:9）
+        ratio: 16 / 9
   values:
     title: 導入價值
     cards:
