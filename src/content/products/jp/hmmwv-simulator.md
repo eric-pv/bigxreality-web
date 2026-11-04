@@ -19,7 +19,6 @@ landing:
   heroImage:
     need: リアルなシナリオのイメージ図：軍用車両の運転シミュレーション機器、運転席に座る訓練生とそばで指導する教官（16:9）
     ratio: 16 / 9
-    kind: illustration
   ctaLabel: ハンヴィー車両訓練システムについて問い合わせる
   challenge:
     title: 軍用車両の運転訓練には、操作、環境、安全の両立が必要

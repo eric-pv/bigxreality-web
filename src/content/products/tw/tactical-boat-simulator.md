@@ -19,7 +19,6 @@ landing:
   heroImage:
     need: 寫實情境示意圖：快艇模擬操作設備、操艇人員及海上訓練情境，不使用 USV 無人船畫面（16:9）
     ratio: 16 / 9
-    kind: illustration
   ctaLabel: 洽詢快艇載具訓練系統
   challenge:
     title: 海上訓練，需要面對更多環境與資源條件

@@ -19,7 +19,6 @@ landing:
   heroImage:
     need: 寫實情境示意圖：軍用車輛駕駛模擬設備，學員坐在駕駛座、教官於旁指導（16:9）
     ratio: 16 / 9
-    kind: illustration
   ctaLabel: 洽詢悍馬車載具訓練系統
   challenge:
     title: 軍用車輛駕駛訓練，需要兼顧操作、環境與安全

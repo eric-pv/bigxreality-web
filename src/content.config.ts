@@ -87,6 +87,8 @@ const landing = (ctx: SchemaContext) => z.object({
   subheadline: text,
   /** Short product introduction shown under the sub-headline. */
   intro: text.optional(),
+  /** Optional photo shown under the introduction (3:2 by default). */
+  introImage: slot(ctx).optional(),
   /** Hero image position (16:9). */
   heroImage: slot(ctx).optional(),
   /** Button text of the hero and closing CTA, e.g. 洽詢 SUT 訓練系統. */

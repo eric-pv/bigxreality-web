@@ -19,7 +19,6 @@ landing:
   heroImage:
     need: 'Realistic scenario illustration: military vehicle driving simulator with a trainee in the driver''s seat and an instructor guiding alongside (16:9)'
     ratio: 16 / 9
-    kind: illustration
   ctaLabel: Enquire About the Humvee Vehicle Training System
   challenge:
     title: Military Vehicle Driver Training Must Balance Operation, Environment and Safety

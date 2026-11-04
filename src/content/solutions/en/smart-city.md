@@ -80,8 +80,10 @@ landing:
           and humidity, and equipment status is evaluated according to actual
           interface conditions'
         image:
-          need: Smart building view (3:2)
-          ratio: 3 / 2
+          need: Smart building view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/smart-building-3d-energy-dashboard.webp
+          alt: 'Smart building view: a 3D building model with power, water and air-quality information panels'
       - title: Smart Traffic Analysis
         content: '3D sites and traffic data visualisation help in understanding roads,
           traffic flow and the traffic environment, extending to traffic
@@ -91,29 +93,37 @@ landing:
           Functions such as real-time signal control, traffic forecasting and
           data interfaces must be evaluated according to project conditions'
         image:
-          need: Smart traffic view (3:2)
-          ratio: 3 / 2
+          need: Smart traffic view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/smart-traffic-light-rail-3d-visualization.webp
+          alt: 'Smart traffic view: a light-rail train on a 3D street with ridership, speed-trend and live-location charts'
       - title: Smart Fire Safety and Disaster Response
         content: Combines 3D scenes, immersive simulation and related training tools to
           provide directions for fire awareness, disaster response and rescue
           training
         image:
-          need: Smart fire safety view (3:2)
-          ratio: 3 / 2
+          need: Smart fire safety view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/smart-fire-vr-firefighter-training.webp
+          alt: 'Smart firefighting simulation view: a firefighter wearing breathing apparatus enters a burning interior'
       - title: Smart Airside Driving
         content: Using immersive simulation and applicable operating equipment, plans
           education and training for airport ground handling and operational
           vehicles, supplementing on-site operating training
         image:
-          need: Smart airside view (3:2)
-          ratio: 3 / 2
+          need: Smart airside view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/smart-airside-airport-3d-scene.webp
+          alt: 'Smart airside view: a 3D scene of an airport terminal, apron and aircraft'
       - title: Disaster Early Warning and Response
         content: Using 3D terrain, site models and applicable data visualisation, plans
           directions for presenting disaster scenarios, response education and
           decision support
         image:
-          need: Disaster response view (3:2)
-          ratio: 3 / 2
+          need: Disaster response view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/disaster-warning-mountain-village-3d-analysis.webp
+          alt: 'Disaster warning and response view: a 3D terrain model of a mountain village with population-flow and demographic data'
       - title: Smart Port Management
         content: 'Based on a 3D port environment and information visualisation, explores
           integrated applications of information on vessels, equipment,
@@ -124,14 +134,18 @@ landing:
           must be confirmed according to the interface conditions of the actual
           project'
         image:
-          need: Smart port view (3:2)
-          ratio: 3 / 2
+          need: Smart port view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/smart-port-3d-container-terminal.webp
+          alt: 'Smart port view: a 3D container terminal with berth utilisation, container totals and a container list'
       - title: Smart Sports Training
         content: Immersive simulation and interactive technology extend to sports
           skills, shooting sports and other applicable training
         image:
-          need: Smart sports view (3:2)
-          ratio: 3 / 2
+          need: Smart sports view (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/smart-sports-xr-clay-shooting-training.webp
+          alt: 'Smart sports training view: a trainee practises with a shotgun on a simulated clay-shooting range'
   values:
     title: Value of Adoption
     cards:
