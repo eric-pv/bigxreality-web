@@ -57,9 +57,8 @@ landing:
       image:
         need: 載具駕駛模擬畫面（3:2）
         ratio: 3 / 2
-        src: ../../../assets/images/products/speedboat-simulator-sea-training-illustration.webp
-        alt: 學員頭戴 VR 頭盔、手持訓練用槍械，乘坐於動感平台上的快艇模擬器
-        kind: illustration
+        src: ../../../assets/images/products/humvee-driving-simulator-instructor-illustration.webp
+        alt: 學員頭戴 VR 頭盔坐上悍馬車駕駛模擬器，車頂射手操作機槍，旁有教官指導
     - title: 兵棋推演與指揮訓練
       content: 透過三維戰場態勢及兵棋圖台，協助指揮人員進行任務規劃、兵力部署與戰術推演
       image:
@@ -74,13 +73,18 @@ landing:
         ratio: 3 / 2
         src: ../../../assets/images/products/usv-vr-training-operation.webp
         alt: 操作人員透過多螢幕控制台進行無人船模擬任務操作
-    - title: 跨系統協同與聯戰整合
-      content: 依據訓練規模與應用目標，透過 MUM-T 或 NOVA 等不同整合方案，規劃小隊協作或大型跨系統聯合模擬訓練
+    - title: 訓練後數據分析
+      content: '透過適用系統記錄訓練過程與任務結果，於訓練結束後回顧學員的操作程序、判斷時機與任務表現
+
+
+        協助教官與學員檢討訓練重點並調整後續課程，讓每一次模擬訓練都能累積具體的改善依據'
       image:
-        need: 跨系統協同與聯戰整合畫面（3:2）
+        need: 訓練後數據分析畫面（3:2）
         ratio: 3 / 2
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: 兩名官兵在 FIM-92 刺針飛彈模擬訓練系統的戰場態勢畫面前進行任務說明
+    - title: 跨系統協同與聯戰整合
+      content: 依據訓練規模與應用目標，透過 MUM-T 或 NOVA 等不同整合方案，規劃小隊協作或大型跨系統聯合模擬訓練
   featured:
     title: 從小隊協同到大型聯戰，延伸軍事訓練的整合層級
     items:

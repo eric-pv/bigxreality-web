@@ -41,16 +41,22 @@ landing:
         image:
           need: 訓練設備畫面（3:2）
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-training-equipment-case.webp
+          alt: 警勤模擬訓練設備收納箱，內含 VR 頭盔、訓練用手槍、警棍、彈匣及控制器
       - title: 基礎訓練
         content: 以單一警具操作及身體協調為起點，透過循序漸進的課程，引導學員建立基本操作能力
         image:
           need: 基礎訓練畫面（3:2）
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-basic-pistol-range-training.webp
+          alt: 基礎訓練畫面：學員於模擬靶場以手槍對人形靶進行射擊練習
       - title: 進階訓練
         content: 在較複雜的模擬場景中，結合基礎訓練所學，練習面對不同環境與人物行為時的應變判斷
         image:
           need: 進階訓練畫面（3:2）
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-advanced-street-scenario-training.webp
+          alt: 進階訓練畫面：學員於模擬街道便利商店前，面對廂型車旁的蒙面嫌疑人
       - title: 言語降級訓練
         content: '透過教官角色扮演與情境互動，讓學員練習運用言語溝通緩和衝突，降低情況升級的可能
 

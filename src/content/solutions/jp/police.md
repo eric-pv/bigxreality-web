@@ -41,16 +41,22 @@ landing:
         image:
           need: 訓練機器の画面（3:2）
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-training-equipment-case.webp
+          alt: VR ヘッドセット、訓練用拳銃、警棒、弾倉、コントローラーを収めた警察シミュレーション訓練機材ケース
       - title: 基礎訓練
         content: 単一の警察装備の操作と身体の協調を出発点に、段階的な課程を通じて訓練生が基本的な操作能力を築けるよう導きます
         image:
           need: 基礎訓練の画面（3:2）
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-basic-pistol-range-training.webp
+          alt: 基礎訓練の画面：模擬射撃場で人型標的に向けて拳銃射撃を練習する訓練生
       - title: 上級訓練
         content: より複雑なシミュレーションの場面で、基礎訓練で学んだことを組み合わせ、さまざまな環境や人物の行動に直面した際の対応判断を練習します
         image:
           need: 上級訓練の画面（3:2）
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-advanced-street-scenario-training.webp
+          alt: 上級訓練の画面：模擬街路のコンビニ前で、バンのそばにいる覆面の容疑者に対応する訓練生
       - title: 言葉による沈静化（デエスカレーション）訓練
         content: '教官によるロールプレイとシナリオでのやり取りを通じて、訓練生が言葉による意思疎通で衝突を和らげ、事態の悪化の可能性を下げる練習をします
 

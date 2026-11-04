@@ -62,6 +62,8 @@ landing:
         image:
           need: Training equipment view (3:2)
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-training-equipment-case.webp
+          alt: Police simulation training kit case holding a VR headset, training pistol, baton, magazine and controllers
       - title: Basic Training
         content: Starting from the operation of a single piece of police equipment and
           physical coordination, a progressive course guides trainees in
@@ -69,6 +71,8 @@ landing:
         image:
           need: Basic training view (3:2)
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-basic-pistol-range-training.webp
+          alt: 'Basic training view: a trainee practises pistol shooting at silhouette targets on a simulated range'
       - title: Advanced Training
         content: Complex simulated scenes combine foundational skills with
           response-judgement practice across different environments and
@@ -76,6 +80,8 @@ landing:
         image:
           need: Advanced training view (3:2)
           ratio: 3 / 2
+          src: ../../../assets/images/products/police-advanced-street-scenario-training.webp
+          alt: 'Advanced training view: a trainee faces a masked suspect beside a van outside a simulated convenience store'
       - title: Verbal De-escalation Training
         content: 'Through instructor role-play and scenario interaction, trainees
           practise using verbal communication to ease conflict and reduce the

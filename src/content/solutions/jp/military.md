@@ -57,9 +57,8 @@ landing:
       image:
         need: 車両運転シミュレーションの画面（3:2）
         ratio: 3 / 2
-        src: ../../../assets/images/products/speedboat-simulator-sea-training-illustration.webp
-        alt: VR ヘッドセットを装着し訓練用銃を持った訓練生が、モーションプラットフォーム上の高速艇シミュレーターに搭乗
-        kind: illustration
+        src: ../../../assets/images/products/humvee-driving-simulator-instructor-illustration.webp
+        alt: VR ヘッドセットを装着した訓練生がハンヴィー運転シミュレーターに乗車し、車上の射手が機関銃を操作、そばで教官が指導
     - title: 兵棋演習と指揮訓練
       content: 3次元の戦場状況表示と兵棋演習テーブルにより、指揮官による任務計画、兵力の配置、戦術的な兵棋演習を支援します
       image:
@@ -74,13 +73,18 @@ landing:
         ratio: 3 / 2
         src: ../../../assets/images/products/usv-vr-training-operation.webp
         alt: マルチスクリーンのコンソールで無人艇シミュレーション任務を操作するオペレーター
-    - title: システム間の連携と統合作戦の統合
-      content: 訓練の規模と活用の目標に応じて、MUM-T や NOVA などの異なる統合ソリューションにより、小隊の協働または大規模なシステム間の統合シミュレーション訓練を計画します
+    - title: 訓練後のデータ分析
+      content: '対応システムで訓練の過程と任務結果を記録し、訓練終了後に訓練生の操作手順、判断のタイミング、任務の成果を振り返ります
+
+
+        教官と訓練生が訓練の要点を検討し、その後のカリキュラムを調整することで、毎回のシミュレーション訓練を具体的な改善の根拠として積み重ねます'
       image:
-        need: システム間の連携と統合作戦の統合の画面（3:2）
+        need: 訓練後のデータ分析の画面（3:2）
         ratio: 3 / 2
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: FIM-92 スティンガーミサイル模擬訓練システムの戦場状況画面の前で任務説明を行う2名の隊員
+    - title: システム間の連携と統合作戦の統合
+      content: 訓練の規模と活用の目標に応じて、MUM-T や NOVA などの異なる統合ソリューションにより、小隊の協働または大規模なシステム間の統合シミュレーション訓練を計画します
   featured:
     title: 小隊の連携から大規模な統合作戦まで、軍事訓練の統合レベルを広げる
     items:

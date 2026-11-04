@@ -19,7 +19,6 @@ landing:
   heroImage:
     need: 'Realistic scenario illustration: speedboat simulation equipment, boat operators and a maritime training scene; no USV unmanned vessel imagery (16:9)'
     ratio: 16 / 9
-    kind: illustration
   ctaLabel: Enquire About the Speedboat Vehicle Training System
   challenge:
     title: Maritime Training Has to Deal with More Environmental and Resource Conditions

@@ -57,9 +57,8 @@ landing:
       image:
         need: Vehicle driving simulation view (3:2)
         ratio: 3 / 2
-        src: ../../../assets/images/products/speedboat-simulator-sea-training-illustration.webp
-        alt: Trainees in VR headsets with training weapons aboard a speedboat simulator on a motion platform
-        kind: illustration
+        src: ../../../assets/images/products/humvee-driving-simulator-instructor-illustration.webp
+        alt: Trainees in VR headsets aboard the Humvee driving simulator, with a roof gunner on the machine gun and an instructor alongside
     - title: Wargaming and Command Training
       content: A 3D battlefield situation display and the wargaming table help commanders with mission planning, force deployment and tactical wargaming
       image:
@@ -74,13 +73,18 @@ landing:
         ratio: 3 / 2
         src: ../../../assets/images/products/usv-vr-training-operation.webp
         alt: An operator running an unmanned surface vessel simulation mission at a multi-screen console
-    - title: Cross-System Coordination and Joint Integration
-      content: According to training scale and objectives, squad coordination or large-scale cross-system joint simulation training is planned through different integration solutions such as MUM-T or NOVA
+    - title: Post-Training Data Analysis
+      content: 'Applicable systems record the training process and mission results, so trainee procedures, decision timing and mission performance can be reviewed after each session
+
+
+        Instructors and trainees can then discuss key points and adjust follow-up courses, turning every simulation session into concrete grounds for improvement'
       image:
-        need: Cross-system coordination and joint integration view (3:2)
+        need: Post-training data analysis view (3:2)
         ratio: 3 / 2
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: Two service members briefing a mission in front of the battlefield situation display of the FIM-92 Stinger simulation training system
+    - title: Cross-System Coordination and Joint Integration
+      content: According to training scale and objectives, squad coordination or large-scale cross-system joint simulation training is planned through different integration solutions such as MUM-T or NOVA
   featured:
     title: From Squad Coordination to Large-Scale Joint Operations, Extending the Integration Levels of Military Training
     items:

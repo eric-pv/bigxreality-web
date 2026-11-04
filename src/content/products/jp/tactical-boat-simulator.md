@@ -19,7 +19,6 @@ landing:
   heroImage:
     need: リアルなシナリオのイメージ図：高速艇のシミュレーション操作機器、操艇要員、海上訓練の様子。USV無人艇の画面は使用しない（16:9）
     ratio: 16 / 9
-    kind: illustration
   ctaLabel: 高速艇訓練システムについて問い合わせる
   challenge:
     title: 海上訓練は、より多くの環境と資源の条件に向き合う必要がある
