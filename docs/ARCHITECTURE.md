@@ -144,4 +144,4 @@ GitHub Actions 由平台提供 GITHUB_SHA／REF／RUN_ID／TOKEN；deploy job �
 
 已授權的評估方向為 Astro 共用三語表單 → Google Apps Script → Google Sheets；不用 Google Forms 原生介面、Workers／D1／R2、第二 CMS 或長期 Node 後端。
 
-2026-11-04 已以使用者部署的測試 Web App 完成 Pages-origin 端到端驗證：瀏覽器可讀取四種 JSON 回應（直接 POST 成立，不需 HTML Service 橋接），測試表經人工確認同一 requestId 只有一列，見 [驗收紀錄](inquiry/POC-VALIDATION.md)。正式三語表單尚未開發，正式聯絡頁仍為 Email；正式版依 [GAS POC 設定](inquiry/GAS-POC-SETUP.md) 第 7 節規劃，使用另一份正式 Sheet，不沿用測試表。不得用 no-cors 不透明回應或 iframe load 事件表示成功；直接串接不成立時先提同一 GAS 的最小替代方案供確認，不自行加新服務。
+2026-11-04 已以使用者部署的測試 Web App 完成 Pages-origin 端到端驗證：瀏覽器可讀取四種 JSON 回應（直接 POST 成立，不需 HTML Service 橋接），測試表經人工確認同一 requestId 只有一列，見 [驗收紀錄](inquiry/POC-VALIDATION.md)。正式三語表單尚未開發，正式聯絡頁仍為 Email；正式版依 [GAS POC 設定](inquiry/GAS-POC-SETUP.md) 第 7 節規劃；業主決定（2026-11-04）沿用同一份試算表、Apps Script 專案與 `/exec` 部署升級為正式收件：更名試算表、以正式程式取代 POC 程式並新增正式分頁、以「新版本」更新同一部署，POC 分頁與測試列於上線前移除。不得用 no-cors 不透明回應或 iframe load 事件表示成功；直接串接不成立時先提同一 GAS 的最小替代方案供確認，不自行加新服務。
