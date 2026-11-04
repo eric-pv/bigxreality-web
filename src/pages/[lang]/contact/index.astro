@@ -14,7 +14,6 @@ import { getEntry } from "astro:content";
 import { LANGS, localePath, type Lang } from "../../../i18n";
 import { getUi } from "../../../lib/ui";
 import { site } from "../../../lib/site";
-import { getLocalized } from "../../../lib/content";
 import { isPending as isUnset } from "../../../lib/pending";
 import { isEditorialPlaceholder as isPending } from "../../../lib/pending";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
@@ -22,6 +21,7 @@ import PageHero from "../../../components/PageHero.astro";
 import SectionHead from "../../../components/SectionHead.astro";
 import ProcessSteps from "../../../components/ProcessSteps.astro";
 import Text from "../../../components/Text.astro";
+import InquiryForm from "../../../components/InquiryForm.astro";
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -32,37 +32,7 @@ const ui = getUi(lang);
 const t = ui.contactPage;
 const copy = (await getEntry("pages", `${lang}/contact`))!.data;
 const email = isPending(site.contact.email) ? null : site.contact.email;
-const mailto = (subject: string) =>
-  `mailto:${email}?subject=${encodeURIComponent(`[Big x Reality] ${subject}`)}&body=${encodeURIComponent(t.bodyFields.join("\n") + "\n")}`;
-
 const inquiryEndpoint = isUnset(site.inquiry.endpoint) ? null : site.inquiry.endpoint;
-const f = t.form;
-let interestGroups: { label: string; options: { value: string; label: string; match: string[] }[] }[] = [];
-if (inquiryEndpoint) {
-  const privacy = (await getLocalized("pages", "tw")).find((e) => e.slug === "privacy");
-  if (!privacy) throw new Error("site.inquiry.endpoint is set but the privacy policy (pages/tw/privacy.md) is still a draft: publish it first, the consent links to it.");
-  const products = await getLocalized("products", lang);
-  const solutions = await getLocalized("solutions", lang);
-  interestGroups = [
-    { label: f.interestProducts, options: products.map((p) => ({
-      value: `${p.loc.data.hero.name} (product:${p.slug})`, label: p.loc.data.hero.name,
-      match: [p.base.data.hero.code, p.loc.data.hero.code, p.loc.data.hero.name].filter((x): x is string => !!x),
-    })) },
-    { label: f.interestSolutions, options: solutions.map((s) => ({
-      value: `${s.loc.data.name} (solution:${s.slug})`, label: s.loc.data.name, match: [s.loc.data.name],
-    })) },
-  ];
-}
-type InputKey = "name" | "organization" | "jobTitle" | "country" | "email" | "phone";
-const inputFields: { key: InputKey; type: "text" | "email" | "tel"; auto: string; required: boolean; max: number }[] = [
-  { key: "name", type: "text", auto: "name", required: true, max: 100 },
-  { key: "organization", type: "text", auto: "organization", required: true, max: 150 },
-  { key: "jobTitle", type: "text", auto: "organization-title", required: false, max: 100 },
-  { key: "country", type: "text", auto: "country-name", required: false, max: 80 },
-  { key: "email", type: "email", auto: "email", required: true, max: 254 },
-  { key: "phone", type: "tel", auto: "tel", required: false, max: 40 },
-];
-const topicKeys = Object.keys(t.topics) as (keyof typeof t.topics)[];
 const breadcrumbs = [
   { name: ui.home, path: localePath(lang) },
   { name: ui.contact, path: localePath(lang, "contact") },
@@ -76,69 +46,11 @@ const breadcrumbs = [
   <section class="section">
     <div class="container">
       {email ? (
-        <div class="request" data-contact data-topics={JSON.stringify(t.topics)} data-email={email} data-body={t.bodyFields.join("\n") + "\n"}>
+        <div class="request" data-contact>
           <p class="t-label label"><Text value={t.topicLabel} /></p>
           <h2 class="t-h2" data-topic-title><Text value={t.topics.general.title} /></h2>
           <p class="t-h4 item" data-topic-item hidden></p>
-          {inquiryEndpoint ? (
-            <>
-              <form class="inquiry" data-inquiry data-endpoint={inquiryEndpoint} data-lang={lang} data-version={site.inquiry.privacyVersion} novalidate hidden>
-                <p class="t-small t-muted"><Text value={f.intro} /></p>
-                <div class="grid2">
-                  {inputFields.map(({ key, type, auto, required, max }) => (
-                    <div class="field" data-field={key}>
-                      <label for={`f-${key}`}>{f[key]} <span class="tag">{required ? f.required : f.optional}</span></label>
-                      <input id={`f-${key}`} name={key} type={type} autocomplete={auto} required={required} maxlength={max} aria-describedby={key === "name" ? `f-name-hint e-${key}` : `e-${key}`} />
-                      {key === "name" && <p class="t-small t-muted" id="f-name-hint">{f.nameHint}</p>}
-                      <p class="err" id={`e-${key}`} hidden></p>
-                    </div>
-                  ))}
-                  <div class="field" data-field="topic">
-                    <label for="f-topic">{f.topic} <span class="tag">{f.required}</span></label>
-                    <select id="f-topic" name="topic" required>
-                      {topicKeys.map((k) => <option value={k}>{t.topics[k].title}</option>)}
-                    </select>
-                  </div>
-                  <div class="field" data-field="interest">
-                    <label for="f-interest">{f.interest} <span class="tag">{f.optional}</span></label>
-                    <select id="f-interest" name="interest">
-                      <option value="">{f.interestNone}</option>
-                      {interestGroups.map((g) => (
-                        <optgroup label={g.label}>
-                          {g.options.map((o) => <option value={o.value} data-match={JSON.stringify(o.match)}>{o.label}</option>)}
-                        </optgroup>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                <div class="field" data-field="message">
-                  <label for="f-message">{f.message} <span class="tag">{f.required}</span></label>
-                  <textarea id="f-message" name="message" rows="6" required maxlength="3000" aria-describedby="h-message e-message"></textarea>
-                  <p class="t-small t-muted" id="h-message">{f.messageHint}</p>
-                  <p class="err" id="e-message" hidden></p>
-                </div>
-                <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off" /></div>
-                <p class="t-small consent">{f.consentBefore}<a href={localePath(lang, "privacy")} target="_blank" rel="noopener">{f.consentLink}</a>{f.consentAfter}</p>
-                <p class="err summary" role="alert" data-status hidden></p>
-                <div class="actions actions--row">
-                  <button class="btn btn--primary" type="submit" data-submit data-label={f.submit} data-busy={f.submitting}>{f.submit}</button>
-                  <button class="btn btn--secondary" type="button" data-decline>{f.decline}</button>
-                </div>
-              </form>
-              <div class="done" data-done role="status" tabindex="-1" hidden>
-                <h3 class="t-h3">{f.successTitle}</h3>
-                <p>{f.successBody}</p>
-                <p class="t-small t-muted">{f.reference}：<span data-ref></span></p>
-              </div>
-              <p class="t-small t-muted mail-alt"><Text value={f.emailAlternative} /> <a href={mailto(t.topics.general.subject)} data-mailto>{email}</a></p>
-              <script type="application/json" data-inquiry-text set:html={JSON.stringify({ required: f.errorRequired, email: f.errorEmail, phone: f.errorPhone, declined: `${f.declined} ${email}`, summary: f.errorSummary, unknown: f.errorUnknown, busy: f.errorBusy, failed: `${f.errorFailed} ${email}` }).replace(/</g, "\\u003c")} />
-            </>
-          ) : (
-            <div class="actions">
-              <a class="btn btn--primary" href={mailto(t.topics.general.subject)} data-mailto><Text value={t.sendEmail} /></a>
-              <p class="t-small t-muted"><Text value={t.orWrite} /> <a href={`mailto:${email}`}>{email}</a></p>
-            </div>
-          )}
+          <InquiryForm lang={lang} />
         </div>
       ) : (
         <p class="t-muted"><Text value={t.noEmail} /></p>
@@ -155,151 +67,7 @@ const breadcrumbs = [
   )}
 </BaseLayout>
 
-<script>
-  import { sendInquiry, UnknownResult, type InquiryPayload } from "../../../lib/inquiry";
-  const box = document.querySelector<HTMLElement>("[data-contact]");
-  if (box) {
-    const topics: Record<string, { title: string; subject: string }> = JSON.parse(box.dataset.topics!);
-    const params = new URLSearchParams(location.search);
-    const topic = topics[params.get("topic") ?? ""] ? params.get("topic")! : "general";
-    // Product codes / solution names only: letters, digits, CJK and a few separators.
-    const item = (params.get("item") ?? "").replace(/[^\p{L}\p{N} &·()（）\-–]/gu, "").slice(0, 60);
-    const { title, subject } = topics[topic];
-    box.querySelector("[data-topic-title]")!.textContent = title;
-    const itemEl = box.querySelector<HTMLElement>("[data-topic-item]")!;
-    if (item) { itemEl.textContent = item; itemEl.hidden = false; }
-    const full = `[Big x Reality] ${subject}${item ? ` – ${item}` : ""}`;
-    box.querySelector<HTMLAnchorElement>("[data-mailto]")!.href =
-      `mailto:${box.dataset.email}?subject=${encodeURIComponent(full)}&body=${encodeURIComponent(box.dataset.body!)}`;
-    const form = box.querySelector<HTMLFormElement>("[data-inquiry]");
-    if (form) setupInquiry(form, topic, item);
-  }
-
-  function setupInquiry(form: HTMLFormElement, topic: string, item: string) {
-    const text: Record<string, string> = JSON.parse(document.querySelector("[data-inquiry-text]")!.textContent!);
-    const el = form.elements;
-    const field = (name: string) => el.namedItem(name) as HTMLInputElement;
-    (field("topic") as unknown as HTMLSelectElement).value = topic;
-    if (item) {
-      const key = item.toLowerCase();
-      const hit = [...form.querySelectorAll<HTMLOptionElement>("option[data-match]")].find((o) =>
-        (JSON.parse(o.dataset.match!) as string[]).some((m) => m.toLowerCase() === key));
-      if (hit) hit.selected = true;
-    }
-    form.hidden = false;
-    // One ID per inquiry: a retry after an unknown result reuses it, so the sheet never gets a second row.
-    let requestId = crypto.randomUUID();
-    let sent = "";
-    const status = form.querySelector<HTMLElement>("[data-status]")!;
-    const button = form.querySelector<HTMLButtonElement>("[data-submit]")!;
-    const showError = (name: string, message: string) => {
-      const p = form.querySelector<HTMLElement>(`#e-${name}`);
-      const input = field(name);
-      if (p) { p.textContent = message; p.hidden = !message; }
-      if (input) input.setAttribute("aria-invalid", message ? "true" : "false");
-    };
-    const say = (message: string) => { status.textContent = message; status.hidden = !message; };
-
-    function validate(): string | null {
-      const rules: [string, (v: string) => string][] = [
-        ["name", (v) => v ? "" : text.required],
-        ["organization", (v) => v ? "" : text.required],
-        ["email", (v) => !v ? text.required : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : text.email],
-        ["phone", (v) => !v || /^[0-9+()#.\-\s]{5,40}$/.test(v) ? "" : text.phone],
-        ["message", (v) => v ? "" : text.required],
-      ];
-      let first: string | null = null;
-      for (const [name, rule] of rules) {
-        const input = field(name);
-        const message = rule(input.value.trim());
-        showError(name, message);
-        if (message && !first) first = name;
-      }
-      return first;
-    }
-
-    // 「不同意」: nothing is sent; the visitor can still e-mail.
-    form.querySelector("[data-decline]")!.addEventListener("click", () => say(text.declined));
-
-    // 「同意並送出」 is the consent: pressing it sends privacyConsent=yes with the policy version.
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (button.disabled) return;
-      say("");
-      const invalid = validate();
-      if (invalid) { say(text.summary); field(invalid).focus(); return; }
-      const payload: InquiryPayload = {
-        name: field("name").value.trim(), organization: field("organization").value.trim(),
-        jobTitle: field("jobTitle").value.trim(), country: field("country").value.trim(),
-        email: field("email").value.trim(), phone: field("phone").value.trim(),
-        topic: (field("topic") as unknown as HTMLSelectElement).value,
-        interest: (field("interest") as unknown as HTMLSelectElement).value,
-        message: field("message").value.trim(), language: form.dataset.lang!,
-        sourcePage: location.pathname, privacyConsent: "yes", privacyVersion: form.dataset.version!,
-      };
-      // Edited after a failed attempt → a new inquiry, so it gets a new ID instead of a conflict.
-      const snapshot = JSON.stringify(payload);
-      if (sent && sent !== snapshot) requestId = crypto.randomUUID();
-      sent = snapshot;
-      button.disabled = true;
-      button.textContent = button.dataset.busy!;
-      try {
-        const reply = await sendInquiry(form.dataset.endpoint!, requestId, payload, field("website").value);
-        if (reply.ok && reply.persisted) {
-          const done = form.parentElement!.querySelector<HTMLElement>("[data-done]")!;
-          done.querySelector("[data-ref]")!.textContent = requestId;
-          form.hidden = true;
-          done.hidden = false;
-          done.focus();
-          return;
-        }
-        if (reply.code === "INVALID_FIELD" && reply.field && form.querySelector(`#e-${reply.field}`)) {
-          showError(reply.field, reply.field === "email" ? text.email : reply.field === "phone" ? text.phone : text.required);
-          say(text.summary); field(reply.field).focus();
-        } else if (reply.code === "BUSY" || reply.code === "RATE_LIMITED") {
-          say(text.busy);
-        } else if (reply.code === "ID_CONFLICT") {
-          requestId = crypto.randomUUID(); sent = ""; say(text.unknown);
-        } else {
-          say(text.failed);
-        }
-      } catch (error) {
-        say(error instanceof UnknownResult ? text.unknown : text.failed);
-      } finally {
-        button.disabled = false;
-        button.textContent = button.dataset.label!;
-      }
-    });
-  }
-</script>
-
 <style>
-  .request { display: grid; gap: var(--space-2); max-width: 44rem; }
-  .label { color: var(--ink-muted); }
-  .item { color: var(--ink-muted); }
-  .actions { display: grid; gap: var(--space-2); justify-items: start; margin-top: var(--space-3); }
-  @media (max-width: 767px) { .actions .btn { width: 100%; justify-content: center; } }
-  .inquiry { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
-  @media (max-width: 767px) { .grid2 { grid-template-columns: 1fr; } }
-  .field { display: grid; gap: var(--space-1); align-content: start; }
-  .field label { font-weight: 600; }
-  .tag { font-weight: 400; font-size: var(--fs-small); color: var(--ink-muted); }
-  .field input:not([type="checkbox"]), .field select, .field textarea {
-    width: 100%; min-height: var(--btn-h); padding: 10px 12px; font: inherit; color: var(--ink);
-    background: var(--surface); border: 1px solid var(--bxr-slate); border-radius: var(--radius-sm);
-  }
-  .field textarea { min-height: 9rem; resize: vertical; }
-  .field :is(input, select, textarea):focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-  .field [aria-invalid="true"] { border-color: var(--bxr-text-red); }
-  .consent { margin: 0; }
-  .actions--row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: 0; }
-  @media (max-width: 767px) { .actions--row { display: grid; } }
-  .err { color: var(--bxr-text-red); font-size: var(--fs-small); margin: 0; }
-  .summary { font-size: var(--fs-body); }
-  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-  .done { margin-top: var(--space-3); padding: var(--card-padding); border: 1px solid var(--divider); border-top: 3px solid var(--bxr-red); background: var(--surface); display: grid; gap: var(--space-1); }
-  .done:focus { outline: none; }
-  .inquiry[hidden], .done[hidden] { display: none; }
-  .mail-alt { margin-top: var(--space-3); }
+.request { display: grid; gap: var(--space-2); max-width: 44rem; }
+.label, .item { color: var(--ink-muted); }
 </style>

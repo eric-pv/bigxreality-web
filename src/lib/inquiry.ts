@@ -53,3 +53,13 @@ export async function sendInquiry(endpoint: string, requestId: string, payload: 
   }
   return value as unknown as InquiryReply;
 }
+
+/** One existing Sheets cell, with every selected product/solution retained in a stable order. */
+export function serializeInterests(values: Iterable<string>): string {
+  return [...new Set([...values].filter(Boolean))].join("; ");
+}
+
+/** Local hooks for a future consent-aware analytics integration. No network, storage or personal data. */
+export function emitInquiryEvent(stage: "open" | "submit" | "success" | "error", sourcePage: string, topic: string, interestCount: number): void {
+  document.dispatchEvent(new CustomEvent("bxr:inquiry", {detail: {stage, sourcePage, topic, interestCount}}));
+}

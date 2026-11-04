@@ -53,7 +53,7 @@
 
 ## 四、接續驗證（PR #83 已合併後）
 
-目前 Google 端程式與 `Code.gs` 相同，支援一個完整姓名欄位；英文 given/family name、日文姓／名、重音字母、連字號與單一姓名均可原樣保存，不需要更動 17 欄試算表或重新貼程式。若日後真的需要修改 GAS，交付完整 `integrations/google-apps-script/inquiry/Code.gs` 供整份替換，不要求逐行修改。
+業主上次提供的 Google 程式與 PR #83 的 `Code.gs` 相同。**本次新增複選後，須依 [原頁表單／複選部署說明](INLINE-MULTISELECT.md) 整份更新 Google 程式，再合併前端 PR**。仍支援一個完整姓名欄位；英文 given/family name、日文姓／名、重音字母、連字號與單一姓名均可原樣保存，不需要更動 17 欄試算表；本次重新貼完整程式僅擴充複選文字容量與合法請求大小，不更動既有資料。若日後真的需要修改 GAS，交付完整 `integrations/google-apps-script/inquiry/Code.gs` 供整份替換，不要求逐行修改。
 
 執行順序：
 
