@@ -16,9 +16,12 @@ jobs:
       BXR_CONTENT_SOURCE: markdown
       BXR_PREVIEW: "0"
     steps:
+      # Shallow checkout: the build needs only HEAD. The CMS media guard (sveltia/check.mjs)
+      # diffs against origin/main on cms/* branches, so only that ref is fetched (depth 1).
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
+      - name: Fetch main for the CMS media guard
+        if: github.ref != 'refs/heads/main'
+        run: git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main
       - uses: actions/setup-node@v7
         with:
           node-version-file: .node-version
@@ -35,43 +38,42 @@ jobs:
         run: npm test
       - name: Type check
         run: npx astro check
+      # Astro's optimised-image cache only (not the content data store). Entries are keyed by
+      # source hash + transform, so a hit yields byte-identical images; a lockfile change
+      # (Astro/sharp upgrade) starts a fresh cache. Only main saves it; PRs restore main's cache.
+      - name: Restore Astro image cache
+        uses: actions/cache/restore@v6
+        with:
+          path: node_modules/.astro/assets
+          key: astro-assets-v1-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/assets/**', 'astro.config.mjs') }}
+          restore-keys: astro-assets-v1-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
       # Git main is the only official content source. No remote CMS is queried.
       - name: Build
         run: npm run build
+      - name: Save Astro image cache
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/cache/save@v6
+        with:
+          path: node_modules/.astro/assets
+          key: astro-assets-v1-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/assets/**', 'astro.config.mjs') }}
+        continue-on-error: true
       - name: Production inquiry form (mock Google only; no real writes)
         run: npm run qa:inquiry-production
       - run: npm run qa:technologies
-      - run: npm run qa:technologies-overview-layout
       - run: npm run qa:news-preview
       - run: npm run qa:news-media
       - run: npm run qa:csr
       - run: npm run qa:news-import
-      - run: npm run qa:ui-v1
-      - run: npm run qa:hero-framing
-      - run: npm run qa:typography
-      - run: npm run qa:media-composition
-      - name: Visual review artifacts
-        uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: visual-copy-review
-          path: |
-            docs/reviews/visual-copy/
-            docs/reviews/typography/
-          retention-days: 14
-      - run: npm run qa:ui-v1-preview
+      # Screenshot/layout/motion QA (~18 min) runs in qa-full.yml and does not delay publishing.
       - run: npm run qa:client-logos
       - run: npm run qa:images
       - run: npm run qa:seo
       - run: npm run check:sitemap
       - run: npm run qa:links
       - run: npm run qa:behaviour
-      - run: npm run qa:motion
-      - run: npm run qa:density-navigation
       - run: npm run qa:header
       - run: npm run qa:footer
       - run: npm run qa:solutions
-      - run: npm run qa:solution-heroes
       - run: npm run qa:company
       - run: npm run qa:team
       - run: npm run qa:english

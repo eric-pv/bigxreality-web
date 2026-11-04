@@ -1,0 +1,69 @@
+# Full visual QA: screenshots, layout across 7 widths, hero framing, typography and motion.
+# Moved out of ci.yml so news/photo/text updates publish without waiting ~18 minutes.
+# It never deploys. Pure content changes skip it; code/style/template changes run it on the PR.
+name: Full QA
+on:
+  pull_request:
+    paths-ignore:
+      - "src/content/**"
+      - "src/assets/images/news/**"
+      - "src/assets/images/content/**"
+      - "public/media/news/**"
+      - "src/data/news-media.json"
+      - "docs/**"
+      - "**/*.md"
+  push:
+    branches: [main]
+    paths-ignore:
+      - "src/content/**"
+      - "src/assets/images/news/**"
+      - "src/assets/images/content/**"
+      - "public/media/news/**"
+      - "src/data/news-media.json"
+      - "docs/**"
+      - "**/*.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: full-qa-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    env:
+      BXR_CONTENT_SOURCE: markdown
+      BXR_PREVIEW: "0"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npx playwright-core install --with-deps chromium
+      - name: Restore Astro image cache
+        uses: actions/cache/restore@v6
+        with:
+          path: node_modules/.astro/assets
+          key: astro-assets-v1-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/assets/**', 'astro.config.mjs') }}
+          restore-keys: astro-assets-v1-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+      - run: npm run build
+      - run: npm run qa:technologies-overview-layout
+      - run: npm run qa:ui-v1
+      - run: npm run qa:hero-framing
+      - run: npm run qa:typography
+      - run: npm run qa:media-composition
+      - name: Visual review artifacts
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: visual-copy-review
+          path: |
+            docs/reviews/visual-copy/
+            docs/reviews/typography/
+          retention-days: 14
+      - run: npm run qa:ui-v1-preview
+      - run: npm run qa:motion
+      - run: npm run qa:density-navigation
+      - run: npm run qa:solution-heroes
