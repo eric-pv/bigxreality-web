@@ -29,6 +29,10 @@
       "productEntry": "[待提供]"
     }
   },
+  "inquiry": {
+    "endpoint": "[待提供]",
+    "privacyVersion": "2026-11-04"
+  },
   "analytics": {
     "gaId": "G-CSKFKPZTTE"
   },

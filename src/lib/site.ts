@@ -23,6 +23,12 @@ const schema = z.object({
   social: z.union([z.array(z.object({ label: z.string(), url: z.url() })), pending]),
   careersUrl: url,
   forms: z.object({ brochure: form, demo: form }),
+  /** Contact-page inquiry form (docs/inquiry/PRODUCTION-SETUP.md). The form is built only once
+   *  `endpoint` holds the Apps Script /exec URL; privacyVersion is stored with every inquiry. */
+  inquiry: z.object({
+    endpoint: z.union([z.url().regex(/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/), pending]),
+    privacyVersion: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  }),
   analytics: z.object({ gaId: z.string().regex(/^G-[A-Z0-9]+$/) }),
   /** Articles per list page; null = everything on one page (docs/PHASE-2-PLAN.md §11.4). */
   listing: z.object({

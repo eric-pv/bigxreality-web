@@ -2,6 +2,13 @@
 
 日期：2026-10-30（台北）；初始基準 main：04358562f97ef7cfffeb96f6c8ba42a0820035d0；同步最新 main：1426d63dd3204f01ca7927d523915fd8e0717918（已合併的圖片壓縮 PR，本分支保留其結果）。分支：feature/customer-inquiry-gas。
 
+## 已通過（真實 Google，2026-11-04）
+
+- 使用者以公司帳號建立測試試算表 `BXR 詢問表單－測試`、Apps Script 與網頁應用程式部署（執行身分：我；存取：所有人）。部署 ID 不寫入 Git。
+- 未登入 GET `/exec` 直接取得 doGet JSON，確認匿名可存取。
+- `GAS_POC_ENDPOINT=… node scripts/qa-inquiry-poc.mjs`（LIVE，Google 請求不攔截，origin `https://magician-eric.github.io`）：PASS。requestId `667eca04-3587-4eb5-83bf-28c51c226c09`：首次寫入 ok／persisted／duplicate=false；同內容重送 duplicate=true；不同內容 ID_CONFLICT；空內容 INVALID_MESSAGE。瀏覽器以 cors 模式可讀全部 JSON，直接 POST 成立，不需 HTML Service 橋接。
+- 使用者人工核對 `BXR_INQUIRY_POC` 分頁：該 requestId 只有一列，received_at 為伺服端時間，status=POC_ONLY。
+
 ## 已通過（本機）
 
 - npm test：49 個測試通過，其中新增 5 個 GAS／傳輸測試；使用模擬 Google 服務，未呼叫真實 Google。
@@ -18,9 +25,7 @@
 
 | 項目 | 狀態 |
 | --- | --- |
-| Google 測試表與 Apps Script Web App | 使用者尚未部署，沒有 /exec 網址 |
-| 真實 Google 授權、CORS／重新導向與 JSON 可讀性 | 尚未驗證；模擬成功不代表 Google 可用 |
-| 真實 Sheet 成功／失敗、單列去重與手動讀表核對 | 尚未驗證 |
+| ALLOW_POC_API=false（DISABLED）與 STORAGE_ERROR 實測 | 尚未實測（選做） |
 | GAS 公開端點正式防濫用能力 | 目前只有 POC 的全域限制，無可靠訪客 IP，也不保證阻擋 DoS／配額耗盡 |
 | 正式三語 Astro 表單、智慧預選、隱私同意與成功視窗 | 待第一階段實測通過才開發，現有 Email 入口保持可用 |
 | GitHub CI／正式部署 | 本機結果不能代替遠端執行；不自行合併或部署 |
