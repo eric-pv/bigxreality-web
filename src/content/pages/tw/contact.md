@@ -7,5 +7,5 @@ seo:
 hero:
   eyebrow: 聯絡 BXR
   title: "聯絡 BXR"
-  description: "產品展示、產品資料與訓練需求洽詢，請透過 Email 聯絡 BXR。"
+  description: "產品展示、產品資料與訓練需求洽詢，請填寫下方表單或透過 Email 聯絡 BXR。"
 ---

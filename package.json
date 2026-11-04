@@ -61,7 +61,9 @@
     "pages:package": "node scripts/pages/package.mjs",
     "pages:check": "node scripts/pages/check.mjs",
     "qa:cms-publication": "node scripts/qa-cms-publication.mjs",
-    "qa:inquiry-poc": "node scripts/qa-inquiry-poc.mjs"
+    "qa:inquiry-poc": "node scripts/qa-inquiry-poc.mjs",
+    "qa:inquiry-production": "node scripts/pages/package.mjs && node scripts/qa-inquiry-production.mjs",
+    "qa:inquiry-production:live": "INQUIRY_LIVE=1 npm run qa:inquiry-production"
   },
   "dependencies": {
     "@astrojs/react": "7.1.0",

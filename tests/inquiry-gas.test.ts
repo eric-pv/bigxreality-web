@@ -123,3 +123,12 @@ test('browser transport: cors POST, only matching readable JSON counts, everythi
   await assert.rejects(sendInquiry(endpoint, id, valid, '', (async () => { throw new TypeError('network'); }) as typeof fetch), UnknownResult);
   await assert.rejects(sendInquiry(endpoint, id, valid, '', (async () => ({ok: true, type: 'cors', status: 200, json: async () => ({ok: true, persisted: true, protocol, requestId: 'other'})})) as unknown as typeof fetch), UnknownResult);
 });
+
+// A full-name field must preserve cultural ordering, spaces, accents and single names.
+test('inquiry names preserve given/family ordering and international spelling without splitting', () => {
+  for (const name of ['Alex Morgan', 'Morgan Alex', '山田 太郎', '山田太郎', 'François O’Connor', 'María-José García López', 'Sukarno']) {
+    const h = harness();
+    assert.equal(h.send({name}).persisted, true, name);
+    assert.equal(h.rows[1][3], name, name);
+  }
+});

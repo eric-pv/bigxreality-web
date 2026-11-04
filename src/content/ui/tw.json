@@ -358,6 +358,7 @@
       "required": "必填",
       "optional": "選填",
       "name": "姓名",
+      "nameHint": "請填寫完整姓名，依慣用順序與文字輸入；僅有單一姓名亦可。",
       "organization": "公司／單位",
       "jobTitle": "職稱",
       "country": "國家／地區",

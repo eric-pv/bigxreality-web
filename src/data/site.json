@@ -30,7 +30,7 @@
     }
   },
   "inquiry": {
-    "endpoint": "[待提供]",
+    "endpoint": "https://script.google.com/macros/s/AKfycbzujEwgbXI1vGk5yBycXrGDv7hdrUBpN7SXeB3ctn-q7qTW2mc-LFzP8uM5GfJwlowaXg/exec",
     "privacyVersion": "2026-11-04"
   },
   "analytics": {
