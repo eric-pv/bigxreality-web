@@ -92,7 +92,7 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 ## 6. 建置與 Pages 發布
 
 - 唯一正式部署 workflow：`.github/workflows/ci.yml`（build、單元／型別、CMS schema、內容完整性、SEO／sitemap／連結、三語、表單、功能頁面、fixtures／搜尋／無障礙、Pages 封裝檢查，全部通過才部署同一份 artifact）。
-- 完整視覺 QA：`.github/workflows/qa-full.yml`（截圖、7 種寬度版面、Hero 構圖、字體換行、動態）。不部署、不阻擋發布；僅改 `src/content/**`、新聞／一般內容圖片、`news-media.json`、文件時不執行，改程式／樣式／模板的 PR 與 main push 才執行。
+- 完整視覺 QA：`.github/workflows/qa-full.yml`（截圖、7 種寬度版面、Hero 構圖、字體換行、動態）。不部署、不阻擋 PR 或發布；每天 00:00（台北）對 main 自動執行，亦可手動執行。同時段由排程的 Claude 工作在最新 main 執行完整 QA，有失敗即修正並開 PR 待審，不自行合併。
 - Astro 圖片快取：僅 `node_modules/.astro/assets`（不快取內容資料），只由 main 寫入，lockfile 變更即重建；冷熱建置產物逐檔比對一致（僅 Pagefind 索引檔名本身每次不同）。
 - PR：執行 build-and-test 與 Pages artifact 檢查，不部署。
 - main push／對 main 的手動 workflow：檢查成功後上傳 `dist-pages/`，deploy-pages 以同一 workflow 的 artifact 部署；不是另外再從另一分支建置。
