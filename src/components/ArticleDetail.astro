@@ -170,7 +170,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
         {cs.outcomes && cs.outcomes.length > 0 && (
           <>
             <h2 class="t-h4 outcomes-title"><Text value={t.outcomes} /></h2>
-            <dl class="outcomes">
+            <dl class="outcomes balanced">
               {cs.outcomes.map((o) => <div><dd class="value"><Text value={o.value} /></dd><dt class="t-small t-muted"><Text value={o.label} /></dt></div>)}
             </dl>
           </>
@@ -202,7 +202,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     <section class="section section--alt" aria-labelledby="h-products">
       <div class="container">
         <SectionHead id="h-products" eyebrow={t.relatedProducts.eyebrow} title={t.relatedProducts.title} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {products.map((p) => (
             <li>
               <CardProduct
@@ -222,7 +222,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     <section class="section" aria-labelledby="h-solutions">
       <div class="container">
         <SectionHead id="h-solutions" eyebrow={t.relatedSolutions.eyebrow} title={t.relatedSolutions.title} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {solutions.map((s) => (
             <li>
               <CardSolution
@@ -241,7 +241,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     <section class="section section--alt" aria-labelledby="h-related">
       <div class="container">
         <SectionHead id="h-related" eyebrow={t.related.eyebrow} title={t.related.title} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {related.map((a, i) => (
             <li>
               <CardArticle
@@ -282,7 +282,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
   .facts dt { color: var(--ink-muted); font-size: var(--fs-small); }
   .facts dd { margin: 0; }
   .outcomes-title { margin-top: var(--space-5); }
-  .outcomes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; }
+  .outcomes { gap: var(--gutter); margin: 0; }
   .outcomes div { display: flex; flex-direction: column-reverse; gap: 4px; padding-top: var(--space-2); border-top: 1px solid var(--bxr-line); }
   .outcomes .value { margin: 0; font-size: var(--fs-h3); font-weight: 500; }
   .body { padding-block: var(--space-6) var(--space-10); }
@@ -292,9 +292,8 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     border: 1px solid var(--bxr-ash); color: var(--ink); text-decoration: none; font-size: var(--fs-small);
   }
   .tags a:hover { border-color: var(--bxr-black); }
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .cards, .facts, .outcomes { grid-template-columns: 1fr; } }
+  .cards { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  @media (max-width: 767px) { .facts { grid-template-columns: 1fr; } }
 </style>
 
 <style>.csr-links { margin-block: var(--space-3); } .csr-links ul { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; padding: 0; margin-top: var(--space-2); } .csr-links li { border: 1px solid var(--divider); padding: .25rem .5rem; }</style>

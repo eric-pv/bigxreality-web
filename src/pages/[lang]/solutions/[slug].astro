@@ -130,7 +130,7 @@ const cta = d.cta ?? page?.cta;
     <section class={alt(order.indexOf("relatedProducts"))} id="relatedProducts" aria-labelledby="h-relatedProducts">
       <div class="container">
         <SectionHead id="h-relatedProducts" eyebrow={t.relatedProducts.eyebrow} title={t.relatedProducts.title} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {products.map((p) => (
             <li>
               <CardProduct
@@ -152,7 +152,7 @@ const cta = d.cta ?? page?.cta;
     <section class={alt(order.indexOf(g.id))} id={g.id} aria-labelledby={`h-${g.id}`}>
       <div class="container">
         <SectionHead id={`h-${g.id}`} eyebrow={t[g.id].eyebrow} title={t[g.id].title} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {g.items.map((a) => (
             <li>
               <CardArticle
@@ -181,7 +181,7 @@ const cta = d.cta ?? page?.cta;
 <style>
   .two-col { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-8); align-items: start; }
   .two-col :global(.section-head) { margin-bottom: 0; }
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .two-col { grid-template-columns: 1fr; gap: var(--space-3); } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
+  .cards { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  @media (max-width: 1023px) { .two-col { grid-template-columns: 1fr; gap: var(--space-3); }  }
+  @media (max-width: 767px) {  }
 </style>

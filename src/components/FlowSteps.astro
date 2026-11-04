@@ -1,13 +1,16 @@
 ---
 /**
  * Process with visual guidance: each step has a round icon on a connecting line, an
- * optional picture, a step label, title and text. Desktop: one row; tablet and phone:
- * a vertical line with the icon on the left. For a suggested process, not a software procedure.
+ * optional picture, a step label, title and text. Desktop: rows by the shared count rule
+ * (docs/LAYOUT-RULES.md §1: 5 steps = 3 + 2), the connector stops at the end of each row;
+ * tablet and phone: a vertical line with the icon on the left, text first and the picture
+ * below it (§2). For a suggested process, not a software procedure.
  */
 import type { ImageMetadata } from "astro";
 import FlowIcon from "./FlowIcon.astro";
 import MediaSlot from "./MediaSlot.astro";
 import Text from "./Text.astro";
+import { endsRow } from "../lib/layout";
 
 type Slot = { src?: ImageMetadata; alt?: string; need?: string; caption?: string; ratio?: string };
 interface Props {
@@ -20,9 +23,9 @@ interface Props {
 const { steps, stepLabel, needPrefix, fallbackLabel, badge } = Astro.props;
 const ICONS = ["target", "team", "variation", "review"] as const;
 ---
-<ol role="list" class="flow" data-reveal style={`--cols: ${Math.min(steps.length, 4)}`}>
+<ol role="list" class="flow balanced" data-reveal>
   {steps.map((s, i) => (
-    <li class="step" style={`--i:${i}`}>
+    <li class:list={["step", { "row-end": endsRow(i, steps.length) }]} style={`--i:${i}`}>
       <span class="node"><FlowIcon name={s.icon ?? ICONS[i % ICONS.length]} /></span>
       <div class="body">
         <p class="t-label label"><Text value={stepLabel} /> {String(i + 1).padStart(2, "0")}</p>
@@ -34,16 +37,21 @@ const ICONS = ["target", "team", "variation", "review"] as const;
   ))}
 </ol>
 <style>
-  .flow { position: relative; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  .flow { position: relative; justify-content: flex-start; row-gap: var(--space-5); margin: 0; padding: 0; list-style: none; }
   .step { position: relative; display: grid; gap: var(--space-3); align-content: start; }
   .step::before { content: ""; position: absolute; top: 31px; left: 64px; right: calc(-1 * var(--gutter)); height: 2px; background: repeating-linear-gradient(90deg, var(--bxr-ash) 0 6px, transparent 6px 12px); }
-  .step:last-child::before { display: none; }
+  .step.row-end::before { display: none; }
   .node { position: relative; z-index: 1; display: grid; place-items: center; width: 64px; height: 64px; background: var(--bxr-black); color: var(--bxr-white); border-bottom: 2px solid var(--bxr-red); }
   .body { display: grid; gap: var(--space-1); align-content: start; }
   .label { color: var(--ink-muted); margin: 0; }
   @media (max-width: 1023px) {
-    .flow { grid-template-columns: 1fr; gap: var(--space-5); }
+    .flow { flex-direction: column; gap: var(--space-5); }
+    .flow > .step { flex: none; width: 100%; }
     .step { grid-template-columns: 64px 1fr; gap: var(--space-3); align-items: start; }
+    .step.row-end::before { display: block; }
+    .step:last-child::before { display: none; }
+    .body:has(:global(.media)) { padding: var(--space-3); background: var(--bxr-white); border: 1px solid var(--bxr-line); border-top: 2px solid var(--bxr-black); }
+    .body :global(.media) { order: 2; }
     .step::before { top: 64px; bottom: calc(-1 * var(--space-5)); left: 31px; right: auto; width: 2px; height: auto; background: repeating-linear-gradient(180deg, var(--bxr-ash) 0 6px, transparent 6px 12px); }
   }
 </style>

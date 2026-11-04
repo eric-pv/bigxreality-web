@@ -196,3 +196,19 @@ p, .summary, .desc { text-wrap: pretty; overflow-wrap: anywhere; }
  :lang(en) .t-h1 { font-size:clamp(30px,7.9vw,34px); }
  :lang(ja) .t-h1 { font-size:clamp(28px,7.5vw,32px); }
 }
+
+/*
+ * Side-by-side card groups (docs/LAYOUT-RULES.md §1). Rows are balanced by item count:
+ * 1–3 in one row, 4 as 2 + 2, 5 as 3 + 2, more as rows of 3; an incomplete last row is centred
+ * and keeps the same card width. Tablet: at most 2 per row. Phone: one per row.
+ * Set --balanced-gap when the group uses a gap other than --gutter.
+ */
+.balanced { --per: 3; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--balanced-gap, var(--gutter)); }
+.balanced:has(> :nth-child(2):last-child), .balanced:has(> :nth-child(4):last-child) { --per: 2; }
+.balanced > * { flex: 0 0 calc((100% - (var(--per) - 1) * var(--balanced-gap, var(--gutter))) / var(--per)); min-width: 0; }
+.balanced > :only-child { flex-basis: min(100%, 640px); }
+@media (max-width: 1023px) {
+  .balanced > * { --per-t: min(var(--per), 2); flex-basis: calc((100% - (var(--per-t) - 1) * var(--balanced-gap, var(--gutter))) / var(--per-t)); }
+  .balanced > :only-child { flex-basis: min(100%, 640px); }
+}
+@media (max-width: 767px) { .balanced > *, .balanced > :only-child { flex-basis: 100%; } }

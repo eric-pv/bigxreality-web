@@ -205,7 +205,7 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
     <section class="section section--alt" aria-labelledby="h-related-items">
       <div class="container">
         <SectionHead id="h-related-items" eyebrow={ui.article.related.eyebrow} title={s.relatedItems} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {products.map((p) => (
             <li>
               <CardProduct
@@ -234,7 +234,7 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
     <section class="section" aria-labelledby="h-more">
       <div class="container">
         <SectionHead id="h-more" eyebrow={ui.nav.caseStudies} title={s.more} viewAll={{ href: localePath(lang, "case-studies"), label: c.block.more }} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {more.map((item) => <li><CaseCard lang={lang} item={item} /></li>)}
         </ul>
       </div>
@@ -287,12 +287,12 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
   .gallery figure { margin: 0; }
   .gallery :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
   .details-title { margin: 0; }
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  .cards { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
   @media (max-width: 1023px) {
     .head, .row.has-img, .flip .row.has-img, .row:not(.has-img) { grid-template-columns: 1fr; }
     .row:not(.has-img) .paras { grid-column: 1; }
     .flip .row.has-img .pic { order: 0; }
-    .cards, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
-  @media (max-width: 767px) { .cards, .gallery { grid-template-columns: 1fr; } }
+  @media (max-width: 767px) { .gallery { grid-template-columns: 1fr; } }
 </style>

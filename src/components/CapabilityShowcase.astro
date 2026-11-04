@@ -1,7 +1,8 @@
 ---
 /**
  * Capabilities as an editorial sequence. A capability with an image slot becomes a
- * picture + text row (alternating sides); consecutive capabilities without one are
+ * picture + text row (alternating sides on desktop; stacked as a card with the text first
+ * and the picture below on tablet and phone); consecutive capabilities without one are
  * grouped into a two-column text row. Any number of items, any mix.
  */
 import type { ImageMetadata } from "astro";
@@ -79,10 +80,12 @@ const num = (n: number) => String(n).padStart(2, "0");
   .plain.single .cap { display: grid; grid-template-columns: 4fr 8fr; column-gap: var(--space-6); align-items: start; }
   .plain.single .cap .head { grid-row: span 2; }
   .plain.single .cap .content, .plain.single .cap .value { grid-column: 2; margin-top: 0; }
+  /* Stacked (tablet and phone, docs/LAYOUT-RULES.md §2): each picture row becomes one card,
+     text first and the picture below it, so the picture clearly belongs to the text above. */
   @media (max-width: 1023px) {
-    .feature, .feature.flip { grid-template-columns: 1fr; gap: var(--space-3); }
-    .feature.flip .pic { order: 0; }
-    .showcase { gap: var(--space-6); }
+    .feature, .feature.flip { grid-template-columns: 1fr; gap: var(--space-3); padding: var(--space-3); background: var(--bxr-white); border: 1px solid var(--bxr-line); border-top: 2px solid var(--bxr-black); }
+    .feature .pic, .feature.flip .pic { order: 2; }
+    .showcase { gap: var(--space-4); }
   }
   @media (max-width: 767px) { .plain { grid-template-columns: 1fr; } .plain.single .cap { display: flex; } }
 </style>

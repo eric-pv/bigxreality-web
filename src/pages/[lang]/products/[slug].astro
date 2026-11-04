@@ -154,7 +154,7 @@ const deploymentRows = [
     <section class="section section--alt" id="capabilities" aria-labelledby="h-capabilities">
       <div class="container">
         <SectionHead id="h-capabilities" eyebrow={head("capabilities").eyebrow} title={head("capabilities").title} />
-        <ul role="list" class="tiles">
+        <ul role="list" class="tiles balanced">
           {d.capabilities!.map((c) => (
             <li class="tile"><h3 class="t-h4"><Text value={c.title} /></h3><p class="t-muted"><Text value={c.description} /></p></li>
           ))}
@@ -168,7 +168,7 @@ const deploymentRows = [
     <section class="section" id="howItWorks" aria-labelledby="h-howItWorks">
       <div class="container">
         <SectionHead id="h-howItWorks" eyebrow={head("howItWorks").eyebrow} title={head("howItWorks").title} />
-        <ol role="list" class="steps">
+        <ol role="list" class="steps balanced">
           {d.howItWorks!.map((s, i) => (
             <li class="step">
               <span class="t-tech num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
@@ -186,7 +186,7 @@ const deploymentRows = [
     <section class="section section--alt" id="scenarios" aria-labelledby="h-scenarios">
       <div class="container">
         <SectionHead id="h-scenarios" eyebrow={head("scenarios").eyebrow} title={head("scenarios").title} />
-        <ul role="list" class="tiles">
+        <ul role="list" class="tiles balanced">
           {d.scenarios!.map((s) => (
             <li class="tile"><h3 class="t-h4"><Text value={s.title} /></h3><p class="t-muted"><Text value={s.description} /></p></li>
           ))}
@@ -212,7 +212,7 @@ const deploymentRows = [
     <section class="section section--alt" id="deployment" aria-labelledby="h-deployment">
       <div class="container">
         <SectionHead id="h-deployment" eyebrow={head("deployment").eyebrow} title={head("deployment").title} />
-        <dl class="figures">
+        <dl class="figures balanced">
           {deploymentRows.map(([k, v]) => (<div><dt class="t-label"><Text value={k} /></dt><dd><Text value={v} /></dd></div>))}
         </dl>
       </div>
@@ -227,7 +227,7 @@ const deploymentRows = [
         {integrated.length > 0 && (
           <>
             <p class="t-label sublabel"><Text value={ui.product.integratesWith} /></p>
-            <ul role="list" class="cards">
+            <ul role="list" class="cards balanced">
               {integrated.map((p) => (
                 <li>
                   <CardProduct
@@ -250,7 +250,7 @@ const deploymentRows = [
     <section class="section section--alt" id="relatedSolutions" aria-labelledby="h-relatedSolutions">
       <div class="container">
         <SectionHead id="h-relatedSolutions" eyebrow={head("relatedSolutions").eyebrow} title={head("relatedSolutions").title} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {solutions.map((s) => (
             <li>
               <CardSolution
@@ -272,7 +272,7 @@ const deploymentRows = [
     <section class="section" id="relatedArticles" aria-labelledby="h-relatedArticles">
       <div class="container">
         <SectionHead id="h-relatedArticles" eyebrow={head("relatedArticles").eyebrow} title={head("relatedArticles").title} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {articles.map((a, i) => (
             <li>
               <CardArticle
@@ -338,28 +338,26 @@ const deploymentRows = [
   .two-col { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-8); align-items: start; }
   .two-col :global(.section-head) { margin-bottom: 0; }
   .prose { display: grid; gap: var(--space-2); max-width: 44rem; }
-  .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  .tiles { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
   .tile { display: grid; gap: var(--space-1); align-content: start; padding: var(--space-3); background: var(--surface); border-top: 2px solid var(--bxr-black); }
   .section--alt .tile { background: var(--bxr-white); }
-  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; counter-reset: none; }
+  .steps { gap: var(--gutter); margin: 0; padding: 0; list-style: none; counter-reset: none; }
   .step { display: grid; gap: var(--space-1); align-content: start; padding-top: var(--space-2); border-top: 1px solid var(--bxr-line); }
   .num { color: var(--ink-muted); }
   .spec { display: grid; margin: 0; border-top: 1px solid var(--bxr-black); }
   .spec div { display: grid; grid-template-columns: 4fr 8fr; gap: var(--space-3); padding-block: var(--space-2); border-bottom: 1px solid var(--bxr-line); }
   .spec dt { font-weight: 500; }
   .spec dd { margin: 0; color: var(--ink-muted); }
-  .figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin: 0; }
+  .figures { gap: var(--gutter); margin: 0; }
   .figures div { display: grid; gap: var(--space-1); padding-top: var(--space-2); border-top: 1px solid var(--bxr-black); }
   .figures dt { color: var(--ink-muted); }
   .figures dd { margin: 0; font-size: var(--fs-h3); font-weight: 500; }
   .sublabel { color: var(--ink-muted); margin-bottom: var(--space-2); }
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  .cards { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
   @media (max-width: 1023px) {
     .two-col { grid-template-columns: 1fr; gap: var(--space-3); }
-    .tiles, .cards, .steps, .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 767px) {
-    .tiles, .cards, .steps, .figures { grid-template-columns: 1fr; }
     .spec div { grid-template-columns: 1fr; gap: var(--space-1); }
   }
 </style>
