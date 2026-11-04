@@ -83,8 +83,6 @@ landing:
         ratio: 16 / 9
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: 兩名官兵在 FIM-92 刺針飛彈模擬訓練系統的戰場態勢畫面前進行任務說明
-    - title: 跨系統協同與聯戰整合
-      content: 依據訓練規模與應用目標，透過 MUM-T 或 NOVA 等不同整合方案，規劃小隊協作或大型跨系統聯合模擬訓練
   featured:
     title: 從小隊協同到大型聯戰，延伸軍事訓練的整合層級
     items:

@@ -126,7 +126,7 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
     <section class={alt()} aria-labelledby="h-related">
       <div class="container">
         <SectionHead id="h-related" eyebrow={e.related} title={L.related!.title} description={L.related!.intro} />
-        <ul role="list" class="cards">
+        <ul role="list" class="cards balanced">
           {relatedProducts.map((p) => (
             <li>
               <CardProduct
@@ -165,9 +165,7 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
   .back { padding-block: var(--space-4); }
   .back a { color: var(--ink); text-decoration: none; font-weight: 500; }
   .back a:hover { color: var(--bxr-text-red); }
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
+  .cards { margin: 0; padding: 0; list-style: none; }
 </style>
 
 <style>.landing-overview .narrow { display: grid; gap: var(--space-3); } .landing-overview p { line-height: 1.8; } .landing-overview .intro-media { margin-top: var(--space-3); }</style>

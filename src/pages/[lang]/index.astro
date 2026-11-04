@@ -76,7 +76,7 @@ const website = {
           <h2 class="t-h2" id="h-value"><Text value={copy.value.title} /></h2>
           {copy.value.paragraphs.map((p) => <p class="t-muted"><Text value={p} /></p>)}
         </div>
-        <ul role="list" class="points">
+        <ul role="list" class="points balanced">
           {copy.value.points.map((pt, i) => (
             <li class="point">
               <span class="icon" aria-hidden="true">
@@ -161,7 +161,7 @@ const website = {
     <section class="section block ruled" aria-labelledby="h-solutions">
       <div class="container">
         <SectionHead id="h-solutions" eyebrow={copy.solutions.eyebrow} title={ui.nav.solutions} description={copy.solutions.description} viewAll={{ href: localePath(lang, "solutions"), label: copy.solutions.viewAll }} />
-        <ul role="list" class="solutions">
+        <ul role="list" class="solutions balanced">
           {solutions.map((s) => (
             <li>
               <CardSolution
@@ -207,7 +207,7 @@ const website = {
   /* 02 */
   .value { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-6); align-items: start; }
   .value-copy { display: grid; gap: var(--space-2); }
-  .points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
+  .points { gap: var(--gutter); }
   .point { display: grid; gap: var(--space-1); align-content: start; padding-top: var(--space-2); border-top: 2px solid var(--bxr-red); }
   .icon { color: var(--bxr-red); margin-bottom: var(--space-1); }
 
@@ -246,7 +246,7 @@ const website = {
   .tech-list a:hover { text-decoration: underline; }
 
   /* 05 */
-  .solutions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); }
+  .solutions { gap: var(--gutter); }
 
   /* 08 */
   .cta { background: var(--bxr-red); color: var(--bxr-white); padding-block: var(--space-6); }
@@ -263,16 +263,13 @@ const website = {
   /* 1024–1279: a 7/5 split leaves the side cards ~150px of text, so CJK product names break per character. */
   @media (min-width: 1024px) and (max-width: 1279px) {
     .showcase { grid-template-columns: minmax(0, 1fr); gap: var(--content-gap); }
-    .solutions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 1023px) {
     .value, .tech-grid, .showcase { grid-template-columns: minmax(0, 1fr); gap: var(--content-gap); }
-    .solutions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 767px) {
-    .points { grid-template-columns: 1fr; gap: var(--space-3); }
+    .points { gap: var(--space-3); }
     .tech-list { grid-template-columns: 1fr; }
-    .solutions { grid-template-columns: 1fr; }
     /* No approved solution artwork yet: skip the empty frames on phones instead of stacking four. */
     .solutions :global(.media:has(.placeholder)) { display: none; }
     .feature--row .feature-media { flex-basis: 36%; }

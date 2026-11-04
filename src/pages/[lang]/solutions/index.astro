@@ -49,7 +49,7 @@ const itemList = {
   <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={page.hero.eyebrow} title={page.hero.title} lead={page.hero.lead} description={page.hero.description} image={page.hero.image} imageCaption={page.hero.imageCaption} />
   <section class="section" id="solution-list" aria-label={page.hero.title}>
     <div class="container">
-      <ul role="list" class="cards">
+      <ul role="list" class="cards balanced">
         {solutions.map((s) => (
           <li>
             <CardSolution
@@ -77,6 +77,6 @@ const itemList = {
   )}
 </BaseLayout>
 <style>
-  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
+  .cards { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  @media (max-width: 767px) {  }
 </style>

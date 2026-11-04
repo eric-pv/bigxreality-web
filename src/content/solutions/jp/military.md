@@ -83,8 +83,6 @@ landing:
         ratio: 16 / 9
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: FIM-92 スティンガーミサイル模擬訓練システムの戦場状況画面の前で任務説明を行う2名の隊員
-    - title: システム間の連携と統合作戦の統合
-      content: 訓練の規模と活用の目標に応じて、MUM-T や NOVA などの異なる統合ソリューションにより、小隊の協働または大規模なシステム間の統合シミュレーション訓練を計画します
   featured:
     title: 小隊の連携から大規模な統合作戦まで、軍事訓練の統合レベルを広げる
     items:

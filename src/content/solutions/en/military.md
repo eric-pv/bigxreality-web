@@ -83,8 +83,6 @@ landing:
         ratio: 16 / 9
         src: ../../../assets/images/products/fim-92-stinger-training-mission-briefing.webp
         alt: Two service members briefing a mission in front of the battlefield situation display of the FIM-92 Stinger simulation training system
-    - title: Cross-System Coordination and Joint Integration
-      content: According to training scale and objectives, squad coordination or large-scale cross-system joint simulation training is planned through different integration solutions such as MUM-T or NOVA
   featured:
     title: From Squad Coordination to Large-Scale Joint Operations, Extending the Integration Levels of Military Training
     items:
