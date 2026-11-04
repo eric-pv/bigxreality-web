@@ -1,27 +1,12 @@
 # Full visual QA: screenshots, layout across 7 widths, hero framing, typography and motion.
 # Moved out of ci.yml so news/photo/text updates publish without waiting ~18 minutes.
-# It never deploys. Pure content changes skip it; code/style/template changes run it on the PR.
+# It never deploys and never blocks a PR or a publication.
 name: Full QA
 on:
-  pull_request:
-    paths-ignore:
-      - "src/content/**"
-      - "src/assets/images/news/**"
-      - "src/assets/images/content/**"
-      - "public/media/news/**"
-      - "src/data/news-media.json"
-      - "docs/**"
-      - "**/*.md"
-  push:
-    branches: [main]
-    paths-ignore:
-      - "src/content/**"
-      - "src/assets/images/news/**"
-      - "src/assets/images/content/**"
-      - "public/media/news/**"
-      - "src/data/news-media.json"
-      - "docs/**"
-      - "**/*.md"
+  # Nightly 00:00 Asia/Taipei (16:00 UTC) on main, plus manual runs. Never on PRs or pushes,
+  # so it does not take up working time; the nightly Claude task fixes what it reports.
+  schedule:
+    - cron: "0 16 * * *"
   workflow_dispatch:
 permissions:
   contents: read
