@@ -13,8 +13,9 @@ try{
    const slug=file.slice(0,-3),url=`/${lang}/${collection}/${slug}/`;await p.goto(server.base+url);const hero=p.locator('.page-hero'),image=hero.locator('img');await image.evaluate(img=>img.decode());
    assert.ok(['scene','equipment','interface'].includes(await hero.getAttribute('data-hero-variant')),url);
    const frame=await image.evaluate(img=>{const rect=img.getBoundingClientRect(),root=img.closest('.page-hero').getBoundingClientRect(),style=getComputedStyle(img);return {fit:style.objectFit,top:rect.top-root.top,bottom:rect.bottom-root.bottom,width:rect.width,height:rect.height};});
-   // Solution landings share one uniform 16:9 hero that fills its box (cover, centred focus crop); product heroes keep the complete scene or equipment.
-   assert.equal(frame.fit,collection==='solutions'&&await hero.getAttribute('data-hero-uniform')!==null?'cover':'contain',url+' hero fit');
+   // Product and solution landings share one uniform 16:9 scene hero that fills its box (cover, centred focus crop).
+   assert.equal(await hero.getAttribute('data-hero-variant'),'scene',url+' hero variant');
+   assert.equal(frame.fit,await hero.getAttribute('data-hero-uniform')!==null?'cover':'contain',url+' hero fit');
    assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,url);
    if(collection==='solutions'&&slug==='fire-rescue')assert.equal(await image.getAttribute('data-primary-image'),'vr-fire-extinguisher-training-trainee.webp');
    if(lang==='tw'&&[1440,390].includes(width)&&['sut','military','fire-rescue'].includes(slug))await hero.screenshot({path:`/tmp/bxr-framing-${slug}-${width}.png`});heroes++;

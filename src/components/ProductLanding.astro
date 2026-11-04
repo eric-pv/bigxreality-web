@@ -110,6 +110,7 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
   product={{ name: d.hero.name, description: d.seo?.description ?? L.subheadline, code: base.hero.code }}
 >
   <PageHero
+    uniformMedia
     variant={heroPresentation("products", slug, !!heroReady)}
     sceneFit={heroSceneFit("products", slug)}
     sceneHeadroom={heroSceneHeadroom("products", slug)}

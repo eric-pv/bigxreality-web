@@ -1,10 +1,8 @@
 export type HeroVariant = 'split' | 'scene' | 'equipment' | 'interface';
-/** All supplied product/solution Hero images share the approved SUT scene treatment. */
+/** All supplied product/solution Hero images share one scene treatment; with PageHero's uniformMedia every
+ *  product and solution landing shows the same 16:9 image box at the same place (no per-product layouts). */
 export function heroPresentation(_collection: 'products' | 'solutions', _slug: string, hasImage: boolean): HeroVariant {
- if (!hasImage) return 'split';
- if (_collection === 'products' && ['uav','usv','wargaming-table'].includes(_slug)) return 'interface';
- if (_collection === 'products' && ['tactical-boat-simulator','hmmwv-simulator','full-scale-police-training'].includes(_slug)) return 'equipment';
- return 'scene';
+ return hasImage ? 'scene' : 'split';
 }
 /** Complete scenes retain heads, shoulders and equipment; background extension blends the edges. */
 export function heroSceneFit(_collection: 'products'|'solutions', _slug:string): 'contain' { return 'contain'; }
