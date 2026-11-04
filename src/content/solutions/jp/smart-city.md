@@ -95,11 +95,15 @@ landing:
       image:
         need: スマート港湾の画面（16:9）
         ratio: 16 / 9
+        src: ../../../assets/images/products/smart-port-3d-container-terminal.webp
+        alt: スマート港湾管理の画面：バース利用率、コンテナ総数、コンテナ一覧を表示した3D コンテナターミナル
     - title: スマートスポーツ訓練
       content: 没入型シミュレーションとインタラクティブな技術により、スポーツ技能、射撃競技、その他の適用可能な訓練への活用を広げます
       image:
         need: スマートスポーツの画面（16:9）
         ratio: 16 / 9
+        src: ../../../assets/images/products/smart-sports-xr-clay-shooting-training.webp
+        alt: スマートスポーツ訓練の画面：模擬クレー射撃場で散弾銃を構えて練習する訓練生
   values:
     title: 導入価値
     cards:

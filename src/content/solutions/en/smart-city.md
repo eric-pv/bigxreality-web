@@ -136,12 +136,16 @@ landing:
         image:
           need: Smart port view (16:9)
           ratio: 16 / 9
+          src: ../../../assets/images/products/smart-port-3d-container-terminal.webp
+          alt: 'Smart port view: a 3D container terminal with berth utilisation, container totals and a container list'
       - title: Smart Sports Training
         content: Immersive simulation and interactive technology extend to sports
           skills, shooting sports and other applicable training
         image:
           need: Smart sports view (16:9)
           ratio: 16 / 9
+          src: ../../../assets/images/products/smart-sports-xr-clay-shooting-training.webp
+          alt: 'Smart sports training view: a trainee practises with a shotgun on a simulated clay-shooting range'
   values:
     title: Value of Adoption
     cards:

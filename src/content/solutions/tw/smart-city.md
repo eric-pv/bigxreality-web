@@ -97,11 +97,15 @@ landing:
       image:
         need: 智慧港埠畫面（16:9）
         ratio: 16 / 9
+        src: ../../../assets/images/products/smart-port-3d-container-terminal.webp
+        alt: 智慧港埠管理畫面：三維貨櫃碼頭場景，搭配泊位利用率、貨櫃總量及貨櫃清單
     - title: 智慧運動訓練
       content: 透過沉浸式模擬與互動技術，延伸運動技能、射擊運動及其他適用的訓練應用
       image:
         need: 智慧運動畫面（16:9）
         ratio: 16 / 9
+        src: ../../../assets/images/products/smart-sports-xr-clay-shooting-training.webp
+        alt: 智慧運動訓練畫面：學員於模擬飛靶射擊場手持霰彈槍進行練習
   values:
     title: 導入價值
     cards:
