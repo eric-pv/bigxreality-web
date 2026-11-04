@@ -1,5 +1,5 @@
 /**
- * BXR 客戶詢問收件程式（正式版）。Astro 聯絡頁表單 → 本 Web App → Google 試算表「客戶詢問」分頁。
+ * BXR 客戶詢問收件程式（正式版，支援產品／方案複選）。Astro 共用詢問表單 → 本 Web App → Google 試算表「客戶詢問」分頁。
  * 設定與部署：docs/inquiry/PRODUCTION-SETUP.md。傳輸協定已於 2026-11-04 以 Pages origin 實測（docs/inquiry/POC-VALIDATION.md）。
  *
  * 指令碼屬性：
@@ -17,7 +17,7 @@ var TOPICS = ['general', 'demo', 'info', 'product', 'solution', 'solution-demo',
 var TOPIC_LABELS = {general: '一般洽詢', demo: '預約產品展示', info: '索取產品資料', product: '產品洽詢', solution: '解決方案洽詢', 'solution-demo': '預約解決方案展示', needs: '訓練需求討論'};
 // 欄位：[參數名稱, 最大長度, 是否必填]
 var FIELDS = [['name', 100, true], ['organization', 150, true], ['jobTitle', 100, false], ['country', 80, false],
-  ['email', 254, true], ['phone', 40, false], ['topic', 20, true], ['interest', 200, false], ['message', 3000, true],
+  ['email', 254, true], ['phone', 40, false], ['topic', 20, true], ['interest', 3000, false], ['message', 3000, true],
   ['language', 2, true], ['sourcePage', 300, true], ['privacyConsent', 3, true], ['privacyVersion', 20, true]];
 var ALLOWED_KEYS = ['protocol', 'requestId', 'website'].concat(FIELDS.map(function(f) { return f[0]; }));
 var MAX_PER_MINUTE = 20;
@@ -45,7 +45,7 @@ function doPost(e) {
     return json_(out);
   };
   if (prop_('ALLOW_INQUIRY_API') !== 'true') return fail('DISABLED');
-  if (!e || !e.postData || e.postData.length > 16384) return fail('INVALID_REQUEST');
+  if (!e || !e.postData || e.postData.length > 65536) return fail('INVALID_REQUEST');
   if (Object.keys(p).some(function(k) { return ALLOWED_KEYS.indexOf(k) < 0; })) return fail('INVALID_REQUEST');
   if (Object.keys(e.parameters || {}).some(function(k) { return e.parameters[k].length !== 1; })) return fail('INVALID_REQUEST');
   if (p.protocol !== INQUIRY_PROTOCOL || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)) return fail('INVALID_REQUEST');

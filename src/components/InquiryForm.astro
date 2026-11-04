@@ -1,0 +1,317 @@
+---
+import {getUi} from "../lib/ui";
+import {countryOptions} from "../lib/countries";
+import {site} from "../lib/site";
+import {getLocalized} from "../lib/content";
+import {isPending as isUnset} from "../lib/pending";
+import Text from "./Text.astro";
+import {localePath, type Lang} from "../i18n";
+interface Props {lang:Lang;defer?:boolean}
+const {lang,defer=false}=Astro.props;
+const t=getUi(lang).contactPage;
+const email=isUnset(site.contact.email)?null:site.contact.email;
+const inquiryEndpoint=isUnset(site.inquiry.endpoint)?null:site.inquiry.endpoint;
+const mailto=(subject:string)=>`mailto:${email}?subject=${encodeURIComponent(`[Big x Reality] ${subject}`)}&body=${encodeURIComponent(t.bodyFields.join("\n")+"\n")}`;
+const f = t.form;
+let interestGroups: { label: string; options: { value: string; label: string; match: string[] }[] }[] = [];
+if (inquiryEndpoint) {
+  const privacy = (await getLocalized("pages", "tw")).find((e) => e.slug === "privacy");
+  if (!privacy) throw new Error("site.inquiry.endpoint is set but the privacy policy (pages/tw/privacy.md) is still a draft: publish it first, the consent links to it.");
+  const products = await getLocalized("products", lang);
+  const solutions = await getLocalized("solutions", lang);
+  interestGroups = [
+    { label: f.interestProducts, options: products.map((p) => ({
+      value: `${p.loc.data.hero.name} (product:${p.slug})`, label: p.loc.data.hero.name,
+      match: [p.base.data.hero.code, p.loc.data.hero.code, p.loc.data.hero.name].filter((x): x is string => !!x),
+    })) },
+    { label: f.interestSolutions, options: solutions.map((s) => ({
+      value: `${s.loc.data.name} (solution:${s.slug})`, label: s.loc.data.name, match: [s.loc.data.name],
+    })) },
+  ];
+}
+type InputKey = "name" | "organization" | "jobTitle" | "country" | "email" | "phone";
+const inputFields: { key: InputKey; type: "text" | "email" | "tel"; auto: string; required: boolean; max: number }[] = [
+  { key: "name", type: "text", auto: "name", required: true, max: 100 },
+  { key: "organization", type: "text", auto: "organization", required: true, max: 150 },
+  { key: "jobTitle", type: "text", auto: "organization-title", required: false, max: 100 },
+  { key: "country", type: "text", auto: "country-name", required: false, max: 80 },
+  { key: "email", type: "email", auto: "email", required: true, max: 254 },
+  { key: "phone", type: "tel", auto: "tel", required: false, max: 40 },
+];
+const topicKeys = Object.keys(t.topics) as (keyof typeof t.topics)[];
+---
+<div class="inquiry-host" data-inquiry-host data-defer={String(defer)} data-topics={JSON.stringify(t.topics)} data-email={email} data-body={t.bodyFields.join("\n")+"\n"}>
+  {email ? (<>
+          {inquiryEndpoint ? (
+            <>
+              <form class="inquiry" data-inquiry data-endpoint={inquiryEndpoint} data-lang={lang} data-version={site.inquiry.privacyVersion} novalidate hidden>
+                <p class="t-small t-muted"><Text value={f.intro} /></p>
+                <div class="grid2">
+                  {inputFields.map(({ key, type, auto, required, max }) => (
+                    <div class="field" data-field={key}>
+                      <label for={`f-${key}`}>{f[key]} <span class="tag">{required ? f.required : f.optional}</span></label>
+                      {key === "country" ? (
+                        <select id="f-country" name="country" autocomplete="country" aria-describedby="e-country">
+                          <option value="">{f.countryPlaceholder}</option>
+                          {countryOptions(lang).map(country => <option value={country.code}>{country.label}</option>)}
+                        </select>
+                      ) : (
+                      <input id={`f-${key}`} name={key} type={type} autocomplete={auto} required={required} maxlength={max} aria-describedby={key === "name" ? `f-name-hint e-${key}` : `e-${key}`} />
+                      )}
+                      {key === "name" && <p class="t-small t-muted" id="f-name-hint">{f.nameHint}</p>}
+                      <p class="err" id={`e-${key}`} hidden></p>
+                    </div>
+                  ))}
+                  <div class="field" data-field="topic">
+                    <label for="f-topic">{f.topic} <span class="tag">{f.required}</span></label>
+                    <select id="f-topic" name="topic" required>
+                      {topicKeys.map((k) => <option value={k}>{t.topics[k].title}</option>)}
+                    </select>
+                  </div>
+                  <fieldset class="field interest-field" id="f-interest" data-field="interest" aria-describedby="e-interest">
+                    <legend>{f.interest} <span class="tag">{f.optional}</span></legend>
+                    <details class="interest-picker" data-interest-picker>
+                      <summary data-interest-summary>{f.interestPlaceholder}</summary>
+                      <div class="interest-options">
+                        {interestGroups.map((g) => (
+                          <fieldset class="interest-group">
+                            <legend>{g.label}</legend>
+                            {g.options.map((o) => (
+                              <label class="interest-choice">
+                                <input type="checkbox" name="interest" value={o.value} data-match={JSON.stringify(o.match)} />
+                                <span>{o.label}</span>
+                              </label>
+                            ))}
+                          </fieldset>
+                        ))}
+                      </div>
+                    </details>
+                    <p class="t-small t-muted" data-interest-selection hidden aria-live="polite"></p>
+                    <p class="err" id="e-interest" hidden></p>
+                  </fieldset>
+                </div>
+                <div class="field" data-field="message">
+                  <label for="f-message">{f.message} <span class="tag">{f.required}</span></label>
+                  <textarea id="f-message" name="message" rows="6" required maxlength="3000" aria-describedby="h-message e-message"></textarea>
+                  <p class="t-small t-muted" id="h-message">{f.messageHint}</p>
+                  <p class="err" id="e-message" hidden></p>
+                </div>
+                <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off" /></div>
+                <p class="t-small consent">{f.consentBefore}<a href={localePath(lang, "privacy")} target="_blank" rel="noopener">{f.consentLink}</a>{f.consentAfter}</p>
+                <p class="err summary" role="alert" data-status hidden></p>
+                <div class="actions actions--row">
+                  <button class="btn btn--primary" type="submit" data-submit data-label={f.submit} data-busy={f.submitting}>{f.submit}</button>
+                  <button class="btn btn--secondary" type="button" data-decline>{f.decline}</button>
+                </div>
+              </form>
+              <div class="done" data-done role="status" tabindex="-1" hidden>
+                <h3 class="t-h3">{f.successTitle}</h3>
+                <p>{f.successBody}</p>
+                <p class="t-small t-muted">{f.reference}：<span data-ref></span></p>
+              </div>
+              <p class="t-small t-muted mail-alt"><Text value={f.emailAlternative} /> <a href={mailto(t.topics.general.subject)} data-mailto>{email}</a></p>
+              <script type="application/json" data-inquiry-text set:html={JSON.stringify({ required: f.errorRequired, email: f.errorEmail, phone: f.errorPhone, declined: `${f.declined} ${email}`, summary: f.errorSummary, unknown: f.errorUnknown, interestPlaceholder: f.interestPlaceholder, interestSelected: f.interestSelected, busy: f.errorBusy, failed: `${f.errorFailed} ${email}` }).replace(/</g, "\\u003c")} />
+            </>
+          ) : (
+            <div class="actions">
+              <a class="btn btn--primary" href={mailto(t.topics.general.subject)} data-mailto><Text value={t.sendEmail} /></a>
+              <p class="t-small t-muted"><Text value={t.orWrite} /> <a href={`mailto:${email}`}>{email}</a></p>
+            </div>
+          )}
+  </>) : <p class="t-muted">{t.noEmail}</p>}
+</div>
+<script>
+  import { sendInquiry, serializeInterests, emitInquiryEvent, UnknownResult, type InquiryPayload } from "../lib/inquiry";
+  function initializeInquiries() {
+    document.querySelectorAll<HTMLElement>("[data-inquiry-host]").forEach(host => {
+      if (host.dataset.bound) return;
+      host.dataset.bound = "true";
+      const topics: Record<string, {title:string;subject:string}> = JSON.parse(host.dataset.topics!);
+      let ready = false;
+      const open = (requestedTopic: string, rawItem: string) => {
+        if (ready) return; // Reopening preserves edits, selections and the retry request ID.
+        ready = true;
+        const topic = topics[requestedTopic] ? requestedTopic : "general";
+        const item = rawItem.replace(/[^\p{L}\p{N} &·・()（）\-–]/gu, "").slice(0,60);
+        const box = host.closest("[data-contact]");
+        if(box){
+          box.querySelector("[data-topic-title]")!.textContent = topics[topic].title;
+          const label=box.querySelector<HTMLElement>("[data-topic-item]")!;
+          label.textContent=item;label.hidden=!item;
+        }
+        const full=`[Big x Reality] ${topics[topic].subject}${item ? ` – ${item}` : ""}`;
+        host.querySelector<HTMLAnchorElement>("[data-mailto]")!.href=
+          `mailto:${host.dataset.email}?subject=${encodeURIComponent(full)}&body=${encodeURIComponent(host.dataset.body!)}`;
+        const form=host.querySelector<HTMLFormElement>("[data-inquiry]");
+        if(form)setupInquiry(form,topic,item);
+      };
+      const params = new URLSearchParams(location.search);
+      if(host.dataset.defer!=="true")open(params.get("topic")??"general",params.get("item")??"");
+      host.addEventListener("bxr:inquiry-open",event=>{
+        const detail=(event as CustomEvent<{topic:string;item:string}>).detail;
+        open(detail.topic,detail.item);
+      });
+    });
+  }
+  initializeInquiries();
+  document.addEventListener("astro:page-load",initializeInquiries);
+  function setupInquiry(form: HTMLFormElement, topic: string, item: string) {
+    const text: Record<string, string> = JSON.parse(form.parentElement!.querySelector("[data-inquiry-text]")!.textContent!);
+    const el = form.elements;
+    const field = (name: string) => name === "interest"
+      ? form.querySelector<HTMLInputElement>('input[name="interest"]')!
+      : el.namedItem(name) as HTMLInputElement;
+    (field("topic") as unknown as HTMLSelectElement).value = topic;
+    if (item) {
+      const matchKey = (value: string) => value.normalize("NFKC").replace(/[^\p{L}\p{N}]/gu, "").toLowerCase();
+      const key = matchKey(item);
+      const hit = [...form.querySelectorAll<HTMLInputElement>('input[name="interest"][data-match]')].find((o) =>
+        (JSON.parse(o.dataset.match!) as string[]).some((m) => matchKey(m) === key));
+      if (hit) hit.checked = true;
+    }
+    const selectedInterests = () => [...form.querySelectorAll<HTMLInputElement>('input[name="interest"]:checked')].map(input => input.value);
+    const updateInterests = () => {
+      const selected = selectedInterests();
+      form.querySelector("[data-interest-summary]")!.textContent = selected.length
+        ? text.interestSelected.replace("{count}", String(selected.length)) : text.interestPlaceholder;
+      const preview = form.querySelector<HTMLElement>("[data-interest-selection]")!;
+      preview.textContent = selected.map(value => value.replace(/ \((?:product|solution):[^)]+\)$/, "")).join("; ");
+      preview.hidden = !selected.length;
+    };
+    form.querySelectorAll('input[name="interest"]').forEach(input => input.addEventListener("change", updateInterests));
+    updateInterests();
+    const sourcePage = location.pathname;
+    if(form.parentElement!.dataset.defer!=="true")emitInquiryEvent("open",sourcePage,topic,selectedInterests().length);
+    form.hidden = false;
+    // One ID per inquiry: a retry after an unknown result reuses it, so the sheet never gets a second row.
+    let requestId = crypto.randomUUID();
+    let sent = "";
+    const status = form.querySelector<HTMLElement>("[data-status]")!;
+    const button = form.querySelector<HTMLButtonElement>("[data-submit]")!;
+    const showError = (name: string, message: string) => {
+      const p = form.querySelector<HTMLElement>(`#e-${name}`);
+      const input = field(name);
+      if (p) { p.textContent = message; p.hidden = !message; }
+      if (name === "interest" && message) form.querySelector<HTMLDetailsElement>("[data-interest-picker]")!.open = true;
+      if (input) input.setAttribute("aria-invalid", message ? "true" : "false");
+    };
+    const say = (message: string) => { status.textContent = message; status.hidden = !message; };
+
+    function validate(): string | null {
+      const rules: [string, (v: string) => string][] = [
+        ["name", (v) => v ? "" : text.required],
+        ["organization", (v) => v ? "" : text.required],
+        ["email", (v) => !v ? text.required : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : text.email],
+        ["phone", (v) => !v || /^[0-9+()#.\-\s]{5,40}$/.test(v) ? "" : text.phone],
+        ["message", (v) => v ? "" : text.required],
+      ];
+      let first: string | null = null;
+      for (const [name, rule] of rules) {
+        const input = field(name);
+        const message = rule(input.value.trim());
+        showError(name, message);
+        if (message && !first) first = name;
+      }
+      return first;
+    }
+
+    // 「不同意」: nothing is sent; the visitor can still e-mail.
+    form.querySelector("[data-decline]")!.addEventListener("click", () => say(text.declined));
+
+    // 「同意並送出」 is the consent: pressing it sends privacyConsent=yes with the policy version.
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (button.disabled) return;
+      say("");
+      const invalid = validate();
+      if (invalid) { say(text.summary); field(invalid).focus(); return; }
+      const selections = selectedInterests();
+      const interestCount = selections.length;
+      const payload: InquiryPayload = {
+        name: field("name").value.trim(), organization: field("organization").value.trim(),
+        jobTitle: field("jobTitle").value.trim(), country: field("country").value.trim(),
+        email: field("email").value.trim(), phone: field("phone").value.trim(),
+        topic: (field("topic") as unknown as HTMLSelectElement).value,
+        interest: serializeInterests(selections),
+        message: field("message").value.trim(), language: form.dataset.lang!,
+        sourcePage, privacyConsent: "yes", privacyVersion: form.dataset.version!,
+      };
+      // Edited after a failed attempt → a new inquiry, so it gets a new ID instead of a conflict.
+      const snapshot = JSON.stringify(payload);
+      if (sent && sent !== snapshot) requestId = crypto.randomUUID();
+      sent = snapshot;
+      button.disabled = true;
+      button.textContent = button.dataset.busy!;
+      emitInquiryEvent("submit",sourcePage,payload.topic,interestCount);
+      try {
+        const reply = await sendInquiry(form.dataset.endpoint!, requestId, payload, field("website").value);
+        if (reply.ok && reply.persisted) {
+          emitInquiryEvent("success",sourcePage,payload.topic,interestCount);
+          const done = form.parentElement!.querySelector<HTMLElement>("[data-done]")!;
+          done.querySelector("[data-ref]")!.textContent = requestId;
+          form.hidden = true;
+          done.hidden = false;
+          done.focus();
+          return;
+        }
+        emitInquiryEvent("error",sourcePage,payload.topic,interestCount);
+        if (reply.code === "INVALID_FIELD" && reply.field && form.querySelector(`#e-${reply.field}`)) {
+          showError(reply.field, reply.field === "email" ? text.email : reply.field === "phone" ? text.phone : text.required);
+          say(text.summary); field(reply.field).focus();
+        } else if (reply.code === "BUSY" || reply.code === "RATE_LIMITED") {
+          say(text.busy);
+        } else if (reply.code === "ID_CONFLICT") {
+          requestId = crypto.randomUUID(); sent = ""; say(text.unknown);
+        } else {
+          say(text.failed);
+        }
+      } catch (error) {
+        emitInquiryEvent("error",sourcePage,payload.topic,interestCount);
+        say(error instanceof UnknownResult ? text.unknown : text.failed);
+      } finally {
+        button.disabled = false;
+        button.textContent = button.dataset.label!;
+      }
+    });
+  }
+</script>
+<style>
+  .inquiry-host { max-width: 44rem; }
+  .label { color: var(--ink-muted); }
+  .item { color: var(--ink-muted); }
+  .actions { display: grid; gap: var(--space-2); justify-items: start; margin-top: var(--space-3); }
+  @media (max-width: 767px) { .actions .btn { width: 100%; justify-content: center; } }
+  .inquiry { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  @media (max-width: 767px) { .grid2 { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: var(--space-1); align-content: start; }
+  .field label { font-weight: 600; }
+  .tag { font-weight: 400; font-size: var(--fs-small); color: var(--ink-muted); }
+  .field input:not([type="checkbox"]), .field select, .field textarea {
+    width: 100%; min-height: var(--btn-h); padding: 10px 12px; font: inherit; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--bxr-slate); border-radius: var(--radius-sm);
+  }
+  .field textarea { min-height: 9rem; resize: vertical; }
+  .field :is(input, select, textarea):focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+  .field [aria-invalid="true"] { border-color: var(--bxr-text-red); }
+  .interest-field { grid-column: 1 / -1; border: 0; padding: 0; margin: 0; min-width: 0; }
+  .interest-field > legend { text-wrap: balance; font-weight: 600; margin-bottom: var(--space-1); }
+  .interest-picker { border: 1px solid var(--bxr-slate); background: var(--surface); }
+  .interest-picker summary { padding: 12px; min-height: var(--btn-h); cursor: pointer; }
+  .interest-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); padding: 0 12px 12px; }
+  .interest-group { min-width: 0; padding: 0; margin: 0; border: 0; }
+  .interest-group > legend { font-size: var(--fs-small); font-weight: 600; color: var(--ink-muted); margin-bottom: var(--space-1); }
+  .field .interest-choice { display: flex; align-items: flex-start; gap: 10px; min-height: 44px; padding-block: 10px; font-weight: 400; cursor: pointer; }
+  .interest-choice input { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 4px; accent-color: var(--bxr-red); }
+  @media (max-width: 767px) { .interest-options { grid-template-columns: 1fr; } }
+  .consent { margin: 0; }
+  .actions--row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: 0; }
+  @media (max-width: 767px) { .actions--row { display: grid; } }
+  .err { color: var(--bxr-text-red); font-size: var(--fs-small); margin: 0; }
+  .summary { font-size: var(--fs-body); }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .done { margin-top: var(--space-3); padding: var(--card-padding); border: 1px solid var(--divider); border-top: 3px solid var(--bxr-red); background: var(--surface); display: grid; gap: var(--space-1); }
+  .done:focus { outline: none; }
+  .inquiry[hidden], .done[hidden] { display: none; }
+  .mail-alt { margin-top: var(--space-3); }
+</style>

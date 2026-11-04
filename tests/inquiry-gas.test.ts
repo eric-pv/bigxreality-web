@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
-import {endpointUrl, sendInquiry, UnknownResult, INQUIRY_PROTOCOL, type InquiryPayload} from '../src/lib/inquiry.ts';
+import {endpointUrl, sendInquiry, UnknownResult, INQUIRY_PROTOCOL, serializeInterests, type InquiryPayload} from '../src/lib/inquiry.ts';
 
 const protocol = INQUIRY_PROTOCOL, id = '2b0f6a54-6d1b-4c43-9a51-0d6f3c8e2a11';
 const valid: InquiryPayload = {
@@ -131,4 +131,17 @@ test('inquiry names preserve given/family ordering and international spelling wi
     assert.equal(h.send({name}).persisted, true, name);
     assert.equal(h.rows[1][3], name, name);
   }
+});
+
+test('multiple interests remain in one existing cell without truncation or duplicate values', () => {
+  const values=Array.from({length:18},(_,i)=>`產品／方案 ${i} (product:example-${i})`);
+  const interest=serializeInterests([...values,values[0], ""]);
+  assert.ok(interest.length>200);
+  assert.equal(interest,values.join("; "));
+  const h=harness();
+  assert.equal(h.send({interest}).persisted,true);
+  assert.equal(h.rows[1][10],interest);
+  assert.equal(h.send({interest}).duplicate,true);
+  assert.equal(h.rows.length,2);
+  assert.equal(h.send({interest:"x".repeat(3001)}).field,"interest");
 });

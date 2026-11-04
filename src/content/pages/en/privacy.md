@@ -19,11 +19,11 @@ This is a static website without member accounts. It currently loads neither Goo
 
 ## 2. Online inquiry form
 
-The “Contact BXR” page provides an online inquiry form. At the bottom of the form are two buttons, “Agree and submit” and “Do not agree”. Selecting “Agree and submit” means you agree to this Policy, and only then is the form sent. If you select “Do not agree”, or until you submit, nothing you have entered is sent to us or stored in your browser.
+The product, solution and “Contact BXR” pages provide an online inquiry form. At the bottom of the form are two buttons, “Agree and submit” and “Do not agree”. Selecting “Agree and submit” means you agree to this Policy, and only then is the form sent. If you select “Do not agree”, or until you submit, nothing you have entered is sent to us or stored in your browser.
 
 **Data collected**
 
-- Data you enter: name, company / organization and email address (required); job title, country / region and phone number (optional); inquiry topic, related product or solution, and your requirements.
+- Data you enter: name, company / organization and email address (required); job title, country / region and phone number (optional); inquiry topic, selected products and solutions (multiple selections), and your requirements.
 - Recorded on submission: time of submission, the page path and language from which the form was sent, a system-generated inquiry reference, and the version of this Policy you agreed to. Our receiving script does not record your IP address.
 
 **How it is processed**: Your browser sends the form directly to a receiving script that we built with Google Apps Script, and the data is stored in our Google Sheets spreadsheet, accessible only to authorized Company personnel. Google's cloud services are provided by Google LLC (United States), and the data may be stored in any country or region where Google operates data centers. On submission your browser connects to Google's servers (script.google.com and script.googleusercontent.com), and Google may log connection information under its own privacy policy. If email notifications for new inquiries are enabled, the inquiry content is also sent to the Company’s designated mailbox.

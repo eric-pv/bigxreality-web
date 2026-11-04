@@ -1,0 +1,53 @@
+---
+import InquiryForm from './InquiryForm.astro';
+import {site} from '../lib/site';
+import {isPending} from '../lib/pending';
+import {getUi} from '../lib/ui';
+import type {Lang} from '../i18n';
+interface Props {lang:Lang}
+const {lang}=Astro.props;
+const ui=getUi(lang);
+---
+{!isPending(site.inquiry.endpoint) && !isPending(site.contact.email) && (
+ <section class="section inline-inquiry" data-inline-inquiry hidden tabindex="-1" aria-labelledby="inline-inquiry-title" data-pagefind-ignore>
+  <div class="container">
+   <div class="inline-heading">
+    <h2 class="t-h2" id="inline-inquiry-title">{ui.contact}</h2>
+    <button class="btn btn--secondary" type="button" data-inquiry-close>{ui.contactPage.form.closeInline}</button>
+   </div>
+   <InquiryForm lang={lang} defer />
+  </div>
+ </section>
+)}
+<script>
+ import {emitInquiryEvent} from '../lib/inquiry';
+ let trigger:HTMLAnchorElement|null=null;
+ document.addEventListener('click',event=>{
+  if(!(event instanceof MouseEvent)||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||event.defaultPrevented)return;
+  const target=event.target instanceof Element?event.target:null;
+  const section=document.querySelector<HTMLElement>('[data-inline-inquiry]');
+  if(!section)return;
+  if(target?.closest('[data-inquiry-close]')){
+   section.hidden=true;trigger?.focus();return;
+  }
+  const link=target?.closest<HTMLAnchorElement>('a[href]');
+  if(!link||link.hasAttribute('download')||(link.target&&link.target!=='_self'))return;
+  const url=new URL(link.href,location.href);
+  // Only business CTA links are enhanced; the Header's ordinary Contact navigation stays a link.
+  if(url.origin!==location.origin||!/^\/(?:[^/]+\/)?(?:tw|en|jp)\/contact\/$/.test(url.pathname)||!url.searchParams.has('topic'))return;
+  const host=section.querySelector<HTMLElement>('[data-inquiry-host]');
+  if(host?.dataset.bound!=='true')return; // JS not ready: the real contact link remains the fallback.
+  event.preventDefault();trigger=link;section.hidden=false;
+  host.dispatchEvent(new CustomEvent('bxr:inquiry-open',{detail:{topic:url.searchParams.get('topic')??'general',item:url.searchParams.get('item')??''}}));
+  section.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  section.focus({preventScroll:true});
+  emitInquiryEvent('open',location.pathname,host.querySelector<HTMLSelectElement>('[name=topic]')?.value??'general',host.querySelectorAll('input[name=interest]:checked').length);
+ });
+</script>
+<style>
+.inline-inquiry[hidden] { display:none; }
+.inline-inquiry { scroll-margin-top:96px; border-top:1px solid var(--divider); }
+.inline-heading { max-width:44rem; display:flex; gap:var(--space-3); align-items:center; justify-content:space-between; margin-bottom:var(--space-4); }
+.inline-heading h2 { margin:0; }
+@media(max-width:767px) { .inline-heading { align-items:flex-start; flex-direction:column; } }
+</style>
