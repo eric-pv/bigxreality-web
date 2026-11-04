@@ -88,7 +88,8 @@ const breadcrumbs = [
                   {inputFields.map(({ key, type, auto, required, max }) => (
                     <div class="field" data-field={key}>
                       <label for={`f-${key}`}>{f[key]} <span class="tag">{required ? f.required : f.optional}</span></label>
-                      <input id={`f-${key}`} name={key} type={type} autocomplete={auto} required={required} maxlength={max} aria-describedby={`e-${key}`} />
+                      <input id={`f-${key}`} name={key} type={type} autocomplete={auto} required={required} maxlength={max} aria-describedby={key === "name" ? `f-name-hint e-${key}` : `e-${key}`} />
+                      {key === "name" && <p class="t-small t-muted" id="f-name-hint">{f.nameHint}</p>}
                       <p class="err" id={`e-${key}`} hidden></p>
                     </div>
                   ))}

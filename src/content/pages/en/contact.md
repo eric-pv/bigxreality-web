@@ -9,6 +9,5 @@ seo:
 hero:
   eyebrow: Contact BXR
   title: "Contact BXR"
-  description: "Contact BXR by email for product demonstrations, product
-    information and training requirement consultations."
+  description: "Use the form below or email BXR for product demonstrations, product information and training requirement consultations."
 ---

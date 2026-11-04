@@ -38,6 +38,8 @@ jobs:
       # Git main is the only official content source. No remote CMS is queried.
       - name: Build
         run: npm run build
+      - name: Production inquiry form (mock Google only; no real writes)
+        run: npm run qa:inquiry-production
       - run: npm run qa:technologies
       - run: npm run qa:technologies-overview-layout
       - run: npm run qa:news-preview

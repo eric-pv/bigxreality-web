@@ -30,6 +30,9 @@ async function collect(): Promise<IndexablePage[]> {
     add("/{lang}/products/", await filter((l) => copyOk("products", l)));
     add("/{lang}/solutions/", await filter((l) => copyOk("solutions", l)));
     add("/{lang}/contact/", await filter((l) => copyOk("contact", l)));
+    // Privacy routes exist only when the shared TW source is published.
+    add("/{lang}/privacy/", await filter(async (l) =>
+      (await getLocalized("pages", l)).some((entry) => entry.slug === "privacy" && !entry.pendingTranslation)));
     add("/{lang}/company/csr/", [...LANGS]);
     add("/{lang}/company/", await filter((l) => copyOk("company", l)));
     // About BXR sub-pages: only languages in which they have published content (otherwise noindex).

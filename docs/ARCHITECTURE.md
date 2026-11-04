@@ -24,7 +24,7 @@ flowchart LR
   Main --> Verify[Actions build-and-test]
   Verify -->|同一提交的 artifact| Deploy[Actions deploy-pages]
   Deploy --> Pages[GitHub Pages 正式網站]
-  Pages -.-> Future[未實作：詢問表單收件介面 → Google 試算表]
+  Pages --> Inquiry[詢問表單 → Google Apps Script → Google 試算表]
 ```
 
 Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片來源不是第二套 CMS。不得擅自新增 EmDash、Strapi、PHP CMS、Cloudflare 部署、D1／R2 內容來源或新的長期 Node CMS 服務。
@@ -144,4 +144,8 @@ GitHub Actions 由平台提供 GITHUB_SHA／REF／RUN_ID／TOKEN；deploy job �
 
 已授權的評估方向為 Astro 共用三語表單 → Google Apps Script → Google Sheets；不用 Google Forms 原生介面、Workers／D1／R2、第二 CMS 或長期 Node 後端。
 
-2026-11-04 已以使用者部署的測試 Web App 完成 Pages-origin 端到端驗證：瀏覽器可讀取四種 JSON 回應（直接 POST 成立，不需 HTML Service 橋接），測試表經人工確認同一 requestId 只有一列，見 [驗收紀錄](inquiry/POC-VALIDATION.md)。正式三語表單尚未開發，正式聯絡頁仍為 Email；正式版依 [GAS POC 設定](inquiry/GAS-POC-SETUP.md) 第 7 節規劃；業主決定（2026-11-04）沿用同一份試算表、Apps Script 專案與 `/exec` 部署升級為正式收件：更名試算表、以正式程式取代 POC 程式並新增正式分頁、以「新版本」更新同一部署，POC 分頁與測試列於上線前移除。正式收件程式、三語表單（「同意並送出」／「不同意」按鈕，不用勾選框）與三語隱私權政策已於同日完成，Google 端設定與上線步驟見 [正式表單設定](inquiry/PRODUCTION-SETUP.md)；表單在隱私權政策公開前無法建置上線。不得用 no-cors 不透明回應或 iframe load 事件表示成功；直接串接不成立時先提同一 GAS 的最小替代方案供確認，不自行加新服務。
+2026-11-04 已以使用者部署的測試 Web App 完成 Pages-origin 端到端驗證：瀏覽器可讀取四種 JSON 回應（直接 POST 成立，不需 HTML Service 橋接），測試表經人工確認同一 requestId 只有一列，見 [驗收紀錄](inquiry/POC-VALIDATION.md)。正式三語表單已實作，端點設定與隱私權公開後顯示；正式版依 [GAS POC 設定](inquiry/GAS-POC-SETUP.md) 第 7 節規劃；業主決定（2026-11-04）沿用同一份試算表、Apps Script 專案與 `/exec` 部署升級為正式收件：更名試算表、以正式程式取代 POC 程式並新增正式分頁、以「新版本」更新同一部署，POC 分頁與測試列於上線前移除。正式收件程式、三語表單（「同意並送出」／「不同意」按鈕，不用勾選框）與三語隱私權政策已於同日完成，Google 端設定與上線步驟見 [正式表單設定](inquiry/PRODUCTION-SETUP.md)；表單在隱私權政策公開前無法建置上線。不得用 no-cors 不透明回應或 iframe load 事件表示成功；直接串接不成立時先提同一 GAS 的最小替代方案供確認，不自行加新服務。
+
+### 2026-11-04 正式表單接續驗證
+
+PR #83 已由上游合併。本接續分支依業主指示完成隱私權三語定稿、TW `draft: false`、正式 `/exec` 設定及三語聯絡頁說明。姓名使用單一完整姓名欄位，保留各語言慣用姓名順序，不變更 Google 試算表結構。正式表單模擬與 LIVE 驗證明確分離；本環境目前無法連 Google，正式寫入及實際單列數量仍未驗證。不得將先前 POC 結果替代本次正式驗收，詳見 [正式驗收紀錄](inquiry/PRODUCTION-VALIDATION.md)。
