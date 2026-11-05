@@ -86,6 +86,11 @@ try {
   assert.ok((await page.locator('#f-name-hint').innerText()).trim());
   assert.equal(await page.locator('#f-topic').inputValue(),'product');
   assert.equal(await page.locator('#f-country option').count(),250);
+  // Owner-specified names; Taiwan heads the list (first option after the placeholder).
+  const special={tw:['台灣(中華民國)','中國(中華人民共和國)'],en:['Taiwan(ROC)','China(PRC)'],jp:['台湾（中華民国）','中国（中華人民共和国）']}[lang];
+  assert.equal(await page.locator('#f-country option').nth(1).getAttribute('value'),'TW');
+  assert.equal((await page.locator('#f-country option').nth(1).innerText()).trim(),special[0]);
+  assert.equal((await page.locator('#f-country option[value="CN"]').innerText()).trim(),special[1]);
   assert.equal(await page.locator('#f-country').inputValue(),'','country must not be inferred from language');
   const policyHref=await form.locator('a').getAttribute('href');
   assert.equal(policyHref,`${prefix}${lang}/privacy/`);

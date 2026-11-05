@@ -60,7 +60,7 @@ function harness(opts: {props?: Record<string, string>; book?: MockBook; now?: (
   let clock = opts.now ?? (() => new RealDate());
   // `new Date()` inside the script follows the test clock; `new Date(x)` is untouched.
   const FakeDate = function (this: unknown, ...args: unknown[]) { return args.length ? new (RealDate as any)(...args) : clock(); } as unknown as DateConstructor;
-  FakeDate.prototype = RealDate.prototype; (FakeDate as any).now = () => clock().getTime();
+  (FakeDate as any).prototype = RealDate.prototype; (FakeDate as any).now = () => clock().getTime();
   const context = vm.createContext({
     Date: FakeDate, JSON, console: {error: () => {}},
     PropertiesService: {getScriptProperties: () => ({getProperty: (key: string) => props[key] ?? null, setProperty: (key: string, v: string) => { props[key] = v; }})},
