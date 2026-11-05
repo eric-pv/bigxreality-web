@@ -74,6 +74,14 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 7. main CI 全部通過，才部署同一次建置的 Pages artifact。CI 失敗時保留前一個已成功部署版本。
 8. 更新本修正後，先保存尚未儲存內容，登出並刷新後台，確認線上 config 的 backend.branch 是 main。不要直接將舊編輯表單內容覆蓋新版 main。
 
+### CMS 2.0：只用 Sveltia（業主決定 2026-11-05）
+
+業主不採 [CMS 2.0](cms-2.0/README.md) 方案 B（自建管理前端），以免增加網站自有程式的攻擊面；CMS 維持 Sveltia，依方案 A 只在 Sveltia 公開設定範圍內改善，不 fork、不 monkey-patch、不另建後台或 Dashboard 服務。
+
+- 已做（Phase 1）：欄位、選項、集合名稱中英並列（`scripts/sveltia/labels.mjs`，只改顯示文字，儲存的 key／值不變）；關聯欄位改為依名稱搜尋的選單，指向 TW 集合，仍只存 slug；既有識別碼（ARTICLE_ID、mediaId、imageId、產品代號）加上勿改提示。集合名稱以語言代碼開頭（`TW · 最新消息 / News`），側欄截斷時仍分得出語言。
+- Sveltia 做不到、不硬做：系統按鈕／錯誤訊息雙語（Sveltia 介面只能單一語言）、跨類別 Dashboard。
+- 須另行確認才做：三語合併成同一篇編輯（`tw` 會被 Sveltia 顯示成 Akan 語）、正文任意位置插入圖片／影片／CTA 區塊（需同步修改前台 renderer）。
+
 ### 新增產品／解決方案／新聞
 
 - 建立英小寫、連字號 slug，三語檔名一致；新聞 ARTICLE_ID 保持唯一。

@@ -37,7 +37,7 @@ media_libraries:
       filename_template: "{{filename}}-{{uuid_short}}"
 collections:
   - name: news-tw
-    label: 最新消息 · 繁體中文（TW）
+    label: TW · 最新消息 / News
     folder: src/content/news/tw
     create: true
     delete: true
@@ -50,233 +50,224 @@ collections:
     public_folder: ../../../assets/images/news
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: &a1
-          - source
-          - pending
-          - translated
+        options: &a7
+          - label: 原文 / Source Language
+            value: source
+          - label: 待完成 / Pending
+            value: pending
+          - label: 已完成翻譯 / Translated
+            value: translated
         default: source
-      - &a2
+      - &a8
         name: draft
-        label: 草稿（TW 控制是否公開）
+        label: 尚未公開 / Unpublished Draft
         required: false
         default: true
         widget: boolean
         hint: TW 控制前台公開：勾選表示下架／未公開。CMS 的 Save Draft 只儲存審核分支；Publish 合併 main 後，仍需取消此勾選並完成三語及 CI 才會在官網顯示。
-      - &a3
+      - &a9
         name: publishDate
-        label: 發布日期（未知請留空）
+        label: 發布日期 / Publish Date
         required: false
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a4
+      - &a10
         name: updatedAt
-        label: 更新日期
+        label: 更新日期 / Updated Date
         required: false
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a5
+      - &a11
         name: title
-        label: 標題
+        label: 標題 / Title
         required: true
         widget: string
-      - &a6
+      - &a12
         name: summary
-        label: 摘要
+        label: 摘要 / Summary
         required: true
         widget: text
-      - &a7
+      - &a13
         name: cover
-        label: 封面
+        label: 封面 / Cover
         required: false
         widget: object
         collapsed: true
         fields:
           - name: src
-            label: 圖片
+            label: 圖片檔案 / Image File
             required: true
             widget: image
             multiple: false
             choose_url: false
           - name: alt
-            label: 替代文字
+            label: 替代文字 / Alternative Text
             required: true
             widget: string
-      - &a8
-        name: tags
-        label: tags
-        required: false
-        default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a9
-        name: relatedProducts
-        label: relatedProducts
-        required: false
-        default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a10
-        name: relatedSolutions
-        label: relatedSolutions
-        required: false
-        default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a11
-        name: relatedNews
-        label: relatedNews
-        required: false
-        default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a12
-        name: relatedInsights
-        label: relatedInsights
-        required: false
-        default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a13
-        name: relatedCaseStudies
-        label: relatedCaseStudies
-        required: false
-        default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
       - &a14
+        name: tags
+        label: 文章標籤 / Tags
+        required: false
+        default: []
+        widget: relation
+        collection: tags-tw
+        value_field: "{{slug}}"
+        search_fields: &a1
+          - name
+        display_fields: *a1
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a15
+        name: relatedProducts
+        label: 關聯產品 / Related Products
+        required: false
+        default: []
+        widget: relation
+        collection: products-tw
+        value_field: "{{slug}}"
+        search_fields: &a2
+          - hero.name
+        display_fields: *a2
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a16
+        name: relatedSolutions
+        label: 關聯解決方案 / Related Solutions
+        required: false
+        default: []
+        widget: relation
+        collection: solutions-tw
+        value_field: "{{slug}}"
+        search_fields: &a3
+          - name
+        display_fields: *a3
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a17
+        name: relatedNews
+        label: 相關新聞 / Related News
+        required: false
+        default: []
+        widget: relation
+        collection: news-tw
+        value_field: "{{slug}}"
+        search_fields: &a4
+          - title
+        display_fields: *a4
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a18
+        name: relatedInsights
+        label: 相關技術文章 / Related Insights
+        required: false
+        default: []
+        widget: relation
+        collection: insights-tw
+        value_field: "{{slug}}"
+        search_fields: &a5
+          - title
+        display_fields: *a5
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a19
+        name: relatedCaseStudies
+        label: 相關案例研究 / Related Case Studies
+        required: false
+        default: []
+        widget: relation
+        collection: case-studies-tw
+        value_field: "{{slug}}"
+        search_fields: &a6
+          - title
+        display_fields: *a6
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a20
         name: seo
-        label: SEO
+        label: 搜尋引擎設定 / SEO Settings
         required: false
         widget: object
         collapsed: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: false
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: false
             widget: text
           - name: ogImage
-            label: ogImage
+            label: 社群分享圖片 / Social Sharing Image
             required: false
             widget: image
             multiple: false
             choose_url: false
-      - &a15
-        name: dateUnconfirmed
-        label: dateUnconfirmed
-        required: false
-        default: false
-        widget: boolean
-      - &a16
-        name: dateNote
-        label: dateNote
-        required: false
-        widget: text
-      - &a17
-        name: dateCandidate
-        label: dateCandidate
-        required: false
-        widget: string
-      - &a18
-        name: dateSource
-        label: dateSource
-        required: false
-        widget: string
-      - &a19
-        name: dateReviewNote
-        label: dateReviewNote
-        required: false
-        widget: text
-      - &a20
-        name: featured
-        label: 焦點新聞
-        required: false
-        default: false
-        widget: boolean
       - &a21
+        name: dateUnconfirmed
+        label: 日期待確認 / Date Unconfirmed
+        required: false
+        default: false
+        widget: boolean
+      - &a22
+        name: dateNote
+        label: 日期說明 / Date Note
+        required: false
+        widget: text
+      - &a23
+        name: dateCandidate
+        label: 待確認日期 / Candidate Date
+        required: false
+        widget: string
+      - &a24
+        name: dateSource
+        label: 日期來源 / Date Source
+        required: false
+        widget: string
+      - &a25
+        name: dateReviewNote
+        label: 日期查核備註 / Date Review Note
+        required: false
+        widget: text
+      - &a26
+        name: featured
+        label: 焦點文章 / Featured Article
+        required: false
+        default: false
+        widget: boolean
+      - &a27
         name: featuredPriority
-        label: 焦點優先順序
+        label: 焦點排序 / Featured Priority
         required: false
         default: 0
         widget: number
         value_type: int
         min: -9007199254740991
         max: 9007199254740991
-      - &a22
+      - &a28
         name: featuredInCSR
-        label: CSR 案例
+        label: 列為社會責任案例 / Featured in CSR
         required: false
         default: false
         widget: boolean
-      - &a23
+      - &a29
         name: csrCategories
-        label: CSR 主題
+        label: 社會責任主題 / CSR Topics
         required: false
         default: []
         widget: list
@@ -284,80 +275,96 @@ collections:
         allow_add: true
         field:
           name: item
-          label: item
+          label: 項目 / Item
           required: true
           widget: select
           options:
-            - defense-education
-            - disaster-resilience
-            - technology-education
-            - community-engagement
-      - &a24
+            - label: 全民國防與教育推廣 / Defense Awareness and Education
+              value: defense-education
+            - label: 防災教育與社會韌性 / Disaster Preparedness and Resilience
+              value: disaster-resilience
+            - label: 科技教育與人才培育 / Technology Education and Talent Development
+              value: technology-education
+            - label: 社會參與與公益支持 / Community Engagement
+              value: community-engagement
+      - &a30
         name: articleId
-        label: ARTICLE_ID
+        label: 文章識別碼 / Article ID
         required: false
         widget: string
         pattern:
           - ^[a-z0-9]+(?:-[a-z0-9]+)*$
           - 請依照欄位要求的格式填寫
-      - &a25
+        hint: "進階識別碼：既有內容請勿修改，否則共用媒體或連結會失效。 / Advanced ID: do not change on existing entries."
+      - &a31
         name: imageId
-        label: 圖片 ID
+        label: 圖片識別碼 / Image ID
         required: false
         widget: string
         pattern:
           - ^[a-z0-9]+(?:-[a-z0-9]+)*$
           - 請依照欄位要求的格式填寫
-      - &a26
+        hint: "進階識別碼：既有內容請勿修改，否則共用媒體或連結會失效。 / Advanced ID: do not change on existing entries."
+      - &a32
         name: mediaId
-        label: 共用媒體 ID
+        label: 共用媒體識別碼 / Media ID
         required: false
         widget: string
         pattern:
           - ^[a-z0-9]+(?:-[a-z0-9]+)*$
           - 請依照欄位要求的格式填寫
-      - &a27
+        hint: "進階識別碼：既有內容請勿修改，否則共用媒體或連結會失效。 / Advanced ID: do not change on existing entries."
+      - &a33
         name: sourceCategory
-        label: sourceCategory
+        label: 原始分類 / Original Category
         required: false
         widget: string
-      - &a28
+      - &a34
         name: importNote
-        label: importNote
+        label: 匯入備註 / Import Note
         required: false
         widget: text
-      - &a29
+      - &a35
         name: category
-        label: 分類
+        label: 分類 / Category
         required: true
         widget: select
         options:
-          - event
-          - product
-          - insight
-          - company
-          - exhibition
-          - award
-          - product-launch
-          - partnership
-          - media
-      - &a30
+          - label: 活動消息 / Events
+            value: event
+          - label: 產品消息 / Product News
+            value: product
+          - label: 技術觀點 / Technical Insights
+            value: insight
+          - label: 公司消息 / Company News
+            value: company
+          - label: 展會消息 / Exhibitions
+            value: exhibition
+          - label: 獲獎消息 / Awards
+            value: award
+          - label: 產品發表 / Product Launch
+            value: product-launch
+          - label: 合作消息 / Partnership News
+            value: partnership
+          - label: 媒體消息 / Media Coverage
+            value: media
+      - &a36
         name: event
-        label: event
+        label: 活動資訊 / Event
         required: false
         widget: object
         collapsed: true
         fields:
           - name: name
-            label: 名稱
+            label: 名稱 / Name
             required: true
             widget: string
           - name: location
-            label: location
+            label: 地點 / Location
             required: false
             widget: string
           - name: startDate
-            label: startDate
+            label: 開始日期 / Start Date
             required: true
             widget: datetime
             format: YYYY-MM-DD
@@ -365,38 +372,39 @@ collections:
             time_format: false
             picker_utc: true
           - name: endDate
-            label: endDate
+            label: 結束日期 / End Date
             required: false
             widget: datetime
             format: YYYY-MM-DD
             date_format: YYYY-MM-DD
             time_format: false
             picker_utc: true
-      - &a31
+      - &a37
         name: source
-        label: source
+        label: 來源 / Source
         required: false
         widget: object
         collapsed: true
         fields:
           - name: name
-            label: 名稱
+            label: 名稱 / Name
             required: true
             widget: string
           - name: url
-            label: url
+            label: 連結網址 / Link URL
             required: true
             widget: string
-      - &a32
+      - &a38
         name: body
-        label: 完整內文
+        label: 文章內文 / Article Content
         widget: markdown
         required: false
         modes:
           - raw
           - rich_text
+    description: 繁體中文（TW）
   - name: news-en
-    label: 最新消息 · English（EN）
+    label: EN · 最新消息 / News
     folder: src/content/news/en
     create: true
     delete: true
@@ -409,17 +417,11 @@ collections:
     public_folder: ../../../assets/images/news
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a1
+        options: *a7
         default: pending
-      - *a2
-      - *a3
-      - *a4
-      - *a5
-      - *a6
-      - *a7
       - *a8
       - *a9
       - *a10
@@ -445,8 +447,15 @@ collections:
       - *a30
       - *a31
       - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+    description: English（EN）
   - name: news-jp
-    label: 最新消息 · 日本語（JP）
+    label: JP · 最新消息 / News
     folder: src/content/news/jp
     create: true
     delete: true
@@ -459,17 +468,11 @@ collections:
     public_folder: ../../../assets/images/news
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a1
+        options: *a7
         default: pending
-      - *a2
-      - *a3
-      - *a4
-      - *a5
-      - *a6
-      - *a7
       - *a8
       - *a9
       - *a10
@@ -495,8 +498,15 @@ collections:
       - *a30
       - *a31
       - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+    description: 日本語（JP）
   - name: insights-tw
-    label: 技術專欄 · 繁體中文（TW）
+    label: TW · 技術專欄 / Insights
     folder: src/content/insights/tw
     create: true
     delete: true
@@ -509,191 +519,179 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: &a33
-          - source
-          - pending
-          - translated
+        options: &a42
+          - label: 原文 / Source Language
+            value: source
+          - label: 待完成 / Pending
+            value: pending
+          - label: 已完成翻譯 / Translated
+            value: translated
         default: source
-      - &a34
+      - &a43
         name: draft
-        label: 草稿（TW 控制是否公開）
+        label: 尚未公開 / Unpublished Draft
         required: false
         default: true
         widget: boolean
         hint: TW 控制前台公開：勾選表示下架／未公開。CMS 的 Save Draft 只儲存審核分支；Publish 合併 main 後，仍需取消此勾選並完成三語及 CI 才會在官網顯示。
-      - &a35
+      - &a44
         name: publishDate
-        label: 發布日期（未知請留空）
+        label: 發布日期 / Publish Date
         required: true
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a36
+      - &a45
         name: updatedAt
-        label: 更新日期
+        label: 更新日期 / Updated Date
         required: false
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a37
+      - &a46
         name: title
-        label: 標題
+        label: 標題 / Title
         required: true
         widget: string
-      - &a38
+      - &a47
         name: summary
-        label: 摘要
+        label: 摘要 / Summary
         required: true
         widget: text
-      - &a39
+      - &a48
         name: cover
-        label: 封面
+        label: 封面 / Cover
         required: false
         widget: object
         collapsed: true
         fields:
           - name: src
-            label: 圖片
+            label: 圖片檔案 / Image File
             required: true
             widget: image
             multiple: false
             choose_url: false
           - name: alt
-            label: 替代文字
+            label: 替代文字 / Alternative Text
             required: true
             widget: string
-      - &a40
+      - &a49
         name: tags
-        label: tags
+        label: 文章標籤 / Tags
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a41
+        widget: relation
+        collection: tags-tw
+        value_field: "{{slug}}"
+        search_fields: *a1
+        display_fields: *a1
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a50
         name: relatedProducts
-        label: relatedProducts
+        label: 關聯產品 / Related Products
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a42
+        widget: relation
+        collection: products-tw
+        value_field: "{{slug}}"
+        search_fields: *a2
+        display_fields: *a2
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a51
         name: relatedSolutions
-        label: relatedSolutions
+        label: 關聯解決方案 / Related Solutions
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a43
+        widget: relation
+        collection: solutions-tw
+        value_field: "{{slug}}"
+        search_fields: *a3
+        display_fields: *a3
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a52
         name: relatedNews
-        label: relatedNews
+        label: 相關新聞 / Related News
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a44
+        widget: relation
+        collection: news-tw
+        value_field: "{{slug}}"
+        search_fields: &a39
+          - title
+        display_fields: *a39
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a53
         name: relatedInsights
-        label: relatedInsights
+        label: 相關技術文章 / Related Insights
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a45
+        widget: relation
+        collection: insights-tw
+        value_field: "{{slug}}"
+        search_fields: &a40
+          - title
+        display_fields: *a40
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a54
         name: relatedCaseStudies
-        label: relatedCaseStudies
+        label: 相關案例研究 / Related Case Studies
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a46
+        widget: relation
+        collection: case-studies-tw
+        value_field: "{{slug}}"
+        search_fields: &a41
+          - title
+        display_fields: *a41
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a55
         name: seo
-        label: SEO
+        label: 搜尋引擎設定 / SEO Settings
         required: false
         widget: object
         collapsed: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: false
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: false
             widget: text
           - name: ogImage
-            label: ogImage
+            label: 社群分享圖片 / Social Sharing Image
             required: false
             widget: image
             multiple: false
             choose_url: false
-      - &a47
+      - &a56
         name: author
-        label: author
+        label: 作者 / Author
         required: false
         widget: string
-      - &a48
+      - &a57
         name: technologyTags
-        label: technologyTags
+        label: 核心技術標籤 / Technology Tags
         required: false
         default: []
         widget: list
@@ -701,27 +699,35 @@ collections:
         allow_add: true
         field:
           name: item
-          label: item
+          label: 項目 / Item
           required: true
           widget: select
           options:
-            - xr
-            - ai-simulation
-            - digital-simulation
-            - training-design
-            - system-integration
-            - decision-visualization
-            - domain-expertise
-      - &a49
+            - label: 延展實境 / Extended Reality
+              value: xr
+            - label: AI 行為模擬 / AI Simulation
+              value: ai-simulation
+            - label: 數位模擬 / Digital Simulation
+              value: digital-simulation
+            - label: 訓練設計 / Training Design
+              value: training-design
+            - label: 系統整合 / System Integration
+              value: system-integration
+            - label: 決策視覺化 / Decision Visualization
+              value: decision-visualization
+            - label: 領域專業 / Domain Expertise
+              value: domain-expertise
+      - &a58
         name: body
-        label: 完整內文
+        label: 文章內文 / Article Content
         widget: markdown
         required: false
         modes:
           - raw
           - rich_text
+    description: 繁體中文（TW）
   - name: insights-en
-    label: 技術專欄 · English（EN）
+    label: EN · 技術專欄 / Insights
     folder: src/content/insights/en
     create: true
     delete: true
@@ -734,20 +740,11 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a33
+        options: *a42
         default: pending
-      - *a34
-      - *a35
-      - *a36
-      - *a37
-      - *a38
-      - *a39
-      - *a40
-      - *a41
-      - *a42
       - *a43
       - *a44
       - *a45
@@ -755,8 +752,18 @@ collections:
       - *a47
       - *a48
       - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+      - *a54
+      - *a55
+      - *a56
+      - *a57
+      - *a58
+    description: English（EN）
   - name: insights-jp
-    label: 技術專欄 · 日本語（JP）
+    label: JP · 技術專欄 / Insights
     folder: src/content/insights/jp
     create: true
     delete: true
@@ -769,20 +776,11 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a33
+        options: *a42
         default: pending
-      - *a34
-      - *a35
-      - *a36
-      - *a37
-      - *a38
-      - *a39
-      - *a40
-      - *a41
-      - *a42
       - *a43
       - *a44
       - *a45
@@ -790,8 +788,18 @@ collections:
       - *a47
       - *a48
       - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+      - *a54
+      - *a55
+      - *a56
+      - *a57
+      - *a58
+    description: 日本語（JP）
   - name: products-tw
-    label: 產品介紹 · 繁體中文（TW）
+    label: TW · 產品介紹 / Products
     folder: src/content/products/tw
     create: true
     delete: true
@@ -804,989 +812,1073 @@ collections:
     public_folder: ../../../assets/images/products
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: &a50
-          - source
-          - pending
-          - translated
+        options: &a59
+          - label: 原文 / Source Language
+            value: source
+          - label: 待完成 / Pending
+            value: pending
+          - label: 已完成翻譯 / Translated
+            value: translated
         default: source
-      - &a51
+      - &a60
         name: draft
-        label: 草稿（TW 控制是否公開）
+        label: 尚未公開 / Unpublished Draft
         required: false
         default: true
         widget: boolean
         hint: TW 控制前台公開：勾選表示下架／未公開。CMS 的 Save Draft 只儲存審核分支；Publish 合併 main 後，仍需取消此勾選並完成三語及 CI 才會在官網顯示。
-      - &a52
+      - &a61
         name: publishDate
-        label: 發布日期（未知請留空）
+        label: 發布日期 / Publish Date
         required: true
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a53
+      - &a62
         name: updatedAt
-        label: 更新日期
+        label: 更新日期 / Updated Date
         required: false
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a54
+      - &a63
         name: order
-        label: 排序
+        label: 排序 / Order
         required: true
         widget: number
         value_type: int
         min: -9007199254740991
         max: 9007199254740991
-      - &a55
+      - &a64
         name: domains
-        label: 應用領域
+        label: 應用領域 / Application Domains
         required: true
         widget: list
         collapsed: true
         allow_add: true
         field:
           name: item
-          label: item
+          label: 項目 / Item
           required: true
           widget: select
           options:
-            - military
-            - police
-            - fire-rescue
+            - label: 軍事 / Military
+              value: military
+            - label: 警勤 / Police
+              value: police
+            - label: 消防防災 / Fire and Disaster Prevention
+              value: fire-rescue
         min: 1
-      - &a56
+      - &a65
         name: hero
-        label: 頁首
+        label: 頁首內容 / Hero Content
         required: true
         widget: object
         collapsed: true
         fields:
           - name: name
-            label: 名稱
+            label: 名稱 / Name
             required: true
             widget: string
           - name: englishName
-            label: englishName
+            label: 英文名稱 / English Name
             required: false
             widget: string
           - name: code
-            label: code
+            label: 產品代號 / Product Code
             required: false
             widget: string
+            hint: "進階識別碼：既有內容請勿修改，否則共用媒體或連結會失效。 / Advanced ID: do not change on existing entries."
           - name: tagline
-            label: tagline
+            label: 價值副標 / Value Statement
             required: true
             widget: string
           - name: image
-            label: image
+            label: 圖片 / Image
             required: false
             widget: object
             collapsed: true
             fields:
               - name: src
-                label: 圖片
+                label: 圖片檔案 / Image File
                 required: true
                 widget: image
                 multiple: false
                 choose_url: false
               - name: alt
-                label: 替代文字
+                label: 替代文字 / Alternative Text
                 required: true
                 widget: string
-      - &a57
+      - &a66
         name: summary
-        label: 摘要
+        label: 摘要 / Summary
         required: false
         widget: text
-      - &a58
+      - &a67
         name: landing
-        label: 完整內容區塊
+        label: 完整頁面內容 / Landing Page Content
         required: false
         widget: object
         collapsed: true
         fields:
           - name: headline
-            label: headline
+            label: 主標 / Headline
             required: true
             widget: string
           - name: subheadline
-            label: subheadline
+            label: 副標 / Subheadline
             required: true
             widget: string
           - name: intro
-            label: intro
+            label: 介紹 / Introduction
             required: false
             widget: text
           - name: introImage
-            label: introImage
+            label: 介紹圖片 / Introduction Image
             required: false
             widget: object
             collapsed: true
             fields:
               - name: src
-                label: 圖片
+                label: 圖片檔案 / Image File
                 required: false
                 widget: image
                 multiple: false
                 choose_url: false
               - name: alt
-                label: 替代文字
+                label: 替代文字 / Alternative Text
                 required: false
                 widget: string
               - name: need
-                label: need
+                label: 素材需求備註 / Asset Requirement Note
                 required: false
                 widget: string
               - name: caption
-                label: caption
+                label: 圖說 / Caption
                 required: false
                 widget: string
               - name: ratio
-                label: ratio
+                label: 圖片比例 / Image Ratio
                 required: false
                 widget: select
                 options:
-                  - 16 / 9
-                  - 3 / 2
-                  - 4 / 3
-                  - 4 / 5
-                  - 1 / 1
+                  - label: 寬螢幕 / Widescreen
+                    value: 16 / 9
+                  - label: 橫式 3:2 / Landscape 3:2
+                    value: 3 / 2
+                  - label: 橫式 4:3 / Landscape 4:3
+                    value: 4 / 3
+                  - label: 直式 4:5 / Portrait 4:5
+                    value: 4 / 5
+                  - label: 正方形 / Square
+                    value: 1 / 1
               - name: kind
-                label: kind
+                label: 素材類型 / Image Type
                 required: false
                 widget: select
                 options:
-                  - approved
-                  - illustration
+                  - label: 已核准實際素材 / Approved Actual Asset
+                    value: approved
+                  - label: 概念示意素材 / Concept Illustration
+                    value: illustration
               - name: status
-                label: status
+                label: 素材顯示狀態 / Asset Visibility
                 required: false
                 widget: select
                 options:
-                  - public
-                  - withheld
+                  - label: 公開 / Public
+                    value: public
+                  - label: 暫不公開 / Withheld
+                    value: withheld
               - name: substitute
-                label: substitute
+                label: 替代素材 / Fallback Asset
                 required: false
                 widget: object
                 collapsed: true
                 fields:
                   - name: src
-                    label: 圖片
+                    label: 圖片檔案 / Image File
                     required: true
                     widget: image
                     multiple: false
                     choose_url: false
                   - name: alt
-                    label: 替代文字
+                    label: 替代文字 / Alternative Text
                     required: true
                     widget: string
           - name: heroImage
-            label: heroImage
+            label: 頁首圖片 / Hero Image
             required: false
             widget: object
             collapsed: true
             fields:
               - name: src
-                label: 圖片
+                label: 圖片檔案 / Image File
                 required: false
                 widget: image
                 multiple: false
                 choose_url: false
               - name: alt
-                label: 替代文字
+                label: 替代文字 / Alternative Text
                 required: false
                 widget: string
               - name: need
-                label: need
+                label: 素材需求備註 / Asset Requirement Note
                 required: false
                 widget: string
               - name: caption
-                label: caption
+                label: 圖說 / Caption
                 required: false
                 widget: string
               - name: ratio
-                label: ratio
+                label: 圖片比例 / Image Ratio
                 required: false
                 widget: select
                 options:
-                  - 16 / 9
-                  - 3 / 2
-                  - 4 / 3
-                  - 4 / 5
-                  - 1 / 1
+                  - label: 寬螢幕 / Widescreen
+                    value: 16 / 9
+                  - label: 橫式 3:2 / Landscape 3:2
+                    value: 3 / 2
+                  - label: 橫式 4:3 / Landscape 4:3
+                    value: 4 / 3
+                  - label: 直式 4:5 / Portrait 4:5
+                    value: 4 / 5
+                  - label: 正方形 / Square
+                    value: 1 / 1
               - name: kind
-                label: kind
+                label: 素材類型 / Image Type
                 required: false
                 widget: select
                 options:
-                  - approved
-                  - illustration
+                  - label: 已核准實際素材 / Approved Actual Asset
+                    value: approved
+                  - label: 概念示意素材 / Concept Illustration
+                    value: illustration
               - name: status
-                label: status
+                label: 素材顯示狀態 / Asset Visibility
                 required: false
                 widget: select
                 options:
-                  - public
-                  - withheld
+                  - label: 公開 / Public
+                    value: public
+                  - label: 暫不公開 / Withheld
+                    value: withheld
               - name: substitute
-                label: substitute
+                label: 替代素材 / Fallback Asset
                 required: false
                 widget: object
                 collapsed: true
                 fields:
                   - name: src
-                    label: 圖片
+                    label: 圖片檔案 / Image File
                     required: true
                     widget: image
                     multiple: false
                     choose_url: false
                   - name: alt
-                    label: 替代文字
+                    label: 替代文字 / Alternative Text
                     required: true
                     widget: string
           - name: ctaLabel
-            label: ctaLabel
+            label: 行動按鈕文字 / CTA Label
             required: true
             widget: string
           - name: challenge
-            label: challenge
+            label: 主要需求與挑戰 / Challenge
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: cards
-                label: cards
+                label: 卡片 / Cards
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                 min: 1
               - name: note
-                label: note
+                label: 備註 / Note
                 required: false
                 widget: text
           - name: approach
-            label: approach
+            label: 方案做法 / Approach
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: images
-                label: images
+                label: 圖片 / Images
                 required: false
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: src
-                    label: 圖片
+                    label: 圖片檔案 / Image File
                     required: false
                     widget: image
                     multiple: false
                     choose_url: false
                   - name: alt
-                    label: 替代文字
+                    label: 替代文字 / Alternative Text
                     required: false
                     widget: string
                   - name: need
-                    label: need
+                    label: 素材需求備註 / Asset Requirement Note
                     required: false
                     widget: string
                   - name: caption
-                    label: caption
+                    label: 圖說 / Caption
                     required: false
                     widget: string
                   - name: ratio
-                    label: ratio
+                    label: 圖片比例 / Image Ratio
                     required: false
                     widget: select
                     options:
-                      - 16 / 9
-                      - 3 / 2
-                      - 4 / 3
-                      - 4 / 5
-                      - 1 / 1
+                      - label: 寬螢幕 / Widescreen
+                        value: 16 / 9
+                      - label: 橫式 3:2 / Landscape 3:2
+                        value: 3 / 2
+                      - label: 橫式 4:3 / Landscape 4:3
+                        value: 4 / 3
+                      - label: 直式 4:5 / Portrait 4:5
+                        value: 4 / 5
+                      - label: 正方形 / Square
+                        value: 1 / 1
                   - name: kind
-                    label: kind
+                    label: 素材類型 / Image Type
                     required: false
                     widget: select
                     options:
-                      - approved
-                      - illustration
+                      - label: 已核准實際素材 / Approved Actual Asset
+                        value: approved
+                      - label: 概念示意素材 / Concept Illustration
+                        value: illustration
                   - name: status
-                    label: status
+                    label: 素材顯示狀態 / Asset Visibility
                     required: false
                     widget: select
                     options:
-                      - public
-                      - withheld
+                      - label: 公開 / Public
+                        value: public
+                      - label: 暫不公開 / Withheld
+                        value: withheld
                   - name: substitute
-                    label: substitute
+                    label: 替代素材 / Fallback Asset
                     required: false
                     widget: object
                     collapsed: true
                     fields:
                       - name: src
-                        label: 圖片
+                        label: 圖片檔案 / Image File
                         required: true
                         widget: image
                         multiple: false
                         choose_url: false
                       - name: alt
-                        label: 替代文字
+                        label: 替代文字 / Alternative Text
                         required: true
                         widget: string
                 max: 3
               - name: pillars
-                label: pillars
+                label: 方案重點 / Solution Pillars
                 required: false
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
           - name: capabilities
-            label: capabilities
+            label: 核心能力 / Capabilities
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: items
-                label: items
+                label: 項目 / Items
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: content
-                    label: content
+                    label: 內容 / Content
                     required: true
                     widget: text
                   - name: value
-                    label: value
+                    label: 數值或內容 / Value
                     required: false
                     widget: string
                   - name: image
-                    label: image
+                    label: 圖片 / Image
                     required: false
                     widget: object
                     collapsed: true
                     fields:
                       - name: src
-                        label: 圖片
+                        label: 圖片檔案 / Image File
                         required: false
                         widget: image
                         multiple: false
                         choose_url: false
                       - name: alt
-                        label: 替代文字
+                        label: 替代文字 / Alternative Text
                         required: false
                         widget: string
                       - name: need
-                        label: need
+                        label: 素材需求備註 / Asset Requirement Note
                         required: false
                         widget: string
                       - name: caption
-                        label: caption
+                        label: 圖說 / Caption
                         required: false
                         widget: string
                       - name: ratio
-                        label: ratio
+                        label: 圖片比例 / Image Ratio
                         required: false
                         widget: select
                         options:
-                          - 16 / 9
-                          - 3 / 2
-                          - 4 / 3
-                          - 4 / 5
-                          - 1 / 1
+                          - label: 寬螢幕 / Widescreen
+                            value: 16 / 9
+                          - label: 橫式 3:2 / Landscape 3:2
+                            value: 3 / 2
+                          - label: 橫式 4:3 / Landscape 4:3
+                            value: 4 / 3
+                          - label: 直式 4:5 / Portrait 4:5
+                            value: 4 / 5
+                          - label: 正方形 / Square
+                            value: 1 / 1
                       - name: kind
-                        label: kind
+                        label: 素材類型 / Image Type
                         required: false
                         widget: select
                         options:
-                          - approved
-                          - illustration
+                          - label: 已核准實際素材 / Approved Actual Asset
+                            value: approved
+                          - label: 概念示意素材 / Concept Illustration
+                            value: illustration
                       - name: status
-                        label: status
+                        label: 素材顯示狀態 / Asset Visibility
                         required: false
                         widget: select
                         options:
-                          - public
-                          - withheld
+                          - label: 公開 / Public
+                            value: public
+                          - label: 暫不公開 / Withheld
+                            value: withheld
                       - name: substitute
-                        label: substitute
+                        label: 替代素材 / Fallback Asset
                         required: false
                         widget: object
                         collapsed: true
                         fields:
                           - name: src
-                            label: 圖片
+                            label: 圖片檔案 / Image File
                             required: true
                             widget: image
                             multiple: false
                             choose_url: false
                           - name: alt
-                            label: 替代文字
+                            label: 替代文字 / Alternative Text
                             required: true
                             widget: string
                 min: 1
           - name: flow
-            label: flow
+            label: 訓練流程 / Training Flow
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: steps
-                label: steps
+                label: 步驟 / Steps
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                   - name: icon
-                    label: icon
+                    label: 圖示 / Icon
                     required: false
                     widget: select
                     options:
-                      - target
-                      - team
-                      - variation
-                      - review
-                      - route
-                      - headset
-                      - link
+                      - label: 目標圖示 / Target Icon
+                        value: target
+                      - label: 團隊圖示 / Team Icon
+                        value: team
+                      - label: 變化圖示 / Variation Icon
+                        value: variation
+                      - label: 檢視圖示 / Review Icon
+                        value: review
+                      - label: 路線圖示 / Route Icon
+                        value: route
+                      - label: 頭戴裝置圖示 / Headset Icon
+                        value: headset
+                      - label: 連結圖示 / Link Icon
+                        value: link
                   - name: image
-                    label: image
+                    label: 圖片 / Image
                     required: false
                     widget: object
                     collapsed: true
                     fields:
                       - name: src
-                        label: 圖片
+                        label: 圖片檔案 / Image File
                         required: false
                         widget: image
                         multiple: false
                         choose_url: false
                       - name: alt
-                        label: 替代文字
+                        label: 替代文字 / Alternative Text
                         required: false
                         widget: string
                       - name: need
-                        label: need
+                        label: 素材需求備註 / Asset Requirement Note
                         required: false
                         widget: string
                       - name: caption
-                        label: caption
+                        label: 圖說 / Caption
                         required: false
                         widget: string
                       - name: ratio
-                        label: ratio
+                        label: 圖片比例 / Image Ratio
                         required: false
                         widget: select
                         options:
-                          - 16 / 9
-                          - 3 / 2
-                          - 4 / 3
-                          - 4 / 5
-                          - 1 / 1
+                          - label: 寬螢幕 / Widescreen
+                            value: 16 / 9
+                          - label: 橫式 3:2 / Landscape 3:2
+                            value: 3 / 2
+                          - label: 橫式 4:3 / Landscape 4:3
+                            value: 4 / 3
+                          - label: 直式 4:5 / Portrait 4:5
+                            value: 4 / 5
+                          - label: 正方形 / Square
+                            value: 1 / 1
                       - name: kind
-                        label: kind
+                        label: 素材類型 / Image Type
                         required: false
                         widget: select
                         options:
-                          - approved
-                          - illustration
+                          - label: 已核准實際素材 / Approved Actual Asset
+                            value: approved
+                          - label: 概念示意素材 / Concept Illustration
+                            value: illustration
                       - name: status
-                        label: status
+                        label: 素材顯示狀態 / Asset Visibility
                         required: false
                         widget: select
                         options:
-                          - public
-                          - withheld
+                          - label: 公開 / Public
+                            value: public
+                          - label: 暫不公開 / Withheld
+                            value: withheld
                       - name: substitute
-                        label: substitute
+                        label: 替代素材 / Fallback Asset
                         required: false
                         widget: object
                         collapsed: true
                         fields:
                           - name: src
-                            label: 圖片
+                            label: 圖片檔案 / Image File
                             required: true
                             widget: image
                             multiple: false
                             choose_url: false
                           - name: alt
-                            label: 替代文字
+                            label: 替代文字 / Alternative Text
                             required: true
                             widget: string
                 min: 1
               - name: note
-                label: note
+                label: 備註 / Note
                 required: false
                 widget: text
           - name: scenarios
-            label: scenarios
+            label: 應用情境 / Application Scenarios
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: items
-                label: items
+                label: 項目 / Items
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                   - name: focus
-                    label: focus
+                    label: 內容重點 / Focus
                     required: false
                     widget: string
                   - name: image
-                    label: image
+                    label: 圖片 / Image
                     required: false
                     widget: object
                     collapsed: true
                     fields:
                       - name: src
-                        label: 圖片
+                        label: 圖片檔案 / Image File
                         required: false
                         widget: image
                         multiple: false
                         choose_url: false
                       - name: alt
-                        label: 替代文字
+                        label: 替代文字 / Alternative Text
                         required: false
                         widget: string
                       - name: need
-                        label: need
+                        label: 素材需求備註 / Asset Requirement Note
                         required: false
                         widget: string
                       - name: caption
-                        label: caption
+                        label: 圖說 / Caption
                         required: false
                         widget: string
                       - name: ratio
-                        label: ratio
+                        label: 圖片比例 / Image Ratio
                         required: false
                         widget: select
                         options:
-                          - 16 / 9
-                          - 3 / 2
-                          - 4 / 3
-                          - 4 / 5
-                          - 1 / 1
+                          - label: 寬螢幕 / Widescreen
+                            value: 16 / 9
+                          - label: 橫式 3:2 / Landscape 3:2
+                            value: 3 / 2
+                          - label: 橫式 4:3 / Landscape 4:3
+                            value: 4 / 3
+                          - label: 直式 4:5 / Portrait 4:5
+                            value: 4 / 5
+                          - label: 正方形 / Square
+                            value: 1 / 1
                       - name: kind
-                        label: kind
+                        label: 素材類型 / Image Type
                         required: false
                         widget: select
                         options:
-                          - approved
-                          - illustration
+                          - label: 已核准實際素材 / Approved Actual Asset
+                            value: approved
+                          - label: 概念示意素材 / Concept Illustration
+                            value: illustration
                       - name: status
-                        label: status
+                        label: 素材顯示狀態 / Asset Visibility
                         required: false
                         widget: select
                         options:
-                          - public
-                          - withheld
+                          - label: 公開 / Public
+                            value: public
+                          - label: 暫不公開 / Withheld
+                            value: withheld
                       - name: substitute
-                        label: substitute
+                        label: 替代素材 / Fallback Asset
                         required: false
                         widget: object
                         collapsed: true
                         fields:
                           - name: src
-                            label: 圖片
+                            label: 圖片檔案 / Image File
                             required: true
                             widget: image
                             multiple: false
                             choose_url: false
                           - name: alt
-                            label: 替代文字
+                            label: 替代文字 / Alternative Text
                             required: true
                             widget: string
                 min: 1
           - name: values
-            label: values
+            label: 數值或內容清單 / Values
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: cards
-                label: cards
+                label: 卡片 / Cards
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                 min: 1
               - name: note
-                label: note
+                label: 備註 / Note
                 required: false
                 widget: text
           - name: featured
-            label: 焦點新聞
+            label: 焦點文章 / Featured Article
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: items
-                label: items
+                label: 項目 / Items
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                   - name: ctaLabel
-                    label: ctaLabel
+                    label: 行動按鈕文字 / CTA Label
                     required: true
                     widget: string
                   - name: solution
-                    label: solution
+                    label: 解決方案 / Solution
                     required: true
-                    widget: string
-                    pattern:
-                      - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-                      - 請依照欄位要求的格式填寫
+                    widget: relation
+                    collection: solutions-tw
+                    value_field: "{{slug}}"
+                    search_fields: *a3
+                    display_fields: *a3
+                    multiple: false
+                    dropdown_threshold: 0
+                    hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
                 min: 1
           - name: blocks
-            label: blocks
+            label: 內容區塊 / Content Blocks
             required: false
             widget: list
             collapsed: true
             allow_add: true
             fields:
               - name: kind
-                label: kind
+                label: 素材類型 / Image Type
                 required: true
                 widget: select
                 options:
-                  - prose
-                  - list
-                  - checks
-                  - featured
+                  - label: 文字內容 / Text Content
+                    value: prose
+                  - label: 清單 / List
+                    value: list
+                  - label: 檢核清單 / Checklist
+                    value: checks
+                  - label: 精選 / Featured
+                    value: featured
               - name: eyebrow
-                label: eyebrow
+                label: 標題上方文字 / Eyebrow
                 required: false
                 widget: string
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: body
-                label: 完整內文
+                label: 文章內文 / Article Content
                 required: false
                 widget: text
               - name: items
-                label: items
+                label: 項目 / Items
                 required: false
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: content
-                    label: content
+                    label: 內容 / Content
                     required: false
                     widget: text
                   - name: cta
-                    label: cta
+                    label: 行動呼籲 / Call to Action
                     required: false
                     widget: string
                   - name: solution
-                    label: solution
+                    label: 解決方案 / Solution
                     required: false
-                    widget: string
-                    pattern:
-                      - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-                      - 請依照欄位要求的格式填寫
+                    widget: relation
+                    collection: solutions-tw
+                    value_field: "{{slug}}"
+                    search_fields: *a3
+                    display_fields: *a3
+                    multiple: false
+                    dropdown_threshold: 0
+                    hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
                   - name: product
-                    label: product
+                    label: 產品 / Product
                     required: false
-                    widget: string
-                    pattern:
-                      - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-                      - 請依照欄位要求的格式填寫
+                    widget: relation
+                    collection: products-tw
+                    value_field: "{{slug}}"
+                    search_fields: *a2
+                    display_fields: *a2
+                    multiple: false
+                    dropdown_threshold: 0
+                    hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
           - name: audience
-            label: audience
+            label: 適用對象 / Audience
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: cards
-                label: cards
+                label: 卡片 / Cards
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                 min: 1
               - name: note
-                label: note
+                label: 備註 / Note
                 required: false
                 widget: text
           - name: casesIntro
-            label: casesIntro
+            label: 案例介紹 / Case Introduction
             required: false
             widget: string
           - name: related
-            label: related
+            label: 相關內容 / Related Content
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
           - name: closing
-            label: closing
+            label: 結尾內容 / Closing Content
             required: true
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: description
-                label: 描述
+                label: 描述 / Description
                 required: false
                 widget: text
-      - &a59
+      - &a68
         name: faq
-        label: faq
+        label: 常見問題 / Frequently Asked Questions
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: question
-            label: question
+            label: 問題 / Question
             required: true
             widget: string
           - name: answer
-            label: answer
+            label: 回答 / Answer
             required: true
             widget: text
-      - &a60
+      - &a69
         name: capabilities
-        label: capabilities
+        label: 核心能力 / Capabilities
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: true
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: true
             widget: text
-      - &a61
+      - &a70
         name: howItWorks
-        label: howItWorks
+        label: 運作方式 / How It Works
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: true
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: true
             widget: text
-      - &a62
+      - &a71
         name: scenarios
-        label: scenarios
+        label: 應用情境 / Application Scenarios
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: true
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: true
             widget: text
-      - &a63
+      - &a72
         name: components
-        label: components
+        label: 系統組成 / Components
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: name
-            label: 名稱
+            label: 名稱 / Name
             required: true
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: true
             widget: text
-      - &a64
+      - &a73
         name: deployment
-        label: deployment
+        label: 導入條件 / Deployment Requirements
         required: false
         widget: object
         collapsed: true
         fields:
           - name: personnel
-            label: personnel
+            label: 操作人數 / Personnel
             required: false
             widget: bxr-value
             value_schema:
@@ -1812,7 +1904,7 @@ collections:
                   const: "[待提供]"
             hint: 進階複合欄位：輸入 JSON，保留數字／字串／物件的原始型別。字串須含雙引號。
           - name: area
-            label: area
+            label: 場地面積 / Floor Area
             required: false
             widget: bxr-value
             value_schema:
@@ -1824,7 +1916,7 @@ collections:
                   const: "[待提供]"
             hint: 進階複合欄位：輸入 JSON，保留數字／字串／物件的原始型別。字串須含雙引號。
           - name: setupTime
-            label: setupTime
+            label: 架設時間 / Setup Time
             required: false
             widget: bxr-value
             value_schema:
@@ -1836,120 +1928,112 @@ collections:
                   const: "[待提供]"
             hint: 進階複合欄位：輸入 JSON，保留數字／字串／物件的原始型別。字串須含雙引號。
           - name: notes
-            label: notes
+            label: 補充備註 / Notes
             required: false
             widget: text
-      - &a65
+      - &a74
         name: integratedOps
-        label: integratedOps
+        label: 已確認系統整合 / Confirmed Integrations
         required: false
         widget: object
         collapsed: true
         fields:
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: false
             widget: text
           - name: products
-            label: products
+            label: 產品 / Products
             required: false
-            widget: list
-            collapsed: true
-            allow_add: true
-            field:
-              name: item
-              label: item
-              required: true
-              widget: string
-              pattern:
-                - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-                - 請依照欄位要求的格式填寫
-      - &a66
+            widget: relation
+            collection: products-tw
+            value_field: "{{slug}}"
+            search_fields: *a2
+            display_fields: *a2
+            multiple: true
+            dropdown_threshold: 0
+            hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a75
         name: relatedProducts
-        label: relatedProducts
+        label: 關聯產品 / Related Products
         required: false
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a67
+        widget: relation
+        collection: products-tw
+        value_field: "{{slug}}"
+        search_fields: *a2
+        display_fields: *a2
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a76
         name: relatedSolutions
-        label: relatedSolutions
+        label: 關聯解決方案 / Related Solutions
         required: false
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a68
+        widget: relation
+        collection: solutions-tw
+        value_field: "{{slug}}"
+        search_fields: *a3
+        display_fields: *a3
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a77
         name: cta
-        label: cta
+        label: 行動呼籲 / Call to Action
         required: false
         widget: object
         collapsed: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: true
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: true
             widget: text
           - name: brochure
-            label: brochure
+            label: 產品資料入口 / Brochure Link
             required: false
             default: true
             widget: boolean
           - name: demo
-            label: demo
+            label: 展示洽詢入口 / Demo Inquiry Link
             required: false
             default: true
             widget: boolean
-      - &a69
+      - &a78
         name: seo
-        label: SEO
+        label: 搜尋引擎設定 / SEO Settings
         required: false
         widget: object
         collapsed: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: false
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: false
             widget: text
           - name: ogImage
-            label: ogImage
+            label: 社群分享圖片 / Social Sharing Image
             required: false
             widget: image
             multiple: false
             choose_url: false
-      - &a70
+      - &a79
         name: body
-        label: 完整內文
+        label: 文章內文 / Article Content
         widget: markdown
         required: false
         modes:
           - raw
           - rich_text
+    description: 繁體中文（TW）
   - name: products-en
-    label: 產品介紹 · English（EN）
+    label: EN · 產品介紹 / Products
     folder: src/content/products/en
     create: true
     delete: true
@@ -1962,20 +2046,11 @@ collections:
     public_folder: ../../../assets/images/products
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a50
+        options: *a59
         default: pending
-      - *a51
-      - *a52
-      - *a53
-      - *a54
-      - *a55
-      - *a56
-      - *a57
-      - *a58
-      - *a59
       - *a60
       - *a61
       - *a62
@@ -1987,8 +2062,18 @@ collections:
       - *a68
       - *a69
       - *a70
+      - *a71
+      - *a72
+      - *a73
+      - *a74
+      - *a75
+      - *a76
+      - *a77
+      - *a78
+      - *a79
+    description: English（EN）
   - name: products-jp
-    label: 產品介紹 · 日本語（JP）
+    label: JP · 產品介紹 / Products
     folder: src/content/products/jp
     create: true
     delete: true
@@ -2001,20 +2086,11 @@ collections:
     public_folder: ../../../assets/images/products
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a50
+        options: *a59
         default: pending
-      - *a51
-      - *a52
-      - *a53
-      - *a54
-      - *a55
-      - *a56
-      - *a57
-      - *a58
-      - *a59
       - *a60
       - *a61
       - *a62
@@ -2026,8 +2102,18 @@ collections:
       - *a68
       - *a69
       - *a70
+      - *a71
+      - *a72
+      - *a73
+      - *a74
+      - *a75
+      - *a76
+      - *a77
+      - *a78
+      - *a79
+    description: 日本語（JP）
   - name: solutions-tw
-    label: 解決方案 · 繁體中文（TW）
+    label: TW · 解決方案 / Solutions
     folder: src/content/solutions/tw
     create: true
     delete: true
@@ -2040,1001 +2126,1084 @@ collections:
     public_folder: ../../../assets/images/products
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: &a71
-          - source
-          - pending
-          - translated
+        options: &a80
+          - label: 原文 / Source Language
+            value: source
+          - label: 待完成 / Pending
+            value: pending
+          - label: 已完成翻譯 / Translated
+            value: translated
         default: source
-      - &a72
+      - &a81
         name: draft
-        label: 草稿（TW 控制是否公開）
+        label: 尚未公開 / Unpublished Draft
         required: false
         default: true
         widget: boolean
         hint: TW 控制前台公開：勾選表示下架／未公開。CMS 的 Save Draft 只儲存審核分支；Publish 合併 main 後，仍需取消此勾選並完成三語及 CI 才會在官網顯示。
-      - &a73
+      - &a82
         name: order
-        label: 排序
+        label: 排序 / Order
         required: true
         widget: number
         value_type: int
         min: -9007199254740991
         max: 9007199254740991
-      - &a74
+      - &a83
         name: domain
-        label: domain
+        label: 應用領域 / Application Domain
         required: true
         widget: select
         options:
-          - military
-          - police
-          - fire-rescue
-          - smart-city
-      - &a75
+          - label: 軍事 / Military
+            value: military
+          - label: 警勤 / Police
+            value: police
+          - label: 消防防災 / Fire and Disaster Prevention
+            value: fire-rescue
+          - label: 智慧城市 / Smart City
+            value: smart-city
+      - &a84
         name: name
-        label: 名稱
+        label: 名稱 / Name
         required: true
         widget: string
-      - &a76
+      - &a85
         name: englishName
-        label: englishName
+        label: 英文名稱 / English Name
         required: true
         widget: string
-      - &a77
+      - &a86
         name: summary
-        label: 摘要
+        label: 摘要 / Summary
         required: true
         widget: text
-      - &a78
+      - &a87
         name: cardLabel
-        label: cardLabel
+        label: 卡片連結文字 / Card Link Label
         required: false
         widget: string
-      - &a79
+      - &a88
         name: cardHeadline
-        label: cardHeadline
+        label: 卡片主標 / Card Headline
         required: false
         widget: string
-      - &a80
+      - &a89
         name: parent
-        label: parent
+        label: 上層分類 / Parent Category
         required: false
-        widget: string
-        pattern:
-          - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-          - 請依照欄位要求的格式填寫
-      - &a81
+        widget: relation
+        collection: solutions-tw
+        value_field: "{{slug}}"
+        search_fields: *a3
+        display_fields: *a3
+        multiple: false
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a90
         name: relatedSolutions
-        label: relatedSolutions
+        label: 關聯解決方案 / Related Solutions
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a82
+        widget: relation
+        collection: solutions-tw
+        value_field: "{{slug}}"
+        search_fields: *a3
+        display_fields: *a3
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a91
         name: relatedProducts
-        label: relatedProducts
+        label: 關聯產品 / Related Products
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a83
+        widget: relation
+        collection: products-tw
+        value_field: "{{slug}}"
+        search_fields: *a2
+        display_fields: *a2
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a92
         name: landing
-        label: 完整內容區塊
+        label: 完整頁面內容 / Landing Page Content
         required: false
         widget: object
         collapsed: true
         fields:
           - name: headline
-            label: headline
+            label: 主標 / Headline
             required: true
             widget: string
           - name: subheadline
-            label: subheadline
+            label: 副標 / Subheadline
             required: true
             widget: string
           - name: intro
-            label: intro
+            label: 介紹 / Introduction
             required: false
             widget: text
           - name: introImage
-            label: introImage
+            label: 介紹圖片 / Introduction Image
             required: false
             widget: object
             collapsed: true
             fields:
               - name: src
-                label: 圖片
+                label: 圖片檔案 / Image File
                 required: false
                 widget: image
                 multiple: false
                 choose_url: false
               - name: alt
-                label: 替代文字
+                label: 替代文字 / Alternative Text
                 required: false
                 widget: string
               - name: need
-                label: need
+                label: 素材需求備註 / Asset Requirement Note
                 required: false
                 widget: string
               - name: caption
-                label: caption
+                label: 圖說 / Caption
                 required: false
                 widget: string
               - name: ratio
-                label: ratio
+                label: 圖片比例 / Image Ratio
                 required: false
                 widget: select
                 options:
-                  - 16 / 9
-                  - 3 / 2
-                  - 4 / 3
-                  - 4 / 5
-                  - 1 / 1
+                  - label: 寬螢幕 / Widescreen
+                    value: 16 / 9
+                  - label: 橫式 3:2 / Landscape 3:2
+                    value: 3 / 2
+                  - label: 橫式 4:3 / Landscape 4:3
+                    value: 4 / 3
+                  - label: 直式 4:5 / Portrait 4:5
+                    value: 4 / 5
+                  - label: 正方形 / Square
+                    value: 1 / 1
               - name: kind
-                label: kind
+                label: 素材類型 / Image Type
                 required: false
                 widget: select
                 options:
-                  - approved
-                  - illustration
+                  - label: 已核准實際素材 / Approved Actual Asset
+                    value: approved
+                  - label: 概念示意素材 / Concept Illustration
+                    value: illustration
               - name: status
-                label: status
+                label: 素材顯示狀態 / Asset Visibility
                 required: false
                 widget: select
                 options:
-                  - public
-                  - withheld
+                  - label: 公開 / Public
+                    value: public
+                  - label: 暫不公開 / Withheld
+                    value: withheld
               - name: substitute
-                label: substitute
+                label: 替代素材 / Fallback Asset
                 required: false
                 widget: object
                 collapsed: true
                 fields:
                   - name: src
-                    label: 圖片
+                    label: 圖片檔案 / Image File
                     required: true
                     widget: image
                     multiple: false
                     choose_url: false
                   - name: alt
-                    label: 替代文字
+                    label: 替代文字 / Alternative Text
                     required: true
                     widget: string
           - name: heroImage
-            label: heroImage
+            label: 頁首圖片 / Hero Image
             required: false
             widget: object
             collapsed: true
             fields:
               - name: src
-                label: 圖片
+                label: 圖片檔案 / Image File
                 required: false
                 widget: image
                 multiple: false
                 choose_url: false
               - name: alt
-                label: 替代文字
+                label: 替代文字 / Alternative Text
                 required: false
                 widget: string
               - name: need
-                label: need
+                label: 素材需求備註 / Asset Requirement Note
                 required: false
                 widget: string
               - name: caption
-                label: caption
+                label: 圖說 / Caption
                 required: false
                 widget: string
               - name: ratio
-                label: ratio
+                label: 圖片比例 / Image Ratio
                 required: false
                 widget: select
                 options:
-                  - 16 / 9
-                  - 3 / 2
-                  - 4 / 3
-                  - 4 / 5
-                  - 1 / 1
+                  - label: 寬螢幕 / Widescreen
+                    value: 16 / 9
+                  - label: 橫式 3:2 / Landscape 3:2
+                    value: 3 / 2
+                  - label: 橫式 4:3 / Landscape 4:3
+                    value: 4 / 3
+                  - label: 直式 4:5 / Portrait 4:5
+                    value: 4 / 5
+                  - label: 正方形 / Square
+                    value: 1 / 1
               - name: kind
-                label: kind
+                label: 素材類型 / Image Type
                 required: false
                 widget: select
                 options:
-                  - approved
-                  - illustration
+                  - label: 已核准實際素材 / Approved Actual Asset
+                    value: approved
+                  - label: 概念示意素材 / Concept Illustration
+                    value: illustration
               - name: status
-                label: status
+                label: 素材顯示狀態 / Asset Visibility
                 required: false
                 widget: select
                 options:
-                  - public
-                  - withheld
+                  - label: 公開 / Public
+                    value: public
+                  - label: 暫不公開 / Withheld
+                    value: withheld
               - name: substitute
-                label: substitute
+                label: 替代素材 / Fallback Asset
                 required: false
                 widget: object
                 collapsed: true
                 fields:
                   - name: src
-                    label: 圖片
+                    label: 圖片檔案 / Image File
                     required: true
                     widget: image
                     multiple: false
                     choose_url: false
                   - name: alt
-                    label: 替代文字
+                    label: 替代文字 / Alternative Text
                     required: true
                     widget: string
           - name: ctaLabel
-            label: ctaLabel
+            label: 行動按鈕文字 / CTA Label
             required: true
             widget: string
           - name: challenge
-            label: challenge
+            label: 主要需求與挑戰 / Challenge
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: cards
-                label: cards
+                label: 卡片 / Cards
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                 min: 1
               - name: note
-                label: note
+                label: 備註 / Note
                 required: false
                 widget: text
           - name: approach
-            label: approach
+            label: 方案做法 / Approach
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: images
-                label: images
+                label: 圖片 / Images
                 required: false
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: src
-                    label: 圖片
+                    label: 圖片檔案 / Image File
                     required: false
                     widget: image
                     multiple: false
                     choose_url: false
                   - name: alt
-                    label: 替代文字
+                    label: 替代文字 / Alternative Text
                     required: false
                     widget: string
                   - name: need
-                    label: need
+                    label: 素材需求備註 / Asset Requirement Note
                     required: false
                     widget: string
                   - name: caption
-                    label: caption
+                    label: 圖說 / Caption
                     required: false
                     widget: string
                   - name: ratio
-                    label: ratio
+                    label: 圖片比例 / Image Ratio
                     required: false
                     widget: select
                     options:
-                      - 16 / 9
-                      - 3 / 2
-                      - 4 / 3
-                      - 4 / 5
-                      - 1 / 1
+                      - label: 寬螢幕 / Widescreen
+                        value: 16 / 9
+                      - label: 橫式 3:2 / Landscape 3:2
+                        value: 3 / 2
+                      - label: 橫式 4:3 / Landscape 4:3
+                        value: 4 / 3
+                      - label: 直式 4:5 / Portrait 4:5
+                        value: 4 / 5
+                      - label: 正方形 / Square
+                        value: 1 / 1
                   - name: kind
-                    label: kind
+                    label: 素材類型 / Image Type
                     required: false
                     widget: select
                     options:
-                      - approved
-                      - illustration
+                      - label: 已核准實際素材 / Approved Actual Asset
+                        value: approved
+                      - label: 概念示意素材 / Concept Illustration
+                        value: illustration
                   - name: status
-                    label: status
+                    label: 素材顯示狀態 / Asset Visibility
                     required: false
                     widget: select
                     options:
-                      - public
-                      - withheld
+                      - label: 公開 / Public
+                        value: public
+                      - label: 暫不公開 / Withheld
+                        value: withheld
                   - name: substitute
-                    label: substitute
+                    label: 替代素材 / Fallback Asset
                     required: false
                     widget: object
                     collapsed: true
                     fields:
                       - name: src
-                        label: 圖片
+                        label: 圖片檔案 / Image File
                         required: true
                         widget: image
                         multiple: false
                         choose_url: false
                       - name: alt
-                        label: 替代文字
+                        label: 替代文字 / Alternative Text
                         required: true
                         widget: string
                 max: 3
               - name: pillars
-                label: pillars
+                label: 方案重點 / Solution Pillars
                 required: false
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
           - name: capabilities
-            label: capabilities
+            label: 核心能力 / Capabilities
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: items
-                label: items
+                label: 項目 / Items
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: content
-                    label: content
+                    label: 內容 / Content
                     required: true
                     widget: text
                   - name: value
-                    label: value
+                    label: 數值或內容 / Value
                     required: false
                     widget: string
                   - name: image
-                    label: image
+                    label: 圖片 / Image
                     required: false
                     widget: object
                     collapsed: true
                     fields:
                       - name: src
-                        label: 圖片
+                        label: 圖片檔案 / Image File
                         required: false
                         widget: image
                         multiple: false
                         choose_url: false
                       - name: alt
-                        label: 替代文字
+                        label: 替代文字 / Alternative Text
                         required: false
                         widget: string
                       - name: need
-                        label: need
+                        label: 素材需求備註 / Asset Requirement Note
                         required: false
                         widget: string
                       - name: caption
-                        label: caption
+                        label: 圖說 / Caption
                         required: false
                         widget: string
                       - name: ratio
-                        label: ratio
+                        label: 圖片比例 / Image Ratio
                         required: false
                         widget: select
                         options:
-                          - 16 / 9
-                          - 3 / 2
-                          - 4 / 3
-                          - 4 / 5
-                          - 1 / 1
+                          - label: 寬螢幕 / Widescreen
+                            value: 16 / 9
+                          - label: 橫式 3:2 / Landscape 3:2
+                            value: 3 / 2
+                          - label: 橫式 4:3 / Landscape 4:3
+                            value: 4 / 3
+                          - label: 直式 4:5 / Portrait 4:5
+                            value: 4 / 5
+                          - label: 正方形 / Square
+                            value: 1 / 1
                       - name: kind
-                        label: kind
+                        label: 素材類型 / Image Type
                         required: false
                         widget: select
                         options:
-                          - approved
-                          - illustration
+                          - label: 已核准實際素材 / Approved Actual Asset
+                            value: approved
+                          - label: 概念示意素材 / Concept Illustration
+                            value: illustration
                       - name: status
-                        label: status
+                        label: 素材顯示狀態 / Asset Visibility
                         required: false
                         widget: select
                         options:
-                          - public
-                          - withheld
+                          - label: 公開 / Public
+                            value: public
+                          - label: 暫不公開 / Withheld
+                            value: withheld
                       - name: substitute
-                        label: substitute
+                        label: 替代素材 / Fallback Asset
                         required: false
                         widget: object
                         collapsed: true
                         fields:
                           - name: src
-                            label: 圖片
+                            label: 圖片檔案 / Image File
                             required: true
                             widget: image
                             multiple: false
                             choose_url: false
                           - name: alt
-                            label: 替代文字
+                            label: 替代文字 / Alternative Text
                             required: true
                             widget: string
                 min: 1
           - name: flow
-            label: flow
+            label: 訓練流程 / Training Flow
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: steps
-                label: steps
+                label: 步驟 / Steps
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                   - name: icon
-                    label: icon
+                    label: 圖示 / Icon
                     required: false
                     widget: select
                     options:
-                      - target
-                      - team
-                      - variation
-                      - review
-                      - route
-                      - headset
-                      - link
+                      - label: 目標圖示 / Target Icon
+                        value: target
+                      - label: 團隊圖示 / Team Icon
+                        value: team
+                      - label: 變化圖示 / Variation Icon
+                        value: variation
+                      - label: 檢視圖示 / Review Icon
+                        value: review
+                      - label: 路線圖示 / Route Icon
+                        value: route
+                      - label: 頭戴裝置圖示 / Headset Icon
+                        value: headset
+                      - label: 連結圖示 / Link Icon
+                        value: link
                   - name: image
-                    label: image
+                    label: 圖片 / Image
                     required: false
                     widget: object
                     collapsed: true
                     fields:
                       - name: src
-                        label: 圖片
+                        label: 圖片檔案 / Image File
                         required: false
                         widget: image
                         multiple: false
                         choose_url: false
                       - name: alt
-                        label: 替代文字
+                        label: 替代文字 / Alternative Text
                         required: false
                         widget: string
                       - name: need
-                        label: need
+                        label: 素材需求備註 / Asset Requirement Note
                         required: false
                         widget: string
                       - name: caption
-                        label: caption
+                        label: 圖說 / Caption
                         required: false
                         widget: string
                       - name: ratio
-                        label: ratio
+                        label: 圖片比例 / Image Ratio
                         required: false
                         widget: select
                         options:
-                          - 16 / 9
-                          - 3 / 2
-                          - 4 / 3
-                          - 4 / 5
-                          - 1 / 1
+                          - label: 寬螢幕 / Widescreen
+                            value: 16 / 9
+                          - label: 橫式 3:2 / Landscape 3:2
+                            value: 3 / 2
+                          - label: 橫式 4:3 / Landscape 4:3
+                            value: 4 / 3
+                          - label: 直式 4:5 / Portrait 4:5
+                            value: 4 / 5
+                          - label: 正方形 / Square
+                            value: 1 / 1
                       - name: kind
-                        label: kind
+                        label: 素材類型 / Image Type
                         required: false
                         widget: select
                         options:
-                          - approved
-                          - illustration
+                          - label: 已核准實際素材 / Approved Actual Asset
+                            value: approved
+                          - label: 概念示意素材 / Concept Illustration
+                            value: illustration
                       - name: status
-                        label: status
+                        label: 素材顯示狀態 / Asset Visibility
                         required: false
                         widget: select
                         options:
-                          - public
-                          - withheld
+                          - label: 公開 / Public
+                            value: public
+                          - label: 暫不公開 / Withheld
+                            value: withheld
                       - name: substitute
-                        label: substitute
+                        label: 替代素材 / Fallback Asset
                         required: false
                         widget: object
                         collapsed: true
                         fields:
                           - name: src
-                            label: 圖片
+                            label: 圖片檔案 / Image File
                             required: true
                             widget: image
                             multiple: false
                             choose_url: false
                           - name: alt
-                            label: 替代文字
+                            label: 替代文字 / Alternative Text
                             required: true
                             widget: string
                 min: 1
               - name: note
-                label: note
+                label: 備註 / Note
                 required: false
                 widget: text
           - name: scenarios
-            label: scenarios
+            label: 應用情境 / Application Scenarios
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: items
-                label: items
+                label: 項目 / Items
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                   - name: focus
-                    label: focus
+                    label: 內容重點 / Focus
                     required: false
                     widget: string
                   - name: image
-                    label: image
+                    label: 圖片 / Image
                     required: false
                     widget: object
                     collapsed: true
                     fields:
                       - name: src
-                        label: 圖片
+                        label: 圖片檔案 / Image File
                         required: false
                         widget: image
                         multiple: false
                         choose_url: false
                       - name: alt
-                        label: 替代文字
+                        label: 替代文字 / Alternative Text
                         required: false
                         widget: string
                       - name: need
-                        label: need
+                        label: 素材需求備註 / Asset Requirement Note
                         required: false
                         widget: string
                       - name: caption
-                        label: caption
+                        label: 圖說 / Caption
                         required: false
                         widget: string
                       - name: ratio
-                        label: ratio
+                        label: 圖片比例 / Image Ratio
                         required: false
                         widget: select
                         options:
-                          - 16 / 9
-                          - 3 / 2
-                          - 4 / 3
-                          - 4 / 5
-                          - 1 / 1
+                          - label: 寬螢幕 / Widescreen
+                            value: 16 / 9
+                          - label: 橫式 3:2 / Landscape 3:2
+                            value: 3 / 2
+                          - label: 橫式 4:3 / Landscape 4:3
+                            value: 4 / 3
+                          - label: 直式 4:5 / Portrait 4:5
+                            value: 4 / 5
+                          - label: 正方形 / Square
+                            value: 1 / 1
                       - name: kind
-                        label: kind
+                        label: 素材類型 / Image Type
                         required: false
                         widget: select
                         options:
-                          - approved
-                          - illustration
+                          - label: 已核准實際素材 / Approved Actual Asset
+                            value: approved
+                          - label: 概念示意素材 / Concept Illustration
+                            value: illustration
                       - name: status
-                        label: status
+                        label: 素材顯示狀態 / Asset Visibility
                         required: false
                         widget: select
                         options:
-                          - public
-                          - withheld
+                          - label: 公開 / Public
+                            value: public
+                          - label: 暫不公開 / Withheld
+                            value: withheld
                       - name: substitute
-                        label: substitute
+                        label: 替代素材 / Fallback Asset
                         required: false
                         widget: object
                         collapsed: true
                         fields:
                           - name: src
-                            label: 圖片
+                            label: 圖片檔案 / Image File
                             required: true
                             widget: image
                             multiple: false
                             choose_url: false
                           - name: alt
-                            label: 替代文字
+                            label: 替代文字 / Alternative Text
                             required: true
                             widget: string
                 min: 1
           - name: values
-            label: values
+            label: 數值或內容清單 / Values
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: cards
-                label: cards
+                label: 卡片 / Cards
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                 min: 1
               - name: note
-                label: note
+                label: 備註 / Note
                 required: false
                 widget: text
           - name: featured
-            label: 焦點新聞
+            label: 焦點文章 / Featured Article
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: items
-                label: items
+                label: 項目 / Items
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                   - name: ctaLabel
-                    label: ctaLabel
+                    label: 行動按鈕文字 / CTA Label
                     required: true
                     widget: string
                   - name: solution
-                    label: solution
+                    label: 解決方案 / Solution
                     required: true
-                    widget: string
-                    pattern:
-                      - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-                      - 請依照欄位要求的格式填寫
+                    widget: relation
+                    collection: solutions-tw
+                    value_field: "{{slug}}"
+                    search_fields: *a3
+                    display_fields: *a3
+                    multiple: false
+                    dropdown_threshold: 0
+                    hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
                 min: 1
           - name: blocks
-            label: blocks
+            label: 內容區塊 / Content Blocks
             required: false
             widget: list
             collapsed: true
             allow_add: true
             fields:
               - name: kind
-                label: kind
+                label: 素材類型 / Image Type
                 required: true
                 widget: select
                 options:
-                  - prose
-                  - list
-                  - checks
-                  - featured
+                  - label: 文字內容 / Text Content
+                    value: prose
+                  - label: 清單 / List
+                    value: list
+                  - label: 檢核清單 / Checklist
+                    value: checks
+                  - label: 精選 / Featured
+                    value: featured
               - name: eyebrow
-                label: eyebrow
+                label: 標題上方文字 / Eyebrow
                 required: false
                 widget: string
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: body
-                label: 完整內文
+                label: 文章內文 / Article Content
                 required: false
                 widget: text
               - name: items
-                label: items
+                label: 項目 / Items
                 required: false
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: content
-                    label: content
+                    label: 內容 / Content
                     required: false
                     widget: text
                   - name: cta
-                    label: cta
+                    label: 行動呼籲 / Call to Action
                     required: false
                     widget: string
                   - name: solution
-                    label: solution
+                    label: 解決方案 / Solution
                     required: false
-                    widget: string
-                    pattern:
-                      - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-                      - 請依照欄位要求的格式填寫
+                    widget: relation
+                    collection: solutions-tw
+                    value_field: "{{slug}}"
+                    search_fields: *a3
+                    display_fields: *a3
+                    multiple: false
+                    dropdown_threshold: 0
+                    hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
                   - name: product
-                    label: product
+                    label: 產品 / Product
                     required: false
-                    widget: string
-                    pattern:
-                      - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-                      - 請依照欄位要求的格式填寫
+                    widget: relation
+                    collection: products-tw
+                    value_field: "{{slug}}"
+                    search_fields: *a2
+                    display_fields: *a2
+                    multiple: false
+                    dropdown_threshold: 0
+                    hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
           - name: audience
-            label: audience
+            label: 適用對象 / Audience
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
               - name: cards
-                label: cards
+                label: 卡片 / Cards
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                 min: 1
               - name: note
-                label: note
+                label: 備註 / Note
                 required: false
                 widget: text
           - name: casesIntro
-            label: casesIntro
+            label: 案例介紹 / Case Introduction
             required: false
             widget: string
           - name: related
-            label: related
+            label: 相關內容 / Related Content
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: intro
-                label: intro
+                label: 介紹 / Introduction
                 required: false
                 widget: text
           - name: closing
-            label: closing
+            label: 結尾內容 / Closing Content
             required: true
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: description
-                label: 描述
+                label: 描述 / Description
                 required: false
                 widget: text
-      - &a84
+      - &a93
         name: heroDescription
-        label: heroDescription
+        label: 頁首摘要 / Hero Description
         required: false
         widget: string
-      - &a85
+      - &a94
         name: image
-        label: image
+        label: 圖片 / Image
         required: false
         widget: object
         collapsed: true
         fields:
           - name: src
-            label: 圖片
+            label: 圖片檔案 / Image File
             required: true
             widget: image
             multiple: false
             choose_url: false
           - name: alt
-            label: 替代文字
+            label: 替代文字 / Alternative Text
             required: true
             widget: string
-      - &a86
+      - &a95
         name: challenges
-        label: challenges
+        label: 需求與挑戰 / Challenges
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: true
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: true
             widget: text
-      - &a87
+      - &a96
         name: capabilities
-        label: capabilities
+        label: 核心能力 / Capabilities
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: true
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: true
             widget: text
-      - &a88
+      - &a97
         name: cta
-        label: cta
+        label: 行動呼籲 / Call to Action
         required: false
         widget: object
         collapsed: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: true
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: true
             widget: text
-      - &a89
+      - &a98
         name: sourceNote
-        label: sourceNote
+        label: 來源備註 / Source Note
         required: false
         widget: text
-      - &a90
+      - &a99
         name: seo
-        label: SEO
+        label: 搜尋引擎設定 / SEO Settings
         required: false
         widget: object
         collapsed: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: false
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: false
             widget: text
           - name: ogImage
-            label: ogImage
+            label: 社群分享圖片 / Social Sharing Image
             required: false
             widget: image
             multiple: false
             choose_url: false
-      - &a91
+      - &a100
         name: body
-        label: 完整內文
+        label: 文章內文 / Article Content
         widget: markdown
         required: false
         modes:
           - raw
           - rich_text
+    description: 繁體中文（TW）
   - name: solutions-en
-    label: 解決方案 · English（EN）
+    label: EN · 解決方案 / Solutions
     folder: src/content/solutions/en
     create: true
     delete: true
@@ -3047,20 +3216,11 @@ collections:
     public_folder: ../../../assets/images/products
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a71
+        options: *a80
         default: pending
-      - *a72
-      - *a73
-      - *a74
-      - *a75
-      - *a76
-      - *a77
-      - *a78
-      - *a79
-      - *a80
       - *a81
       - *a82
       - *a83
@@ -3072,8 +3232,18 @@ collections:
       - *a89
       - *a90
       - *a91
+      - *a92
+      - *a93
+      - *a94
+      - *a95
+      - *a96
+      - *a97
+      - *a98
+      - *a99
+      - *a100
+    description: English（EN）
   - name: solutions-jp
-    label: 解決方案 · 日本語（JP）
+    label: JP · 解決方案 / Solutions
     folder: src/content/solutions/jp
     create: true
     delete: true
@@ -3086,20 +3256,11 @@ collections:
     public_folder: ../../../assets/images/products
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a71
+        options: *a80
         default: pending
-      - *a72
-      - *a73
-      - *a74
-      - *a75
-      - *a76
-      - *a77
-      - *a78
-      - *a79
-      - *a80
       - *a81
       - *a82
       - *a83
@@ -3111,8 +3272,18 @@ collections:
       - *a89
       - *a90
       - *a91
+      - *a92
+      - *a93
+      - *a94
+      - *a95
+      - *a96
+      - *a97
+      - *a98
+      - *a99
+      - *a100
+    description: 日本語（JP）
   - name: case-studies-tw
-    label: 案例研究 · 繁體中文（TW）
+    label: TW · 案例研究 / Case Studies
     folder: src/content/case-studies/tw
     create: true
     delete: true
@@ -3125,282 +3296,272 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: &a92
-          - source
-          - pending
-          - translated
+        options: &a104
+          - label: 原文 / Source Language
+            value: source
+          - label: 待完成 / Pending
+            value: pending
+          - label: 已完成翻譯 / Translated
+            value: translated
         default: source
-      - &a93
+      - &a105
         name: draft
-        label: 草稿（TW 控制是否公開）
+        label: 尚未公開 / Unpublished Draft
         required: false
         default: true
         widget: boolean
         hint: TW 控制前台公開：勾選表示下架／未公開。CMS 的 Save Draft 只儲存審核分支；Publish 合併 main 後，仍需取消此勾選並完成三語及 CI 才會在官網顯示。
-      - &a94
+      - &a106
         name: publishDate
-        label: 發布日期（未知請留空）
+        label: 發布日期 / Publish Date
         required: true
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a95
+      - &a107
         name: updatedAt
-        label: 更新日期
+        label: 更新日期 / Updated Date
         required: false
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a96
+      - &a108
         name: title
-        label: 標題
+        label: 標題 / Title
         required: true
         widget: string
-      - &a97
+      - &a109
         name: summary
-        label: 摘要
+        label: 摘要 / Summary
         required: true
         widget: text
-      - &a98
+      - &a110
         name: cover
-        label: 封面
+        label: 封面 / Cover
         required: false
         widget: object
         collapsed: true
         fields:
           - name: src
-            label: 圖片
+            label: 圖片檔案 / Image File
             required: true
             widget: image
             multiple: false
             choose_url: false
           - name: alt
-            label: 替代文字
+            label: 替代文字 / Alternative Text
             required: true
             widget: string
-      - &a99
+      - &a111
         name: tags
-        label: tags
+        label: 文章標籤 / Tags
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a100
+        widget: relation
+        collection: tags-tw
+        value_field: "{{slug}}"
+        search_fields: *a1
+        display_fields: *a1
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a112
         name: relatedProducts
-        label: relatedProducts
+        label: 關聯產品 / Related Products
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a101
+        widget: relation
+        collection: products-tw
+        value_field: "{{slug}}"
+        search_fields: *a2
+        display_fields: *a2
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a113
         name: relatedSolutions
-        label: relatedSolutions
+        label: 關聯解決方案 / Related Solutions
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a102
+        widget: relation
+        collection: solutions-tw
+        value_field: "{{slug}}"
+        search_fields: *a3
+        display_fields: *a3
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a114
         name: relatedNews
-        label: relatedNews
+        label: 相關新聞 / Related News
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a103
+        widget: relation
+        collection: news-tw
+        value_field: "{{slug}}"
+        search_fields: &a101
+          - title
+        display_fields: *a101
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a115
         name: relatedInsights
-        label: relatedInsights
+        label: 相關技術文章 / Related Insights
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a104
+        widget: relation
+        collection: insights-tw
+        value_field: "{{slug}}"
+        search_fields: &a102
+          - title
+        display_fields: *a102
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a116
         name: relatedCaseStudies
-        label: relatedCaseStudies
+        label: 相關案例研究 / Related Case Studies
         required: false
         default: []
-        widget: list
-        collapsed: true
-        allow_add: true
-        field:
-          name: item
-          label: item
-          required: true
-          widget: string
-          pattern:
-            - ^[a-z0-9]+(?:-[a-z0-9]+)*$
-            - 請依照欄位要求的格式填寫
-      - &a105
+        widget: relation
+        collection: case-studies-tw
+        value_field: "{{slug}}"
+        search_fields: &a103
+          - title
+        display_fields: *a103
+        multiple: true
+        dropdown_threshold: 0
+        hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+      - &a117
         name: seo
-        label: SEO
+        label: 搜尋引擎設定 / SEO Settings
         required: false
         widget: object
         collapsed: true
         fields:
           - name: title
-            label: 標題
+            label: 標題 / Title
             required: false
             widget: string
           - name: description
-            label: 描述
+            label: 描述 / Description
             required: false
             widget: text
           - name: ogImage
-            label: ogImage
+            label: 社群分享圖片 / Social Sharing Image
             required: false
             widget: image
             multiple: false
             choose_url: false
-      - &a106
+      - &a118
         name: client
-        label: client
+        label: 客戶資訊 / Client
         required: true
         widget: object
         collapsed: true
         fields:
           - name: name
-            label: 名稱
+            label: 名稱 / Name
             required: true
             widget: string
           - name: type
-            label: type
+            label: 類型 / Type
             required: false
             widget: string
           - name: disclosure
-            label: disclosure
+            label: 公開方式 / Disclosure
             required: true
             widget: select
             options:
-              - public
-              - anonymized
-      - &a107
+              - label: 公開 / Public
+                value: public
+              - label: 匿名公開 / Anonymized
+                value: anonymized
+      - &a119
         name: approval
-        label: approval
+        label: 公開核准 / Publication Approval
         required: true
         widget: object
         collapsed: true
         fields:
           - name: approved
-            label: approved
+            label: 已核准公開 / Approved for Publication
             required: true
             widget: boolean
-      - &a108
+      - &a120
         name: background
-        label: background
+        label: 背景 / Background
         required: false
         widget: string
-      - &a109
+      - &a121
         name: challenge
-        label: challenge
+        label: 主要需求與挑戰 / Challenge
         required: false
         widget: string
-      - &a110
+      - &a122
         name: solution
-        label: solution
+        label: 解決方案 / Solution
         required: false
         widget: string
-      - &a111
+      - &a123
         name: application
-        label: application
+        label: 應用方式 / Application
         required: false
         widget: string
-      - &a112
+      - &a124
         name: results
-        label: results
+        label: 已確認成果說明 / Confirmed Results
         required: false
         widget: string
-      - &a113
+      - &a125
         name: outcomes
-        label: outcomes
+        label: 已確認成果 / Confirmed Outcomes
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: label
-            label: label
+            label: 顯示名稱 / Display Label
             required: true
             widget: string
           - name: value
-            label: value
+            label: 數值或內容 / Value
             required: true
             widget: string
-      - &a114
+      - &a126
         name: gallery
-        label: gallery
+        label: 照片圖集 / Photo Gallery
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: src
-            label: 圖片
+            label: 圖片檔案 / Image File
             required: true
             widget: image
             multiple: false
             choose_url: false
           - name: alt
-            label: 替代文字
+            label: 替代文字 / Alternative Text
             required: true
             widget: string
           - name: caption
-            label: caption
+            label: 圖說 / Caption
             required: false
             widget: string
-      - &a115
+      - &a127
         name: domains
-        label: 應用領域
+        label: 應用領域 / Application Domains
         required: false
         default: []
         widget: list
@@ -3408,25 +3569,31 @@ collections:
         allow_add: true
         field:
           name: item
-          label: item
+          label: 項目 / Item
           required: true
           widget: select
           options:
-            - military
-            - police
-            - fire-rescue
-            - smart-city
-            - other
-      - &a116
+            - label: 軍事 / Military
+              value: military
+            - label: 警勤 / Police
+              value: police
+            - label: 消防防災 / Fire and Disaster Prevention
+              value: fire-rescue
+            - label: 智慧城市 / Smart City
+              value: smart-city
+            - label: 其他 / Other
+              value: other
+      - &a128
         name: body
-        label: 完整內文
+        label: 文章內文 / Article Content
         widget: markdown
         required: false
         modes:
           - raw
           - rich_text
+    description: 繁體中文（TW）
   - name: case-studies-en
-    label: 案例研究 · English（EN）
+    label: EN · 案例研究 / Case Studies
     folder: src/content/case-studies/en
     create: true
     delete: true
@@ -3439,23 +3606,11 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a92
+        options: *a104
         default: pending
-      - *a93
-      - *a94
-      - *a95
-      - *a96
-      - *a97
-      - *a98
-      - *a99
-      - *a100
-      - *a101
-      - *a102
-      - *a103
-      - *a104
       - *a105
       - *a106
       - *a107
@@ -3468,8 +3623,21 @@ collections:
       - *a114
       - *a115
       - *a116
+      - *a117
+      - *a118
+      - *a119
+      - *a120
+      - *a121
+      - *a122
+      - *a123
+      - *a124
+      - *a125
+      - *a126
+      - *a127
+      - *a128
+    description: English（EN）
   - name: case-studies-jp
-    label: 案例研究 · 日本語（JP）
+    label: JP · 案例研究 / Case Studies
     folder: src/content/case-studies/jp
     create: true
     delete: true
@@ -3482,23 +3650,11 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a92
+        options: *a104
         default: pending
-      - *a93
-      - *a94
-      - *a95
-      - *a96
-      - *a97
-      - *a98
-      - *a99
-      - *a100
-      - *a101
-      - *a102
-      - *a103
-      - *a104
       - *a105
       - *a106
       - *a107
@@ -3511,8 +3667,21 @@ collections:
       - *a114
       - *a115
       - *a116
+      - *a117
+      - *a118
+      - *a119
+      - *a120
+      - *a121
+      - *a122
+      - *a123
+      - *a124
+      - *a125
+      - *a126
+      - *a127
+      - *a128
+    description: 日本語（JP）
   - name: pages-tw
-    label: 固定頁面 · 繁體中文（TW）
+    label: TW · 固定頁面 / Pages
     format: frontmatter
     media_folder: /src/assets/images/content
     public_folder: ../../../assets/images/content
@@ -3522,132 +3691,135 @@ collections:
         file: src/content/pages/tw/case-studies.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: &a117
-              - source
-              - pending
-              - translated
+            options: &a129
+              - label: 原文 / Source Language
+                value: source
+              - label: 待完成 / Pending
+                value: pending
+              - label: 已完成翻譯 / Translated
+                value: translated
             default: source
-          - &a118
+          - &a130
             name: seo
-            label: SEO
+            label: 搜尋引擎設定 / SEO Settings
             required: true
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: description
-                label: 描述
+                label: 描述 / Description
                 required: true
                 widget: text
-          - &a119
+          - &a131
             name: hero
-            label: 頁首
+            label: 頁首內容 / Hero Content
             required: true
             widget: object
             collapsed: true
             fields:
               - name: eyebrow
-                label: eyebrow
+                label: 標題上方文字 / Eyebrow
                 required: true
                 widget: string
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: lead
-                label: lead
+                label: 導讀 / Lead
                 required: false
                 widget: string
               - name: description
-                label: 描述
+                label: 描述 / Description
                 required: false
                 widget: text
               - name: image
-                label: image
+                label: 圖片 / Image
                 required: false
                 widget: object
                 collapsed: true
                 fields:
                   - name: src
-                    label: 圖片
+                    label: 圖片檔案 / Image File
                     required: true
                     widget: image
                     multiple: false
                     choose_url: false
                   - name: alt
-                    label: 替代文字
+                    label: 替代文字 / Alternative Text
                     required: true
                     widget: string
               - name: imageCaption
-                label: imageCaption
+                label: 圖片說明 / Image Caption
                 required: false
                 widget: string
-          - &a120
+          - &a132
             name: closing
-            label: closing
+            label: 結尾內容 / Closing Content
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
-          - &a121
+          - &a133
             name: highlights
-            label: highlights
+            label: 重點介紹 / Highlights
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: items
-                label: items
+                label: 項目 / Items
                 required: true
                 widget: list
                 collapsed: true
                 allow_add: true
                 fields:
                   - name: title
-                    label: 標題
+                    label: 標題 / Title
                     required: true
                     widget: string
                   - name: description
-                    label: 描述
+                    label: 描述 / Description
                     required: true
                     widget: text
                 min: 1
-          - &a122
+          - &a134
             name: cta
-            label: cta
+            label: 行動呼籲 / Call to Action
             required: false
             widget: object
             collapsed: true
             fields:
               - name: title
-                label: 標題
+                label: 標題 / Title
                 required: true
                 widget: string
               - name: description
-                label: 描述
+                label: 描述 / Description
                 required: true
                 widget: text
               - name: button
-                label: button
+                label: 按鈕文字 / Button Label
                 required: false
                 widget: string
-          - &a123
+          - &a135
             name: body
-            label: 完整內文
+            label: 文章內文 / Article Content
             widget: markdown
             required: false
             modes:
@@ -3658,202 +3830,203 @@ collections:
         file: src/content/pages/tw/company.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: contact
         label: contact
         file: src/content/pages/tw/contact.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: insights
         label: insights
         file: src/content/pages/tw/insights.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: investors
         label: investors
         file: src/content/pages/tw/investors.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: news
         label: news
         file: src/content/pages/tw/news.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: partners
         label: partners
         file: src/content/pages/tw/partners.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: privacy
         label: privacy
         file: src/content/pages/tw/privacy.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - &a124
+          - &a136
             name: draft
-            label: 草稿（TW 控制是否公開）
+            label: 尚未公開 / Unpublished Draft
             required: false
             default: true
             widget: boolean
             hint: TW 控制前台公開：勾選表示不公開（頁面不建置，頁尾也不顯示連結）。取消勾選前須完成法務審閱、刪除草稿標註並完成 EN／JP 翻譯。
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: products
         label: products
         file: src/content/pages/tw/products.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: search
         label: search
         file: src/content/pages/tw/search.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: solutions
         label: solutions
         file: src/content/pages/tw/solutions.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: tags
         label: tags
         file: src/content/pages/tw/tags.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: team
         label: team
         file: src/content/pages/tw/team.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: source
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
+    description: 繁體中文（TW）
   - name: pages-en
-    label: 固定頁面 · English（EN）
+    label: EN · 固定頁面 / Pages
     format: frontmatter
     media_folder: /src/assets/images/content
     public_folder: ../../../assets/images/content
@@ -3863,212 +4036,213 @@ collections:
         file: src/content/pages/en/case-studies.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: company
         label: company
         file: src/content/pages/en/company.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: contact
         label: contact
         file: src/content/pages/en/contact.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: insights
         label: insights
         file: src/content/pages/en/insights.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: investors
         label: investors
         file: src/content/pages/en/investors.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: news
         label: news
         file: src/content/pages/en/news.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: partners
         label: partners
         file: src/content/pages/en/partners.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: privacy
         label: privacy
         file: src/content/pages/en/privacy.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a124
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a136
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: products
         label: products
         file: src/content/pages/en/products.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: search
         label: search
         file: src/content/pages/en/search.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: solutions
         label: solutions
         file: src/content/pages/en/solutions.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: tags
         label: tags
         file: src/content/pages/en/tags.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: team
         label: team
         file: src/content/pages/en/team.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
+    description: English（EN）
   - name: pages-jp
-    label: 固定頁面 · 日本語（JP）
+    label: JP · 固定頁面 / Pages
     format: frontmatter
     media_folder: /src/assets/images/content
     public_folder: ../../../assets/images/content
@@ -4078,212 +4252,213 @@ collections:
         file: src/content/pages/jp/case-studies.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: company
         label: company
         file: src/content/pages/jp/company.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: contact
         label: contact
         file: src/content/pages/jp/contact.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: insights
         label: insights
         file: src/content/pages/jp/insights.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: investors
         label: investors
         file: src/content/pages/jp/investors.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: news
         label: news
         file: src/content/pages/jp/news.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: partners
         label: partners
         file: src/content/pages/jp/partners.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: privacy
         label: privacy
         file: src/content/pages/jp/privacy.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a124
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a136
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: products
         label: products
         file: src/content/pages/jp/products.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: search
         label: search
         file: src/content/pages/jp/search.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: solutions
         label: solutions
         file: src/content/pages/jp/solutions.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: tags
         label: tags
         file: src/content/pages/jp/tags.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
       - name: team
         label: team
         file: src/content/pages/jp/team.md
         fields:
           - name: translationStatus
-            label: 翻譯狀態
+            label: 翻譯狀態 / Translation Status
             required: true
             widget: select
-            options: *a117
+            options: *a129
             default: pending
-          - *a118
-          - *a119
-          - *a120
-          - *a121
-          - *a122
-          - *a123
+          - *a130
+          - *a131
+          - *a132
+          - *a133
+          - *a134
+          - *a135
+    description: 日本語（JP）
   - name: tags-tw
-    label: 文章標籤 · 繁體中文（TW）
+    label: TW · 文章標籤 / Tags
     folder: src/content/tags/tw
     create: true
     delete: true
@@ -4296,34 +4471,38 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: &a125
-          - source
-          - pending
-          - translated
+        options: &a137
+          - label: 原文 / Source Language
+            value: source
+          - label: 待完成 / Pending
+            value: pending
+          - label: 已完成翻譯 / Translated
+            value: translated
         default: source
-      - &a126
+      - &a138
         name: name
-        label: 名稱
+        label: 名稱 / Name
         required: true
         widget: string
-      - &a127
+      - &a139
         name: description
-        label: 描述
+        label: 描述 / Description
         required: false
         widget: text
-      - &a128
+      - &a140
         name: body
-        label: 完整內文
+        label: 文章內文 / Article Content
         widget: markdown
         required: false
         modes:
           - raw
           - rich_text
+    description: 繁體中文（TW）
   - name: tags-en
-    label: 文章標籤 · English（EN）
+    label: EN · 文章標籤 / Tags
     folder: src/content/tags/en
     create: true
     delete: true
@@ -4336,16 +4515,17 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a125
+        options: *a137
         default: pending
-      - *a126
-      - *a127
-      - *a128
+      - *a138
+      - *a139
+      - *a140
+    description: English（EN）
   - name: tags-jp
-    label: 文章標籤 · 日本語（JP）
+    label: JP · 文章標籤 / Tags
     folder: src/content/tags/jp
     create: true
     delete: true
@@ -4358,16 +4538,17 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a125
+        options: *a137
         default: pending
-      - *a126
-      - *a127
-      - *a128
+      - *a138
+      - *a139
+      - *a140
+    description: 日本語（JP）
   - name: investor-items-tw
-    label: 投資人資訊 · 繁體中文（TW）
+    label: TW · 投資人資訊 / Investor Relations
     folder: src/content/investor-items/tw
     create: true
     delete: true
@@ -4380,92 +4561,103 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: &a129
-          - source
-          - pending
-          - translated
+        options: &a141
+          - label: 原文 / Source Language
+            value: source
+          - label: 待完成 / Pending
+            value: pending
+          - label: 已完成翻譯 / Translated
+            value: translated
         default: source
-      - &a130
+      - &a142
         name: draft
-        label: 草稿（TW 控制是否公開）
+        label: 尚未公開 / Unpublished Draft
         required: false
         default: true
         widget: boolean
         hint: TW 控制前台公開：勾選表示下架／未公開。CMS 的 Save Draft 只儲存審核分支；Publish 合併 main 後，仍需取消此勾選並完成三語及 CI 才會在官網顯示。
-      - &a131
+      - &a143
         name: publishDate
-        label: 發布日期（未知請留空）
+        label: 發布日期 / Publish Date
         required: true
         widget: datetime
         format: YYYY-MM-DD
         date_format: YYYY-MM-DD
         time_format: false
         picker_utc: true
-      - &a132
+      - &a144
         name: module
-        label: module
+        label: 資訊模組 / Information Module
         required: true
         widget: select
         options:
-          - profile
-          - financials
-          - governance
-          - shareholders
-          - announcements
-          - briefings
-          - contact
-      - &a133
+          - label: 公司概況 / Company Profile
+            value: profile
+          - label: 財務資訊 / Financial Information
+            value: financials
+          - label: 公司治理 / Corporate Governance
+            value: governance
+          - label: 股東資訊 / Shareholder Information
+            value: shareholders
+          - label: 公告 / Announcements
+            value: announcements
+          - label: 法人說明會 / Investor Briefings
+            value: briefings
+          - label: 聯絡資訊 / Contact
+            value: contact
+      - &a145
         name: category
-        label: 分類
+        label: 分類 / Category
         required: false
         widget: string
-      - &a134
+      - &a146
         name: order
-        label: 排序
+        label: 排序 / Order
         required: false
         widget: number
         value_type: int
         min: -9007199254740991
         max: 9007199254740991
-      - &a135
+      - &a147
         name: title
-        label: 標題
+        label: 標題 / Title
         required: true
         widget: string
-      - &a136
+      - &a148
         name: summary
-        label: 摘要
+        label: 摘要 / Summary
         required: false
         widget: text
-      - &a137
+      - &a149
         name: attachments
-        label: attachments
+        label: 附件 / Attachments
         required: false
         widget: list
         collapsed: true
         allow_add: true
         fields:
           - name: label
-            label: label
+            label: 顯示名稱 / Display Label
             required: true
             widget: string
           - name: url
-            label: url
+            label: 連結網址 / Link URL
             required: true
             widget: string
-      - &a138
+      - &a150
         name: body
-        label: 完整內文
+        label: 文章內文 / Article Content
         widget: markdown
         required: false
         modes:
           - raw
           - rich_text
+    description: 繁體中文（TW）
   - name: investor-items-en
-    label: 投資人資訊 · English（EN）
+    label: EN · 投資人資訊 / Investor Relations
     folder: src/content/investor-items/en
     create: true
     delete: true
@@ -4478,22 +4670,23 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a129
+        options: *a141
         default: pending
-      - *a130
-      - *a131
-      - *a132
-      - *a133
-      - *a134
-      - *a135
-      - *a136
-      - *a137
-      - *a138
+      - *a142
+      - *a143
+      - *a144
+      - *a145
+      - *a146
+      - *a147
+      - *a148
+      - *a149
+      - *a150
+    description: English（EN）
   - name: investor-items-jp
-    label: 投資人資訊 · 日本語（JP）
+    label: JP · 投資人資訊 / Investor Relations
     folder: src/content/investor-items/jp
     create: true
     delete: true
@@ -4506,30 +4699,31 @@ collections:
     public_folder: ../../../assets/images/content
     fields:
       - name: translationStatus
-        label: 翻譯狀態
+        label: 翻譯狀態 / Translation Status
         required: true
         widget: select
-        options: *a129
+        options: *a141
         default: pending
-      - *a130
-      - *a131
-      - *a132
-      - *a133
-      - *a134
-      - *a135
-      - *a136
-      - *a137
-      - *a138
+      - *a142
+      - *a143
+      - *a144
+      - *a145
+      - *a146
+      - *a147
+      - *a148
+      - *a149
+      - *a150
+    description: 日本語（JP）
   - name: news-media
-    label: 新聞共用圖集與影片（進階）
+    label: 新聞共用圖集與影片（進階） / News Media Registry (Advanced)
     files:
       - name: registry
-        label: 新聞媒體資料
+        label: 新聞媒體資料 / News Media Data
         file: src/data/news-media.json
         format: bxr-media-json
         fields:
           - name: body
-            label: 媒體對應表
+            label: 媒體對應表 / Media Map
             widget: bxr-value
             required: true
             value_schema:
@@ -4542,7 +4736,7 @@ collections:
                       - type: string
                         pattern: ^\d{4}-\d{2}-\d{2}$
                       - type: "null"
-                  cover: &a140
+                  cover: &a152
                     type: object
                     required:
                       - filename
@@ -4553,7 +4747,7 @@ collections:
                         pattern: ^[a-z0-9-]+\.(jpg|jpeg|png)$
                       approved:
                         type: boolean
-                      alt: &a139
+                      alt: &a151
                         type: object
                         properties:
                           tw:
@@ -4563,11 +4757,11 @@ collections:
                           jp:
                             type: string
                         additionalProperties: false
-                      caption: *a139
+                      caption: *a151
                     additionalProperties: false
                   gallery:
                     type: array
-                    items: *a140
+                    items: *a152
                   videos:
                     type: array
                     items:
@@ -4588,7 +4782,7 @@ collections:
                           type: boolean
                         approved:
                           type: boolean
-                        title: *a139
+                        title: *a151
                         poster:
                           type: string
                       additionalProperties: false
@@ -4600,93 +4794,102 @@ collections:
                 additionalProperties: false
             hint: 完整沿用現有 mediaId→媒體物件。圖檔在 src/assets/images/news/，filename 只填檔名；approved=true 且三語 alt 完整才顯示。
   - name: typography
-    label: 多語文字換行
+    label: 多語文字換行 / Text Wrapping
     files:
       - name: rules
-        label: 關鍵詞與標題分組
+        label: 關鍵詞與標題分組 / Terms and Heading Groups
         file: src/data/typography.json
         format: json
         fields:
           - name: tw
-            label: 繁體中文
+            label: 繁體中文 / Traditional Chinese
             widget: object
             fields:
               - name: terms
-                label: 完整保留的關鍵詞
+                label: 完整詞組清單 / Protected Terms
                 widget: list
                 field:
                   name: term
+                  label: 完整詞組 / Protected Term
                   widget: string
                 hint: 短詞組為主；避免整句加入詞庫。
               - name: headings
-                label: 個別標題分組（選用）
+                label: 標題換行設定 / Heading Wrapping
                 widget: list
                 required: false
                 fields:
                   - name: text
-                    label: 完整原標題（完全一致）
+                    label: 原始文字 / Original Text
                     widget: string
+                    hint: 須與原標題完全一致。 / Must match the heading exactly.
                   - name: groups
-                    label: 依語意分組
+                    label: 文字語意分組 / Semantic Text Groups
                     widget: list
                     field:
                       name: group
+                      label: 分組名稱 / Group
                       widget: string
                     hint: 所有分組依序串接必須等於原標題，包含空格和標點。長組在窄螢幕可安全換行。
           - name: en
-            label: English
+            label: 英文 / English
             widget: object
             fields:
               - name: terms
-                label: 完整保留的關鍵詞
+                label: 完整詞組清單 / Protected Terms
                 widget: list
                 field:
                   name: term
+                  label: 完整詞組 / Protected Term
                   widget: string
                 hint: 短詞組為主；避免整句加入詞庫。
               - name: headings
-                label: 個別標題分組（選用）
+                label: 標題換行設定 / Heading Wrapping
                 widget: list
                 required: false
                 fields:
                   - name: text
-                    label: 完整原標題（完全一致）
+                    label: 原始文字 / Original Text
                     widget: string
+                    hint: 須與原標題完全一致。 / Must match the heading exactly.
                   - name: groups
-                    label: 依語意分組
+                    label: 文字語意分組 / Semantic Text Groups
                     widget: list
                     field:
                       name: group
+                      label: 分組名稱 / Group
                       widget: string
                     hint: 所有分組依序串接必須等於原標題，包含空格和標點。長組在窄螢幕可安全換行。
           - name: jp
-            label: 日本語
+            label: 日文 / Japanese
             widget: object
             fields:
               - name: terms
-                label: 完整保留的關鍵詞
+                label: 完整詞組清單 / Protected Terms
                 widget: list
                 field:
                   name: term
+                  label: 完整詞組 / Protected Term
                   widget: string
                 hint: 短詞組為主；避免整句加入詞庫。
               - name: headings
-                label: 個別標題分組（選用）
+                label: 標題換行設定 / Heading Wrapping
                 widget: list
                 required: false
                 fields:
                   - name: text
-                    label: 完整原標題（完全一致）
+                    label: 原始文字 / Original Text
                     widget: string
+                    hint: 須與原標題完全一致。 / Must match the heading exactly.
                   - name: groups
-                    label: 依語意分組
+                    label: 文字語意分組 / Semantic Text Groups
                     widget: list
                     field:
                       name: group
+                      label: 分組名稱 / Group
                       widget: string
                     hint: 所有分組依序串接必須等於原標題，包含空格和標點。長組在窄螢幕可安全換行。
   - name: cms-test
-    label: 隔離測試文章（不會顯示於官網）
+    label: 隔離測試文章（不會顯示於官網） / Isolated Test (Never Published)
     folder: cms-test-content
     create: true
     delete: true
@@ -4696,19 +4899,19 @@ collections:
     public_folder: ../cms-test-media
     fields:
       - name: title
-        label: 標題
+        label: 標題 / Title
         widget: string
       - name: date
-        label: 日期
+        label: 日期 / Date
         widget: datetime
         required: false
         format: YYYY-MM-DD
         time_format: false
       - name: image
-        label: 測試圖片
+        label: 測試圖片 / Test Image
         widget: image
         required: false
       - name: body
-        label: 內文
+        label: 文章內文 / Article Content
         widget: markdown
         required: false
