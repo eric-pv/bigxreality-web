@@ -17,6 +17,9 @@ export type InquiryPayload = Record<InquiryField, string>;
 export interface InquiryReply {
   ok: boolean;
   persisted: boolean;
+  /** Public reference, Taipei date + daily sequence (20261104001). Assigned by the receiver only.
+   *  Absent from receivers deployed before 2026-11 numbering; then no reference is shown. */
+  inquiryId?: string;
   duplicate?: boolean;
   code?: string;
   field?: string;
@@ -51,7 +54,14 @@ export async function sendInquiry(endpoint: string, requestId: string, payload: 
   if (value.protocol !== INQUIRY_PROTOCOL || value.requestId !== requestId || typeof value.ok !== "boolean" || typeof value.persisted !== "boolean") {
     throw new UnknownResult("unexpected reply");
   }
+  // A reference that is present but malformed is never shown (or invented); the result counts as unknown.
+  if (value.inquiryId !== undefined && !isInquiryId(value.inquiryId)) throw new UnknownResult("malformed inquiry reference");
   return value as unknown as InquiryReply;
+}
+
+/** YYYYMMDD + at least three digits, e.g. 20261104001 or 202611041000. */
+export function isInquiryId(value: unknown): value is string {
+  return typeof value === "string" && /^20\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])\d{3,}$/.test(value);
 }
 
 /** One existing Sheets cell, with every selected product/solution retained in a stable order. */

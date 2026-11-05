@@ -45,14 +45,18 @@ try {
   return route.fulfill({contentType:types[path.extname(file)]??'application/octet-stream',body:await readFile(file)});
  });
  await context.addInitScript(()=>{window.__inquiryEvents=[];document.addEventListener('bxr:inquiry',event=>window.__inquiryEvents.push(event.detail));});
- const rows=new Map();let dropNext=false;
+ const rows=new Map(),numbers=new Map();let dropNext=false;
  if(!live)await context.route(endpoint,async route=>{
   const p=Object.fromEntries(new URLSearchParams(route.request().postData()||''));
   let reply={protocol,requestId:p.requestId,ok:false,persisted:false};
   const fingerprint=JSON.stringify(Object.entries(p).filter(([k])=>k!=='requestId').sort());
   if(!p.message)reply={...reply,code:'INVALID_FIELD',field:'message'};
   else if(rows.has(p.requestId)&&rows.get(p.requestId)!==fingerprint)reply={...reply,code:'ID_CONFLICT'};
-  else {reply={...reply,ok:true,persisted:true,duplicate:rows.has(p.requestId)};rows.set(p.requestId,fingerprint);}
+  else {
+   const duplicate=rows.has(p.requestId);
+   if(!duplicate){numbers.set(p.requestId,'20261104'+String(numbers.size+1).padStart(3,'0'));rows.set(p.requestId,fingerprint);}
+   reply={...reply,ok:true,persisted:true,duplicate,inquiryId:numbers.get(p.requestId)};
+  }
   if(dropNext){dropNext=false;return route.abort('failed');}
   return route.fulfill({contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(reply)});
  });
@@ -82,6 +86,11 @@ try {
   assert.ok((await page.locator('#f-name-hint').innerText()).trim());
   assert.equal(await page.locator('#f-topic').inputValue(),'product');
   assert.equal(await page.locator('#f-country option').count(),250);
+  // Owner-specified names; Taiwan heads the list (first option after the placeholder).
+  const special={tw:['台灣(中華民國)','中國(中華人民共和國)'],en:['Taiwan(ROC)','China(PRC)'],jp:['台湾（中華民国）','中国（中華人民共和国）']}[lang];
+  assert.equal(await page.locator('#f-country option').nth(1).getAttribute('value'),'TW');
+  assert.equal((await page.locator('#f-country option').nth(1).innerText()).trim(),special[0]);
+  assert.equal((await page.locator('#f-country option[value="CN"]').innerText()).trim(),special[1]);
   assert.equal(await page.locator('#f-country').inputValue(),'','country must not be inferred from language');
   const policyHref=await form.locator('a').getAttribute('href');
   assert.equal(policyHref,`${prefix}${lang}/privacy/`);
@@ -106,6 +115,7 @@ try {
   await page.locator('#f-name').fill(name);
   await page.locator('#f-organization').fill('BXR synthetic acceptance test - not a customer');
   await page.locator('#f-email').fill('bxr-inquiry-e2e@example.com');
+  await page.locator('#f-phone').fill('+886-2-8791-6811');
   await page.locator('#f-country').selectOption(lang==='jp'?'JP':'TW');
   await page.locator('#f-message').fill('Synthetic production acceptance test. Please ignore this inquiry.');
   await page.evaluate(()=>scrollTo(0,0));
@@ -131,7 +141,10 @@ try {
     assert.equal(rows.size,1,'lost-response retry must not create another mocked row');
    }
    await page.locator('[data-done]').waitFor({state:'visible',timeout:40000});
-   assert.equal(await page.locator('[data-ref]').innerText(),first.requestId);
+   const shown=await page.locator('[data-ref]').innerText();
+   assert.match(shown,/^\d{8}\d{3,}$/,'success shows the receiver-assigned date+sequence number, not the request UUID');
+   if(!live)assert.equal(shown,numbers.get(first.requestId));
+   assert.notEqual(shown,first.requestId);
    assert.equal(first.name,name);
    assert.equal(first.country,lang==='jp'?'JP':'TW');
    assert.equal(first.privacyConsent,'yes');
@@ -161,6 +174,7 @@ try {
   await page.locator('#f-name').fill(lang==='jp'?'山田 太郎':'BXR inline synthetic test');
   await page.locator('#f-organization').fill('BXR synthetic acceptance test - not a customer');
   await page.locator('#f-email').fill('bxr-inline-e2e@example.com');
+  await page.locator('#f-phone').fill('+1 202 555 0100');
   await page.locator('#f-country').selectOption('US');
   await page.locator('#f-message').fill('Synthetic original-page inquiry; please ignore.');
   await page.locator('[data-inquiry-close]').click();assert.equal(await section.isVisible(),false);
