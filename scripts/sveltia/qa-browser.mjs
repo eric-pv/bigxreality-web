@@ -80,12 +80,12 @@ try{
   if(await locator.first().isVisible())await locator.first().scrollIntoViewIfNeeded();
   return locator.first();
  };
- await page.getByRole('treeitem',{name:'隔離測試文章（不會顯示於官網）',exact:true}).click();
+ await page.getByRole('treeitem',{name:'隔離測試文章（不會顯示於官網） / Isolated Test (Never Published)',exact:true}).click();
  await page.getByRole('main',{name:/隔離測試文章/}).waitFor();
  await page.getByRole('button',{name:'Create New Entry'}).first().click();
- await page.getByRole('textbox',{name:'標題',exact:true}).fill('bxr-cms-browser-qa');
+ await page.getByRole('textbox',{name:'標題 / Title',exact:true}).fill('bxr-cms-browser-qa');
  await page.getByRole('group',{name:/測試圖片.*Field/}).locator('input[type=file]').first().setInputFiles({name:'bxr-cms-upload.webp',mimeType:'image/webp',buffer:image});
- await page.getByRole('textbox',{name:'內文',exact:true}).fill('BXR isolated browser test.');
+ await page.getByRole('textbox',{name:'文章內文 / Article Content',exact:true}).fill('BXR isolated browser test.');
  await page.getByRole('button',{name:'Save',exact:true}).click();
  await page.getByRole('row',{name:/bxr-cms-browser-qa/}).waitFor();
  let clone=await readClone(),saved=textOf(clone,'cms-test-content/bxr-cms-browser-qa.md');
@@ -93,22 +93,22 @@ try{
  const asset=Object.keys(clone).find(p=>p.startsWith('cms-test-media/')&&p.endsWith('.webp'));assert.ok(asset);
  assert.deepEqual(Buffer.from(clone[asset]),image);
  await page.getByRole('row',{name:/bxr-cms-browser-qa/}).click();
- await page.getByRole('textbox',{name:'內文',exact:true}).fill('BXR isolated edit verified.');
+ await page.getByRole('textbox',{name:'文章內文 / Article Content',exact:true}).fill('BXR isolated edit verified.');
  await page.getByRole('button',{name:'Save',exact:true}).click();
  await page.getByRole('row',{name:/bxr-cms-browser-qa/}).waitFor();
  clone=await readClone();assert.ok(textOf(clone,'cms-test-content/bxr-cms-browser-qa.md').includes('BXR isolated edit verified.'));
  // Edit a real multilingual story in the disposable clone. All three sibling paths must survive.
- await page.getByRole('treeitem',{name:'最新消息 · 繁體中文（TW）',exact:true}).click();
+ await page.getByRole('treeitem',{name:'TW · 最新消息 / News',exact:true}).click();
  const id='news-01-ds-2025';
  const raw=parse(originals[`src/content/news/tw/${id}.md`].split(/^---\s*$/m)[1]);
  await page.getByRole('row').filter({hasText:raw.title}).first().click();
  // Sveltia lazily mounts off-screen fields; scroll the editor to the Markdown field.
- const body=await reveal(page.getByRole('textbox',{name:'完整內文',exact:true}));await body.fill('BXR local TW test only.');
+ const body=await reveal(page.getByRole('textbox',{name:'文章內文 / Article Content',exact:true}));await body.fill('BXR local TW test only.');
  const coverGroup=await reveal(page.getByRole('group',{name:/封面.*Field/}));
  await coverGroup.getByRole('checkbox').check();
  await coverGroup.getByRole('button',{name:'Expand',exact:true}).click();
  await (await reveal(coverGroup.locator('input[type=file]'))).setInputFiles({name:'bxr-news-upload.webp',mimeType:'image/webp',buffer:image});
- await (await reveal(coverGroup.getByRole('textbox',{name:'替代文字',exact:true}))).fill('BXR isolated existing logo upload test');
+ await (await reveal(coverGroup.getByRole('textbox',{name:'替代文字 / Alternative Text',exact:true}))).fill('BXR isolated existing logo upload test');
  await page.getByRole('button',{name:'Save',exact:true}).click();
  await page.getByRole('row').filter({hasText:raw.title}).first().waitFor();
  clone=await readClone();const schemas=loadSchemas();
@@ -118,28 +118,37 @@ try{
   if(lang==='tw'){
    assert.ok(source.includes('BXR local TW test only.'));
    const raw=parse(source.split(/^---\s*$/m)[1]);
+   const before=parse(originals[file].split(/^---\s*$/m)[1]);
+   for(const key of ['tags','relatedProducts','relatedSolutions','relatedNews','relatedInsights','relatedCaseStudies'])assert.deepEqual(raw[key]??[],before[key]??[],`${key} changed by an unrelated save`);
    assert.ok(raw.cover.src.startsWith('../../../assets/images/news/'));
    const assetPath=path.posix.normalize(path.posix.join('src/content/news/tw',raw.cover.src));
    assert.deepEqual(Buffer.from(clone[assetPath]),image);
   }else assert.equal(source,originals[file],`${lang} translation changed without editing`);
  }
+ const productSlug='fire-extinguisher-simulator',productName=parse(originals[`src/content/products/tw/${productSlug}.md`].split(/^---\s*$/m)[1]).hero.name;
  // Create draft news through each real collection, with one shared slug and no invented date.
  for(const [lang,label] of Object.entries({tw:'繁體中文（TW）',en:'English（EN）',jp:'日本語（JP）'})){
-  await page.getByRole('treeitem',{name:`最新消息 · ${label}`,exact:true}).click();
+  await page.getByRole('treeitem',{name:`${lang.toUpperCase()} · 最新消息 / News`,exact:true}).click();
   await page.getByRole('button',{name:'Create New Entry'}).first().click();
-  await page.getByRole('textbox',{name:'標題',exact:true}).fill('bxr-cms-draft-qa');
-  await page.getByRole('textbox',{name:'摘要',exact:true}).fill(`Isolated ${lang} draft, never published.`);
+  await page.getByRole('textbox',{name:'標題 / Title',exact:true}).fill('bxr-cms-draft-qa');
+  await page.getByRole('textbox',{name:'摘要 / Summary',exact:true}).fill(`Isolated ${lang} draft, never published.`);
   await (await reveal(page.getByRole('group',{name:/分類.*Field/}).getByRole('combobox'))).click();
-  await page.getByRole('option',{name:'company',exact:true}).click();
+  await page.getByRole('option',{name:'公司消息 / Company News',exact:true}).click();
+  if(lang==='tw'){
+   // Searchable relation: choose by product name, the file stores only the bare slug.
+   const picker=await reveal(page.getByRole('group',{name:/關聯產品 \/ Related Products.*Field/}).getByRole('combobox'));
+   await picker.click();await page.getByRole('option',{name:productName}).first().click();
+  }
   await page.getByRole('button',{name:'Save',exact:true}).click();
   await page.getByRole('row',{name:/bxr-cms-draft-qa/}).waitFor();
   const clone=await readClone(),source=textOf(clone,`src/content/news/${lang}/bxr-cms-draft-qa.md`),raw=parse(source.split(/^---\s*$/m)[1]);
   assert.ok(schemas.news.safeParse(raw).success);assert.equal(raw.draft,true);assert.equal(raw.publishDate,undefined);
   assert.equal(raw.translationStatus,lang==='tw'?'source':'pending');
+  assert.deepEqual(raw.relatedProducts??[],lang==='tw'?[productSlug]:[]);
  }
- await page.getByRole('treeitem',{name:'新聞共用圖集與影片（進階）',exact:true}).click();
+ await page.getByRole('treeitem',{name:'新聞共用圖集與影片（進階） / News Media Registry (Advanced)',exact:true}).click();
  await page.getByRole('row').filter({hasText:'新聞媒體資料'}).first().click();
- const mediaInput=await reveal(page.getByRole('textbox',{name:'媒體對應表',exact:true}));
+ const mediaInput=await reveal(page.getByRole('textbox',{name:'媒體對應表 / Media Map',exact:true}));
  const mediaMap=JSON.parse(await mediaInput.inputValue());
  assert.deepEqual(mediaMap,JSON.parse(originals['src/data/news-media.json']));
  await mediaInput.fill('{ invalid');assert.equal(await mediaInput.getAttribute('aria-invalid'),'true');
@@ -149,10 +158,10 @@ try{
  await page.getByRole('row').filter({hasText:'新聞媒體資料'}).first().waitFor();
  clone=await readClone();assert.deepEqual(JSON.parse(textOf(clone,'src/data/news-media.json')),mediaMap);
  if(originals['src/data/typography.json']) {
-  await page.getByRole('treeitem',{name:'多語文字換行',exact:true}).click();
+  await page.getByRole('treeitem',{name:'多語文字換行 / Text Wrapping',exact:true}).click();
   await page.getByRole('row').filter({hasText:'關鍵詞與標題分組'}).first().click();
   await page.getByRole('group',{name:'Content Editor'}).waitFor();
-  await page.getByRole('textbox',{name:'term',exact:true}).first().waitFor();
+  await page.getByRole('textbox',{name:'完整詞組 / Protected Term',exact:true}).first().waitFor();
   const textboxes=await page.getByRole('textbox').all();let updated=false;
   for(const input of textboxes) { if(await input.inputValue()==='全球動力科技'){await input.fill('全球動力科技 QA');updated=true;break;} }
   if(!updated)throw new Error('Typography term editor not found: '+JSON.stringify(await page.getByRole('textbox').evaluateAll(es=>es.map(e=>({label:e.getAttribute('aria-label'),value:e.value})))));
@@ -164,7 +173,7 @@ try{
  }
  await page.screenshot({path:path.join(cache,'news-desktop.png')});
  // Deletion is confined to the newly created, non-public isolated test entry.
- await page.getByRole('treeitem',{name:'隔離測試文章（不會顯示於官網）',exact:true}).click();
+ await page.getByRole('treeitem',{name:'隔離測試文章（不會顯示於官網） / Isolated Test (Never Published)',exact:true}).click();
  await page.getByRole('row').filter({hasText:'bxr-cms-browser-qa'}).first().click();
  await page.getByRole('button',{name:'Show Editor Options'}).click();
  await page.getByRole('menuitem',{name:/Delete/}).first().click();
@@ -182,7 +191,7 @@ try{
  await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Sign In Using Access Token'}).waitFor();
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await page.screenshot({path:path.join(cache,'login-mobile.png')});
- console.log('PASS: real pinned CMS config loads at /admin/ and Pages subpath; token form; local-clone create/edit/image-byte upload; existing article save plus three new draft news siblings, correct optional fields, unchanged translations and lossless media JSON save; typography JSON edit with unchanged language lists; isolated deletion; mobile login. Live GitHub auth/write not tested.');
+ console.log('PASS: real pinned CMS config loads at /admin/ and Pages subpath; token form; local-clone create/edit/image-byte upload; existing article save with relations preserved, searchable product relation storing a bare slug, plus three new draft news siblings, correct optional fields, unchanged translations and lossless media JSON save; typography JSON edit with unchanged language lists; isolated deletion; mobile login. Live GitHub auth/write not tested.');
 }catch(error){
  // Keep the screen of a failed run for diagnosis (uploaded with the CI log artifacts when present).
  for(const p of browser.contexts().flatMap(c=>c.pages()))await p.screenshot({path:path.join(cache,'failure.png'),fullPage:true}).catch(()=>{});

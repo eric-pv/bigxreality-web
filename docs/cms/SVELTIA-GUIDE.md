@@ -31,6 +31,8 @@ Sveltia 沒有可取代 GitHub 的完整伺服器端 RBAC。隱藏選單／delet
 - 新聞 ARTICLE_ID／mediaId 保持一致；schema、關聯與媒體檢查通過後才發布。
 - 固定頁禁止刪除；文章可經審核刪除，建議先 TW draft=true 下架，再刪三語檔並處理引用；保留媒體和 Git 歷史。
 - 圖片上傳到既有 src/assets/images 分類，使用新檔名，不覆蓋或連帶刪除舊素材。
+- 欄位名稱為「中文 / English」並列；側欄集合以語言開頭（TW／EN／JP）。關聯產品、解決方案、新聞、標籤等欄位直接輸入名稱搜尋選取，檔案中仍只存 slug；結構欄位以 TW 為準。
+- ARTICLE_ID、mediaId、imageId、產品代號是既有識別碼，既有內容請勿修改。
 - 實際可編輯欄位見 [CMS-FIELD-MAP](../CMS-FIELD-MAP.md)，首頁／技術 TS 文案不冒充可透過固定頁編輯。
 - 查網站 build-info.json 與 Actions runUrl 核對部署 SHA。Publish 不成功先看 GitHub PR review/status；CI 失敗不會更新 Pages。
 

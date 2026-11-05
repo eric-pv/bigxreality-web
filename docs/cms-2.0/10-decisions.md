@@ -1,5 +1,7 @@
 # 最終建議與管理者決策
 
+> **2026-11-05 業主決定：不採方案 B，只用 Sveltia（方案 A）。** 現行規則見 [ARCHITECTURE §5](../ARCHITECTURE.md)。本頁其餘內容為 Phase 0 當時的建議，保留作紀錄。
+
 ## 建議
 
 完整需求選 B：一個客製靜態管理前端，原 Git／Markdown／registry／GitHub 權限與 PR 不變；編輯核心先選 Milkdown＋原始碼保真 adapter。短期欄位雙語／relation 先用 A 可獨立改善。不要把 dashboard 外掛、Intl monkey patch 或三次 API PUT 包裝成完整 CMS 2.0。
