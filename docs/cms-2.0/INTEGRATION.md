@@ -4,11 +4,15 @@
 
 ## 架構與資料
 
-沿用 Sveltia 0.253.1、Git main／editorial workflow、Astro 靜態建置與 GitHub Pages。使用公開 i18n、editor component、preview template 及 string transformation API，不 fork、不 patch Sveltia、不新增後台服務。
+使用官方 Sveltia 0.257.0、Git main／editorial workflow、Astro 靜態建置與 GitHub Pages。使用公開 i18n、editor component、preview template 及 string transformation API，不 fork、不 patch Sveltia、不新增後台服務。
 
 原生 i18n 用資料夾代碼產生語言名稱，不能將 `tw` 映射成繁體中文、`jp` 映射成日文。正式內容改用 `zh-Hant`／`en`／`ja`；Astro loader 映射回既有 logical ID `tw`／`en`／`jp`，原網址、slug、ARTICLE_ID 與素材位置保持。148 份搬移檔案的 SHA-256 見 [路徑遷移](evidence/LOCALE-MIGRATION.json)。公開網站不產生 `/zh-Hant/` 或 `/ja/` 路由。歷史 fixtures 可保留舊代碼；正式 loader 與 CMS 檢查拒絕舊內容資料夾，避免兩份來源。
 
 七項技術的 21 份全文與三份總覽改成 Git JSON，普通表單編輯，不要求管理員手寫 JSON。原 TS 文案模組已移除，保留型別與資料組合入口；關聯讀取繁中來源，notes 與各語文案獨立。遷移比對見 [逐檔證據](evidence/TECHNOLOGY-MIGRATION.json)。唯一文案格式調整是將既有繁中章節「AI 如何參與模擬訓練？」移除末尾問號，符合既有標題標點測試；其餘文案、FAQ、CTA、SEO 與關聯相同。
+
+## 官方版本升級
+
+實測發現 0.253.1 的自訂區塊在原生剪下／貼上後遺失 props；官方 0.257.0 已修正 `importJSON` 並將區塊欄位與 Lexical `type` 分開。升級固定 CDN 版本，同時驗證 npm tarball SHA-512、CDN 與 npm bundle 逐 byte 一致，重新固定 script SRI；沒有修改供應商程式。[驗證證據](evidence/SVELTIA-UPGRADE.json)。所有正式 CMS 瀏覽器測試以新固定版執行。
 
 ## 三語操作
 

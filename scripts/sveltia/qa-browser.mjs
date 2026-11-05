@@ -13,7 +13,7 @@ import {CHROMIUM} from '../lib/serve.mjs';
 import {loadSchemas} from './schema.mjs';
 const run=promisify(execFile),repo=path.resolve(import.meta.dirname,'../..'),cache=path.join(repo,'.qa/sveltia');
 await mkdir(cache,{recursive:true});
-const cdn='https://cdn.jsdelivr.net/npm/@sveltia/cms@0.253.1/';
+const cdn='https://cdn.jsdelivr.net/npm/@sveltia/cms@0.257.0/';
 const server=createServer(async(req,res)=>{
  let p=new URL(req.url,'http://localhost').pathname.replace(/^\/bigxreality-web/,'');if(p.endsWith('/'))p+='index.html';
  const file=path.resolve(repo,'public','.'+p);
@@ -98,6 +98,12 @@ try{
  await imageDialog.getByRole('textbox',{name:'圖說 / Caption',exact:true}).fill('BXR inline caption');
  await imageDialog.getByRole('switch',{name:'核准公開 / Approved for Publication',exact:true}).check();
  await imageDialog.getByRole('button',{name:'Insert',exact:true}).click();
+ // Native clipboard round trip must retain component fields and the pending image upload.
+ await page.context().grantPermissions(['clipboard-read','clipboard-write']);
+ await isolatedBody.getByRole('textbox',{name:'文章內文 / Article Content',exact:true}).focus();
+ await page.keyboard.press('Control+a');await page.keyboard.press('Control+x');await page.keyboard.press('Control+v');
+ await isolatedBody.getByRole('button',{name:'正文圖片 / Inline Image',exact:true}).waitFor();
+ if(await imageDialog.isVisible()){assert.equal(await imageDialog.getByRole('textbox',{name:'替代文字 / Alternative Text',exact:true}).inputValue(),'BXR inline image alt');await imageDialog.getByRole('button',{name:'Insert',exact:true}).click();}
 
  await page.getByRole('button',{name:'Save',exact:true}).click();
  await page.getByRole('row',{name:/bxr-cms-browser-qa/}).waitFor();
@@ -207,6 +213,16 @@ try{
  assert.equal(await page.getByRole('textbox',{name:'標題 / Title',exact:true}).inputValue(),draftTitles.tw,'Switching languages must retain the unsaved source');
  const localeSnapshot=await page.locator('body').ariaSnapshot();
  assert.ok(localeSnapshot.includes('Japanese'));assert.ok(!localeSnapshot.includes('Akan'));
+ await page.screenshot({path:path.join(cache,'trilingual-editor-desktop.png')});
+ await page.setViewportSize({width:390,height:844});
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Trilingual editor must fit a phone viewport');
+ await page.locator('[role=radio][value="ja"]').first().click();
+ await (await reveal(page.getByRole('textbox',{name:'標題 / Title',exact:true}))).fill(draftTitles.jp);
+ await page.locator('[role=radio][value="zh-Hant"]').first().click();
+ assert.equal(await (await reveal(page.getByRole('textbox',{name:'標題 / Title',exact:true}))).inputValue(),draftTitles.tw);
+ await page.screenshot({path:path.join(cache,'trilingual-editor-mobile.png')});
+ await page.setViewportSize({width:1440,height:1000});
+
  await page.getByRole('button',{name:'Save',exact:true}).click();
  await page.getByRole('row',{name:/bxr-cms-draft-qa/}).waitFor();
  for(const lang of ['tw','en','jp']){

@@ -1,0 +1,9 @@
+{
+  "version": "0.257.0",
+  "tarball": "https://registry.npmjs.org/@sveltia/cms/-/cms-0.257.0.tgz",
+  "integrity": "sha512-9+MxZM3DzLILW0p7atCzX0dBz1qznW9aQzVThzpbiL7DZtzJzTLTRfklLxPkR/srke83c5N9dZvIJiSg64Cf9Q==",
+  "bundleIntegrity": "sha384-lK/AFMHKWrp2IiZWfy2dBrqz3HxxYDUaDDwoqBFMVw6n1v+YkiaCejGiyOI0jIZv",
+  "cdnBytesEqualVerifiedNpm": true,
+  "source": "https://github.com/sveltia/sveltia-cms/blob/v0.257.0/src/lib/components/contents/details/fields/rich-text/custom-node.js",
+  "reason": "0.253.1 discards custom component props in importJSON during native clipboard paste. 0.257.0 constructs the node with serializedNode.props and keeps field type separate from Lexical type."
+}

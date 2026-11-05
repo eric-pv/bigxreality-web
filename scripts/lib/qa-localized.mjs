@@ -14,7 +14,7 @@ export const PRODUCTS = ["sut", "uav", "usv", "wargaming-table", "mortar-observa
 export const SOLUTIONS = ["military", "mum-t", "nova", "police", "fire-rescue", "smart-city"];
 const MILITARY_PRODUCTS = ["sut", "uav", "wargaming-table", "mortar-observation", "sniper-simulator", "machine-gun-simulator", "hmmwv-simulator", "tactical-boat-simulator", "usv"];
 
-const content = (kind, lang, slug) => YAML.parse(readFileSync(path.join("src/content", kind, lang, `${slug}.md`), "utf8").split(/^---$/m)[1]);
+const content = (kind, lang, slug) => YAML.parse(readFileSync(path.join("src/content", kind, contentLocale(lang), `${slug}.md`), "utf8").split(/^---$/m)[1]);
 
 /**
  * @param {object} o
