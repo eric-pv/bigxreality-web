@@ -12,7 +12,7 @@
 
 ## 官方版本升級
 
-實測發現 0.253.1 的自訂區塊在原生剪下／貼上後遺失 props；官方 0.257.0 已修正 `importJSON` 並將區塊欄位與 Lexical `type` 分開。升級固定 CDN 版本，同時驗證 npm tarball SHA-512、CDN 與 npm bundle 逐 byte 一致，重新固定 script SRI；沒有修改供應商程式。[驗證證據](evidence/SVELTIA-UPGRADE.json)。所有正式 CMS 瀏覽器測試以新固定版執行。
+實測發現 0.253.1 的自訂區塊在原生剪下／貼上後遺失 props；官方 0.257.0 已修正 `importJSON` 並將區塊欄位與 Lexical `type` 分開。升級固定 CDN 版本，同時驗證 npm tarball SHA-512、CDN 與 npm bundle 逐 byte 一致，重新固定 script SRI；沒有修改供應商程式。[驗證證據](evidence/SVELTIA-UPGRADE.json)。所有正式 CMS 瀏覽器測試以新固定版執行。管理入口的設定與 bootstrap URL 加上本次版本標記，避免舊快取混用新語言路徑。
 
 ## 三語操作
 
@@ -39,7 +39,7 @@
 
 ## 切換與回復
 
-部署前先保存未存稿，關閉舊後台分頁，部署後登出／刷新 `/admin/`，確認只有單一新聞集合及正確語言名稱。2026-11-05 透過 native Git 檢查遠端 `cms/*`，當時沒有草稿分支；不代表別人的瀏覽器沒有未存稿。若之後出現舊路徑草稿，先保留分支並逐檔遷移，不直接 Publish 或覆蓋 main。
+部署前先保存未存稿，關閉舊後台分頁，部署後登出並強制重新整理 `/admin/`（Ctrl+Shift+R／Cmd+Shift+R），確認只有單一新聞集合及正確語言名稱。2026-11-05 透過 native Git 檢查遠端 `cms/*`，當時沒有草稿分支；不代表別人的瀏覽器沒有未存稿。若之後出現舊路徑草稿，先保留分支並逐檔遷移，不直接 Publish 或覆蓋 main。
 
 整合變更可用 Git revert 回復；若切換後已有新稿，必須將標準語言資料夾內的新稿一併映射回舊路徑，不以整個舊分支覆蓋新內容。照片／影片未搬移或刪除。草稿未合併前不影響公開站。
 
@@ -53,3 +53,13 @@
 - `npm run qa:cms-publication`：獨立本地 clone 中測試草稿→發布→下架→刪除與重建，沒有 Git worktree、遠端寫入或正式內容修改。
 
 本地／OPFS 驗證不等於真人 GitHub 登入、遠端 PR、Actions 或 Pages 發布驗收；未實際執行者不標成通過。整合分支的當次結果記錄於下方，完成後才交付同一個 PR。
+
+## 當次整合結果
+
+- 本機 CI 對應檢查與發布驗證 35 步全部通過；74 項單元測試、型別檢查 0 errors／0 warnings（38 hints）。
+- 真實官方 Sveltia 0.257.0 的桌機／手機三語編輯、未存稿、同次三檔儲存、媒體 CRUD、本地影片及剪貼上傳原始 bytes 全部通過。
+- 技術頁正式內容 864 項、fixtures 906 項檢查通過。三語正文媒體、落地頁 16:9、點擊播放器、本地影片、搜尋及無障礙測試通過。
+- 獨立 clone 的四階段本地發布流程通過，並實際重建驗證技術頁文案、Hero 圖片、FAQ、SEO 與產品反向關聯。148 個遷移檔的 bytes 再次比對一致。
+- 結果見 [本地驗收](evidence/LOCAL-VALIDATION.json) 與 [發布生命週期](evidence/PUBLICATION-LIFECYCLE.json)。正式站的真人登入、遠端 PR／CI 及本整合版本部署尚未執行，不能用本機通過替代。
+
+[桌機編輯器截圖](../screenshots/cms2/trilingual-editor-desktop.png) · [手機三語切換截圖](../screenshots/cms2/trilingual-editor-mobile.png)。截圖與操作皆為隔離測試資料。

@@ -111,6 +111,12 @@ try{
  assert.ok(saved.includes('BXR isolated browser test.'));
  const insertedImage=saved.match(/<!-- bxr-image: (\{[^\n]*\}) -->/);assert.ok(insertedImage,'Rich editor must save the image component syntax');
  assert.equal(JSON.parse(insertedImage[1]).alt,'BXR inline image alt');
+ const inlineImageData=JSON.parse(insertedImage[1]);
+ assert.ok(!inlineImageData.src.startsWith('blob:'),'Pending image upload must become a repository path');
+ const inlineAsset=inlineImageData.src.startsWith('/')?inlineImageData.src.slice(1):path.posix.normalize(path.posix.join('cms-test-content',inlineImageData.src));
+ assert.ok(inlineAsset.startsWith('cms-test-media/'),inlineAsset);
+ assert.deepEqual(Buffer.from(clone[inlineAsset]),image,'Clipboard round trip must retain exact pending image upload bytes');
+
  const asset=Object.keys(clone).find(p=>p.startsWith('cms-test-media/')&&p.endsWith('.webp'));assert.ok(asset);
  assert.deepEqual(Buffer.from(clone[asset]),image);
  await page.getByRole('row',{name:/bxr-cms-browser-qa/}).click();
@@ -216,9 +222,11 @@ try{
  await page.screenshot({path:path.join(cache,'trilingual-editor-desktop.png')});
  await page.setViewportSize({width:390,height:844});
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Trilingual editor must fit a phone viewport');
- await page.locator('[role=radio][value="ja"]').first().click();
+ await page.getByRole('combobox',{name:'Switch Locale',exact:true}).click();
+ await page.getByRole('option',{name:/Japanese/}).click();
  await (await reveal(page.getByRole('textbox',{name:'標題 / Title',exact:true}))).fill(draftTitles.jp);
- await page.locator('[role=radio][value="zh-Hant"]').first().click();
+ await page.getByRole('combobox',{name:'Switch Locale',exact:true}).click();
+ await page.getByRole('option',{name:/Chinese.*Traditional/}).click();
  assert.equal(await (await reveal(page.getByRole('textbox',{name:'標題 / Title',exact:true}))).inputValue(),draftTitles.tw);
  await page.screenshot({path:path.join(cache,'trilingual-editor-mobile.png')});
  await page.setViewportSize({width:1440,height:1000});
