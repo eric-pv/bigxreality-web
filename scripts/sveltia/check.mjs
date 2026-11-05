@@ -1,29 +1,31 @@
 import assert from 'node:assert/strict';
+import {contentLocale} from '../../src/lib/content-locale.ts';
 import { readFile,readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import { parse,stringify } from 'yaml';
+import {validateBodyMediaTranslations} from '../../src/lib/body-media.ts';
 import { loadSchemas,unwrap,root } from './schema.mjs';
 import { mediaFormat,validateValue,mediaSchema } from '../../public/admin/value-tools.js';
 const config=parse(await readFile(new URL('public/admin/config.yml',root),'utf8'));
 assert.equal(config.backend.branch,'main');
 assert.equal(config.publish_mode,'editorial_workflow');
-for(const collection of config.collections.filter(c=>c.folder&&c.name!=='cms-test'))assert.equal(collection.delete,true,'Content deletion uses reviewed Git history; fixed pages remain protected');
-assert.ok(!config.i18n);
-for(const lang of ['tw','en','jp'])assert.ok(config.collections.some(c=>c.name===`news-${lang}`&&c.folder===`src/content/news/${lang}`));
+for(const collection of config.collections.filter(c=>c.folder&&!['cms-test','technologies','technology-overview'].includes(c.name)))assert.equal(collection.delete,true,'Content deletion uses reviewed Git history; fixed pages remain protected');
+assert.deepEqual(config.i18n.locales,['zh-Hant','en','ja']);
+assert.equal(config.i18n.default_locale,'zh-Hant');
+assert.equal(config.i18n.initial_locales,'all');
+assert.ok(config.collections.some(c=>c.name==='news'&&c.folder==='src/content/news'&&c.i18n===true));
+assert.ok(!config.collections.some(c=>/^news-(tw|en|jp)$/.test(c.name)));
 assert.ok(config.output.omit_empty_optional_fields);
 assert.ok(!config.media_libraries.default.config.transformations);
 // List labels must identify real content without exposing storage identifiers as UI text.
-for(const lang of ['tw','en','jp']){
- const tags=config.collections.find(c=>c.name===`tags-${lang}`);
- assert.equal(tags.identifier_field,'name');
- assert.equal(tags.summary,'{{name}}','Tag lists must use the schema name, not a missing title');
- const pages=config.collections.find(c=>c.name===`pages-${lang}`);
- for(const file of pages.files){
-  assert.match(file.label,/[\u3400-\u9fff].* \/ [A-Za-z]/,`${file.name}: fixed-page label must be bilingual`);
-  assert.equal(file.file,`src/content/pages/${lang}/${file.name}.md`,'Display labels must not rename content paths');
- }
+const tags=config.collections.find(c=>c.name==='tags');
+assert.equal(tags.identifier_field,'name');assert.equal(tags.summary,'{{name}}');
+const fixed=config.collections.find(c=>c.name==='pages');
+for(const file of fixed.files){
+ assert.match(file.label,/[\u3400-\u9fff].* \/ [A-Za-z]/);
+ assert.equal(file.file,`src/content/pages/{{locale}}/${file.name}.md`);
 }
 for(const asset of config.asset_collections)assert.match(asset.label,/[\u3400-\u9fff].* \/ [A-Za-z]/);
 const schemas=loadSchemas();let fields=0,files=0;
@@ -50,22 +52,23 @@ function rawCoverage(value,schema,trace){
 for(const collection of config.collections){
  const name=collection.name.replace(/-(tw|en|jp)$/,'');
  if(!schemas[name])continue;
+ for(const legacy of ['tw','jp'])assert.ok(!existsSync(new URL(`src/content/${name}/${legacy}`,root)),`${name}: legacy ${legacy} folder must be migrated before publication; do not publish an old cached CMS form`);
  if(collection.fields)coverage(schemas[name],collection.fields,collection.name);
  // Fixed pages: `draft` is offered only where the route reads it (privacy). Omitting it elsewhere is safe
  // only while no language file of that page holds a draft value that a CMS save could drop.
  else for(const file of collection.files){
   const omitted=new Set(name==='pages'&&!file.fields.some(f=>f.name==='draft')?['draft']:[]);
   for(const lang of omitted.size?['tw','en','jp']:[]){
-   const md=new URL(`src/content/pages/${lang}/${file.name}.md`,root);
+   const md=new URL(`src/content/pages/${contentLocale(lang)}/${file.name}.md`,root);
    if(existsSync(md))assert.equal(parse((await readFile(md,'utf8')).split(/^---\s*$/m)[1])?.draft,undefined,`pages/${lang}/${file.name}.md has draft but the CMS omits the field`);
   }
   coverage(schemas[name],file.fields,`${collection.name}.${file.name}`,omitted);
  }
- for(const lang of [collection.name.split('-').at(-1)]){
-  const folder=new URL(`src/content/${name}/${lang}/`,root);if(!existsSync(folder))continue;
-  for(const filename of (await readdir(folder)).filter(n=>n.endsWith('.md'))){
-   assert.ok(/^[a-z0-9]+(?:-[a-z0-9]+)*\.md$/.test(filename),`Use a stable lowercase English slug: ${collection.name}/${filename}`);
-   const source=await readFile(new URL(filename,folder),'utf8');const raw=parse(source.split(/^---\s*$/m)[1]);
+ for(const lang of ['tw','en','jp']){
+  const folder=new URL(`src/content/${name}/${contentLocale(lang)}/`,root);if(!existsSync(folder))continue;
+  for(const filename of (await readdir(folder)).filter(n=>n.endsWith(collection.extension==='json'?'.json':'.md'))){
+   assert.ok(/^[a-z0-9]+(?:-[a-z0-9]+)*\.(md|json)$/.test(filename),`Use a stable lowercase English slug: ${collection.name}/${filename}`);
+   const source=await readFile(new URL(filename,folder),'utf8');const raw=collection.extension==='json'?JSON.parse(source):parse(source.split(/^---\s*$/m)[1]);
    rawCoverage(raw,schemas[name],`${collection.name}/${lang}/${filename}`);
    assert.ok(schemas[name].safeParse(raw).success,`Invalid schema ${collection.name}/${lang}/${filename}`);
    assert.deepEqual(parse(stringify(raw)),raw);files++;
@@ -87,14 +90,32 @@ for(const [id,record] of Object.entries(media)){
 assert.deepEqual(JSON.parse(mediaFormat.toFile(mediaFormat.fromFile(JSON.stringify(media)))) ,media);
 assert.ok(validateValue('bad',{type:'number'}));
 assert.equal(validateValue('[待提供]',{anyOf:[{type:'number'},{type:'string',const:'[待提供]'}]}),'');
-const personnel=config.collections.find(c=>c.name==='products-tw').fields.find(f=>f.name==='deployment').fields.find(f=>f.name==='personnel');
+const personnel=config.collections.find(c=>c.name==='products').fields.find(f=>f.name==='deployment').fields.find(f=>f.name==='personnel');
 assert.equal(validateValue({min:1,max:3,approx:false},personnel.value_schema),'');
 assert.ok(validateValue({min:-1,max:3},personnel.value_schema));
 assert.ok(!config.collections.some(c=>['milestones','team','partners'].includes(c.name)));
-assert.ok(!config.collections.find(c=>c.name==='pages-tw').files.some(f=>f.name==='history'));
+assert.ok(!config.collections.find(c=>c.name==='pages').files.some(f=>f.name==='history'));
+// Approval cannot publish a shared inline asset before all three languages have their own alt/title.
+for(const name of ['news','insights','case-studies','products','solutions','technologies']){
+ const folder=new URL(`src/content/${name}/zh-Hant/`,root);if(!existsSync(folder))continue;
+ for(const filename of (await readdir(folder)).filter(n=>/\.(md|json)$/.test(n))){
+  const entries={};let source;
+  for(const lang of ['tw','en','jp']){
+   const file=`src/content/${name}/${contentLocale(lang)}/${filename}`,url=new URL(file,root);if(!existsSync(url))continue;
+   const text=await readFile(url,'utf8'),json=filename.endsWith('.json');
+   const data=json?JSON.parse(text):parse(text.split(/^---\s*$/m)[1]);
+   if(lang==='tw')source=data;
+   const bodies=json?[data.body??'',...(data.sections??[]).map(section=>section.body??'')]:[text.split(/^---\s*$/m).slice(2).join('---')];
+   bodies.push(...(data.landing?.blocks??[]).filter(block=>block.kind==='prose').map(block=>block.body??''));
+   entries[lang]={file,bodies};
+  }
+  if(source?.draft||source?.approval?.approved===false)continue;
+  assert.deepEqual(validateBodyMediaTranslations(entries),[],`${name}/${filename}: complete all three inline-media translations before publication`);
+ }
+}
 const articleIds=new Set();
 for(const collection of ['news','products','solutions','insights','case-studies']){
- const dir=new URL(`src/content/${collection}/tw/`,root);if(!existsSync(dir))continue;
+ const dir=new URL(`src/content/${collection}/zh-Hant/`,root);if(!existsSync(dir))continue;
  for(const file of (await readdir(dir)).filter(f=>f.endsWith('.md'))){
   const raw=parse((await readFile(new URL(file,dir),'utf8')).split(/^---\s*$/m)[1]);
   if(collection==='news'&&raw.articleId){assert.ok(!articleIds.has(raw.articleId),`Duplicate ARTICLE_ID ${raw.articleId}`);articleIds.add(raw.articleId);}
@@ -104,7 +125,7 @@ for(const collection of ['news','products','solutions','insights','case-studies'
    if(raw.mediaId)assert.ok(media[raw.mediaId],`${file}: mediaId is not registered`);
   }
   for(const lang of ['en','jp']){
-   const localized=new URL(`src/content/${collection}/${lang}/${file}`,root);
+   const localized=new URL(`src/content/${collection}/${contentLocale(lang)}/${file}`,root);
    assert.ok(existsSync(localized),`${collection}/${file}: publish only after EN and JP exist with the same slug`);
    const copy=parse((await readFile(localized,'utf8')).split(/^---\s*$/m)[1]);
    assert.equal(copy.translationStatus,'translated',`${collection}/${lang}/${file}: translation not ready`);
@@ -114,7 +135,7 @@ for(const collection of ['news','products','solutions','insights','case-studies'
 const sample=JSON.parse(JSON.stringify({translationStatus:'source',draft:true,title:'Isolated CMS test',summary:'Never published',category:'company'}));
 assert.ok(schemas.news.safeParse(sample).success);
 assert.equal(schemas.news.parse(sample).publishDate,undefined);
-assert.equal(path.normalize(path.join('src/content/news/tw','../../../assets/images/news/example.jpg')),'src/assets/images/news/example.jpg');
+assert.equal(path.normalize(path.join('src/content/news/zh-Hant','../../../assets/images/news/example.jpg')),'src/assets/images/news/example.jpg');
 assert.ok(!config.collections.find(c=>c.name==='cms-test').folder.startsWith('src/content'));
 const branch=process.env.GITHUB_HEAD_REF||process.env.GITHUB_REF_NAME||execFileSync('git',['branch','--show-current'],{encoding:'utf8'}).trim();
 if(branch==='feature/sveltia-cms'||branch.startsWith('cms/')){

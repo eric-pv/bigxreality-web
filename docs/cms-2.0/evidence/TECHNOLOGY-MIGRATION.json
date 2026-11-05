@@ -1,0 +1,159 @@
+{
+  "baselineCommit": "ef36462993d0a0ce6f0629693debaed4454f0646",
+  "scope": "24 canonical JSON entries; relations and localized notes preserved; raw assets and URL routes unchanged",
+  "copyChanges": [
+    {
+      "file": "technologies/zh-Hant/ai-simulation.json",
+      "field": "sections.0.title",
+      "before": "AI 如何參與模擬訓練？",
+      "after": "AI 如何參與模擬訓練",
+      "reason": "Existing headline punctuation rule now scans the migrated JSON; remove the final question mark without changing words."
+    }
+  ],
+  "entries": [
+    {
+      "file": "src/content/technologies/zh-Hant/xr.json",
+      "originalCopyDigest": "aefe0d0a3d68662a02b53e344550a10585c304f0ab3aa6ec9f58a2cb27b7a526",
+      "migratedCopyDigest": "aefe0d0a3d68662a02b53e344550a10585c304f0ab3aa6ec9f58a2cb27b7a526",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/en/xr.json",
+      "originalCopyDigest": "23189d097eb6575c4ff4b7142aa9b4a57e71721e8bd549174bd93eb1b053b35e",
+      "migratedCopyDigest": "23189d097eb6575c4ff4b7142aa9b4a57e71721e8bd549174bd93eb1b053b35e",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/ja/xr.json",
+      "originalCopyDigest": "38c6e2cf996fb04bf2f628415dd8656d01084433c80497d41bd8b72da91b0428",
+      "migratedCopyDigest": "38c6e2cf996fb04bf2f628415dd8656d01084433c80497d41bd8b72da91b0428",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/zh-Hant/ai-simulation.json",
+      "originalCopyDigest": "681446c59a6a5e127bc13e351715d91ba4f3b3f3766eb6028c4b9e2c7871af8a",
+      "migratedCopyDigest": "2bdea3a57f26eb42d83dcab1cf379ec15a89c9d3b9c5cfc863b0b6dfdf0da29f",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/en/ai-simulation.json",
+      "originalCopyDigest": "96dc0ce7457bae2c2e3224e88c286f2a27f02d20da6cc21827eb883e318f7c91",
+      "migratedCopyDigest": "96dc0ce7457bae2c2e3224e88c286f2a27f02d20da6cc21827eb883e318f7c91",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/ja/ai-simulation.json",
+      "originalCopyDigest": "f3e4757513dfa213d8508c6618f7479c32b287591d368bf4c870365c8e614c02",
+      "migratedCopyDigest": "f3e4757513dfa213d8508c6618f7479c32b287591d368bf4c870365c8e614c02",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/zh-Hant/digital-simulation.json",
+      "originalCopyDigest": "37aea2991fde44054fc46868f48d39287097b5144aac5e988d07aeee8b23920c",
+      "migratedCopyDigest": "37aea2991fde44054fc46868f48d39287097b5144aac5e988d07aeee8b23920c",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/en/digital-simulation.json",
+      "originalCopyDigest": "3852456aeb55ee7623c13ae6f5a35e38312c62936700a07d9847cde8190e66e3",
+      "migratedCopyDigest": "3852456aeb55ee7623c13ae6f5a35e38312c62936700a07d9847cde8190e66e3",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/ja/digital-simulation.json",
+      "originalCopyDigest": "5c502621726420b5d0b391684eeaf0fd7b13e668865c2ada8178f2c0ccdadad8",
+      "migratedCopyDigest": "5c502621726420b5d0b391684eeaf0fd7b13e668865c2ada8178f2c0ccdadad8",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/zh-Hant/training-design.json",
+      "originalCopyDigest": "f3f222ca4c6d6f81c74b3ddf2d85b28e406d21b84c33d62f7debfd4677691582",
+      "migratedCopyDigest": "f3f222ca4c6d6f81c74b3ddf2d85b28e406d21b84c33d62f7debfd4677691582",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/en/training-design.json",
+      "originalCopyDigest": "91df30e8c35bac7c71326df2b54f2423e36c83353668d092f6b18e993dcba346",
+      "migratedCopyDigest": "91df30e8c35bac7c71326df2b54f2423e36c83353668d092f6b18e993dcba346",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/ja/training-design.json",
+      "originalCopyDigest": "75be8750ab176dea70e42183fd456d88f8f621217a3247272f02ac66dda5a461",
+      "migratedCopyDigest": "75be8750ab176dea70e42183fd456d88f8f621217a3247272f02ac66dda5a461",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/zh-Hant/system-integration.json",
+      "originalCopyDigest": "3cc7bb5442cc75712ddb1a861b47e3ddfb8c9f2590069989fd83496eb4819bd9",
+      "migratedCopyDigest": "3cc7bb5442cc75712ddb1a861b47e3ddfb8c9f2590069989fd83496eb4819bd9",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/en/system-integration.json",
+      "originalCopyDigest": "60b8a14180d7a7853250eb221bc17677cca768c6525af849dd9ce60c125b5343",
+      "migratedCopyDigest": "60b8a14180d7a7853250eb221bc17677cca768c6525af849dd9ce60c125b5343",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/ja/system-integration.json",
+      "originalCopyDigest": "8f4c677fb1d64cf602e092c745444de1547f64c9d610942333d6802e2bf5affb",
+      "migratedCopyDigest": "8f4c677fb1d64cf602e092c745444de1547f64c9d610942333d6802e2bf5affb",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/zh-Hant/decision-visualization.json",
+      "originalCopyDigest": "700c7fdc95f764ee7b52e950da4eb9671ee82c9fe7380b0bd5a048ff7bb2b068",
+      "migratedCopyDigest": "700c7fdc95f764ee7b52e950da4eb9671ee82c9fe7380b0bd5a048ff7bb2b068",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/en/decision-visualization.json",
+      "originalCopyDigest": "9f5b58510cd2037fa817a6a61227de00c6b3620d33dc9d1fc6ab7fb066046aa1",
+      "migratedCopyDigest": "9f5b58510cd2037fa817a6a61227de00c6b3620d33dc9d1fc6ab7fb066046aa1",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/ja/decision-visualization.json",
+      "originalCopyDigest": "c4ec38f299dbfc116eb371e148332f84e245199fe25a20a04e6f8d08eba775f0",
+      "migratedCopyDigest": "c4ec38f299dbfc116eb371e148332f84e245199fe25a20a04e6f8d08eba775f0",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/zh-Hant/domain-expertise.json",
+      "originalCopyDigest": "50182f4d7df68f1f8563a0cf06d9feff98385875c47a6b429e7a8dd9d4cf1cf6",
+      "migratedCopyDigest": "50182f4d7df68f1f8563a0cf06d9feff98385875c47a6b429e7a8dd9d4cf1cf6",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/en/domain-expertise.json",
+      "originalCopyDigest": "a79322a9c5476c5471b23eb76cb98ebe41c433b426d67c6781a19a6f23589a64",
+      "migratedCopyDigest": "a79322a9c5476c5471b23eb76cb98ebe41c433b426d67c6781a19a6f23589a64",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technologies/ja/domain-expertise.json",
+      "originalCopyDigest": "3bc4add80a344f61ddc8995e9a5a187d5e274f6c9fb274167f6a354bc5f31ad1",
+      "migratedCopyDigest": "3bc4add80a344f61ddc8995e9a5a187d5e274f6c9fb274167f6a354bc5f31ad1",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technology-overview/zh-Hant/overview.json",
+      "originalCopyDigest": "39999b010234311f8b3c5993d7fa75e40d5e8a41f2458d24e00bf963969f9c97",
+      "migratedCopyDigest": "39999b010234311f8b3c5993d7fa75e40d5e8a41f2458d24e00bf963969f9c97",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technology-overview/en/overview.json",
+      "originalCopyDigest": "84b2b0a5b385c5e0071b242f9fe61641631bce5db5405174e97468277e4b6fee",
+      "migratedCopyDigest": "84b2b0a5b385c5e0071b242f9fe61641631bce5db5405174e97468277e4b6fee",
+      "equivalentApartFromDocumentedPunctuation": true
+    },
+    {
+      "file": "src/content/technology-overview/ja/overview.json",
+      "originalCopyDigest": "fa918bde9ab5de41a581557b563ff7a376c768716282d26ba9117239965ff25a",
+      "migratedCopyDigest": "fa918bde9ab5de41a581557b563ff7a376c768716282d26ba9117239965ff25a",
+      "equivalentApartFromDocumentedPunctuation": true
+    }
+  ]
+}

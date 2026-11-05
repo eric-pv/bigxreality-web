@@ -63,7 +63,8 @@
     "qa:cms-publication": "node scripts/qa-cms-publication.mjs",
     "qa:inquiry-poc": "node scripts/qa-inquiry-poc.mjs",
     "qa:inquiry-production": "node scripts/pages/package.mjs && node scripts/qa-inquiry-production.mjs",
-    "qa:inquiry-production:live": "INQUIRY_LIVE=1 npm run qa:inquiry-production"
+    "qa:inquiry-production:live": "INQUIRY_LIVE=1 npm run qa:inquiry-production",
+    "qa:inline-media": "QA_DIST=dist-fixtures node scripts/qa-inline-media.mjs"
   },
   "dependencies": {
     "@astrojs/react": "7.1.0",

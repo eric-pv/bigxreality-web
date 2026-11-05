@@ -1,3 +1,4 @@
+import {contentLocale} from "../src/lib/content-locale.ts";
 import { publicUrl, artifactPath } from '../src/lib/public-url.ts';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -39,7 +40,7 @@ try {
       const [lang, section, slug] = url.split('/').filter(Boolean);
       const collection=({news:'news',insights:'insights',cases:'case-studies',products:'products',solutions:'solutions'})[section];
       const pageSlug=section==='company'?(slug??'company'):(!slug?section:undefined);
-      const sourcePath=collection&&slug?`src/content/${collection}/${lang}/${slug}.md`:pageSlug?`src/content/pages/${lang}/${pageSlug}.md`:undefined;
+      const sourcePath=collection&&slug?`src/content/${collection}/${contentLocale(lang)}/${slug}.md`:pageSlug?`src/content/pages/${contentLocale(lang)}/${pageSlug}.md`:undefined;
       if(sourcePath)try{const source=parseYaml((await fs.readFile(sourcePath,'utf8')).split(/^---\s*$/m)[1]);if(source.seo?.title&&source.seo?.description)copy=source.seo;}catch(error){if(error.code!=='ENOENT')throw error;}
       if(copy){assert.equal(m.titles[0],normalize(copy.title));assert.equal(m.descriptions[0],copy.description);}
       const pattern=url.replace(/^\/(tw|en|jp)\//,'/{lang}/');

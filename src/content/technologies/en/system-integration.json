@@ -1,0 +1,161 @@
+{
+  "translationStatus": "translated",
+  "draft": false,
+  "eyebrow": "Core Technology",
+  "title": "Communication & System Integration",
+  "lead": "Enable training equipment, operating interfaces, and information systems to work together within an appropriate architecture",
+  "intro": [
+    "Professional simulation training does not necessarily use just one device. Depending on mission requirements, a training system may involve operating devices, displays, simulated environments, and other information interfaces.",
+    "When training requirements span different devices and systems, communication and system integration become important technical considerations.",
+    "BXR evaluates equipment interfacing, information transfer, and system configurations according to product capabilities and project requirements, enabling different technical components to serve their purpose within a suitable training architecture."
+  ],
+  "primaryCta": "Explore related solutions",
+  "secondaryCta": "Discuss System Integration Requirements",
+  "sections": [
+    {
+      "id": "concept",
+      "title": "System integration means more than connecting every device",
+      "paragraphs": [
+        "Different training devices have their own operating methods, data formats, and system limitations.",
+        "Even if two systems can transmit information, that does not mean they can directly exchange data or operate together.",
+        "Meaningful system integration requires confirming training objectives, equipment capabilities, interface conditions, and how information will be used before choosing an appropriate architecture."
+      ],
+      "items": [
+        {
+          "title": "Equipment interfacing",
+          "paragraphs": [
+            "Evaluate connection requirements between different operating devices, displays, and simulation systems."
+          ]
+        },
+        {
+          "title": "Information transfer",
+          "paragraphs": [
+            "Plan which video, status information, or other data needs to be transmitted for the actual application."
+          ]
+        },
+        {
+          "title": "System configuration",
+          "paragraphs": [
+            "Arrange an appropriate system architecture according to the site, equipment, and training requirements."
+          ]
+        },
+        {
+          "title": "Compatibility assessment",
+          "paragraphs": [
+            "Confirm whether different devices and systems have the necessary interfaces, protocols, or development prerequisites."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "integration-design",
+      "title": "Start with training objectives to determine which information needs to be integrated",
+      "paragraphs": [
+        "System integration should serve clear training objectives rather than maximize the number of connected devices.",
+        "For example, some training activities only require sending a particular video feed to another system; other scenarios may require interaction between operating devices and the simulated environment.",
+        "These requirements may differ in data types, transmission methods, latency requirements, and equipment configurations.",
+        "BXR therefore evaluates the necessary information exchanges and system interfaces according to actual product and project conditions."
+      ],
+      "items": [
+        {
+          "title": "Confirm integration requirements",
+          "paragraphs": [
+            "First clarify which devices need to be connected and the purpose of transferring information."
+          ]
+        },
+        {
+          "title": "Assess technical conditions",
+          "paragraphs": [
+            "Confirm hardware interfaces, software architectures, and the data formats available for use."
+          ]
+        },
+        {
+          "title": "Plan system interfaces",
+          "paragraphs": [
+            "Arrange information flows and operating methods within feasible technical conditions."
+          ]
+        },
+        {
+          "title": "Test and adjust",
+          "paragraphs": [
+            "Test interface outcomes and usage scenarios with the actual system configuration."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "confirmed-application",
+      "title": "Build information links between systems around specific requirements",
+      "paragraphs": [
+        "In a specific application, BXR has implemented an integration scenario that supplies video information from an unmanned surface vessel (USV) to the SUT training system.",
+        "This type of application illustrates how system integration can begin with a clear information requirement and establish useful connections between different systems for a particular mission.",
+        "However, this does not mean all SUT, UAV, and USV products already offer comprehensive interoperability, nor that every type of information can be sent to other equipment.",
+        "The data and operating methods that can actually be integrated must still be confirmed against product capabilities and project conditions."
+      ]
+    },
+    {
+      "id": "value",
+      "title": "Give every integration a clear purpose",
+      "paragraphs": [
+        "Appropriate communication and system integration can help training organizations combine equipment according to their needs, arrange how information is displayed, or establish data links between particular systems.",
+        "The value lies in enabling necessary information to support training applications within feasible technical conditions, rather than claiming that all systems are interoperable.",
+        "Key benefits:"
+      ],
+      "bullets": [
+        "Assess equipment and system interfaces according to training requirements.",
+        "Support the transfer of specific video feeds or information.",
+        "Help plan how different devices are operated and how information is displayed.",
+        "Evaluate integration feasibility based on existing product capabilities.",
+        "Avoid unnecessary system complexity."
+      ]
+    }
+  ],
+  "relatedTitle": "From product capabilities to cross-system application planning",
+  "faq": [
+    {
+      "question": "What is system integration in simulation training?",
+      "answer": "System integration involves planning connections and information exchange between different devices, operating interfaces, or simulation systems according to training requirements. The actual scope depends on the system architecture, interface conditions, and intended use."
+    },
+    {
+      "question": "Can different simulation training products all connect to one another?",
+      "answer": "Not necessarily. Different products may use different hardware, software, and data architectures. Interoperability requires confirming the relevant interfaces, protocols, information formats, and actual product capabilities."
+    },
+    {
+      "question": "Are MUM-T and NOVA the same integrated system?",
+      "answer": "No. MUM-T primarily focuses on squad-level information sharing and collaboration, while NOVA addresses larger-scale cross-system simulation integration. They operate at different application levels and have different design objectives."
+    },
+    {
+      "question": "Can BXR supply USV video to the SUT training system?",
+      "answer": "BXR has a specific integration application scenario that supplies USV video information to SUT. However, the actual usage and information that can be transferred must still be confirmed for the relevant product versions and system configurations."
+    },
+    {
+      "question": "Does system integration always require redeveloping all equipment?",
+      "answer": "Not necessarily. The integration approach depends on the interfaces, data architectures, and extensibility of existing equipment. Some requirements may be handled through appropriate interface planning, while others may require additional development or equipment adjustments."
+    }
+  ],
+  "closing": {
+    "title": "Plan System Integration around Required Information Links",
+    "body": "Different devices and simulation systems have different technical conditions. BXR can discuss feasible interfaces and integration applications according to training requirements.",
+    "cta": "Discuss System Integration Requirements"
+  },
+  "seo": {
+    "title": "Communication & System Integration｜XR Training",
+    "description": "Learn how BXR assesses equipment interfaces, video information transfer, and simulation system integration for professional training, and understand the relationships between SUT, USV, MUM-T, and NOVA application architectures."
+  },
+  "relatedProducts": [
+    "sut",
+    "usv"
+  ],
+  "relatedSolutions": [
+    "military",
+    "mum-t",
+    "nova"
+  ],
+  "primaryDestination": "solutions",
+  "relationNotes": [
+    "MUM-T and NOVA are distinct military sub-solutions, not products.",
+    "MUM-T focuses on information sharing and coordination at small-unit level, particularly information integration on soldiers’ and team leaders’ chest-mounted tablets.",
+    "NOVA addresses larger-scale integration across simulation systems.",
+    "They are not the same system. Whether SUT, UAV or USV participates in a particular integration must be confirmed against the actual products and project configuration."
+  ]
+}

@@ -1,3 +1,4 @@
+import {contentLocale} from "../src/lib/content-locale.ts";
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -10,7 +11,7 @@ test('historical source has 90 complete translations and stable article IDs; Git
  assert.equal(records.length,30);assert.equal(records.some(r=>r.id.startsWith('news-14')),false);
  for(const r of records)for(const[lang,copy]of Object.entries(r.languages)){
   assert.ok(copy.title&&copy.body&&copy.summary);
-  const file=`src/content/news/${lang}/${r.id}.md`;
+  const file=`src/content/news/${contentLocale(lang)}/${r.id}.md`;
   // The provenance TXT remains immutable; authorized Git deletion is not blocked by a frozen import count.
   // Published triplet completeness is independently enforced by cms:sveltia:check.
   if(!fs.existsSync(file))continue;

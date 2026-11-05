@@ -6,6 +6,7 @@
  * order they appear (`sectionCount` tells the caller how many alternating sections were rendered).
  * Images are placeholders until approved photos are supplied.
  */
+import ContentBody from "./ContentBody.astro";
 import { localePath, type Lang } from "../i18n";
 import { getLocalized } from "../lib/content";
 import { getUi } from "../lib/ui";
@@ -19,8 +20,8 @@ import ScenarioCards from "./ScenarioCards.astro";
 import ValueCards from "./ValueCards.astro";
 import Text from "./Text.astro";
 
-interface Props { lang: Lang; L: any }
-const { lang, L } = Astro.props;
+interface Props { lang: Lang; L: any; entryFile:string }
+const { lang, L, entryFile } = Astro.props;
 const ui = getUi(lang);
 const t = ui.productLanding;
 const e = t.eyebrows;
@@ -150,7 +151,7 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt tac-ruler" : (n > 1 ? "
               {b.eyebrow && <p class="t-label eyebrow"><Text value={b.eyebrow} /></p>}
               <h2 class="t-h2" id={`h-block-${i}`}><Text value={b.title} /></h2>
             </div>
-            <div class="prose">{paras(b.body ?? "").map((p: string) => <p><Text value={p} /></p>)}</div>
+            <div class="landing-body"><ContentBody markdown={b.body??""} lang={lang} entryFile={entryFile} /></div>
           </div>
         ) : (
           <>
@@ -222,3 +223,5 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt tac-ruler" : (n > 1 ? "
   @media (max-width: 1023px) { .pb { grid-template-columns: 1fr; gap: var(--space-3); } .split, .challenge { grid-template-columns: 1fr; gap: var(--space-4); } .challenge-head { position: static; } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 767px) { .cards, .pair.triple, .featured { grid-template-columns: 1fr; } }
 </style>
+
+<style is:global>.landing-body .bxr-inline-media img{aspect-ratio:16/9;object-fit:cover;width:100%;height:auto}</style>

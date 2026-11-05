@@ -1,13 +1,14 @@
 ---
 import Text from './Text.astro';
+import ContentBody from './ContentBody.astro';
 /** Shared editorial sections; the content model retains each source paragraph and list. */
 interface Section {
   id: string; title: string; paragraphs: readonly string[];
   items?: readonly { title: string; paragraphs: readonly string[] }[];
-  bullets?: readonly string[]; note?: string;
+  bullets?: readonly string[]; note?: string; body?:string;
 }
-interface Props { sections: readonly Section[]; variant: string }
-const { sections, variant } = Astro.props;
+interface Props { sections: readonly Section[]; variant: string; lang: "tw"|"en"|"jp" }
+const { sections, variant, lang } = Astro.props;
 ---
 <div class={`technology-sections variant-${variant}`}>
   {sections.map((section, index) => (
@@ -20,6 +21,7 @@ const { sections, variant } = Astro.props;
             {section.items.map((item) => <div class="topic"><h3 class="t-h3"><Text value={item.title} /></h3>{item.paragraphs.map((p) => <p><Text value={p} /></p>)}</div>)}
           </div>}
           {section.bullets && <ul class="value-list">{section.bullets.map((item) => <li><Text value={item} /></li>)}</ul>}
+          {section.body && <ContentBody markdown={section.body} lang={lang} entryFile={`src/content/technologies/${lang}/${variant}.json`} />}
           {section.note && <p class="note t-small"><Text value={section.note} /></p>}
         </div>
       </div>

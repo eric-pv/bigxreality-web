@@ -1,0 +1,38 @@
+---
+import {getImage} from 'astro:assets';
+import type {ImageMetadata} from 'astro';
+import {existsSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {marked} from 'marked';
+import {renderBodyMedia,escapeMediaHtml} from '../lib/body-media';
+import Prose from './Prose.astro';
+interface Props {html?:string;markdown?:string;entryFile:string;lang:'tw'|'en'|'jp'}
+const {html,markdown,entryFile,lang}=Astro.props;
+const assets=import.meta.glob<{default:ImageMetadata}>('/src/assets/images/**/*.{jpg,jpeg,png,webp,avif,svg}');
+const rendered=await renderBodyMedia(html??marked.parse(markdown??'',{async:false}),{
+ entryFile,lang,localVideoExists:file=>existsSync(resolve(file)),
+ image:async(file,alt)=>{
+  const load=assets['/'+file];if(!load)throw new Error(`Missing inline image: ${file}`);
+  const src=(await load()).default;
+  const image=await getImage({src,width:Math.min(1600,src.width),format:src.format==='svg'?'svg':'webp'});
+  return `<img src="${escapeMediaHtml(image.src)}" width="${image.attributes.width}" height="${image.attributes.height}" alt="${escapeMediaHtml(alt)}" loading="lazy" decoding="async">`;
+ },
+});
+---
+<Prose html={rendered} />
+<script>
+ document.addEventListener('click',event=>{
+  const button=(event.target as Element).closest<HTMLButtonElement>('[data-bxr-video]');if(!button)return;
+  const frame=document.createElement('iframe');frame.src=button.dataset.bxrVideo!;frame.title=button.dataset.videoTitle!;
+  frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';frame.setAttribute('allow','fullscreen; picture-in-picture');
+  frame.addEventListener('error',()=>{frame.remove();button.hidden=false;});button.hidden=true;button.parentElement!.append(frame);
+ });
+ window.addEventListener('pagehide',()=>{
+  document.querySelectorAll('.bxr-inline-player iframe').forEach(frame=>frame.remove());
+  document.querySelectorAll<HTMLButtonElement>('[data-bxr-video]').forEach(button=>button.hidden=false);
+  document.querySelectorAll<HTMLVideoElement>('.bxr-inline-media video').forEach(video=>video.pause());
+ });
+</script>
+<style is:global>
+ .bxr-inline-media{display:grid;gap:12px;min-width:0;max-width:100%}.bxr-inline-media img{width:100%;height:auto}.bxr-inline-media figcaption{overflow-wrap:anywhere}.bxr-inline-player,.bxr-inline-media video{width:100%;aspect-ratio:16/9;background:var(--bxr-graphite);object-fit:contain}.bxr-inline-player{display:grid;place-items:center}.bxr-inline-player iframe{width:100%;height:100%;border:0}.bxr-inline-player button{min-height:48px;padding:12px 24px;background:var(--bxr-red);color:white;border:0;cursor:pointer}.bxr-inline-player button[hidden]{display:none}
+</style>

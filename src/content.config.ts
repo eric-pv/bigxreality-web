@@ -1,3 +1,4 @@
+import {contentEntryId} from "./lib/content-locale";
 import { TECHNOLOGY_IDS } from "./lib/technologies";
 import { resolveSlot } from "./lib/slot";
 import { existsSync } from "node:fs";
@@ -25,7 +26,7 @@ function loader(collection: string) {
   const folder = FOLDER[collection] ?? collection;
   const fixture = `./tests/fixtures/content/${folder}`;
   const base = source === "fixtures" && existsSync(fixture) ? fixture : `./src/content/${folder}`;
-  return glob({ pattern: "*/*.md", base });
+  return glob({ pattern: ["technologies", "technology-overview"].includes(collection) ? "*/*.json" : "*/*.md", base, generateId:({entry})=>contentEntryId(entry,{allowLegacy:source==="fixtures"&&base===fixture}) });
 }
 
 const pending = z.literal(PENDING);
@@ -446,4 +447,26 @@ const investorItems = defineCollection({
   }),
 });
 
-export const collections = { products, solutions, pages, tags, insights, news, "case-studies": caseStudies, milestones, team, partners, "investor-items": investorItems };
+/** Full technology copy is canonical JSON in Git, edited using regular CMS fields. */
+const technologySection = z.object({
+ id: slug, title: text, paragraphs:z.array(text).default([]),
+ items:z.array(z.object({title:text,paragraphs:z.array(text).default([])})).optional(),
+ bullets:z.array(text).optional(),note:text.optional(),body:z.string().optional(),
+});
+const technologies = defineCollection({loader:loader("technologies"),schema:(ctx)=>z.object({
+ heroImage:picture(ctx).optional(),
+ translationStatus,draft:z.boolean().default(false),eyebrow:text,title:text,lead:text,intro:z.array(text).default([]),
+ primaryCta:text,secondaryCta:text,sections:z.array(technologySection).min(1),relatedTitle:text,
+ faq:z.array(z.object({question:text,answer:text})).default([]),closing:z.object({title:text,body:text,cta:text}),
+ seo:z.object({title:text,description:text}),relatedProducts:slugs,relatedSolutions:slugs,
+ primaryDestination:z.enum(["products","solutions"]),relationNotes:z.array(text).default([]),body:z.string().optional(),
+})});
+const technologyOverview = defineCollection({loader:loader("technology-overview"),schema:(ctx)=>z.object({
+ heroImage:picture(ctx).optional(),
+ translationStatus,eyebrow:text,title:text,lead:text,intro:z.array(text).default([]),
+ technologies:z.object(Object.fromEntries(TECHNOLOGY_IDS.map(id=>[id,z.object({title:text,description:text})]))),
+ seo:z.object({title:text,description:text}),
+})});
+
+export const collections = {
+  technologies, "technology-overview": technologyOverview, products, solutions, pages, tags, insights, news, "case-studies": caseStudies, milestones, team, partners, "investor-items": investorItems };

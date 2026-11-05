@@ -34,3 +34,11 @@ test("technology article query filters publication, locale and translation, sort
   assert.deepEqual(result.map((a) => a.base.data.publishDate.getUTCDate()), [8, 7, 6, 5, 4, 3]);
   assert.deepEqual(selectTechnologyArticles(valid, "domain-expertise", "en"), []);
 });
+
+test('technology publication uses TW authority and excludes incomplete translations', async()=>{
+  const {publishedTechnologyLanguages}=await import('../src/lib/technologies.ts');
+  const entries={tw:{translationStatus:'source',draft:false},en:{translationStatus:'translated',draft:false},jp:{translationStatus:'pending',draft:false}};
+  assert.deepEqual(publishedTechnologyLanguages(entries),['tw','en']);
+  assert.deepEqual(publishedTechnologyLanguages({...entries,tw:{...entries.tw,draft:true}}),[]);
+  assert.deepEqual(publishedTechnologyLanguages({...entries,en:{...entries.en,draft:true}}),['tw']);
+});

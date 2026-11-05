@@ -28,7 +28,7 @@ import { site } from "../lib/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import SectionHead from "./SectionHead.astro";
-import Prose from "./Prose.astro";
+import ContentBody from "./ContentBody.astro";
 import CardProduct from "./CardProduct.astro";
 import CardSolution from "./CardSolution.astro";
 import CardArticle from "./CardArticle.astro";
@@ -179,7 +179,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     )}
 
     <div class="container narrow body">
-      <Prose html={html} />
+      <ContentBody html={html} lang={lang} entryFile={`src/content/${article.collection}/${lang}/${article.slug}.md`} />
       {collection === "news" && <><NewsGallery lang={lang} images={media.gallery} /><NewsVideos lang={lang} videos={media.videos} />
         {media.sourceLinks.length > 0 && <nav class="news-sources" aria-label={{tw:"相關來源",en:"Sources",jp:"関連ソース"}[lang]}><ul role="list">{media.sourceLinks.map(url=><li><a href={url} target="_blank" rel="noopener noreferrer">{url}</a></li>)}</ul></nav>}
       </>}

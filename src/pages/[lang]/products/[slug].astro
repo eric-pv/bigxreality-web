@@ -1,4 +1,5 @@
 ---
+import ContentBody from "../../../components/ContentBody.astro";
 /**
  * /[lang]/products/[slug]/ — the fixed 12-block product template (task brief §5.2).
  * A block whose field is left out is not rendered; a field holding [待提供] is
@@ -12,7 +13,6 @@ import { casesAbout } from "../../../lib/cases";
 import RelatedCases from "../../../components/RelatedCases.astro";
 import { visibleProductSections, isPending, type ProductSection } from "../../../lib/pending";
 import { getUi } from "../../../lib/ui";
-import { markPendingHtml, typesetHtml } from "../../../lib/text";
 import RelatedTechnologies from "../../../components/RelatedTechnologies.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
@@ -42,7 +42,7 @@ const product = (await getLocalized("products", lang)).find((p) => p.slug === sl
 const base = product.base.data; // structural fields (tw)
 const d = product.loc.data; // wording in this language
 const overview = product.loc.body?.trim();
-const overviewHtml = typesetHtml(markPendingHtml(product.loc.rendered?.html ?? ""), lang);
+const overviewHtml = product.loc.rendered?.html ?? "";
 
 const heroImage = base.hero.image && { src: base.hero.image.src, alt: d.hero.image?.alt ?? base.hero.image.alt };
 const integrated = await integratedProducts(slug, lang);
@@ -144,7 +144,7 @@ const deploymentRows = [
     <section class="section" id="overview" aria-labelledby="h-overview">
       <div class="container two-col">
         <SectionHead id="h-overview" eyebrow={head("overview").eyebrow} title={head("overview").title} />
-        <div class="prose" set:html={overviewHtml} />
+        <ContentBody html={overviewHtml} lang={lang} entryFile={`src/content/products/${lang}/${slug}.md`} />
       </div>
     </section>
   )}

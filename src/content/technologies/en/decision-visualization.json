@@ -1,0 +1,130 @@
+{
+  "translationStatus": "translated",
+  "draft": false,
+  "eyebrow": "Core Technology",
+  "title": "Command & Decision Visualization",
+  "lead": "Make complex mission information easier to understand, discuss, and use",
+  "intro": [
+    "In training scenarios that require an understanding of a site, mission deployment, or multiple sources of information, the way information is presented often affects how users understand the situation.",
+    "Maps, tabletop systems, three-dimensional environments, and visualization interfaces can turn some abstract information into forms that are easier to observe and discuss.",
+    "BXR uses technologies such as digital tabletop systems and simulated environments to support information presentation, deployment discussions, and decision-making exercises for particular mission scenarios, helping users understand simulated content from different perspectives."
+  ],
+  "primaryCta": "Explore related products",
+  "secondaryCta": "Discuss information visualization applications",
+  "sections": [
+    {
+      "id": "concept",
+      "title": "Information visualization should help users understand the mission, rather than make displays more complex",
+      "paragraphs": [
+        "Information used in professional training may involve terrain, space, positions, mission deployment, or changes in a scenario.",
+        "If information is presented only as text or scattered data, users may need additional time to organize the relationships between its elements.",
+        "Appropriate maps, tabletop systems, and visualization design can organize and present relevant information according to mission objectives, helping users understand the situation."
+      ],
+      "items": [
+        {
+          "title": "Maps and spatial presentation",
+          "paragraphs": [
+            "Present terrain, sites, and relevant spatial information in two or three dimensions."
+          ]
+        },
+        {
+          "title": "Organizing mission information",
+          "paragraphs": [
+            "Arrange information categories, hierarchies, and display methods according to user needs."
+          ]
+        },
+        {
+          "title": "Scenario visualization",
+          "paragraphs": [
+            "Use digital interfaces to present mission deployments or scenario content suitable for simulation."
+          ]
+        },
+        {
+          "title": "Interactive operation",
+          "paragraphs": [
+            "Provide appropriate ways to view, interact with, or discuss information according to the system design."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decision-exercises",
+      "title": "From presenting information to understanding scenarios and discussing decisions",
+      "paragraphs": [
+        "In particular training applications, tabletop systems and digital visualization interfaces can assist mission discussions, scenario exercises, or operational practice.",
+        "Users can observe mission conditions, discuss possible deployments, and understand relationships between different factors in a simulated scenario based on the information provided by the system.",
+        "However, information visualization does not mean automated decision-making, nor does it imply that a system can conduct real combat command or real-time battlefield management.",
+        "BXR focuses on aligning visualization tools with training objectives to support understanding, discussion, and exercises in specific scenarios."
+      ]
+    },
+    {
+      "id": "wargaming-tables",
+      "title": "Use wargaming tables to present mission scenarios and spatial relationships",
+      "paragraphs": [
+        "Wargaming tables are one application that combines information visualization with simulation training.",
+        "Digital maps, three-dimensional environments, and appropriate interactive interfaces can help users observe the mission environment, understand spatial configurations, and discuss and explore particular scenarios.",
+        "BXR’s Wargaming Table System provides a concrete product form for these applications.",
+        "Actual tabletop operation, data presentation, and training functions should follow the existing official product information. Unconfirmed capabilities for real-time data integration, battlefield monitoring, or automated command must not be added."
+      ]
+    },
+    {
+      "id": "value",
+      "title": "Organize information into a mission view that is easier to understand",
+      "paragraphs": [
+        "The value of information visualization lies not in presenting as much data as possible, but in making appropriate information understandable in a way that meets mission needs.",
+        "Maps, tabletop systems, and simulation visualization interfaces can support spatial understanding, discussions of information, and mission exercises in specific training scenarios.",
+        "Key benefits:"
+      ],
+      "bullets": [
+        "Help present terrain, sites, and mission deployments.",
+        "Turn some abstract information into visual content.",
+        "Support discussion and exercises for particular scenarios.",
+        "Present relevant spatial information alongside simulated environments.",
+        "Arrange information displays according to training requirements."
+      ]
+    }
+  ],
+  "relatedTitle": "Use tabletop and visualization tools to support simulation training",
+  "faq": [
+    {
+      "question": "What is command and decision visualization?",
+      "answer": "Command and decision visualization presents mission-related spatial, deployment, or scenario information through maps, tabletop systems, or other visual interfaces, helping users understand the information and conduct particular discussions or exercises."
+    },
+    {
+      "question": "Do information visualization systems make command decisions automatically?",
+      "answer": "Not necessarily, and information visualization itself does not mean automated decision-making. Its primary role is to present relevant information according to the system design, helping users observe and understand a situation. Any additional analysis or decision-making functions must be confirmed for the actual product."
+    },
+    {
+      "question": "How does a wargaming table differ from a conventional map?",
+      "answer": "A conventional map primarily presents geographic or spatial information. A wargaming table can combine mission scenarios, deployment information, and appropriate interaction methods according to training objectives, supporting particular discussions and simulation exercises. Specific functions depend on the product design."
+    },
+    {
+      "question": "Does a wargaming table always connect to real-time battlefield data?",
+      "answer": "Not necessarily. A wargaming table can use digital environments and simulated data created for training purposes. This does not mean it necessarily connects to a real battlefield or real-time operational systems. Actual data sources should be confirmed against product capabilities."
+    },
+    {
+      "question": "Are BXR’s Wargaming Table System and NOVA already fully integrated?",
+      "answer": "This cannot be assumed. The Wargaming Table System is a standalone product, while NOVA is a cross-system integration sub-solution within military simulation. Any specific interfaces or integration capabilities between them should be determined from the actual system configuration and confirmed project capabilities."
+    }
+  ],
+  "closing": {
+    "title": "Make mission information easier to understand as training content",
+    "body": "From digital maps and tabletop systems to simulated scenarios, BXR can discuss appropriate information visualization approaches and training configurations according to application requirements.",
+    "cta": "Discuss information visualization applications"
+  },
+  "seo": {
+    "title": "Command & Decision Visualization｜Wargaming Simulation",
+    "description": "Learn how BXR uses digital maps, wargaming tables, and three-dimensional information visualization to support understanding mission scenarios, deployment discussions, and decision-making exercises in professional simulation training."
+  },
+  "relatedProducts": [
+    "wargaming-table"
+  ],
+  "relatedSolutions": [
+    "military",
+    "nova"
+  ],
+  "primaryDestination": "products",
+  "relationNotes": [
+    "NOVA is a sub-solution within military simulation, not another name for the wargaming table. Listing both as related areas does not mean that the wargaming table has been integrated with NOVA. Any interfaces must be assessed against confirmed product capabilities and project configurations."
+  ]
+}

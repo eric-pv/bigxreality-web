@@ -31,7 +31,7 @@ npm run pages:build # Git 內容建置、封裝 dist-pages、正式 Pages 檢查
 
 ## 內容
 
-- 內容在 `src/content/<collection>/<tw|en|jp>/<slug>.md`（Sveltia 三語明確集合，共用原 slug）。
+- 內容在 `src/content/<collection>/<zh-Hant|en|ja>/<slug>.md`（Sveltia 原生單篇三語，共用原 slug；公開網址仍是 tw／en／jp）。
 - 排序、領域、關聯、日期、草稿這些結構欄位只讀 `tw` 檔。
 - 沒有填的欄位：整個區塊不顯示；填 `[待提供]`：區塊照常顯示並標出缺什麼。
 - 介面文字在 `src/content/ui/<lang>.json`，站點設定在 `src/data/site.json`。
@@ -42,3 +42,5 @@ npm run pages:build # Git 內容建置、封裝 dist-pages、正式 Pages 檢查
 三語總覽與第一批技術頁、CMS 技術標籤遷移及驗收方式見 [TECHNOLOGIES.md](docs/TECHNOLOGIES.md)。完成建置後執行 `npm run qa:technologies`，三語完整性報告輸出至 `.qa/technologies-content-audit.md`。
 
 第二批四項技術頁、七項技術的產品／解決方案雙向關聯與三語驗收見 [TECHNOLOGIES-BATCH-TWO.md](docs/TECHNOLOGIES-BATCH-TWO.md)。
+
+CMS 2.0 三語編輯、正文媒體與核心技術全文操作見 [整合說明](docs/cms-2.0/INTEGRATION.md)。

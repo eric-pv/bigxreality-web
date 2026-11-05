@@ -1,0 +1,31 @@
+{
+  "scope": "Independent local clone only; no Git worktree, GitHub mutations, real login, remote review or deployment",
+  "sourceCommit": "5f1f48da2caaab773f95a1ed0384b378a05a339a",
+  "validated": [
+    "three-language news create/edit/publish/unpublish/delete",
+    "technology lead/paragraph/FAQ/SEO/Hero and product reverse-relation edits reflected by actual Astro rebuild",
+    "original working-copy content and media unchanged"
+  ],
+  "stages": [
+    {
+      "stage": "draft-created",
+      "pass": true,
+      "commit": "555a94e4a5ebadc72d0d6fed3d2e9f523b0d23b6"
+    },
+    {
+      "stage": "edited-and-published",
+      "pass": true,
+      "commit": "a825a2e971fba335402a4724a7d35b2a7a828a0c"
+    },
+    {
+      "stage": "unpublished",
+      "pass": true,
+      "commit": "b445936d647ab7717c083c531a657b2d972c168f"
+    },
+    {
+      "stage": "deleted",
+      "pass": true,
+      "commit": "c4df53945bd1731761c5bdbea191490ed46ea272"
+    }
+  ]
+}

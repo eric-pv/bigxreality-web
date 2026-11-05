@@ -19,3 +19,16 @@ TEST FIXTURE 正文第 2 篇。這段文字用來測試文章內頁與站內搜�
 
 - 項目一
 - 項目二
+
+
+TEST FIXTURE before inline media
+
+<!-- bxr-image: {"src":"/src/assets/images/clients/中央警察大學.webp","alt":"TEST FIXTURE tw inline image","caption":"TEST FIXTURE tw inline caption","approved":true} -->
+
+TEST FIXTURE between image and video
+
+<!-- bxr-video: {"type":"youtube","url":"https://www.youtube.com/watch?v=abcdefghijk","title":"TEST FIXTURE tw inline video","approved":true,"embedApproved":true} -->
+
+<!-- bxr-image: {"src":"/src/assets/images/content/missing-unapproved.jpg","alt":"TEST FIXTURE hidden image","approved":false} -->
+
+TEST FIXTURE after inline media

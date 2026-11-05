@@ -1,10 +1,11 @@
 ---
+import {getEntry} from "astro:content";
 import { publicUrl } from '../../../lib/public-url.ts';
 
 import Text from '../../../components/Text.astro';
 import { LANGS, localePath, type Lang } from "../../../i18n";
 import { overviewContent } from "../../../data/technologies-content";
-import { TECHNOLOGY_IDS, LIVE_TECHNOLOGY_IDS } from "../../../lib/technologies";
+import { TECHNOLOGY_IDS, LIVE_TECHNOLOGY_IDS, technologyAvailableLangs } from "../../../lib/technologies";
 import { getUi } from "../../../lib/ui";
 import { site } from "../../../lib/site";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
@@ -14,16 +15,17 @@ import PageHero from "../../../components/PageHero.astro";
 import ProductImage from "../../../components/ProductImage.astro";
 export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
 const lang = Astro.params.lang as Lang;
-const content = overviewContent[lang];
+const content = (await getEntry("technology-overview",`${lang}/overview`))!.data;
+const hero=content.heroImage??technologyMedia("overview",lang);
 const ui = getUi(lang);
-const live = (id: string) => (LIVE_TECHNOLOGY_IDS as readonly string[]).includes(id);
+const live = (id: string) => (LIVE_TECHNOLOGY_IDS as readonly string[]).includes(id)&&technologyAvailableLangs(id as (typeof TECHNOLOGY_IDS)[number]).includes(lang);
 const labels = { tw: "探索技術", en: "Explore Technology", jp: "技術を詳しく見る" };
 const imageSlotLabel = { tw: "核心技術圖片位置", en: "Core technologies image", jp: "コア技術イメージの掲載位置" };
 const breadcrumbs = [{ name: ui.home, path: localePath(lang) }, { name: content.title, path: localePath(lang, "technologies") }];
 const structuredData = [{ "@type": "CollectionPage", name: content.title, description: content.seo.description, url: publicUrl(localePath(lang, "technologies")).href, mainEntity: { "@type": "ItemList", itemListElement: TECHNOLOGY_IDS.map((id, index) => ({ "@type": "ListItem", position: index + 1, name: content.technologies[id].title, ...(live(id) ? { url: publicUrl(localePath(lang, "technologies", id)).href } : {}) })) } }];
 ---
-<BaseLayout hidePendingFooter lang={lang} title={content.seo.title} description={content.seo.description} pathTemplate="/{lang}/technologies/" alternates={[...LANGS]} headerTheme="dark" current="technologies" breadcrumbs={breadcrumbs} structuredData={structuredData} {...pageOgImage(technologyMedia("overview",lang)?.src, technologyMedia("overview",lang)?.alt)}>
-  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={content.eyebrow} title={content.title} lead={content.lead} description={content.intro.join("\n\n")} image={technologyMedia("overview",lang)} imageBadge={technologyMedia("overview",lang)?.illustration ? ({tw:"概念視覺",en:"Concept visual",jp:"コンセプトビジュアル"}[lang]) : undefined} />
+<BaseLayout hidePendingFooter lang={lang} title={content.seo.title} description={content.seo.description} pathTemplate="/{lang}/technologies/" alternates={LANGS.filter(l=>overviewContent[l].translationStatus!=="pending")} pendingTranslation={content.translationStatus==="pending"} headerTheme="dark" current="technologies" breadcrumbs={breadcrumbs} structuredData={structuredData} {...pageOgImage(hero?.src, hero?.alt)}>
+  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={content.eyebrow} title={content.title} lead={content.lead} description={content.intro.join("\n\n")} image={hero} imageBadge={(!content.heroImage&&technologyMedia("overview",lang)?.illustration) ? ({tw:"概念視覺",en:"Concept visual",jp:"コンセプトビジュアル"}[lang]) : undefined} />
   <section class="section technology-overview" aria-label={content.title}>
     <div class="container">
       <ol class="technology-list" role="list">
