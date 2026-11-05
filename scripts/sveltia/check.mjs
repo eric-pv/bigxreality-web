@@ -14,6 +14,18 @@ assert.ok(!config.i18n);
 for(const lang of ['tw','en','jp'])assert.ok(config.collections.some(c=>c.name===`news-${lang}`&&c.folder===`src/content/news/${lang}`));
 assert.ok(config.output.omit_empty_optional_fields);
 assert.ok(!config.media_libraries.default.config.transformations);
+// List labels must identify real content without exposing storage identifiers as UI text.
+for(const lang of ['tw','en','jp']){
+ const tags=config.collections.find(c=>c.name===`tags-${lang}`);
+ assert.equal(tags.identifier_field,'name');
+ assert.equal(tags.summary,'{{name}}','Tag lists must use the schema name, not a missing title');
+ const pages=config.collections.find(c=>c.name===`pages-${lang}`);
+ for(const file of pages.files){
+  assert.match(file.label,/[\u3400-\u9fff].* \/ [A-Za-z]/,`${file.name}: fixed-page label must be bilingual`);
+  assert.equal(file.file,`src/content/pages/${lang}/${file.name}.md`,'Display labels must not rename content paths');
+ }
+}
+for(const asset of config.asset_collections)assert.match(asset.label,/[\u3400-\u9fff].* \/ [A-Za-z]/);
 const schemas=loadSchemas();let fields=0,files=0;
 function coverage(schema,configured,trace,omitted=new Set()){
  const s=unwrap(schema).schema,d=s._def;

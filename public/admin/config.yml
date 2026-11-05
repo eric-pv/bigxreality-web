@@ -14,19 +14,19 @@ media_folder: src/assets/images/news
 public_folder: /src/assets/images/news
 asset_collections:
   - name: news-images
-    label: 新聞圖片
+    label: 新聞圖片 / News Images
     media_folder: src/assets/images/news
     public_folder: /src/assets/images/news
   - name: product-images
-    label: 產品與解決方案圖片
+    label: 產品與解決方案圖片 / Product and Solution Images
     media_folder: src/assets/images/products
     public_folder: /src/assets/images/products
   - name: content-images
-    label: 一般內容圖片
+    label: 一般內容圖片 / Content Images
     media_folder: src/assets/images/content
     public_folder: /src/assets/images/content
   - name: news-videos
-    label: 新聞本地影片
+    label: 新聞本地影片 / Local News Videos
     media_folder: public/media/news
     public_folder: /media/news
 media_libraries:
@@ -3687,7 +3687,7 @@ collections:
     public_folder: ../../../assets/images/content
     files:
       - name: case-studies
-        label: case-studies
+        label: 案例研究 / Case Studies
         file: src/content/pages/tw/case-studies.md
         fields:
           - name: translationStatus
@@ -3826,7 +3826,7 @@ collections:
               - raw
               - rich_text
       - name: company
-        label: company
+        label: 公司介紹 / Company
         file: src/content/pages/tw/company.md
         fields:
           - name: translationStatus
@@ -3842,7 +3842,7 @@ collections:
           - *a134
           - *a135
       - name: contact
-        label: contact
+        label: 聯絡我們 / Contact
         file: src/content/pages/tw/contact.md
         fields:
           - name: translationStatus
@@ -3858,7 +3858,7 @@ collections:
           - *a134
           - *a135
       - name: insights
-        label: insights
+        label: 技術專欄 / Insights
         file: src/content/pages/tw/insights.md
         fields:
           - name: translationStatus
@@ -3874,7 +3874,7 @@ collections:
           - *a134
           - *a135
       - name: investors
-        label: investors
+        label: 投資人資訊 / Investor Relations
         file: src/content/pages/tw/investors.md
         fields:
           - name: translationStatus
@@ -3890,7 +3890,7 @@ collections:
           - *a134
           - *a135
       - name: news
-        label: news
+        label: 最新消息 / News
         file: src/content/pages/tw/news.md
         fields:
           - name: translationStatus
@@ -3906,7 +3906,7 @@ collections:
           - *a134
           - *a135
       - name: partners
-        label: partners
+        label: 合作夥伴 / Partners
         file: src/content/pages/tw/partners.md
         fields:
           - name: translationStatus
@@ -3922,7 +3922,7 @@ collections:
           - *a134
           - *a135
       - name: privacy
-        label: privacy
+        label: 隱私權政策 / Privacy Policy
         file: src/content/pages/tw/privacy.md
         fields:
           - name: translationStatus
@@ -3945,7 +3945,7 @@ collections:
           - *a134
           - *a135
       - name: products
-        label: products
+        label: 產品介紹 / Products
         file: src/content/pages/tw/products.md
         fields:
           - name: translationStatus
@@ -3961,7 +3961,7 @@ collections:
           - *a134
           - *a135
       - name: search
-        label: search
+        label: 站內搜尋 / Search
         file: src/content/pages/tw/search.md
         fields:
           - name: translationStatus
@@ -3977,7 +3977,7 @@ collections:
           - *a134
           - *a135
       - name: solutions
-        label: solutions
+        label: 解決方案 / Solutions
         file: src/content/pages/tw/solutions.md
         fields:
           - name: translationStatus
@@ -3993,7 +3993,7 @@ collections:
           - *a134
           - *a135
       - name: tags
-        label: tags
+        label: 文章標籤 / Tags
         file: src/content/pages/tw/tags.md
         fields:
           - name: translationStatus
@@ -4009,7 +4009,7 @@ collections:
           - *a134
           - *a135
       - name: team
-        label: team
+        label: 團隊介紹 / Team
         file: src/content/pages/tw/team.md
         fields:
           - name: translationStatus
@@ -4032,7 +4032,7 @@ collections:
     public_folder: ../../../assets/images/content
     files:
       - name: case-studies
-        label: case-studies
+        label: 案例研究 / Case Studies
         file: src/content/pages/en/case-studies.md
         fields:
           - name: translationStatus
@@ -4048,7 +4048,7 @@ collections:
           - *a134
           - *a135
       - name: company
-        label: company
+        label: 公司介紹 / Company
         file: src/content/pages/en/company.md
         fields:
           - name: translationStatus
@@ -4064,7 +4064,7 @@ collections:
           - *a134
           - *a135
       - name: contact
-        label: contact
+        label: 聯絡我們 / Contact
         file: src/content/pages/en/contact.md
         fields:
           - name: translationStatus
@@ -4080,7 +4080,7 @@ collections:
           - *a134
           - *a135
       - name: insights
-        label: insights
+        label: 技術專欄 / Insights
         file: src/content/pages/en/insights.md
         fields:
           - name: translationStatus
@@ -4096,7 +4096,7 @@ collections:
           - *a134
           - *a135
       - name: investors
-        label: investors
+        label: 投資人資訊 / Investor Relations
         file: src/content/pages/en/investors.md
         fields:
           - name: translationStatus
@@ -4112,7 +4112,7 @@ collections:
           - *a134
           - *a135
       - name: news
-        label: news
+        label: 最新消息 / News
         file: src/content/pages/en/news.md
         fields:
           - name: translationStatus
@@ -4128,7 +4128,7 @@ collections:
           - *a134
           - *a135
       - name: partners
-        label: partners
+        label: 合作夥伴 / Partners
         file: src/content/pages/en/partners.md
         fields:
           - name: translationStatus
@@ -4144,7 +4144,7 @@ collections:
           - *a134
           - *a135
       - name: privacy
-        label: privacy
+        label: 隱私權政策 / Privacy Policy
         file: src/content/pages/en/privacy.md
         fields:
           - name: translationStatus
@@ -4161,7 +4161,7 @@ collections:
           - *a134
           - *a135
       - name: products
-        label: products
+        label: 產品介紹 / Products
         file: src/content/pages/en/products.md
         fields:
           - name: translationStatus
@@ -4177,7 +4177,7 @@ collections:
           - *a134
           - *a135
       - name: search
-        label: search
+        label: 站內搜尋 / Search
         file: src/content/pages/en/search.md
         fields:
           - name: translationStatus
@@ -4193,7 +4193,7 @@ collections:
           - *a134
           - *a135
       - name: solutions
-        label: solutions
+        label: 解決方案 / Solutions
         file: src/content/pages/en/solutions.md
         fields:
           - name: translationStatus
@@ -4209,7 +4209,7 @@ collections:
           - *a134
           - *a135
       - name: tags
-        label: tags
+        label: 文章標籤 / Tags
         file: src/content/pages/en/tags.md
         fields:
           - name: translationStatus
@@ -4225,7 +4225,7 @@ collections:
           - *a134
           - *a135
       - name: team
-        label: team
+        label: 團隊介紹 / Team
         file: src/content/pages/en/team.md
         fields:
           - name: translationStatus
@@ -4248,7 +4248,7 @@ collections:
     public_folder: ../../../assets/images/content
     files:
       - name: case-studies
-        label: case-studies
+        label: 案例研究 / Case Studies
         file: src/content/pages/jp/case-studies.md
         fields:
           - name: translationStatus
@@ -4264,7 +4264,7 @@ collections:
           - *a134
           - *a135
       - name: company
-        label: company
+        label: 公司介紹 / Company
         file: src/content/pages/jp/company.md
         fields:
           - name: translationStatus
@@ -4280,7 +4280,7 @@ collections:
           - *a134
           - *a135
       - name: contact
-        label: contact
+        label: 聯絡我們 / Contact
         file: src/content/pages/jp/contact.md
         fields:
           - name: translationStatus
@@ -4296,7 +4296,7 @@ collections:
           - *a134
           - *a135
       - name: insights
-        label: insights
+        label: 技術專欄 / Insights
         file: src/content/pages/jp/insights.md
         fields:
           - name: translationStatus
@@ -4312,7 +4312,7 @@ collections:
           - *a134
           - *a135
       - name: investors
-        label: investors
+        label: 投資人資訊 / Investor Relations
         file: src/content/pages/jp/investors.md
         fields:
           - name: translationStatus
@@ -4328,7 +4328,7 @@ collections:
           - *a134
           - *a135
       - name: news
-        label: news
+        label: 最新消息 / News
         file: src/content/pages/jp/news.md
         fields:
           - name: translationStatus
@@ -4344,7 +4344,7 @@ collections:
           - *a134
           - *a135
       - name: partners
-        label: partners
+        label: 合作夥伴 / Partners
         file: src/content/pages/jp/partners.md
         fields:
           - name: translationStatus
@@ -4360,7 +4360,7 @@ collections:
           - *a134
           - *a135
       - name: privacy
-        label: privacy
+        label: 隱私權政策 / Privacy Policy
         file: src/content/pages/jp/privacy.md
         fields:
           - name: translationStatus
@@ -4377,7 +4377,7 @@ collections:
           - *a134
           - *a135
       - name: products
-        label: products
+        label: 產品介紹 / Products
         file: src/content/pages/jp/products.md
         fields:
           - name: translationStatus
@@ -4393,7 +4393,7 @@ collections:
           - *a134
           - *a135
       - name: search
-        label: search
+        label: 站內搜尋 / Search
         file: src/content/pages/jp/search.md
         fields:
           - name: translationStatus
@@ -4409,7 +4409,7 @@ collections:
           - *a134
           - *a135
       - name: solutions
-        label: solutions
+        label: 解決方案 / Solutions
         file: src/content/pages/jp/solutions.md
         fields:
           - name: translationStatus
@@ -4425,7 +4425,7 @@ collections:
           - *a134
           - *a135
       - name: tags
-        label: tags
+        label: 文章標籤 / Tags
         file: src/content/pages/jp/tags.md
         fields:
           - name: translationStatus
@@ -4441,7 +4441,7 @@ collections:
           - *a134
           - *a135
       - name: team
-        label: team
+        label: 團隊介紹 / Team
         file: src/content/pages/jp/team.md
         fields:
           - name: translationStatus
@@ -4466,7 +4466,7 @@ collections:
     format: frontmatter
     identifier_field: name
     slug: "{{slug}}"
-    summary: "{{title}}"
+    summary: "{{name}}"
     media_folder: /src/assets/images/content
     public_folder: ../../../assets/images/content
     fields:
@@ -4510,7 +4510,7 @@ collections:
     format: frontmatter
     identifier_field: name
     slug: "{{slug}}"
-    summary: "{{title}}"
+    summary: "{{name}}"
     media_folder: /src/assets/images/content
     public_folder: ../../../assets/images/content
     fields:
@@ -4533,7 +4533,7 @@ collections:
     format: frontmatter
     identifier_field: name
     slug: "{{slug}}"
-    summary: "{{title}}"
+    summary: "{{name}}"
     media_folder: /src/assets/images/content
     public_folder: ../../../assets/images/content
     fields:
