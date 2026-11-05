@@ -92,7 +92,7 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 ## 6. 建置與 Pages 發布
 
 - 唯一正式部署 workflow：`.github/workflows/ci.yml`（build、單元／型別、CMS schema、內容完整性、SEO／sitemap／連結、三語、表單、功能頁面、fixtures／搜尋／無障礙、Pages 封裝檢查，全部通過才部署同一份 artifact）。
-- 完整視覺 QA：`.github/workflows/qa-full.yml`（截圖、7 種寬度版面、Hero 構圖、字體換行、動態）。不部署、不阻擋 PR 或發布；每天 00:00（台北）對 main 自動執行，亦可手動執行。同時段由排程的 Claude 工作在最新 main 執行完整 QA，有失敗即修正並開 PR 待審，不自行合併。
+- 完整視覺 QA：`.github/workflows/qa-full.yml`（截圖、7 種寬度版面、Hero 構圖、字體換行、動態）。不部署、不阻擋 PR 或發布；每天 00:00（台北）對 main 自動執行，亦可手動執行。同時段由排程的 Claude 工作在最新 main 執行完整 QA，有失敗即修正並開 PR；CI 通過且後端邏輯自行檢查無誤後由 Claude 合併，再列出前端變更供業主驗證。
 - Astro 圖片快取：僅 `node_modules/.astro/assets`（不快取內容資料），只由 main 寫入，lockfile 變更即重建；冷熱建置產物逐檔比對一致（僅 Pagefind 索引檔名本身每次不同）。
 - PR：執行 build-and-test 與 Pages artifact 檢查，不部署。
 - main push／對 main 的手動 workflow：檢查成功後上傳 `dist-pages/`，deploy-pages 以同一 workflow 的 artifact 部署；不是另外再從另一分支建置。
@@ -135,7 +135,7 @@ GitHub Actions 由平台提供 GITHUB_SHA／REF／RUN_ID／TOKEN；deploy job �
 
 ## 9. 開發與驗收規範
 
-- 以最新 main 建立獨立分支，先診斷與保留差異，再修改；PR 直接對 main，不自行合併。
+- 以最新 main 建立獨立分支，先診斷與保留差異，再修改；PR 直接對 main。業主決定（2026-11-04）：業主只驗收前端；Claude 開 PR 後，於該 PR 的 CI 全部通過、且自行檢查後端邏輯（建置、資料、表單、CMS、部署設定）無誤時自行合併，並確認 main 部署成功，再列出改動的頁面／網址與前端可見變更供業主驗證。CI 未通過或有疑慮時不合併，改為回報。
 - 不新增第二 CMS、遠端內容優先覆寫、重複正式部署或未核准後端。
 - 不任意改 URL、原始圖片、歷史新聞事實、三語對應或既有正常元件。
 - 驗證 build／TypeScript、schema／三語、產品／解決方案／新聞／資源頁、媒體、SEO／canonical／hreflang／sitemap、桌面／手機。
