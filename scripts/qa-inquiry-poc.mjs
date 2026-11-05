@@ -6,7 +6,7 @@ import {CHROMIUM} from './lib/serve.mjs';
 import {endpointUrl,PROTOCOL} from '../tools/inquiry-poc/probe.js';
 const live=!!process.env.GAS_POC_ENDPOINT;
 const endpoint=endpointUrl(process.env.GAS_POC_ENDPOINT||'https://script.google.com/macros/s/LOCAL_MOCK_ONLY/exec');
-const base='https://magician-eric.github.io/bigxreality-web/__inquiry-poc__/';
+const base='https://eric-pv.github.io/bigxreality-web/__inquiry-poc__/';
 const html=await readFile('tools/inquiry-poc/index.html','utf8'),js=await readFile('tools/inquiry-poc/probe.js','utf8');
 const browser=await chromium.launch({executablePath:CHROMIUM});
 await mkdir('.qa/inquiry-poc',{recursive:true});

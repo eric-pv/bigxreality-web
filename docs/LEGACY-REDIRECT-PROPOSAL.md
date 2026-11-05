@@ -106,7 +106,7 @@ SEO：最佳。真正的 301 加精確 `Location`，參數型逐筆 301，舊圖
 
 1. **合併 url 變更 PR**：CI 通過後部署，確認 artifact 根目錄有 `CNAME`（內容 `www.bigxreality.com`）、`robots.txt`、`sitemap.xml`，`build-info.json` 的 commit 正確。
 2. **DNS**：
-   - [ ] `www` 設 CNAME 指向 `magician-eric.github.io`。
+   - [ ] `www` 設 CNAME 指向 `eric-pv.github.io`。
    - [ ] apex `bigxreality.com` 設 A 記錄 185.199.108.153、185.199.109.153、185.199.110.153、185.199.111.153，AAAA 記錄 2606:50c0:8000::153、2606:50c0:8001::153、2606:50c0:8002::153、2606:50c0:8003::153。GitHub Pages 會把 apex 轉到 www。若選方案 (b)，改依 CDN 指示設定。
    - [ ] 移除舊站殘留的 A、AAAA 記錄，避免兩邊同時解析；不要使用 `*` 萬用記錄。
    - [ ] 執行 `dig www.bigxreality.com +short`、`dig bigxreality.com +short` 確認結果。
@@ -122,7 +122,7 @@ SEO：最佳。真正的 301 加精確 `Location`，參數型逐筆 301，舊圖
    - [ ] `/tw/`、`/en/`、`/jp/` 首頁正常；任一頁的 canonical、hreflang、JSON-LD 都是 `https://www.bigxreality.com/...`，不含 `/bigxreality-web/`。
    - [ ] `/admin/` 可登入，且保持 noindex。
    - [ ] 不存在的路徑會回 404.html，語言切換正確。
-   - [ ] 舊的 `magician-eric.github.io/bigxreality-web/` 會被 GitHub 轉到新網域。
+   - [ ] 舊的 `eric-pv.github.io/bigxreality-web/` 會被 GitHub 轉到新網域。
 6. **轉址抽樣**（依 CSV）：
    - [ ] 每類至少抽 3 筆：固定路徑（`/tw/home`）、結尾斜線（`/tw/solutions` 應回 301 到 `/tw/solutions/`）、參數型（每種參數各 1 筆）、查不到的參數（應顯示新聞列表連結，不導向首頁）。
    - [ ] 用 `curl -sI` 檢查狀態碼；用瀏覽器檢查最後落點與 canonical。

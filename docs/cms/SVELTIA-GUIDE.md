@@ -1,6 +1,6 @@
 # Sveltia CMS 操作
 
-唯一規範：[ARCHITECTURE](../ARCHITECTURE.md)。正式後台：https://magician-eric.github.io/bigxreality-web/admin/ 。本修正合併並成功部署後，backend.branch 應為 main；刷新並核對 config，勿用舊快取或舊表單覆蓋新內容。
+唯一規範：[ARCHITECTURE](../ARCHITECTURE.md)。正式後台：https://eric-pv.github.io/bigxreality-web/admin/ 。本修正合併並成功部署後，backend.branch 應為 main；刷新並核對 config，勿用舊快取或舊表單覆蓋新內容。
 
 ## 管理者登入與權限
 

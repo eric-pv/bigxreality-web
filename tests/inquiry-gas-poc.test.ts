@@ -56,7 +56,7 @@ test('browser proof requires four readable outcomes, and supports same-ID retry 
   return {ok:true,type:'cors',status:200,json:async()=>h.send(p.get('message')!)} as Response;
  };
  // Node has no browser location; provide only this public-origin test value.
- const previous=Object.getOwnPropertyDescriptor(globalThis,'location');Object.defineProperty(globalThis,'location',{value:{origin:'https://magician-eric.github.io'},configurable:true});
+ const previous=Object.getOwnPropertyDescriptor(globalThis,'location');Object.defineProperty(globalThis,'location',{value:{origin:'https://eric-pv.github.io'},configurable:true});
  try{
   const first=await runProof('https://script.google.com/macros/s/test/exec',()=>{},fetcher,id);assert.equal(first.results.length,4);assert.equal(h.rows.length,2);
   await runProof('https://script.google.com/macros/s/test/exec',()=>{},fetcher,id,true);assert.equal(h.rows.length,2);assert.ok(calls.every(value=>value===id));

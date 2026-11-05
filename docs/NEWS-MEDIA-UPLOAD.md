@@ -4,8 +4,8 @@
 
 ## A. GitHub 資料夾
 
-先合併 PR，再上傳至 [新聞圖片資料夾](https://github.com/magician-eric/bigxreality-web/tree/main/src/assets/images/news)：`src/assets/images/news/`。
-本地影片上傳至 [新聞影片資料夾](https://github.com/magician-eric/bigxreality-web/tree/main/public/media/news)：`public/media/news/`。
+先合併 PR，再上傳至 [新聞圖片資料夾](https://github.com/eric-pv/bigxreality-web/tree/main/src/assets/images/news)：`src/assets/images/news/`。
+本地影片上傳至 [新聞影片資料夾](https://github.com/eric-pv/bigxreality-web/tree/main/public/media/news)：`public/media/news/`。
 如需在合併前查看，請切換到 `codex/import-historical-news` 分支的相同目錄。
 
 ## B. 30篇候選封面檔名
