@@ -73,8 +73,8 @@ const localizedCollections=collections.flatMap(collection=>{
   return c;
  });
 });
-const config={backend:{name:'github',repo:'magician-eric/bigxreality-web',branch:'main',auth_methods:['token']},
- publish_mode:'editorial_workflow',output:{omit_empty_optional_fields:true},site_url:'https://magician-eric.github.io/bigxreality-web/',display_url:'https://magician-eric.github.io/bigxreality-web/',
+const config={backend:{name:'github',repo:'eric-pv/bigxreality-web',branch:'main',auth_methods:['token']},
+ publish_mode:'editorial_workflow',output:{omit_empty_optional_fields:true},site_url:'https://eric-pv.github.io/bigxreality-web/',display_url:'https://eric-pv.github.io/bigxreality-web/',
  media_folder:'src/assets/images/news',public_folder:'/src/assets/images/news',
  asset_collections:[{name:'news-images',label:'新聞圖片',media_folder:'src/assets/images/news',public_folder:'/src/assets/images/news'},{name:'product-images',label:'產品與解決方案圖片',media_folder:'src/assets/images/products',public_folder:'/src/assets/images/products'},{name:'content-images',label:'一般內容圖片',media_folder:'src/assets/images/content',public_folder:'/src/assets/images/content'},{name:'news-videos',label:'新聞本地影片',media_folder:'public/media/news',public_folder:'/media/news'}],
  media_libraries:{default:{config:{max_file_size:20000000,slugify_filename:true,filename_template:'{{filename}}-{{uuid_short}}'}}},collections:localizedCollections};

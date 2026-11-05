@@ -2,7 +2,7 @@ import metadata from '../data/site.json' with { type: 'json' };
 /**
  * Single published URL authority: src/data/site.json `url`. Routes stay /tw/... internally;
  * Pages adds the base once. Two shapes are supported:
- * - project site, base "/name/": https://magician-eric.github.io/bigxreality-web (current)
+ * - project site, base "/name/": https://eric-pv.github.io/bigxreality-web (current)
  * - domain root, base "/": a custom domain such as https://www.bigxreality.com
  */
 export function publicUrls(siteUrl: string) {

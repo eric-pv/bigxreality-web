@@ -40,7 +40,7 @@
 GAS_POC_ENDPOINT='https://script.google.com/macros/s/部署ID/exec' node scripts/qa-inquiry-poc.mjs
 ```
 
-此程式以 Playwright 在 `https://magician-eric.github.io` 的瀏覽器 origin 載入**本機攔截的測試工具頁**，向真實 GAS 發出請求，不部署或修改 Pages。工具頁的 HTML／JS 由本機攔截；Google 網路請求在 LIVE 模式不攔截。輸出在 `.qa/inquiry-poc/LIVE-result.txt` 與桌面／手機截圖。
+此程式以 Playwright 在 `https://eric-pv.github.io` 的瀏覽器 origin 載入**本機攔截的測試工具頁**，向真實 GAS 發出請求，不部署或修改 Pages。工具頁的 HTML／JS 由本機攔截；Google 網路請求在 LIVE 模式不攔截。輸出在 `.qa/inquiry-poc/LIVE-result.txt` 與桌面／手機截圖。
 
 手動執行可在根目錄開另一個終端機：
 

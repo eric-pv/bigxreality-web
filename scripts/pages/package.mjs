@@ -90,6 +90,6 @@ const hash=createHash('sha256');
 for(const file of tracked){hash.update(file+'\0');hash.update(await readFile(path.join(REPO,file)));}
 const dirty=!!git(['status','--porcelain','--untracked-files=normal','--','src','public','scripts','astro.config.mjs','package.json','package-lock.json']);
 if(process.env.GITHUB_ACTIONS==='true'&&dirty)throw new Error('Tracked source changed during CI; refuse publishing an artifact that differs from the reviewed commit');
-const info={commit,ref:process.env.GITHUB_REF??git(['branch','--show-current']),repository:'magician-eric/bigxreality-web',source:'git-markdown',cmsBranch:'main',publication:'GitHub Actions -> GitHub Pages',site:publicSiteRoot,base,contentDigest:hash.digest('hex'),builtAt:new Date().toISOString(),dirty,runUrl:process.env.GITHUB_RUN_ID?`https://github.com/magician-eric/bigxreality-web/actions/runs/${process.env.GITHUB_RUN_ID}`:null};
+const info={commit,ref:process.env.GITHUB_REF??git(['branch','--show-current']),repository:'eric-pv/bigxreality-web',source:'git-markdown',cmsBranch:'main',publication:'GitHub Actions -> GitHub Pages',site:publicSiteRoot,base,contentDigest:hash.digest('hex'),builtAt:new Date().toISOString(),dirty,runUrl:process.env.GITHUB_RUN_ID?`https://github.com/eric-pv/bigxreality-web/actions/runs/${process.env.GITHUB_RUN_ID}`:null};
 await writeFile(path.join(OUT,'build-info.json'),JSON.stringify(info,null,2)+'\n');
 console.log(`Pages artifact: ${commit}, content digest ${info.contentDigest}, ${publicSiteRoot}/`);
