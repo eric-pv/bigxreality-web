@@ -203,6 +203,19 @@ test('notification only when NOTIFY_EMAIL is set, only for new rows, and it carr
   assert.match(on.mail[0].subject, new RegExp(first.inquiryId)); assert.match(on.mail[0].body, /想了解訓練方案/);
 });
 
+test('notification is a table: Chinese product names only, page path from the language segment, HTML escaped', () => {
+  const h = harness({props: {NOTIFY_EMAIL: 'a@example.com'}});
+  h.send({interest: '狙擊槍模擬系統 (product:sniper-simulator); 警勤模擬 (solution:police)', sourcePage: '/bigxreality-web/tw/products/sut/',
+    message: '第一行\n<script>x</script>'});
+  const {htmlBody, body} = h.mail[0];
+  assert.match(htmlBody, /<table/);
+  assert.match(htmlBody, /相關產品／方案<\/th><td[^>]*>狙擊槍模擬系統、警勤模擬<\/td>/);
+  assert.match(htmlBody, /來源頁面<\/th><td[^>]*>tw\/products\/sut\/<\/td>/);
+  assert.doesNotMatch(htmlBody, /product:|solution:|bigxreality-web|<script>/);
+  assert.match(htmlBody, /第一行<br>&lt;script&gt;/);
+  assert.match(body, /相關產品／方案：狙擊槍模擬系統、警勤模擬/);
+});
+
 function legacyBook(rows: unknown[][]) {
   const book = new MockBook();
   const sheet = book.insertSheet(BUSINESS);

@@ -236,25 +236,52 @@ function systemSheet_(book) {
   return system;
 }
 
-/** 通知失敗不影響收件結果：資料已寫入試算表。 */
+/** 通知失敗不影響收件結果：資料已寫入試算表。信件內容為表格（HTML），另附純文字版本。 */
 function notify_(inquiryId, time, v) {
   var to = prop_('NOTIFY_EMAIL');
   if (!to) return;
+  var rows = [
+    ['詢問編號', inquiryId],
+    ['收件時間', Utilities.formatDate(time, TIME_ZONE, 'yyyy/MM/dd HH:mm')],
+    ['姓名', v.name], ['公司／單位', v.organization], ['職稱', v.jobTitle],
+    ['國家', LEGACY_COUNTRY[v.country] || v.country], ['Email', v.email], ['電話', v.phone],
+    ['洽詢項目', TOPIC_LABELS[v.topic]], ['相關產品／方案', interestNames_(v.interest)],
+    ['頁面語言', v.language], ['來源頁面', shortPage_(v.sourcePage)], ['需求說明', v.message],
+  ];
+  var cell = 'border:1px solid #999;padding:6px 10px;vertical-align:top;';
+  var html = '<p>官網收到新的客戶詢問，完整資料在收件試算表「' + html_(INQUIRY_SHEET) + '」分頁。</p>' +
+    '<table style="border-collapse:collapse;font-family:sans-serif;font-size:14px;">' +
+    rows.map(function(r) {
+      return '<tr><th style="' + cell + 'text-align:left;white-space:nowrap;background:#f3f3f3;font-weight:normal;">' + html_(r[0]) +
+        '</th><td style="' + cell + '">' + html_(r[1]).replace(/\n/g, '<br>') + '</td></tr>';
+    }).join('') + '</table>';
   try {
     MailApp.sendEmail({
       to: to,
       replyTo: v.email,
       subject: '[BXR 官網詢問] ' + inquiryId + ' ' + TOPIC_LABELS[v.topic] + '－' + v.organization + ' ' + v.name,
-      body: ['官網收到新的客戶詢問，完整資料在收件試算表「' + INQUIRY_SHEET + '」分頁。', '',
-        '詢問編號：' + inquiryId, '收件時間：' + Utilities.formatDate(time, TIME_ZONE, 'yyyy-MM-dd HH:mm:ss'),
-        '姓名：' + v.name, '公司／單位：' + v.organization, '職稱：' + v.jobTitle,
-        '國家：' + (LEGACY_COUNTRY[v.country] || v.country), 'Email：' + v.email, '電話：' + v.phone,
-        '洽詢項目：' + TOPIC_LABELS[v.topic], '相關產品／方案：' + v.interest, '頁面語言：' + v.language,
-        '來源頁面：' + v.sourcePage, '', '需求說明：', v.message].join('\n'),
+      body: rows.map(function(r) { return r[0] + '：' + r[1]; }).join('\n'),
+      htmlBody: html,
     });
   } catch (error) {
     console.error('BXR_INQUIRY_NOTIFY_ERROR');
   }
+}
+
+/** 「SUT 小部隊… (product:sut); 警勤模擬 (solution:police)」→「SUT 小部隊…、警勤模擬」 */
+function interestNames_(value) {
+  return value ? value.split('; ').map(function(item) { return item.replace(/\s*\((?:product|solution):[^)]*\)$/, ''); }).join('、') : '';
+}
+
+/** 「/bigxreality-web/tw/products/sut/」→「tw/products/sut/」 */
+function shortPage_(path) {
+  var match = /(?:^|\/)((?:tw|en|jp)\/.*)$/.exec(path);
+  return match ? match[1] : path;
+}
+
+function html_(value) {
+  return String(value === null || value === undefined ? '' : value)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function hash_(v) {
