@@ -1,6 +1,6 @@
 import { validateValue, mediaFormat } from './value-tools.js';
 const CMS = window.CMS;
-if (!CMS) throw new Error('Sveltia CMS 載入失敗，請檢查網路或 CDN 連線。');
+if (!CMS) throw new Error('Sveltia CMS 載入失敗，請檢查網路或 CDN 連線。 / Sveltia CMS failed to load. Check the network or CDN connection.');
 const { createElement: h, forwardRef, useState, useEffect, useImperativeHandle } = CMS.React;
 const ValueControl = forwardRef(function ValueControl({ value, onChange, field, forID, readonly }, ref) {
   const plain = value?.toJS ? value.toJS() : value;
@@ -10,7 +10,7 @@ const ValueControl = forwardRef(function ValueControl({ value, onChange, field, 
   useEffect(() => { setText(plain === undefined ? '' : JSON.stringify(plain, null, 2)); }, [value]);
   const validate = textValue => {
     if (!textValue.trim() && !field.get('required')) return '';
-    try { return validateValue(JSON.parse(textValue), schema); } catch { return '請輸入有效的 JSON'; }
+    try { return validateValue(JSON.parse(textValue), schema); } catch { return '請輸入有效的 JSON / Enter valid JSON'; }
   };
   useImperativeHandle(ref, () => ({ isValid: () => {
     const message = validate(text); return message ? { error: { message } } : true;

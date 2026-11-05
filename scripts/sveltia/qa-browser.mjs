@@ -152,6 +152,7 @@ try{
  const mediaMap=JSON.parse(await mediaInput.inputValue());
  assert.deepEqual(mediaMap,JSON.parse(originals['src/data/news-media.json']));
  await mediaInput.fill('{ invalid');assert.equal(await mediaInput.getAttribute('aria-invalid'),'true');
+ await page.getByRole('alert').filter({hasText:'請輸入有效的 JSON / Enter valid JSON'}).waitFor();
  mediaMap['bxr-cms-draft-qa']={gallery:[],videos:[],sourceLinks:[]};
  await mediaInput.fill(JSON.stringify(mediaMap,null,2));
  await page.getByRole('button',{name:'Save',exact:true}).click();
