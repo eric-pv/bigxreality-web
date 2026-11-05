@@ -1,0 +1,163 @@
+{
+  "translationStatus": "translated",
+  "draft": false,
+  "eyebrow": "Core Technology",
+  "title": "Digital Environment & Simulation",
+  "lead": "Turn real-world training needs into interactive digital environments",
+  "intro": [
+    "Professional training often involves specific spaces, equipment, terrain, and mission conditions. These factors are more than a backdrop: they also affect how trainees observe, operate, and understand a mission.",
+    "Digital environment and simulation technologies use 3D models, virtual environments, and interaction mechanisms to turn training content suited to simulation into usable digital scenarios.",
+    "BXR applies digital environment development technologies according to different products and training purposes, supporting military, policing, fire and disaster response, and related professional simulation training applications."
+  ],
+  "primaryCta": "Explore related training products",
+  "secondaryCta": "Discuss simulation environment requirements",
+  "sections": [
+    {
+      "id": "concept",
+      "title": "Digital Environments as an Integral Part of Training Scenarios",
+      "paragraphs": [
+        "In conventional visual presentations, 3D environments are primarily used to show spaces and appearances.",
+        "In simulation training, however, an environment must also work with mission objectives, user perspectives, operating methods, and interactive events to form a digital environment suitable for training.",
+        "Developing a digital environment therefore involves more than making models: it integrates spatial, equipment, scenario, and operational requirements into the simulation system."
+      ],
+      "items": [
+        {
+          "title": "3D environment development",
+          "paragraphs": [
+            "Create sites, terrain, buildings, or spatial layouts that meet the purpose of the simulation."
+          ]
+        },
+        {
+          "title": "Digital equipment models",
+          "paragraphs": [
+            "Represent the appearance and necessary interactions of relevant equipment, vehicles, or objects to be operated according to training needs."
+          ]
+        },
+        {
+          "title": "Scenario condition design",
+          "paragraphs": [
+            "Set appropriate environmental, event, or mission conditions in line with the training objectives."
+          ]
+        },
+        {
+          "title": "Interactive environment integration",
+          "paragraphs": [
+            "Connect necessary elements in the environment with operating sequences, virtual characters, or system events."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "process",
+      "title": "From training needs to a digital environment",
+      "paragraphs": [
+        "The approach to developing a digital environment should be determined by the actual application purpose.",
+        "Some training needs to represent the layout of a particular space; other training focuses on the relative positions of objects to be operated; and some needs interactive events arranged around terrain, sight lines, or mission sequences.",
+        "Common design steps include:"
+      ],
+      "items": [
+        {
+          "title": "01 | Confirm environment requirements",
+          "paragraphs": [
+            "Clarify the training objectives, site characteristics, and necessary simulation elements."
+          ]
+        },
+        {
+          "title": "02 | Plan spaces and objects",
+          "paragraphs": [
+            "Organize the environment layout, equipment positions, and user operation requirements."
+          ]
+        },
+        {
+          "title": "03 | Develop digital content",
+          "paragraphs": [
+            "Produce 3D models, environmental assets, and necessary visual content according to system conditions."
+          ]
+        },
+        {
+          "title": "04 | Integrate interaction mechanisms",
+          "paragraphs": [
+            "Incorporate suitable objects, events, and operating sequences into the simulation scenario."
+          ]
+        },
+        {
+          "title": "05 | Test and refine",
+          "paragraphs": [
+            "Adjust the environment presentation, interaction methods, and system performance according to product requirements and actual testing."
+          ]
+        }
+      ],
+      "note": "The actual process may differ between products and projects."
+    },
+    {
+      "id": "digital-twins",
+      "title": "Distinct Roles of Digital Twins and 3D Simulation",
+      "paragraphs": [
+        "A 3D simulation environment can represent specific spaces, equipment, and operating scenarios, but that does not necessarily make it a digital twin system.",
+        "A digital twin generally emphasizes data relationships between a digital model and its physical counterpart, using them to reflect states, perform analysis, or support other forms of information interaction according to application needs.",
+        "A conventional 3D simulation environment, by contrast, can establish training scenarios from predefined conditions without connecting to real-time data from physical equipment.",
+        "BXR assesses suitable approaches to digital environment development according to different product and project needs, rather than calling every 3D environment a digital twin."
+      ]
+    },
+    {
+      "id": "value",
+      "title": "Make sites and scenarios that are difficult to access frequently into reusable training resources",
+      "paragraphs": [
+        "Real-world sites may be constrained by available time, geographic location, equipment conditions, and safety requirements, making the same training environment unavailable on demand.",
+        "Digital environment and simulation development can turn suitable spaces and mission conditions into reusable simulation content, supplementing existing training methods.",
+        "Key benefits:"
+      ],
+      "bullets": [
+        "Build virtual sites that serve the training purpose.",
+        "Represent specific equipment, terrain, and spatial layouts.",
+        "Support simulation arrangements for different scenario conditions.",
+        "Help trainees become familiar with selected sites and operating procedures.",
+        "Integrate interaction and mission content according to product requirements."
+      ],
+      "note": "The accuracy and functionality of a digital environment should be determined by the training purpose and system conditions. Not every environment offers engineering-grade accuracy or real-time digital twin capabilities."
+    }
+  ],
+  "relatedTitle": "How digital environments support different training products",
+  "faq": [
+    {
+      "question": "What is digital environment and simulation development?",
+      "answer": "Digital environment and simulation development is a technical approach to creating 3D environments, equipment models, and related interactive content according to application needs. In professional training, this digital content can represent specific sites, operating conditions, and mission scenarios."
+    },
+    {
+      "question": "Is a 3D simulation environment the same as a digital twin?",
+      "answer": "Not necessarily. A 3D simulation can use prebuilt models and scenario conditions, while a digital twin generally emphasizes data relationships between a digital model and its physical counterpart. Whether a system is a digital twin should be determined from its architecture and actual capabilities."
+    },
+    {
+      "question": "Must a simulation environment exactly match a real location?",
+      "answer": "Not necessarily. Some training needs to reference the layout of a particular site, while other training is suited to simulated spaces designed around the mission purpose. The required level of realism should be assessed according to training objectives and system conditions."
+    },
+    {
+      "question": "What types of professional training can use digital environments?",
+      "answer": "Digital environments can be used according to requirements for military, policing, fire and disaster response, vehicle operation, and other simulation training. Different applications have different requirements for sites, equipment models, and interaction methods."
+    },
+    {
+      "question": "Do all BXR simulation environments connect to real-time physical data?",
+      "answer": "No. Different products use different simulation architectures, and some scenarios use prebuilt digital content. Whether connections to external data or physical equipment are needed must be confirmed according to product capabilities and project requirements."
+    }
+  ],
+  "closing": {
+    "title": "Turn the environments needed for training into digital spaces trainees can interact with",
+    "body": "From sites and equipment to mission scenarios, BXR can discuss suitable approaches to digital environment and simulation development according to the training purpose.",
+    "cta": "Discuss digital simulation applications"
+  },
+  "seo": {
+    "title": "Digital Environments｜3D Simulation & Digital Twins",
+    "description": "Learn how BXR uses 3D environments, digital equipment models, and interactive simulation technologies to build military, policing, and fire and disaster response training environments, and understand the difference between digital twins and conventional 3D simulation."
+  },
+  "relatedProducts": [
+    "sut",
+    "wargaming-table",
+    "hmmwv-simulator",
+    "tactical-boat-simulator",
+    "usv",
+    "fire-extinguisher-simulator"
+  ],
+  "relatedSolutions": [],
+  "primaryDestination": "products",
+  "relationNotes": []
+}

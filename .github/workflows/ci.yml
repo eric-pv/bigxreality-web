@@ -83,6 +83,8 @@ jobs:
       - name: Build test fixtures
         run: npm run build:fixtures
       - run: QA_DIST=dist-fixtures npm run qa:technologies
+      - name: Inline CMS media renderer (isolated fixtures)
+        run: npm run qa:inline-media
       - run: npm run qa:phase2
       - run: QA_DIST=dist-fixtures npm run qa:company
       - run: npm run qa:search

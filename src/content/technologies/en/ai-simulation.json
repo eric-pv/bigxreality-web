@@ -1,0 +1,162 @@
+{
+  "translationStatus": "translated",
+  "draft": false,
+  "eyebrow": "Core Technology",
+  "title": "AI-Enhanced Simulation",
+  "lead": "Let simulation scenarios do more than present a mission: explore more varied forms of interaction",
+  "intro": [
+    "Professional training often involves different mission conditions, changing scenarios, and people or entities to interact with. Fixed simulation sequences can help build familiarity with operations, while some training needs may also call for more varied scenario design.",
+    "Artificial intelligence (AI) offers new directions for applying technology in simulation systems, including virtual character behavior, scenario interaction, and information processing.",
+    "BXR continues to explore the combination of AI and XR simulation training, assessing suitable applications for AI-enhanced simulation according to actual product capabilities and project requirements."
+  ],
+  "primaryCta": "Explore simulation training products",
+  "secondaryCta": "Discuss AI simulation applications",
+  "sections": [
+    {
+      "id": "concept",
+      "title": "How can AI contribute to simulation training?",
+      "paragraphs": [
+        "Conventional simulation systems can create training scenarios through predefined events, conditions, and operating sequences. AI offers another category of technical tools that may be used to handle character behavior, information interpretation, or interactive content.",
+        "However, not every dynamic scenario uses AI. Events triggered by predefined rules, conditional logic, and ordinary program control can also deliver varying degrees of interactive variation.",
+        "The focus of AI-enhanced simulation is therefore not to label every feature as artificial intelligence, but to determine which training needs are suited to AI and how it can work alongside established simulation technologies."
+      ],
+      "items": [
+        {
+          "title": "Virtual character behavior",
+          "paragraphs": [
+            "AI can be one technical option for designing virtual character behavior, helping explore different interactive responses and scenario variations."
+          ]
+        },
+        {
+          "title": "Scenario interaction",
+          "paragraphs": [
+            "Assess the use of AI or other simulation logic to support specific interactive content according to the training objective."
+          ]
+        },
+        {
+          "title": "Information processing",
+          "paragraphs": [
+            "In suitable applications, AI can help process, classify, or analyze information within a simulation system."
+          ]
+        },
+        {
+          "title": "Technical suitability",
+          "paragraphs": [
+            "Adopting AI requires consideration of reliability, controllability, training objectives, and system conditions. It is not appropriate for every training scenario."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "simulation-methods",
+      "title": "Selecting Interaction Technologies for Training Objectives",
+      "paragraphs": [
+        "Professional simulation training requires more than changing scenarios: it also requires interaction design that corresponds to training objectives.",
+        "Predefined scripts, rule-based logic, and AI technologies each have their own appropriate applications.",
+        "For tasks that require explicit operating procedures, fixed training conditions, or repeatable comparisons, rule-based design may be easier to control and verify.",
+        "For applications that seek a wider range of interactive variations, AI may offer an additional technical option.",
+        "BXR focuses on whether the technology serves the training objective, rather than using AI for its own sake."
+      ]
+    },
+    {
+      "id": "adoption",
+      "title": "AI simulation applications must balance interaction with training control",
+      "paragraphs": [
+        "System reliability and control over training content are important in professional training environments.",
+        "When adopting AI, the following should be assessed for the actual application:"
+      ],
+      "items": [
+        {
+          "title": "Training objectives",
+          "paragraphs": [
+            "Whether the AI functionality contributes to specific training content rather than adding unrelated complexity."
+          ]
+        },
+        {
+          "title": "Scenario control",
+          "paragraphs": [
+            "Whether the necessary mission conditions, operating logic, and training boundaries can be maintained."
+          ]
+        },
+        {
+          "title": "Consistency of results",
+          "paragraphs": [
+            "Whether repeatability requirements can be met for training that requires fixed conditions or comparisons of results."
+          ]
+        },
+        {
+          "title": "System integration",
+          "paragraphs": [
+            "Whether the AI functionality is suitable for existing equipment, data structures, and simulation sequences."
+          ]
+        },
+        {
+          "title": "Information security",
+          "paragraphs": [
+            "Assess restrictions on information processing and use according to the actual deployment environment and the nature of the data."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "value",
+      "title": "Let intelligent technology serve training objectives, rather than replace training design",
+      "paragraphs": [
+        "The value of AI in simulation training depends on whether it can address a specific training problem.",
+        "When AI works together with scenario design, operational interaction, and professional requirements, it can offer new design directions for particular applications.",
+        "Potential application benefits include:"
+      ],
+      "bullets": [
+        "Explore different forms of interaction with virtual characters.",
+        "Support information processing for specific simulation scenarios.",
+        "Expand interaction design options for suitable training content.",
+        "Evaluate new applications alongside established simulation technologies.",
+        "Validate technical suitability step by step according to actual needs."
+      ],
+      "note": "These are directions for applying AI technology in simulation training; they do not mean that all BXR products already include these capabilities."
+    }
+  ],
+  "relatedTitle": "Start with training needs to assess where AI may be appropriate",
+  "faq": [
+    {
+      "question": "What is AI-enhanced simulation?",
+      "answer": "AI-enhanced simulation is an application direction that uses artificial intelligence in specific simulation systems or interactive scenarios. It may involve virtual character behavior, information processing, or scenario interaction. Actual capabilities depend on the system design and product configuration."
+    },
+    {
+      "question": "Does movement by a virtual character in a simulation system mean it uses AI?",
+      "answer": "Not necessarily. Virtual character movement and responses can also be implemented through predefined animations, event scripts, or rule-based program control. Whether AI is used should be determined from the actual technical architecture."
+    },
+    {
+      "question": "Can AI automatically generate every training scenario?",
+      "answer": "There is no universal answer. AI can be a technical option for some aspects of scenario design or interaction processing, but professional training still requires clear training objectives, content planning, and appropriate validation. AI should not be treated as a tool that can automatically complete all training design."
+    },
+    {
+      "question": "Is AI suitable for all military, policing, and fire and disaster response training?",
+      "answer": "Not necessarily. Different types of training have different requirements for reliability, controllability, and operating procedures. Whether AI is appropriate must be assessed according to the actual task, equipment conditions, and application purpose."
+    },
+    {
+      "question": "Do all BXR simulation training products include AI capabilities?",
+      "answer": "No. Different products have their own technical architectures and functional scope, and AI is not standard in every system. Specific AI applications and available capabilities should be confirmed against product documentation and project configurations."
+    }
+  ],
+  "closing": {
+    "title": "Start with training needs to explore an appropriate combination of AI and simulation technology",
+    "body": "Different scenarios require different approaches to interaction and control. BXR can discuss the suitability of AI and established simulation technologies, along with directions for system planning, according to the application objectives.",
+    "cta": "Discuss AI simulation applications"
+  },
+  "seo": {
+    "title": "AI-Enhanced Simulation｜AI & XR Training",
+    "description": "Learn how AI can be applied to virtual characters, scenario interaction, and simulation information processing, and how BXR evaluates combining AI with XR simulation systems for military, policing, and fire and disaster response training needs."
+  },
+  "relatedProducts": [
+    "sut",
+    "uav"
+  ],
+  "relatedSolutions": [
+    "military"
+  ],
+  "primaryDestination": "products",
+  "relationNotes": [
+    "These links identify related application areas; they do not mean that every listed product incorporates AI. Confirm specific AI applications and available features against the product information and project configuration."
+  ]
+}

@@ -1,3 +1,4 @@
+import {contentLocale} from "../../src/lib/content-locale.ts";
 import {publicUrl} from '../../src/lib/public-url.ts';
 // Shared checks for the English and Japanese product and solution pages (qa-english.mjs, qa-japanese.mjs).
 // The Traditional Chinese pages are the master: every localized page must render its own content file
@@ -46,7 +47,7 @@ export async function runLocalizedQa({ lang, port, foreign, nav, scope, htmlLang
     check("nav: contact button", (await page.locator("a.contact").innerText()).trim() === nav.contact);
 
     // solutions landing: same blocks as the Chinese page, four category cards, no closing band (the master has none)
-    const overview = YAML.parse(readFileSync(`src/content/pages/${lang}/solutions.md`, "utf8").split(/^---$/m)[1]);
+    const overview = YAML.parse(readFileSync(`src/content/pages/${contentLocale(lang)}/solutions.md`, "utf8").split(/^---$/m)[1]);
     check("landing: headline", (await page.locator("h1").innerText()).trim() === overview.hero.title);
     const cards = await page.$$eval("#solution-list article.card .title", (hs) => hs.map((h) => h.textContent.trim()));
     check("landing: four category cards in order", JSON.stringify(cards) === JSON.stringify(["military", "police", "fire-rescue", "smart-city"].map((s) => content("solutions", lang, s).name)), cards.join(" | "));

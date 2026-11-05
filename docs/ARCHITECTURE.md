@@ -42,13 +42,13 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 
 ## 3. 文章、三語及資料位置
 
-- 內容：`src/content/<collection>/<tw|en|jp>/<slug>.md`。
+- 內容：`src/content/<collection>/<zh-Hant|en|ja>/<slug>.md`；核心技術全文與總覽使用同結構的 `.json`。Sveltia 使用標準語言名稱；Astro logical ID 與公開網址仍為 `tw`／`en`／`jp`，由 `src/lib/content-locale.ts` 映射。
 - Astro schema：`src/content.config.ts`；Sveltia 欄位由 `scripts/sveltia/generate.mjs` 依 schema 產生，不能只手改 config.yml。
 - TW 是日期、草稿、分類、排序及關聯等結構欄位的來源；EN／JP 不是另一套結構資料庫。
 - 三語共用相同 slug、ARTICLE_ID、mediaId 及媒體。既有 URL 不重命名；案例 collection `case-studies` 的 URL 維持 `/cases/`。
 - 已知日期維持原值；未知日期保持空值，不填今天或 1970。
 - 新聞／產品／解決方案／案例等可由 CMS 編輯；固定頁只開放既有檔案，不能刪除頁面結構。
-- `src/content/ui/*.json`、`src/data/home.ts`、`src/data/technologies-*.ts`、`src/data/site.json` 等程式資料仍在同一 Git main 管理。尚未提供 CMS 編輯入口的資料，不能假稱固定頁欄位可控制它；實際編輯範圍見 [CMS 欄位對照](CMS-FIELD-MAP.md)。擴充後台範圍必須等值遷移與另行驗收，不任意搬家、改文案或重做元件。
+- `src/content/ui/*.json`、`src/data/home.ts`、`src/data/site.json` 等程式資料仍在同一 Git main 管理。尚未提供 CMS 編輯入口的資料，不能假稱固定頁欄位可控制它；實際編輯範圍見 [CMS 欄位對照](CMS-FIELD-MAP.md)。擴充後台範圍必須等值遷移與另行驗收，不任意搬家、改文案或重做元件。
 
 ## 4. 媒體
 
@@ -78,9 +78,12 @@ Sveltia 自身固定版本的 CDN、GitHub API，以及已核准的外部影片�
 
 業主不採 [CMS 2.0](cms-2.0/README.md) 方案 B（自建管理前端），以免增加網站自有程式的攻擊面；CMS 維持 Sveltia，依方案 A 只在 Sveltia 公開設定範圍內改善，不 fork、不 monkey-patch、不另建後台或 Dashboard 服務。
 
-- 已做（Phase 1）：欄位、選項、集合名稱中英並列（`scripts/sveltia/labels.mjs`，只改顯示文字，儲存的 key／值不變）；關聯欄位改為依名稱搜尋的選單，指向 TW 集合，仍只存 slug；既有識別碼（ARTICLE_ID、mediaId、imageId、產品代號）加上勿改提示。集合名稱以語言代碼開頭（`TW · 最新消息 / News`），側欄截斷時仍分得出語言。
-- Sveltia 做不到、不硬做：系統按鈕／錯誤訊息雙語（Sveltia 介面只能單一語言）、跨類別 Dashboard。
-- 須另行確認才做：三語合併成同一篇編輯（`tw` 會被 Sveltia 顯示成 Akan 語）、正文任意位置插入圖片／影片／CTA 區塊（需同步修改前台 renderer）。
+- 同一篇三語編輯：一個 collection、一個 slug，原生語言切換保留未存修改，單次 Save 包含三語。結構欄位在繁體中文設定，使用 Sveltia 公開 `i18n: duplicate` 同步；各語文案與正文獨立。內部語言資料夾為 `zh-Hant`／`en`／`ja`，公開路由不改。
+- 正文媒體：由公開 `registerEditorComponent` API 提供「正文圖片／Inline Image」與「正文影片／Inline Video」。可在段落間增刪、修改及剪貼移動；前台由共用 ContentBody renderer 處理本地圖片、核准的 YouTube／Facebook 與本地影片。未核准素材不輸出；外部播放器點擊後才載入、不自動播放。發布前檢查共用素材的三語 alt／影片標題。
+- 技術頁全文：`src/content/technologies/<locale>/<id>.json` 與 `src/content/technology-overview/<locale>/overview.json` 是唯一編輯來源，含章節、段落、清單、FAQ、CTA、關聯、Hero 圖片及 SEO。原 TS 文案副本已移除；TS 模組只組合型別與資料。七項固定技術 ID 不可任意新增或刪除；TW 草稿與各語翻譯狀態控制路由及 sitemap。
+- 欄位、選項、集合與自訂驗證提示中英並列；原有 key、slug、ARTICLE_ID、mediaId、imageId 與產品代號保持。Sveltia 核心按鈕／錯誤訊息仍使用單一介面語言，沒有自建 Dashboard 或第二個內容系統。
+- 三語儲存可能正規化 YAML 引號、欄位順序及 schema 預設值；不承諾逐 byte 保真。驗收檢查未編輯翻譯的語意資料與完整正文，不能把格式變更宣稱為文案修改。
+- 切換前保存未存稿、關閉舊後台分頁，再刷新 `/admin/`；側欄應只有一個最新消息集合，編輯器顯示正確的繁中／英文／日文。舊 `tw`／`jp` 內容資料夾由 schema 檢查及 loader 拒絕，避免快取舊表單重新建立第二份來源。遠端 `cms/*` 草稿分支的檢查與實際登入／發布驗收見 [整合驗收](cms-2.0/INTEGRATION.md)。
 
 ### 新增產品／解決方案／新聞
 

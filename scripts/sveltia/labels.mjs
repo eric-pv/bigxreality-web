@@ -1,5 +1,23 @@
 // Bilingual CMS labels (docs/cms-2.0 Phase 1, path A). Display text only: stored keys and enum values never change.
 export const FIELD_LABELS={
+"id":"區塊識別碼 / Section ID",
+"paragraphs":"段落 / Paragraphs",
+"bullets":"條列重點 / Bullet Points",
+"primaryCta":"主要按鈕文字 / Primary Button Label",
+"secondaryCta":"次要按鈕文字 / Secondary Button Label",
+"primaryDestination":"主要按鈕站內路徑 / Primary Button Site Path",
+"relatedTitle":"關聯區標題 / Related Section Title",
+"relationNotes":"關聯說明 / Relation Notes",
+"sections":"內容章節 / Content Sections",
+"technologies":"核心技術清單 / Core Technologies",
+"xr":"延展實境 / Extended Reality",
+"ai-simulation":"AI 行為模擬 / AI Simulation",
+"digital-simulation":"數位模擬 / Digital Simulation",
+"training-design":"訓練設計 / Training Design",
+"system-integration":"系統整合 / System Integration",
+"decision-visualization":"決策視覺化 / Decision Visualization",
+"domain-expertise":"領域專業 / Domain Expertise",
+
 "alt": "替代文字 / Alternative Text",
 "answer": "回答 / Answer",
 "application": "應用方式 / Application",
@@ -139,6 +157,7 @@ export const FIELD_LABELS={
 "values": "數值或內容清單 / Values"
 };
 export const OPTION_LABELS={
+"primaryDestination":{"products":"產品總覽 / Products Overview","solutions":"解決方案總覽 / Solutions Overview"},
 "translationStatus": {
 "source": "原文 / Source Language",
 "pending": "待完成 / Pending",

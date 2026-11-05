@@ -1,16 +1,18 @@
+import {contentLocale} from "../src/lib/content-locale.ts";
 // Disposable Git checkout only. Never pushes, edits the working site's articles, or deploys.
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import {mkdtemp, mkdir, readFile, writeFile, symlink, access} from 'node:fs/promises';
 import path from 'node:path';
+import {tmpdir} from 'node:os';
 import {stringify} from 'yaml';
 import {publicSiteRoot} from '../src/lib/public-url.ts';
 
 const root=path.resolve(import.meta.dirname,'..');
 const git=(cwd,...args)=>execFileSync('git',args,{cwd,encoding:'utf8'}).trim();
 await mkdir(path.join(root,'.qa'),{recursive:true});
-const dir=await mkdtemp(path.join(root,'.qa/cms-publication-'));
-git(root,'worktree','add','--detach',dir,'HEAD');
+const dir=await mkdtemp(path.join(tmpdir(),'bxr-cms-publication-'));
+git(root,'clone','--quiet','--no-hardlinks',root,dir);
 await symlink(path.join(root,'node_modules'),path.join(dir,'node_modules'),'dir');
 const id='bxr-cms-isolated-qa', marker='BXR CMS ISOLATED QA';
 const before=git(root,'diff','HEAD','--','src/content','src/assets','public/media','public/video');
@@ -44,19 +46,19 @@ async function stage(name,published){
 try{
   for(const lang of ['tw','en','jp']){
     const data={translationStatus:lang==='tw'?'source':'translated',draft:true,articleId:id,title:`${marker} ${lang}`,summary:'Isolated publication verification.',category:'company',seo:{title:`${marker} ${lang}`,description:'Isolated publication verification.'}};
-    await writeFile(path.join(dir,`src/content/news/${lang}/${id}.md`),`---\n${stringify(data)}---\n\nIsolated initial body.\n`);
+    await writeFile(path.join(dir,`src/content/news/${contentLocale(lang)}/${id}.md`),`---\n${stringify(data)}---\n\nIsolated initial body.\n`);
   }
   await stage('draft-created',false);
   for(const lang of ['tw','en','jp']){
-    const file=path.join(dir,`src/content/news/${lang}/${id}.md`);
+    const file=path.join(dir,`src/content/news/${contentLocale(lang)}/${id}.md`);
     const text=await readFile(file,'utf8');
     await writeFile(file,text.replace('draft: true','draft: false').replaceAll(`${marker} ${lang}`,`${marker} updated ${lang}`).replace('Isolated initial body.','Isolated updated body.'));
   }
   await stage('edited-and-published',true);
-  const tw=path.join(dir,`src/content/news/tw/${id}.md`);
+  const tw=path.join(dir,`src/content/news/zh-Hant/${id}.md`);
   await writeFile(tw,(await readFile(tw,'utf8')).replace('draft: false','draft: true'));
   await stage('unpublished',false);
-  git(dir,'rm',...['tw','en','jp'].map(lang=>`src/content/news/${lang}/${id}.md`));
+  git(dir,'rm',...['tw','en','jp'].map(lang=>`src/content/news/${contentLocale(lang)}/${id}.md`));
   await stage('deleted',false);
   assert.equal(git(root,'diff','HEAD','--','src/content','src/assets','public/media','public/video'),before);
   console.log(`PASS local Git → Astro publication lifecycle. Results: ${dir}/RESULTS.json. Live authorization, GitHub review, Actions and online Pages are NOT tested.`);

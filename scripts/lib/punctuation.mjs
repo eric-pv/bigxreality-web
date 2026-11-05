@@ -46,7 +46,7 @@ export async function scanContent(root) {
   const out = [];
   for await (const file of contentFiles(root)) {
     // The rule is a Chinese-copy convention: English and Japanese files keep their sentence punctuation as supplied.
-    if ([`${path.sep}en${path.sep}`, `${path.sep}jp${path.sep}`].some((s) => file.includes(s)) || file.endsWith(`${path.sep}en.json`) || file.endsWith(`${path.sep}jp.json`)) continue;
+    if ([`${path.sep}en${path.sep}`, `${path.sep}jp${path.sep}`, `${path.sep}ja${path.sep}`].some((s) => file.includes(s)) || file.endsWith(`${path.sep}en.json`) || file.endsWith(`${path.sep}jp.json`)) continue;
     const text = await readFile(file, "utf8");
     let data, body = "";
     if (file.endsWith(".json")) data = JSON.parse(text);

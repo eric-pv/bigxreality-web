@@ -1,4 +1,6 @@
 import { validateValue, mediaFormat } from './value-tools.js';
+import {registerMediaComponents} from './editor-components.js';
+import {registerTechnologyPreviews} from './technology-preview.js';
 const CMS = window.CMS;
 if (!CMS) throw new Error('Sveltia CMS 載入失敗，請檢查網路或 CDN 連線。 / Sveltia CMS failed to load. Check the network or CDN connection.');
 const { createElement: h, forwardRef, useState, useEffect, useImperativeHandle } = CMS.React;
@@ -29,4 +31,7 @@ const ValueControl = forwardRef(function ValueControl({ value, onChange, field, 
 });
 CMS.registerFieldType('bxr-value', ValueControl, undefined, { properties: { value_schema: { type:'object' } } });
 CMS.registerCustomFormat('bxr-media-json', 'json', mediaFormat);
+CMS.registerStringTransformation('bxr_site_lang',value=>({'zh-Hant':'tw',en:'en',ja:'jp'})[String(value)]??String(value));
+registerMediaComponents(CMS);
+registerTechnologyPreviews(CMS);
 CMS.init();

@@ -21,7 +21,7 @@ import { site } from "../lib/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import SectionHead from "./SectionHead.astro";
-import Prose from "./Prose.astro";
+import ContentBody from "./ContentBody.astro";
 import CardProduct from "./CardProduct.astro";
 import CardSolution from "./CardSolution.astro";
 import CaseCard from "./CaseCard.astro";
@@ -195,7 +195,7 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
       <section class="section" aria-labelledby="h-details">
         <div class="container row">
           <h2 class="t-h2 details-title" id="h-details"><Text value={s.details} /></h2>
-          <div class="paras"><Prose html={html} /></div>
+          <div class="paras"><ContentBody html={html} lang={lang} entryFile={`src/content/${article.collection}/${lang}/${article.slug}.md`} /></div>
         </div>
       </section>
     )}

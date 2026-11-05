@@ -9,7 +9,7 @@ try{
  for(const page of [p,v]){page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)errors.push(r.url());});}
  for(const lang of ['tw','en','jp'])for(const width of widths){
   await p.setViewportSize({width,height:1000});await v.setViewportSize({width,height:1000});
-  for(const collection of ['products','solutions'])for(const file of fs.readdirSync(`src/content/${collection}/tw`).filter(f=>f.endsWith('.md'))){
+  for(const collection of ['products','solutions'])for(const file of fs.readdirSync(`src/content/${collection}/zh-Hant`).filter(f=>f.endsWith('.md'))){
    const slug=file.slice(0,-3),url=`/${lang}/${collection}/${slug}/`;await p.goto(server.base+url);const hero=p.locator('.page-hero'),image=hero.locator('img');await image.evaluate(img=>img.decode());
    assert.ok(['scene','equipment','interface'].includes(await hero.getAttribute('data-hero-variant')),url);
    const frame=await image.evaluate(img=>{const rect=img.getBoundingClientRect(),root=img.closest('.page-hero').getBoundingClientRect(),style=getComputedStyle(img);return {fit:style.objectFit,top:rect.top-root.top,bottom:rect.bottom-root.bottom,width:rect.width,height:rect.height};});

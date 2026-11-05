@@ -5,7 +5,8 @@ import { ARTICLE_COLLECTIONS, getLocalized } from "./content";
 import { articlesWithTag, getArticles, pageSize, paginate, TAG_INDEX_MIN } from "./articles";
 import { isNoIndexBuild } from "./content-source";
 import { INVESTOR_MODULES, companyContent } from "./company";
-import { LIVE_TECHNOLOGY_IDS } from "./technologies";
+import {overviewContent} from "../data/technologies-content";
+import { LIVE_TECHNOLOGY_IDS, technologyAvailableLangs } from "./technologies";
 
 
 export interface IndexablePage { lang: Lang; path: string; alternates: Lang[] }
@@ -25,8 +26,8 @@ async function collect(): Promise<IndexablePage[]> {
 
   if (!isNoIndexBuild()) {
     add("/{lang}/", [...LANGS]);
-    add("/{lang}/technologies/", [...LANGS]);
-    for (const id of LIVE_TECHNOLOGY_IDS) add(`/{lang}/technologies/${id}/`, [...LANGS]);
+    add("/{lang}/technologies/", LANGS.filter(lang=>overviewContent[lang].translationStatus!=="pending"));
+    for (const id of LIVE_TECHNOLOGY_IDS) add(`/{lang}/technologies/${id}/`, technologyAvailableLangs(id));
     add("/{lang}/products/", await filter((l) => copyOk("products", l)));
     add("/{lang}/solutions/", await filter((l) => copyOk("solutions", l)));
     add("/{lang}/contact/", await filter((l) => copyOk("contact", l)));

@@ -1,0 +1,135 @@
+{
+  "translationStatus": "translated",
+  "draft": false,
+  "eyebrow": "Core Technology",
+  "title": "Extended Reality (XR) Technology",
+  "lead": "Expand training beyond the limits of physical locations and individual scenarios",
+  "intro": [
+    "In professional fields such as military, police, and fire and disaster response, many training scenarios are constrained by location, safety, equipment, and operating conditions, making them difficult to arrange on demand or repeat.",
+    "Extended reality (XR) offers another approach to training: virtual environments and interactive operations allow trainees to become familiar with mission workflows, practise procedures, and exercise response judgement in controlled simulated scenarios.",
+    "BXR uses XR technology to develop different forms of simulation training systems, making virtual scenarios an extension of professional training."
+  ],
+  "primaryCta": "Explore XR simulation training products",
+  "secondaryCta": "Discuss Application Requirements",
+  "sections": [
+    {
+      "id": "concept",
+      "title": "XR Combines Displays, Interaction and Scenarios",
+      "paragraphs": [
+        "XR (Extended Reality) is an umbrella concept encompassing virtual reality (VR), augmented reality (AR), and mixed reality (MR).",
+        "Different forms of XR can provide different degrees of immersion, information about the real environment, and modes of interaction according to the training objectives."
+      ],
+      "items": [
+        {
+          "title": "VR — Virtual reality",
+          "paragraphs": [
+            "Head-mounted displays present a virtual environment, placing users inside a simulated scenario where they can operate, observe, and practise tasks."
+          ]
+        },
+        {
+          "title": "AR — Augmented reality",
+          "paragraphs": [
+            "Digital information or interactive content is overlaid on a view of the real environment, providing users with additional visual cues and contextual information in physical settings."
+          ]
+        },
+        {
+          "title": "MR — Mixed reality",
+          "paragraphs": [
+            "Real environments and digital content are combined to create closer interaction between virtual objects and physical space. The way this is applied depends on the equipment and system design."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "applications",
+      "title": "From observing scenarios to actively participating in training",
+      "paragraphs": [
+        "XR simulation training goes beyond viewing three-dimensional imagery: it enables trainees to participate in tasks through interaction.",
+        "Depending on the product and training requirements, systems can use virtual scenes, operating equipment, and interactive events to create simulation workflows suited to specific training objectives."
+      ],
+      "items": [
+        {
+          "title": "Mission scenario simulation",
+          "paragraphs": [
+            "Present different settings and mission conditions to help trainees become familiar with particular scenarios."
+          ]
+        },
+        {
+          "title": "Operational procedure practice",
+          "paragraphs": [
+            "Use virtual interaction and suitable operating equipment to practise the procedures required for training."
+          ]
+        },
+        {
+          "title": "Response judgement training",
+          "paragraphs": [
+            "Use simulated events and changes in scenarios to provide opportunities to practise observation, selection, and judgement."
+          ]
+        },
+        {
+          "title": "Repeated practice",
+          "paragraphs": [
+            "Repeat training workflows under controlled conditions to help build familiarity."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "value",
+      "title": "Give professional training a broader range of usable scenarios",
+      "paragraphs": [
+        "Physical training and simulation training each have their own value. XR is intended to supplement aspects of traditional training that are difficult to conduct frequently, rather than replace all physical exercises.",
+        "With appropriate system design, XR can help training organisations increase opportunities for scenario practice, adjust training conditions, and familiarise trainees with selected operations and procedures before actual missions."
+      ],
+      "bullets": [
+        "Supplement training scenarios constrained by location and operating conditions.",
+        "Support repeatable operational and mission practice.",
+        "Design different forms of interaction to meet requirements.",
+        "Combine virtual scenarios with physical operation.",
+        "Serve as a supporting tool within existing professional training programmes."
+      ]
+    }
+  ],
+  "relatedTitle": "How BXR products apply XR technology",
+  "faq": [
+    {
+      "question": "What is the difference between XR, VR, AR, and MR?",
+      "answer": "XR is the extended reality concept that encompasses VR, AR, and MR. VR primarily provides experiences in virtual environments; AR overlays digital information on the real environment; MR further combines virtual content with interaction in physical space. The choice of technology depends on the training objectives, equipment, and application requirements."
+    },
+    {
+      "question": "Can XR simulation training completely replace physical training?",
+      "answer": "There is no universal answer. XR simulation training is suited to supplementing physical training with controlled, repeatable scenario practice. Training involving real equipment operation, physical fitness, environmental experience, and on-site safety procedures should still include physical exercises in accordance with professional requirements."
+    },
+    {
+      "question": "Does XR simulation training always require a VR headset?",
+      "answer": "No. XR includes different forms of technology, and systems may use VR headsets, AR displays, or other interactive configurations. The actual equipment should be confirmed according to the product design and training requirements."
+    },
+    {
+      "question": "Which professional training fields can use XR technology?",
+      "answer": "Depending on application requirements, XR can be used in military, police, fire and disaster response, and other professional education and training. Mission objectives, operating procedures, and equipment conditions differ across fields, so simulated scenarios and modes of interaction need to be designed separately."
+    },
+    {
+      "question": "Can all BXR XR training systems connect and integrate with one another?",
+      "answer": "Not necessarily. Different products have their own system architectures and training purposes. Whether they can exchange information or operate together must be evaluated against actual product functions, interface requirements, and project configurations; it should not be assumed to be a standard feature of every system."
+    }
+  ],
+  "closing": {
+    "title": "Apply XR technology to real training requirements",
+    "body": "From training objectives and application scenarios to equipment configurations, BXR can discuss suitable approaches to XR simulation training for different requirements.",
+    "cta": "Discuss XR training applications"
+  },
+  "seo": {
+    "title": "Extended Reality (XR) Technology｜VR, AR & MR Training",
+    "description": "Discover how BXR uses XR, VR, AR, and MR to create interactive simulation training scenarios for military, police, and fire and disaster response, supporting operational practice and mission response."
+  },
+  "relatedProducts": [
+    "sut",
+    "full-scale-police-training",
+    "police-box",
+    "usv",
+    "fire-extinguisher-simulator"
+  ],
+  "relatedSolutions": [],
+  "primaryDestination": "products",
+  "relationNotes": []
+}

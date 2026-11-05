@@ -13,7 +13,7 @@ const check = (name, ok, detail = "") => {
   if (!ok) failed++;
   console.log(`${ok ? "ok  " : "FAIL"} ${name}${ok || !detail ? "" : `  — ${detail}`}`);
 };
-const dir = "src/content/products/tw";
+const dir = "src/content/products/zh-Hant";
 const products = readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""));
 const faqOf = (slug) => YAML.parse(readFileSync(path.join(dir, `${slug}.md`), "utf8").split(/^---$/m)[1]).faq ?? [];
 const decode = (s) => s.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
