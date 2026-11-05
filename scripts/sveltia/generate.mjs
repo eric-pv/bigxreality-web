@@ -51,7 +51,7 @@ const titleFields={products:'hero.name',solutions:'name',pages:'hero.title',tags
 const names={news:'最新消息 / News',insights:'技術專欄 / Insights',products:'產品介紹 / Products',solutions:'解決方案 / Solutions','case-studies':'案例研究 / Case Studies',pages:'固定頁面 / Pages',tags:'文章標籤 / Tags','investor-items':'投資人資訊 / Investor Relations'};
 const collections=Object.keys(names).map(name=>({name,label:names[name],folder:`src/content/${name}`,create:name!=='pages',delete:name!=='pages',extension:'md',format:'frontmatter',
  i18n:true,identifier_field:titleFields[name]??'title',slug:'{{slug}}',
- summary:name==='products'?'{{hero.name}}':name==='solutions'?'{{name}}':name==='pages'?'{{hero.title}}':'{{title}}',
+ summary:name==='products'?'{{hero.name}}':name==='solutions'?'{{name}}':name==='pages'?'{{hero.title}}':name==='tags'?'{{name}}':'{{title}}',
  ...(name==='pages'?{filter:{field:'hero.eyebrow',pattern:'^(?!發展歷程$|History$|沿革$).*$'}}:{}),
  media_folder:`/src/assets/images/${name==='news'?'news':name==='products'||name==='solutions'?'products':'content'}`,
  public_folder:`../../../assets/images/${name==='news'?'news':name==='products'||name==='solutions'?'products':'content'}`,
@@ -63,11 +63,21 @@ const {readdir}=await import('node:fs/promises');
 // legal review). Other fixed pages have no `draft` key in Git and omit the field, so the CMS never offers a
 // switch that does nothing. (A `hidden` widget with `required` is rejected by Sveltia's config validation,
 // which made qa:sveltia, and therefore every main deployment, fail.)
+const PAGE_LABELS={
+ 'case-studies':'案例研究 / Case Studies',company:'公司介紹 / Company',contact:'聯絡我們 / Contact',
+ insights:'技術專欄 / Insights',investors:'投資人資訊 / Investor Relations',news:'最新消息 / News',
+ partners:'合作夥伴 / Partners',privacy:'隱私權政策 / Privacy Policy',products:'產品介紹 / Products',
+ search:'站內搜尋 / Search',solutions:'解決方案 / Solutions',tags:'文章標籤 / Tags',team:'團隊介紹 / Team'
+};
+const pageLabel=slug=>{
+ if(!PAGE_LABELS[slug])throw new Error(`Missing bilingual fixed-page label: ${slug}`);
+ return PAGE_LABELS[slug];
+};
 const DRAFT_PAGES=new Set(['privacy']);
 const draftField=pages.fields.find(f=>f.name==='draft');
 const pageDraft={...draftField,hint:'TW 控制前台公開：勾選表示不公開（頁面不建置，頁尾也不顯示連結）。取消勾選前須完成法務審閱、刪除草稿標註並完成 EN／JP 翻譯。'};
 const pageFields=name=>pages.fields.flatMap(f=>f!==draftField?[f]:DRAFT_PAGES.has(name)?[pageDraft]:[]);
-pages.files=(await readdir(new URL('src/content/pages/tw/',root))).filter(n=>n.endsWith('.md')&&n!=='history.md').sort().map(filename=>({name:filename.slice(0,-3),label:filename.slice(0,-3),file:`src/content/pages/{{locale}}/${filename}`,i18n:true,fields:pageFields(filename.slice(0,-3))}));delete pages.fields;delete pages.delete;delete pages.extension;
+pages.files=(await readdir(new URL('src/content/pages/tw/',root))).filter(n=>n.endsWith('.md')&&n!=='history.md').sort().map(filename=>({name:filename.slice(0,-3),label:pageLabel(filename.slice(0,-3)),file:`src/content/pages/{{locale}}/${filename}`,i18n:true,fields:pageFields(filename.slice(0,-3))}));delete pages.fields;delete pages.delete;delete pages.extension;
 // Keep the existing dynamic map intact. One custom JSON object preserves all IDs and future entries.
 collections.push({name:'news-media',label:'新聞共用圖集與影片（進階） / News Media Registry (Advanced)',files:[{name:'registry',label:'新聞媒體資料 / News Media Data',file:'src/data/news-media.json',format:'bxr-media-json',fields:[{name:'body',label:'媒體對應表 / Media Map',widget:'bxr-value',required:true,value_schema:mediaSchema,hint:'完整沿用現有 mediaId→媒體物件。圖檔在 src/assets/images/news/，filename 只填檔名；approved=true 且三語 alt 完整才顯示。'}]}]});
 // Presentation-only sidecar: text and SEO source fields stay unchanged.
@@ -90,7 +100,7 @@ const localizedCollections=collections.flatMap(collection=>{
 const config={backend:{name:'github',repo:'eric-pv/bigxreality-web',branch:'main',auth_methods:['token']},
  publish_mode:'editorial_workflow',output:{omit_empty_optional_fields:true},site_url:'https://eric-pv.github.io/bigxreality-web/',display_url:'https://eric-pv.github.io/bigxreality-web/',
  media_folder:'src/assets/images/news',public_folder:'/src/assets/images/news',
- asset_collections:[{name:'news-images',label:'新聞圖片',media_folder:'src/assets/images/news',public_folder:'/src/assets/images/news'},{name:'product-images',label:'產品與解決方案圖片',media_folder:'src/assets/images/products',public_folder:'/src/assets/images/products'},{name:'content-images',label:'一般內容圖片',media_folder:'src/assets/images/content',public_folder:'/src/assets/images/content'},{name:'news-videos',label:'新聞本地影片',media_folder:'public/media/news',public_folder:'/media/news'}],
+ asset_collections:[{name:'news-images',label:'新聞圖片 / News Images',media_folder:'src/assets/images/news',public_folder:'/src/assets/images/news'},{name:'product-images',label:'產品與解決方案圖片 / Product and Solution Images',media_folder:'src/assets/images/products',public_folder:'/src/assets/images/products'},{name:'content-images',label:'一般內容圖片 / Content Images',media_folder:'src/assets/images/content',public_folder:'/src/assets/images/content'},{name:'news-videos',label:'新聞本地影片 / Local News Videos',media_folder:'public/media/news',public_folder:'/media/news'}],
  media_libraries:{default:{config:{max_file_size:20000000,slugify_filename:true,filename_template:'{{filename}}-{{uuid_short}}'}}},collections:localizedCollections};
 const output='# Generated by npm run cms:sveltia:generate from src/content.config.ts. Do not hand-edit.\n'+stringify(config,{lineWidth:110,aliasDuplicateObjects:true});
 const destination=new URL('public/admin/config.yml',root);
