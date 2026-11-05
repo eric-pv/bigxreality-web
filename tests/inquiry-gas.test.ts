@@ -182,8 +182,24 @@ test('formula-looking input is stored as text; legacy TW/CN codes become the agr
   assert.equal(row[6], '台灣(中華民國)');
   h.send({country: 'CN'}, uuid(9));
   assert.equal(h.rows()[2][6], '中國(中華人民共和國)');
-  h.send({country: 'Japan'}, uuid(10));
-  assert.equal(h.rows()[3][6], 'Japan');
+  h.send({country: 'EC'}, uuid(10));
+  assert.equal(h.rows()[3][6], '厄瓜多');
+  h.send({country: 'Japan'}, uuid(11));
+  assert.equal(h.rows()[4][6], 'Japan');
+});
+
+test('country and phone are required', () => {
+  const h = harness();
+  assert.equal(h.send({country: ''}).field, 'country');
+  assert.equal(h.send({phone: ''}).field, 'phone');
+  assert.equal(h.rows().length, 1);
+});
+
+test('setupInquiry converts country codes already in the sheet to Chinese names, idempotently', () => {
+  const h = harness();
+  h.business().rows.push(["'20261105001", new Date(), '未處理', 'ERIC', 'BXR', 'MKT', 'EC'], ["'20261105002", new Date(), '未處理', 'A', 'B', '', '日本']);
+  h.setup(); h.setup();
+  assert.deepEqual(h.rows().slice(1).map(r => r[6]), ['厄瓜多', '日本']);
 });
 
 test('opt-in, lock-protected, globally bounded', () => {
@@ -240,7 +256,7 @@ test('setupInquiry migrates the old 17-column sheet: backup first, numbers by re
   assert.deepEqual(rows.slice(1).map(r => [plain(r[0]), r[2], r[3], r[6]]), [
     ['20261104002', '已回覆', '第二位', '台灣(中華民國)'],
     ['20261104001', '處理中', '第一位', '中國(中華人民共和國)'],
-    ['20261105001', '未處理', '舊客戶', 'JP'],
+    ['20261105001', '未處理', '舊客戶', '日本'],
   ]);
   const sys = h.system().rows.slice(1);
   assert.deepEqual(sys.map(r => [plain(r[0]), plain(r[1]), r[3], r[6]]).sort(), [

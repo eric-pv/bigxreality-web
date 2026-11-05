@@ -34,9 +34,9 @@ const inputFields: { key: InputKey; type: "text" | "email" | "tel"; auto: string
   { key: "name", type: "text", auto: "name", required: true, max: 100 },
   { key: "organization", type: "text", auto: "organization", required: true, max: 150 },
   { key: "jobTitle", type: "text", auto: "organization-title", required: false, max: 100 },
-  { key: "country", type: "text", auto: "country-name", required: false, max: 80 },
+  { key: "country", type: "text", auto: "country-name", required: true, max: 80 },
   { key: "email", type: "email", auto: "email", required: true, max: 254 },
-  { key: "phone", type: "tel", auto: "tel", required: false, max: 40 },
+  { key: "phone", type: "tel", auto: "tel", required: true, max: 40 },
 ];
 const topicKeys = Object.keys(t.topics) as (keyof typeof t.topics)[];
 ---
@@ -51,7 +51,7 @@ const topicKeys = Object.keys(t.topics) as (keyof typeof t.topics)[];
                     <div class="field" data-field={key}>
                       <label for={`f-${key}`}>{f[key]} <span class="tag">{required ? f.required : f.optional}</span></label>
                       {key === "country" ? (
-                        <select id="f-country" name="country" autocomplete="country" aria-describedby="e-country">
+                        <select id="f-country" name="country" autocomplete="country" required aria-describedby="e-country">
                           <option value="">{f.countryPlaceholder}</option>
                           {countryOptions(lang).map(country => <option value={country.code}>{country.label}</option>)}
                         </select>
@@ -107,7 +107,7 @@ const topicKeys = Object.keys(t.topics) as (keyof typeof t.topics)[];
               <div class="done" data-done role="status" tabindex="-1" hidden>
                 <h3 class="t-h3">{f.successTitle}</h3>
                 <p>{f.successBody}</p>
-                <p class="t-small t-muted">{f.reference}：<span data-ref></span></p>
+                <p class="t-small t-muted" data-ref-line>{f.reference}：<span data-ref></span></p>
               </div>
               <p class="t-small t-muted mail-alt"><Text value={f.emailAlternative} /> <a href={mailto(t.topics.general.subject)} data-mailto>{email}</a></p>
               <script type="application/json" data-inquiry-text set:html={JSON.stringify({ required: f.errorRequired, email: f.errorEmail, phone: f.errorPhone, declined: `${f.declined} ${email}`, summary: f.errorSummary, unknown: f.errorUnknown, interestPlaceholder: f.interestPlaceholder, interestSelected: f.interestSelected, busy: f.errorBusy, failed: `${f.errorFailed} ${email}` }).replace(/</g, "\\u003c")} />
@@ -202,7 +202,8 @@ const topicKeys = Object.keys(t.topics) as (keyof typeof t.topics)[];
         ["name", (v) => v ? "" : text.required],
         ["organization", (v) => v ? "" : text.required],
         ["email", (v) => !v ? text.required : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : text.email],
-        ["phone", (v) => !v || /^[0-9+()#.\-\s]{5,40}$/.test(v) ? "" : text.phone],
+        ["country", (v) => v ? "" : text.required],
+        ["phone", (v) => !v ? text.required : /^[0-9+()#.\-\s]{5,40}$/.test(v) ? "" : text.phone],
         ["message", (v) => v ? "" : text.required],
       ];
       let first: string | null = null;
@@ -248,7 +249,9 @@ const topicKeys = Object.keys(t.topics) as (keyof typeof t.topics)[];
         if (reply.ok && reply.persisted) {
           emitInquiryEvent("success",sourcePage,payload.topic,interestCount);
           const done = form.parentElement!.querySelector<HTMLElement>("[data-done]")!;
-          done.querySelector("[data-ref]")!.textContent = requestId;
+          // Public number from the receiver (20261104001); never the internal request UUID.
+          done.querySelector("[data-ref]")!.textContent = reply.inquiryId ?? "";
+          done.querySelector<HTMLElement>("[data-ref-line]")!.hidden = !reply.inquiryId;
           form.hidden = true;
           done.hidden = false;
           done.focus();
