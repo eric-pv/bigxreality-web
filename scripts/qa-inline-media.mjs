@@ -29,11 +29,19 @@ try{
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Media must not cause horizontal overflow');
   const html=await page.locator('main').innerHTML();assert.ok(html.indexOf('before inline media')<html.indexOf('data-bxr-inline-image'));assert.ok(html.indexOf('data-bxr-inline-image')<html.indexOf('between image and video'));assert.ok(html.indexOf('between image and video')<html.indexOf('data-bxr-inline-video'));assert.ok(html.indexOf('data-bxr-inline-video')<html.indexOf('after inline media'));
  }
+ for(const lang of ['tw','en','jp']){
+  await page.goto(`${server.base}/${lang}/cms-fixture/inline/`);
+  const image=page.locator('.landing-body [data-bxr-inline-image] img');await image.evaluate(img=>img.decode());
+  assert.equal(await image.getAttribute('alt'),`TEST FIXTURE ${lang} landing image`);
+  const ratio=await image.evaluate(img=>img.getBoundingClientRect().width/img.getBoundingClientRect().height);assert.ok(Math.abs(ratio-16/9)<0.02,'Landing inline images must follow the 16:9 layout rule');
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ }
+ await page.goto(`${server.base}/tw/news/fixture-news-02/`);
  await page.locator('[data-bxr-video]').click();await page.locator('.bxr-inline-player iframe').waitFor();
  assert.match(await page.locator('.bxr-inline-player iframe').getAttribute('src'),/^https:\/\/www\.youtube-nocookie\.com\/embed\/abcdefghijk\?autoplay=0&rel=0$/);
  await page.goto('http://127.0.0.1:4404/qa-inline-local.html');
  const video=page.locator('.bxr-inline-media video');await video.evaluate(async v=>{if(v.readyState<1)await new Promise((resolve,reject)=>{v.addEventListener('loadedmetadata',resolve,{once:true});v.addEventListener('error',reject,{once:true});});});
  assert.ok(await video.evaluate(v=>v.videoWidth>0&&v.duration>0));
  assert.equal(await video.getAttribute('autoplay'),null);
- console.log('PASS: three-language inline images and captions, approval gate, paragraph order, desktop/mobile layout, click-to-load external player, playable local video; no remote media downloaded.');
+ console.log('PASS: three-language inline images and captions, approval gate, paragraph order, desktop/mobile layout, typed landing prose blocks with 16:9 images, click-to-load external player, playable local video; no remote media downloaded.');
 }finally{await browser.close();server.stop();}

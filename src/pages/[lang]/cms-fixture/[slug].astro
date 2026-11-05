@@ -1,0 +1,14 @@
+---
+// Isolated renderer fixture. No route is emitted in a production build.
+import examples from '../../../../tests/fixtures/inline-landing.json';
+import {LANGS,type Lang} from '../../../i18n';
+import {contentSource} from '../../../lib/content-source';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LandingSections from '../../../components/LandingSections.astro';
+export function getStaticPaths(){return contentSource()==='fixtures'?LANGS.map(lang=>({params:{lang,slug:'inline'}})):[];}
+const lang=Astro.params.lang as Lang;
+---
+<BaseLayout lang={lang} title="TEST FIXTURE inline landing" description="TEST FIXTURE inline media renderer" pathTemplate="/{lang}/cms-fixture/inline/" alternates={[]}>
+ <h1>TEST FIXTURE inline landing</h1>
+ <LandingSections lang={lang} L={examples[lang]} entryFile="tests/fixtures/inline-landing.json" />
+</BaseLayout>

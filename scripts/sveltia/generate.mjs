@@ -57,6 +57,7 @@ const collections=Object.keys(names).map(name=>({name,label:names[name],folder:`
  media_folder:`/src/assets/images/${name==='news'?'news':name==='products'||name==='solutions'?'products':'content'}`,
  public_folder:`../../../assets/images/${name==='news'?'news':name==='products'||name==='solutions'?'products':'content'}`,
  fields:[...Object.entries(schemas[name].shape).filter(([k])=>k!=='body').map(([k,v])=>field(k,v)),{name:'body',label:FIELD_LABELS.body,widget:'markdown',required:false,modes:['rich_text','raw'],editor_components:['bxr-image','bxr-video']}] }));
+for(const c of collections.filter(c=>['products','solutions'].includes(c.name)))c.fields.find(f=>f.name==='body').hint='此欄供舊版版型使用。落地頁請在「銷售落地頁 → 內容區塊」新增文字區塊，可在正文段落間插入圖片／影片。 / Legacy template text. For sales landing pages, add a prose block under Sales Landing Page → Content Blocks to insert inline media.';
 collections.find(c=>c.name==='technology-overview').fields=collections.find(c=>c.name==='technology-overview').fields.filter(f=>f.name!=='body');
 // Fixed files: exclude the retired history copy rather than creating any new public page.
 const pages=collections.find(c=>c.name==='pages');delete pages.filter;delete pages.folder;delete pages.create;delete pages.identifier_field;delete pages.slug;delete pages.summary;

@@ -25,7 +25,7 @@
 - 外部影片填 YouTube／Facebook 連結與各語標題；一般公開核准與嵌入核准分開。未核准嵌入時只顯示合法連結；核准播放器需點擊才載入，不自動播放、不下載第三方影片。
 - 本地影片選 Local Video，使用上傳檔案欄位；不必在外部 URL 欄位填值。檔案存於 `public/media/news/`，維持 20 MB 上傳限制與新檔名。若超過限制須另外評估，不新增外部儲存服務。
 - 儲存格式為 `<!-- bxr-image: {JSON} -->`／`<!-- bxr-video: {JSON} -->`，由公開 editor component API 往返，內文其他 Markdown 保持。前台只解析明確區塊，跳脫文字與屬性，圖片限於本地 `src/assets/images/`，影片使用既有 allowlist。
-- News、Insights、Case Studies 與原有 Markdown 正文使用共用 ContentBody。產品／方案的 typed landing 表單仍控制原有固定版面，不把全站版型硬換成自由正文。技術頁每章可加 rich-text body，頁面可加補充正文。
+- News、Insights、Case Studies 與原有 Markdown 正文使用共用 ContentBody。產品／方案保留既有落地頁版面；在「銷售落地頁 → 內容區塊」可新增可排序文字區塊，區塊正文支援相同媒體，圖片依版面規範呈現 16:9。根層舊版正文欄位另有明確提示，不冒充落地頁內容。技術頁每章可加 rich-text body，頁面可加補充正文。
 
 ## 技術頁
 

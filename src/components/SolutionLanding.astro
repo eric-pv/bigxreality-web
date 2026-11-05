@@ -6,6 +6,7 @@
  * Related products are those that list this solution (products.relatedSolutions) plus the ones the
  * solution names itself; with none, the block shows only related solutions, or nothing.
  */
+import {contentLocale} from "../lib/content-locale";
 import type { CollectionEntry } from "astro:content";
 import { localePath, type Lang } from "../i18n";
 import { availableLangs, getLocalized } from "../lib/content";
@@ -118,7 +119,7 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
 
   <section class="section landing-overview" aria-labelledby="landing-overview-title"><div class="container narrow"><h2 class="t-h2" id="landing-overview-title"><Text value={L.headline} /></h2>{L.intro?.split(/\n\s*\n/).map(paragraph => <p><Text value={paragraph} /></p>)}{L.introImage?.src && L.introImage.alt && <div class="intro-media"><MediaSlot media={L.introImage} ratio="3 / 2" fallbackLabel={t.placeholders.hero} needPrefix={t.mediaNeed} badge={t.illustrationLabel} sizes="(max-width: 767px) 100vw, 860px" /></div>}</div></section>
 
-  <LandingSections lang={lang} L={L} />
+  <LandingSections lang={lang} L={L} entryFile={`src/content/solutions/${contentLocale(lang)}/${slug}.md`} />
 
   <RelatedCases lang={lang} cases={cases} description={L.casesIntro} alt={cases.length > 0 && n++ % 2 === 1} />
 

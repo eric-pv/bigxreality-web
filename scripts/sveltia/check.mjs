@@ -106,6 +106,7 @@ for(const name of ['news','insights','case-studies','products','solutions','tech
    const data=json?JSON.parse(text):parse(text.split(/^---\s*$/m)[1]);
    if(lang==='tw')source=data;
    const bodies=json?[data.body??'',...(data.sections??[]).map(section=>section.body??'')]:[text.split(/^---\s*$/m).slice(2).join('---')];
+   bodies.push(...(data.landing?.blocks??[]).filter(block=>block.kind==='prose').map(block=>block.body??''));
    entries[lang]={file,bodies};
   }
   if(source?.draft||source?.approval?.approved===false)continue;

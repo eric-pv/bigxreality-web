@@ -2707,6 +2707,8 @@ collections:
         editor_components:
           - bxr-image
           - bxr-video
+        hint: 此欄供舊版版型使用。落地頁請在「銷售落地頁 → 內容區塊」新增文字區塊，可在正文段落間插入圖片／影片。 / Legacy template text. For sales landing pages, add
+          a prose block under Sales Landing Page → Content Blocks to insert inline media.
         i18n: true
     description: 同一篇切換繁體中文／English／日本語；共用結構在繁體中文設定。儲存草稿不等於公開。 / Switch languages within one entry; edit shared
       structure in Traditional Chinese. Saving a draft does not publish it.
@@ -3979,6 +3981,8 @@ collections:
         editor_components:
           - bxr-image
           - bxr-video
+        hint: 此欄供舊版版型使用。落地頁請在「銷售落地頁 → 內容區塊」新增文字區塊，可在正文段落間插入圖片／影片。 / Legacy template text. For sales landing pages, add
+          a prose block under Sales Landing Page → Content Blocks to insert inline media.
         i18n: true
     description: 同一篇切換繁體中文／English／日本語；共用結構在繁體中文設定。儲存草稿不等於公開。 / Switch languages within one entry; edit shared
       structure in Traditional Chinese. Saving a draft does not publish it.
