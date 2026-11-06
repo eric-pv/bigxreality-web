@@ -35,13 +35,19 @@ try {
       assert.ok(!/\[待|undefined|\bnull\b/.test([m.titles[0],m.descriptions[0],m.ogAlt].join(' ')));
       assert.equal(m.ogTitle,m.titles[0]);assert.equal(m.twitterTitle,m.titles[0]);assert.equal(m.ogDescription,m.descriptions[0]);assert.equal(m.twitterDescription,m.descriptions[0]);
       assert.equal(m.keywords,false);assert.ok(m.ogAlt);assert.ok(await fs.stat(path.join(DIST,artifactPath(m.ogImage))));
-      // CMS-authored SEO is checked against its current Git source, while legacy expectations remain the fallback.
+      // CMS-authored Markdown and technology JSON SEO use their current Git source;
+      // legacy expectations only cover pages without a CMS content file.
       let copy=approved[url];
       const [lang, section, slug] = url.split('/').filter(Boolean);
       const collection=({news:'news',insights:'insights',cases:'case-studies',products:'products',solutions:'solutions'})[section];
       const pageSlug=section==='company'?(slug??'company'):(!slug?section:undefined);
-      const sourcePath=collection&&slug?`src/content/${collection}/${contentLocale(lang)}/${slug}.md`:pageSlug?`src/content/pages/${contentLocale(lang)}/${pageSlug}.md`:undefined;
-      if(sourcePath)try{const source=parseYaml((await fs.readFile(sourcePath,'utf8')).split(/^---\s*$/m)[1]);if(source.seo?.title&&source.seo?.description)copy=source.seo;}catch(error){if(error.code!=='ENOENT')throw error;}
+      const technologyPath=section==='technologies'?`src/content/${slug?'technologies':'technology-overview'}/${contentLocale(lang)}/${slug??'overview'}.json`:undefined;
+      const sourcePath=technologyPath??(collection&&slug?`src/content/${collection}/${contentLocale(lang)}/${slug}.md`:pageSlug?`src/content/pages/${contentLocale(lang)}/${pageSlug}.md`:undefined);
+      if(sourcePath)try{
+        const text=await fs.readFile(sourcePath,'utf8');
+        const source=sourcePath.endsWith('.json')?JSON.parse(text):parseYaml(text.split(/^---\s*$/m)[1]);
+        if(source.seo?.title&&source.seo?.description)copy=source.seo;
+      }catch(error){if(error.code!=='ENOENT')throw error;}
       if(copy){assert.equal(m.titles[0],normalize(copy.title));assert.equal(m.descriptions[0],copy.description);}
       const pattern=url.replace(/^\/(tw|en|jp)\//,'/{lang}/');
       const matching=pages.filter(p=>!p.meta.noindex && p.url.replace(/^\/(tw|en|jp)\//,'/{lang}/')===pattern);
