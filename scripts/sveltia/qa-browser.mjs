@@ -81,6 +81,14 @@ try{
   if(await locator.first().isVisible())await locator.first().scrollIntoViewIfNeeded();
   return locator.first();
  };
+ // Search the complete content index instead of assuming the title is in the first
+ // rendered batch of collection rows. Editorial title changes can move it below that batch.
+ const entryRow=async title=>{
+  await page.getByRole('searchbox',{name:'Search for contents…',exact:true}).fill(title);
+  const row=page.getByRole('grid',{name:'Entries',exact:true}).getByRole('row').filter({hasText:title}).first();
+  await row.waitFor();
+  return row;
+ };
  await page.getByRole('treeitem',{name:'隔離測試文章（不會顯示於官網） / Isolated Test (Never Published)',exact:true}).click();
  await page.getByRole('main',{name:/隔離測試文章/}).waitFor();
  await page.getByRole('button',{name:'Create New Entry'}).first().click();
@@ -169,7 +177,7 @@ try{
  await page.getByRole('treeitem',{name:'最新消息 / News',exact:true}).click();
  const id='news-01-ds-2025';
  const raw=parse(originals[`src/content/news/zh-Hant/${id}.md`].split(/^---\s*$/m)[1]);
- await page.getByRole('row').filter({hasText:raw.title}).first().click();
+ await (await entryRow(raw.title)).click();
  // Sveltia lazily mounts off-screen fields; scroll the editor to the Markdown field.
  const body=await reveal(page.getByRole('textbox',{name:'文章內文 / Article Content',exact:true}));await writeFile(path.join(cache,'body-editor.txt'),await page.locator('body').ariaSnapshot());await body.fill('BXR local TW test only.');
  const coverGroup=await reveal(page.getByRole('group',{name:/封面.*Field/}));
@@ -178,7 +186,7 @@ try{
  await (await reveal(coverGroup.locator('input[type=file]'))).setInputFiles({name:'bxr-news-upload.webp',mimeType:'image/webp',buffer:image});
  await (await reveal(coverGroup.getByRole('textbox',{name:'替代文字 / Alternative Text',exact:true}))).fill('BXR isolated existing logo upload test');
  await page.getByRole('button',{name:'Save',exact:true}).click();
- await page.getByRole('row').filter({hasText:raw.title}).first().waitFor();
+ await entryRow(raw.title);
  clone=await readClone();const schemas=loadSchemas();
  for(const lang of ['tw','en','jp']){
   const file=`src/content/news/${contentLocale(lang)}/${id}.md`,source=textOf(clone,file);
@@ -199,6 +207,7 @@ try{
    assert.equal(source.split(/^---\s*$/m).slice(2).join('---'),original.split(/^---\s*$/m).slice(2).join('---'),`${lang} Markdown body changed without editing`);
   }
  }
+ await page.getByRole('searchbox',{name:'Search for contents…',exact:true}).fill('');
  const productSlug='fire-extinguisher-simulator',productName=parse(originals[`src/content/products/zh-Hant/${productSlug}.md`].split(/^---\s*$/m)[1]).hero.name;
  // Create ONE entry, retain unsaved buffers while switching languages, and save all three together.
  await page.getByRole('treeitem',{name:'最新消息 / News',exact:true}).click();
