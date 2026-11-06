@@ -6,13 +6,13 @@ dateReviewNote: "原文使用「去年」，依發文日推定活動為2024年�
 articleId: "news-09-seecat-earlier"
 imageId: "news-09-seecat-earlier"
 mediaId: "news-09-seecat-earlier"
-title: "全球動力科技參與日本 SEECAT 展，深化國際安全防衛合作"
+title: "日本 SEECAT 展：深化國際安全防衛合作"
 summary: "全球動力科技（Big x Reality）於去年應邀參與日本東京舉辦的 SEECAT 特殊裝備與反恐技術展（Special Equipment Exhibition & Conference for Anti-Terrorism），積極拓展國際市場，展示台灣在安全防衛科技領域的創新成果。"
 category: "media"
 sourceCategory: "媒體消息 / Media / メディア"
 importNote: "原文使用「去年」，依發文日推定活動為2024年，但請保留為待確認，不將其視為已查證。"
 seo:
-  title: "全球動力科技參與日本 SEECAT 展，深化國際安全防衛合作"
+  title: "日本 SEECAT 展：深化國際安全防衛合作"
   description: "全球動力科技（Big x Reality）於去年應邀參與日本東京舉辦的 SEECAT 特殊裝備與反恐技術展（Special Equipment Exhibition & Conference for Anti-Terrorism），積極拓展國際市場，展示台灣在安全防衛科技領域的創新成果。"
 ---
 

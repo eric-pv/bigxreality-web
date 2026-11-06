@@ -6,5 +6,5 @@ seo:
   description: "Access publicly available company and investor information from Big x Reality."
 hero:
   eyebrow: Investor Relations
-  title: "[待翻譯] 投資人專區"
+  title: "Investor relations"
 ---

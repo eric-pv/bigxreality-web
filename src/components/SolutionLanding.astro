@@ -169,4 +169,4 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
   .cards { margin: 0; padding: 0; list-style: none; }
 </style>
 
-<style>.landing-overview .narrow { display: grid; gap: var(--space-3); } .landing-overview p { line-height: 1.8; } .landing-overview .intro-media { margin-top: var(--space-3); }</style>
+<style>.landing-overview .narrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); } .landing-overview p { line-height: 1.8; } .landing-overview .intro-media { margin-top: var(--space-3); }</style>

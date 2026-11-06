@@ -5,12 +5,12 @@ publishDate: "2024-08-16"
 articleId: "news-10-xr-shooting-sports"
 imageId: "news-10-xr-shooting-sports"
 mediaId: "news-10-xr-shooting-sports"
-title: "媒體報導：全球動力科技推出射擊運動 XR 模擬系統"
+title: "媒體報導：XR 射擊運動模擬系統"
 summary: "隨著 VR 電競與沉浸式運動體驗受到關注，全球動力科技將 XR 模擬技術拓展至運動科技領域，推出依奧運飛靶比賽規範設計的「射擊運動 XR 模擬系統」。"
 category: "media"
 sourceCategory: "媒體消息 / Media / メディア"
 seo:
-  title: "媒體報導：全球動力科技推出射擊運動 XR 模擬系統"
+  title: "媒體報導：XR 射擊運動模擬系統"
   description: "隨著 VR 電競與沉浸式運動體驗受到關注，全球動力科技將 XR 模擬技術拓展至運動科技領域，推出依奧運飛靶比賽規範設計的「射擊運動 XR 模擬系統」。"
 ---
 

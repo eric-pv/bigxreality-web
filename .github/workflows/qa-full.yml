@@ -47,6 +47,7 @@ jobs:
           path: |
             docs/reviews/visual-copy/
             docs/reviews/typography/
+            docs/reviews/natural-typography/
           retention-days: 14
       - run: npm run qa:ui-v1-preview
       - run: npm run qa:motion

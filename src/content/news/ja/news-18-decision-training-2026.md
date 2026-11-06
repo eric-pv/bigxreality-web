@@ -6,13 +6,13 @@ dateReviewNote: "原始貼文的三間房、兩名可能人質為假設情境，
 articleId: "news-18-decision-training-2026"
 imageId: "news-18-decision-training-2026"
 mediaId: "news-18-decision-training-2026"
-title: "射撃技術だけではない――XRシナリオ訓練で判断力を養う"
+title: "射撃だけでなく、XR訓練で判断力を育む"
 summary: "複雑な任務に備えるうえで、装備の操作技術は重要ですが、それだけでは十分ではありません。行動を起こす前には、対象が脅威なのか、情報は十分なのか、チームとしてどのように連携すべきかといった判断が求められます。"
 category: "insight"
 sourceCategory: "技術觀點 / Insight / 技術コラム"
 importNote: "原始貼文的三間房、兩名可能人質為假設情境，不是實際案件；DVIDS 素材需要權利與來源標註。"
 seo:
-  title: "射撃技術だけではない――XRシナリオ訓練で判断力を養う"
+  title: "射撃だけでなく、XR訓練で判断力を育む"
   description: "複雑な任務に備えるうえで、装備の操作技術は重要ですが、それだけでは十分ではありません。行動を起こす前には、対象が脅威なのか、情報は十分なのか、チームとしてどのように連携すべきかといった判断が求められます。"
 ---
 

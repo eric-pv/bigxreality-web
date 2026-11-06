@@ -6,13 +6,13 @@ dateReviewNote: "依使用者提供貼文改寫為官網新聞，僅擴寫已有
 articleId: "news-26-disaster-resilience-2025"
 imageId: "news-26-disaster-resilience-2025"
 mediaId: "news-26-disaster-resilience-2025"
-title: "防災不只是口號：全球動力科技關注全民防災教育與社區韌性"
+title: "全民防災教育，從知識走向社區韌性"
 summary: "面對極端氣候與地震等災害風險，防災準備需要在平時持續累積。全球動力科技關注全民防災教育，並透過與防災領域夥伴交流，思考如何讓技術、人才與資源更貼近實際生活。"
 category: "company"
 sourceCategory: "公司消息 / Company / 企業ニュース"
 importNote: "依使用者提供貼文改寫為官網新聞，僅擴寫已有資訊及背景脈絡；未新增未經證實的事實。"
 seo:
-  title: "防災不只是口號：全球動力科技關注全民防災教育與社區韌性"
+  title: "全民防災教育，從知識走向社區韌性"
   description: "面對極端氣候與地震等災害風險，防災準備需要在平時持續累積。全球動力科技關注全民防災教育，並透過與防災領域夥伴交流，思考如何讓技術、人才與資源更貼近實際生活。"
 ---
 

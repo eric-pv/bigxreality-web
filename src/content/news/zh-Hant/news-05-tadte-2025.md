@@ -5,12 +5,12 @@ publishDate: "2025-09-26"
 articleId: "news-05-tadte-2025"
 imageId: "news-05-tadte-2025"
 mediaId: "news-05-tadte-2025"
-title: "2025 台北國際航太暨國防工業展：AI XR 模擬訓練系統亮相"
+title: "2025 台北國際航太暨國防工業展：AI XR 模擬訓練"
 summary: "Big x Reality 全球動力科技參與《2025 台北國際航太暨國防工業展》，以 AI XR 技術為核心，展示多項模擬訓練系統。"
 category: "media"
 sourceCategory: "媒體消息 / Media / メディア"
 seo:
-  title: "2025 台北國際航太暨國防工業展：AI XR 模擬訓練系統亮相"
+  title: "2025 台北國際航太暨國防工業展：AI XR 模擬訓練"
   description: "Big x Reality 全球動力科技參與《2025 台北國際航太暨國防工業展》，以 AI XR 技術為核心，展示多項模擬訓練系統。"
 ---
 

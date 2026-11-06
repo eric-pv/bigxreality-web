@@ -8,13 +8,13 @@ dateReviewNote: "FB 顯示「10月8日」；年份依貼文中 SEECAT 2026 時�
 articleId: "news-15-media-visit-2026"
 imageId: "news-15-media-visit-2026"
 mediaId: "news-15-media-visit-2026"
-title: "海外華文メディアがBig x Realityを訪問、AI XR訓練技術を体験"
+title: "海外華文メディアがAI XR訓練を体験"
 summary: "Big x Reality（全球動力科技）は、海外の華文メディア関係者を迎え、AIとXRを活用した防衛・安全分野のシミュレーション訓練技術を紹介しました。"
 category: "media"
 sourceCategory: "媒體消息 / Media / メディア"
 importNote: "FB 顯示「10月8日」；年份依貼文中 SEECAT 2026 時序推定為 2026，正式發布前確認。SUT 沙包為虛擬場景。"
 seo:
-  title: "海外華文メディアがBig x Realityを訪問、AI XR訓練技術を体験"
+  title: "海外華文メディアがAI XR訓練を体験"
   description: "Big x Reality（全球動力科技）は、海外の華文メディア関係者を迎え、AIとXRを活用した防衛・安全分野のシミュレーション訓練技術を紹介しました。"
 ---
 

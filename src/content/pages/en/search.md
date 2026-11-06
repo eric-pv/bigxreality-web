@@ -6,6 +6,6 @@ seo:
   description: "Search Big x Reality products, solutions, core technologies, news, and technical articles."
 hero:
   eyebrow: Search
-  title: "[待翻譯] 搜尋"
+  title: "Search"
   description: "[待提供]"
 ---

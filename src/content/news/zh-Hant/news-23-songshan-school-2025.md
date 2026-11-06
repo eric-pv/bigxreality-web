@@ -8,13 +8,13 @@ dateReviewNote: "依使用者提供貼文改寫為官網新聞，僅擴寫已有
 articleId: "news-23-songshan-school-2025"
 imageId: "news-23-songshan-school-2025"
 mediaId: "news-23-songshan-school-2025"
-title: "XR 情境訓練走進松山家商，推動全民國防教育體驗"
+title: "XR 情境訓練走進松山家商，實踐全民國防教育"
 summary: "全球動力科技與中華民國全民國防教育學會合作，將 XR 沉浸式模擬訓練帶入臺北市松山家商的教學環境，讓全民國防教育從課本中的知識延伸至可實際參與的情境體驗。"
 category: "event"
 sourceCategory: "活動消息 / Event / イベント"
 importNote: "依使用者提供貼文改寫為官網新聞，僅擴寫已有資訊及背景脈絡；未新增未經證實的事實。"
 seo:
-  title: "XR 情境訓練走進松山家商，推動全民國防教育體驗"
+  title: "XR 情境訓練走進松山家商，實踐全民國防教育"
   description: "全球動力科技與中華民國全民國防教育學會合作，將 XR 沉浸式模擬訓練帶入臺北市松山家商的教學環境，讓全民國防教育從課本中的知識延伸至可實際參與的情境體驗。"
 ---
 

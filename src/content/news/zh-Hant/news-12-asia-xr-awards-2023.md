@@ -6,17 +6,17 @@ dateReviewNote: "原文是獎項及活動介紹，沒有明確敘述 BXR 得獎�
 articleId: "news-12-asia-xr-awards-2023"
 imageId: "news-12-asia-xr-awards-2023"
 mediaId: "news-12-asia-xr-awards-2023"
-title: "亞洲 XR 創星金點大賞得獎者將閃耀東京"
-summary: "由國家發展委員會指導、Startup Island TAIWAN 支持，並由 TAVAR 台灣虛擬及擴增實境產業協會與 XR EXPRESS Taiwan 共同推動的第二屆「亞洲 XR 創星金點大賞頒獎典禮」，於 8 月 11 日登場。"
+title: "亞洲 XR 創星金點大賞：得獎者將赴東京"
+summary: "第二屆「亞洲 XR 創星金點大賞頒獎典禮」於 8 月 11 日登場，由國家發展委員會指導、Startup Island TAIWAN 支持，TAVAR 台灣虛擬及擴增實境產業協會與 XR EXPRESS Taiwan 共同推動。"
 category: "media"
 sourceCategory: "媒體消息 / Media / メディア"
 importNote: "原文是獎項及活動介紹，沒有明確敘述 BXR 得獎；不得改寫成 BXR 獲獎。"
 seo:
-  title: "亞洲 XR 創星金點大賞得獎者將閃耀東京"
-  description: "由國家發展委員會指導、Startup Island TAIWAN 支持，並由 TAVAR 台灣虛擬及擴增實境產業協會與 XR EXPRESS Taiwan 共同推動的第二屆「亞洲 XR 創星金點大賞頒獎典禮」，於 8 月 11 日登場。"
+  title: "亞洲 XR 創星金點大賞：得獎者將赴東京"
+  description: "第二屆「亞洲 XR 創星金點大賞頒獎典禮」於 8 月 11 日登場，由國家發展委員會指導、Startup Island TAIWAN 支持，TAVAR 台灣虛擬及擴增實境產業協會與 XR EXPRESS Taiwan 共同推動。"
 ---
 
-由國家發展委員會指導、Startup Island TAIWAN 支持，並由 TAVAR 台灣虛擬及擴增實境產業協會與 XR EXPRESS Taiwan 共同推動的第二屆「亞洲 XR 創星金點大賞頒獎典禮」，於 8 月 11 日登場。
+第二屆「亞洲 XR 創星金點大賞頒獎典禮」於 8 月 11 日登場，由國家發展委員會指導、Startup Island TAIWAN 支持，TAVAR 台灣虛擬及擴增實境產業協會與 XR EXPRESS Taiwan 共同推動。
 
 本屆活動與 XR、VTuber 專業媒體 MoguraVR，以及日本 XR Consortium 合作，並與 XR Consortium 簽署合作備忘錄（MOU），促進台灣 XR 產業的國際交流。
 

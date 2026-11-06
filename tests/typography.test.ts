@@ -40,3 +40,12 @@ test('ampersand terms match on raw text and are escaped exactly once',()=>{
  const out=typeset('Fire & Disaster','en');assert.equal(out,'<span class="type-phrase">Fire &amp; Disaster</span>');assert.ok(!out.includes('&amp;amp;'));
  assert.ok(!typesetHtml('<p>Fire &amp; Disaster</p>','en').includes('&amp;amp;'));
 });
+
+test('Chinese words missing from the editorial dictionary remain intact without changing copy',()=>{
+ const text='反覆演練，累積專業應變能力。';
+ const parts=typographyParts(text,'tw',{terms:[]});
+ assert.equal(parts.map(p=>p.text).join(''),text);
+ assert.ok(parts.some(p=>p.text==='累積'&&p.keep));
+ assert.ok(parts.some(p=>p.text==='應變'&&p.keep));
+ assert.equal(parts.find(p=>p.text==='，')?.keep,false);
+});

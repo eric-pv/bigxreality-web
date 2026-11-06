@@ -6,13 +6,13 @@ dateReviewNote: "FB 2025-08-26，舊網站標示 2025-08-27；採 FB 發文日�
 articleId: "news-06-military-forum-2025"
 imageId: "news-06-military-forum-2025"
 mediaId: "news-06-military-forum-2025"
-title: "軍事作戦研究・モデリング＆シミュレーションフォーラムでLVC訓練技術を展示"
+title: "軍事フォーラムにLVC訓練を出展"
 summary: "Big x Reality（全球動力科技）は、台湾国防部が国立清華大学で開催した「軍事作戦研究・モデリング＆シミュレーションフォーラム」に参加し、LVC統合戦場訓練技術を展示しました。"
 category: "event"
 sourceCategory: "活動消息 / Event / イベント"
 importNote: "FB 2025-08-26，舊網站標示 2025-08-27；採 FB 發文日期"
 seo:
-  title: "軍事作戦研究・モデリング＆シミュレーションフォーラムでLVC訓練技術を展示"
+  title: "軍事フォーラムにLVC訓練を出展"
   description: "Big x Reality（全球動力科技）は、台湾国防部が国立清華大学で開催した「軍事作戦研究・モデリング＆シミュレーションフォーラム」に参加し、LVC統合戦場訓練技術を展示しました。"
 ---
 

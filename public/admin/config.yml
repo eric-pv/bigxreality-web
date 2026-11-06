@@ -6691,7 +6691,7 @@ collections:
                   name: term
                   label: 完整詞組 / Protected Term
                   widget: string
-                hint: 短詞組為主；避免整句加入詞庫。
+                hint: 詞彙標記不強制換行。請精簡文案避免末行孤字，勿用詞庫綁住整句。
               - name: headings
                 label: 標題換行設定 / Heading Wrapping
                 widget: list
@@ -6708,7 +6708,7 @@ collections:
                       name: group
                       label: 分組名稱 / Group
                       widget: string
-                    hint: 所有分組依序串接必須等於原標題，包含空格和標點。長組在窄螢幕可安全換行。
+                    hint: 分組須保留原標題、空格和標點；僅作語意標記，不強制斷行。
           - name: en
             label: 英文 / English
             widget: object
@@ -6720,7 +6720,7 @@ collections:
                   name: term
                   label: 完整詞組 / Protected Term
                   widget: string
-                hint: 短詞組為主；避免整句加入詞庫。
+                hint: 詞彙標記不強制換行。請精簡文案避免末行孤字，勿用詞庫綁住整句。
               - name: headings
                 label: 標題換行設定 / Heading Wrapping
                 widget: list
@@ -6737,7 +6737,7 @@ collections:
                       name: group
                       label: 分組名稱 / Group
                       widget: string
-                    hint: 所有分組依序串接必須等於原標題，包含空格和標點。長組在窄螢幕可安全換行。
+                    hint: 分組須保留原標題、空格和標點；僅作語意標記，不強制斷行。
           - name: jp
             label: 日文 / Japanese
             widget: object
@@ -6749,7 +6749,7 @@ collections:
                   name: term
                   label: 完整詞組 / Protected Term
                   widget: string
-                hint: 短詞組為主；避免整句加入詞庫。
+                hint: 詞彙標記不強制換行。請精簡文案避免末行孤字，勿用詞庫綁住整句。
               - name: headings
                 label: 標題換行設定 / Heading Wrapping
                 widget: list
@@ -6766,7 +6766,7 @@ collections:
                       name: group
                       label: 分組名稱 / Group
                       widget: string
-                    hint: 所有分組依序串接必須等於原標題，包含空格和標點。長組在窄螢幕可安全換行。
+                    hint: 分組須保留原標題、空格和標點；僅作語意標記，不強制斷行。
   - name: cms-test
     label: 隔離測試文章（不會顯示於官網） / Isolated Test (Never Published)
     folder: cms-test-content
