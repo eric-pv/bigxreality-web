@@ -77,16 +77,16 @@ const crop = image ? `50% ${imagePresentation(image.src).position.split(/\s+/)[1
 </section>
 <style>
   .page-hero { padding-block: var(--section-py); }
-  .grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--content-gap); align-items: center; }
+  .grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--content-gap); align-items: center; }
   .no-media { grid-template-columns: minmax(0, 8fr) 4fr; }
-  .copy { display: grid; gap: var(--space-3); align-content: start; }
+  .copy { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); align-content: start; }
   .eyebrow { color: var(--bxr-mist); margin-top: var(--space-3); }
   .kicker { color: var(--bxr-white); font-weight: 500; }
   .subtitle { color: var(--bxr-mist); font-size: var(--fs-h4); }
   .lead { color: var(--bxr-white); font-size: var(--fs-h4); line-height: var(--lh-h4); max-width: 36rem; }
   .desc { color: var(--ink-muted); max-width: 36rem; }
   .desc + .desc { margin-top: calc(-1 * var(--space-2)); }
-  .actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
+  .actions { display: flex; min-width: 0; max-width: 100%; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
   .media { position: relative; margin: 0; }
   .media :global(img) { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
   .badge {
@@ -94,7 +94,7 @@ const crop = image ? `50% ${imagePresentation(image.src).position.split(/\s+/)[1
     background: rgb(10 12 16 / 0.72); color: var(--bxr-white); line-height: 1.5; pointer-events: none;
   }
   figcaption { position: absolute; right: var(--space-2); bottom: var(--space-1); color: var(--bxr-mist); }
-  @media (max-width: 1023px) { .grid { grid-template-columns: 1fr; } .page-hero { padding-block: var(--section-py); } }
+  @media (max-width: 1023px) { .grid { grid-template-columns: minmax(0, 1fr); } .page-hero { padding-block: var(--section-py); } }
 </style>
 
 <style>
@@ -107,11 +107,11 @@ const crop = image ? `50% ${imagePresentation(image.src).position.split(/\s+/)[1
 .hero--scene .media { position: absolute; inset: 0; width: 100%; z-index: 0; }
 .hero--scene .media :global(img) { height: 100%; width: 100%; object-fit: var(--hero-scene-fit, cover) !important; object-position: var(--hero-focus) !important; aspect-ratio: auto; }
 .hero--scene::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg,rgb(11 15 20 / .97) 0%,rgb(11 15 20 / .9) 24%,rgb(11 15 20 / .58) 43%,rgb(11 15 20 / .12) 65%,rgb(11 15 20 / .35) 86%,rgb(11 15 20 / .82) 100%),linear-gradient(180deg,rgb(11 15 20 / .15),transparent 35%,transparent 75%,rgb(11 15 20 / .48)); }
-@media(max-width:1023px) { .hero--equipment .grid,.hero--interface .grid { grid-template-columns: 1fr; } }
+@media(max-width:1023px) { .hero--equipment .grid,.hero--interface .grid { grid-template-columns: minmax(0, 1fr); } }
 @media(max-width:1023px) { .hero--scene { min-height: 0; padding-bottom: 0; } .hero--scene::before { display: none; } .hero--scene .grid { display: grid; } .hero--scene .copy { max-width: 100%; } .hero--scene .media { position: relative; inset: auto; width: 100%; padding: 0; } .hero--scene .media :global(img) { height: auto; aspect-ratio: 3/2; object-fit: contain !important; } }
 </style>
 
-<style>.no-media { grid-template-columns: 1fr; } .no-media .copy,.no-media .desc { max-width: var(--reading-width); }</style>
+<style>.no-media { grid-template-columns: minmax(0, 1fr); } .no-media .copy,.no-media .desc { max-width: var(--reading-width); }</style>
 
 <style>
 @media(min-width:1024px) {

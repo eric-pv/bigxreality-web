@@ -22,7 +22,7 @@ landing:
   heroImage:
     need: 小隊訓練のヒーロー用メインビジュアル（16:9）
     ratio: 16 / 9
-  ctaLabel: MUM-T ソリューションについて問い合わせる
+  ctaLabel: MUM-T の導入相談
   challenge:
     title: 小隊訓練の課題
     cards:

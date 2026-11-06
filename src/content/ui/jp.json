@@ -54,7 +54,7 @@
     "reset": "絞り込みを解除"
   },
   "domains": {
-    "military": "軍事シミュレーション",
+    "military": "軍事模擬訓練",
     "police": "警察業務シミュレーション",
     "fire-rescue": "消防・防災",
     "smart-city": "スマートシティ",
@@ -86,15 +86,15 @@
       },
       "components": {
         "eyebrow": "",
-        "title": "[待翻譯] 系統組成"
+        "title": "システム構成"
       },
       "deployment": {
         "eyebrow": "",
-        "title": "[待翻譯] 部署方式"
+        "title": "導入方法"
       },
       "integratedOps": {
         "eyebrow": "",
-        "title": "[待翻譯] 整合作戰"
+        "title": "統合作戦"
       },
       "relatedSolutions": {
         "eyebrow": "関連ソリューション",
@@ -102,25 +102,25 @@
       },
       "relatedArticles": {
         "eyebrow": "",
-        "title": "[待翻譯] 相關文章"
+        "title": "関連記事"
       }
     },
     "deployment": {
-      "personnel": "[待翻譯] 人數",
-      "area": "[待翻譯] 空間",
-      "setupTime": "[待翻譯] 時間",
-      "notes": "[待翻譯] 說明",
-      "personUnit": "[待翻譯] 人",
+      "personnel": "人数",
+      "area": "必要スペース",
+      "setupTime": "所要時間",
+      "notes": "備考",
+      "personUnit": "人",
       "areaUnit": "m²",
-      "minuteUnit": "[待翻譯] 分鐘",
-      "approx": "[待翻譯] 約"
+      "minuteUnit": "分",
+      "approx": "約"
     },
-    "integratesWith": "[待翻譯] 可整合的產品"
+    "integratesWith": "連携可能な製品"
   },
   "articleTypes": {
-    "insights": "[待翻譯] 技術文章",
+    "insights": "技術記事",
     "news": "ニュース",
-    "case-studies": "[待翻譯] 案例"
+    "case-studies": "導入事例"
   },
   "footer": {
     "navLabel": "フッターメニュー",
@@ -142,11 +142,11 @@
       },
       "challenges": {
         "eyebrow": "",
-        "title": "[待翻譯] 面臨的挑戰"
+        "title": "課題"
       },
       "capabilities": {
         "eyebrow": "",
-        "title": "[待翻譯] 方案能力"
+        "title": "主な機能"
       },
       "relatedProducts": {
         "eyebrow": "関連製品",
@@ -158,11 +158,11 @@
       },
       "insights": {
         "eyebrow": "",
-        "title": "[待翻譯] 相關技術文章"
+        "title": "関連技術記事"
       },
       "news": {
         "eyebrow": "",
-        "title": "[待翻譯] 相關消息"
+        "title": "関連ニュース"
       }
     },
     "explore": "ソリューションを見る",
@@ -171,44 +171,44 @@
   "article": {
     "published": "公開日",
     "updated": "更新日",
-    "author": "[待翻譯] 作者",
+    "author": "著者",
     "readingTime": "読了時間：約{n}分",
-    "tags": "[待翻譯] 標籤",
+    "tags": "タグ",
     "related": {
       "eyebrow": "関連記事",
-      "title": "[待翻譯] 延伸閱讀"
+      "title": "関連記事"
     },
     "relatedProducts": {
       "eyebrow": "関連製品",
-      "title": "[待翻譯] 相關產品"
+      "title": "関連製品"
     },
     "relatedSolutions": {
       "eyebrow": "関連ソリューション",
-      "title": "[待翻譯] 相關解決方案"
+      "title": "関連ソリューション"
     },
     "categories": {
       "company": "企業ニュース",
-      "exhibition": "[待翻譯] 展覽活動",
-      "award": "[待翻譯] 獲獎",
-      "product-launch": "[待翻譯] 產品發表",
-      "partnership": "[待翻譯] 合作夥伴",
+      "exhibition": "展示会",
+      "award": "受賞",
+      "product-launch": "新製品発表",
+      "partnership": "パートナーシップ",
       "media": "メディア",
       "event": "イベント",
       "product": "製品ニュース",
       "insight": "技術コラム"
     },
-    "event": "[待翻譯] 活動",
-    "location": "[待翻譯] 地點",
-    "date": "[待翻譯] 日期",
-    "source": "[待翻譯] 報導來源",
-    "sourceLink": "[待翻譯] 閱讀原文",
-    "client": "[待翻譯] 客戶",
-    "anonymized": "[待翻譯] （匿名）",
-    "domains": "[待翻譯] 領域",
-    "products": "[待翻譯] 使用產品",
-    "challenge": "[待翻譯] 挑戰",
-    "solution": "[待翻譯] 導入方案",
-    "outcomes": "[待翻譯] 成果"
+    "event": "イベント",
+    "location": "会場",
+    "date": "日付",
+    "source": "出典",
+    "sourceLink": "原文を読む",
+    "client": "導入先",
+    "anonymized": "（非公開）",
+    "domains": "分野",
+    "products": "使用製品",
+    "challenge": "課題",
+    "solution": "導入ソリューション",
+    "outcomes": "成果"
   },
   "listing": {
     "empty": "関連情報はBXRへお問い合わせください。",
@@ -219,15 +219,15 @@
     "page": "{n} ページ",
     "pageOf": "全{total}ページ中 {n}ページ",
     "filterEmpty": "条件を変更して、関連する導入事例をご確認ください。",
-    "filterResults": "[待翻譯] 共 {n} 個案例",
-    "filterSearchLabel": "[待翻譯] 搜尋案例",
-    "filterSearchPlaceholder": "[待翻譯] 輸入客戶、產品或關鍵字"
+    "filterResults": "導入事例 {n} 件",
+    "filterSearchLabel": "導入事例を検索",
+    "filterSearchPlaceholder": "導入先、製品、キーワードを入力"
   },
   "tags": {
     "eyebrow": "タグ",
-    "title": "[待翻譯] 標籤",
-    "count": "[待翻譯] {n} 篇",
-    "allTags": "[待翻譯] 所有標籤"
+    "title": "タグ",
+    "count": "{n} 件の記事",
+    "allTags": "すべてのタグ"
   },
   "searchPage": {
     "label": "キーワード",
@@ -255,8 +255,8 @@
     "viewSolutions": "ソリューションを見る",
     "bookDemo": "製品デモを予約する",
     "requestInfo": "製品資料を請求する",
-    "productInquiry": "製品について問い合わせる",
-    "solutionInquiry": "ソリューションについて問い合わせる",
+    "productInquiry": "製品の導入相談",
+    "solutionInquiry": "ソリューションの相談",
     "solutionDemo": "デモを予約する",
     "discussNeeds": "ニーズを相談する",
     "learnMore": "詳しく見る"
@@ -396,36 +396,36 @@
     }
   },
   "cases": {
-    "filterLabel": "[待翻譯] 篩選成功案例",
-    "domain": "[待翻譯] 應用領域",
-    "product": "[待翻譯] 關聯產品",
-    "solution": "[待翻譯] 關聯解決方案",
-    "all": "[待翻譯] 全部",
-    "learnMore": "[待翻譯] 了解完整案例",
-    "count": "[待翻譯] 共 {n} 個案例",
-    "filterResults": "[待翻譯] 共 {n} 個案例",
+    "filterLabel": "導入事例を絞り込む",
+    "domain": "活用分野",
+    "product": "関連製品",
+    "solution": "関連ソリューション",
+    "all": "すべて",
+    "learnMore": "導入事例を見る",
+    "count": "導入事例 {n} 件",
+    "filterResults": "導入事例 {n} 件",
     "filterEmpty": "条件を変更して、関連する導入事例をご確認ください。",
     "empty": "導入事例に関する情報はBXRへお問い合わせください。",
     "emptyHint": "ご要望に応じたシミュレーション訓練について、お気軽にお問い合わせください。",
     "emptyCta": "お問い合わせ",
-    "client": "[待翻譯] 導入單位",
-    "domains": "[待翻譯] 應用領域",
-    "products": "[待翻譯] 關聯產品",
-    "solutions": "[待翻譯] 關聯解決方案",
-    "anonymized": "[待翻譯] （單位資訊匿名）",
+    "client": "導入組織",
+    "domains": "活用分野",
+    "products": "関連製品",
+    "solutions": "関連ソリューション",
+    "anonymized": "（組織名非公開）",
     "section": {
-      "background": "[待翻譯] 專案背景",
-      "challenge": "[待翻譯] 面臨的訓練挑戰",
-      "solution": "[待翻譯] 導入解決方案",
-      "application": "[待翻譯] 實際應用方式",
-      "results": "[待翻譯] 專案成果與效益",
-      "gallery": "[待翻譯] 現場影像",
-      "details": "[待翻譯] 專案詳述",
-      "relatedItems": "[待翻譯] 相關產品與解決方案",
-      "more": "[待翻譯] 延伸閱讀"
+      "background": "プロジェクトの背景",
+      "challenge": "訓練上の課題",
+      "solution": "導入ソリューション",
+      "application": "活用方法",
+      "results": "成果と効果",
+      "gallery": "現場の様子",
+      "details": "プロジェクト詳細",
+      "relatedItems": "関連製品・ソリューション",
+      "more": "関連記事"
     },
-    "viewProduct": "[待翻譯] 前往產品頁",
-    "viewSolution": "[待翻譯] 前往解決方案頁",
+    "viewProduct": "製品を見る",
+    "viewSolution": "ソリューションを見る",
     "block": {
       "title": "関連導入事例",
       "description": "",
@@ -434,7 +434,7 @@
     },
     "cta": {
       "title": "訓練要件のご相談",
-      "description": "[待翻譯] 歡迎洽詢，了解 Big x Reality 如何依據實際任務需求規劃訓練應用",
+      "description": "任務の要件に応じた訓練の計画について、Big x Reality にご相談ください。",
       "button": "お問い合わせ"
     }
   },
@@ -442,43 +442,43 @@
     "empty": "関連情報はBXRへお問い合わせください。",
     "hint": "詳細はBXRへお問い合わせください。",
     "cta": "お問い合わせ",
-    "download": "[待翻譯] 下載",
-    "date": "[待翻譯] 日期",
-    "category": "[待翻譯] 分類",
-    "modulesLabel": "[待翻譯] 投資人專區模組",
+    "download": "ダウンロード",
+    "date": "日付",
+    "category": "カテゴリー",
+    "modulesLabel": "投資家向け情報",
     "partnerCategories": {
-      "technology": "[待翻譯] 技術合作",
-      "integration": "[待翻譯] 系統整合",
-      "international": "[待翻譯] 國際通路合作"
+      "technology": "技術提携",
+      "integration": "システム統合",
+      "international": "海外販売提携"
     },
     "investorModules": {
       "profile": {
-        "title": "[待翻譯] 公司基本資料",
-        "description": "[待翻譯] 公司名稱、登記資訊、設立日期、實收資本額及其他正式公開的企業基本資訊"
+        "title": "会社概要",
+        "description": "会社名、登記情報、設立日、払込資本金など、公開されている企業情報。"
       },
       "financials": {
-        "title": "[待翻譯] 財務資訊",
-        "description": "[待翻譯] 年度財務報告、營收資訊、財務相關文件及下載功能"
+        "title": "財務情報",
+        "description": "年次財務報告、売上情報、財務関連資料の閲覧・ダウンロード。"
       },
       "governance": {
-        "title": "[待翻譯] 公司治理",
-        "description": "[待翻譯] 公司治理架構、董事會資訊、重要治理政策及相關公開文件"
+        "title": "コーポレートガバナンス",
+        "description": "ガバナンス体制、取締役会、主要な方針と関連する公開資料。"
       },
       "shareholders": {
-        "title": "[待翻譯] 股東資訊",
-        "description": "[待翻譯] 股東會資訊、股務公告、股利資訊及相關文件"
+        "title": "株主向け情報",
+        "description": "株主総会、株式事務のお知らせ、配当情報と関連資料。"
       },
       "announcements": {
-        "title": "[待翻譯] 重大訊息與公告",
-        "description": "[待翻譯] 公司正式對外揭露的重要訊息、公告日期及附件"
+        "title": "重要なお知らせ",
+        "description": "会社が公表する重要情報、発表日と添付資料。"
       },
       "briefings": {
-        "title": "[待翻譯] 法人說明會",
-        "description": "[待翻譯] 投資人簡報、法人說明會資料及相關影音或文件"
+        "title": "投資家向け説明会",
+        "description": "投資家向けプレゼンテーション、説明会資料、関連動画・文書。"
       },
       "contact": {
-        "title": "[待翻譯] 投資人聯絡窗口",
-        "description": "[待翻譯] 投資人關係聯絡資訊及正式洽詢管道"
+        "title": "投資家向けお問い合わせ",
+        "description": "投資家向け窓口の連絡先と正式なお問い合わせ方法。"
       }
     }
   },
@@ -510,12 +510,12 @@
     "products": "注目の製品"
   },
   "notFound": {
-    "title": "[待翻譯] 找不到頁面",
+    "title": "ページが見つかりません",
     "eyebrow": "404",
-    "heading": "[待翻譯] 找不到這個頁面",
-    "description": "[待翻譯] 您要找的頁面可能已移除、改名，或網址輸入有誤。",
-    "metaDescription": "[待翻譯] Big x Reality 找不到您要開啟的頁面。",
-    "linksLabel": "[待翻譯] 返回網站",
-    "home": "[待翻譯] 返回首頁"
+    "heading": "ページが見つかりません",
+    "description": "ページが移動・削除されたか、URL に誤りがある可能性があります。",
+    "metaDescription": "お探しの Big x Reality のページが見つかりません。",
+    "linksLabel": "サイトに戻る",
+    "home": "ホームに戻る"
   }
 }

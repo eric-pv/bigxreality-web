@@ -6,13 +6,13 @@ dateReviewNote: "依使用者提供貼文改寫為官網新聞，僅擴寫已有
 articleId: "news-31-trap-shooting-championship-2024"
 imageId: "news-31-trap-shooting-championship-2024"
 mediaId: "news-31-trap-shooting-championship-2024"
-title: "全球動力科技於全國中正盃射擊錦標賽展示 XR 飛靶射擊體驗"
+title: "全國中正盃射擊錦標賽：XR 飛靶射擊體驗"
 summary: "全球動力科技參與中華民國射擊協會舉辦的第 49 屆全國中正盃射擊錦標賽，在桃園公西靶場設置 XR 射擊運動體驗攤位，邀請參賽選手接觸結合虛擬實境與飛靶運動的模擬訓練方式。"
 category: "event"
 sourceCategory: "活動消息 / Event / イベント"
 importNote: "依使用者提供貼文改寫為官網新聞，僅擴寫已有資訊及背景脈絡；未新增未經證實的事實。"
 seo:
-  title: "全球動力科技於全國中正盃射擊錦標賽展示 XR 飛靶射擊體驗"
+  title: "全國中正盃射擊錦標賽：XR 飛靶射擊體驗"
   description: "全球動力科技參與中華民國射擊協會舉辦的第 49 屆全國中正盃射擊錦標賽，在桃園公西靶場設置 XR 射擊運動體驗攤位，邀請參賽選手接觸結合虛擬實境與飛靶運動的模擬訓練方式。"
 ---
 

@@ -46,8 +46,8 @@ const placeholders = items.length === 0 && import.meta.env.DEV ? slots : 0;
 <style>
   .compact { padding-block: var(--home-section-py, var(--section-py)); }
   .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
-  .grid > li { display: grid; }
+  .grid > li { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); }
   .dev-placeholder { place-items: center; min-height: 160px; padding: var(--space-3); text-align: center; border: 1px dashed var(--bxr-signal-amber); color: var(--ink-muted); font-family: var(--font-mono); font-size: var(--fs-small); }
   @media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .grid { grid-template-columns: 1fr; } }
+  @media (max-width: 767px) { .grid { grid-template-columns: minmax(0, 1fr); } }
 </style>

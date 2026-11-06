@@ -6,7 +6,7 @@ seo:
   description: "Explore Big x Reality insights on XR, AI, digital simulation, training design, and system integration for military, policing, fire safety, and smart applications."
 hero:
   eyebrow: Insights
-  title: "[待翻譯] 技術文章"
+  title: "Insights"
   description: "[待提供]"
 cta:
   title: "[待提供]"

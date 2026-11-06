@@ -5,12 +5,12 @@ publishDate: "2025-10-16"
 articleId: "news-04-seecat-2025"
 imageId: "news-04-seecat-2025"
 mediaId: "news-04-seecat-2025"
-title: "Big x Reality、SEECAT 2025への出展を盛況のうちに終了"
+title: "SEECAT 2025への出展を終了"
 summary: "Big x Reality（全球動力科技）は、10月1日から3日まで東京で開催された「SEECAT 2025（テロ対策特殊装備展）」に出展し、小部隊戦術訓練システム「BXR SUT BOX」を展示しました。"
 category: "media"
 sourceCategory: "媒體消息 / Media / メディア"
 seo:
-  title: "Big x Reality、SEECAT 2025への出展を盛況のうちに終了"
+  title: "SEECAT 2025への出展を終了"
   description: "Big x Reality（全球動力科技）は、10月1日から3日まで東京で開催された「SEECAT 2025（テロ対策特殊装備展）」に出展し、小部隊戦術訓練システム「BXR SUT BOX」を展示しました。"
 ---
 

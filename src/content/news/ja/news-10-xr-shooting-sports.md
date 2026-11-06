@@ -5,12 +5,12 @@ publishDate: "2024-08-16"
 articleId: "news-10-xr-shooting-sports"
 imageId: "news-10-xr-shooting-sports"
 mediaId: "news-10-xr-shooting-sports"
-title: "メディア報道：Big x RealityがXR射撃スポーツシミュレーターを発表"
+title: "XR射撃スポーツのメディア報道"
 summary: "VRを活用したeスポーツや没入型スポーツ体験への関心が高まる中、Big x Reality（全球動力科技）はXRシミュレーション技術をスポーツテクノロジー分野へ展開し、オリンピックのクレー射撃競技規則に基づいて設計した「射撃スポーツXRシミュレーションシステム」を紹介しました。"
 category: "media"
 sourceCategory: "媒體消息 / Media / メディア"
 seo:
-  title: "メディア報道：Big x RealityがXR射撃スポーツシミュレーターを発表"
+  title: "XR射撃スポーツのメディア報道"
   description: "VRを活用したeスポーツや没入型スポーツ体験への関心が高まる中、Big x Reality（全球動力科技）はXRシミュレーション技術をスポーツテクノロジー分野へ展開し、オリンピックのクレー射撃競技規則に基づいて設計した「射撃スポーツXRシミュレーションシステム」を紹介しました。"
 ---
 

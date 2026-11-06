@@ -6,13 +6,13 @@ dateReviewNote: "依使用者提供貼文改寫為官網新聞，僅擴寫已有
 articleId: "news-29-xr-defense-platform-2025"
 imageId: "news-29-xr-defense-platform-2025"
 mediaId: "news-29-xr-defense-platform-2025"
-title: "全球動力科技介紹 AI XR 軍事模擬訓練整合應用"
+title: "AI XR 軍事模擬訓練的整合應用"
 summary: "全球動力科技透過社群影片介紹 AI XR 軍事模擬訓練的多元應用，展示虛擬實境、擴增實境、混合實境與地理資訊系統（GIS）在訓練場景中的整合方向。"
 category: "product"
 sourceCategory: "產品消息 / Product / 製品ニュース"
 importNote: "依使用者提供貼文改寫為官網新聞，僅擴寫已有資訊及背景脈絡；未新增未經證實的事實。"
 seo:
-  title: "全球動力科技介紹 AI XR 軍事模擬訓練整合應用"
+  title: "AI XR 軍事模擬訓練的整合應用"
   description: "全球動力科技透過社群影片介紹 AI XR 軍事模擬訓練的多元應用，展示虛擬實境、擴增實境、混合實境與地理資訊系統（GIS）在訓練場景中的整合方向。"
 ---
 

@@ -8,17 +8,17 @@ dateReviewNote: "FB 2025-09-04，舊網站標示 2025-06-20；兩者為不同來
 articleId: "news-07-indo-defence"
 imageId: "news-07-indo-defence"
 mediaId: "news-07-indo-defence"
-title: "Big x Reality、インドネシア防衛展示会でCQB訓練システムを紹介"
-summary: "Big x Reality（全球動力科技）は6月、元の発表で「2024 Indo Defence Expo & Forum」と記載されたインドネシアの防衛展示会に参加し、東南アジア市場に向けて近接戦闘（CQB）シミュレーション訓練システムを紹介しました。"
+title: "インドネシア防衛展でCQB訓練を紹介"
+summary: "Big x Reality（全球動力科技）は6月、インドネシアの防衛展示会に参加しました。元の発表では「2024 Indo Defence Expo & Forum」と記載されています。東南アジア市場に向け、近接戦闘（CQB）シミュレーション訓練システムを紹介しました。"
 category: "event"
 sourceCategory: "活動消息 / Event / イベント"
 importNote: "FB 2025-09-04，舊網站標示 2025-06-20；兩者為不同來源日期，活動年份原文寫 2024，待核實 原文標題稱2025年6月參展，但活動名稱為「2024 Indo Defence Expo & Forum」；請保留原始兩者，待確認展會正式屆次。"
 seo:
-  title: "Big x Reality、インドネシア防衛展示会でCQB訓練システムを紹介"
-  description: "Big x Reality（全球動力科技）は6月、元の発表で「2024 Indo Defence Expo & Forum」と記載されたインドネシアの防衛展示会に参加し、東南アジア市場に向けて近接戦闘（CQB）シミュレーション訓練システムを紹介しました。"
+  title: "インドネシア防衛展でCQB訓練を紹介"
+  description: "Big x Reality（全球動力科技）は6月、インドネシアの防衛展示会に参加しました。元の発表では「2024 Indo Defence Expo & Forum」と記載されています。東南アジア市場に向け、近接戦闘（CQB）シミュレーション訓練システムを紹介しました。"
 ---
 
-Big x Reality（全球動力科技）は6月、元の発表で「2024 Indo Defence Expo & Forum」と記載されたインドネシアの防衛展示会に参加し、東南アジア市場に向けて近接戦闘（CQB）シミュレーション訓練システムを紹介しました。
+Big x Reality（全球動力科技）は6月、インドネシアの防衛展示会に参加しました。元の発表では「2024 Indo Defence Expo & Forum」と記載されています。東南アジア市場に向け、近接戦闘（CQB）シミュレーション訓練システムを紹介しました。
 
 仮想シナリオから実際の機器展開まで、モジュール式の設計により多様な訓練要件に柔軟に対応し、戦術的な対応力と意思決定能力の向上を支援します。
 

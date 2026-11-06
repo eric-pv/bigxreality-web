@@ -24,7 +24,7 @@ const shown = date && new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeri
       : <EditorialCover title={title} category={type} date={date} />}
   </div>
   <div class="body">
-    <p class="t-tech meta"><Text value={type} />{date && <> · <time datetime={iso}>{shown}</time></>}</p>
+    <p class="t-tech meta"><span><Text value={type} /></span>{date && <time datetime={iso}>{shown}</time>}</p>
     <H class="t-h4 title"><a href={href}><Text value={title} /></a></H>
     <p class="t-small summary"><Text value={summary} /></p>
     {tags.length > 0 && <ul role="list" class="tags t-caption">{tags.map((t) => <li>#{t}</li>)}</ul>}
@@ -37,6 +37,7 @@ const shown = date && new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeri
   .card:hover .media :global(img) { transform: scale(1.02); }
   .body { display: flex; flex-direction: column; flex: 1; gap: var(--space-1); padding: var(--card-padding); }
   .summary { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 12px; }
   .meta, .summary, .tags { color: var(--ink-muted); }
   .title a { color: var(--ink); text-decoration: none; }
   .title a::after { content: ""; position: absolute; inset: 0; }
@@ -45,7 +46,7 @@ const shown = date && new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeri
   .card:has(.title a:focus-visible) { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
   .tags { display: flex; flex-wrap: wrap; gap: var(--space-1); margin: 0; padding: 0; }
   @media (max-width: 767px) {
-    .card { display: grid; grid-template-columns: 40% 1fr; }
+    .card { display: grid; grid-template-columns: 40% minmax(0, 1fr); }
     .media { aspect-ratio: auto; height: 100%; }
     .body { padding: var(--space-2); }
     .summary { display: none; }

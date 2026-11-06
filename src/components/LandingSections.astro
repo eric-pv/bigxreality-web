@@ -205,23 +205,23 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt tac-ruler" : (n > 1 ? "
   .challenge-head { display: grid; gap: var(--space-4); align-content: start; position: sticky; top: calc(var(--header-h) + var(--space-4)); }
   .challenge-head :global(.section-head) { margin-bottom: 0; }
   .split { display: grid; grid-template-columns: 5fr 7fr; gap: var(--content-gap); align-items: start; }
-  .split.solo, .split.wide { grid-template-columns: 1fr; }
+  .split.solo, .split.wide { grid-template-columns: minmax(0, 1fr); }
   .pair.triple { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pair.single { grid-template-columns: 1fr; }
+  .pair.single { grid-template-columns: minmax(0, 1fr); }
   .pair.stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pair.stack .link svg { transform: none; }
-  .pair { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .pair { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
   .link { position: absolute; left: 50%; top: 50%; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; transform: translate(-50%, -50%); background: var(--bxr-black); color: var(--bxr-white); border-bottom: 2px solid var(--bxr-red); }
-  .copy { display: grid; gap: var(--space-4); align-content: start; }
+  .copy { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-content: start; }
   .copy :global(.section-head) { margin-bottom: 0; }
-  .prose { display: grid; gap: var(--space-2); max-width: 44rem; }
+  .prose { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: var(--space-2); max-width: 44rem; }
   .prose p { margin: 0; }
   .after { margin-top: var(--content-gap); }
   .note { margin: var(--space-5) 0 0; max-width: 48rem; color: var(--ink-muted); padding-left: var(--space-2); border-left: 2px solid var(--bxr-red); }
   .note.closing { color: var(--ink); font-size: var(--fs-h4); line-height: var(--lh-h4); max-width: 64rem; }
   .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .pb { grid-template-columns: 1fr; gap: var(--space-3); } .split, .challenge { grid-template-columns: 1fr; gap: var(--space-4); } .challenge-head { position: static; } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .cards, .pair.triple, .featured { grid-template-columns: 1fr; } }
+  @media (max-width: 1023px) { .pb { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); } .split, .challenge { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); } .challenge-head { position: static; } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 767px) { .cards, .pair.triple, .featured { grid-template-columns: minmax(0, 1fr); } }
 </style>
 
 <style is:global>.landing-body .bxr-inline-media img{aspect-ratio:16/9;object-fit:cover;width:100%;height:auto}</style>

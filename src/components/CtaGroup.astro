@@ -9,7 +9,7 @@ const { actions } = Astro.props;
   {actions.map((a) => <a class={`btn btn--${a.variant}`} href={a.href}><Text value={a.label} /></a>)}
 </div>
 <style>
-  .cta-group { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .cta-group { display: flex; min-width: 0; max-width: 100%; flex-wrap: wrap; gap: var(--space-2); }
   @media (max-width: 767px) {
     .cta-group { flex-direction: column; align-items: stretch; width: 100%; }
     .cta-group :global(.btn) { width: 100%; justify-content: center; min-height: 48px; }

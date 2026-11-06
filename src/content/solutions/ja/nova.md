@@ -3,7 +3,7 @@
 translationStatus: translated
 order: 6
 domain: military
-name: NOVA 統合作戦シミュレーション連携
+name: NOVA 統合作戦連携
 englishName: NOVA Joint Simulation Integration
 summary: 共通の戦場環境とシステム間の統合アーキテクチャを中核とし、さまざまな領域のシミュレーション訓練と指揮での活用をつなぎます
 landing:
@@ -22,7 +22,7 @@ landing:
     need: NOVA の大規模統合のコンセプトを示すメインビジュアル（シナリオのイメージ図、16:9）
     ratio: 16 / 9
     kind: illustration
-  ctaLabel: NOVA ソリューションについて問い合わせる
+  ctaLabel: NOVA の導入相談
   challenge:
     title: 大規模な統合作戦訓練の課題
     cards:
@@ -35,7 +35,7 @@ landing:
       - title: 拡張のニーズが増え続けている
         description: 訓練機器と任務領域が増えるにつれ、統合アーキテクチャには拡張と調整の余地を残しておく必要があります
   approach:
-    title: 共通の戦場環境を基盤に、システム間の統合シミュレーション訓練を計画
+    title: 共通戦場での統合模擬訓練
     pillars:
       - title: 多様な訓練システムの統合
         description: シミュレーションシステムごとの機能と接続条件に基づいて、システム間の統合活用を計画します

@@ -46,8 +46,8 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     hero: {
       eyebrow: "Big x Reality",
-      title: "虛擬訓練．真實應變．守護未來",
-      subtitle: "讓每一次演練，都更接近真實任務。",
+      title: "虛擬訓練，真實應變",
+      subtitle: "讓演練更接近真實任務。",
       description: "從軍事、警勤到消防防災，Big x Reality 結合沉浸式模擬、互動設備與系統整合技術，將專業訓練需求轉化為可實際操作、反覆演練的訓練環境。",
       primary: "探索解決方案",
       secondary: "了解 BXR",
@@ -58,7 +58,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     value: {
       eyebrow: "為什麼需要模擬訓練",
-      title: "以反覆演練，累積專業應變能力。",
+      title: "反覆演練，累積應變能力",
       paragraphs: [
         "面對複雜環境、突發狀況與高風險任務，專業訓練結合設備操作熟悉與持續的觀察、判斷及應變練習。",
         "透過模擬技術與實體操作設備的結合，讓原本受到場地、資源或安全條件限制的訓練，擁有更多實施與練習的可能。",
@@ -137,7 +137,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     hero: {
       eyebrow: "Big x Reality",
-      title: "Virtual Training. Real Response. Protecting the Future.",
+      title: "Train Today. Protect Tomorrow.",
       subtitle: "Bringing every drill closer to the real mission.",
       description: "From military and police to fire and disaster response, Big x Reality combines immersive simulation, interactive equipment and system integration to turn professional training needs into training environments that can be operated hands-on and practiced again and again.",
       primary: "Explore Solutions",
@@ -228,8 +228,8 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     hero: {
       eyebrow: "Big x Reality",
-      title: "バーチャル訓練・リアルな対応・未来を守る",
-      subtitle: "すべての演習を、より実際の任務に近づける。",
+      title: "仮想の訓練から、実際の対応力へ",
+      subtitle: "演習を実際の任務に近づける。",
       description: "軍事・警察から消防防災まで、Big x Reality は没入型シミュレーション、インタラクティブ機器、システム統合技術を組み合わせ、専門訓練のニーズを、実際に操作し繰り返し演習できる訓練環境へと形にします。",
       primary: "ソリューションを見る",
       secondary: "BXR について",
@@ -240,7 +240,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     value: {
       eyebrow: "シミュレーション訓練の意義",
-      title: "繰り返しの演習で、専門的な対応力を育成。",
+      title: "反復演習で、対応力を育てる。",
       paragraphs: [
         "複雑な環境、突発的な事態、高リスクな任務に向き合う専門訓練では、機器操作の習熟と観察・判断・対応の継続的な練習を組み合わせます。",
         "シミュレーション技術と実機操作機器を組み合わせることで、これまで場所、資源、安全条件に制約されていた訓練に、より多くの実施と練習の可能性をもたらします。",

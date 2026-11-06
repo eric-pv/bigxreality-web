@@ -6,6 +6,6 @@ seo:
   description: "技術・応用テーマ別に Big x Reality の記事やニュースを閲覧できます。"
 hero:
   eyebrow: タグ
-  title: "[待翻譯] 標籤"
+  title: "タグ"
   description: "[待提供]"
 ---
