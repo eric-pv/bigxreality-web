@@ -32,6 +32,17 @@ jobs:
         run: npm run cms:sveltia:check
       - name: Sveltia real-browser isolated editing
         run: npm run qa:sveltia
+      - name: Upload CMS browser failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cms-browser-failure-${{ github.run_attempt }}
+          path: |
+            .qa/sveltia/failure.png
+            .qa/sveltia/failure.txt
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Inquiry transport harness (mock only, not Google acceptance)
         run: npm run qa:inquiry-poc
       - name: Unit tests
