@@ -172,14 +172,14 @@ try {
   await page.setViewportSize({ width: 1440, height: 900 });
   check("sitemap has no cases url while no case is published", !readFileSync(path.join(DIST, "sitemap.xml"), "utf8").includes("/cases/"));
 
-  // English and Japanese solution and product pages and the product index are translated; the company page is not yet.
-  await page.goto(`${base}/en/company/`, { waitUntil: "networkidle" });
+  // English and Japanese solution, product and company pages are translated; the search page copy is not yet.
+  await page.goto(`${base}/en/search/`, { waitUntil: "networkidle" });
   check("pending translation → noindex", (await page.getAttribute('meta[name=robots]', "content")) === "noindex");
   check("pending translation banner", await page.locator(".translation-banner").isVisible());
   check("html lang en", (await page.getAttribute("html", "lang")) === "en");
 
   const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
-  check("sitemap excludes pending pages", !sitemap.includes("/en/company/</loc>") && !sitemap.includes("/jp/company/</loc>") && sitemap.includes("/en/products/</loc>") && sitemap.includes("/jp/news/") && sitemap.includes("/tw/products/sut/") && sitemap.includes("/jp/products/sut/"));
+  check("sitemap excludes pending pages", !sitemap.includes("/en/search/</loc>") && !sitemap.includes("/jp/search/</loc>") && sitemap.includes("/en/company/</loc>") && sitemap.includes("/jp/company/</loc>") && sitemap.includes("/en/products/</loc>") && sitemap.includes("/jp/news/") && sitemap.includes("/tw/products/sut/") && sitemap.includes("/jp/products/sut/"));
   // Static build: / is a meta-refresh page (the Pages packager replaces it with the published start page).
   const root = readFileSync(path.join(DIST, "index.html"), "utf8");
   check("/ redirects to /en/ (meta refresh)", /<meta http-equiv="refresh" content="0;\s*url=\/en\/"/i.test(root));
