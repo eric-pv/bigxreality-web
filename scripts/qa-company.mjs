@@ -56,6 +56,23 @@ try {
     check("profile: facts list", (await page.locator(".facts > div").count()) === 2);
   }
 
+  // Careers (docs/careers/104-INTEGRATION.md): job cards only from a validated 104 snapshot.
+  const snap = JSON.parse(readFileSync(fixtures ? "tests/fixtures/careers-104.json" : "src/data/careers-104.json", "utf8"));
+  const companyUrl = JSON.parse(readFileSync("src/data/site.json", "utf8")).careersUrl;
+  for (const lang of ["tw", "en", "jp"]) {
+    await page.goto(`${base}/${lang}/company/`, { waitUntil: "networkidle" });
+    const sec = page.locator("[data-careers]");
+    check(`${lang} careers: section on About BXR links to the 104 company page in a new tab`, (await sec.count()) === 1 && (await sec.locator(`a[data-careers-company][href="${companyUrl}"][target=_blank][rel~=noopener]`).count()) === 1);
+    const hrefs = await sec.locator("[data-job] a.apply").evaluateAll((as) => as.map((a) => [a.closest("[data-job]").dataset.job, a.getAttribute("href"), a.target, a.rel]));
+    if (snap.status !== "ok") {
+      check(`${lang} careers: no job cards or sync date before the first validated sync`, hrefs.length === 0 && (await sec.locator("[data-careers-updated],[data-careers-none]").count()) === 0);
+    } else {
+      check(`${lang} careers: one card per opening, newest first`, JSON.stringify(hrefs.map((h) => h[0])) === JSON.stringify(snap.jobs.map((j) => j.jobNo)), hrefs.map((h) => h[0]).join());
+      check(`${lang} careers: every apply button opens its own 104 job page`, hrefs.every(([no, href, target, rel]) => href === `https://www.104.com.tw/job/${no}` && target === "_blank" && rel.includes("noopener")));
+      check(`${lang} careers: last successful sync date shown`, (await sec.locator("[data-careers-updated]").count()) === 1);
+    }
+  }
+
   for (const [w, label] of [[390, "phone"], [820, "tablet"]]) {
     const v = await browser.newPage({ viewport: { width: w, height: 900 } });
     for (const p of ["company", "company/team", "company/partners", "company/investors"]) {
