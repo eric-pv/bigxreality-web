@@ -1,0 +1,28 @@
+---
+import type { Lang } from '../i18n';
+import { site } from '../lib/site';
+import { isPending } from '../lib/pending';
+import { getUi } from '../lib/ui';
+import Text from './Text.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ui = getUi(lang);
+---
+{!isPending(site.careersUrl) && (
+  <section class="section careers" id="careers" aria-labelledby="careers-title" data-careers>
+    <div class="container narrow">
+      <h2 class="t-h2" id="careers-title"><Text value={ui.careers.title} /></h2>
+      <p><Text value={ui.careers.description} /></p>
+      <a class="btn btn--primary" href={site.careersUrl} target="_blank" rel="noopener noreferrer">
+        <Text value={ui.careers.viewOpenings} />
+        <span class="visually-hidden"><Text value={ui.buttons.opensInNewTab} /></span>
+      </a>
+    </div>
+  </section>
+)}
+<style>
+  .careers { border-top: 1px solid var(--divider); }
+  .narrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+  .btn { justify-self: start; }
+</style>

@@ -517,5 +517,10 @@
     "metaDescription": "The requested Big x Reality page could not be found.",
     "linksLabel": "Return to website",
     "home": "Back to home"
+  },
+  "careers": {
+    "title": "Careers at BXR",
+    "description": "View current openings, role requirements and application details on 104 Job Bank.",
+    "viewOpenings": "View jobs on 104"
   }
 }

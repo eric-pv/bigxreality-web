@@ -17,8 +17,21 @@
     "email": "service@gptt.com.tw",
     "mapUrl": "https://maps.app.goo.gl/JP7JfUAfWUWUu3FP9"
   },
-  "social": "[待提供]",
-  "careersUrl": "[待提供]",
+  "social": [
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/gpttcom"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@BigxReality"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/company/bigxreality/"
+    }
+  ],
+  "careersUrl": "https://www.104.com.tw/company/1a2x6bjhcz?jobsource=index_s",
   "forms": {
     "brochure": {
       "url": "[待提供]",
