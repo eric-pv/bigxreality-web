@@ -37,6 +37,6 @@
 
 ## 如何填入圖片
 1. 把圖片放進 `src/assets/images/products/`（建議檔名：`sut-hero.jpg`、`sut-approach-physical.jpg`、`sut-approach-virtual.jpg`、`sut-cap-formation.jpg`、`sut-cap-dynamic.jpg`、`sut-cap-xr.jpg`、`sut-scenario-cqb.jpg` 等）。
-2. 在 `src/content/products/tw/sut.md` 對應位置的 `image`（Hero 是 `heroImage`）加上 `src`（圖片路徑）與 `alt`（替代文字）；`need` 保留即可，圖片出現後就不會顯示。
+2. 在 `src/content/products/zh-Hant/sut.md` 對應位置的 `image`（Hero 是 `heroImage`）加上 `src`（圖片路徑）與 `alt`（替代文字）；`need` 保留即可，圖片出現後就不會顯示。
 3. 英文、日文版的圖片位置沿用繁中版（圖片只填一次），替代文字再翻譯。
 4. 用 CMS 的話，在後台「落地頁」欄位上傳圖片即可，不需要改檔案。

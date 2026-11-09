@@ -37,7 +37,7 @@
 ## 二、上線前（網站端）
 
 1. 業主已於 2026-11-04 授權直接定稿；三語已移除草稿標註與內部備註，避免未經確認的保存年限、郵件供應商品牌或稽核成果宣稱。正式政策也說明現有 `bxr-motion` 本機動畫偏好。
-2. `src/content/pages/tw/privacy.md` 改 `draft: false`。
+2. `src/content/pages/zh-Hant/privacy.md` 改 `draft: false`。
 3. `src/data/site.json` 的 `inquiry.endpoint` 填入 `/exec` 網址。
 4. 聯絡頁 Hero 說明（`src/content/pages/<lang>/contact.md` 的 `hero.description`）仍寫「請透過 Email 聯絡」，同步改成提到表單的說法。
 5. 上線後實際送出一筆測試詢問，確認試算表多一列、Email 通知（若有設定）收到，再把該列刪除。
