@@ -37,6 +37,8 @@
 
 ## 業主需要處理
 
+給人資的申請步驟：[HR-104-API-GUIDE.md](HR-104-API-GUIDE.md)。
+
 1. 向 104 業務窗口或客服申請「人力銀行 Open API（scope `c_job`）」的 client_id／client_secret，並確認：
    - 本公司（統編、104 公司代碼 `1a2x6bjhcz`）是否符合資格；
    - 是否收費；
