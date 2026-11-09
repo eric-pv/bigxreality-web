@@ -1,5 +1,7 @@
 # 核心技術第一階段
 
+> 現況（2026-11-09）：技術頁文案的唯一編輯來源已改為 `src/content/technologies／technology-overview/<zh-Hant|en|ja>/*.json`，可在 CMS 編輯；`src/data/technologies-content.ts` 只負責載入。下文提到的 TS 檔為當時紀錄。
+
 本文件保留第一批的實作與驗收紀錄。第二批完成後，七項技術皆有三語詳細頁，最新操作與驗收見 [第二批文件](TECHNOLOGIES-BATCH-TWO.md)。
 
 固定技術 ID 為 `xr`、`ai-simulation`、`digital-simulation`、`training-design`、`system-integration`、`decision-visualization`、`domain-expertise`。本階段公開三語總覽與 `xr`、`training-design`、`domain-expertise` 的三語詳細頁；其餘四項只有總覽簡介，不產生空白公開頁或失效連結。

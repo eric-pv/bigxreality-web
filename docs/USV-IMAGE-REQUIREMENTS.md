@@ -37,4 +37,4 @@
 
 ## 如何填入圖片
 1. 把圖片放進 `src/assets/images/products/`（建議檔名以 `usv-` 開頭，例如 `usv-hero.jpg`）。
-2. 在 `src/content/products/tw/usv.md` 對應位置的 `image`（Hero 是 `heroImage`）加上 `src` 與 `alt`；`need` 保留即可，圖片出現後就不會顯示。
+2. 在 `src/content/products/zh-Hant/usv.md` 對應位置的 `image`（Hero 是 `heroImage`）加上 `src` 與 `alt`；`need` 保留即可，圖片出現後就不會顯示。

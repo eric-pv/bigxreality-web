@@ -35,4 +35,4 @@
 
 ## 如何填入圖片
 1. 把已核准的圖片放進 `src/assets/images/products/`（檔名以 `police-box-` 開頭）。
-2. 在 `src/content/products/tw/police-box.md` 對應位置的 `image`（Hero 是 `heroImage`）加上 `src` 與 `alt`；需要時加 `kind: illustration`、`status: withheld`、`substitute`。
+2. 在 `src/content/products/zh-Hant/police-box.md` 對應位置的 `image`（Hero 是 `heroImage`）加上 `src` 與 `alt`；需要時加 `kind: illustration`、`status: withheld`、`substitute`。

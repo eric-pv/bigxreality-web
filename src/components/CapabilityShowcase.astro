@@ -61,9 +61,10 @@ const num = (n: number) => String(n).padStart(2, "0");
   )}
 </div>
 <style>
-  .showcase { display: grid; gap: var(--content-gap); }
-  .feature { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-6); align-items: center; }
-  .feature.flip { grid-template-columns: 5fr 7fr; }
+  /* minmax(0, …): a picture that fails to load shows its long alt text, which must not widen the page. */
+  .showcase { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--content-gap); }
+  .feature { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-6); align-items: center; }
+  .feature.flip { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
   .feature.flip .pic { order: 2; }
   .text { display: grid; gap: var(--space-2); align-content: center; }
   .text .num { color: var(--ink-muted); margin: 0; }
@@ -83,7 +84,7 @@ const num = (n: number) => String(n).padStart(2, "0");
   /* Stacked (tablet and phone, docs/LAYOUT-RULES.md §2): each picture row becomes one card,
      text first and the picture below it, so the picture clearly belongs to the text above. */
   @media (max-width: 1023px) {
-    .feature, .feature.flip { grid-template-columns: 1fr; gap: var(--space-3); padding: var(--space-3); background: var(--bxr-white); border: 1px solid var(--bxr-line); border-top: 2px solid var(--bxr-black); }
+    .feature, .feature.flip { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); padding: var(--space-3); background: var(--bxr-white); border: 1px solid var(--bxr-line); border-top: 2px solid var(--bxr-black); }
     .feature .pic, .feature.flip .pic { order: 2; }
     .showcase { gap: var(--space-4); }
   }
