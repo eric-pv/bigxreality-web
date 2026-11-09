@@ -517,5 +517,10 @@
     "metaDescription": "お探しの Big x Reality のページが見つかりません。",
     "linksLabel": "サイトに戻る",
     "home": "ホームに戻る"
+  },
+  "careers": {
+    "title": "採用情報",
+    "description": "募集職種、応募条件、応募方法は 104 人力銀行でご確認ください。",
+    "viewOpenings": "104 で募集職種を見る"
   }
 }
