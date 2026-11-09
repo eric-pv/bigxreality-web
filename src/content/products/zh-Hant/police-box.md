@@ -6,7 +6,7 @@ order: 11
 domains:
   - police
 hero:
-  name: 攜帶式警勤訓練器Police BOX
+  name: 攜帶式警勤訓練器
   tagline: 以整合式可攜設備延伸訓練部署彈性，讓沉浸式警勤訓練更容易融入不同單位的教育訓練安排
 summary: 以可攜式設備整合於便於移動的箱體配置，依現有空間與課程需求部署
 landing:
