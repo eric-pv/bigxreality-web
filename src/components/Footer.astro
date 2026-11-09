@@ -60,14 +60,18 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
         {menu.map((item) => (
           <li>
             {item.children.length > 0 ? (
-              <details class="group" open>
-                <summary class="item">{item.href ? <a href={item.href}><Text value={item.label} /></a> : <Text value={item.label} />}<Fragment set:html={chevron} /></summary>
+              <Fragment>
+              {item.href && <a class="item heading-link" href={item.href}><Text value={item.label} /></a>}
+              <details class:list={["group", { "has-heading-link": !!item.href }]} open>
+                <summary class="item"><Text value={item.label} /><Fragment set:html={chevron} /></summary>
                 <ul role="list" class="sub">
+                  {item.href && <li class="overview-link"><a class="sub-item" href={item.href}><Text value={item.label} /></a></li>}
                   {item.children.map((c) => (
                     <li>{c.href ? <a class="sub-item" href={c.href}><Text value={c.label} /></a> : <span class="sub-item is-planned"><Text value={c.label} /><Fragment set:html={plannedNote} /></span>}</li>
                   ))}
                 </ul>
               </details>
+              </Fragment>
             ) : item.href ? (
               <a class="item" href={item.href}><Text value={item.label} /></a>
             ) : (
@@ -113,7 +117,7 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
   desktop.addEventListener('change', syncFooter);
   for (const group of groups) {
     group.addEventListener('toggle', () => { if (!desktop.matches && group.open) for (const other of groups) if (other !== group) other.open = false; });
-    group.querySelector('summary')?.addEventListener('click', event => { if (desktop.matches && !(event.target as Element).closest('a')) event.preventDefault(); });
+    group.querySelector('summary')?.addEventListener('click', event => { if (desktop.matches) event.preventDefault(); });
     group.addEventListener('keydown', event => { if (!desktop.matches && event.key === 'Escape') { group.open = false; group.querySelector('summary')?.focus(); } });
   }
 </script>
@@ -131,8 +135,7 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
     color: var(--ink); text-decoration: none; font-weight: 500; cursor: pointer;
   }
   a.item:hover, summary.item:hover, .sub-item:is(a):hover { text-decoration: underline; }
-  summary.item > a { color: inherit; text-decoration: none; }
-  summary.item > a:hover { text-decoration: underline; }
+  .item.heading-link { display: none; }
   summary.item { list-style: none; }
   summary.item::-webkit-details-marker { display: none; }
   :global(.site-footer .chev) { flex: none; transition: transform var(--dur-micro) var(--ease-precise); }
@@ -165,6 +168,8 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
 
 <style>
 @media(min-width:1024px) {
+.item.heading-link { display: inline-flex; cursor: pointer; }
+details.has-heading-link > summary, .overview-link { display: none; }
 .cols { grid-template-columns: minmax(200px,1fr) minmax(0,3fr); gap: 48px; }
 .menu-list { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 20px; align-items: start; }
 details.group { width: auto; }
