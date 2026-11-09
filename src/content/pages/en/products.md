@@ -2,11 +2,8 @@
 # English localisation of the Traditional Chinese master (src/content/pages/tw/products.md), 2026-10-21. Fields that are "[待提供]" (copy not yet supplied) in the master stay "[待提供]" here: no copy is invented.
 translationStatus: translated
 seo:
-  title: "XR Simulation Training Products & Equipment"
-  description: "Explore Big x Reality's XR training products, including SUT
-    tactical training, UAV and USV simulators, wargaming tables, military
-    vehicle simulators, police training systems, and VR fire extinguisher
-    training."
+  title: "VR & XR Training Simulators and Equipment"
+  description: "Explore BXR VR and XR training simulators for tactical teams, UAVs, USVs, police and fire safety, alongside wargaming tables and military vehicle simulators."
 hero:
   eyebrow: Products
   title: Products

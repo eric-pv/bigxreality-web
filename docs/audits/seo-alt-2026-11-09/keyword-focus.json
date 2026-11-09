@@ -1,35 +1,95 @@
 {
   "/": {
     "primary": {
-      "tw": "模擬訓練",
-      "en": "XR Simulation Training",
-      "jp": "シミュレーション訓練"
+      "tw": "VR／XR 模擬訓練與系統整合",
+      "en": "VR & XR Simulation Training",
+      "jp": "VR・XR シミュレーション訓練とシステム統合"
     },
-    "intent": "品牌與整體訓練服務"
+    "intent": "品牌與整體訓練服務",
+    "secondary": {
+      "tw": [],
+      "en": [
+        "System Integration"
+      ],
+      "jp": []
+    },
+    "candidateQueries": {
+      "tw": [
+        "VR 模擬訓練",
+        "XR 模擬訓練",
+        "VR 系統整合",
+        "XR 系統整合",
+        "台灣 VR 公司"
+      ]
+    }
   },
   "/products/": {
     "primary": {
-      "tw": "XR 模擬訓練產品",
-      "en": "XR Simulation Training Products",
-      "jp": "XR シミュレーション訓練製品"
+      "tw": "VR／XR 模擬訓練設備與產品",
+      "en": "VR & XR Training Simulators and Equipment",
+      "jp": "VR・XR 訓練シミュレーター・専門訓練機器"
     },
-    "intent": "產品總覽與設備比較"
+    "intent": "產品總覽與設備比較",
+    "secondary": {
+      "tw": [],
+      "en": [],
+      "jp": []
+    },
+    "candidateQueries": {
+      "tw": [
+        "VR 模擬器",
+        "VR 訓練設備",
+        "XR 訓練系統"
+      ]
+    }
   },
   "/solutions/": {
     "primary": {
-      "tw": "模擬訓練",
-      "en": "XR Training",
-      "jp": "専門訓練"
+      "tw": "VR／XR 模擬訓練與系統整合方案",
+      "en": "VR & XR Training Solutions",
+      "jp": "VR・XR 訓練・システム統合ソリューション"
     },
-    "intent": "產業需求與方案總覽"
+    "intent": "產業需求與方案總覽",
+    "secondary": {
+      "tw": [],
+      "en": [
+        "System Integration"
+      ],
+      "jp": []
+    },
+    "candidateQueries": {
+      "tw": [
+        "VR 訓練方案",
+        "XR 訓練方案",
+        "VR 系統整合"
+      ]
+    }
   },
   "/technologies/": {
     "primary": {
-      "tw": "核心技術",
-      "en": "Core Technologies",
-      "jp": "コア技術"
+      "tw": "VR／XR 核心技術",
+      "en": "VR & XR Technologies",
+      "jp": "VR・XR コア技術"
     },
-    "intent": "技術方法與能力總覽"
+    "intent": "技術方法與能力總覽",
+    "secondary": {
+      "tw": [
+        "AI 與數位模擬系統整合"
+      ],
+      "en": [
+        "AI and Simulation Integration"
+      ],
+      "jp": [
+        "AI・デジタルシミュレーション"
+      ]
+    },
+    "candidateQueries": {
+      "tw": [
+        "VR 技術",
+        "XR 技術",
+        "虛擬實境系統整合"
+      ]
+    }
   },
   "/products/sut/": {
     "primary": {
@@ -105,19 +165,54 @@
   },
   "/products/full-scale-police-training/": {
     "primary": {
-      "tw": "全配式警勤訓練系統",
-      "en": "Full-Scale Police Training System",
-      "jp": "据置型警察訓練システム"
+      "tw": "全配式 VR 警察訓練系統",
+      "en": "Full-Scale VR Police Training System",
+      "jp": "据置型 VR 警察訓練システム"
     },
-    "intent": "設備評估：固定設施警勤訓練"
+    "intent": "設備評估：固定設施警勤訓練",
+    "secondary": {
+      "tw": [
+        "沉浸式警勤模擬設備"
+      ],
+      "en": [],
+      "jp": [
+        "勤務シナリオ演習"
+      ]
+    },
+    "candidateQueries": {
+      "tw": [
+        "VR 警察訓練系統",
+        "沉浸式警勤訓練",
+        "警察模擬訓練設備"
+      ]
+    }
   },
   "/products/police-box/": {
     "primary": {
-      "tw": "Police BOX",
-      "en": "Police BOX",
-      "jp": "Police BOX"
+      "tw": "可攜式 VR 警察訓練模擬器",
+      "en": "Portable VR Police Training Simulator",
+      "jp": "可搬型 VR 警察訓練シミュレーター"
     },
-    "intent": "設備評估：可攜式警勤訓練"
+    "intent": "設備評估：可攜式 VR 警察／警勤訓練；Police BOX 是輔助品牌詞",
+    "secondary": {
+      "tw": [
+        "警勤情境演練 Police BOX"
+      ],
+      "en": [
+        "Police BOX"
+      ],
+      "jp": [
+        "Police BOX"
+      ]
+    },
+    "candidateQueries": {
+      "tw": [
+        "可攜式 VR 警察訓練模擬器",
+        "VR 警察訓練",
+        "VR 警勤訓練",
+        "攜帶式警勤訓練設備"
+      ]
+    }
   },
   "/products/fire-extinguisher-simulator/": {
     "primary": {
@@ -129,27 +224,82 @@
   },
   "/solutions/military/": {
     "primary": {
-      "tw": "軍事模擬訓練",
-      "en": "Military Simulation Training",
-      "jp": "軍事シミュレーション訓練"
+      "tw": "VR／XR 軍事模擬訓練",
+      "en": "VR & XR Military Training",
+      "jp": "VR・XR 軍事訓練"
     },
-    "intent": "產業方案：多層級軍事訓練"
+    "intent": "產業方案：多層級軍事訓練",
+    "secondary": {
+      "tw": [
+        "戰術與聯合訓練方案"
+      ],
+      "en": [
+        "Tactical Simulation"
+      ],
+      "jp": [
+        "戦術・統合シミュレーション"
+      ]
+    },
+    "candidateQueries": {
+      "tw": [
+        "VR 軍事訓練",
+        "XR 戰術訓練",
+        "軍事模擬訓練系統"
+      ]
+    }
   },
   "/solutions/police/": {
     "primary": {
-      "tw": "警勤模擬訓練",
-      "en": "Police Simulation Training",
-      "jp": "警察訓練"
+      "tw": "VR／XR 警察訓練方案",
+      "en": "VR & XR Police Training",
+      "jp": "VR・XR 警察訓練"
     },
-    "intent": "產業方案：勤務情境與訓練管理"
+    "intent": "產業方案：勤務情境與訓練管理",
+    "secondary": {
+      "tw": [
+        "勤務情境與言語降級"
+      ],
+      "en": [
+        "Scenarios and De-escalation"
+      ],
+      "jp": [
+        "状況判断・対話による緊張緩和"
+      ]
+    },
+    "candidateQueries": {
+      "tw": [
+        "VR 警察訓練方案",
+        "XR 警勤訓練",
+        "警察情境模擬",
+        "言語降級訓練"
+      ]
+    }
   },
   "/solutions/fire-rescue/": {
     "primary": {
-      "tw": "消防防災模擬訓練",
-      "en": "Fire & Disaster Prevention Training",
-      "jp": "消防・防災シミュレーション訓練"
+      "tw": "VR／XR 消防防災訓練",
+      "en": "VR & XR Fire Safety Training",
+      "jp": "VR・XR 消防防災訓練"
     },
-    "intent": "產業方案：消防與防災教育"
+    "intent": "產業方案：消防與防災教育",
+    "secondary": {
+      "tw": [
+        "滅火操作與防災教育"
+      ],
+      "en": [
+        "Disaster Preparedness"
+      ],
+      "jp": [
+        "消火器操作・防災教育"
+      ]
+    },
+    "candidateQueries": {
+      "tw": [
+        "VR 消防訓練",
+        "VR 防災教育",
+        "XR 滅火教學"
+      ]
+    }
   },
   "/solutions/smart-city/": {
     "primary": {

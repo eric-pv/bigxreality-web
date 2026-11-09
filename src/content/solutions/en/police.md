@@ -175,8 +175,6 @@ landing:
     title: From Police Equipment Operation to Duty Response, a More Complete Police
       Training Environment
 seo:
-  title: "Police Simulation Training | VR Scenarios & De-escalation"
-  description: "Combine immersive police scenarios, equipment handling, verbal
-    de-escalation, operational decision-making, and training management for
-    foundational and advanced police training."
+  title: "VR & XR Police Training | Scenarios and De-escalation"
+  description: "BXR combines VR police scenarios, XR interaction, equipment handling, verbal de-escalation and training management for foundational and advanced police training."
 ---

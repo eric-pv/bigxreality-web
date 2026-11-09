@@ -1,15 +1,15 @@
 # 關鍵字主題分工（依現有內容核對）
 
-本表覆蓋 29 組商業頁路由、三語共 87 頁；其餘新聞、公司、聯絡與政策頁見 pages.csv。這是既有內容的主題分工，不是已驗證的搜尋量、排名或 Google 查詢資料。路由前加 /tw、/en、/jp。
+本表覆蓋 29 組商業頁路由、三語共 87 頁；其中 27 頁依業主後續指示加強 VR／XR 與需求詞。其餘新聞、公司、聯絡與政策頁見 pages.csv。這是內容與搜尋意圖的分工，不是已驗證的搜尋量、排名或 Google 查詢資料。路由前加 /tw、/en、/jp。
 
-主要詞僅用於標示頁面主題；次要詞由現有 SEO 標題的其他部分記錄於 pages.csv。沒有為了塞字改動已核准的標題、正文或 alt，也不新增 meta keywords 欄位。
+主要詞用於標示頁面主題；次要詞及台灣市場候選查詢列在 pages.csv。候選查詢不是實際流量資料，也不是要求把每個詞重複放進正文。Police BOX 保留為輔助品牌詞，主要承接「可攜式 VR 警察訓練模擬器」。不新增 meta keywords。
 
 | 路由 | 繁中主題 | 英文主題 | 日文主題 | 搜尋意圖／分工 |
 |---|---|---|---|---|
-| / | 模擬訓練 | XR Simulation Training | シミュレーション訓練 | 品牌與整體訓練服務 |
-| /products/ | XR 模擬訓練產品 | XR Simulation Training Products | XR シミュレーション訓練製品 | 產品總覽與設備比較 |
-| /solutions/ | 模擬訓練 | XR Training | 専門訓練 | 產業需求與方案總覽 |
-| /technologies/ | 核心技術 | Core Technologies | コア技術 | 技術方法與能力總覽 |
+| / | VR／XR 模擬訓練與系統整合 | VR & XR Simulation Training | VR・XR シミュレーション訓練とシステム統合 | 品牌與整體訓練服務 |
+| /products/ | VR／XR 模擬訓練設備與產品 | VR & XR Training Simulators and Equipment | VR・XR 訓練シミュレーター・専門訓練機器 | 產品總覽與設備比較 |
+| /solutions/ | VR／XR 模擬訓練與系統整合方案 | VR & XR Training Solutions | VR・XR 訓練・システム統合ソリューション | 產業需求與方案總覽 |
+| /technologies/ | VR／XR 核心技術 | VR & XR Technologies | VR・XR コア技術 | 技術方法與能力總覽 |
 | /products/sut/ | SUT 小部隊戰術訓練 | Small Unit Tactical Training | SUT 小部隊戦術訓練 | 設備評估：小部隊 VR 戰術訓練 |
 | /products/uav/ | 無人機 | UAV | UAV | 設備評估：無人機與反制無人機訓練 |
 | /products/usv/ | USV 無人船 | USV | USV 無人水上艇 | 設備評估：無人船操作訓練 |
@@ -19,12 +19,12 @@
 | /products/machine-gun-simulator/ | 機槍模擬系統 | Machine Gun Training Simulator | 機関銃シミュレーター | 設備評估：武器操作與射擊紀律 |
 | /products/hmmwv-simulator/ | 悍馬車 | HMMWV | HMMWV | 設備評估：軍用車輛駕駛 |
 | /products/tactical-boat-simulator/ | 快艇 | Tactical Boat Simulator | 高速艇 | 設備評估：有人快艇操艇 |
-| /products/full-scale-police-training/ | 全配式警勤訓練系統 | Full-Scale Police Training System | 据置型警察訓練システム | 設備評估：固定設施警勤訓練 |
-| /products/police-box/ | Police BOX | Police BOX | Police BOX | 設備評估：可攜式警勤訓練 |
+| /products/full-scale-police-training/ | 全配式 VR 警察訓練系統 | Full-Scale VR Police Training System | 据置型 VR 警察訓練システム | 設備評估：固定設施警勤訓練 |
+| /products/police-box/ | 可攜式 VR 警察訓練模擬器 | Portable VR Police Training Simulator | 可搬型 VR 警察訓練シミュレーター | 設備評估：可攜式 VR 警察／警勤訓練；Police BOX 是輔助品牌詞 |
 | /products/fire-extinguisher-simulator/ | VR 虛擬滅火訓練系統 | VR Fire Extinguisher Training Simulator | VR 消火器訓練システム | 設備評估：滅火器訓練 |
-| /solutions/military/ | 軍事模擬訓練 | Military Simulation Training | 軍事シミュレーション訓練 | 產業方案：多層級軍事訓練 |
-| /solutions/police/ | 警勤模擬訓練 | Police Simulation Training | 警察訓練 | 產業方案：勤務情境與訓練管理 |
-| /solutions/fire-rescue/ | 消防防災模擬訓練 | Fire & Disaster Prevention Training | 消防・防災シミュレーション訓練 | 產業方案：消防與防災教育 |
+| /solutions/military/ | VR／XR 軍事模擬訓練 | VR & XR Military Training | VR・XR 軍事訓練 | 產業方案：多層級軍事訓練 |
+| /solutions/police/ | VR／XR 警察訓練方案 | VR & XR Police Training | VR・XR 警察訓練 | 產業方案：勤務情境與訓練管理 |
+| /solutions/fire-rescue/ | VR／XR 消防防災訓練 | VR & XR Fire Safety Training | VR・XR 消防防災訓練 | 產業方案：消防與防災教育 |
 | /solutions/smart-city/ | 智慧城市 | Smart City Solutions | スマートシティ | 產業方案：城市數位場景應用 |
 | /solutions/mum-t/ | MUM-T | MUM-T | MUM-T | 整合方案：胸掛板資訊與小隊協同，與 SUT 設備頁分工 |
 | /solutions/nova/ | NOVA | NOVA | NOVA | 整合方案：共同戰場與跨系統聯訓，與圖台設備頁分工 |

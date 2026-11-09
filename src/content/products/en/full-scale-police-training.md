@@ -216,8 +216,6 @@ faq:
       every system has complete physiological monitoring or the same assessment
       functions.
 seo:
-  title: "Full-Scale Police Training System | Immersive Police Simulation"
-  description: "The full-scale police training system integrates VR environments,
-    physical interaction equipment, and scenario-based exercises for police
-    observation, operational decisions, and response training."
+  title: "Full-Scale VR Police Training System"
+  description: "The full-scale VR police training system combines immersive scenarios and physical interaction equipment for observation, operational decisions and response training."
 ---

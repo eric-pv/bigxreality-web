@@ -2,9 +2,8 @@
 # 解決方案總覽頁文案：業主提供（2026-10-21）
 translationStatus: source
 seo:
-  title: "XR 專業模擬訓練與系統整合解決方案"
-  description: "Big x Reality 針對軍事、警勤、消防防災與智慧城市需求，整合 XR
-    沉浸式模擬、AI、互動設備及數位場景技術，規劃從單一操作到跨系統整合的多元應用。"
+  title: "VR／XR 模擬訓練與系統整合方案"
+  description: "Big x Reality 整合 VR 虛擬實境、XR、AI 與互動設備，規劃軍事、警察及消防防災的模擬訓練方案，並以數位場景及系統整合技術支援智慧城市應用。"
 hero:
   eyebrow: 解決方案
   title: "從專業訓練到智慧應用，打造虛實整合的全方位解決方案"

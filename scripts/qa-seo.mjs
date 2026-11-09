@@ -1,3 +1,4 @@
+import {homeCopy} from '../src/data/home.ts';
 import {contentLocale} from "../src/lib/content-locale.ts";
 import { publicUrl, artifactPath } from '../src/lib/public-url.ts';
 import assert from 'node:assert/strict';
@@ -39,6 +40,7 @@ try {
       // legacy expectations only cover pages without a CMS content file.
       let copy=approved[url];
       const [lang, section, slug] = url.split('/').filter(Boolean);
+      if(!section && homeCopy[lang])copy=homeCopy[lang].seo;
       const collection=({news:'news',insights:'insights',cases:'case-studies',products:'products',solutions:'solutions'})[section];
       const pageSlug=section==='company'?(slug??'company'):(!slug?section:undefined);
       const technologyPath=section==='technologies'?`src/content/${slug?'technologies':'technology-overview'}/${contentLocale(lang)}/${slug??'overview'}.json`:undefined;

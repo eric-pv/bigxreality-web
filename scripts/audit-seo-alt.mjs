@@ -57,7 +57,8 @@ try {
     const record = {
       route, lang, indexable, canonical: data.canonical, title: data.title, titleCharacters: [...data.title].length,
       description: data.description, descriptionCharacters: [...data.description].length, h1: data.h1,
-      primaryFocus: primary, secondaryFocus: indexable ? titleParts.slice(1).join('; ') : '',
+      primaryFocus: primary, secondaryFocus: indexable ? (assignment?.secondary?.[lang] ?? titleParts.slice(1)).join('; ') : '',
+      candidateQueries: indexable ? (assignment?.candidateQueries?.[lang] ?? []).join('; ') : '',
       intent: !indexable ? '刻意不作自然搜尋目標' : assignment?.intent ?? (business ? '新增商業頁：待人工核對關鍵字分工' : route.includes('/news/') ? '新聞事件／文章主題；分頁承接消息列表' : '品牌／公司／政策／聯絡資訊'),
       focusSource: !indexable ? 'noindex' : assignment ? '人工核對現有商業頁主題' : business ? '待人工核對商業主題' : '現有 SEO 標題的資訊主題，非搜尋量研究',
       primaryInTitle: mentions(data.title), primaryInDescription: mentions(data.description), primaryInH1: mentions(data.h1), primaryInBody: mentions(data.body),

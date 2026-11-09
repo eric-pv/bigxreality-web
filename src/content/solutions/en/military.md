@@ -117,6 +117,6 @@ landing:
     title: Starting from Individual Training Needs to Plan a More Complete Military Simulation Environment
     description: Find out how Big x Reality combines simulation equipment, mission scenarios and integration architecture to support military training at different levels
 seo:
-  title: "Military Simulation Training | XR Tactical & Joint Training"
-  description: "Explore military simulation training for weapon handling, tactical exercises, vehicle simulation, squad coordination, wargaming, and cross-system training integration."
+  title: "VR & XR Military Training | Tactical Simulation"
+  description: "Explore BXR VR and XR military training for weapon handling, tactical exercises, vehicle simulation, squad coordination and cross-system joint training."
 ---

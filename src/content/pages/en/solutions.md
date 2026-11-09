@@ -2,10 +2,8 @@
 # English localisation of the Traditional Chinese master (src/content/pages/tw/solutions.md), complete (2026-10-21). Replaces the earlier English copy (owner authorisation 2026-10-21); like the master, the page has no closing CTA band.
 translationStatus: translated
 seo:
-  title: "XR Training & System Integration Solutions"
-  description: "Big x Reality integrates XR simulation, AI, interactive equipment,
-    and digital environments to support military, police, fire and disaster
-    response, and smart city applications."
+  title: "VR & XR Training Solutions | System Integration"
+  description: "BXR integrates VR, XR, AI and interactive equipment for military, police and fire safety training, with digital environments and integration for smart cities."
 hero:
   eyebrow: Solutions
   title: "From Professional Training to Smart Applications: Comprehensive

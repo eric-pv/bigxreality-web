@@ -221,8 +221,6 @@ landing:
       disaster prevention training through a realistic fire extinguisher,
       immersive fire scenes and an interactive training process
 seo:
-  title: "Fire & Disaster Prevention Training | VR Fire Safety Simulation"
-  description: "Combine immersive VR fire scenarios, realistic fire extinguisher
-    operation, interactive lessons, scenario practice, and feedback for fire and
-    disaster prevention education."
+  title: "VR & XR Fire Safety Training | Disaster Preparedness"
+  description: "Combine VR fire scenarios, XR interactive learning and realistic extinguisher operation for fire safety training, scenario practice and disaster preparedness."
 ---
