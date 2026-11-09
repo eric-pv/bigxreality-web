@@ -12,8 +12,7 @@ hero:
     coordination and cross-system joint training
   image:
     src: ../../../assets/images/products/sut-squad-vr-tactical-training.webp
-    alt: Four trainees wearing VR headsets and tactical gear, holding training
-      firearms, standing in front of a vehicle simulator
+    alt: Four trainees wearing VR headsets and tactical gear practise with training firearms on a demonstration stage
 summary: Designed mainly for small-unit tactical training of approximately 1 to
   4 personnel.
 landing:

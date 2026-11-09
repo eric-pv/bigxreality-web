@@ -44,7 +44,7 @@ landing:
         need: 武器裝備操作訓練畫面（16:9）
         ratio: 16 / 9
         src: ../../../assets/images/products/mortar-observation-xr-training.webp
-        alt: 學員在模擬戰場環境中操作迫擊砲進行觀測與射擊訓練
+        alt: 兩名人員在展示舞台上操作迫擊砲訓練設備
     - title: 戰術與限制空間訓練
       content: 透過 SUT 小部隊戰術訓練系統，在模擬城鎮、建築物及其他任務環境中，進行小隊移動、環境觀察與戰術協同練習
       image:

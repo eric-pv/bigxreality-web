@@ -1,0 +1,234 @@
+{
+  "/": {
+    "primary": {
+      "tw": "模擬訓練",
+      "en": "XR Simulation Training",
+      "jp": "シミュレーション訓練"
+    },
+    "intent": "品牌與整體訓練服務"
+  },
+  "/products/": {
+    "primary": {
+      "tw": "XR 模擬訓練產品",
+      "en": "XR Simulation Training Products",
+      "jp": "XR シミュレーション訓練製品"
+    },
+    "intent": "產品總覽與設備比較"
+  },
+  "/solutions/": {
+    "primary": {
+      "tw": "模擬訓練",
+      "en": "XR Training",
+      "jp": "専門訓練"
+    },
+    "intent": "產業需求與方案總覽"
+  },
+  "/technologies/": {
+    "primary": {
+      "tw": "核心技術",
+      "en": "Core Technologies",
+      "jp": "コア技術"
+    },
+    "intent": "技術方法與能力總覽"
+  },
+  "/products/sut/": {
+    "primary": {
+      "tw": "SUT 小部隊戰術訓練",
+      "en": "Small Unit Tactical Training",
+      "jp": "SUT 小部隊戦術訓練"
+    },
+    "intent": "設備評估：小部隊 VR 戰術訓練"
+  },
+  "/products/uav/": {
+    "primary": {
+      "tw": "無人機",
+      "en": "UAV",
+      "jp": "UAV"
+    },
+    "intent": "設備評估：無人機與反制無人機訓練"
+  },
+  "/products/usv/": {
+    "primary": {
+      "tw": "USV 無人船",
+      "en": "USV",
+      "jp": "USV 無人水上艇"
+    },
+    "intent": "設備評估：無人船操作訓練"
+  },
+  "/products/wargaming-table/": {
+    "primary": {
+      "tw": "兵棋圖台系統",
+      "en": "Wargaming Table System",
+      "jp": "兵棋演習テーブル"
+    },
+    "intent": "設備評估：圖台與指揮討論"
+  },
+  "/products/mortar-observation/": {
+    "primary": {
+      "tw": "迫擊砲觀測模擬系統",
+      "en": "Mortar Observation Simulator",
+      "jp": "迫撃砲観測シミュレーター"
+    },
+    "intent": "設備評估：觀測與射擊結果判讀"
+  },
+  "/products/sniper-simulator/": {
+    "primary": {
+      "tw": "狙擊槍模擬系統",
+      "en": "Sniper Training Simulator",
+      "jp": "狙撃銃シミュレーター"
+    },
+    "intent": "設備評估：精準射擊與環境判斷"
+  },
+  "/products/machine-gun-simulator/": {
+    "primary": {
+      "tw": "機槍模擬系統",
+      "en": "Machine Gun Training Simulator",
+      "jp": "機関銃シミュレーター"
+    },
+    "intent": "設備評估：武器操作與射擊紀律"
+  },
+  "/products/hmmwv-simulator/": {
+    "primary": {
+      "tw": "悍馬車",
+      "en": "HMMWV",
+      "jp": "HMMWV"
+    },
+    "intent": "設備評估：軍用車輛駕駛"
+  },
+  "/products/tactical-boat-simulator/": {
+    "primary": {
+      "tw": "快艇",
+      "en": "Tactical Boat Simulator",
+      "jp": "高速艇"
+    },
+    "intent": "設備評估：有人快艇操艇"
+  },
+  "/products/full-scale-police-training/": {
+    "primary": {
+      "tw": "全配式警勤訓練系統",
+      "en": "Full-Scale Police Training System",
+      "jp": "据置型警察訓練システム"
+    },
+    "intent": "設備評估：固定設施警勤訓練"
+  },
+  "/products/police-box/": {
+    "primary": {
+      "tw": "Police BOX",
+      "en": "Police BOX",
+      "jp": "Police BOX"
+    },
+    "intent": "設備評估：可攜式警勤訓練"
+  },
+  "/products/fire-extinguisher-simulator/": {
+    "primary": {
+      "tw": "VR 虛擬滅火訓練系統",
+      "en": "VR Fire Extinguisher Training Simulator",
+      "jp": "VR 消火器訓練システム"
+    },
+    "intent": "設備評估：滅火器訓練"
+  },
+  "/solutions/military/": {
+    "primary": {
+      "tw": "軍事模擬訓練",
+      "en": "Military Simulation Training",
+      "jp": "軍事シミュレーション訓練"
+    },
+    "intent": "產業方案：多層級軍事訓練"
+  },
+  "/solutions/police/": {
+    "primary": {
+      "tw": "警勤模擬訓練",
+      "en": "Police Simulation Training",
+      "jp": "警察訓練"
+    },
+    "intent": "產業方案：勤務情境與訓練管理"
+  },
+  "/solutions/fire-rescue/": {
+    "primary": {
+      "tw": "消防防災模擬訓練",
+      "en": "Fire & Disaster Prevention Training",
+      "jp": "消防・防災シミュレーション訓練"
+    },
+    "intent": "產業方案：消防與防災教育"
+  },
+  "/solutions/smart-city/": {
+    "primary": {
+      "tw": "智慧城市",
+      "en": "Smart City Solutions",
+      "jp": "スマートシティ"
+    },
+    "intent": "產業方案：城市數位場景應用"
+  },
+  "/solutions/mum-t/": {
+    "primary": {
+      "tw": "MUM-T",
+      "en": "MUM-T",
+      "jp": "MUM-T"
+    },
+    "intent": "整合方案：胸掛板資訊與小隊協同，與 SUT 設備頁分工"
+  },
+  "/solutions/nova/": {
+    "primary": {
+      "tw": "NOVA",
+      "en": "NOVA",
+      "jp": "NOVA"
+    },
+    "intent": "整合方案：共同戰場與跨系統聯訓，與圖台設備頁分工"
+  },
+  "/technologies/xr/": {
+    "primary": {
+      "tw": "XR 延展實境",
+      "en": "Extended Reality",
+      "jp": "XR 技術"
+    },
+    "intent": "技術說明：VR／AR／MR"
+  },
+  "/technologies/ai-simulation/": {
+    "primary": {
+      "tw": "AI 智慧模擬",
+      "en": "AI-Enhanced Simulation",
+      "jp": "AI シミュレーション"
+    },
+    "intent": "技術說明：角色與情境模擬"
+  },
+  "/technologies/digital-simulation/": {
+    "primary": {
+      "tw": "數位場景",
+      "en": "Digital Environments",
+      "jp": "デジタル環境構築"
+    },
+    "intent": "技術說明：3D 與數位雙生，不等同智慧城市採購頁"
+  },
+  "/technologies/training-design/": {
+    "primary": {
+      "tw": "模擬訓練設計",
+      "en": "Simulation-Based Training Design",
+      "jp": "模擬訓練の設計"
+    },
+    "intent": "技術說明：嚴肅遊戲與情境設計"
+  },
+  "/technologies/system-integration/": {
+    "primary": {
+      "tw": "通訊與系統整合",
+      "en": "Communication & System Integration",
+      "jp": "通信・システム統合"
+    },
+    "intent": "技術說明：介接與整合方法"
+  },
+  "/technologies/decision-visualization/": {
+    "primary": {
+      "tw": "指揮決策與資訊視覺化",
+      "en": "Command & Decision Visualization",
+      "jp": "指揮・意思決定の可視化"
+    },
+    "intent": "技術說明：態勢理解與資訊呈現"
+  },
+  "/technologies/domain-expertise/": {
+    "primary": {
+      "tw": "專業訓練領域知識",
+      "en": "Professional Training Expertise",
+      "jp": "訓練分野の専門知識"
+    },
+    "intent": "技術說明：軍警消需求轉為訓練設計"
+  }
+}

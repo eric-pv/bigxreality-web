@@ -13,7 +13,7 @@ const site = JSON.parse(await fs.readFile(new URL('../src/data/site.json', impor
 const browser = await chromium.launch({ executablePath: CHROMIUM });
 const pages = [], errors = [];
 const normalize = title => { while (/\s*[|｜]\s*(?:Big\s*x\s*Reality|BXR)\s*$/i.test(title)) title = title.replace(/\s*[|｜]\s*(?:Big\s*x\s*Reality|BXR)\s*$/i, '').trim(); return title + ' | Big x Reality'; };
-async function walk(dir) { for (const item of await fs.readdir(dir, { withFileTypes:true })) { const file=path.join(dir,item.name); if(item.isDirectory()) { if(!['_astro','pagefind','fonts','media','admin'].includes(item.name)) await walk(file); } else if(item.name==='index.html') { const html=await fs.readFile(file,'utf8'); if(!/http-equiv="refresh"/.test(html)) pages.push({url:'/'+path.relative(DIST,path.dirname(file)).split(path.sep).join('/')+'/',html,head:html.match(/<head[^>]*>([\s\S]*?)<\/head>/)?.[1]}); } } }
+async function walk(dir) { for (const item of await fs.readdir(dir, { withFileTypes:true })) { const file=path.join(dir,item.name); if(item.isDirectory()) { if(dir!==DIST || !['_astro','pagefind','fonts','media','admin'].includes(item.name)) await walk(file); } else if(item.name==='index.html') { const html=await fs.readFile(file,'utf8'); if(!/http-equiv="refresh"/.test(html)) pages.push({url:'/'+path.relative(DIST,path.dirname(file)).split(path.sep).join('/')+'/',html,head:html.match(/<head[^>]*>([\s\S]*?)<\/head>/)?.[1]}); } } }
 try {
   await walk(DIST);
   const page=await browser.newPage();

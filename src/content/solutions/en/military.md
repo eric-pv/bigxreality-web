@@ -44,7 +44,7 @@ landing:
         need: Weapons and equipment operation training view (16:9)
         ratio: 16 / 9
         src: ../../../assets/images/products/mortar-observation-xr-training.webp
-        alt: Trainees operating a mortar during observation and firing training in a simulated battlefield
+        alt: Two people operating mortar training equipment on a demonstration stage
     - title: Tactical and Confined-Space Training
       content: With the SUT Small Unit Tactical Training System, squads practise movement, environmental observation and tactical coordination in simulated urban areas, buildings and other mission environments
       image:
