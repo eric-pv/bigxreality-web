@@ -11,8 +11,8 @@ const UI = Object.fromEntries(['tw', 'en', 'jp'].map(l => [l, JSON.parse(readFil
 const server = await startPreview(4411), browser = await chromium.launch({ executablePath: CHROMIUM });
 const LANGS = ['tw', 'en', 'jp'], WIDTHS = [1440, 390];
 const heroText = page => page.evaluate(() => {
-  const h1 = document.querySelector('[data-hero] h1'), eyebrow = document.querySelector('[data-hero] .eyebrow');
-  return { title: h1.textContent.trim(), eyebrow: eyebrow.textContent.trim(), titleOpacity: getComputedStyle(h1).opacity, eyebrowOpacity: getComputedStyle(eyebrow).opacity };
+  const h1 = document.querySelector('[data-hero] h1');
+  return { title: h1.textContent.trim(), titleOpacity: getComputedStyle(h1).opacity };
 });
 /** Animations (CSS or WAAPI) currently attached to hero elements, other than the footage cross-fade. */
 const heroAnimations = page => page.evaluate(() => document.getAnimations()
@@ -42,7 +42,7 @@ let cases = 0;
 try {
   for (const lang of LANGS) for (const width of WIDTHS) {
     const url = `${server.base}/${lang}/`, label = `${lang}@${width}`;
-    // Server HTML: the final title/eyebrow text, no motion classes.
+    // Server HTML: the final title text, no motion classes.
     const ssr = await (await fetch(url)).text();
     assert.ok(!/motion-ready|data-motion=|type-visual/.test(ssr.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '')), `${label}: SSR markup carries no motion state`);
 
@@ -51,7 +51,7 @@ try {
       const ctx = await browser.newContext({ viewport: { width, height: 900 }, javaScriptEnabled: false, reducedMotion: 'no-preference' });
       const page = await ctx.newPage(); await page.goto(url);
       const t = await heroText(page);
-      assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1'], `${label}: no-JS hero copy visible`);
+      assert.equal(t.titleOpacity, '1', `${label}: no-JS hero copy visible`);
       assert.equal(await page.locator('html.motion-ready').count(), 0);
       assert.equal(await page.locator('[data-hero] .hud[aria-hidden="true"]').count(), 1);
       await ctx.close();
@@ -64,12 +64,12 @@ try {
       await page.goto(url, { waitUntil: 'commit' });
       await page.waitForTimeout(1700);
       let t = await heroText(page);
-      assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1'], `${label}: copy visible when JS ${mode}`);
+      assert.equal(t.titleOpacity, '1', `${label}: copy visible when JS ${mode}`);
       assert.equal(await page.locator('html.motion-ready').count(), 0, `${label}: fallback cleared pre-state (${mode})`);
       if (mode === 'slow') {
         await page.waitForFunction(() => !!window.bxrMotionDispose, null, { timeout: 10000 });
         t = await heroText(page);
-        assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1'], `${label}: late JS keeps copy visible`);
+        assert.equal(t.titleOpacity, '1', `${label}: late JS keeps copy visible`);
         assert.equal(await page.locator('[data-hero][data-motion]').count(), 0, `${label}: late JS does not replay the entrance`);
       }
       await ctx.close();
@@ -79,7 +79,7 @@ try {
       const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
       const page = await ctx.newPage(); await page.goto(url); await page.waitForFunction(() => !!window.bxrMotionDispose);
       const t = await heroText(page);
-      assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1'], `${label}: reduced-motion copy visible`);
+      assert.equal(t.titleOpacity, '1', `${label}: reduced-motion copy visible`);
       assert.deepEqual(await heroAnimations(page), [], `${label}: reduced motion has no hero animations`);
       assert.equal(await page.locator('[data-hero] .sweep').evaluate(el => getComputedStyle(el).display), 'none');
       assert.equal(await page.locator('[data-hero][data-motion], html.motion-ready').count(), 0);
@@ -93,22 +93,18 @@ try {
         window.heroEnter = 0; window.titleSamples = new Set();
         document.addEventListener('animationstart', e => { if (e.animationName === 'bxr-enter' && e.target.closest('[data-hero]')) window.heroEnter++; });
       });
-      await page.goto(url);
+      await page.goto(url, { waitUntil: 'domcontentloaded' });
       await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
       const during = await heroText(page);
       await page.waitForFunction(() => document.querySelector('[data-hero]').dataset.motion === 'done', null, { timeout: 5000 });
       const after = await heroText(page);
       assert.equal(during.title, after.title, `${label}: H1 text unchanged during the entrance`);
-      assert.equal(after.eyebrow.replace(/\s+/g, ' ').includes(after.eyebrow), true);
-      // Accessible names: the H1 and eyebrow read as their full strings, once.
-      const snapshot = await page.locator('[data-hero] .inner').ariaSnapshot();
-      const eyebrowText = await page.locator('[data-hero] .eyebrow .visually-hidden').textContent();
-      assert.ok(snapshot.includes(`paragraph: ${eyebrowText}`), `${label}: eyebrow read once in full\n${snapshot}`);
-      assert.ok(!/paragraph: [^\n]*_/.test(snapshot), `${label}: caret not exposed`);
+      // The removed decorative label must not leave a visual or spoken duplicate.
+      assert.equal(await page.locator('[data-hero] .eyebrow, [data-hero] .type-visual').count(), 0);
       assert.equal(await page.locator('[data-hero] h1').evaluate(h => [...h.children].map(c => c.className).join(',')), 'typeset', `${label}: H1 structure — no underline or wrappers`);
       assert.equal(await page.locator('[data-hero] h1').evaluate(h => h.getAttribute('style') ?? ''), '');
       // Decorations: aria-hidden, no pointer events, not focusable.
-      for (const sel of ['.hud', '.scan', '.fog', '.type-visual']) assert.equal(await page.locator(`[data-hero] ${sel}`).getAttribute('aria-hidden'), 'true', `${label}: ${sel} aria-hidden`);
+      for (const sel of ['.hud', '.scan', '.fog']) assert.equal(await page.locator(`[data-hero] ${sel}`).getAttribute('aria-hidden'), 'true', `${label}: ${sel} aria-hidden`);
       for (const sel of ['.hud', '.scan', '.fog']) assert.equal(await page.locator(`[data-hero] ${sel}`).evaluate(el => getComputedStyle(el).pointerEvents), 'none', `${label}: ${sel} pointer-events`);
       assert.equal(await page.locator('[data-hero] .hud [tabindex], [data-hero] .scan [tabindex]').count(), 0);
       // The HUD corners frame the footage's rendered area exactly (≤ 2 px), at every width and language.
@@ -123,7 +119,7 @@ try {
       assert.deepEqual(await page.evaluate(() => ({
         visual: document.querySelectorAll('[data-hero] .type-visual').length, spoken: document.querySelectorAll('[data-hero] .eyebrow .visually-hidden').length,
         key: document.querySelectorAll('[data-hero] .hero-key').length, motion: document.querySelector('[data-hero]').dataset.motion,
-      })), { visual: 1, spoken: 1, key: 0, motion: 'done' }, `${label}: single binding after astro:page-load`);
+      })), { visual: 0, spoken: 0, key: 0, motion: 'done' }, `${label}: single binding after astro:page-load`);
       assert.deepEqual(await page.evaluate(() => document.getAnimations().filter(a => !window.knownAnimations.has(a) && a.effect?.target?.closest?.('[data-hero]') && a.effect.target.tagName !== 'VIDEO').map(a => a.animationName ?? 'waapi')), [], `${label}: no replay after astro:page-load`);
       // Slow loop runs on screen, pauses off screen.
       const sweepState = () => page.locator('[data-hero] .sweep').evaluate(el => el.getAnimations()[0]?.playState);
@@ -154,18 +150,20 @@ try {
     // 5. Mid-entrance resize and preference change finish immediately in the final state.
     {
       const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'no-preference' });
-      const page = await ctx.newPage(); await page.goto(url);
+      const page = await ctx.newPage(); await page.goto(url, { waitUntil: 'domcontentloaded' });
       await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
       await page.setViewportSize({ width: width - 120, height: 900 });
       await page.waitForFunction(() => document.querySelector('[data-hero]').dataset.motion === 'done', null, { timeout: 1000 });
       assert.deepEqual((await heroAnimations(page)).filter(n => !['hud-sweep', 'hero-type', 'hero-caret', 'hero-caret-step', 'hud-lock'].includes(n)), [], `${label}: resize cancels the line reveal`);
-      await page.goto(url); await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
+      await page.goto(url, { waitUntil: 'domcontentloaded' }); await page.waitForFunction(() => document.querySelector('[data-hero]')?.dataset.motion === 'running');
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.waitForFunction(() => document.querySelector('[data-hero]').dataset.motion === 'done', null, { timeout: 1000 });
       assert.deepEqual(await heroAnimations(page), [], `${label}: reduce mid-entrance leaves no animation`);
-      const t = await heroText(page); assert.deepEqual([t.titleOpacity, t.eyebrowOpacity], ['1', '1']);
+      const t = await heroText(page); assert.equal(t.titleOpacity, '1');
       await ctx.close();
     }
+    // Focused entrance checks can omit unrelated statistics, gallery and CTA scenarios.
+    if (process.env.QA_HOME_ENTRANCE_ONLY === '1') { cases++; continue; }
     // 6. Partner statistics (home + partners page): final values in HTML, count-up only as enhancement.
     for (const path of ['', 'company/partners/']) {
       const page_url = `${url}${path}`, where = `${label} /${path}`;
@@ -351,7 +349,7 @@ try {
         let rest = 0; for (let i = 1; i < frames.length; i++) if (key(frames[i]) === key(frames[i - 1])) rest = Math.max(rest, (frames[i].computedOffset - frames[i - 1].computedOffset) * t.duration);
         return { name: a.animationName, duration: t.duration, rest: Math.round(rest) };
       }));
-      const want = { 'hud-sweep': 8000, 'hero-caret': 6500, 'tech-drift': 22000, 'cta-stripes': 11000, 'cta-radar': 6500 };
+      const want = { 'hud-sweep': 8000, 'tech-drift': 22000, 'cta-stripes': 11000, 'cta-radar': 6500 };
       for (const [name, duration] of Object.entries(want)) {
         const loop = loops.find(l => l.name === name);
         assert.ok(loop && loop.duration === duration && loop.rest >= 4500, `${label}: ${name} = ${duration} ms with a ≥ 4.5 s rest ${JSON.stringify(loop)}`);
@@ -480,5 +478,6 @@ try {
     }
     cases++;
   }
-  console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, no title underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static; header blur/progress (menu-safe), product-card feedback on hover + keyboard, static rulers, CTA stripes + radar on-screen only, inline-SVG news texture; HUD corners = rendered footage ±2 px at 1280/1440/1920/390, left pair ≤ 0.15 over copy; loops one pass + ≥ 4.5 s rest; background tab pauses; header pause control (desktop gap ≥ 1140 / footer 1024–1139 / mobile menu, persisted, reduced-locked, storage-safe); continuous underlines; pause-control copy (name ⊇ visible label, one line, reduced note as description).`);
+  if (process.env.QA_HOME_ENTRANCE_ONLY === '1') console.log(`PASS: ${cases} language/viewport entrance checks; no/failed/slow JS, reduced motion, title reveal, single binding, off-screen pause and resize`);
+  else console.log(`PASS: ${cases} TW/EN/JP home viewports — no-JS/failed/slow-JS copy visible, reduced motion static, aria-hidden decorations, single binding, resize reflow, no title underline, off-screen pause; partner count-up (home + partners page) final values without JS/with reduced motion, aria-hidden digits, stable width, single run, home 4-column/2×2 layout; tech blueprint glow paused off screen, one-shot beam/glitch on hover and keyboard focus, reduced motion static; header blur/progress (menu-safe), product-card feedback on hover + keyboard, static rulers, CTA stripes + radar on-screen only, inline-SVG news texture; HUD corners = rendered footage ±2 px at 1280/1440/1920/390, left pair ≤ 0.15 over copy; loops one pass + ≥ 4.5 s rest; background tab pauses; header pause control (desktop gap ≥ 1140 / footer 1024–1139 / mobile menu, persisted, reduced-locked, storage-safe); continuous underlines; pause-control copy (name ⊇ visible label, one line, reduced note as description).`);
 } finally { await browser.close(); server.stop(); }

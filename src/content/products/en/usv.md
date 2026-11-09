@@ -95,16 +95,16 @@ landing:
         value: Trainees can become familiar with unmanned-vessel mission concepts in a
           simulated environment, as a supplement to real-world training
         image:
-          need: Unmanned vessel VR simulation view (3:2)
-          ratio: 3 / 2
+          need: Unmanned vessel VR simulation view (16:9)
+          ratio: 16 / 9
       - title: Mission Interpretation in a Simulated Environment
         content: Virtual mission scenarios help trainees understand how unmanned
           vehicles are used in missions and the related information
         value: Training extends from getting to know the vehicle to understanding the
           role of unmanned vehicles in a mission
         image:
-          need: Unmanned vessel video information view (3:2)
-          ratio: 3 / 2
+          need: Unmanned vessel video information view (16:9)
+          ratio: 16 / 9
       - title: Independent System Training
         content: USV can be used as an independent VR training product; it does not need
           to be tied to SUT to build a training application
@@ -119,7 +119,7 @@ landing:
         image:
           need: 'Diagram of USV-SUT integrated use (labelled one-way: "USV video → SUT",
             3:2)'
-          ratio: 3 / 2
+          ratio: 16 / 9
       - title: Cross-Domain Coordinated Training
         content: Integration scenarios between USV and SUT extend the relationship
           between unmanned vehicles and squad tactical training

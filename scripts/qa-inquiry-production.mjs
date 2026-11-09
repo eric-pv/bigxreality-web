@@ -66,6 +66,8 @@ try {
   result.requests.push({requestId:p.requestId,language:p.language});
  }});
  await page.goto(origin+prefix+'tw/contact/');
+ // Entry-level disagreement must still permit browsing and separate inquiry consent.
+ await page.locator('[data-privacy-choice="rejected"]').click();
  if(live){
   result.health=await page.evaluate(async endpoint=>{
    try{const r=await fetch(endpoint,{mode:'cors',credentials:'omit',signal:AbortSignal.timeout(30000)});

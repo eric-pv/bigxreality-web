@@ -29,6 +29,7 @@
     "qa:density-navigation": "node scripts/qa-density-navigation.mjs",
     "qa:header": "node scripts/qa-header.mjs",
     "qa:footer": "node scripts/qa-footer.mjs",
+    "qa:privacy": "node scripts/qa-privacy-notice.mjs",
     "qa:solutions": "node scripts/qa-solutions.mjs",
     "qa:solution-heroes": "node scripts/qa-solution-heroes.mjs",
     "qa:team": "node scripts/qa-team-page.mjs",

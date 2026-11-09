@@ -1,8 +1,8 @@
 /** One controller per document, including when a router re-executes the entry script. */
 declare global { interface Window { bxrMotionDispose?: () => void } }
 
-/* Home hero entrance (once per element). The HTML keeps the full text; the eyebrow gets an aria-hidden
-   visual layer and the H1 a clip-path animation on itself — no text nodes are cloned or moved. */
+/* Home hero entrance (once per element). The HTML keeps the full title;
+   its clip-path reveal does not clone or move any text nodes. */
 const COUNT_MS = 1200;
 const LINE_MS = 700, LINE_STAGGER = 120, LINE_START = 150;
 /** Site-wide "pause animations" choice (WCAG 2.2.2). Read before first paint by the head script in BaseLayout. */
@@ -121,21 +121,9 @@ export function installMotion() {
     document.fonts?.addEventListener('loadingdone', refit, { signal: tracking.signal });
   };
   const enterHero = (root: HTMLElement) => {
-    const title = root.querySelector<HTMLElement>('.title'), eyebrow = root.querySelector<HTMLElement>('.eyebrow');
-    if (!title || !eyebrow) return;
+    const title = root.querySelector<HTMLElement>('.title');
+    if (!title) return;
     root.dataset.motion = 'running';
-    // Eyebrow: full text for assistive tech, per-character visual layer (aria-hidden) for the typing effect.
-    const label = eyebrow.textContent?.trim() ?? '';
-    const spoken = Object.assign(document.createElement('span'), { className: 'visually-hidden', textContent: label });
-    const visual = Object.assign(document.createElement('span'), { className: 'type-visual' });
-    visual.setAttribute('aria-hidden', 'true');
-    visual.append(...[...label].map((char, i, all) => {
-      const glyph = Object.assign(document.createElement('span'), { textContent: char });
-      glyph.style.setProperty('--i', String(i));
-      if (i === all.length - 1) glyph.className = 'last';
-      return glyph;
-    }));
-    eyebrow.replaceChildren(spoken, visual);
     // Title: reveal each rendered line bottom-up with one clip-path animation on the H1 itself.
     const pad = 16, ease = (x: number) => 1 - (1 - x) ** 4;
     let bands: number[][] = [];

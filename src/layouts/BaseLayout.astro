@@ -11,6 +11,7 @@ import Header, { type NavKey, type ResourceKey, type CompanyKey } from "../compo
 import { isNoIndexBuild } from "../lib/content-source";
 import BackToTop from "../components/BackToTop.astro";
 import Footer from "../components/Footer.astro";
+import PrivacyNotice from "../components/PrivacyNotice.astro";
 import Text from "../components/Text.astro";
 import FontLinks from "../components/FontLinks.astro";
 import type { ImageMetadata } from "astro";
@@ -88,6 +89,7 @@ const langLinks = Object.fromEntries(
       {/^\/\{lang\}\/(products|solutions)\/[^/]+\/$/.test(p.pathTemplate) && <InlineInquiry lang={p.lang} />}
     </main>
     <Footer lang={p.lang} hidePending={p.hidePendingFooter} />
+    <PrivacyNotice lang={p.lang} />
     <BackToTop lang={p.lang} />
     <MicroInteractions />
   </body>

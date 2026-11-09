@@ -40,9 +40,7 @@ interface Props {
    *  breadcrumb and H1 never shift. */
   uniformMedia?: boolean;
 }
-const { scenePosition = "60% 0%", sceneHeadroom = 24, sceneFit = "cover", variant = "split", breadcrumbs, breadcrumbLabel, eyebrow, kicker, title, subtitle, lead, description, image, imageCaption, imagePending, imageBadge, decor = true, uniformMedia = false } = Astro.props;
-const conceptBadge = imageBadge ?? (image && imagePresentation(image.src).illustration ? ({tw:"概念視覺",en:"Concept visual",jp:"コンセプトビジュアル"} as Record<string,string>)[Astro.params.lang??"en"] : undefined);
-const label = distinctLabel(eyebrow, kicker, title);
+const { scenePosition = "60% 0%", sceneHeadroom = 24, sceneFit = "cover", variant = "split", breadcrumbs, breadcrumbLabel, kicker, title, subtitle, lead, description, image, imageCaption, imagePending, decor = true, uniformMedia = false } = Astro.props;
 // The hero's own focus point, as 0–1 fractions, places the visible-image box the way object-position placed the image.
 const [heroPx, heroPy] = scenePosition.split(/\s+/).map((v) => Math.min(Math.max(parseFloat(v) / 100, 0), 1));
 const sub = distinctLabel(subtitle, kicker, title);
@@ -55,7 +53,6 @@ const crop = image ? `50% ${imagePresentation(image.src).position.split(/\s+/)[1
   <div class:list={["container", "grid", { "no-media": !image }]}>
     <div class="copy">
       <Breadcrumb items={breadcrumbs} label={breadcrumbLabel} />
-      {label && <p class="t-label eyebrow">{label}</p>}
       {kicker && <p class="kicker t-h4"><Text value={kicker} /></p>}
       <h1 class="t-h1"><Text value={title} /></h1>
       {sub && <p class="subtitle"><Text value={sub} /></p>}
@@ -70,7 +67,6 @@ const crop = image ? `50% ${imagePresentation(image.src).position.split(/\s+/)[1
           {decor && <span class="tac-hud hero-hud" aria-hidden="true"><span class="tac-corner tac-tl"></span><span class="tac-corner tac-tr"></span><span class="tac-corner tac-bl"></span><span class="tac-corner tac-br"></span></span>}
         </ProductImage>
       ) : imagePending && <ImagePlaceholder label={imagePending} />}
-      {image && conceptBadge && <span class="badge t-caption">{conceptBadge}</span>}
       {image && imageCaption && <figcaption class="t-tech"><Text value={imageCaption} /></figcaption>}
     </figure>}
   </div>
@@ -80,7 +76,6 @@ const crop = image ? `50% ${imagePresentation(image.src).position.split(/\s+/)[1
   .grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--content-gap); align-items: center; }
   .no-media { grid-template-columns: minmax(0, 8fr) 4fr; }
   .copy { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); align-content: start; }
-  .eyebrow { color: var(--bxr-mist); margin-top: var(--space-3); }
   .kicker { color: var(--bxr-white); font-weight: 500; }
   .subtitle { color: var(--bxr-mist); font-size: var(--fs-h4); }
   .lead { color: var(--bxr-white); font-size: var(--fs-h4); line-height: var(--lh-h4); max-width: 36rem; }

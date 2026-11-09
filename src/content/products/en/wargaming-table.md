@@ -26,20 +26,20 @@ landing:
       - title: Coordination of Multiple Training Systems
         content: With the wargaming table at the centre of integrated use, the possibilities for coordinated use of various military simulation training systems can be extended according to different mission needs
         image:
-          need: Wargaming table integrated use view (3:2)
-          ratio: 3 / 2
+          need: Wargaming table integrated use view (16:9)
+          ratio: 16 / 9
       - title: 3D Battlefield Situation Display
         content: 3D terrain and battlefield information visualisation help participants understand the mission environment, force deployment and the spatial relationships of the battlefield
         image:
-          need: 3D battlefield situation view (3:2)
-          ratio: 3 / 2
+          need: 3D battlefield situation view (16:9)
+          ratio: 16 / 9
       - title: Cross-Domain Mission Integration
         content: For different mission environments such as land, air and sea, provides directions for integrated training planning and coordinated wargaming
       - title: Command Decisions and Mission Wargaming
         content: Interactive battlefield information and mission scenarios support commanders in mission discussion, tactical planning and decision training
         image:
-          need: Command decision and mission wargaming view (3:2)
-          ratio: 3 / 2
+          need: Command decision and mission wargaming view (16:9)
+          ratio: 16 / 9
       - title: A Flexibly Expandable Training Architecture
         content: Suitable integration approaches are planned according to each unit's training objectives and system configuration needs, keeping flexibility for later expansion and coordinated training
   scenarios:

@@ -49,10 +49,10 @@ landing:
         description: プロジェクトごとの訓練ニーズと既存システムの条件に基づいて、適切な統合の範囲を評価します
     images:
       - need: システム間の統合アーキテクチャ図（アーキテクチャのイメージ図）
-        ratio: 4 / 3
+        ratio: 16 / 9
         kind: illustration
       - need: 3次元の戦場状況のイメージ図
-        ratio: 4 / 3
+        ratio: 16 / 9
         kind: illustration
   scenarios:
     title: 活用シナリオ

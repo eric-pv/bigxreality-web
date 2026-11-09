@@ -103,8 +103,8 @@ landing:
           to practise basic control before real flights or during routine
           training
         image:
-          need: Simulated flight control training view (3:2)
-          ratio: 3 / 2
+          need: Simulated flight control training view (16:9)
+          ratio: 16 / 9
       - title: Mission Routes and Target Identification
         content: Trainees operate along routes and observe targets under simulated
           mission conditions, practising how to combine flight control with
@@ -112,8 +112,8 @@ landing:
         value: Training extends beyond controlling the aircraft to understanding and
           acting on mission information
         image:
-          need: Simulated view of mission routes and target identification (3:2)
-          ratio: 3 / 2
+          need: Simulated view of mission routes and target identification (16:9)
+          ratio: 16 / 9
       - title: Airspace Information and Situational Judgement
         content: Combining XR mission information with the virtual environment, trainees
           practise keeping track of airspace conditions, mission changes and
@@ -127,8 +127,8 @@ landing:
         value: Familiarises personnel with the observation, information interpretation
           and decision process needed when responding to low-altitude threats
         image:
-          need: Simulated low-altitude threat identification scenario (3:2)
-          ratio: 3 / 2
+          need: Simulated low-altitude threat identification scenario (16:9)
+          ratio: 16 / 9
       - title: Counter-Drone Response and Decision Training
         content: To meet the needs of low-altitude threat response, trainees use
           simulated scenarios to practise threat confirmation, information

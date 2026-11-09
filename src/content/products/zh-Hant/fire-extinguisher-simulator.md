@@ -45,9 +45,9 @@ landing:
         src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.webp
         alt: 配戴 VR 頭盔的學員操作滅火器訓練設備
       - need: 握柄與軟管噴嘴局部特寫（4:3）
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: 經核准的 VR 火場畫面（4:3）
-        ratio: 4 / 3
+        ratio: 16 / 9
     pillars:
       - title: 自主研發擬真滅火器
         description: 採用依實際滅火器比例及重量分布設計的鋼瓶模組，透過實體握柄與軟管噴嘴，讓學員以更貼近真實操作的方式進行練習
@@ -61,30 +61,30 @@ landing:
       - title: 擬真滅火器操作
         content: 透過實體鋼瓶模組練習拉環、握壓、瞄準及左右掃射等操作，將消防知識轉化為具體動作練習
         image:
-          need: 擬真滅火器操作照片（3:2）
-          ratio: 3 / 2
+          need: 擬真滅火器操作照片（16:9）
+          ratio: 16 / 9
       - title: 雙控制器精準追蹤
         content: 以整合於握柄與噴嘴的雙控制器追蹤操作動作，使噴射方向及掃射角度與虛擬情境相互對應
       - title: 四類火災知識
         content: 提供 A、B、C、D 四類火災介紹，協助學員建立火災分類及基本處置觀念
         image:
-          need: 火災類型介紹畫面（3:2）
-          ratio: 3 / 2
+          need: 火災類型介紹畫面（16:9）
+          ratio: 16 / 9
       - title: 三種滅火器介紹
         content: 涵蓋二氧化碳、乾粉及泡沫滅火器的相關知識，讓學員理解不同器材的基本特性與使用情境
         image:
-          need: 滅火器種類介紹畫面（3:2）
-          ratio: 3 / 2
+          need: 滅火器種類介紹畫面（16:9）
+          ratio: 16 / 9
       - title: 分步驟操作引導
         content: 透過教學模式的操作提示，協助學員循序練習完整的滅火器使用流程
         image:
-          need: 教學引導畫面（3:2）
-          ratio: 3 / 2
+          need: 教學引導畫面（16:9）
+          ratio: 16 / 9
       - title: 情境測驗與成果回饋
         content: 在不同模擬場景中進行操作測驗，並於完成後顯示操作結果及完成時間，作為學員自我檢視與再次練習的依據
         image:
-          need: 測驗成果畫面（3:2）
-          ratio: 3 / 2
+          need: 測驗成果畫面（16:9）
+          ratio: 16 / 9
   flow:
     title: 三種訓練模式，讓學習從認識走向實際操作
     steps:

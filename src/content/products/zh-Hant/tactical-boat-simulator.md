@@ -51,20 +51,20 @@ landing:
     - title: 快艇基本操作
       content: 協助學員建立船艇操作熟悉度與基本訓練概念
       image:
-        need: 快艇模擬設備圖文交錯圖片（3:2）
-        ratio: 3 / 2
+        need: 快艇模擬設備圖文交錯圖片（16:9）
+        ratio: 16 / 9
     - title: 海上環境觀察
       content: 透過模擬水域練習理解周遭空間與環境資訊
       image:
-        need: 模擬海域圖文交錯圖片（3:2）
-        ratio: 3 / 2
+        need: 模擬海域圖文交錯圖片（16:9）
+        ratio: 16 / 9
     - title: 航行安全觀念
       content: 將安全要求與情境判斷納入相關訓練
     - title: 動態平台體驗
       content: 結合動態平台應用，延伸操艇訓練的體驗方式
       image:
-        need: 動態平台圖文交錯圖片（3:2）
-        ratio: 3 / 2
+        need: 動態平台圖文交錯圖片（16:9）
+        ratio: 16 / 9
     - title: 海上任務理解
       content: 以不同任務背景安排模擬練習，協助學員理解任務與操艇判斷的關係
   flow:

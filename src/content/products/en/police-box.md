@@ -46,11 +46,11 @@ landing:
       to Extend Where It Can Be Used
     images:
       - need: Exterior of the actual BOX case (4:3)
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: Equipment stored and deployed (4:3)
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: Trainees using the unit (4:3)
-        ratio: 4 / 3
+        ratio: 16 / 9
     pillars:
       - title: Integrated Case Design
         description: A portable case configuration helps store, move and manage the
@@ -67,20 +67,20 @@ landing:
       - title: Portable Equipment Configuration
         content: An integrated case supports moving and storing the training equipment
         image:
-          need: Portable case configuration view (3:2)
-          ratio: 3 / 2
+          need: Portable case configuration view (16:9)
+          ratio: 16 / 9
       - title: Flexible Use of Sites
         content: Simulation training is arranged according to the space conditions of
           each unit
         image:
-          need: Use at different sites (3:2)
-          ratio: 3 / 2
+          need: Use at different sites (16:9)
+          ratio: 16 / 9
       - title: Immersive Scenario Experience
         content: Simulated duty environments let trainees encounter different mission
           backgrounds and on-scene conditions
         image:
-          need: Immersive scenario experience view (3:2)
-          ratio: 3 / 2
+          need: Immersive scenario experience view (16:9)
+          ratio: 16 / 9
       - title: Duty Operation Practice
         content: According to the training content, related operating requirements are
           built into scenario practice

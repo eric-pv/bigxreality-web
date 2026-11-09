@@ -48,10 +48,10 @@ landing:
         description: 依據不同專案的訓練需求及既有系統條件，評估適合的整合範圍
     images:
       - need: 跨系統整合架構圖（架構示意圖）
-        ratio: 4 / 3
+        ratio: 16 / 9
         kind: illustration
       - need: 三維戰場態勢示意圖
-        ratio: 4 / 3
+        ratio: 16 / 9
         kind: illustration
   scenarios:
     title: 應用情境

@@ -98,7 +98,7 @@ landing:
         value: Shared missions connect individual actions with team roles and provide
           practice in coordinated operation.
         image:
-          need: Training footage of formation, cover and movement (4:3)
+          need: Training footage of formation, cover and movement (16:9)
       - title: Squad Commands and Mission Communication
         content: Tactical teams of 1 to 4 personnel practise task allocation, verbal
           commands, fire distribution and the rhythm of team action.

@@ -9,13 +9,15 @@ hero:
   description: "How the Big x Reality website handles your personal data."
 ---
 
-Last updated: November 5, 2026
+Last updated: November 9, 2026
 
 全球動力科技股份有限公司 (Big x Reality; “the Company”, “we”) operates the official Big x Reality website (“this website”). In accordance with Taiwan's Personal Data Protection Act (“PDPA”) and related regulations, this Policy explains how this website collects, processes and uses personal data. This Policy applies only to this website; other websites reached through links on this website are governed by their own privacy policies.
 
 ## 1. Website browsing and preferences
 
 This is a static website without member accounts. It currently loads neither Google Analytics nor advertising tracking scripts. The website uses browser localStorage to remember the animation pause preference (bxr-motion) across pages. This setting contains no inquiry form data and is not transmitted as an advertising tracking identifier. It can be removed by resuming animations or clearing website data in the browser. Sections 2 and 3 describe inquiry form and email data processing; Section 5 describes hosting access logs.
+
+On your first visit, this website asks you to read the Privacy Policy and choose “Agree” or “Disagree”. Browser localStorage stores only your choice and the policy version (bxr-privacy-choice), without your name, contact details or form content. This record is not sent to us. Either choice allows you to browse public content; sending an inquiry still requires separate consent. You can change your choice on the Privacy Policy page or clear website data in your browser. The notice appears again when the policy changes.
 
 ## 2. Online inquiry form
 

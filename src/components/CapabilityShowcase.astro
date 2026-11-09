@@ -38,7 +38,7 @@ const num = (n: number) => String(n).padStart(2, "0");
     row.kind === "feature" ? (
       <article class:list={["feature", { flip: row.flip }]}>
         <div class="pic">
-          <MediaSlot media={row.entry.item.image} ratio="3 / 2" fallbackLabel={fallbackLabel} needPrefix={needPrefix} badge={badge} sizes="(max-width: 1023px) 100vw, 58vw" />
+          <MediaSlot media={row.entry.item.image} ratio="16 / 9" fallbackLabel={fallbackLabel} needPrefix={needPrefix} badge={badge} sizes="(max-width: 1023px) 100vw, 58vw" />
         </div>
         <div class="text">
           <p class="t-tech num" aria-hidden="true">{num(row.entry.n)}</p>
