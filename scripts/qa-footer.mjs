@@ -35,12 +35,13 @@ const TREES = () => {
   }));
   const footer = [...document.querySelectorAll(".site-footer .menu-list > li")].map((li) => ({
     ...node(li.querySelector(":scope > .item, :scope > details > summary.item")),
-    href: li.querySelector(":scope > details > summary > a, :scope > a.item")?.getAttribute("href") ?? null,
-    children: [...li.querySelectorAll(".sub > li > .sub-item")].map(node),
+    href: li.querySelector(":scope > a.item")?.getAttribute("href") ?? null,
+    children: [...li.querySelectorAll(".sub > li:not(.overview-link) > .sub-item")].map(node),
   }));
   const openGroups = document.querySelectorAll(".site-footer details[open]").length;
   const links = [...document.querySelectorAll(".site-footer a[href]")].map((a) => ({ href: a.getAttribute("href"), target: a.target, rel: a.rel }));
-  return { header, footer, links, openGroups, lang: document.documentElement.lang };
+  const nestedInteractive = document.querySelectorAll('.site-footer summary :is(a, button, input, select, textarea, [tabindex])').length;
+  return { header, footer, links, openGroups, nestedInteractive, lang: document.documentElement.lang };
 };
 
 const CONTACT = {
@@ -66,6 +67,7 @@ try {
     check(`${p}: Footer columns = Header menu`, JSON.stringify(t.header) === JSON.stringify(t.footer), `header ${JSON.stringify(t.header)}\n      footer ${JSON.stringify(t.footer)}`);
     reference[l] ??= t.footer;
     check(`${p}: Footer desktop columns start expanded`, t.openGroups === t.footer.filter(group => group.children.length).length);
+    check(`${p}: summaries contain no nested interactive controls`, t.nestedInteractive === 0);
     check(`${p}: same Footer as the other ${l} pages`, JSON.stringify(t.footer) === JSON.stringify(reference[l]));
     for (const a of t.links) {
       if (/^(tel:|mailto:|https?:)/.test(a.href)) continue;
@@ -78,6 +80,9 @@ try {
   for (const l of ["tw", "en", "jp"]) {
     console.log(`${l} footer menu: ${reference[l].map((c) => `${c.label}${c.children.length ? ` [${c.children.map((k) => k.label).join(", ")}]` : ""}`).join(" | ")}`);
     await page.goto(`${base}/${l}/products/`, { waitUntil: "domcontentloaded" });
+    if (l === "tw" && await page.locator('[data-privacy-notice]').count()) {
+      await page.locator('[data-privacy-choice="rejected"]').click();
+    }
     const f = page.locator(".site-footer");
     check(`${l}: phone link`, (await f.locator('a[href="tel:+886287916811"]').textContent())?.trim() === CONTACT[l].phone);
     check(`${l}: email link`, (await f.locator('a[href="mailto:service@gptt.com.tw"]').count()) === 1);
@@ -85,9 +90,38 @@ try {
     check(`${l}: address opens Google Maps in a new tab`, (await map.count()) === 1 && (await map.getAttribute("target")) === "_blank" && /noopener/.test(await map.getAttribute("rel")) && (await map.textContent()).includes(CONTACT[l].address));
     check(`${l}: no empty social block`, (await f.locator(".social").count()) === 0 || (await f.locator(".social a[href^='http']").count()) > 0);
     check(`${l}: no pending marker in the Footer`, !(await f.textContent()).includes("[待提供]"));
-    for (const width of [390, 768, 1024, 1440]) {
+    for (const width of [390, 768, 1023, 1024, 1440]) {
       await page.setViewportSize({ width, height: 900 });
+      await page.waitForFunction(() => [...document.querySelectorAll('.site-footer details.group')].every(group => group.open === (innerWidth >= 1024)));
       check(`${l} @${width}: no horizontal scroll`, await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
+      for (const heading of await f.locator('.heading-link').all()) {
+        const href = await heading.getAttribute('href');
+        const column = heading.locator('..');
+        const summary = column.locator('summary');
+        const overview = column.locator('.overview-link a');
+        check(`${l} @${width} ${href}: desktop heading visibility`, await heading.isVisible() === (width >= 1024));
+        check(`${l} @${width} ${href}: summary visibility`, await summary.isVisible() === (width < 1024));
+        if (width < 1024) {
+          await summary.click();
+          check(`${l} @${width} ${href}: mobile summary expands`, await column.locator('details').evaluate(group => group.open));
+        }
+        check(`${l} @${width} ${href}: mobile overview visibility`, await overview.isVisible() === (width < 1024));
+        check(`${l} @${width} ${href}: one visible overview link`, await f.locator(`a[href="${href}"]`).evaluateAll(links => links.filter(link => link.getClientRects().length).length) === 1);
+        if (width < 1024) await summary.click();
+      }
+    }
+    for (const width of [390, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      for (const item of reference[l].filter(item => item.href && item.children.length)) {
+        await page.waitForFunction(() => [...document.querySelectorAll('.site-footer details.group')].every(group => group.open === (innerWidth >= 1024)));
+        const heading = f.locator(`.heading-link[href="${item.href}"]`);
+        const column = heading.locator('..');
+        if (width < 1024) await column.locator('summary').click();
+        await (width < 1024 ? column.locator('.overview-link a') : heading).click();
+        await page.waitForURL(base + item.href);
+        await page.waitForLoadState('domcontentloaded');
+        check(`${l} @${width} ${item.href}: overview link navigates`, page.url() === base + item.href);
+      }
     }
     await page.setViewportSize({ width: 1440, height: 900 });
   }
