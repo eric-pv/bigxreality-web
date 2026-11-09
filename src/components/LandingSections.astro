@@ -67,7 +67,7 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt tac-ruler" : (n > 1 ? "
               {images.map((img: any, i: number) => (
                 <>
                   {i === 1 && images.length === 2 && <span class="link" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 11h16M13 5l6 6-6 6" /></svg></span>}
-                  <MediaSlot media={img} ratio={images.length === 1 || images.length === 3 ? "4 / 3" : "4 / 5"} fallbackLabel={pending} needPrefix={need} badge={badge} sizes="(max-width: 767px) 50vw, 28vw" />
+                  <MediaSlot media={img} ratio="16 / 9" fallbackLabel={pending} needPrefix={need} badge={badge} sizes="(max-width: 767px) 50vw, 28vw" />
                 </>
               ))}
             </div>
@@ -148,7 +148,6 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt tac-ruler" : (n > 1 ? "
         {b.kind === "prose" ? (
           <div class="pb">
             <div class="pb-head">
-              {b.eyebrow && <p class="t-label eyebrow"><Text value={b.eyebrow} /></p>}
               <h2 class="t-h2" id={`h-block-${i}`}><Text value={b.title} /></h2>
             </div>
             <div class="landing-body"><ContentBody markdown={b.body??""} lang={lang} entryFile={entryFile} /></div>

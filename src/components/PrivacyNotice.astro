@@ -1,0 +1,56 @@
+---
+import { createHash } from 'node:crypto';
+import { localePath, type Lang } from '../i18n';
+import { getUi } from '../lib/ui';
+import { legalLinks } from '../lib/navigation';
+import Text from './Text.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = getUi(lang).privacyNotice;
+const published = (await legalLinks(lang)).some(link => link.id === 'privacy' && link.href);
+const policies = import.meta.glob('../content/pages/*/privacy.md', { query: '?raw', import: 'default', eager: true });
+const version = createHash('sha256').update(Object.entries(policies).sort(([a], [b]) => a.localeCompare(b)).map(([, text]) => text).join('\n')).digest('hex').slice(0, 16);
+const review = Astro.url.pathname.endsWith('/privacy/');
+---
+{published && <aside class="privacy-notice" role="dialog" aria-modal="false" data-privacy-notice data-version={version} data-review={review ? '' : undefined} aria-labelledby="privacy-notice-title" aria-describedby="privacy-notice-description" hidden>
+  <h2 id="privacy-notice-title" class="t-h4"><Text value={t.title} /></h2>
+  <p id="privacy-notice-description"><Text value={t.description} /></p>
+  <a href={localePath(lang, 'privacy')} class="policy-link"><Text value={t.read} /></a>
+  <div class="choices">
+    <button type="button" class="btn btn--primary" data-privacy-choice="accepted"><Text value={t.accept} /></button>
+    <button type="button" class="btn btn--secondary" data-privacy-choice="rejected"><Text value={t.decline} /></button>
+  </div>
+</aside>}
+
+<script>
+  const key = 'bxr-privacy-choice';
+  const notice = document.querySelector<HTMLElement>('[data-privacy-notice]');
+  if (notice) {
+    let current = false;
+    try {
+      const stored = JSON.parse(localStorage.getItem(key) ?? 'null');
+      current = stored?.version === notice.dataset.version && ['accepted', 'rejected'].includes(stored?.choice);
+    } catch { /* Storage unavailable or invalid: ask without assuming agreement. */ }
+    notice.hidden = current && !notice.hasAttribute('data-review');
+    if (!notice.hidden) notice.querySelector<HTMLButtonElement>('button')?.focus({ preventScroll: true });
+    for (const button of notice.querySelectorAll<HTMLButtonElement>('[data-privacy-choice]')) {
+      button.addEventListener('click', () => {
+        try {
+          localStorage.setItem(key, JSON.stringify({ version: notice.dataset.version, choice: button.dataset.privacyChoice }));
+        } catch { /* The visitor may still dismiss the notice for this page. */ }
+        notice.hidden = true;
+        document.querySelector<HTMLElement>('#main')?.focus({ preventScroll: true });
+      });
+    }
+  }
+</script>
+
+<style>
+  .privacy-notice { position: fixed; z-index: 120; inset: auto var(--space-2) var(--space-2); width: min(54rem, calc(100% - 2 * var(--space-2))); max-height: calc(100dvh - 2 * var(--space-2)); overflow: auto; margin-inline: auto; padding: var(--space-3); background: var(--bxr-white); color: var(--bxr-black); border: 1px solid var(--bxr-line); border-top: 3px solid var(--bxr-red); box-shadow: 0 8px 32px rgb(0 0 0 / .25); }
+  .privacy-notice[hidden] { display: none; }
+  h2, p { margin: 0 0 var(--space-2); }
+  .policy-link { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration: underline; }
+  .choices { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
+  .choices .btn { flex: 1 1 8rem; min-height: 44px; }
+</style>

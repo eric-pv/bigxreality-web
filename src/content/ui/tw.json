@@ -530,5 +530,12 @@
     "education": "學歷",
     "salary": "待遇",
     "headcount": "需求人數"
+  },
+  "privacyNotice": {
+    "title": "隱私權政策",
+    "description": "請閱讀本站隱私權政策，並選擇是否同意。不同意仍可瀏覽公開內容；送出詢問前會另行徵求同意。",
+    "read": "閱讀隱私權政策",
+    "accept": "同意",
+    "decline": "不同意"
   }
 }

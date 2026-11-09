@@ -531,5 +531,12 @@
     "salary": "Salary",
     "headcount": "Openings",
     "sourceLanguage": "Job details are shown as published on 104 (Traditional Chinese)."
+  },
+  "privacyNotice": {
+    "title": "Privacy Policy",
+    "description": "Please read our Privacy Policy and choose whether you agree. You can browse public content if you disagree. Sending an inquiry requires separate consent.",
+    "read": "Read the Privacy Policy",
+    "accept": "Agree",
+    "decline": "Disagree"
   }
 }

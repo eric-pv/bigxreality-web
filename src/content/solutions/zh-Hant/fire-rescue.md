@@ -48,37 +48,37 @@ landing:
       description: 整合火災知識介紹、分步驟操作引導與情境測驗，建立循序漸進的訓練方式
     images:
     - need: 擬真滅火器鋼瓶實際照片
-      ratio: 4 / 3
+      ratio: 16 / 9
     - need: 學員配戴 VR 設備進行滅火訓練的照片
-      ratio: 4 / 3
+      ratio: 16 / 9
   capabilities:
     title: 核心訓練內容
     items:
     - title: 火災類型認識
       content: 介紹 A、B、C、D 四類火災，協助學員建立基本的火災分類與防災觀念
       image:
-        need: 火災類型介紹畫面（3:2）
-        ratio: 3 / 2
+        need: 火災類型介紹畫面（16:9）
+        ratio: 16 / 9
     - title: 滅火器種類介紹
       content: 涵蓋二氧化碳、乾粉及泡沫滅火器，協助學員理解不同滅火器的基本特性與使用觀念
       image:
-        need: 滅火器種類介紹畫面（3:2）
-        ratio: 3 / 2
+        need: 滅火器種類介紹畫面（16:9）
+        ratio: 16 / 9
     - title: 滅火器標準操作
       content: 透過擬真操作設備，練習拉環、瞄準、壓把及掃射等基本步驟
       image:
-        need: 滅火器操作教學畫面（3:2）
-        ratio: 3 / 2
+        need: 滅火器操作教學畫面（16:9）
+        ratio: 16 / 9
     - title: 火場情境練習
       content: 透過不同環境及火源條件，讓學員將知識與操作帶入模擬情境
       image:
-        need: 火場情境畫面（3:2）
-        ratio: 3 / 2
+        need: 火場情境畫面（16:9）
+        ratio: 16 / 9
     - title: 訓練成果回饋
       content: 於測驗完成後呈現操作結果與完成時間，作為教學檢討及再次練習的參考
       image:
-        need: 訓練結果畫面（3:2）
-        ratio: 3 / 2
+        need: 訓練結果畫面（16:9）
+        ratio: 16 / 9
   flow:
     title: 三階段訓練模式
     steps:

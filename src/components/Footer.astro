@@ -36,7 +36,7 @@ const social = (Array.isArray(site.social) ? site.social : []).map((s) => ({
   ...s,
   Icon: ICONS.find(([re]) => re.test(new URL(s.url).hostname))?.[1] ?? LinkSimple,
 }));
-const asideEmpty = social.length === 0 && legal.length === 0;
+const asideEmpty = social.length === 0;
 const chevron = '<svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" /></svg>';
 const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
 ---
@@ -61,9 +61,8 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
           <li>
             {item.children.length > 0 ? (
               <details class="group" open>
-                <summary class="item"><Text value={item.label} /><Fragment set:html={chevron} /></summary>
+                <summary class="item">{item.href ? <a href={item.href}><Text value={item.label} /></a> : <Text value={item.label} />}<Fragment set:html={chevron} /></summary>
                 <ul role="list" class="sub">
-                  {item.href && <li><a class="sub-item" href={item.href}><Text value={item.label} /></a></li>}
                   {item.children.map((c) => (
                     <li>{c.href ? <a class="sub-item" href={c.href}><Text value={c.label} /></a> : <span class="sub-item is-planned"><Text value={c.label} /><Fragment set:html={plannedNote} /></span>}</li>
                   ))}
@@ -87,16 +86,14 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
           ))}
         </ul>
       )}
-      {legal.length > 0 && (
-        <ul role="list" class="legal-links">
-          {legal.map((l) => <li><a href={l.href!}><Text value={l.label} /></a></li>)}
-        </ul>
-      )}
     </div>
   </div>
 
   <div class="container copyright t-caption">
-    <p>© {year} <Text value={holder} /> <Text value={ui.footer.rights} /></p>
+    <div class="legal-row">
+      <p>© {year} <Text value={holder} /> <Text value={ui.footer.rights} /></p>
+      {legal.length > 0 && <ul role="list" class="legal-links">{legal.map((l) => <li><a href={l.href!}><Text value={l.label} /></a></li>)}</ul>}
+    </div>
     <!-- Pause animations, 1024–1139 px only (the header has no room for a 24 px target at those widths). -->
     <button type="button" class="motion-toggle-footer" data-motion-toggle data-note-id="motion-note-footer" aria-pressed="false" hidden>
       <svg class="i-pause" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 3h2.5v10H4zM9.5 3H12v10H9.5z" fill="currentColor" /></svg>
@@ -116,7 +113,7 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
   desktop.addEventListener('change', syncFooter);
   for (const group of groups) {
     group.addEventListener('toggle', () => { if (!desktop.matches && group.open) for (const other of groups) if (other !== group) other.open = false; });
-    group.querySelector('summary')?.addEventListener('click', event => { if (desktop.matches) event.preventDefault(); });
+    group.querySelector('summary')?.addEventListener('click', event => { if (desktop.matches && !(event.target as Element).closest('a')) event.preventDefault(); });
     group.addEventListener('keydown', event => { if (!desktop.matches && event.key === 'Escape') { group.open = false; group.querySelector('summary')?.focus(); } });
   }
 </script>
@@ -134,6 +131,8 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
     color: var(--ink); text-decoration: none; font-weight: 500; cursor: pointer;
   }
   a.item:hover, summary.item:hover, .sub-item:is(a):hover { text-decoration: underline; }
+  summary.item > a { color: inherit; text-decoration: none; }
+  summary.item > a:hover { text-decoration: underline; }
   summary.item { list-style: none; }
   summary.item::-webkit-details-marker { display: none; }
   :global(.site-footer .chev) { flex: none; transition: transform var(--dur-micro) var(--ease-precise); }
@@ -159,6 +158,7 @@ const plannedNote = `<span class="visually-hidden"> ${ui.nav.planned}</span>`;
   .legal-links a { color: var(--ink); min-height: 24px; display: inline-flex; align-items: center; }
   .copyright { margin-top: var(--space-5); padding-top: var(--space-2); border-top: 1px solid var(--divider); color: var(--ink-muted); }
   .copyright p { margin: 0; }
+  .legal-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
   @media (max-width: 1023px) { .cols { grid-template-columns: 1fr 1fr; } .aside { grid-column: 1 / -1; justify-items: start; } .aside.is-empty { display: none; } }
   @media (max-width: 767px) { .cols { grid-template-columns: 1fr; gap: var(--space-4); } .item { min-height: 44px; } }
 </style>

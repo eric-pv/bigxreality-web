@@ -72,7 +72,6 @@ const website = {
     <section class="section block" aria-labelledby="h-value">
       <div class="container value">
         <div class="value-copy">
-          <p class="t-label t-muted">{copy.value.eyebrow}</p>
           <h2 class="t-h2" id="h-value"><Text value={copy.value.title} /></h2>
           {copy.value.paragraphs.map((p) => <p class="t-muted"><Text value={p} /></p>)}
         </div>
@@ -139,7 +138,6 @@ const website = {
     <section class="section block tech" data-theme="dark" aria-labelledby="h-tech" data-motion-loop>
       <div class="container tech-grid">
         <div class="tech-copy">
-          <p class="t-label eyebrow">{copy.technologies.eyebrow}</p>
           <h2 class="t-h2" id="h-tech"><Text value={ui.nav.technologies} /></h2>
           {copy.technologies.paragraphs.map((p) => <p class="muted-dark"><Text value={p} /></p>)}
           <p><a class="btn btn--primary" href={localePath(lang, "technologies")}><Text value={copy.technologies.button} /></a></p>

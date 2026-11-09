@@ -78,14 +78,14 @@ landing:
         content: Simulated practice helps trainees understand machine gun operation and
           training requirements
         image:
-          need: Training equipment or scenario illustration (3:2)
-          ratio: 3 / 2
+          need: Training equipment or scenario illustration (16:9)
+          ratio: 16 / 9
       - title: Simulated Shooting Practice
         content: Shooting-related training is arranged in a controlled environment,
           adding opportunities for operating practice
         image:
-          need: Training equipment or scenario illustration (3:2)
-          ratio: 3 / 2
+          need: Training equipment or scenario illustration (16:9)
+          ratio: 16 / 9
       - title: Understanding Fire Discipline
         content: Mission conditions are included in the training background, helping
           trainees understand fire discipline and the related operating
@@ -97,8 +97,8 @@ landing:
         content: Helps trainees understand the role of the machine gun in team missions
           and the coordination it requires
         image:
-          need: Training equipment or scenario illustration (3:2)
-          ratio: 3 / 2
+          need: Training equipment or scenario illustration (16:9)
+          ratio: 16 / 9
   flow:
     title: Building Operation, Judgement and Mission Understanding Step by Step
     steps:

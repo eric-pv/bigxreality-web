@@ -31,11 +31,11 @@ const TREES = () => {
   const node = (el) => ({ label: text(el), href: el.tagName === "A" ? el.getAttribute("href") : null });
   const header = [...document.querySelectorAll(".site-header .nav-list > li")].map((li) => ({
     ...node(li.querySelector(":scope > .nav-heading > .nav-link")),
-    children: [...(li.querySelector(".nav-heading a") ? [li.querySelector(".nav-heading a")] : []), ...li.querySelectorAll(":scope > .sub > li > .sub-link")].map(node),
+    children: [...li.querySelectorAll(":scope > .sub > li > .sub-link")].map(node),
   }));
   const footer = [...document.querySelectorAll(".site-footer .menu-list > li")].map((li) => ({
     ...node(li.querySelector(":scope > .item, :scope > details > summary.item")),
-    href: li.querySelector("details .sub-item")?.getAttribute("href") && li.querySelector("details summary")?.textContent.trim() === li.querySelector("details .sub-item")?.textContent.trim() ? li.querySelector("details .sub-item").getAttribute("href") : li.querySelector(":scope > a.item")?.getAttribute("href") ?? null,
+    href: li.querySelector(":scope > details > summary > a, :scope > a.item")?.getAttribute("href") ?? null,
     children: [...li.querySelectorAll(".sub > li > .sub-item")].map(node),
   }));
   const openGroups = document.querySelectorAll(".site-footer details[open]").length;

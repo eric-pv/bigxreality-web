@@ -51,20 +51,20 @@ landing:
     - title: Basic Vehicle Operation
       content: Helps trainees become familiar with military vehicle operation and training requirements
       image:
-        need: Photo of the actual equipment or driver training (3:2)
-        ratio: 3 / 2
+        need: Photo of the actual equipment or driver training (16:9)
+        ratio: 16 / 9
     - title: Road Environment Awareness
       content: Practise observing road conditions and the surroundings through simulated scenarios
     - title: Terrain Adaptation Training
       content: According to training needs, trainees encounter driving scenarios against different terrain backgrounds
       image:
-        need: Non-sensitive scenario illustration (3:2)
-        ratio: 3 / 2
+        need: Non-sensitive scenario illustration (16:9)
+        ratio: 16 / 9
     - title: Motion Platform Experience
       content: Combines the motion platform to provide a more engaging way to practise simulated driving
       image:
-        need: Photo of the motion platform equipment (3:2)
-        ratio: 3 / 2
+        need: Photo of the motion platform equipment (16:9)
+        ratio: 16 / 9
     - title: Mission Driving Judgement
       content: Different mission backgrounds are included in simulated practice, helping trainees understand the relationship between operation and mission conditions
   flow:

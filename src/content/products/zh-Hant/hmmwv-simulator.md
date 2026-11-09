@@ -51,20 +51,20 @@ landing:
     - title: 車輛基本操作
       content: 協助學員熟悉軍用車輛相關操作及訓練要求
       image:
-        need: 實際設備或駕駛訓練照片（3:2）
-        ratio: 3 / 2
+        need: 實際設備或駕駛訓練照片（16:9）
+        ratio: 16 / 9
     - title: 道路環境判讀
       content: 透過模擬情境練習觀察路況及周遭環境
     - title: 地形適應訓練
       content: 依訓練需求，接觸不同地形背景下的駕駛情境
       image:
-        need: 非敏感情境示意圖（3:2）
-        ratio: 3 / 2
+        need: 非敏感情境示意圖（16:9）
+        ratio: 16 / 9
     - title: 動態平台體驗
       content: 結合動態平台應用，提供更具參與感的模擬駕駛方式
       image:
-        need: 動態平台設備照片（3:2）
-        ratio: 3 / 2
+        need: 動態平台設備照片（16:9）
+        ratio: 16 / 9
     - title: 任務駕駛判斷
       content: 將不同任務背景納入模擬練習，協助學員理解操作與任務條件的關係
   flow:

@@ -2,7 +2,7 @@
 /**
  * One image position on a landing page. With a photo it renders the optimised picture;
  * without one it shows a CIS placeholder that names the material needed, in a compact
- * preview. Supplied images retain their requested ratio.
+ * preview. Landing images use the shared 16:9 display ratio (docs/LAYOUT-RULES.md).
  */
 import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
@@ -11,7 +11,7 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
 
 interface Props {
   media?: { src?: ImageMetadata; alt?: string; need?: string; caption?: string; ratio?: string; illustration?: boolean };
-  /** Default CSS aspect ratio, e.g. "16 / 9"; a ratio set on the position itself wins. */
+  /** Legacy caller hint; landing display always follows the shared 16:9 rule. */
   ratio: string;
   /** Label of the placeholder when the slot has no `need`. */
   fallbackLabel: string;
@@ -22,8 +22,9 @@ interface Props {
   /** Label drawn bottom-right on illustrations (情境示意圖). */
   badge?: string;
 }
-const { media, ratio, fallbackLabel, needPrefix, sizes = "(max-width: 767px) 100vw, 50vw", eager = false, badge } = Astro.props;
-const useRatio = media?.ratio ?? ratio;
+const { media, fallbackLabel, needPrefix, sizes = "(max-width: 767px) 100vw, 50vw", eager = false } = Astro.props;
+// Older CMS entries may still carry another ratio. They must not override the site rule.
+const useRatio = "16 / 9";
 const ready = media?.src && media.alt;
 const label = media?.need ? `${needPrefix}${media.need}` : fallbackLabel;
 ---
@@ -35,7 +36,6 @@ const label = media?.need ? `${needPrefix}${media.need}` : fallbackLabel;
       widths={[480, 800, 1200, 1600].filter((w) => w <= media!.src!.width)} sizes={sizes}
       fit="cover" loading={eager ? "eager" : "lazy"}
     />
-    {media?.illustration && badge && <span class="badge t-caption">{badge}</span>}
     </div>
   ) : (
     <ImagePlaceholder label={label} ratio={useRatio} />

@@ -52,13 +52,13 @@ landing:
       - title: 機槍操作熟悉
         content: 透過模擬練習，協助學員理解機槍相關操作及訓練要求
         image:
-          need: 訓練設備或情境示意圖（3:2）
-          ratio: 3 / 2
+          need: 訓練設備或情境示意圖（16:9）
+          ratio: 16 / 9
       - title: 模擬射擊練習
         content: 在可控環境中安排射擊相關訓練，增加操作練習的機會
         image:
-          need: 訓練設備或情境示意圖（3:2）
-          ratio: 3 / 2
+          need: 訓練設備或情境示意圖（16:9）
+          ratio: 16 / 9
       - title: 射擊紀律理解
         content: 將任務條件納入訓練背景，協助學員理解射擊紀律及相關操作要求
       - title: 任務情境判斷
@@ -66,8 +66,8 @@ landing:
       - title: 團隊協同概念
         content: 協助學員理解機槍在團隊任務中的角色與協同需求
         image:
-          need: 訓練設備或情境示意圖（3:2）
-          ratio: 3 / 2
+          need: 訓練設備或情境示意圖（16:9）
+          ratio: 16 / 9
   flow:
     title: 循序建立操作、判斷與任務理解
     steps:

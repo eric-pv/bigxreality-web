@@ -48,17 +48,17 @@ landing:
       description: 依據實際系統配置，結合 SUT 及適用的無人系統模擬資訊，延伸小隊協同訓練應用
     images:
     - need: 士兵胸掛板特寫（需符合實際設備外觀）
-      ratio: 4 / 3
+      ratio: 16 / 9
     - need: 隊長胸掛板特寫（需符合實際設備外觀）
-      ratio: 4 / 3
+      ratio: 16 / 9
   capabilities:
     title: 訓練應用
     items:
     - title: 小隊任務資訊掌握
       content: 讓成員在模擬任務中練習閱讀與理解相關資訊
       image:
-        need: 小隊資訊整合示意圖（3:2）
-        ratio: 3 / 2
+        need: 小隊資訊整合示意圖（16:9）
+        ratio: 16 / 9
         kind: illustration
     - title: 隊長任務協調
       content: 透過胸掛板資訊呈現，輔助隊長進行任務判斷與小隊協調練習
@@ -67,8 +67,8 @@ landing:
     - title: 無人系統資訊輔助
       content: 依據已完成的整合功能，將適用的無人系統模擬資訊帶入小隊訓練情境
       image:
-        need: 適用系統協同情境圖（3:2）
-        ratio: 3 / 2
+        need: 適用系統協同情境圖（16:9）
+        ratio: 16 / 9
         kind: illustration
   values:
     title: 導入價值

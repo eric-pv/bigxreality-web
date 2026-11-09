@@ -88,16 +88,16 @@ landing:
         value: Helps trainees become familiar with the basic requirements of shooting
           operation and build a foundation for later training
         image:
-          need: Sniper rifle simulation equipment in operation (3:2)
-          ratio: 3 / 2
+          need: Sniper rifle simulation equipment in operation (16:9)
+          ratio: 16 / 9
       - title: Target Distance Interpretation
         content: Practise aiming and shooting under different simulated distances to
           understand how distance affects shooting judgement
         value: Lets trainees encounter different distance conditions in a controlled
           environment and build the related interpretation skills
         image:
-          need: Aiming view (3:2)
-          ratio: 3 / 2
+          need: Aiming view (16:9)
+          ratio: 16 / 9
       - title: Understanding Wind Direction and Environmental Variables
         content: Environmental conditions such as wind direction are included in
           simulation training, helping trainees understand the relationship
@@ -105,8 +105,8 @@ landing:
         value: Shooting training is not limited to fixed conditions and can cover
           different environmental variables
         image:
-          need: Simulated view under different environmental conditions (3:2)
-          ratio: 3 / 2
+          need: Simulated view under different environmental conditions (16:9)
+          ratio: 16 / 9
       - title: Simulated Shooting Practice
         content: Different training content is arranged through virtual shooting
           scenarios to practise aiming, shooting and related judgement

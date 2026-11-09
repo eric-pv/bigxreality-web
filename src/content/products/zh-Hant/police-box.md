@@ -37,11 +37,11 @@ landing:
     title: 把模擬訓練設備整合於可攜配置，延伸不同場域的使用可能
     images:
       - need: BOX 實際箱體外觀（4:3）
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: 設備收納與部署狀態（4:3）
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: 學員使用情境（4:3）
-        ratio: 4 / 3
+        ratio: 16 / 9
     pillars:
       - title: 整合式箱體設計
         description: 透過可攜式箱體配置，協助相關訓練設備的收納、移動與管理
@@ -55,18 +55,18 @@ landing:
       - title: 可攜式設備配置
         content: 以整合式箱體支援訓練設備的移動與收納需求
         image:
-          need: 可攜式箱體配置畫面（3:2）
-          ratio: 3 / 2
+          need: 可攜式箱體配置畫面（16:9）
+          ratio: 16 / 9
       - title: 場域運用彈性
         content: 依不同單位的空間條件安排模擬訓練
         image:
-          need: 不同場域使用情境畫面（3:2）
-          ratio: 3 / 2
+          need: 不同場域使用情境畫面（16:9）
+          ratio: 16 / 9
       - title: 沉浸式情境體驗
         content: 透過模擬勤務環境，讓學員接觸不同任務背景與現場條件
         image:
-          need: 沉浸式情境體驗畫面（3:2）
-          ratio: 3 / 2
+          need: 沉浸式情境體驗畫面（16:9）
+          ratio: 16 / 9
       - title: 勤務操作練習
         content: 依據訓練內容，將相關操作要求融入情境練習
       - title: 多元課程應用

@@ -71,10 +71,10 @@ landing:
           project's training needs and existing system conditions
     images:
       - need: Cross-system integration architecture diagram (architecture illustration)
-        ratio: 4 / 3
+        ratio: 16 / 9
         kind: illustration
       - need: 3D battlefield situation illustration
-        ratio: 4 / 3
+        ratio: 16 / 9
         kind: illustration
   scenarios:
     title: Applications

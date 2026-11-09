@@ -82,9 +82,9 @@ landing:
           method
     images:
       - need: Photo of the realistic extinguisher cylinder
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: Photo of trainees wearing VR equipment during fire extinguisher training
-        ratio: 4 / 3
+        ratio: 16 / 9
   capabilities:
     title: Core Training Content
     items:
@@ -92,33 +92,33 @@ landing:
         content: Introduces the four fire classes A, B, C and D, helping trainees build
           basic concepts of fire classification and disaster prevention
         image:
-          need: Fire class introduction screen (3:2)
-          ratio: 3 / 2
+          need: Fire class introduction screen (16:9)
+          ratio: 16 / 9
       - title: Introduction to Extinguisher Types
         content: Covers carbon dioxide, dry powder and foam extinguishers, helping
           trainees understand the basic characteristics and concepts of use of
           different extinguishers
         image:
-          need: Extinguisher type introduction screen (3:2)
-          ratio: 3 / 2
+          need: Extinguisher type introduction screen (16:9)
+          ratio: 16 / 9
       - title: Standard Fire Extinguisher Operation
         content: Realistic operating equipment is used to practise the basic steps of
           pulling the pin, aiming, squeezing the lever and sweeping
         image:
-          need: Fire extinguisher operating instruction screen (3:2)
-          ratio: 3 / 2
+          need: Fire extinguisher operating instruction screen (16:9)
+          ratio: 16 / 9
       - title: Fire Scene Scenario Practice
         content: Different environments and fire source conditions let trainees bring
           knowledge and operation into simulated scenarios
         image:
-          need: Fire scene scenario view (3:2)
-          ratio: 3 / 2
+          need: Fire scene scenario view (16:9)
+          ratio: 16 / 9
       - title: Training Results Feedback
         content: After the test, the operating result and completion time are presented
           as a reference for instructional review and further practice
         image:
-          need: Training results screen (3:2)
-          ratio: 3 / 2
+          need: Training results screen (16:9)
+          ratio: 16 / 9
   flow:
     title: Three-Stage Training Modes
     steps:

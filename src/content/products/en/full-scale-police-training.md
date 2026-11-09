@@ -65,11 +65,11 @@ landing:
       and Physical Interaction
     images:
       - need: Photo of the complete full-configuration system facility (4:3)
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: Trainees in actual operation (4:3)
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: Close-up of approved interaction equipment (4:3)
-        ratio: 4 / 3
+        ratio: 16 / 9
     pillars:
       - title: Immersive Duty Scenes
         description: Virtual scenarios present different duty environments so trainees
@@ -91,8 +91,8 @@ landing:
         content: Simulated duty scenes help trainees practise identifying the
           surrounding environment, people and mission-related information
         image:
-          need: On-scene environmental observation training view (3:2)
-          ratio: 3 / 2
+          need: On-scene environmental observation training view (16:9)
+          ratio: 16 / 9
       - title: Situational Judgement and Response
         content: Based on different duty backgrounds and changes on scene, trainees
           practise understanding the situation and making appropriate judgements
@@ -100,14 +100,14 @@ landing:
         content: Related operating requirements are built into scenario training so
           trainees develop operating familiarity in simulated missions
         image:
-          need: Duty operation training view (3:2)
-          ratio: 3 / 2
+          need: Duty operation training view (16:9)
+          ratio: 16 / 9
       - title: Physical Interaction Experience
         content: Physical interaction equipment extends the operation and sensation of
           immersive training
         image:
-          need: Physical interaction equipment view (3:2)
-          ratio: 3 / 2
+          need: Physical interaction equipment view (16:9)
+          ratio: 16 / 9
       - title: Integrated Mission Training
         content: Places understanding of the environment, operation and response
           requirements in the same scenario, helping trainees build a more

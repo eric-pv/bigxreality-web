@@ -62,10 +62,10 @@ landing:
     images:
       - need: Close-up of the soldier's chest-mounted panel (must match the appearance
           of the actual equipment)
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: Close-up of the squad leader's chest-mounted panel (must match the
           appearance of the actual equipment)
-        ratio: 4 / 3
+        ratio: 16 / 9
   capabilities:
     title: Training Applications
     items:
@@ -73,8 +73,8 @@ landing:
         content: Members practise reading and understanding relevant information during
           simulated missions
         image:
-          need: Squad information integration illustration (3:2)
-          ratio: 3 / 2
+          need: Squad information integration illustration (16:9)
+          ratio: 16 / 9
           kind: illustration
       - title: Squad Leader Mission Coordination
         content: Information displayed on the chest-mounted panel supports the squad
@@ -86,8 +86,8 @@ landing:
         content: Based on integration functions already completed, applicable unmanned
           system simulation information is brought into squad training scenarios
         image:
-          need: Applicable system coordination scenario illustration (3:2)
-          ratio: 3 / 2
+          need: Applicable system coordination scenario illustration (16:9)
+          ratio: 16 / 9
           kind: illustration
   values:
     title: Value of Adoption

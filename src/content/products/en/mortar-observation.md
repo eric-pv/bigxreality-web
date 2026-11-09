@@ -97,24 +97,24 @@ landing:
         value: Helps trainees build basic skills in target observation and information
           identification
         image:
-          need: Observation view (3:2)
-          ratio: 3 / 2
+          need: Observation view (16:9)
+          ratio: 16 / 9
       - title: Battlefield Environment Interpretation
         content: Through different simulated scenes, practise understanding how terrain,
           line of sight and the mission environment affect observation work
         value: Varied observation conditions provide additional practice opportunities
           and deepen environmental understanding
         image:
-          need: Simulated view of different terrain or environments (3:2)
-          ratio: 3 / 2
+          need: Simulated view of different terrain or environments (16:9)
+          ratio: 16 / 9
       - title: Observing Fire Results
         content: Using simulated fire results as the training content, practise
           observing and identifying the related phenomena
         value: Lets trainees build experience in interpreting fire results in a
           controlled scenario
         image:
-          need: Fire result observation scenario view (3:2)
-          ratio: 3 / 2
+          need: Fire result observation scenario view (16:9)
+          ratio: 16 / 9
       - title: Communicating Observation Information
         content: In line with the training mission, practise passing the information
           gained from observation clearly to the relevant personnel

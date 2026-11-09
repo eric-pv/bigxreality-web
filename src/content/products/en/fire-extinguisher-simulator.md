@@ -74,9 +74,9 @@ landing:
         alt: A trainee wearing a VR headset operates fire extinguisher training
           equipment
       - need: Close-up of the handle and hose nozzle (4:3)
-        ratio: 4 / 3
+        ratio: 16 / 9
       - need: Approved VR fire scene view (4:3)
-        ratio: 4 / 3
+        ratio: 16 / 9
     pillars:
       - title: In-House Developed Realistic Fire Extinguisher
         description: A cylinder module designed according to the proportions and weight
@@ -99,8 +99,8 @@ landing:
           squeezing, aiming and sweeping from side to side, turning fire safety
           knowledge into concrete practice
         image:
-          need: Photo of realistic fire extinguisher operation (3:2)
-          ratio: 3 / 2
+          need: Photo of realistic fire extinguisher operation (16:9)
+          ratio: 16 / 9
       - title: Precise Dual-Controller Tracking
         content: Dual controllers integrated into the handle and nozzle track the
           operating actions so that spray direction and sweep angle correspond
@@ -109,28 +109,28 @@ landing:
         content: Introduces the four fire classes A, B, C and D, helping trainees build
           basic concepts of fire classification and handling
         image:
-          need: Fire class introduction screen (3:2)
-          ratio: 3 / 2
+          need: Fire class introduction screen (16:9)
+          ratio: 16 / 9
       - title: Introduction to Three Extinguisher Types
         content: Covers carbon dioxide, dry powder and foam extinguishers so trainees
           understand the basic characteristics and use cases of different
           equipment
         image:
-          need: Extinguisher type introduction screen (3:2)
-          ratio: 3 / 2
+          need: Extinguisher type introduction screen (16:9)
+          ratio: 16 / 9
       - title: Step-by-Step Operating Guidance
         content: Operating prompts in Instruction mode help trainees practise the
           complete fire extinguisher procedure step by step
         image:
-          need: Instruction guidance screen (3:2)
-          ratio: 3 / 2
+          need: Instruction guidance screen (16:9)
+          ratio: 16 / 9
       - title: Scenario Testing and Results Feedback
         content: Operating tests are carried out in different simulated scenes, and on
           completion the operating result and completion time are displayed as a
           basis for trainees to review themselves and practise again
         image:
-          need: Test results screen (3:2)
-          ratio: 3 / 2
+          need: Test results screen (16:9)
+          ratio: 16 / 9
   flow:
     title: Three Training Modes Taking Learning from Understanding to Hands-On
       Operation
