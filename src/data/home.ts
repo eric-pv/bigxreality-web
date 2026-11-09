@@ -41,8 +41,8 @@ export interface HomeCopy {
 export const homeCopy: Record<Lang, HomeCopy> = {
   tw: {
     seo: {
-      title: "沉浸式模擬訓練與 XR 系統整合",
-      description: "Big x Reality 全球動力科技結合 XR 延展實境、AI 智慧模擬、互動設備與系統整合，提供軍事、警勤、消防防災及智慧城市的專業模擬訓練與數位化應用解決方案。",
+      title: "VR／XR 模擬訓練與系統整合",
+      description: "Big x Reality 全球動力科技立足台灣，整合 VR 虛擬實境、XR 延展實境、AI 與互動設備，提供軍事、警察、消防防災的模擬訓練，以及智慧城市數位應用與系統整合服務。",
     },
     hero: {
       eyebrow: "Big x Reality",
@@ -132,8 +132,8 @@ export const homeCopy: Record<Lang, HomeCopy> = {
   },
   en: {
     seo: {
-      title: "XR Simulation Training & System Integration",
-      description: "Big x Reality delivers XR simulation training, AI-assisted simulation, interactive equipment, and system integration solutions for military, police, fire and disaster response, and smart city applications.",
+      title: "VR & XR Simulation Training | System Integration",
+      description: "Taiwan-based Big x Reality combines VR, XR, AI and interactive equipment for military, police and fire safety training, plus smart city simulation and system integration.",
     },
     hero: {
       eyebrow: "Big x Reality",
@@ -223,8 +223,8 @@ export const homeCopy: Record<Lang, HomeCopy> = {
   },
   jp: {
     seo: {
-      title: "XR シミュレーション訓練とシステム統合",
-      description: "Big x Reality は、XR、AI シミュレーション、インタラクティブ機器、システム統合技術を活用し、軍事、警察、消防・防災、スマートシティ分野に向けた専門訓練・デジタル活用ソリューションを提供します。",
+      title: "VR・XR シミュレーション訓練とシステム統合",
+      description: "台湾を拠点とする Big x Reality は、VR・XR、AI、インタラクティブ機器を組み合わせ、軍事・警察・消防防災の模擬訓練と、スマートシティのデジタル活用・システム統合を支援します。",
     },
     hero: {
       eyebrow: "Big x Reality",

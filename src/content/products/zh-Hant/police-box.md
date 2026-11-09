@@ -142,6 +142,6 @@ relatedProducts:
 relatedSolutions:
   - police
 seo:
-  title: 攜帶式警勤訓練器 Police BOX｜可攜式 VR 警勤模擬
-  description: Police BOX 攜帶式警勤訓練器將模擬訓練設備整合於便於移動的箱體配置，依場地與課程需求部署，延伸警具操作及勤務情境訓練。
+  title: "可攜式 VR 警察訓練模擬器｜警勤情境演練 Police BOX"
+  description: "可攜式 VR 警察訓練模擬器 Police BOX 將訓練設備整合於便於移動的箱體，支援警具操作、勤務判斷與情境演練，可依場地與課程需求安排警勤訓練。"
 ---

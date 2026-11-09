@@ -142,6 +142,6 @@ relatedProducts:
 relatedSolutions:
   - police
 seo:
-  title: Police BOX｜可搬型 VR 警察訓練シミュレーター
-  description: Police BOX は、訓練機器を持ち運びやすいケースにまとめた可搬型システムです。設置場所や訓練課程に応じた導入と警察業務シナリオの練習を支援します。
+  title: "可搬型 VR 警察訓練シミュレーター｜Police BOX"
+  description: "Police BOX は VR 機器を持ち運びやすいケースにまとめた警察訓練シミュレーターです。設置場所や課程に応じて、装備操作、勤務判断、状況対応の練習を支援します。"
 ---

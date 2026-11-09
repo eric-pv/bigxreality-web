@@ -13,7 +13,7 @@ hero:
   tagline: 一套可從基礎操作延伸到小隊協同與跨系統聯合訓練的戰術訓練系統
   image:
     src: ../../../assets/images/products/sut-squad-vr-tactical-training.webp
-    alt: 四名學員頭戴 VR 頭盔、身穿戰術裝備並手持訓練用槍械，站在載具模擬器前
+    alt: 四名學員配戴 VR 頭盔與戰術裝備，在展示舞台上持訓練用槍械演練
 summary: 主要針對約 1 至 4 人的小部隊戰術訓練。
 landing:
   headline: 真正的戰術默契，來自每一次協同行動

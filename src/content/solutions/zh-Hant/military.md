@@ -44,7 +44,7 @@ landing:
         need: 武器裝備操作訓練畫面（16:9）
         ratio: 16 / 9
         src: ../../../assets/images/products/mortar-observation-xr-training.webp
-        alt: 學員在模擬戰場環境中操作迫擊砲進行觀測與射擊訓練
+        alt: 兩名人員在展示舞台上操作迫擊砲訓練設備
     - title: 戰術與限制空間訓練
       content: 透過 SUT 小部隊戰術訓練系統，在模擬城鎮、建築物及其他任務環境中，進行小隊移動、環境觀察與戰術協同練習
       image:
@@ -117,6 +117,6 @@ landing:
     title: 從個別訓練需求出發，規劃更完整的軍事模擬環境
     description: 了解 Big x Reality 如何結合模擬設備、任務情境與整合架構，支援不同層級的軍事訓練
 seo:
-  title: "軍事模擬訓練解決方案｜XR 戰術與聯合訓練"
-  description: "從單兵武器操作、戰術訓練與載具模擬，到小隊協同、兵棋推演及跨系統整合，Big x Reality 提供多層級軍事模擬訓練解決方案。"
+  title: "VR／XR 軍事模擬訓練｜戰術與聯合訓練方案"
+  description: "Big x Reality 提供 VR／XR 軍事模擬訓練方案，涵蓋武器操作、戰術與載具模擬、小隊協同及兵棋推演，並依任務需求評估跨系統聯合訓練整合。"
 ---

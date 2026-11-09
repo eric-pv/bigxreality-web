@@ -1,3 +1,4 @@
+import {homeCopy} from '../src/data/home.ts';
 import {contentLocale} from "../src/lib/content-locale.ts";
 import { publicUrl, artifactPath } from '../src/lib/public-url.ts';
 import assert from 'node:assert/strict';
@@ -13,7 +14,7 @@ const site = JSON.parse(await fs.readFile(new URL('../src/data/site.json', impor
 const browser = await chromium.launch({ executablePath: CHROMIUM });
 const pages = [], errors = [];
 const normalize = title => { while (/\s*[|｜]\s*(?:Big\s*x\s*Reality|BXR)\s*$/i.test(title)) title = title.replace(/\s*[|｜]\s*(?:Big\s*x\s*Reality|BXR)\s*$/i, '').trim(); return title + ' | Big x Reality'; };
-async function walk(dir) { for (const item of await fs.readdir(dir, { withFileTypes:true })) { const file=path.join(dir,item.name); if(item.isDirectory()) { if(!['_astro','pagefind','fonts','media','admin'].includes(item.name)) await walk(file); } else if(item.name==='index.html') { const html=await fs.readFile(file,'utf8'); if(!/http-equiv="refresh"/.test(html)) pages.push({url:'/'+path.relative(DIST,path.dirname(file)).split(path.sep).join('/')+'/',html,head:html.match(/<head[^>]*>([\s\S]*?)<\/head>/)?.[1]}); } } }
+async function walk(dir) { for (const item of await fs.readdir(dir, { withFileTypes:true })) { const file=path.join(dir,item.name); if(item.isDirectory()) { if(dir!==DIST || !['_astro','pagefind','fonts','media','admin'].includes(item.name)) await walk(file); } else if(item.name==='index.html') { const html=await fs.readFile(file,'utf8'); if(!/http-equiv="refresh"/.test(html)) pages.push({url:'/'+path.relative(DIST,path.dirname(file)).split(path.sep).join('/')+'/',html,head:html.match(/<head[^>]*>([\s\S]*?)<\/head>/)?.[1]}); } } }
 try {
   await walk(DIST);
   const page=await browser.newPage();
@@ -39,6 +40,7 @@ try {
       // legacy expectations only cover pages without a CMS content file.
       let copy=approved[url];
       const [lang, section, slug] = url.split('/').filter(Boolean);
+      if(!section && homeCopy[lang])copy=homeCopy[lang].seo;
       const collection=({news:'news',insights:'insights',cases:'case-studies',products:'products',solutions:'solutions'})[section];
       const pageSlug=section==='company'?(slug??'company'):(!slug?section:undefined);
       const technologyPath=section==='technologies'?`src/content/${slug?'technologies':'technology-overview'}/${contentLocale(lang)}/${slug??'overview'}.json`:undefined;

@@ -2,9 +2,8 @@
 # 繁体字中国語マスター（src/content/pages/tw/solutions.md）を日本語に直接翻訳した完全版（2026-10-21）。従来の日本語コピーを置き換え（オーナー承認 2026-10-21）。マスターと同様、クロージングのCTA帯はない。
 translationStatus: translated
 seo:
-  title: "XR 専門訓練・システム統合ソリューション"
-  description: "Big x Reality は、XR
-    シミュレーション、AI、インタラクティブ機器、デジタル環境を統合し、軍事、警察、消防・防災、スマートシティの多様なニーズに対応します。"
+  title: "VR・XR 訓練・システム統合ソリューション"
+  description: "Big x Reality は VR・XR、AI、インタラクティブ機器を統合し、軍事・警察・消防防災の訓練を支援します。デジタル環境とシステム統合によるスマートシティへの応用もご紹介します。"
 hero:
   eyebrow: ソリューション
   title: "現実と仮想をつなぐ活用技術"

@@ -2,9 +2,8 @@
 # 產品總覽頁文案。來源：requirements-2.0.md §9、§10。
 translationStatus: source
 seo:
-  title: "XR 模擬訓練產品與專業訓練設備"
-  description: "探索 Big x Reality 的 XR 模擬訓練產品，涵蓋 SUT
-    小部隊戰術訓練、無人機與無人船模擬、兵棋圖台、軍用載具、警勤訓練及 VR 虛擬滅火訓練系統。"
+  title: "VR／XR 模擬訓練設備與產品"
+  description: "探索 Big x Reality 的 VR 虛擬實境與 XR 模擬訓練設備，涵蓋小部隊戰術、無人機與無人船、警察勤務及滅火訓練，並提供兵棋圖台與軍用載具模擬產品。"
 hero:
   eyebrow: 產品
   title: 產品

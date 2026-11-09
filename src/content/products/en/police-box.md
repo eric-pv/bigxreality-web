@@ -137,6 +137,6 @@ relatedProducts:
 relatedSolutions:
   - police
 seo:
-  title: Police BOX | Portable VR Police Training Simulator
-  description: Police BOX is a portable police training simulator that integrates equipment into a transportable case, supporting flexible deployment for police equipment practice and operational scenarios.
+  title: "Portable VR Police Training Simulator | Police BOX"
+  description: "Police BOX is a portable VR police training simulator in a transportable case, supporting equipment handling and operational scenarios to suit site and course needs."
 ---

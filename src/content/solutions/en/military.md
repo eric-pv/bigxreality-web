@@ -44,7 +44,7 @@ landing:
         need: Weapons and equipment operation training view (16:9)
         ratio: 16 / 9
         src: ../../../assets/images/products/mortar-observation-xr-training.webp
-        alt: Trainees operating a mortar during observation and firing training in a simulated battlefield
+        alt: Two people operating mortar training equipment on a demonstration stage
     - title: Tactical and Confined-Space Training
       content: With the SUT Small Unit Tactical Training System, squads practise movement, environmental observation and tactical coordination in simulated urban areas, buildings and other mission environments
       image:
@@ -117,6 +117,6 @@ landing:
     title: Starting from Individual Training Needs to Plan a More Complete Military Simulation Environment
     description: Find out how Big x Reality combines simulation equipment, mission scenarios and integration architecture to support military training at different levels
 seo:
-  title: "Military Simulation Training | XR Tactical & Joint Training"
-  description: "Explore military simulation training for weapon handling, tactical exercises, vehicle simulation, squad coordination, wargaming, and cross-system training integration."
+  title: "VR & XR Military Training | Tactical Simulation"
+  description: "Explore BXR VR and XR military training for weapon handling, tactical exercises, vehicle simulation, squad coordination and cross-system joint training."
 ---
