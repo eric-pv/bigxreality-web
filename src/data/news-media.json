@@ -136,10 +136,15 @@
     "sourceLinks": []
   },
   "news-15-media-visit-2026": {
-    "publicationDate": null,
+    "publicationDate": "2026-10-08",
     "cover": {
-      "filename": "2026-media-visit-ai-xr-training.jpg",
-      "approved": false
+      "filename": "2026-media-visit-delegation-group.jpg",
+      "approved": true,
+      "alt": {
+        "tw": "海外華文媒體參訪團與全球動力科技團隊手持「2026 海外華文媒體人士訪問團」布條合影。",
+        "en": "The overseas Chinese-language media delegation and Big x Reality team pose with the 2026 delegation banner.",
+        "jp": "「2026海外華文メディア訪問団」の横断幕を掲げて記念撮影する訪問団とBig x Realityのスタッフ。"
+      }
     },
     "gallery": [],
     "videos": [],
