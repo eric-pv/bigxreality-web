@@ -158,6 +158,7 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt tac-ruler" : (n > 1 ? "
             <SectionHead id={`h-block-${i}`} eyebrow={b.eyebrow ?? ""} title={b.title} description={b.intro} />
             {b.kind === "list" && <CapabilityShowcase items={(b.items ?? []).map((x: any) => ({ title: x.title, content: x.content ?? "" }))} valueLabel={t.valueLabel} needPrefix={need} fallbackLabel={pending} badge={badge} />}
             {b.kind === "checks" && <ValueCards items={(b.items ?? []).map((x: any) => ({ title: x.title, description: x.content }))} />}
+            {b.kind === "media" && <ScenarioCards items={(b.items ?? []).map((x: any) => ({ title: x.title, description: x.content ?? "", image: x.image }))} focusLabel={t.focusLabel} needPrefix={need} fallbackLabel={pending} badge={badge} />}
             {b.kind === "featured" && (
               <ul role="list" class="featured">
                 {(b.items ?? []).map((it: any) => {

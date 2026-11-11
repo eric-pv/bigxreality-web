@@ -10,6 +10,7 @@ export interface SlotInput<Img> {
   need?: string;
   caption?: string;
   ratio?: string;
+  fit?: "cover" | "contain";
   kind?: "approved" | "illustration";
   status?: "public" | "withheld";
   substitute?: { src: Img; alt: string };
@@ -23,6 +24,7 @@ export function resolveSlot<Img, R extends string>(input: SlotInput<Img> & { rat
     need: rest.need,
     caption: rest.caption,
     ratio: rest.ratio,
+    fit: rest.fit,
     src: shown?.src,
     alt: shown?.alt,
     /** True when the label 情境示意圖 must be drawn on the picture. */

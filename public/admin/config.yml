@@ -1481,6 +1481,16 @@ collections:
                   - label: 正方形 / Square
                     value: 1 / 1
                 i18n: true
+              - name: fit
+                label: 圖片顯示方式 / Image Fit
+                required: false
+                widget: select
+                options:
+                  - label: 填滿裁切 / Fill and Crop
+                    value: cover
+                  - label: 完整顯示，可放大 / Full Image with Zoom
+                    value: contain
+                i18n: true
               - name: kind
                 label: 素材類型 / Image Type
                 required: false
@@ -1564,6 +1574,16 @@ collections:
                     value: 4 / 5
                   - label: 正方形 / Square
                     value: 1 / 1
+                i18n: true
+              - name: fit
+                label: 圖片顯示方式 / Image Fit
+                required: false
+                widget: select
+                options:
+                  - label: 填滿裁切 / Fill and Crop
+                    value: cover
+                  - label: 完整顯示，可放大 / Full Image with Zoom
+                    value: contain
                 i18n: true
               - name: kind
                 label: 素材類型 / Image Type
@@ -1712,6 +1732,16 @@ collections:
                       - label: 正方形 / Square
                         value: 1 / 1
                     i18n: true
+                  - name: fit
+                    label: 圖片顯示方式 / Image Fit
+                    required: false
+                    widget: select
+                    options:
+                      - label: 填滿裁切 / Fill and Crop
+                        value: cover
+                      - label: 完整顯示，可放大 / Full Image with Zoom
+                        value: contain
+                    i18n: true
                   - name: kind
                     label: 素材類型 / Image Type
                     required: false
@@ -1854,6 +1884,16 @@ collections:
                           - label: 正方形 / Square
                             value: 1 / 1
                         i18n: true
+                      - name: fit
+                        label: 圖片顯示方式 / Image Fit
+                        required: false
+                        widget: select
+                        options:
+                          - label: 填滿裁切 / Fill and Crop
+                            value: cover
+                          - label: 完整顯示，可放大 / Full Image with Zoom
+                            value: contain
+                        i18n: true
                       - name: kind
                         label: 素材類型 / Image Type
                         required: false
@@ -1994,6 +2034,16 @@ collections:
                           - label: 正方形 / Square
                             value: 1 / 1
                         i18n: true
+                      - name: fit
+                        label: 圖片顯示方式 / Image Fit
+                        required: false
+                        widget: select
+                        options:
+                          - label: 填滿裁切 / Fill and Crop
+                            value: cover
+                          - label: 完整顯示，可放大 / Full Image with Zoom
+                            value: contain
+                        i18n: true
                       - name: kind
                         label: 素材類型 / Image Type
                         required: false
@@ -2123,6 +2173,16 @@ collections:
                             value: 4 / 5
                           - label: 正方形 / Square
                             value: 1 / 1
+                        i18n: true
+                      - name: fit
+                        label: 圖片顯示方式 / Image Fit
+                        required: false
+                        widget: select
+                        options:
+                          - label: 填滿裁切 / Fill and Crop
+                            value: cover
+                          - label: 完整顯示，可放大 / Full Image with Zoom
+                            value: contain
                         i18n: true
                       - name: kind
                         label: 素材類型 / Image Type
@@ -2281,6 +2341,8 @@ collections:
                     value: checks
                   - label: 精選 / Featured
                     value: featured
+                  - label: 圖文卡片 / Image Cards
+                    value: media
                 i18n: true
               - name: eyebrow
                 label: 標題上方文字 / Eyebrow
@@ -2353,6 +2415,100 @@ collections:
                     multiple: false
                     dropdown_threshold: 0
                     hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+                    i18n: true
+                  - name: image
+                    label: 圖片 / Image
+                    required: false
+                    widget: object
+                    collapsed: true
+                    fields:
+                      - name: src
+                        label: 圖片檔案 / Image File
+                        required: false
+                        widget: image
+                        multiple: false
+                        choose_url: false
+                        i18n: true
+                      - name: alt
+                        label: 替代文字 / Alternative Text
+                        required: false
+                        widget: string
+                        i18n: true
+                      - name: need
+                        label: 素材需求備註 / Asset Requirement Note
+                        required: false
+                        widget: string
+                        i18n: true
+                      - name: caption
+                        label: 圖說 / Caption
+                        required: false
+                        widget: string
+                        i18n: true
+                      - name: ratio
+                        label: 圖片比例 / Image Ratio
+                        required: false
+                        widget: select
+                        options:
+                          - label: 寬螢幕 / Widescreen
+                            value: 16 / 9
+                          - label: 橫式 3:2 / Landscape 3:2
+                            value: 3 / 2
+                          - label: 橫式 4:3 / Landscape 4:3
+                            value: 4 / 3
+                          - label: 直式 4:5 / Portrait 4:5
+                            value: 4 / 5
+                          - label: 正方形 / Square
+                            value: 1 / 1
+                        i18n: true
+                      - name: fit
+                        label: 圖片顯示方式 / Image Fit
+                        required: false
+                        widget: select
+                        options:
+                          - label: 填滿裁切 / Fill and Crop
+                            value: cover
+                          - label: 完整顯示，可放大 / Full Image with Zoom
+                            value: contain
+                        i18n: true
+                      - name: kind
+                        label: 素材類型 / Image Type
+                        required: false
+                        widget: select
+                        options:
+                          - label: 已核准實際素材 / Approved Actual Asset
+                            value: approved
+                          - label: 概念示意素材 / Concept Illustration
+                            value: illustration
+                        i18n: true
+                      - name: status
+                        label: 素材顯示狀態 / Asset Visibility
+                        required: false
+                        widget: select
+                        options:
+                          - label: 公開 / Public
+                            value: public
+                          - label: 暫不公開 / Withheld
+                            value: withheld
+                        i18n: true
+                      - name: substitute
+                        label: 替代素材 / Fallback Asset
+                        required: false
+                        widget: object
+                        collapsed: true
+                        fields:
+                          - name: src
+                            label: 圖片檔案 / Image File
+                            required: true
+                            widget: image
+                            multiple: false
+                            choose_url: false
+                            i18n: true
+                          - name: alt
+                            label: 替代文字 / Alternative Text
+                            required: true
+                            widget: string
+                            i18n: true
+                        i18n: true
                     i18n: true
                 i18n: true
             i18n: true
@@ -2909,6 +3065,16 @@ collections:
                   - label: 正方形 / Square
                     value: 1 / 1
                 i18n: true
+              - name: fit
+                label: 圖片顯示方式 / Image Fit
+                required: false
+                widget: select
+                options:
+                  - label: 填滿裁切 / Fill and Crop
+                    value: cover
+                  - label: 完整顯示，可放大 / Full Image with Zoom
+                    value: contain
+                i18n: true
               - name: kind
                 label: 素材類型 / Image Type
                 required: false
@@ -2992,6 +3158,16 @@ collections:
                     value: 4 / 5
                   - label: 正方形 / Square
                     value: 1 / 1
+                i18n: true
+              - name: fit
+                label: 圖片顯示方式 / Image Fit
+                required: false
+                widget: select
+                options:
+                  - label: 填滿裁切 / Fill and Crop
+                    value: cover
+                  - label: 完整顯示，可放大 / Full Image with Zoom
+                    value: contain
                 i18n: true
               - name: kind
                 label: 素材類型 / Image Type
@@ -3140,6 +3316,16 @@ collections:
                       - label: 正方形 / Square
                         value: 1 / 1
                     i18n: true
+                  - name: fit
+                    label: 圖片顯示方式 / Image Fit
+                    required: false
+                    widget: select
+                    options:
+                      - label: 填滿裁切 / Fill and Crop
+                        value: cover
+                      - label: 完整顯示，可放大 / Full Image with Zoom
+                        value: contain
+                    i18n: true
                   - name: kind
                     label: 素材類型 / Image Type
                     required: false
@@ -3282,6 +3468,16 @@ collections:
                           - label: 正方形 / Square
                             value: 1 / 1
                         i18n: true
+                      - name: fit
+                        label: 圖片顯示方式 / Image Fit
+                        required: false
+                        widget: select
+                        options:
+                          - label: 填滿裁切 / Fill and Crop
+                            value: cover
+                          - label: 完整顯示，可放大 / Full Image with Zoom
+                            value: contain
+                        i18n: true
                       - name: kind
                         label: 素材類型 / Image Type
                         required: false
@@ -3422,6 +3618,16 @@ collections:
                           - label: 正方形 / Square
                             value: 1 / 1
                         i18n: true
+                      - name: fit
+                        label: 圖片顯示方式 / Image Fit
+                        required: false
+                        widget: select
+                        options:
+                          - label: 填滿裁切 / Fill and Crop
+                            value: cover
+                          - label: 完整顯示，可放大 / Full Image with Zoom
+                            value: contain
+                        i18n: true
                       - name: kind
                         label: 素材類型 / Image Type
                         required: false
@@ -3551,6 +3757,16 @@ collections:
                             value: 4 / 5
                           - label: 正方形 / Square
                             value: 1 / 1
+                        i18n: true
+                      - name: fit
+                        label: 圖片顯示方式 / Image Fit
+                        required: false
+                        widget: select
+                        options:
+                          - label: 填滿裁切 / Fill and Crop
+                            value: cover
+                          - label: 完整顯示，可放大 / Full Image with Zoom
+                            value: contain
                         i18n: true
                       - name: kind
                         label: 素材類型 / Image Type
@@ -3709,6 +3925,8 @@ collections:
                     value: checks
                   - label: 精選 / Featured
                     value: featured
+                  - label: 圖文卡片 / Image Cards
+                    value: media
                 i18n: true
               - name: eyebrow
                 label: 標題上方文字 / Eyebrow
@@ -3781,6 +3999,100 @@ collections:
                     multiple: false
                     dropdown_threshold: 0
                     hint: 搜尋名稱後選取；實際儲存英文代稱（slug）。 / Search by name; the slug is stored.
+                    i18n: true
+                  - name: image
+                    label: 圖片 / Image
+                    required: false
+                    widget: object
+                    collapsed: true
+                    fields:
+                      - name: src
+                        label: 圖片檔案 / Image File
+                        required: false
+                        widget: image
+                        multiple: false
+                        choose_url: false
+                        i18n: true
+                      - name: alt
+                        label: 替代文字 / Alternative Text
+                        required: false
+                        widget: string
+                        i18n: true
+                      - name: need
+                        label: 素材需求備註 / Asset Requirement Note
+                        required: false
+                        widget: string
+                        i18n: true
+                      - name: caption
+                        label: 圖說 / Caption
+                        required: false
+                        widget: string
+                        i18n: true
+                      - name: ratio
+                        label: 圖片比例 / Image Ratio
+                        required: false
+                        widget: select
+                        options:
+                          - label: 寬螢幕 / Widescreen
+                            value: 16 / 9
+                          - label: 橫式 3:2 / Landscape 3:2
+                            value: 3 / 2
+                          - label: 橫式 4:3 / Landscape 4:3
+                            value: 4 / 3
+                          - label: 直式 4:5 / Portrait 4:5
+                            value: 4 / 5
+                          - label: 正方形 / Square
+                            value: 1 / 1
+                        i18n: true
+                      - name: fit
+                        label: 圖片顯示方式 / Image Fit
+                        required: false
+                        widget: select
+                        options:
+                          - label: 填滿裁切 / Fill and Crop
+                            value: cover
+                          - label: 完整顯示，可放大 / Full Image with Zoom
+                            value: contain
+                        i18n: true
+                      - name: kind
+                        label: 素材類型 / Image Type
+                        required: false
+                        widget: select
+                        options:
+                          - label: 已核准實際素材 / Approved Actual Asset
+                            value: approved
+                          - label: 概念示意素材 / Concept Illustration
+                            value: illustration
+                        i18n: true
+                      - name: status
+                        label: 素材顯示狀態 / Asset Visibility
+                        required: false
+                        widget: select
+                        options:
+                          - label: 公開 / Public
+                            value: public
+                          - label: 暫不公開 / Withheld
+                            value: withheld
+                        i18n: true
+                      - name: substitute
+                        label: 替代素材 / Fallback Asset
+                        required: false
+                        widget: object
+                        collapsed: true
+                        fields:
+                          - name: src
+                            label: 圖片檔案 / Image File
+                            required: true
+                            widget: image
+                            multiple: false
+                            choose_url: false
+                            i18n: true
+                          - name: alt
+                            label: 替代文字 / Alternative Text
+                            required: true
+                            widget: string
+                            i18n: true
+                        i18n: true
                     i18n: true
                 i18n: true
             i18n: true

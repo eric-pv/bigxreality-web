@@ -39,3 +39,12 @@ test("a substitute is ignored while the original is public", () => {
 test("an illustration without a picture is not labelled", () => {
   assert.equal(resolveSlot({ kind: "illustration", need: "x" }).illustration, false);
 });
+
+test("full-image presentation preserves equipment labels without publishing withheld originals", () => {
+  const visible = resolveSlot({ ...photo, fit: "contain" });
+  assert.equal(visible.fit, "contain");
+  assert.equal(visible.src, photo.src);
+  const hidden = resolveSlot({ ...photo, fit: "contain", status: "withheld" });
+  assert.equal(hidden.src, undefined);
+  assert.equal(hidden.alt, undefined);
+});
