@@ -84,7 +84,7 @@ try {
   const ids = await page.$$eval("main section[id]", (ss) => ss.map((s) => "#" + s.id));
   check("in-page nav matches rendered sections", JSON.stringify(toc) === JSON.stringify(ids), toc.join(" "));
   check("landing sections in order", JSON.stringify(await page.$$eval("main h2", (hs) => hs.map((h) => h.id))) === JSON.stringify(["h-challenge", "h-approach", "h-capabilities", "h-flow", "h-scenarios", "h-values", "h-related", "product-faq-title", "h-related-technologies", "product-cta"]));
-  const related = await page.locator("#h-related ~ .cards a, section[aria-labelledby=h-related] .cards a").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
+  const related = await page.locator("section[aria-labelledby=h-related] .smart-grid a").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
   check("related products and solution link to existing pages", ["/tw/products/uav/", "/tw/products/usv/", "/tw/solutions/military/"].every((h) => related.includes(h)), related.join(" "));
   check("no UAV / USV card shows an English-name placeholder", (await page.locator("section[aria-labelledby=h-related] mark.pending").count()) === 0);
   const pillarTitle = await page.locator(".pillar h3").first().evaluate((h) => getComputedStyle(h).color);

@@ -5,6 +5,7 @@
  * related case → nothing is rendered (no heading, no placeholder text).
  * One case: a wide picture + text layout. Two or more: cards, at most three, with a link to the list.
  */
+import SmartCardGrid from "./SmartCardGrid.astro";
 import { localePath, type Lang } from "../i18n";
 import type { CaseView } from "../lib/cases";
 import { getUi } from "../lib/ui";
@@ -37,9 +38,9 @@ const listHref = localePath(lang, "case-studies");
           </div>
         </article>
       ) : (
-        <ul role="list" class="grid" style={`--cols: ${shown.length}`}>
+        <SmartCardGrid>
           {shown.map((item) => <li><CaseCard lang={lang} item={item} /></li>)}
-        </ul>
+        </SmartCardGrid>
       )}
     </div>
   </section>
@@ -50,7 +51,5 @@ const listHref = localePath(lang, "case-studies");
   .copy h3, .copy p { margin: 0; }
   .meta { color: var(--ink-muted); }
   .client { font-weight: 500; }
-  .grid { display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .feature { grid-template-columns: 1fr; } }
-  @media (max-width: 767px) { .grid { grid-template-columns: 1fr; } }
+  @media (max-width: 1023px) { .feature { grid-template-columns: 1fr; } }
 </style>

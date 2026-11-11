@@ -6,6 +6,7 @@
  * Related products are those that list this solution (products.relatedSolutions) plus the ones the
  * solution names itself; with none, the block shows only related solutions, or nothing.
  */
+import SmartCardGrid from "./SmartCardGrid.astro";
 import type { CollectionEntry } from "astro:content";
 import { localePath, type Lang } from "../i18n";
 import { availableLangs, getLocalized } from "../lib/content";
@@ -106,7 +107,7 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
     <section class={alt()} aria-labelledby="h-related">
       <div class="container">
         <SectionHead id="h-related" eyebrow={e.related} title={L.related!.title} description={L.related!.intro} />
-        <ul role="list" class="cards">
+        <SmartCardGrid>
           {relatedProducts.map((p) => (
             <li>
               <CardProduct
@@ -126,7 +127,7 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -145,7 +146,4 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
   .back { padding-block: var(--space-4); }
   .back a { color: var(--ink); text-decoration: none; font-weight: 500; }
   .back a:hover { color: var(--bxr-text-red); }
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
 </style>

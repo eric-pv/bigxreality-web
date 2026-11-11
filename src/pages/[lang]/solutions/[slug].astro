@@ -4,6 +4,8 @@
  * reverse lookups (products.relatedSolutions, articles.relatedSolutions); nothing is
  * stored twice. Sections without content are not rendered.
  */
+import SplitSection from "../../../components/SplitSection.astro";
+import SmartCardGrid from "../../../components/SmartCardGrid.astro";
 import { getEntry } from "astro:content";
 import { LANGS, localePath, type Lang } from "../../../i18n";
 import { getLocalized, availableLangs, validateRelations } from "../../../lib/content";
@@ -101,10 +103,10 @@ const cta = d.cta ?? page?.cta;
 
   {has("overview") && (
     <section class={alt(order.indexOf("overview"))} id="overview" aria-labelledby="h-overview">
-      <div class="container two-col">
-        <SectionHead id="h-overview" eyebrow={t.overview.eyebrow} title={t.overview.title} />
+      <div class="container"><SplitSection gap="var(--space-8)">
+        <SectionHead slot="head" id="h-overview" eyebrow={t.overview.eyebrow} title={t.overview.title} />
         <Prose html={overviewHtml} />
-      </div>
+      </SplitSection></div>
     </section>
   )}
 
@@ -130,7 +132,7 @@ const cta = d.cta ?? page?.cta;
     <section class={alt(order.indexOf("relatedProducts"))} id="relatedProducts" aria-labelledby="h-relatedProducts">
       <div class="container">
         <SectionHead id="h-relatedProducts" eyebrow={t.relatedProducts.eyebrow} title={t.relatedProducts.title} />
-        <ul role="list" class="cards">
+        <SmartCardGrid>
           {products.map((p) => (
             <li>
               <CardProduct
@@ -141,7 +143,7 @@ const cta = d.cta ?? page?.cta;
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -152,7 +154,7 @@ const cta = d.cta ?? page?.cta;
     <section class={alt(order.indexOf(g.id))} id={g.id} aria-labelledby={`h-${g.id}`}>
       <div class="container">
         <SectionHead id={`h-${g.id}`} eyebrow={t[g.id].eyebrow} title={t[g.id].title} />
-        <ul role="list" class="cards">
+        <SmartCardGrid>
           {g.items.map((a) => (
             <li>
               <CardArticle
@@ -163,7 +165,7 @@ const cta = d.cta ?? page?.cta;
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   ))}
@@ -179,9 +181,4 @@ const cta = d.cta ?? page?.cta;
 </BaseLayout>
 )}
 <style>
-  .two-col { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-8); align-items: start; }
-  .two-col :global(.section-head) { margin-bottom: 0; }
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .two-col { grid-template-columns: 1fr; gap: var(--space-3); } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
 </style>

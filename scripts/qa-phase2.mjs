@@ -86,7 +86,7 @@ try {
   check("case page: no empty headings", (await page.locator("main h2:empty").count()) === 0);
 
   await page.goto(`${base}/tw/products/sut/`, { waitUntil: "networkidle" });
-  check("product with 2 cases: cards + link to the list", (await page.locator("[data-related-cases] .grid > li").count()) === 2 && (await page.locator('[data-related-cases] a[href="/tw/cases/"]').count()) === 1);
+  check("product with 2 cases: cards + link to the list", (await page.locator("[data-related-cases] .smart-grid > li").count()) === 2 && (await page.locator('[data-related-cases] a[href="/tw/cases/"]').count()) === 1);
   const order = await page.$$eval("main section[aria-labelledby]", (ss) => ss.map((x) => x.getAttribute("aria-labelledby")));
   check("product page: cases come after values and before related", order.indexOf("h-cases") > order.indexOf("h-values") && order.indexOf("h-cases") < order.indexOf("h-related"), order.join(","));
   await page.goto(`${base}/tw/products/uav/`, { waitUntil: "networkidle" });

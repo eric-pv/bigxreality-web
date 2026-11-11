@@ -6,6 +6,7 @@
  * order they appear (`sectionCount` tells the caller how many alternating sections were rendered).
  * Images are placeholders until approved photos are supplied.
  */
+import SplitSection from "./SplitSection.astro";
 import { localePath, type Lang } from "../i18n";
 import { getLocalized } from "../lib/content";
 import { getUi } from "../lib/ui";
@@ -145,13 +146,13 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
     <section class={alt()} aria-labelledby={`h-block-${i}`}>
       <div class="container">
         {b.kind === "prose" ? (
-          <div class="pb">
-            <div class="pb-head">
+          <SplitSection>
+            <div class="pb-head" slot="head">
               {b.eyebrow && <p class="t-label eyebrow"><Text value={b.eyebrow} /></p>}
               <h2 class="t-h2" id={`h-block-${i}`}><Text value={b.title} /></h2>
             </div>
             <div class="prose">{paras(b.body ?? "").map((p: string) => <p><Text value={p} /></p>)}</div>
-          </div>
+          </SplitSection>
         ) : (
           <>
             <SectionHead id={`h-block-${i}`} eyebrow={b.eyebrow ?? ""} title={b.title} description={b.intro} />
@@ -191,7 +192,6 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
 
 
 <style>
-  .pb { display: grid; grid-template-columns: 5fr 7fr; gap: var(--content-gap); align-items: start; }
   .pb-head { display: grid; gap: var(--space-2); align-content: start; }
   .pb-head h2, .pb-head .eyebrow { margin: 0; }
   .pb-head .eyebrow { color: var(--ink-muted); }
@@ -219,6 +219,6 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
   .note { margin: var(--space-5) 0 0; max-width: 48rem; color: var(--ink-muted); padding-left: var(--space-2); border-left: 2px solid var(--bxr-red); }
   .note.closing { color: var(--ink); font-size: var(--fs-h4); line-height: var(--lh-h4); max-width: 64rem; }
   .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .pb { grid-template-columns: 1fr; gap: var(--space-3); } .split, .challenge { grid-template-columns: 1fr; gap: var(--space-4); } .challenge-head { position: static; } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 1023px) { .split, .challenge { grid-template-columns: 1fr; gap: var(--space-4); } .challenge-head { position: static; } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 767px) { .cards, .pair.triple, .featured { grid-template-columns: 1fr; } }
 </style>

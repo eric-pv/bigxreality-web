@@ -8,6 +8,7 @@
  * as one repeated grid. Images are placeholders until the approved photos are supplied.
  * The hero and closing band share one CTA definition (lib/cta.ts).
  */
+import SmartCardGrid from "./SmartCardGrid.astro";
 import type { CollectionEntry } from "astro:content";
 import { localePath, type Lang } from "../i18n";
 import { availableLangs, getLocalized } from "../lib/content";
@@ -119,7 +120,7 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
     <section class={alt()} aria-labelledby="h-related">
       <div class="container">
         <SectionHead id="h-related" eyebrow={e.related} title={L.related!.title} description={L.related!.intro} />
-        <ul role="list" class="cards">
+        <SmartCardGrid>
           {relatedProducts.map((p) => (
             <li>
               <CardProduct
@@ -139,7 +140,7 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -157,9 +158,6 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
   </CtaBand>
 </BaseLayout>
 <style>
-  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
   .back { padding-block: var(--space-4); }
   .back a { color: var(--ink); text-decoration: none; font-weight: 500; }
   .back a:hover { color: var(--bxr-text-red); }
