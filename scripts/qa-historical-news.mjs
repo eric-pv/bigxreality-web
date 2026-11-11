@@ -32,7 +32,7 @@ try{
    const copy=current(r.id,lang),base=current(r.id,'tw'),url=`/${lang}/news/${r.id}/`;
    assert.equal((await page.goto(server.base+url)).status(),200);
    assert.equal(await page.locator('h1').innerText(),copy.title);
-   const body=await page.locator('.prose').innerText(),norm=s=>s.replace(/\s+/g,' ').trim();assert.equal(norm(body),norm(await page.evaluate(html=>new DOMParser().parseFromString(html,'text/html').body.textContent,await marked.parse(copy.body))),url);
+   const body=await page.locator('.prose').evaluate(el=>{const c=el.cloneNode(true);c.querySelectorAll('.bxr-inline-media').forEach(f=>f.remove());document.body.append(c);const t=c.innerText;c.remove();return t;}),norm=s=>s.replace(/\s+/g,' ').trim();assert.equal(norm(body),norm(await page.evaluate(html=>new DOMParser().parseFromString(html,'text/html').body.textContent,await marked.parse(copy.body))),url);
    assert.equal(await page.locator('meta[name="description"]').getAttribute('content'),copy.seo?.description??copy.summary);
    assert.equal(await page.locator('.article-header .cover .placeholder').count(),0);assert.equal(await page.locator('.article-header .cover img').count(),ready(r.id,lang)?1:0);
    if(ready(r.id,lang))await page.locator('.article-header .cover img').evaluate(img=>img.decode());
