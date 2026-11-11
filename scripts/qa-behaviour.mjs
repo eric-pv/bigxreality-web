@@ -143,6 +143,9 @@ try {
     await page.goto(`${base}/tw/products/${slug}/`, { waitUntil: "networkidle" });
     check(`${slug}: product identity in H1; V2.0 value headline retained`, !!(await page.locator("h1").innerText()).trim() && (await page.locator(".landing-overview h2").innerText()).trim() === h1);
     check(`${slug}: ${scen} scenario cards`, (await page.locator(".scenarios .card").count()) === scen);
+    const galleryItems = (L.blocks ?? []).filter(b => b.kind === "media").flatMap(b => b.items ?? []);
+    check(`${slug}: ${galleryItems.length} media-gallery cards`, (await page.locator(".media-gallery .card").count()) === galleryItems.length);
+    check(`${slug}: all approved gallery images are rendered`, (await page.locator(".media-gallery .card img").count()) === galleryItems.filter(item => item.image?.src && item.image.alt && item.image.status !== "withheld").length);
     check(`${slug}: ${flowCount} flow steps, ${capCount} capabilities`, (await page.locator(".flow .step").count()) === flowCount && (await page.locator(".feature, .plain .cap").count()) === capCount);
     const hrefs = await page.locator("a[href]").evaluateAll((els) => els.map((e) => e.getAttribute("href")));
     check(`${slug}: related links`, related.every((h) => hrefs.includes(h)), related.filter((h) => !hrefs.includes(h)).join(" "));
