@@ -346,8 +346,13 @@
   "news-23-songshan-school-2025": {
     "publicationDate": "2025-12-30",
     "cover": {
-      "filename": "2025-songshan-school-xr-education.jpg",
-      "approved": false
+      "filename": "2025-songshan-school-main.jpg",
+      "approved": true,
+      "alt": {
+        "tw": "松山家商師生與活動團隊手持全民國防教育活動布條合影",
+        "en": "Songshan teachers, students and event staff pose with the national defense education activity banner",
+        "jp": "国防教育活動の横断幕を掲げて記念撮影する松山家商の教員、生徒と運営スタッフ"
+      }
     },
     "gallery": [],
     "videos": [],

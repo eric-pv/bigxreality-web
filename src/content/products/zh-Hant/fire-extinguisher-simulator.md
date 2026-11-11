@@ -42,12 +42,14 @@ landing:
     images:
       - need: 擬真滅火器鋼瓶實際照片（4:3）
         ratio: 16 / 9
-        src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.webp
-        alt: 配戴 VR 頭盔的學員操作滅火器訓練設備
+        src: ../../../assets/images/products/fire-extinguisher-simulator-cylinder.jpg
+        alt: 擬真滅火器鋼瓶與握柄、軟管及噴嘴
       - need: 握柄與軟管噴嘴局部特寫（4:3）
         ratio: 16 / 9
       - need: 經核准的 VR 火場畫面（4:3）
         ratio: 16 / 9
+        src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
+        alt: VR 廚房火場畫面，顯示爐台火勢與虛擬滅火器
     pillars:
       - title: 自主研發擬真滅火器
         description: 採用依實際滅火器比例及重量分布設計的鋼瓶模組，透過實體握柄與軟管噴嘴，讓學員以更貼近真實操作的方式進行練習
@@ -63,6 +65,10 @@ landing:
         image:
           need: 擬真滅火器操作照片（16:9）
           ratio: 16 / 9
+          src: ../../../assets/images/products/fire-extinguisher-simulator-vr-training-illustration.png
+          alt: 配戴 VR 頭戴裝置的消防員操作滅火器之情境示意圖
+          kind: illustration
+          caption: VR 滅火訓練情境示意圖
       - title: 雙控制器精準追蹤
         content: 以整合於握柄與噴嘴的雙控制器追蹤操作動作，使噴射方向及掃射角度與虛擬情境相互對應
       - title: 四類火災知識
@@ -85,6 +91,8 @@ landing:
         image:
           need: 測驗成果畫面（16:9）
           ratio: 16 / 9
+          src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
+          alt: VR 訓練畫面顯示「滅火完成」，火勢已撲滅
   flow:
     title: 三種訓練模式，讓學習從認識走向實際操作
     steps:
@@ -97,6 +105,9 @@ landing:
       - title: 測驗模式｜完成情境任務
         description: 學員選擇模擬火場，依據環境及火源條件進行操作。系統依訓練流程呈現操作反應，並在測驗結束後顯示完成時間及操作結果
         icon: target
+        image:
+          src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
+          alt: VR 滅火測驗畫面，火勢仍在燃燒，上方顯示計時 60 秒
       - title: 成果檢視｜反覆練習與修正
         description: 學員可依據測驗結果檢視自身表現，再次進入訓練模式進行練習
         icon: review
@@ -109,6 +120,8 @@ landing:
         image:
           need: 住宅廚房火場場景圖（16:9）
           ratio: 16 / 9
+          src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
+          alt: VR 廚房火場畫面，顯示爐台火勢與虛擬滅火器
       - title: 住宅客廳
         description: 以居家生活空間為背景，練習觀察火源位置與周遭環境，熟悉滅火器操作流程
         image:
@@ -119,6 +132,8 @@ landing:
         image:
           need: 辦公室火場場景圖（16:9）
           ratio: 16 / 9
+          src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
+          alt: VR 辦公室火場畫面，文件櫃附近起火並顯示瞄準方向
       - title: 科技廠房
         description: 呈現產業場域的火源與環境條件，延伸不同工作場所的火災情境認識
         image:
@@ -154,6 +169,9 @@ landing:
   closing:
     title: 讓每一次滅火練習，都累積更完整的應變準備
     description: 了解 VR 虛擬滅火訓練系統如何透過擬真操作、沉浸式情境與三階段訓練模式，支援消防教育及專業訓練需求
+  introImage:
+    src: ../../../assets/images/products/fire-extinguisher-simulator-carry-case.jpg
+    alt: 攜行箱內收納 VR 頭戴裝置、擬真滅火器與控制器
 relatedProducts: []
 relatedSolutions:
   - fire-rescue

@@ -70,13 +70,15 @@ landing:
     images:
       - need: Photo of the realistic extinguisher cylinder (4:3)
         ratio: 16 / 9
-        src: ../../../assets/images/products/vr-fire-extinguisher-training-trainee.webp
-        alt: A trainee wearing a VR headset operates fire extinguisher training
-          equipment
+        src: ../../../assets/images/products/fire-extinguisher-simulator-cylinder.jpg
+        alt: Realistic extinguisher cylinder with handle, hose and nozzle
       - need: Close-up of the handle and hose nozzle (4:3)
         ratio: 16 / 9
       - need: Approved VR fire scene view (4:3)
         ratio: 16 / 9
+        src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
+        alt: VR kitchen fire scene showing flames at the stove and a virtual
+          extinguisher
     pillars:
       - title: In-House Developed Realistic Fire Extinguisher
         description: A cylinder module designed according to the proportions and weight
@@ -101,6 +103,11 @@ landing:
         image:
           need: Photo of realistic fire extinguisher operation (16:9)
           ratio: 16 / 9
+          src: ../../../assets/images/products/fire-extinguisher-simulator-vr-training-illustration.png
+          alt: Illustration of a firefighter wearing a VR headset and operating an
+            extinguisher
+          kind: illustration
+          caption: Illustration of VR fire extinguisher training
       - title: Precise Dual-Controller Tracking
         content: Dual controllers integrated into the handle and nozzle track the
           operating actions so that spray direction and sweep angle correspond
@@ -131,6 +138,9 @@ landing:
         image:
           need: Test results screen (16:9)
           ratio: 16 / 9
+          src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
+          alt: VR training screen showing completion after the flames have been
+            extinguished
   flow:
     title: Three Training Modes Taking Learning from Understanding to Hands-On
       Operation
@@ -151,6 +161,9 @@ landing:
           responses according to the training process and, at the end of the
           test, displays the completion time and operating result
         icon: target
+        image:
+          src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
+          alt: VR extinguisher test with active flames and a 60-second timer
       - title: Results Review | Repeated Practice and Correction
         description: Test results support individual performance review and further
           practice in the training modes
@@ -167,6 +180,9 @@ landing:
         image:
           need: Home kitchen fire scene (16:9)
           ratio: 16 / 9
+          src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
+          alt: VR kitchen fire scene showing flames at the stove and a virtual
+            extinguisher
       - title: Home Living Room
         description: Using a domestic living space as the background, trainees practise
           observing the location of the fire source and the surroundings and
@@ -180,6 +196,8 @@ landing:
         image:
           need: Office fire scene (16:9)
           ratio: 16 / 9
+          src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
+          alt: VR office fire scene with flames near filing cabinets and an aiming guide
       - title: High-Tech Factory
         description: Presents fire sources and environmental conditions in an industrial
           setting, extending awareness of fire situations in different
@@ -232,6 +250,9 @@ landing:
     description: Find out how the VR Fire Extinguisher Training System supports fire
       safety education and professional training needs through realistic
       operation, immersive scenarios and three-stage training modes
+  introImage:
+    src: ../../../assets/images/products/fire-extinguisher-simulator-carry-case.jpg
+    alt: A carry case holds a VR headset, realistic extinguisher and controllers
 faq:
   - question: Is VR fire extinguisher training a game, or can it really teach how to
       put out a fire?
