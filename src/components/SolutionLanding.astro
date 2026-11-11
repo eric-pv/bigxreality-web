@@ -6,6 +6,7 @@
  * Related products are those that list this solution (products.relatedSolutions) plus the ones the
  * solution names itself; with none, the block shows only related solutions, or nothing.
  */
+import SmartCardGrid from "./SmartCardGrid.astro";
 import {contentLocale} from "../lib/content-locale";
 import type { CollectionEntry } from "astro:content";
 import { localePath, type Lang } from "../i18n";
@@ -127,7 +128,7 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
     <section class={alt()} aria-labelledby="h-related">
       <div class="container">
         <SectionHead id="h-related" eyebrow={e.related} title={L.related!.title} description={L.related!.intro} />
-        <ul role="list" class="cards balanced">
+        <SmartCardGrid>
           {relatedProducts.map((p) => (
             <li>
               <CardProduct
@@ -147,7 +148,7 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -166,7 +167,6 @@ const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined),
   .back { padding-block: var(--space-4); }
   .back a { color: var(--ink); text-decoration: none; font-weight: 500; }
   .back a:hover { color: var(--bxr-text-red); }
-  .cards { margin: 0; padding: 0; list-style: none; }
 </style>
 
 <style>.landing-overview .narrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); } .landing-overview p { line-height: 1.8; } .landing-overview .intro-media { margin-top: var(--space-3); }</style>

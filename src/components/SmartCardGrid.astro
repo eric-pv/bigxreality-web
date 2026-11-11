@@ -1,0 +1,42 @@
+---
+/**
+ * Related-content card grid for inner pages (never the home page, which keeps its own layouts).
+ * Every card keeps the desktop three-column width whatever the count; rows are balanced so no
+ * card is left alone on the last row, and rows of two (or a single card) are centred:
+ *   1 → 1 · 2 → 2 · 3 → 3 · 4 → 2+2 · 5 → 3+2 · 7 → 3+2+2 · 8 → 3+3+2 · 10 → 3+3+2+2 …
+ * Done in CSS alone (quantity queries on the slotted <li>s), so source order is kept and no
+ * script runs. Tablet: at most two per row, an odd last card centred. Phone: one column.
+ */
+interface Props { class?: string; [attr: `data-${string}`]: unknown }
+const { class: className, ...attrs } = Astro.props;
+---
+<ul role="list" class:list={["smart-grid", className]} {...attrs}><slot /></ul>
+<style>
+  /* Six tracks, each card spans two: a card is exactly one third of the row (the standard width),
+     and starting a card on track 2 or 3 centres a row of two or one. */
+  .smart-grid {
+    --card-w: calc((var(--container) - 2 * var(--gutter)) / 3);
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, calc((var(--card-w) - var(--gutter)) / 2)));
+    justify-content: center;
+    gap: var(--gutter);
+    margin: 0; padding: 0; list-style: none;
+  }
+  .smart-grid > :global(li) { grid-column: auto / span 2; min-width: 0; }
+  @media (min-width: 1024px) {
+    /* Count ≡ 2 (mod 3): the last two share a centred row. */
+    .smart-grid > :global(li:nth-child(3n+1):nth-last-child(2)) { grid-column: 2 / span 2; }
+    /* Count ≡ 1 (mod 3), four or more: the last four become two centred rows of two. */
+    .smart-grid > :global(li:nth-child(3n+1):nth-last-child(4)),
+    .smart-grid > :global(li:nth-child(3n):nth-last-child(2)) { grid-column: 2 / span 2; }
+    .smart-grid > :global(li:only-child) { grid-column: 3 / span 2; }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .smart-grid { grid-template-columns: repeat(4, minmax(0, calc((var(--card-w) - var(--gutter)) / 2))); }
+    .smart-grid > :global(li:nth-child(odd):last-child) { grid-column: 2 / span 2; }
+  }
+  @media (max-width: 767px) {
+    .smart-grid { grid-template-columns: minmax(0, var(--card-w)); }
+    .smart-grid > :global(li) { grid-column: 1; }
+  }
+</style>

@@ -1,4 +1,5 @@
 ---
+import SmartCardGrid from "../../../components/SmartCardGrid.astro";
 import {getEntry} from "astro:content";
 import { publicUrl } from '../../../lib/public-url.ts';
 
@@ -54,10 +55,10 @@ const structuredData = [{ "@type": "WebPage", name: content.title, description: 
         <h2 class="t-h2" id="h-related-resources"><Text value={content.relatedTitle} /></h2>
         {relationNotes.length > 0 && <div class="relation-notes">{relationNotes.map((note) => <p>{note}</p>)}</div>}
         {products.length > 0 && solutions.length > 0 && <p class="t-label resource-heading">{relatedLabels[lang].products}</p>}
-        {products.length > 0 && <ul class="resources balanced" role="list" data-related-products>{products.map((product) => <li><CardProduct lang={lang} href={localePath(lang, "products", product.slug)} name={product.loc.data.hero.name} summary={product.loc.data.summary ?? product.loc.data.hero.tagline} domains={product.base.data.domains} /></li>)}</ul>}
+        {products.length > 0 && <SmartCardGrid data-related-products>{products.map((product) => <li><CardProduct lang={lang} href={localePath(lang, "products", product.slug)} name={product.loc.data.hero.name} summary={product.loc.data.summary ?? product.loc.data.hero.tagline} domains={product.base.data.domains} /></li>)}</SmartCardGrid>}
         {products.length > 0 && solutions.length > 0 && <p class="t-label resource-heading">{relatedLabels[lang].solutions}</p>}
-        {solutions.length > 0 && <ul class="resources balanced" role="list" data-related-solutions>{solutions.map((solution) => <li><CardSolution lang={lang} href={localePath(lang, "solutions", solution.slug)} domain={solution.base.data.domain} name={solution.loc.data.name} summary={solution.loc.data.summary} /></li>)}
-        </ul>}
+        {solutions.length > 0 && <SmartCardGrid data-related-solutions>{solutions.map((solution) => <li><CardSolution lang={lang} href={localePath(lang, "solutions", solution.slug)} domain={solution.base.data.domain} name={solution.loc.data.name} summary={solution.loc.data.summary} /></li>)}
+        </SmartCardGrid>}
       </div>
     </section>
     <RelatedTechnologyArticles lang={lang} technology={slug} />
@@ -74,7 +75,6 @@ const structuredData = [{ "@type": "WebPage", name: content.title, description: 
   .related-resources h2 { margin-bottom: var(--space-5); max-width: 46rem; }
   .relation-notes { max-width: 52rem; display: grid; gap: var(--space-2); margin-bottom: var(--space-5); }
   .resource-heading { margin-block: var(--space-5) var(--space-3); }
-  .resources { gap: var(--gutter); }
   .technology-page :global(.card img), .technology-page :global(.card a) { transition: none; }
   .technology-page :global(.card:hover img) { transform: none; }
   .technology-page :global(.item[open] .a) { animation: none !important; }
@@ -84,6 +84,4 @@ const structuredData = [{ "@type": "WebPage", name: content.title, description: 
   .technology-system-integration :global(.page-hero) { border-bottom: 6px solid var(--sector-police-deep); }
   .technology-decision-visualization :global(.page-hero) { border-bottom: 6px solid var(--sector-army-deep); }
   .technology-training-design :global(.page-hero) { border-bottom: 6px solid var(--bxr-signal-teal); }
-  @media (max-width: 1023px) {  }
-  @media (max-width: 767px) {  }
 </style>

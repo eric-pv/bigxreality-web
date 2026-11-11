@@ -101,7 +101,7 @@ try {
   // Product content only: the hidden inline inquiry form (InlineInquiry.astro) has its own heading and is checked separately.
   check("landing sections in order", JSON.stringify(await page.$$eval("main h2:not([data-inline-inquiry] h2)", (hs) => hs.map((h) => h.id))) === JSON.stringify(["landing-overview-title", "h-challenge", "h-approach", "h-capabilities", "h-flow", "h-scenarios", "h-values", "h-related", "product-faq-title", "h-related-technologies", "product-cta"]));
   check("inline inquiry form follows product content, hidden until opened", await page.$eval("[data-inline-inquiry]", (s) => s.hidden && !!s.querySelector("h2#inline-inquiry-title")));
-  const related = await page.locator("#h-related ~ .cards a, section[aria-labelledby=h-related] .cards a").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
+  const related = await page.locator("section[aria-labelledby=h-related] .smart-grid a").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
   check("related products and solution link to existing pages", relatedOf(sut).every((h) => related.includes(h)), related.join(" "));
   check("no UAV / USV card shows an English-name placeholder", (await page.locator("section[aria-labelledby=h-related] mark.pending").count()) === 0);
   const pillarTitle = await page.locator(".pillar h3").first().evaluate((h) => getComputedStyle(h).color);

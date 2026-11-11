@@ -6,6 +6,8 @@ import ContentBody from "../../../components/ContentBody.astro";
  * rendered with the marker visible. Products with a `landing` block use the sales
  * landing page instead (components/ProductLanding.astro).
  */
+import SplitSection from "../../../components/SplitSection.astro";
+import SmartCardGrid from "../../../components/SmartCardGrid.astro";
 import { LANGS, localePath, type Lang } from "../../../i18n";
 import { getLocalized, availableLangs, integratedProducts, validateRelations } from "../../../lib/content";
 import { articlesAbout, articleHref, tagNames } from "../../../lib/articles";
@@ -142,10 +144,10 @@ const deploymentRows = [
   <!-- 3 Overview -->
   {has("overview") && (
     <section class="section" id="overview" aria-labelledby="h-overview">
-      <div class="container two-col">
-        <SectionHead id="h-overview" eyebrow={head("overview").eyebrow} title={head("overview").title} />
+      <div class="container"><SplitSection gap="var(--space-8)">
+        <SectionHead slot="head" id="h-overview" eyebrow={head("overview").eyebrow} title={head("overview").title} />
         <ContentBody html={overviewHtml} lang={lang} entryFile={`src/content/products/${lang}/${slug}.md`} />
-      </div>
+      </SplitSection></div>
     </section>
   )}
 
@@ -227,7 +229,7 @@ const deploymentRows = [
         {integrated.length > 0 && (
           <>
             <p class="t-label sublabel"><Text value={ui.product.integratesWith} /></p>
-            <ul role="list" class="cards balanced">
+            <SmartCardGrid>
               {integrated.map((p) => (
                 <li>
                   <CardProduct
@@ -238,7 +240,7 @@ const deploymentRows = [
                   />
                 </li>
               ))}
-            </ul>
+            </SmartCardGrid>
           </>
         )}
       </div>
@@ -250,7 +252,7 @@ const deploymentRows = [
     <section class="section section--alt" id="relatedSolutions" aria-labelledby="h-relatedSolutions">
       <div class="container">
         <SectionHead id="h-relatedSolutions" eyebrow={head("relatedSolutions").eyebrow} title={head("relatedSolutions").title} />
-        <ul role="list" class="cards balanced">
+        <SmartCardGrid>
           {solutions.map((s) => (
             <li>
               <CardSolution
@@ -260,7 +262,7 @@ const deploymentRows = [
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -272,7 +274,7 @@ const deploymentRows = [
     <section class="section" id="relatedArticles" aria-labelledby="h-relatedArticles">
       <div class="container">
         <SectionHead id="h-relatedArticles" eyebrow={head("relatedArticles").eyebrow} title={head("relatedArticles").title} />
-        <ul role="list" class="cards balanced">
+        <SmartCardGrid>
           {articles.map((a, i) => (
             <li>
               <CardArticle
@@ -283,7 +285,7 @@ const deploymentRows = [
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -335,8 +337,6 @@ const deploymentRows = [
   .toc a:focus-visible { outline-offset: -2px; }
   :global(html) { scroll-padding-top: calc(var(--header-h) + 48px + var(--space-2)); }
 
-  .two-col { display: grid; grid-template-columns: 5fr 7fr; gap: var(--space-8); align-items: start; }
-  .two-col :global(.section-head) { margin-bottom: 0; }
   .prose { display: grid; gap: var(--space-2); max-width: 44rem; }
   .tiles { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
   .tile { display: grid; gap: var(--space-1); align-content: start; padding: var(--space-3); background: var(--surface); border-top: 2px solid var(--bxr-black); }
@@ -353,11 +353,11 @@ const deploymentRows = [
   .figures dt { color: var(--ink-muted); }
   .figures dd { margin: 0; font-size: var(--fs-h3); font-weight: 500; }
   .sublabel { color: var(--ink-muted); margin-bottom: var(--space-2); }
-  .cards { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
   @media (max-width: 1023px) {
-    .two-col { grid-template-columns: 1fr; gap: var(--space-3); }
+    .tiles, .steps, .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 767px) {
+    .tiles, .steps, .figures { grid-template-columns: 1fr; }
     .spec div { grid-template-columns: 1fr; gap: var(--space-1); }
   }
 </style>

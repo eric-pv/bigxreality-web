@@ -1,0 +1,25 @@
+---
+/**
+ * Two-column section body for inner pages: a heading group (slot "head") beside the content.
+ * align "center": a chapter heading (rule, number, title, eyebrow…) is centred as one block
+ * against the content column, so a long right column leaves no empty band under the title.
+ * align "start": for anything that must line up with the start of the content (in-page nav,
+ * filters, form labels). Below 1024px it stacks, heading first, at its natural height.
+ */
+interface Props { align?: "center" | "start"; columns?: string; gap?: string; stackGap?: string; class?: string }
+const { align = "center", columns = "5fr 7fr", gap = "var(--content-gap)", stackGap = "var(--space-3)", class: className } = Astro.props;
+---
+<div class:list={["split-section", `split-section--${align}`, className]} style={`--split-cols: ${columns}; --split-gap: ${gap}; --split-stack-gap: ${stackGap}`}>
+  <div class="split-head"><slot name="head" /></div>
+  <div class="split-body"><slot /></div>
+</div>
+<style>
+  .split-section { display: grid; grid-template-columns: var(--split-cols); gap: var(--split-gap); align-items: start; }
+  .split-head, .split-body { min-width: 0; }
+  .split-section--center > .split-head { align-self: center; }
+  .split-head > :global(.section-head) { margin-bottom: 0; }
+  @media (max-width: 1023px) {
+    .split-section { grid-template-columns: minmax(0, 1fr); gap: var(--split-stack-gap); }
+    .split-section--center > .split-head { align-self: start; }
+  }
+</style>

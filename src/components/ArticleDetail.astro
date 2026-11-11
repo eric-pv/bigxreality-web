@@ -7,6 +7,7 @@ import { publicUrl } from '../lib/public-url.ts';
  * case-study facts → body → tags → related products / solutions / articles → CTA.
  * The only red buttons are in the closing CTA band.
  */
+import SmartCardGrid from "./SmartCardGrid.astro";
 import { csrCopy, csrCategories, csrLabel } from "../lib/csr";
 import { marked } from "marked";
 import { newsMedia } from "../lib/news-media";
@@ -202,7 +203,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     <section class="section section--alt" aria-labelledby="h-products">
       <div class="container">
         <SectionHead id="h-products" eyebrow={t.relatedProducts.eyebrow} title={t.relatedProducts.title} />
-        <ul role="list" class="cards balanced">
+        <SmartCardGrid>
           {products.map((p) => (
             <li>
               <CardProduct
@@ -213,7 +214,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -222,7 +223,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     <section class="section" aria-labelledby="h-solutions">
       <div class="container">
         <SectionHead id="h-solutions" eyebrow={t.relatedSolutions.eyebrow} title={t.relatedSolutions.title} />
-        <ul role="list" class="cards balanced">
+        <SmartCardGrid>
           {solutions.map((s) => (
             <li>
               <CardSolution
@@ -232,7 +233,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -241,7 +242,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     <section class="section section--alt" aria-labelledby="h-related">
       <div class="container">
         <SectionHead id="h-related" eyebrow={t.related.eyebrow} title={t.related.title} />
-        <ul role="list" class="cards balanced">
+        <SmartCardGrid>
           {related.map((a, i) => (
             <li>
               <CardArticle
@@ -251,7 +252,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
               />
             </li>
           ))}
-        </ul>
+        </SmartCardGrid>
       </div>
     </section>
   )}
@@ -292,7 +293,6 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     border: 1px solid var(--bxr-ash); color: var(--ink); text-decoration: none; font-size: var(--fs-small);
   }
   .tags a:hover { border-color: var(--bxr-black); }
-  .cards { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
   @media (max-width: 767px) { .facts { grid-template-columns: 1fr; } }
 </style>
 
