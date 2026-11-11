@@ -13,8 +13,8 @@ hero:
   englishName: Small Unit Tactical Training System
   tagline: 反復訓練で操作への習熟を図り、個人技能をチーム連携やシステム間訓練へつなげる
   image:
-    src: ../../../assets/images/products/sut-squad-vr-tactical-training.webp
-    alt: VRヘッドセットと戦術装備を着用した4名の訓練生が、展示ステージで訓練用の銃を使って演習する様子
+    src: ../../../assets/images/products/sut-cqb-context-illustration.png
+    alt: 室内戦闘の場面で連携行動する小部隊のイメージ図
 summary: XRシナリオ、模擬訓練用銃器、複数人での演習を組み合わせ、操作練習、CQB、訓練後の振り返りを支援します。
 landing:
   headline: 操作への習熟を図り、任務と仲間に注意を向けられる訓練へ
@@ -24,7 +24,12 @@ landing:
 
     模擬訓練用銃器、射撃単元、戦術シナリオを組み合わせ、命中情報、教官による観察、訓練後レポートを次の練習に活用できます。単独導入に加え、任務やインターフェースの条件に応じて他のBXR訓練製品と組み合わせられます。
   heroImage:
-    need: SUTの実際の訓練写真（16:9）
+    need: CQBシーンのカバーイメージ（16:9）
+    ratio: 16 / 9
+    src: ../../../assets/images/products/sut-cqb-context-illustration.png
+    alt: 室内戦闘の場面で連携行動する小部隊のイメージ図
+    kind: illustration
+    caption: CQB訓練シーンのイメージ図
   ctaLabel: SUTの訓練構成を相談する
   challenge:
     title: 操作に慣れ、状況に注意を向けるために
@@ -50,16 +55,20 @@ landing:
       複数の訓練者が参加し、課程に応じて役割分担、合図、連携行動を練習できます。同時参加人数と利用可能なモジュールは、システム構成により確認します。
     pillars:
       - title: 操作への習熟から任務へ
-        description: 反復練習で操作に慣れ、照準、射撃、目標への対応をシナリオに適用します。
+        description: 反復練習で操作に慣れ、照準、射撃、目標への対応をシナリオに適用します
       - title: CQBの戦術的な文脈を保つ
-        description: 室内戦闘や犯罪拠点の制圧シナリオで、空間把握、相互援護、行動調整を練習します。
+        description: 室内戦闘や犯罪拠点の制圧シナリオで、空間把握、相互援護、行動調整を練習します
       - title: 複数人の連携も練習に組み込む
-        description: 同じ任務条件に取り組み、合図、分担、行動のタイミングを合わせます。
+        description: 同じ任務条件に取り組み、合図、分担、行動のタイミングを合わせます
     images:
-      - need: SUT訓練機器を操作する実際の写真（16:9）
+      - need: CQB室内戦闘の実際の画面（16:9）
         ratio: 16 / 9
-      - need: CQBと複数人訓練の実際の画面（16:9）
+        src: ../../../assets/images/products/sut-cqb-room-layout.png
+        alt: 部屋と廊下の配置を示すSUT室内戦闘シナリオの俯瞰画面
+      - need: 犯罪拠点制圧の実際の画面（16:9）
         ratio: 16 / 9
+        src: ../../../assets/images/products/sut-criminal-hideout-simulation.png
+        alt: コンテナ、木箱、通路を示すSUT犯罪拠点制圧の俯瞰画面
   capabilities:
     title: 訓練目標に合わせて演習を組み合わせる
     intro: 単独の操作練習からシナリオ演習まで、課程の段階に応じて選択できます。利用可能な内容は構成により異なります。
@@ -82,29 +91,27 @@ landing:
         image:
           need: 戦場シミュレーションと複数人訓練の実際の画面（16:9）
           ratio: 16 / 9
+          src: ../../../assets/images/products/sut-battlefield-sandbag-simulation.png
+          alt: 仮想の土のう遮蔽物のそばで前方を狙うSUT戦場シミュレーションの訓練者視点
       - title: モード切替と武器の持ち替え
         content: 課程に応じて訓練モードとテストモードを切り替えられます。構成によって短銃を追加し、武器の持ち替え練習にも対応します。
         value: 習熟から確認テストへ進み、必要に応じて装備操作の練習を広げられます。
         image:
           need: 訓練・テストモードまたは長銃から短銃への持ち替え画像（16:9）
           ratio: 16 / 9
-  flow:
-    title: 演習を振り返り、次の練習を決める
-    intro: 目標設定、演習、振り返りを通じ、訓練者と教官が共通の課題に取り組める流れをつくります。
-    steps:
-      - title: 今回の訓練課題を設定する
-        description: 射撃単元や戦術シナリオを選び、練習する操作、判断、連携の課題を確認します。
-        icon: target
-      - title: 操作と連携を練習する
-        description: 個人練習または共同演習を行い、任務条件の中で操作とチーム連携を練習します。
-        icon: team
-      - title: 演習中の行動を確認する
-        description: 弾着点と命中状況をリアルタイム表示。教官画面の視点切替により、訓練者の行動を観察できます。
-        icon: variation
-      - title: レポートを振り返り再び練習する
-        description: 訓練後レポートと教官の観察をもとに改善点を整理し、次の練習と確認を計画します。
-        icon: review
   blocks:
+    - kind: checks
+      title: 演習を振り返り、次の練習を決める
+      intro: 目標設定、演習、振り返りを通じ、訓練者と教官が共通の課題に取り組める流れをつくります。
+      items:
+        - title: 今回の訓練課題を設定する
+          content: 射撃単元や戦術シナリオを選び、練習する操作、判断、連携の課題を確認します。
+        - title: 操作と連携を練習する
+          content: 個人練習または共同演習を行い、任務条件の中で操作とチーム連携を練習します。
+        - title: 演習中の行動を確認する
+          content: 弾着点と命中状況をリアルタイム表示。教官画面の視点切替により、訓練者の行動を観察できます。
+        - title: レポートを振り返り再び練習する
+          content: 訓練後レポートと教官の観察をもとに改善点を整理し、次の練習と確認を計画します。
     - kind: featured
       title: SUTを起点に、任務訓練を広げる
       intro: SUTは単独の小部隊訓練に加え、任務、インターフェース、装備の条件に応じて他のBXR製品と組み合わせられます。課程での併用とシステム接続は個別に計画し、全製品の直接接続を前提としません。
@@ -117,6 +124,14 @@ landing:
           content: 確認済みの連携例として、USVシステムの映像をSUT訓練環境へ送信できます。その他の情報交換や共同演習は、実際のインターフェースと案件構成により確認します。
           cta: USV訓練システムを見る
           product: usv
+    - kind: prose
+      title: UAV操作から対ドローン訓練へ
+      body: |-
+        UAV操作と対ドローン訓練では、異なる役割の視点を体験できます。利用可能なモジュールとシステム接続は構成により確認します。
+
+        <!-- bxr-image: {"src":"/src/assets/images/products/sut-uav-operation-training.png","alt":"森林上空の飛行視点と計器を表示したUAV操作訓練画面","approved":true} -->
+
+        <!-- bxr-image: {"src":"/src/assets/images/products/sut-counter-drone-training.png","alt":"銃器視点で空中目標への射撃を表示した対ドローン訓練画面","approved":true} -->
   values:
     title: 現在の課程に応え、次の訓練を計画する
     intro: 単独操作、共同演習、システム間の活用まで、課程、施設、装備に合わせて導入範囲を検討します。
@@ -135,6 +150,46 @@ landing:
   closing:
     title: 次に強化したい訓練は何ですか？
     description: 操作への習熟、小部隊連携、システム間の任務演習まで、課程、施設、装備に合ったSUT構成をご相談ください。
+  scenarios:
+    title: それぞれの課題に取り組む6種類の射撃単元
+    intro: 定点、複数目標、障害板、各種標的から課程に合わせて選び、操作と目標への対応を練習します。
+    items:
+      - title: 定点射撃
+        description: 固定した射撃位置で照準と操作手順を練習します。
+        image:
+          src: ../../../assets/images/products/sut-stationary-shooting.png
+          alt: 定点射撃 — 固定した射撃位置で照準と操作手順を練習します。
+          ratio: 16 / 9
+      - title: 複数目標射撃
+        description: 複数の人型標的を使い、観察、照準、操作を練習します。
+        image:
+          src: ../../../assets/images/products/sut-multiple-target-shooting.png
+          alt: 複数目標射撃 — 複数の人型標的を使い、観察、照準、操作を練習します。
+          ratio: 16 / 9
+      - title: 障害板越し射撃
+        description: 異なる高さの障害板と標的配置で、遮蔽物の後ろからの射撃を練習します。
+        image:
+          src: ../../../assets/images/products/sut-barrier-shooting.jpg
+          alt: 障害板越し射撃 — 異なる高さの障害板と標的配置で、遮蔽物の後ろからの射撃を練習します。
+          ratio: 16 / 9
+      - title: 環状標的
+        description: 模擬射撃場で環状標的への照準と射撃を練習します。
+        image:
+          src: ../../../assets/images/products/sut-circular-target.jpg
+          alt: 環状標的 — 模擬射撃場で環状標的への照準と射撃を練習します。
+          ratio: 16 / 9
+      - title: 移動人型標的
+        description: 人型標的のシナリオで、目標の観察と射撃を練習します。
+        image:
+          src: ../../../assets/images/products/sut-moving-human-target.jpg
+          alt: 移動人型標的 — 人型標的のシナリオで、目標の観察と射撃を練習します。
+          ratio: 16 / 9
+      - title: 回転標的
+        description: 回転標的を使い、目標の識別と対応を練習します。
+        image:
+          src: ../../../assets/images/products/sut-rotating-target.jpg
+          alt: 回転標的 — 回転標的を使い、目標の識別と対応を練習します。
+          ratio: 16 / 9
 faq:
   - question: SUTは操作への習熟をどのように支援しますか？
     answer: 繰り返し実施できる射撃単元と戦術シナリオで、保持、照準、操作手順を練習し、目標識別やチーム連携へつなげます。シミュレーションだけで正しい動作が自動的に身につくわけではなく、実機や実弾訓練に代わるものではありません。
@@ -145,9 +200,7 @@ faq:
   - question: 教官はどのように観察・振り返りを行いますか？
     answer: 弾着点と命中状況をリアルタイム表示し、教官画面の視点切替で行動を観察できます。訓練後レポートは振り返りと分析を支援します。
   - question: 他の訓練製品と組み合わせられますか？
-    answer: 構成に応じてUAV操作、対ドローン、ドローンによる妨害のシミュレーションを組み合わせられます。確認済みの連携例としてUSV映像をSUTへ送信できます。その他の課程併用やシステム接続は、任務、インターフェース、案件条件により確認します。
-  - question: 実弾射撃や実地訓練を置き換えられますか？
-    answer: 完全には置き換えられません。SUTは管理された環境で操作と連携を反復練習するためのものです。実際の装備の感触、反動、現場の安全手順には、適切な実機・実地訓練が必要です。
+    answer: 構成に応じてUAV操作、対ドローン、ドローンによる妨害のシミュレーションを組み合わせられます。確認済みの連携例の一つは、USVシステムの映像情報をSUTの訓練環境に送信できることです。その他の課程併用やシステム接続は、任務、インターフェース、案件条件により確認します。
 seo:
   title: SUT小部隊戦術訓練｜XR操作練習とチーム連携
   description: SUTは反復可能なXR演習にCQB、複数人訓練、射撃単元、教官の視点切替、訓練後レポートを組み合わせ、操作への習熟と連携行動を支援します。
@@ -187,7 +240,6 @@ cta:
   title: 次に強化したい訓練は何ですか？
   description: 操作への習熟、小部隊連携、システム間の任務演習まで、課程、施設、装備に合ったSUT構成をご相談ください。
 ---
-
 XRシナリオ、模擬訓練用銃器、複数人での演習を組み合わせ、操作練習、CQB、訓練後の振り返りを支援します。
 
 SUT小部隊戦術訓練システムは、繰り返し実施できるXR演習を通じ、装備操作への習熟と動作の安定を支援します。個人技能を複数人での連携や戦術シナリオへとつなげます。

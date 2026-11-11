@@ -12,9 +12,8 @@ hero:
   tagline: Build operating familiarity through repeated practice, then extend
     individual skills to team and cross-system training
   image:
-    src: ../../../assets/images/products/sut-squad-vr-tactical-training.webp
-    alt: Four trainees wearing VR headsets and tactical gear practise with training
-      firearms on a demonstration stage
+    src: ../../../assets/images/products/sut-cqb-context-illustration.png
+    alt: Illustration of a small team coordinating in an indoor combat setting
 summary: XR scenarios, realistic training weapons and shared exercises support
   handling practice, CQB applications and after-action review.
 landing:
@@ -32,7 +31,12 @@ landing:
     reports. SUT can be deployed independently or paired with other BXR training
     products according to mission and interface requirements.
   heroImage:
-    need: Photo of actual SUT training (16:9)
+    need: CQB context cover illustration (16:9)
+    ratio: 16 / 9
+    src: ../../../assets/images/products/sut-cqb-context-illustration.png
+    alt: Illustration of a small team coordinating in an indoor combat setting
+    kind: illustration
+    caption: Illustration of a CQB training scenario
   ctaLabel: Discuss SUT training options
   challenge:
     title: Familiar handling leaves more attention for the situation
@@ -74,18 +78,23 @@ landing:
     pillars:
       - title: Familiar handling before application
         description: Build operating familiarity through repetition, then apply aiming,
-          shooting and target response in a scenario.
+          shooting and target response in a scenario
       - title: Keep the tactical context of CQB
         description: Practise spatial assessment, mutual cover and coordinated action in
-          indoor combat and stronghold assault scenarios.
+          indoor combat and stronghold assault scenarios
       - title: Make teamwork part of practice
         description: Work through shared mission conditions to develop communication,
-          role coordination and team timing.
+          role coordination and team timing
     images:
-      - need: Actual SUT equipment handling photo (16:9)
+      - need: Actual CQB indoor combat screen (16:9)
         ratio: 16 / 9
-      - need: Actual CQB and shared training screen (16:9)
+        src: ../../../assets/images/products/sut-cqb-room-layout.png
+        alt: Overhead view of an SUT indoor combat scenario showing rooms and corridors
+      - need: Actual stronghold assault screen (16:9)
         ratio: 16 / 9
+        src: ../../../assets/images/products/sut-criminal-hideout-simulation.png
+        alt: Overhead SUT stronghold assault screen showing containers, crates and
+          passageways
   capabilities:
     title: Combine exercises around your training objectives
     intro: Choose individual exercises or complete scenarios to match the course
@@ -118,6 +127,9 @@ landing:
         image:
           need: Actual battlefield simulation and shared training screen (16:9)
           ratio: 16 / 9
+          src: ../../../assets/images/products/sut-battlefield-sandbag-simulation.png
+          alt: SUT battlefield simulation viewed beside virtual sandbag cover with a
+            training weapon aimed forward
       - title: Training modes and weapon transitions
         content: Switch between training and test modes to match the course stage. A
           pistol can also be added for weapon-transition practice, subject to
@@ -127,28 +139,24 @@ landing:
         image:
           need: Actual training/test mode or rifle-to-pistol transition image (16:9)
           ratio: 16 / 9
-  flow:
-    title: Review performance, then decide what to practise next
-    intro: Set an objective, run the exercise and review the outcome so instructors
-      and trainees can work on the same training priorities.
-    steps:
-      - title: Set the training priority
-        description: Choose a shooting exercise or tactical scenario and identify the
-          handling, decision-making or teamwork skills to practise.
-        icon: target
-      - title: Run individual or team exercises
-        description: Use individual practice or shared exercises to build handling
-          familiarity and teamwork within mission conditions.
-        icon: team
-      - title: Observe performance
-        description: View shot impact and hit information in real time. Instructor
-          viewpoint switching supports observation during the exercise.
-        icon: variation
-      - title: Review the report and practise again
-        description: Use after-action reports and instructor observations to identify
-          improvements and plan the next exercise.
-        icon: review
   blocks:
+    - kind: checks
+      title: Review performance, then decide what to practise next
+      intro: Set an objective, run the exercise and review the outcome so instructors
+        and trainees can work on the same training priorities.
+      items:
+        - title: Set the training priority
+          content: Choose a shooting exercise or tactical scenario and identify the
+            handling, decision-making or teamwork skills to practise.
+        - title: Run individual or team exercises
+          content: Use individual practice or shared exercises to build handling
+            familiarity and teamwork within mission conditions.
+        - title: Observe performance
+          content: View shot impact and hit information in real time. Instructor viewpoint
+            switching supports observation during the exercise.
+        - title: Review the report and practise again
+          content: Use after-action reports and instructor observations to identify
+            improvements and plan the next exercise.
     - kind: featured
       title: Start with SUT and extend to further mission training
       intro: SUT supports independent small-unit training and can be paired with other
@@ -169,6 +177,14 @@ landing:
             exercises depend on interfaces and project configuration.
           cta: Explore USV training
           product: usv
+    - kind: prose
+      title: From UAV operation to counter-drone training
+      body: |-
+        UAV operation and counter-drone training present different participant perspectives. Available modules and system connections depend on configuration.
+
+        <!-- bxr-image: {"src":"/src/assets/images/products/sut-uav-operation-training.png","alt":"UAV operation training screen with a forest flight view and flight instruments","approved":true} -->
+
+        <!-- bxr-image: {"src":"/src/assets/images/products/sut-counter-drone-training.png","alt":"Counter-drone training screen showing a weapon firing toward an airborne target","approved":true} -->
   values:
     title: Meet current course needs and plan the next stage
     intro: Plan individual practice, team exercises and cross-system applications
@@ -196,6 +212,57 @@ landing:
     description: Discuss a SUT configuration that fits your courses, facilities and
       equipment, from operating familiarity and teamwork to cross-system mission
       training.
+  scenarios:
+    title: Six shooting exercises, each with a training focus
+    intro: Select fixed-position, multiple-target, barrier and target-type exercises
+      to practise operation and target response.
+    items:
+      - title: Fixed-position shooting
+        description: Practise aiming and operating procedures from a fixed shooting
+          position.
+        image:
+          src: ../../../assets/images/products/sut-stationary-shooting.png
+          alt: Fixed-position shooting — Practise aiming and operating procedures from a
+            fixed shooting position.
+          ratio: 16 / 9
+      - title: Multiple-target shooting
+        description: Practise observation, aiming and operation with multiple silhouette
+          targets.
+        image:
+          src: ../../../assets/images/products/sut-multiple-target-shooting.png
+          alt: Multiple-target shooting — Practise observation, aiming and operation with
+            multiple silhouette targets.
+          ratio: 16 / 9
+      - title: Barrier shooting
+        description: Practise shooting from behind barriers with different heights and
+          target positions.
+        image:
+          src: ../../../assets/images/products/sut-barrier-shooting.jpg
+          alt: Barrier shooting — Practise shooting from behind barriers with different
+            heights and target positions.
+          ratio: 16 / 9
+      - title: Ring target
+        description: Practise aiming and shooting at a ring target in a simulated range.
+        image:
+          src: ../../../assets/images/products/sut-circular-target.jpg
+          alt: Ring target — Practise aiming and shooting at a ring target in a simulated
+            range.
+          ratio: 16 / 9
+      - title: Moving silhouette target
+        description: Practise target observation and shooting in a silhouette-target
+          scenario.
+        image:
+          src: ../../../assets/images/products/sut-moving-human-target.jpg
+          alt: Moving silhouette target — Practise target observation and shooting in a
+            silhouette-target scenario.
+          ratio: 16 / 9
+      - title: Rotating target
+        description: Practise target identification and response with rotating targets.
+        image:
+          src: ../../../assets/images/products/sut-rotating-target.jpg
+          alt: Rotating target — Practise target identification and response with rotating
+            targets.
+          ratio: 16 / 9
 faq:
   - question: How does SUT support operating familiarity?
     answer: Repeatable shooting exercises and tactical scenarios let trainees
@@ -219,13 +286,10 @@ faq:
       reports assist review and analysis.
   - question: Can SUT be paired with other training products?
     answer: UAV operation, counter-drone and drone harassment simulation can be
-      added according to configuration. One confirmed cross-system application
-      sends USV imagery to SUT. Other course combinations or connected functions
+      added according to configuration. One integration application confirmed so
+      far is that image information from the USV system can be sent to the SUT
+      training environment. Other course combinations or connected functions
       depend on mission, interface and project requirements.
-  - question: Can SUT replace live-fire or field training?
-    answer: No. SUT offers repeatable handling and teamwork exercises in a
-      controlled environment. Actual equipment feel, recoil and on-site safety
-      procedures still require suitable physical training.
 seo:
   title: SUT Tactical Training | XR Handling Practice and Teamwork
   description: SUT combines repeatable XR exercises, CQB scenarios, shared
@@ -293,7 +357,6 @@ cta:
     equipment, from operating familiarity and teamwork to cross-system mission
     training.
 ---
-
 XR scenarios, realistic training weapons and shared exercises support handling practice, CQB applications and after-action review.
 
 The SUT Small Unit Tactical Training System provides repeatable XR exercises that help trainees become familiar with equipment handling and develop consistent movements, then apply those skills in shared tactical scenarios.

@@ -13,8 +13,8 @@ hero:
   code: SUT
   tagline: 透過反覆演練建立操作熟悉度，從個人技能延伸至小隊協同與跨系統訓練
   image:
-    src: ../../../assets/images/products/sut-squad-vr-tactical-training.webp
-    alt: 四名學員配戴 VR 頭盔與戰術裝備，在展示舞台上持訓練用槍械演練
+    src: ../../../assets/images/products/sut-cqb-context-illustration.png
+    alt: 小隊在室內空間協同行動的巷戰情境示意圖
 summary: 結合 XR 沉浸式情境、擬真訓練槍械與多人演練，支援操作練習、CQB 戰術應用及訓後檢討。
 landing:
   headline: 從操作熟悉度到情境判斷，讓學員把更多注意力留給任務與隊友
@@ -24,7 +24,12 @@ landing:
 
     系統結合擬真訓練槍械、基本射擊與戰術情境模組，搭配即時命中資訊、教官觀察及訓後報告，讓每次練習都能成為下一次調整的依據。可獨立導入，也能依任務與介面條件搭配其他 BXR 訓練產品。
   heroImage:
-    need: SUT 實際訓練照片（16:9）
+    need: 巷戰情境封面示意圖（16:9）
+    ratio: 16 / 9
+    src: ../../../assets/images/products/sut-cqb-context-illustration.png
+    alt: 小隊在室內空間協同行動的巷戰情境示意圖
+    kind: illustration
+    caption: 巷戰訓練情境示意圖
   ctaLabel: 討論 SUT 訓練配置
   challenge:
     title: 當操作更熟悉，才能把注意力留給現場
@@ -52,16 +57,20 @@ landing:
       支援多名學員共同演練，依課程目標安排任務分工、口令溝通與協同行動；實際同訓人數與可用模組依系統配置確認。
     pillars:
       - title: 熟悉操作，再投入任務
-        description: 透過反覆練習建立操作熟悉度，再將瞄準、射擊與目標反應帶入情境。
+        description: 透過反覆練習建立操作熟悉度，再將瞄準、射擊與目標反應帶入情境
       - title: 保留 CQB 的戰術脈絡
-        description: 在室內戰鬥與犯罪據點攻堅情境中，練習空間判讀、掩護配合與行動協調。
+        description: 在室內戰鬥與犯罪據點攻堅情境中，練習空間判讀、掩護配合與行動協調
       - title: 讓多人協同成為練習的一部分
-        description: 共同面對任務條件，磨合口令、分工與行動節奏，逐步建立小隊默契。
+        description: 共同面對任務條件，磨合口令、分工與行動節奏，逐步建立小隊默契
     images:
-      - need: 學員操作 SUT 擬真訓練槍械的實際照片（16:9）
+      - need: CQB 室內戰鬥實際系統畫面（16:9）
         ratio: 16 / 9
-      - need: CQB 與多人協同的實際訓練畫面（16:9）
+        src: ../../../assets/images/products/sut-cqb-room-layout.png
+        alt: SUT 室內戰鬥場景俯視畫面，呈現房間與走道配置
+      - need: 犯罪據點攻堅實際系統畫面（16:9）
         ratio: 16 / 9
+        src: ../../../assets/images/products/sut-criminal-hideout-simulation.png
+        alt: SUT 犯罪據點攻堅俯視畫面，呈現貨櫃、木箱與通道配置
   capabilities:
     title: 依訓練目標，組合不同的演練內容
     intro: 從單項操作到完整情境，選擇適合課程階段的訓練模組；可用內容依實際配置確認。
@@ -84,29 +93,27 @@ landing:
         image:
           need: 戰場模擬與多人共同演練的實際系統畫面（16:9）
           ratio: 16 / 9
+          src: ../../../assets/images/products/sut-battlefield-sandbag-simulation.png
+          alt: SUT 戰場模擬畫面，學員視角在虛擬沙包掩體旁持訓練槍瞄準
       - title: 模式切換與武器轉換練習
         content: 可在訓練與測驗模式間切換，依課程階段安排練習與檢核；另可搭配短槍進行武器轉換訓練，相關器材與模組依配置確認。
         value: 讓課程從熟悉操作逐步進入檢核，並依需求延伸裝備操作練習。
         image:
           need: 訓練／測驗模式或長短槍轉換的實際操作畫面（16:9）
           ratio: 16 / 9
-  flow:
-    title: 看見演練表現，再決定下一步怎麼練
-    intro: 從設定目標、進行演練到訓後檢討，讓學員與教官圍繞同一個訓練重點持續調整。
-    steps:
-      - title: 設定本次訓練重點
-        description: 依課程目標選擇射擊單元或戰術情境，確認要練習的操作、判斷與協同能力。
-        icon: target
-      - title: 進行操作與協同演練
-        description: 安排個人練習或多人共同演練，在任務條件中熟悉操作並練習團隊配合。
-        icon: team
-      - title: 掌握現場表現
-        description: 即時呈現彈著點與命中狀況；教官介面支援多視角切換，協助觀察學員演練。
-        icon: variation
-      - title: 利用報告檢討並再練習
-        description: 透過訓後報告及教官觀察，整理需要調整的重點，安排下一次練習與檢核。
-        icon: review
   blocks:
+    - kind: checks
+      title: 看見演練表現，再決定下一步怎麼練
+      intro: 從設定目標、進行演練到訓後檢討，讓學員與教官圍繞同一個訓練重點持續調整。
+      items:
+        - title: 設定本次訓練重點
+          content: 依課程目標選擇射擊單元或戰術情境，確認要練習的操作、判斷與協同能力。
+        - title: 進行操作與協同演練
+          content: 安排個人練習或多人共同演練，在任務條件中熟悉操作並練習團隊配合。
+        - title: 掌握現場表現
+          content: 即時呈現彈著點與命中狀況；教官介面支援多視角切換，協助觀察學員演練。
+        - title: 利用報告檢討並再練習
+          content: 透過訓後報告及教官觀察，整理需要調整的重點，安排下一次練習與檢核。
     - kind: featured
       title: 以 SUT 為起點，延伸更多任務訓練
       intro: SUT 可獨立安排小部隊訓練，也能依任務、介面與設備條件搭配其他 BXR 產品。課程搭配與系統連線分別規劃，不代表所有設備都能直接互通。
@@ -119,6 +126,14 @@ landing:
           content: 已確認的整合應用包括將 USV 系統影像傳送至 SUT 訓練環境。其他資訊交換與共同演練方式，依實際介面及專案配置確認。
           cta: 了解 USV 訓練系統
           product: usv
+    - kind: prose
+      title: 從操作視角到反制訓練
+      body: |-
+        無人機操作與反制訓練呈現不同角色的視角。可用模組與系統連線方式依實際配置確認。
+
+        <!-- bxr-image: {"src":"/src/assets/images/products/sut-uav-operation-training.png","alt":"無人機操作訓練畫面，顯示林地飛行視角與飛行儀表","approved":true} -->
+
+        <!-- bxr-image: {"src":"/src/assets/images/products/sut-counter-drone-training.png","alt":"反制無人機訓練畫面，從持槍視角朝空中目標射擊","approved":true} -->
   values:
     title: 先滿足當前課程，再規劃下一階段訓練
     intro: 從單項操作、多人演練到跨系統搭配，依單位的課程、場地及設備條件安排導入範圍。
@@ -137,6 +152,46 @@ landing:
   closing:
     title: 你的單位，目前最需要加強哪一段訓練？
     description: 從操作熟悉、小隊協同到跨系統任務演練，與 BXR 討論適合現有課程、場地與設備條件的 SUT 配置。
+  scenarios:
+    title: 六種射擊單元，各有練習重點
+    intro: 依課程選擇定點、多重目標、障礙板與不同靶型，安排操作及目標反應練習。
+    items:
+      - title: 定點射擊
+        description: 在固定射擊位置練習瞄準與操作流程。
+        image:
+          src: ../../../assets/images/products/sut-stationary-shooting.png
+          alt: 定點射擊 — 在固定射擊位置練習瞄準與操作流程。
+          ratio: 16 / 9
+      - title: 多重目標射擊
+        description: 面對多個人形目標，練習觀察、瞄準與操作。
+        image:
+          src: ../../../assets/images/products/sut-multiple-target-shooting.png
+          alt: 多重目標射擊 — 面對多個人形目標，練習觀察、瞄準與操作。
+          ratio: 16 / 9
+      - title: 障礙板後方射擊
+        description: 依不同高度的障礙板與靶位配置，安排掩體後方射擊練習。
+        image:
+          src: ../../../assets/images/products/sut-barrier-shooting.jpg
+          alt: 障礙板後方射擊 — 依不同高度的障礙板與靶位配置，安排掩體後方射擊練習。
+          ratio: 16 / 9
+      - title: 環形靶
+        description: 在模擬射擊場練習對環形靶瞄準與射擊。
+        image:
+          src: ../../../assets/images/products/sut-circular-target.jpg
+          alt: 環形靶 — 在模擬射擊場練習對環形靶瞄準與射擊。
+          ratio: 16 / 9
+      - title: 移動人形靶
+        description: 在人形目標情境中練習目標觀察與射擊。
+        image:
+          src: ../../../assets/images/products/sut-moving-human-target.jpg
+          alt: 移動人形靶 — 在人形目標情境中練習目標觀察與射擊。
+          ratio: 16 / 9
+      - title: 旋轉靶
+        description: 透過旋轉靶訓練，練習目標辨識與反應。
+        image:
+          src: ../../../assets/images/products/sut-rotating-target.jpg
+          alt: 旋轉靶 — 透過旋轉靶訓練，練習目標辨識與反應。
+          ratio: 16 / 9
 capabilities:
   - title: 射擊單元與目標變化
     description: 涵蓋定點、多重目標與障礙板後方射擊，並提供環形靶、移動人形靶及旋轉靶。模擬 20、40、60 公尺射擊距離，支援不同條件下的瞄準與操作練習。
@@ -201,13 +256,10 @@ faq:
   - question: SUT 可以搭配其他訓練產品嗎？
     answer: 可依配置搭配無人機操作、反制及襲擾模擬；已確認的跨系統應用之一是 USV 影像可傳送至 SUT
       訓練環境。其他產品的課程搭配或系統連線，依任務、介面及專案條件確認。
-  - question: SUT 可以取代實彈射擊或實地演練嗎？
-    answer: 不能完全取代。SUT 提供安全、可反覆安排的操作與協同演練環境；真實裝備手感、後座力及現場安全程序，仍需依訓練目標安排相應的實體訓練。
 seo:
   title: SUT 小部隊戰術訓練系統｜XR 操作熟悉與多人協同
   description: SUT 透過 XR 沉浸式演練，協助學員建立操作熟悉度，結合 CQB、多人協同、射擊單元、教官多視角與訓後報告，並依配置延伸跨系統訓練。
 ---
-
 結合 XR 沉浸式情境、擬真訓練槍械與多人演練，支援操作練習、CQB 戰術應用及訓後檢討。
 
 SUT 小部隊戰術訓練系統透過可反覆安排的 XR 沉浸式演練，協助學員逐步熟悉裝備操作、建立動作一致性，並將個人技能延伸至多人協同與戰術應用。

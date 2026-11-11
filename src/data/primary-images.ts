@@ -3,7 +3,7 @@
  */
 import type { ImageMetadata } from 'astro';
 import type { Lang } from '../i18n';
-import image0 from '../assets/images/products/sut-squad-vr-tactical-training.webp';
+import image0 from '../assets/images/products/sut-cqb-context-illustration.png';
 import image1 from '../assets/images/products/uav-drone-training-operator-simulation.webp';
 import image2 from '../assets/images/products/usv-vr-training-operation.webp';
 import image3 from '../assets/images/products/wargaming-table-team-planning-discussion.webp';
@@ -20,7 +20,7 @@ import image13 from '../assets/images/products/police-simulation-training.webp';
 import image14 from '../assets/images/products/smart-city-3d-digital-twin.webp';
 
 export const primaryImages = {
-  'products/sut': { src: image0, file: "sut-squad-vr-tactical-training.webp", alt: {"tw":"SUT 小部隊 VR 戰術訓練","en":"SUT small-unit VR tactical training","jp":"SUT 小部隊 VR 戦術訓練"}, fit: 'cover', position: '50% 28%', illustration: false },
+  'products/sut': { src: image0, file: "sut-cqb-context-illustration.png", alt: {"tw":"小隊在室內空間協同行動的巷戰情境示意圖","en":"Illustration of a small team coordinating in an indoor combat setting","jp":"室内戦闘の場面で連携行動する小部隊のイメージ図"}, fit: 'cover', position: '50% 65%', illustration: true },
   'products/uav': { src: image1, file: "uav-drone-training-operator-simulation.webp", alt: {"tw":"UAV 訓練系統代表畫面","en":"UAV training system representative image","jp":"UAV 訓練システムの紹介画像"}, fit: 'cover', position: '50% 50%', illustration: false },
   'products/usv': { src: image2, file: "usv-vr-training-operation.webp", alt: {"tw":"USV 無人船訓練系統操作畫面","en":"USV training system operation","jp":"USV 訓練システムの操作画面"}, fit: 'cover', position: '50% 50%', illustration: false },
   'products/wargaming-table': { src: image3, file: "wargaming-table-team-planning-discussion.webp", alt: {"tw":"兵棋圖台訓練與規劃討論","en":"Wargaming table training and planning discussion","jp":"兵棋演習テーブルでの訓練と計画検討"}, fit: 'cover', position: '50% 50%', illustration: false },
