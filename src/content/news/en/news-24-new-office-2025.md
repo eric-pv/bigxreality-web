@@ -18,11 +18,17 @@ seo:
 
 Big x Reality (Global Power Technologies) officially opened a new office in Taipei's Da'an District, creating a base for continued development of AR, VR, XR, and AI simulation technologies and international collaboration.
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2025-new-office-simulation-demo.jpg", "alt": "The Big x Reality team introduces simulation display equipment to guests at the new office.", "approved": true} -->
+
 Aerial photography of Hujing Island in Penghu, produced by the Chi Po-lin Foundation team, was prominently displayed in the office, with the foundation's executive director Wan Guan-li taking part in the installation. Hujing is the hometown of company founder Hanson Chen. The image connects the company's local roots and cultural identity with its international ambitions.
 
 At the opening gathering, Tseng Hsien-kai of the Defense Industry Development Association discussed the defense sector's movement toward intelligent and integrated systems. Chen Yi-ting of the Taiwan Disaster Prevention Industry Association highlighted shared training needs across defense and disaster preparedness. These perspectives reflected the company's work in immersive simulation across multiple fields.
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2025-new-office-guest-discussion.jpg", "alt": "Guests exchange ideas in the new office exhibition area during the reception.", "approved": true} -->
+
 Big x Reality has participated in exhibitions in Indonesia, Taiwan, Japan, and Thailand, engaging with international professionals through XR tactical training and AI-related demonstrations. General Manager Hanson Chen described the new office as more than an expansion of space: it is a starting point for bringing Taiwan's technology to a broader global audience.
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2025-new-office-reception.jpg", "alt": "Guests gather at the new Big x Reality office for the opening reception.", "approved": true} -->
 
 Related coverage: Commercial Times https://www.ctee.com.tw/news/20251129700015-431202
 Economic Daily News https://money.udn.com/money/story/5635/9170171

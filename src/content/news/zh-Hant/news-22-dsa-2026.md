@@ -20,8 +20,12 @@ seo:
 
 SUT 透過模擬環境支援小部隊反覆練習不同任務情境，將戰術動作、團隊溝通與臨場應變納入訓練。相較於單次實體演練，模擬訓練提供了可重複體驗不同條件的機會。
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-dsa-training-experience.jpg", "alt": "參觀者在 DSA 展位配戴頭戴裝置，持訓練槍體驗設備。", "approved": true, "caption": "DSA 2026 展會現場照片。"} -->
+
 MUM-T 則著重於人員與無人系統之間的資訊共享及協同操作。透過整合不同任務角色的資訊與操作流程，訓練參與者可進一步理解協作與決策的需求。
 
 全球動力科技期待在 DSA 2026 與來自不同國家的軍警、產業及系統整合領域專業人士交流，分享 XR 模擬訓練與跨系統整合的應用方向。
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-dsa-booth-discussion.jpg", "alt": "全球動力科技團隊在 DSA 展位向來賓介紹訓練設備。", "approved": true, "caption": "DSA 2026 展會現場照片。"} -->
 
 展會資訊：DSA 2026｜馬來西亞吉隆坡｜2026 年 4 月 20 日至 23 日｜攤位 6075D。

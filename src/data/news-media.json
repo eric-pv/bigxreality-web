@@ -331,8 +331,13 @@
   "news-22-dsa-2026": {
     "publicationDate": "2026-04-18",
     "cover": {
-      "filename": "2026-dsa-sut-mum-t-training.jpg",
-      "approved": false
+      "filename": "2026-dsa-main.jpg",
+      "approved": true,
+      "alt": {
+        "tw": "全球動力科技團隊與來賓在 DSA 2026 展位前合影。",
+        "en": "The Big x Reality team and guests pose at the DSA 2026 booth.",
+        "jp": "DSA 2026のブースで記念撮影するBig x Realityのスタッフと来賓。"
+      }
     },
     "gallery": [],
     "videos": [],
@@ -351,8 +356,13 @@
   "news-24-new-office-2025": {
     "publicationDate": "2025-11-29",
     "cover": {
-      "filename": "2025-taipei-office-xr-technology.jpg",
-      "approved": false
+      "filename": "2025-new-office-main.jpg",
+      "approved": true,
+      "alt": {
+        "tw": "全球動力科技團隊與來賓在新辦公室喬遷茶會合影。",
+        "en": "The Big x Reality team and guests gather for a group photo at the new office reception.",
+        "jp": "新オフィスの移転記念交流会で記念撮影するBig x Realityのスタッフと来賓。"
+      }
     },
     "gallery": [],
     "videos": [],

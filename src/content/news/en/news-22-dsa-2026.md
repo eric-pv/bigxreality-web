@@ -20,8 +20,12 @@ Big x Reality (Global Power Technologies) announced its participation in DSA 202
 
 SUT supports repeated practice across different mission scenarios, bringing tactical movement, communication, and situational response into a simulated environment. The approach gives teams opportunities to revisit conditions that may be difficult to reproduce consistently in a single physical exercise.
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-dsa-training-experience.jpg", "alt": "A visitor wearing a headset tries a training rifle at the DSA booth.", "approved": true, "caption": "Photo from the DSA 2026 exhibition."} -->
+
 MUM-T focuses on information sharing and coordinated operations between personnel and unmanned systems. By bringing different roles and procedures into a shared training context, the approach helps participants consider the demands of collaboration and decision-making.
 
 Big x Reality looks forward to exchanging ideas with defense, law enforcement, industry, and systems integration professionals at DSA 2026.
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-dsa-booth-discussion.jpg", "alt": "The Big x Reality team introduces training equipment to guests at the DSA booth.", "approved": true, "caption": "Photo from the DSA 2026 exhibition."} -->
 
 Exhibition: DSA 2026 | Kuala Lumpur, Malaysia | April 20–23, 2026 | Booth 6075D.
