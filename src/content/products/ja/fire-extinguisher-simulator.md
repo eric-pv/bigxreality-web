@@ -143,8 +143,8 @@ landing:
         - title: トタン張りの建物
           content: トタン張りの建物での火源の状況をシミュレーションし、訓練生がさまざまな空間条件での操作を練習できるようにします
     - kind: media
-      title: 実際の画面：出火から消火完了まで
-      intro: キッチンとオフィスの各シーンで、出火時と完了時の画面を比較できます。
+      title: 実際の画面：出火・消火からテスト結果まで
+      intro: キッチンとオフィスの出火時と完了時の画面、テスト中と完了後の結果表示です。
       items:
         - title: キッチン｜出火シーン
           content: コンロ付近の火元と周囲の環境を観察
@@ -153,14 +153,12 @@ landing:
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
             alt: コンロの炎と仮想消火器を表示したVRキッチン火災シーン
-            fit: contain
         - title: キッチン｜消火完了
           content: 消火後に完了メッセージを表示
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-complete.png
             alt: 消火完了を表示したVRキッチンシーン
             ratio: 16 / 9
-            fit: contain
         - title: オフィス｜出火シーン
           content: 書類棚付近の火災を観察
           image:
@@ -168,24 +166,18 @@ landing:
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
             alt: 書類棚付近の炎と照準方向を表示したVRオフィス火災シーン
-            fit: contain
         - title: オフィス｜消火完了
           content: 消火後のシーンの状態を比較
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-office-complete.png
             alt: 消火完了を表示したVRオフィスシーン
             ratio: 16 / 9
-            fit: contain
-    - kind: media
-      title: テストの実施と結果のフィードバック
-      intro: さまざまなシミュレーションの場面で操作テストを行い、完了後に操作結果と所要時間を表示して、訓練生が自己評価し再び練習する際の根拠とします
-      items:
         - title: テスト実施中
           content: 炎と60秒のタイマーを表示した操作画面
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
-            alt: 炎が残り、60秒のタイマーを表示しているVR消火テスト画面
             fit: contain
+            alt: 炎が残り、60秒のタイマーを表示しているVR消火テスト画面
             ratio: 16 / 9
         - title: 消火完了
           content: 炎が消え、消火完了を表示
@@ -193,8 +185,8 @@ landing:
             need: テスト結果の画面（16:9）
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
-            alt: 炎が消え、「消火完了」を表示したVR訓練画面
             fit: contain
+            alt: 炎が消え、「消火完了」を表示したVR訓練画面
 faq:
   - question: VR消火訓練はゲームですか、それとも本当に消火を学べるのですか？
     answer: 消火器の操作を学ぶVR訓練システムです。シリアスゲームの対話的な学習手法を取り入れ、仮想火災で判断と操作を練習します。基本手順と機器の使い方を学ぶことが目的で、単なるゲーム体験ではありません。

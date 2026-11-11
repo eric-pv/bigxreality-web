@@ -217,9 +217,8 @@ landing:
           content: Simulates fire source situations in a sheet-metal building, giving
             trainees operating practice under different spatial conditions
     - kind: media
-      title: "Actual screens: from fire to extinguishment"
-      intro: Compare active-fire and completion screens for the kitchen and office
-        scenarios.
+      title: "Actual screens: from fire and extinguishment to assessment"
+      intro: Active-fire and completion screens for the kitchen and office, plus a timed assessment and its result.
       items:
         - title: Kitchen | Active fire
           content: Observe the fire near the stove and its surroundings
@@ -229,14 +228,12 @@ landing:
             src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
             alt: VR kitchen fire scene showing flames at the stove and a virtual
               extinguisher
-            fit: contain
         - title: Kitchen | Fire extinguished
           content: A completion message appears after the fire is extinguished
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-complete.png
             alt: VR kitchen scene showing fire extinguishment completed
             ratio: 16 / 9
-            fit: contain
         - title: Office | Active fire
           content: Observe the fire near the filing cabinets
           image:
@@ -244,26 +241,18 @@ landing:
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
             alt: VR office fire scene with flames near filing cabinets and an aiming guide
-            fit: contain
         - title: Office | Fire extinguished
           content: Compare the scene after the fire is extinguished
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-office-complete.png
             alt: VR office scene showing fire extinguishment completed
             ratio: 16 / 9
-            fit: contain
-    - kind: media
-      title: Assessment and result feedback
-      intro: Operating tests are carried out in different simulated scenes, and on
-        completion the operating result and completion time are displayed as a
-        basis for trainees to review themselves and practise again
-      items:
         - title: Assessment in progress
           content: The operation screen shows active flames and a 60-second timer
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
-            alt: VR extinguisher test with active flames and a 60-second timer
             fit: contain
+            alt: VR extinguisher test with active flames and a 60-second timer
             ratio: 16 / 9
         - title: Fire extinguished
           content: The screen displays completion after the flames have been extinguished
@@ -271,9 +260,9 @@ landing:
             need: Test results screen (16:9)
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
+            fit: contain
             alt: VR training screen showing completion after the flames have been
               extinguished
-            fit: contain
 faq:
   - question: Is VR fire extinguisher training a game, or can it really teach how to
       put out a fire?
