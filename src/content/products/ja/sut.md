@@ -109,11 +109,11 @@ landing:
       items:
         - title: UAVと対ドローン訓練
           content: 構成に応じて、UAV操作、対ドローン、ドローンによる妨害のシミュレーションを組み合わせられます。独立したUAVシステムとの接続方法や機能は、インターフェースと案件条件により確認します。
-          cta: UAV訓練システムを見る
+          cta: UAV訓練を見る
           product: uav
         - title: USVの情報と連携活用
           content: 確認済みの連携例として、USVシステムの映像をSUT訓練環境へ送信できます。その他の情報交換や共同演習は、実際のインターフェースと案件構成により確認します。
-          cta: USV訓練システムを見る
+          cta: USV訓練を見る
           product: usv
     - kind: media
       title: UAV操作から対ドローン訓練へ
