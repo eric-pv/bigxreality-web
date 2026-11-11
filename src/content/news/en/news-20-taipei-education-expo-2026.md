@@ -22,6 +22,12 @@ Invited by the Civil Defense Foundation, Big x Reality (Global Power Technologie
 
 As AI, VR, and XR technologies evolve, learning can increasingly incorporate interactive experiences and scenario-based practice alongside conventional instruction. Virtual environments give participants opportunities to explore different situations under controlled conditions and understand how simulation can complement established educational approaches.
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-taipei-education-expo-04.jpg", "alt": "A team member introduces training equipment to visitors at the Taipei Education Expo.", "approved": true} -->
+
 Visitors experienced immersive and interactive demonstrations and exchanged ideas with the team about future learning and training applications. The exhibition also provided an opportunity to discuss how scenario-based simulation can be integrated into educational settings.
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-taipei-education-expo-01.jpg", "alt": "Visitors wearing VR headsets try interactive training at the Taipei Education Expo.", "approved": true} -->
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-taipei-education-expo-07.jpg", "alt": "Visitors try VR training together in the Education Expo exhibition area.", "approved": true} -->
 
 Event: Taipei Education Expo | June 6–8, 2026 | Taipei World Trade Center Hall 1, Anxin Pavilion (Songshan High School of Commerce and Home Economics / Big x Reality).

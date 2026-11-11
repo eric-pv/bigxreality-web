@@ -153,8 +153,13 @@
   "news-16-seecat-2026": {
     "publicationDate": "2026-09-30",
     "cover": {
-      "filename": "2026-seecat-mr-cqb-training.jpg",
-      "approved": false
+      "filename": "2026-seecat-main.jpg",
+      "approved": true,
+      "alt": {
+        "tw": "全球動力科技團隊與來賓在 SEECAT 展位前合影。",
+        "en": "The Big x Reality team and guests pose in front of the SEECAT booth.",
+        "jp": "SEECATのブース前で記念撮影するBig x Realityのスタッフと来賓。"
+      }
     },
     "gallery": [],
     "videos": [],
@@ -195,20 +200,131 @@
   "news-20-taipei-education-expo-2026": {
     "publicationDate": "2026-06-06",
     "cover": {
-      "filename": "2026-taipei-education-expo-xr-learning.jpg",
-      "approved": false
+      "filename": "2026-taipei-education-expo-main.jpg",
+      "approved": true,
+      "alt": {
+        "tw": "台北教育博覽會參觀者於全球動力科技展區體驗 VR 訓練。",
+        "en": "Visitors experience VR training at the Big x Reality area of the Taipei Education Expo.",
+        "jp": "台北教育博覧会のBig x Reality展示スペースでVR訓練を体験する来場者。"
+      }
     },
-    "gallery": [],
+    "gallery": [
+      {
+        "filename": "2026-taipei-education-expo-02.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "工作人員蹲在體驗者旁，協助操作 VR 訓練設備。",
+          "en": "A team member kneels beside a participant to assist with VR training equipment.",
+          "jp": "体験者の隣にしゃがみ、VR訓練機器の操作を補助するスタッフ。"
+        }
+      },
+      {
+        "filename": "2026-taipei-education-expo-03.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "參觀者配戴 VR 頭戴裝置，以蹲姿操作訓練槍。",
+          "en": "A visitor wearing a VR headset operates a training rifle while crouching.",
+          "jp": "VRヘッドセットを装着し、しゃがんで訓練用銃を操作する来場者。"
+        }
+      },
+      {
+        "filename": "2026-taipei-education-expo-05.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "參觀者配戴 VR 頭戴裝置，練習持訓練槍瞄準。",
+          "en": "Visitors wearing VR headsets practice aiming with training rifles.",
+          "jp": "VRヘッドセットを装着し、訓練用銃で照準を合わせる来場者。"
+        }
+      },
+      {
+        "filename": "2026-taipei-education-expo-06.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "全球動力科技團隊在展區向參觀者說明訓練槍的操作方式。",
+          "en": "The Big x Reality team explains how to operate a training rifle at the exhibition.",
+          "jp": "展示会場で訓練用銃の操作方法を来場者に説明するBig x Realityのスタッフ。"
+        }
+      },
+      {
+        "filename": "2026-taipei-education-expo-08.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "參觀者以跪姿操作訓練槍，工作人員在旁協助。",
+          "en": "A visitor uses a training rifle from a kneeling position with a team member assisting.",
+          "jp": "スタッフの補助を受けながら、膝をついて訓練用銃を操作する来場者。"
+        }
+      }
+    ],
     "videos": [],
     "sourceLinks": []
   },
   "news-21-forum-22-2026": {
     "publicationDate": "2026-05-29",
     "cover": {
-      "filename": "2026-military-simulation-forum-usv-nova-xr.jpg",
-      "approved": false
+      "filename": "2026-may-forum-main.jpg",
+      "approved": true,
+      "alt": {
+        "tw": "全球動力科技團隊與來賓在第 22 屆模式模擬論壇展區合影。",
+        "en": "The Big x Reality team and guests pose at the 22nd modeling and simulation forum exhibition area.",
+        "jp": "第22回モデリング・シミュレーションフォーラムの展示スペースで記念撮影するBig x Realityのスタッフと来賓。"
+      }
     },
-    "gallery": [],
+    "gallery": [
+      {
+        "filename": "2026-may-forum-01.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "全球動力科技團隊在模式模擬論壇現場向來賓介紹展示內容。",
+          "en": "The Big x Reality team introduces its exhibits to guests at the simulation forum.",
+          "jp": "モデリング・シミュレーションフォーラムで来賓に展示内容を紹介するBig x Realityのスタッフ。"
+        }
+      },
+      {
+        "filename": "2026-may-forum-04.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "全球動力科技工作人員與論壇來賓交流模擬訓練應用。",
+          "en": "A Big x Reality team member discusses simulation training applications with a forum guest.",
+          "jp": "フォーラムの来賓とシミュレーション訓練の活用について意見交換するBig x Realityのスタッフ。"
+        }
+      },
+      {
+        "filename": "2026-may-forum-05.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "論壇來賓聆聽全球動力科技團隊介紹展示資料。",
+          "en": "Forum guests listen as the Big x Reality team presents its exhibition materials.",
+          "jp": "Big x Realityのスタッフによる展示資料の説明を聞くフォーラムの来賓。"
+        }
+      },
+      {
+        "filename": "2026-may-forum-06.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "體驗者配戴頭戴裝置並持訓練槍，操作現場展示的模擬訓練設備。",
+          "en": "A participant wearing a headset uses a training rifle with the simulation equipment on display.",
+          "jp": "ヘッドセットを装着し、訓練用銃で展示中のシミュレーション訓練機器を操作する体験者。"
+        }
+      },
+      {
+        "filename": "2026-may-forum-07.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "論壇參觀者在全球動力科技展區觀摩頭戴裝置與訓練槍的體驗。",
+          "en": "Forum visitors watch a headset and training rifle demonstration at the Big x Reality exhibition area.",
+          "jp": "Big x Realityの展示スペースでヘッドセットと訓練用銃の実演を見学するフォーラム来場者。"
+        }
+      },
+      {
+        "filename": "2026-may-forum-08.jpg",
+        "approved": true,
+        "alt": {
+          "tw": "模式模擬論壇現場的體驗者操作頭戴裝置與訓練槍。",
+          "en": "A participant operates a headset and training rifle at the simulation forum.",
+          "jp": "モデリング・シミュレーションフォーラムでヘッドセットと訓練用銃を操作する体験者。"
+        }
+      }
+    ],
     "videos": [],
     "sourceLinks": []
   },
