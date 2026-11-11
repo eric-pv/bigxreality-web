@@ -71,6 +71,10 @@ landing:
         ratio: 16 / 9
         src: ../../../assets/images/products/sut-criminal-hideout-simulation.png
         alt: SUT 犯罪據點攻堅俯視畫面，呈現貨櫃、木箱與通道配置
+      - need: 戰場模擬實際系統畫面（16:9）
+        ratio: 16 / 9
+        src: ../../../assets/images/products/sut-battlefield-sandbag-simulation.png
+        alt: SUT 戰場模擬畫面，學員視角在虛擬沙包掩體旁持訓練槍瞄準
   capabilities:
     title: 依訓練目標，組合不同的演練內容
     intro: 從單項操作到完整情境，選擇適合課程階段的訓練模組；可用內容依實際配置確認。
@@ -78,29 +82,16 @@ landing:
       - title: 射擊單元與目標變化
         content: 涵蓋定點、多重目標與障礙板後方射擊，並提供環形靶、移動人形靶及旋轉靶。模擬 20、40、60 公尺射擊距離，支援不同條件下的瞄準與操作練習。
         value: 把反覆練習安排成具體單元，逐步熟悉操作與目標反應。
-        image:
-          need: 定點、多重目標或障礙板後方射擊的實際系統畫面（16:9）
-          ratio: 16 / 9
       - title: CQB 與犯罪據點攻堅
         content: 透過室內戰鬥與犯罪據點攻堅情境，將個人操作帶入空間判讀、掩護配合與共同任務。
         value: 讓操作練習接上戰術情境，觀察隊員如何溝通與協同行動。
-        image:
-          need: 室內戰鬥或犯罪據點攻堅的實際系統畫面（16:9）
-          ratio: 16 / 9
       - title: 戰場模擬與多人演練
         content: 在戰場模擬情境中，支援多名學員共同參與，練習目標觀察、任務分工與行動協調。搭配動態移動及隨機出現的目標，增加演練條件的變化。
         value: 讓學員接觸不同目標與任務條件，練習在變化中維持團隊配合。
-        image:
-          need: 戰場模擬與多人共同演練的實際系統畫面（16:9）
-          ratio: 16 / 9
-          src: ../../../assets/images/products/sut-battlefield-sandbag-simulation.png
-          alt: SUT 戰場模擬畫面，學員視角在虛擬沙包掩體旁持訓練槍瞄準
       - title: 模式切換與武器轉換練習
         content: 可在訓練與測驗模式間切換，依課程階段安排練習與檢核；另可搭配短槍進行武器轉換訓練，相關器材與模組依配置確認。
         value: 讓課程從熟悉操作逐步進入檢核，並依需求延伸裝備操作練習。
-        image:
-          need: 訓練／測驗模式或長短槍轉換的實際操作畫面（16:9）
-          ratio: 16 / 9
+
   blocks:
     - kind: checks
       title: 看見演練表現，再決定下一步怎麼練

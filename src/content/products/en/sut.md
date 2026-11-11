@@ -95,6 +95,10 @@ landing:
         src: ../../../assets/images/products/sut-criminal-hideout-simulation.png
         alt: Overhead SUT stronghold assault screen showing containers, crates and
           passageways
+      - need: Battlefield simulation system screen (16:9)
+        ratio: 16 / 9
+        src: ../../../assets/images/products/sut-battlefield-sandbag-simulation.png
+        alt: SUT battlefield simulation viewed beside virtual sandbag cover with a training weapon aimed forward
   capabilities:
     title: Combine exercises around your training objectives
     intro: Choose individual exercises or complete scenarios to match the course
@@ -107,38 +111,24 @@ landing:
           different conditions.
         value: Structure repeated practice into exercises that build handling
           familiarity and target response.
-        image:
-          need: Actual fixed-position, multiple-target or barrier shooting screen (16:9)
-          ratio: 16 / 9
       - title: CQB and stronghold assault
         content: Indoor combat and criminal stronghold assault scenarios bring
           individual handling into spatial assessment, mutual cover and shared
           missions.
         value: Connect handling practice with tactical scenarios and observe
           communication and coordinated action.
-        image:
-          need: Actual indoor combat or stronghold assault screen (16:9)
-          ratio: 16 / 9
       - title: Battlefield simulation and shared exercises
         content: Multiple trainees can take part in battlefield scenarios to practise
           target observation, task allocation and coordinated action. Moving and
           randomly appearing targets add variation to exercise conditions.
         value: Practise maintaining teamwork as targets and mission conditions change.
-        image:
-          need: Actual battlefield simulation and shared training screen (16:9)
-          ratio: 16 / 9
-          src: ../../../assets/images/products/sut-battlefield-sandbag-simulation.png
-          alt: SUT battlefield simulation viewed beside virtual sandbag cover with a
-            training weapon aimed forward
       - title: Training modes and weapon transitions
         content: Switch between training and test modes to match the course stage. A
           pistol can also be added for weapon-transition practice, subject to
           equipment and module configuration.
         value: Progress from familiarisation to assessment, with equipment practice
           extended according to course needs.
-        image:
-          need: Actual training/test mode or rifle-to-pistol transition image (16:9)
-          ratio: 16 / 9
+
   blocks:
     - kind: checks
       title: Review performance, then decide what to practise next
