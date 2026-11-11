@@ -117,14 +117,22 @@ landing:
           content: 已確認的整合應用包括將 USV 系統影像傳送至 SUT 訓練環境。其他資訊交換與共同演練方式，依實際介面及專案配置確認。
           cta: 了解 USV 訓練系統
           product: usv
-    - kind: prose
+    - kind: media
       title: 從操作視角到反制訓練
-      body: |-
-        無人機操作與反制訓練呈現不同角色的視角。可用模組與系統連線方式依實際配置確認。
-
-        <!-- bxr-image: {"src":"/src/assets/images/products/sut-uav-operation-training.png","alt":"無人機操作訓練畫面，顯示林地飛行視角與飛行儀表","approved":true} -->
-
-        <!-- bxr-image: {"src":"/src/assets/images/products/sut-counter-drone-training.png","alt":"反制無人機訓練畫面，從持槍視角朝空中目標射擊","approved":true} -->
+      intro: 無人機操作與反制訓練呈現不同角色的視角。可用模組與系統連線方式依實際配置確認。
+      items:
+        - title: 無人機操作訓練
+          content: 以飛行視角與儀表資訊練習無人機操作。
+          image:
+            ratio: 16 / 9
+            src: ../../../assets/images/products/sut-uav-operation-training.png
+            alt: 無人機操作訓練畫面，顯示林地飛行視角與飛行儀表
+        - title: 反制無人機訓練
+          content: 從持槍視角練習發現並反制空中目標。
+          image:
+            ratio: 16 / 9
+            src: ../../../assets/images/products/sut-counter-drone-training.png
+            alt: 反制無人機訓練畫面，從持槍視角朝空中目標射擊
   values:
     title: 先滿足當前課程，再規劃下一階段訓練
     intro: 從單項操作、多人演練到跨系統搭配，依單位的課程、場地及設備條件安排導入範圍。
