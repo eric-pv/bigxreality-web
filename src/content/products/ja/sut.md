@@ -115,14 +115,22 @@ landing:
           content: 確認済みの連携例として、USVシステムの映像をSUT訓練環境へ送信できます。その他の情報交換や共同演習は、実際のインターフェースと案件構成により確認します。
           cta: USV訓練システムを見る
           product: usv
-    - kind: prose
+    - kind: media
       title: UAV操作から対ドローン訓練へ
-      body: |-
-        UAV操作と対ドローン訓練では、異なる役割の視点を体験できます。利用可能なモジュールとシステム接続は構成により確認します。
-
-        <!-- bxr-image: {"src":"/src/assets/images/products/sut-uav-operation-training.png","alt":"森林上空の飛行視点と計器を表示したUAV操作訓練画面","approved":true} -->
-
-        <!-- bxr-image: {"src":"/src/assets/images/products/sut-counter-drone-training.png","alt":"銃器視点で空中目標への射撃を表示した対ドローン訓練画面","approved":true} -->
+      intro: UAV操作と対ドローン訓練では、異なる役割の視点を体験できます。利用可能なモジュールとシステム接続は構成により確認します。
+      items:
+        - title: ドローン操作訓練
+          content: 飛行視点と計器情報でドローン操作を練習します。
+          image:
+            ratio: 16 / 9
+            src: ../../../assets/images/products/sut-uav-operation-training.png
+            alt: 森林上空の飛行視点と計器を表示したUAV操作訓練画面
+        - title: 対ドローン訓練
+          content: 銃を構えた視点から空中目標の発見と対処を練習します。
+          image:
+            ratio: 16 / 9
+            src: ../../../assets/images/products/sut-counter-drone-training.png
+            alt: 銃器視点で空中目標への射撃を表示した対ドローン訓練画面
   values:
     title: 現在の課程に応え、次の訓練を計画する
     intro: 単独操作、共同演習、システム間の活用まで、課程、施設、装備に合わせて導入範囲を検討します。

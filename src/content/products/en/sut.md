@@ -167,14 +167,22 @@ landing:
             exercises depend on interfaces and project configuration.
           cta: Explore USV training
           product: usv
-    - kind: prose
+    - kind: media
       title: From UAV operation to counter-drone training
-      body: |-
-        UAV operation and counter-drone training present different participant perspectives. Available modules and system connections depend on configuration.
-
-        <!-- bxr-image: {"src":"/src/assets/images/products/sut-uav-operation-training.png","alt":"UAV operation training screen with a forest flight view and flight instruments","approved":true} -->
-
-        <!-- bxr-image: {"src":"/src/assets/images/products/sut-counter-drone-training.png","alt":"Counter-drone training screen showing a weapon firing toward an airborne target","approved":true} -->
+      intro: UAV operation and counter-drone training present different participant perspectives. Available modules and system connections depend on configuration.
+      items:
+        - title: Drone operation training
+          content: Practise drone operation with a flight view and instrument readouts.
+          image:
+            ratio: 16 / 9
+            src: ../../../assets/images/products/sut-uav-operation-training.png
+            alt: UAV operation training screen with a forest flight view and flight instruments
+        - title: Counter-drone training
+          content: Practise spotting and engaging aerial targets from a weapon view.
+          image:
+            ratio: 16 / 9
+            src: ../../../assets/images/products/sut-counter-drone-training.png
+            alt: Counter-drone training screen showing a weapon firing toward an airborne target
   values:
     title: Meet current course needs and plan the next stage
     intro: Plan individual practice, team exercises and cross-system applications

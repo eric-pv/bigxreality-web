@@ -114,13 +114,13 @@ try {
   check(`all ${sutCaps} capabilities remain present`, (await page.locator('.feature, .plain .cap').count()) === sutCaps);
   check("approach renders every assigned image", (await page.locator('.pair .media').count()) === (S.approach?.images ?? []).filter(image => image.src && image.alt && image.status !== "withheld").length);
   check("flow steps carry an icon each", (await page.locator(".flow .node svg").count()) === sutFlow);
-  const widths = await page.locator(".scenarios .card").evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().width)));
+  const widths = await page.locator("section[aria-labelledby=h-scenarios] .scenarios .card").evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().width)));
   check(`${sutScen} scenario cards, all the same width`, widths.length === sutScen && new Set(widths).size === 1, widths.join(","));
-  const before = await page.locator(".scenarios .card").first().evaluate((e) => !e.querySelector("figure") || e.firstElementChild.classList.contains("media"));
+  const before = await page.locator("section[aria-labelledby=h-scenarios] .scenarios .card").first().evaluate((e) => !e.querySelector("figure") || e.firstElementChild.classList.contains("media"));
   check("provided scenario images sit above text; missing images keep text cards", before);
-  check("flow steps, scenarios and values match the Git content", (await page.locator(".flow .step").count()) === sutFlow && (await page.locator(".scenarios .card").count()) === sutScen && (await page.locator("section[aria-labelledby=h-values] .values .value").count()) === sutValues);
+  check("flow steps, scenarios and values match the Git content", (await page.locator(".flow .step").count()) === sutFlow && (await page.locator("section[aria-labelledby=h-scenarios] .scenarios .card").count()) === sutScen && (await page.locator("section[aria-labelledby=h-values] .values .value").count()) === sutValues);
   check("review cards retain every training step", (await page.locator("section[aria-labelledby=h-block-0] .values .value").count()) === S.blocks[0].items.length);
-  check("every target has its assigned image", (await page.locator(".scenarios .card img").count()) === sutScen);
+  check("every target has its assigned image", (await page.locator("section[aria-labelledby=h-scenarios] .scenarios .card img").count()) === sutScen);
   check("no AIDA wording shown on the page", !/\bAIDA\b|Attention|Desire/.test(await page.locator("main").innerText()));
   check("no pending markers on the landing page body", (await page.locator("main section:not(.cta-band) mark.pending").count()) === 0);
 
@@ -129,7 +129,7 @@ try {
   check("phone: no horizontal scroll", (await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)));
   const cta = await page.locator(".page-hero a.btn--primary").boundingBox();
   check("phone: hero CTA is in the first screen and at least 44 px tall", cta && cta.y + cta.height < 844 && cta.height >= 44, JSON.stringify(cta));
-  check("phone: pair, features and cards stack to one column", (await page.locator(".scenarios .card").evaluateAll((els) => new Set(els.map((e) => Math.round(e.getBoundingClientRect().left))).size)) === 1);
+  check("phone: pair, features and cards stack to one column", (await page.locator("section[aria-labelledby=h-scenarios] .scenarios .card").evaluateAll((els) => new Set(els.map((e) => Math.round(e.getBoundingClientRect().left))).size)) === 1);
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`${base}/tw/contact/?topic=product&item=SUT`, { waitUntil: "networkidle" });
   const mail = await page.locator("[data-mailto]").getAttribute("href");
@@ -142,7 +142,7 @@ try {
     const related = relatedOf(p);
     await page.goto(`${base}/tw/products/${slug}/`, { waitUntil: "networkidle" });
     check(`${slug}: product identity in H1; V2.0 value headline retained`, !!(await page.locator("h1").innerText()).trim() && (await page.locator(".landing-overview h2").innerText()).trim() === h1);
-    check(`${slug}: ${scen} scenario cards`, (await page.locator(".scenarios .card").count()) === scen);
+    check(`${slug}: ${scen} scenario cards`, (await page.locator("section[aria-labelledby=h-scenarios] .scenarios .card").count()) === scen);
     check(`${slug}: ${flowCount} flow steps, ${capCount} capabilities`, (await page.locator(".flow .step").count()) === flowCount && (await page.locator(".feature, .plain .cap").count()) === capCount);
     const hrefs = await page.locator("a[href]").evaluateAll((els) => els.map((e) => e.getAttribute("href")));
     check(`${slug}: related links`, related.every((h) => hrefs.includes(h)), related.filter((h) => !hrefs.includes(h)).join(" "));
