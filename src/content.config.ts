@@ -74,6 +74,8 @@ const slot = (ctx: SchemaContext) =>
       caption: text.optional(),
       /** Recommended aspect ratio of the photo for this position (the page lays the position out at this ratio). */
       ratio: z.enum(RATIOS).optional(),
+      /** Keep equipment and interface labels visible inside the same 16:9 frame. */
+      fit: z.enum(["cover", "contain"]).optional(),
       kind: z.enum(IMAGE_KINDS).optional(),
       status: z.enum(IMAGE_STATUS).optional(),
       /** Stand-in used instead of the original while it is withheld (shown with the 情境示意圖 label). */
@@ -163,12 +165,12 @@ const landing = (ctx: SchemaContext) => z.object({
   blocks: z
     .array(
       z.object({
-        kind: z.enum(["prose", "list", "checks", "featured"]),
+        kind: z.enum(["prose", "list", "checks", "featured", "media"]),
         eyebrow: text.optional(),
         title: text,
         intro: text.optional(),
         body: paragraphs.optional(),
-        items: z.array(z.object({ title: text, content: paragraphs.optional(), cta: text.optional(), solution: slug.optional(), product: slug.optional() })).optional(),
+        items: z.array(z.object({ title: text, content: paragraphs.optional(), cta: text.optional(), solution: slug.optional(), product: slug.optional(), image: slot(ctx).optional() })).optional(),
       }),
     )
     .optional(),

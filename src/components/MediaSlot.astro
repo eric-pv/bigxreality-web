@@ -10,7 +10,7 @@ import Text from "./Text.astro";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
 
 interface Props {
-  media?: { src?: ImageMetadata; alt?: string; need?: string; caption?: string; ratio?: string; illustration?: boolean };
+  media?: { src?: ImageMetadata; alt?: string; need?: string; caption?: string; ratio?: string; fit?: "cover" | "contain"; illustration?: boolean };
   /** Legacy caller hint; landing display always follows the shared 16:9 rule. */
   ratio: string;
   /** Label of the placeholder when the slot has no `need`. */
@@ -27,15 +27,27 @@ const { media, fallbackLabel, needPrefix, sizes = "(max-width: 767px) 100vw, 50v
 const useRatio = "16 / 9";
 const ready = media?.src && media.alt;
 const label = media?.need ? `${needPrefix}${media.need}` : fallbackLabel;
+const fit = media?.fit ?? "cover";
+const zoomLabel = ({tw:"放大檢視",en:"View full image",jp:"画像を拡大"} as Record<string,string>)[Astro.params.lang ?? "tw"] ?? "View full image";
+const ImageWrapper = fit === "contain" ? "a" : "div";
 ---
-<figure hidden={!ready} class="media" style={`--ratio: ${useRatio}`}>
+<figure hidden={!ready} class="media" data-fit={fit} style={`--ratio: ${useRatio};--media-fit:${fit}`}>
   {ready ? (
     <div class="frame">
-    <Picture
-      src={media!.src!} alt={media!.alt!} formats={["avif", "webp"]}
-      widths={[480, 800, 1200, 1600].filter((w) => w <= media!.src!.width)} sizes={sizes}
-      fit="cover" loading={eager ? "eager" : "lazy"}
-    />
+    <ImageWrapper
+      class={fit === "contain" ? "zoom" : undefined}
+      href={fit === "contain" ? media!.src!.src : undefined}
+      target={fit === "contain" ? "_blank" : undefined}
+      rel={fit === "contain" ? "noopener" : undefined}
+      aria-label={fit === "contain" ? `${zoomLabel}: ${media!.alt}` : undefined}
+    >
+      <Picture
+        src={media!.src!} alt={media!.alt!} formats={["avif", "webp"]}
+        widths={[480, 800, 1200, 1600].filter((w) => w <= media!.src!.width)}
+        sizes={sizes} fit={fit} loading={eager ? "eager" : "lazy"}
+      />
+      {fit === "contain" && <span class="zoom-label">{zoomLabel} ↗</span>}
+    </ImageWrapper>
     </div>
   ) : (
     <ImagePlaceholder label={label} ratio={useRatio} />
@@ -49,6 +61,11 @@ const label = media?.need ? `${needPrefix}${media.need}` : fallbackLabel;
     position: absolute; right: var(--space-1); bottom: var(--space-1); padding: 2px var(--space-1);
     background: rgb(10 12 16 / 0.72); color: var(--bxr-white); font-size: var(--fs-caption, 0.75rem); line-height: 1.5; pointer-events: none;
   }
-  .media :global(img) { display: block; width: 100%; height: auto; aspect-ratio: var(--ratio); object-fit: cover; }
+  .media :global(img) { display: block; width: 100%; height: auto; aspect-ratio: var(--ratio); object-fit: var(--media-fit, cover); }
+  .media[data-fit="contain"] .frame { background: #f4f5f6; border: 1px solid var(--divider); }
+  .zoom { display:block; position:relative; color:var(--ink); text-decoration:none; }
+  .media .frame .zoom::after { content:none; }
+  .zoom-label { position:absolute; right:8px; bottom:8px; padding:4px 8px; background:rgb(255 255 255 / .94); font-size:12px; line-height:1.5; border:1px solid var(--divider); }
+  .zoom:focus-visible { outline:3px solid var(--bxr-red); outline-offset:3px; }
   figcaption { margin-top: var(--space-1); color: var(--ink-muted); }
 </style>

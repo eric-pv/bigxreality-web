@@ -67,18 +67,6 @@ landing:
   approach:
     title: Combining Realistic Operating Equipment with a Virtual Fire Scene for a
       Complete Fire Extinguisher Training Experience
-    images:
-      - need: Photo of the realistic extinguisher cylinder (4:3)
-        ratio: 16 / 9
-        src: ../../../assets/images/products/fire-extinguisher-simulator-cylinder.jpg
-        alt: Realistic extinguisher cylinder with handle, hose and nozzle
-      - need: Close-up of the handle and hose nozzle (4:3)
-        ratio: 16 / 9
-      - need: Approved VR fire scene view (4:3)
-        ratio: 16 / 9
-        src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
-        alt: VR kitchen fire scene showing flames at the stove and a virtual
-          extinguisher
     pillars:
       - title: In-House Developed Realistic Fire Extinguisher
         description: A cylinder module designed according to the proportions and weight
@@ -92,132 +80,6 @@ landing:
         description: A VR simulated fire scene presents the fire source, fire intensity
           and surroundings, so the trainee's extinguishing actions produce
           interactive responses in the virtual scenario
-  capabilities:
-    title: From Fire Awareness and Equipment Operation to Verifying Results, a
-      Complete Learning Process
-    items:
-      - title: Realistic Fire Extinguisher Operation
-        content: The physical cylinder module is used to practise pulling the pin,
-          squeezing, aiming and sweeping from side to side, turning fire safety
-          knowledge into concrete practice
-        image:
-          need: Photo of realistic fire extinguisher operation (16:9)
-          ratio: 16 / 9
-          src: ../../../assets/images/products/fire-extinguisher-simulator-vr-training-illustration.png
-          alt: Illustration of a firefighter wearing a VR headset and operating an
-            extinguisher
-          kind: illustration
-          caption: Illustration of VR fire extinguisher training
-      - title: Precise Dual-Controller Tracking
-        content: Dual controllers integrated into the handle and nozzle track the
-          operating actions so that spray direction and sweep angle correspond
-          to the virtual scenario
-      - title: Knowledge of Four Fire Classes
-        content: Introduces the four fire classes A, B, C and D, helping trainees build
-          basic concepts of fire classification and handling
-        image:
-          need: Fire class introduction screen (16:9)
-          ratio: 16 / 9
-      - title: Introduction to Three Extinguisher Types
-        content: Covers carbon dioxide, dry powder and foam extinguishers so trainees
-          understand the basic characteristics and use cases of different
-          equipment
-        image:
-          need: Extinguisher type introduction screen (16:9)
-          ratio: 16 / 9
-      - title: Step-by-Step Operating Guidance
-        content: Operating prompts in Instruction mode help trainees practise the
-          complete fire extinguisher procedure step by step
-        image:
-          need: Instruction guidance screen (16:9)
-          ratio: 16 / 9
-      - title: Scenario Testing and Results Feedback
-        content: Operating tests are carried out in different simulated scenes, and on
-          completion the operating result and completion time are displayed as a
-          basis for trainees to review themselves and practise again
-        image:
-          need: Test results screen (16:9)
-          ratio: 16 / 9
-          src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
-          alt: VR training screen showing completion after the flames have been
-            extinguished
-  flow:
-    title: Three Training Modes Taking Learning from Understanding to Hands-On
-      Operation
-    steps:
-      - title: Experience Mode | Building Basic Awareness
-        description: Introduces four fire classes and three extinguisher types, helping
-          trainees understand fire characteristics, basic extinguisher knowledge
-          and related concepts of use
-        icon: headset
-      - title: Instruction Mode | Becoming Familiar with Standard Operation
-        description: Step-by-step operating guidance helps trainees practise basic
-          actions such as pulling the pin, aiming, squeezing the lever and
-          sweeping, building familiarity with using a fire extinguisher
-        icon: route
-      - title: Test Mode | Completing Scenario Tasks
-        description: Trainees choose a simulated fire scene and operate according to the
-          environment and fire source conditions. The system presents operating
-          responses according to the training process and, at the end of the
-          test, displays the completion time and operating result
-        icon: target
-        image:
-          src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
-          alt: VR extinguisher test with active flames and a 60-second timer
-      - title: Results Review | Repeated Practice and Correction
-        description: Test results support individual performance review and further
-          practice in the training modes
-        icon: review
-    note: Learn about fires and equipment → Learn the operating steps → Choose a
-      fire scene for testing → Review the training results → Practise again
-  scenarios:
-    title: Six Simulated Fire Scenes for Practising Against Early-Stage Fires in
-      Different Environments
-    items:
-      - title: Home Kitchen
-        description: Simulates fire source situations in a kitchen, helping trainees
-          recognise fire risks in the home and basic early-response concepts
-        image:
-          need: Home kitchen fire scene (16:9)
-          ratio: 16 / 9
-          src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
-          alt: VR kitchen fire scene showing flames at the stove and a virtual
-            extinguisher
-      - title: Home Living Room
-        description: Using a domestic living space as the background, trainees practise
-          observing the location of the fire source and the surroundings and
-          become familiar with the extinguisher procedure
-        image:
-          need: Home living room fire scene (16:9)
-          ratio: 16 / 9
-      - title: Office
-        description: A simulated fire scene in an office lets trainees practise
-          operation against the background of a familiar workplace
-        image:
-          need: Office fire scene (16:9)
-          ratio: 16 / 9
-          src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
-          alt: VR office fire scene with flames near filing cabinets and an aiming guide
-      - title: High-Tech Factory
-        description: Presents fire sources and environmental conditions in an industrial
-          setting, extending awareness of fire situations in different
-          workplaces
-        image:
-          need: High-tech factory fire scene (16:9)
-          ratio: 16 / 9
-      - title: Port
-        description: Using a port operating environment as the background, provides
-          simulated fire scene practice that differs from ordinary homes and
-          offices
-        image:
-          need: Port fire scene (16:9)
-          ratio: 16 / 9
-      - title: Sheet-Metal Building
-        description: Simulates fire source situations in a sheet-metal building, giving
-          trainees operating practice under different spatial conditions
-        image:
-          need: Sheet-metal building fire scene (16:9)
-          ratio: 16 / 9
   values:
     title: Fire Safety Training That Is Safer, Easier to Deploy and Better Suited to
       Repeated Practice
@@ -250,9 +112,168 @@ landing:
     description: Find out how the VR Fire Extinguisher Training System supports fire
       safety education and professional training needs through realistic
       operation, immersive scenarios and three-stage training modes
-  introImage:
-    src: ../../../assets/images/products/fire-extinguisher-simulator-carry-case.jpg
-    alt: A carry case holds a VR headset, realistic extinguisher and controllers
+  blocks:
+    - kind: media
+      title: Realistic equipment and portable storage
+      intro: View the cylinder, handle, hose and storage layout in full. Open an image
+        to inspect the details.
+      items:
+        - title: Realistic training extinguisher
+          content: A cylinder module designed according to the proportions and weight
+            distribution of a real fire extinguisher, with a physical handle and
+            hose nozzle, lets trainees practise in a way closer to real
+            operation
+          image:
+            need: Photo of the realistic extinguisher cylinder (4:3)
+            ratio: 16 / 9
+            src: ../../../assets/images/products/fire-extinguisher-simulator-cylinder.jpg
+            alt: Realistic extinguisher cylinder with handle, hose and nozzle
+            fit: contain
+        - title: Dedicated carry case
+          content: A dedicated carrying case stores the headset, controllers, realistic
+            fire extinguisher and related accessories together, making equipment
+            easier to manage and move
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-carry-case.jpg
+            alt: A carry case holds a VR headset, realistic extinguisher and controllers
+            fit: contain
+            ratio: 16 / 9
+    - kind: media
+      title: Explore three extinguisher types
+      intro: Covers carbon dioxide, dry powder and foam extinguishers so trainees
+        understand the basic characteristics and use cases of different
+        equipment
+      items:
+        - title: Carbon dioxide extinguisher
+          content: The carbon dioxide extinguisher introduction screen
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-carbon-dioxide.png
+            alt: Carbon dioxide extinguisher introduction in the VR training system
+            ratio: 16 / 9
+            fit: contain
+        - title: Dry powder extinguisher
+          content: The dry powder extinguisher introduction screen
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-dry-powder.png
+            alt: Dry powder extinguisher introduction in the VR training system
+            ratio: 16 / 9
+            fit: contain
+        - title: Foam extinguisher
+          content: The foam extinguisher introduction screen
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-foam.png
+            alt: Foam extinguisher introduction in the VR training system
+            ratio: 16 / 9
+            fit: contain
+    - kind: checks
+      title: Three Training Modes Taking Learning from Understanding to Hands-On
+        Operation
+      intro: >-
+        Learn about fires and equipment → Learn the operating steps → Choose a
+        fire scene for testing → Review the training results → Practise again
+
+        Introduces the four fire classes A, B, C and D, helping trainees build
+        basic concepts of fire classification and handling
+      items:
+        - title: 01 Experience Mode | Building Basic Awareness
+          content: Introduces four fire classes and three extinguisher types, helping
+            trainees understand fire characteristics, basic extinguisher
+            knowledge and related concepts of use
+        - title: 02 Instruction Mode | Becoming Familiar with Standard Operation
+          content: Step-by-step operating guidance helps trainees practise basic actions
+            such as pulling the pin, aiming, squeezing the lever and sweeping,
+            building familiarity with using a fire extinguisher
+        - title: 03 Test Mode | Completing Scenario Tasks
+          content: Trainees choose a simulated fire scene and operate according to the
+            environment and fire source conditions. The system presents
+            operating responses according to the training process and, at the
+            end of the test, displays the completion time and operating result
+        - title: 04 Results Review | Repeated Practice and Correction
+          content: Test results support individual performance review and further practice
+            in the training modes
+    - kind: checks
+      title: Six Simulated Fire Scenes for Practising Against Early-Stage Fires in
+        Different Environments
+      items:
+        - title: Home Kitchen
+          content: Simulates fire source situations in a kitchen, helping trainees
+            recognise fire risks in the home and basic early-response concepts
+        - title: Home Living Room
+          content: Using a domestic living space as the background, trainees practise
+            observing the location of the fire source and the surroundings and
+            become familiar with the extinguisher procedure
+        - title: Office
+          content: A simulated fire scene in an office lets trainees practise operation
+            against the background of a familiar workplace
+        - title: High-Tech Factory
+          content: Presents fire sources and environmental conditions in an industrial
+            setting, extending awareness of fire situations in different
+            workplaces
+        - title: Port
+          content: Using a port operating environment as the background, provides
+            simulated fire scene practice that differs from ordinary homes and
+            offices
+        - title: Sheet-Metal Building
+          content: Simulates fire source situations in a sheet-metal building, giving
+            trainees operating practice under different spatial conditions
+    - kind: media
+      title: "Actual screens: from fire to extinguishment"
+      intro: Compare active-fire and completion screens for the kitchen and office
+        scenarios.
+      items:
+        - title: Kitchen | Active fire
+          content: Observe the fire near the stove and its surroundings
+          image:
+            need: Home kitchen fire scene (16:9)
+            ratio: 16 / 9
+            src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
+            alt: VR kitchen fire scene showing flames at the stove and a virtual
+              extinguisher
+            fit: contain
+        - title: Kitchen | Fire extinguished
+          content: A completion message appears after the fire is extinguished
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-complete.png
+            alt: VR kitchen scene showing fire extinguishment completed
+            ratio: 16 / 9
+            fit: contain
+        - title: Office | Active fire
+          content: Observe the fire near the filing cabinets
+          image:
+            need: Office fire scene (16:9)
+            ratio: 16 / 9
+            src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
+            alt: VR office fire scene with flames near filing cabinets and an aiming guide
+            fit: contain
+        - title: Office | Fire extinguished
+          content: Compare the scene after the fire is extinguished
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-office-complete.png
+            alt: VR office scene showing fire extinguishment completed
+            ratio: 16 / 9
+            fit: contain
+    - kind: media
+      title: Assessment and result feedback
+      intro: Operating tests are carried out in different simulated scenes, and on
+        completion the operating result and completion time are displayed as a
+        basis for trainees to review themselves and practise again
+      items:
+        - title: Assessment in progress
+          content: The operation screen shows active flames and a 60-second timer
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
+            alt: VR extinguisher test with active flames and a 60-second timer
+            fit: contain
+            ratio: 16 / 9
+        - title: Fire extinguished
+          content: The screen displays completion after the flames have been extinguished
+          image:
+            need: Test results screen (16:9)
+            ratio: 16 / 9
+            src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
+            alt: VR training screen showing completion after the flames have been
+              extinguished
+            fit: contain
 faq:
   - question: Is VR fire extinguisher training a game, or can it really teach how to
       put out a fire?

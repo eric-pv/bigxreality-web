@@ -120,6 +120,7 @@ export const FIELD_LABELS={
 "publishDate": "發布日期 / Publish Date",
 "question": "問題 / Question",
 "ratio": "圖片比例 / Image Ratio",
+"fit": "圖片顯示方式 / Image Fit",
 "related": "相關內容 / Related Content",
 "relatedCaseStudies": "相關案例研究 / Related Case Studies",
 "relatedInsights": "相關技術文章 / Related Insights",
@@ -205,7 +206,12 @@ export const OPTION_LABELS={
 "prose": "文字內容 / Text Content",
 "list": "清單 / List",
 "checks": "檢核清單 / Checklist",
-"featured": "精選 / Featured"
+"featured": "精選 / Featured",
+"media": "圖文卡片 / Image Cards"
+},
+"fit": {
+"cover": "填滿裁切 / Fill and Crop",
+"contain": "完整顯示，可放大 / Full Image with Zoom"
 },
 "status": {
 "public": "公開 / Public",

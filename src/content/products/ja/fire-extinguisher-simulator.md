@@ -40,17 +40,6 @@ landing:
         description: 訓練後に操作結果の情報がなければ、訓練生が自身の成果を振り返り、動作を修正し続けることは難しくなります
   approach:
     title: リアルな操作機器と仮想の火災現場を組み合わせ、一貫した消火訓練体験を構築
-    images:
-      - need: リアルな消火器ボンベの実物写真（4:3）
-        ratio: 16 / 9
-        src: ../../../assets/images/products/fire-extinguisher-simulator-cylinder.jpg
-        alt: ハンドル、ホース、ノズルを備えた模擬消火器のボンベ
-      - need: グリップとホースノズルのクローズアップ（4:3）
-        ratio: 16 / 9
-      - need: 承認済みのVR火災現場の画面（4:3）
-        ratio: 16 / 9
-        src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
-        alt: コンロの炎と仮想消火器を表示したVRキッチン火災シーン
     pillars:
       - title: 自社開発のリアルな消火器
         description: 実際の消火器の比率と重量配分に基づいて設計したボンベモジュールを採用し、実物のグリップとホースノズルによって、訓練生が実際の操作により近い方法で練習できます
@@ -58,98 +47,6 @@ landing:
         description: 2本のVIVEコントローラーをそれぞれボンベのグリップとノズルの位置に組み込み、6DOFの空間トラッキングと動作マッピングにより、保持、レバーの握り込み、噴射方向、掃射角度に対応します
       - title: 没入型の火災現場とのインタラクション
         description: VRでシミュレーションした火災現場に火源、火勢、周囲の環境を表示し、訓練生の消火操作に仮想シナリオがインタラクティブに反応します
-  capabilities:
-    title: 火災の認識、器材の操作から成果の確認まで、一貫した学習の流れを構築
-    items:
-      - title: リアルな消火器の操作
-        content: 実物のボンベモジュールで、安全ピンを抜く、握る、狙う、左右に掃射するなどの操作を練習し、消防の知識を具体的な動作の練習へと変えます
-        image:
-          need: リアルな消火器の操作写真（16:9）
-          ratio: 16 / 9
-          src: ../../../assets/images/products/fire-extinguisher-simulator-vr-training-illustration.png
-          alt: VRヘッドセットを装着して消火器を操作する消防士のイメージ図
-          kind: illustration
-          caption: VR消火訓練のイメージ図
-      - title: デュアルコントローラーによる精密なトラッキング
-        content: グリップとノズルに組み込んだデュアルコントローラーで操作動作をトラッキングし、噴射方向と掃射角度を仮想シナリオと対応させます
-      - title: 4種類の火災の知識
-        content: A、B、C、Dの4種類の火災を紹介し、訓練生が火災の分類と基本的な対処の考え方を身に付けられるよう支援します
-        image:
-          need: 火災の種類の紹介画面（16:9）
-          ratio: 16 / 9
-      - title: 3種類の消火器の紹介
-        content: 二酸化炭素消火器、粉末消火器、泡消火器に関する知識をカバーし、訓練生が器材ごとの基本的な特性と使用場面を理解できるようにします
-        image:
-          need: 消火器の種類の紹介画面（16:9）
-          ratio: 16 / 9
-      - title: ステップごとの操作ガイド
-        content: 教習モードの操作ガイドにより、訓練生が消火器の一連の使用手順を段階的に練習できるよう支援します
-        image:
-          need: 教習ガイドの画面（16:9）
-          ratio: 16 / 9
-      - title: シナリオでのテストと成果のフィードバック
-        content: さまざまなシミュレーションの場面で操作テストを行い、完了後に操作結果と所要時間を表示して、訓練生が自己評価し再び練習する際の根拠とします
-        image:
-          need: テスト結果の画面（16:9）
-          ratio: 16 / 9
-          src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
-          alt: 炎が消え、「消火完了」を表示したVR訓練画面
-  flow:
-    title: 3つの訓練モードで、学習を理解から実際の操作へ
-    steps:
-      - title: 体験モード｜基礎的な認識を築く
-        description: 4種類の火災と3種類の消火器を紹介し、訓練生が火災の特性、消火器の基本的な知識、関連する使用の考え方を理解できるよう支援します
-        icon: headset
-      - title: 教習モード｜標準的な操作に慣れる
-        description: ステップごとの操作ガイドにより、安全ピンを抜く、狙う、レバーを握る、掃射するなどの基本操作を訓練生が練習できるよう支援し、消火器を使用する動作への習熟を築きます
-        icon: route
-      - title: テストモード｜シナリオの課題を完了する
-        description: 訓練生は仮想の火災現場を選び、環境と火源の条件に応じて操作します。システムは操作への反応を示し、テスト終了後に所要時間と結果を表示します
-        icon: target
-        image:
-          src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
-          alt: 炎が残り、60秒のタイマーを表示しているVR消火テスト画面
-      - title: 成果の確認｜反復練習と修正
-        description: 訓練生はテスト結果に基づいて自身の成果を振り返り、再び訓練モードに入って練習できます
-        icon: review
-    note: 火災と器材を知る → 操作手順を学ぶ → 火災現場を選んでテスト → 訓練結果を確認 → 再び練習
-  scenarios:
-    title: 6種類の仮想火災現場で、さまざまな環境での初期火災への対応を練習
-    items:
-      - title: 住宅のキッチン
-        description: キッチン環境での火源の状況をシミュレーションし、訓練生が住まいにおける火災のリスクと初期対応の考え方を理解できるよう支援します
-        image:
-          need: 住宅のキッチンの火災現場シーン（16:9）
-          ratio: 16 / 9
-          src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
-          alt: コンロの炎と仮想消火器を表示したVRキッチン火災シーン
-      - title: 住宅のリビング
-        description: 住まいの生活空間を背景に、火源の位置と周囲の環境を観察する練習を行い、消火器の操作手順に慣れます
-        image:
-          need: 住宅のリビングの火災現場シーン（16:9）
-          ratio: 16 / 9
-      - title: オフィス
-        description: オフィスのシミュレーション火災現場を通じて、訓練生が慣れ親しんだ職場環境を背景に操作を練習できます
-        image:
-          need: オフィスの火災現場シーン（16:9）
-          ratio: 16 / 9
-          src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
-          alt: 書類棚付近の炎と照準方向を表示したVRオフィス火災シーン
-      - title: ハイテク工場
-        description: 産業施設の火源と環境の条件を表示し、さまざまな職場における火災の状況への理解を広げます
-        image:
-          need: ハイテク工場の火災現場シーン（16:9）
-          ratio: 16 / 9
-      - title: 港湾
-        description: 港湾の作業環境を背景に、一般的な住宅やオフィスとは異なるシミュレーション火災現場での練習を提供します
-        image:
-          need: 港湾の火災現場シーン（16:9）
-          ratio: 16 / 9
-      - title: トタン張りの建物
-        description: トタン張りの建物での火源の状況をシミュレーションし、訓練生がさまざまな空間条件での操作を練習できるようにします
-        image:
-          need: トタン張りの建物の火災現場シーン（16:9）
-          ratio: 16 / 9
   values:
     title: 消防訓練をより安全に、より導入しやすく、繰り返し練習に適したものに
     cards:
@@ -171,9 +68,133 @@ landing:
     title: すべての消火練習を、より充実した対応への備えに
     description: VR
       消火訓練システムが、リアルな操作、没入型のシナリオ、3段階の訓練モードを通じて、消防教育と専門的な訓練のニーズをどのように支援できるかをご確認ください
-  introImage:
-    src: ../../../assets/images/products/fire-extinguisher-simulator-carry-case.jpg
-    alt: VRヘッドセット、模擬消火器、コントローラーを収納した携行ケース
+  blocks:
+    - kind: media
+      title: 模擬機器と携行収納
+      intro: ボンベ、ハンドル、ホース、収納構成を確認できます。画像を開くと細部を拡大できます。
+      items:
+        - title: 模擬消火器
+          content: 実際の消火器の比率と重量配分に基づいて設計したボンベモジュールを採用し、実物のグリップとホースノズルによって、訓練生が実際の操作により近い方法で練習できます
+          image:
+            need: リアルな消火器ボンベの実物写真（4:3）
+            ratio: 16 / 9
+            src: ../../../assets/images/products/fire-extinguisher-simulator-cylinder.jpg
+            alt: ハンドル、ホース、ノズルを備えた模擬消火器のボンベ
+            fit: contain
+        - title: 専用携行ケース
+          content: 専用のキャリングケースにヘッドセット、コントローラー、リアルな消火器、関連アクセサリーをまとめて収納でき、機器の管理と移動の利便性を高めます
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-carry-case.jpg
+            alt: VRヘッドセット、模擬消火器、コントローラーを収納した携行ケース
+            fit: contain
+            ratio: 16 / 9
+    - kind: media
+      title: 3種類の消火器を知る
+      intro: 二酸化炭素消火器、粉末消火器、泡消火器に関する知識をカバーし、訓練生が器材ごとの基本的な特性と使用場面を理解できるようにします
+      items:
+        - title: 二酸化炭素消火器
+          content: システム内の二酸化炭素消火器の紹介画面
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-carbon-dioxide.png
+            alt: VR訓練システムの二酸化炭素消火器紹介画面
+            ratio: 16 / 9
+            fit: contain
+        - title: 粉末消火器
+          content: システム内の粉末消火器の紹介画面
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-dry-powder.png
+            alt: VR訓練システムの粉末消火器紹介画面
+            ratio: 16 / 9
+            fit: contain
+        - title: 泡消火器
+          content: システム内の泡消火器の紹介画面
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-foam.png
+            alt: VR訓練システムの泡消火器紹介画面
+            ratio: 16 / 9
+            fit: contain
+    - kind: checks
+      title: 3つの訓練モードで、学習を理解から実際の操作へ
+      intro: |-
+        火災と器材を知る → 操作手順を学ぶ → 火災現場を選んでテスト → 訓練結果を確認 → 再び練習
+        A、B、C、Dの4種類の火災を紹介し、訓練生が火災の分類と基本的な対処の考え方を身に付けられるよう支援します
+      items:
+        - title: 01 体験モード｜基礎的な認識を築く
+          content: 4種類の火災と3種類の消火器を紹介し、訓練生が火災の特性、消火器の基本的な知識、関連する使用の考え方を理解できるよう支援します
+        - title: 02 教習モード｜標準的な操作に慣れる
+          content: ステップごとの操作ガイドにより、安全ピンを抜く、狙う、レバーを握る、掃射するなどの基本操作を訓練生が練習できるよう支援し、消火器を使用する動作への習熟を築きます
+        - title: 03 テストモード｜シナリオの課題を完了する
+          content: 訓練生は仮想の火災現場を選び、環境と火源の条件に応じて操作します。システムは操作への反応を示し、テスト終了後に所要時間と結果を表示します
+        - title: 04 成果の確認｜反復練習と修正
+          content: 訓練生はテスト結果に基づいて自身の成果を振り返り、再び訓練モードに入って練習できます
+    - kind: checks
+      title: 6種類の仮想火災現場で、さまざまな環境での初期火災への対応を練習
+      items:
+        - title: 住宅のキッチン
+          content: キッチン環境での火源の状況をシミュレーションし、訓練生が住まいにおける火災のリスクと初期対応の考え方を理解できるよう支援します
+        - title: 住宅のリビング
+          content: 住まいの生活空間を背景に、火源の位置と周囲の環境を観察する練習を行い、消火器の操作手順に慣れます
+        - title: オフィス
+          content: オフィスのシミュレーション火災現場を通じて、訓練生が慣れ親しんだ職場環境を背景に操作を練習できます
+        - title: ハイテク工場
+          content: 産業施設の火源と環境の条件を表示し、さまざまな職場における火災の状況への理解を広げます
+        - title: 港湾
+          content: 港湾の作業環境を背景に、一般的な住宅やオフィスとは異なるシミュレーション火災現場での練習を提供します
+        - title: トタン張りの建物
+          content: トタン張りの建物での火源の状況をシミュレーションし、訓練生がさまざまな空間条件での操作を練習できるようにします
+    - kind: media
+      title: 実際の画面：出火から消火完了まで
+      intro: キッチンとオフィスの各シーンで、出火時と完了時の画面を比較できます。
+      items:
+        - title: キッチン｜出火シーン
+          content: コンロ付近の火元と周囲の環境を観察
+          image:
+            need: 住宅のキッチンの火災現場シーン（16:9）
+            ratio: 16 / 9
+            src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
+            alt: コンロの炎と仮想消火器を表示したVRキッチン火災シーン
+            fit: contain
+        - title: キッチン｜消火完了
+          content: 消火後に完了メッセージを表示
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-complete.png
+            alt: 消火完了を表示したVRキッチンシーン
+            ratio: 16 / 9
+            fit: contain
+        - title: オフィス｜出火シーン
+          content: 書類棚付近の火災を観察
+          image:
+            need: オフィスの火災現場シーン（16:9）
+            ratio: 16 / 9
+            src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
+            alt: 書類棚付近の炎と照準方向を表示したVRオフィス火災シーン
+            fit: contain
+        - title: オフィス｜消火完了
+          content: 消火後のシーンの状態を比較
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-office-complete.png
+            alt: 消火完了を表示したVRオフィスシーン
+            ratio: 16 / 9
+            fit: contain
+    - kind: media
+      title: テストの実施と結果のフィードバック
+      intro: さまざまなシミュレーションの場面で操作テストを行い、完了後に操作結果と所要時間を表示して、訓練生が自己評価し再び練習する際の根拠とします
+      items:
+        - title: テスト実施中
+          content: 炎と60秒のタイマーを表示した操作画面
+          image:
+            src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
+            alt: 炎が残り、60秒のタイマーを表示しているVR消火テスト画面
+            fit: contain
+            ratio: 16 / 9
+        - title: 消火完了
+          content: 炎が消え、消火完了を表示
+          image:
+            need: テスト結果の画面（16:9）
+            ratio: 16 / 9
+            src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
+            alt: 炎が消え、「消火完了」を表示したVR訓練画面
+            fit: contain
 faq:
   - question: VR消火訓練はゲームですか、それとも本当に消火を学べるのですか？
     answer: 消火器の操作を学ぶVR訓練システムです。シリアスゲームの対話的な学習手法を取り入れ、仮想火災で判断と操作を練習します。基本手順と機器の使い方を学ぶことが目的で、単なるゲーム体験ではありません。
