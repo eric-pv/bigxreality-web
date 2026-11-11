@@ -150,7 +150,7 @@ landing:
     title: 依任務需求，搭配其他訓練產品
     intro: UAV、USV 與 SUT 是可獨立導入的產品；搭配方式、連線功能及設備需求依專案確認。
   closing:
-    title: 你的單位，目前最需要加強哪一段訓練？
+    title: 你的單位，目前最需要加強哪一段訓練
     description: 從操作熟悉、小隊協同到跨系統任務演練，與 BXR 討論適合現有課程、場地與設備條件的 SUT 配置。
   scenarios:
     title: 六種射擊單元，各有練習重點
@@ -239,7 +239,7 @@ integratedOps:
 relatedSolutions:
   - military
 cta:
-  title: '你的單位，目前最需要加強哪一段訓練？'
+  title: '你的單位，目前最需要加強哪一段訓練'
   description: '從操作熟悉、小隊協同到跨系統任務演練，與 BXR 討論適合現有課程、場地與設備條件的 SUT 配置。'
   brochure: true
   demo: true
