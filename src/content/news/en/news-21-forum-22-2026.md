@@ -18,8 +18,14 @@ seo:
 
 Big x Reality participated in the 22nd Military Operations Research and Modeling & Simulation Forum, themed “Challenges and Future Perspectives of Integrating Simulation Technologies with Intelligent Unmanned Systems.” The event provided an opportunity to discuss XR simulation, unmanned platforms, and cross-system integration.
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-may-forum-02.jpg", "alt": "The Big x Reality team uses printed materials to explain simulation training technologies to forum guests.", "approved": true} -->
+
 The demonstrations included XR-based unmanned surface vessel training, small-unit tactical simulation, and human-machine teaming scenarios. Immersive environments allow trainees to practice operational procedures, task coordination, and responses to different situations under safe and repeatable conditions.
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-may-forum-03.jpg", "alt": "A participant tries training equipment with a headset while a team member assists.", "approved": true} -->
+
 When unmanned vessels at sea, aircraft in the air, and ground teams participate in the same mission, integrating information and maintaining situational awareness becomes a key training challenge. Big x Reality also introduced Nova Tactical XR, its joint-operations simulation platform, which connects separate training modules within a shared decision-making framework.
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-may-forum-09.jpg", "alt": "A team member guides a participant in adjusting a headset at the forum.", "approved": true} -->
 
 The future of simulation extends beyond mastering individual equipment. It increasingly involves learning how different operators and systems can work together. Big x Reality welcomes continued exchanges with military, academic, and industry professionals.

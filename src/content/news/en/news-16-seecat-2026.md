@@ -20,7 +20,11 @@ Big x Reality (Global Power Technologies) participated in SEECAT 2026 at Tokyo B
 
 One of the main demonstrations focused on Mixed Reality Close Quarters Battle training. The system combines virtual tactical scenarios with real physical spaces, allowing trainees to respond to simulated threats while aiming and firing physical training weapons. The demonstration highlighted how trainee actions and virtual responses can be synchronized within a mixed reality environment.
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-seecat-01.jpg", "alt": "A visitor wearing a headset tries a training rifle at the SEECAT booth.", "approved": true} -->
+
 During the exhibition, professionals from the Japan Self-Defense Forces, National Police Agency, regional police organizations, and tactical units visited the booth. Conversations covered system functions, training applications, and potential implementation approaches, providing an opportunity to better understand the requirements of the Japanese market.
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-seecat-02.jpg", "alt": "A visitor wearing a headset tries training equipment at the Big x Reality booth.", "approved": true} -->
 
 The counter-drone and USV demonstrations extended the presentation beyond close-quarters training to unmanned systems in the air and at sea. Big x Reality will continue exploring the integration of AI, XR, and MR technologies through international engagement.
 

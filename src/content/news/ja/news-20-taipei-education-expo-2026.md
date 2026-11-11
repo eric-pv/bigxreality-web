@@ -22,6 +22,12 @@ Big x Reality（全球動力科技）は全民国防基金会の招待で、2026
 
 AI、VR、XR技術の発展により、従来の授業に加えて、体験型学習やシナリオ演習を取り入れる可能性が広がっています。仮想環境では、参加者が管理された条件下でさまざまな状況に触れ、シミュレーションが教育をどのように補完できるかを理解できます。
 
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-taipei-education-expo-04.jpg", "alt": "台北教育博覧会の来場者に訓練機器を紹介するスタッフ。", "approved": true} -->
+
 会場では来場者が没入感や操作性を体験し、チームと教育・訓練の将来について意見を交わしました。状況に応じた判断を学ぶためのシミュレーション活用についても紹介しました。
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-taipei-education-expo-01.jpg", "alt": "台北教育博覧会でVRヘッドセットを装着し、体験型訓練に参加する来場者。", "approved": true} -->
+
+<!-- bxr-image: {"src": "/src/assets/images/news/2026-taipei-education-expo-07.jpg", "alt": "教育博覧会の展示スペースで一緒にVR訓練を体験する来場者。", "approved": true} -->
 
 イベント：台北教育博覧会｜2026年6月6日～8日｜台北世界貿易センター第1展示館・安心館エリア（松山家商／Big x Reality）。
