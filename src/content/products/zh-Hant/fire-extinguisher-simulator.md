@@ -141,8 +141,8 @@ landing:
         - title: 鐵皮屋
           content: 模擬鐵皮屋建築環境中的火源情境，協助學員接觸不同空間條件下的操作練習
     - kind: media
-      title: 實際畫面：從起火到完成滅火
-      intro: 廚房與辦公室各以起火、完成兩張畫面對照，呈現不同環境中的訓練過程。
+      title: 實際畫面：從起火、滅火到測驗回饋
+      intro: 廚房與辦公室的起火與完成畫面，以及測驗進行中與完成後的結果顯示。
       items:
         - title: 廚房｜起火情境
           content: 觀察爐台附近的火源與周遭環境
@@ -151,14 +151,12 @@ landing:
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-fire.png
             alt: VR 廚房火場畫面，顯示爐台火勢與虛擬滅火器
-            fit: contain
         - title: 廚房｜滅火完成
           content: 火勢撲滅後顯示完成訊息
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-kitchen-complete.png
             alt: VR 廚房場景顯示滅火完成
             ratio: 16 / 9
-            fit: contain
         - title: 辦公室｜起火情境
           content: 觀察文件櫃附近的火勢
           image:
@@ -166,24 +164,17 @@ landing:
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-office-fire.png
             alt: VR 辦公室火場畫面，文件櫃附近起火並顯示瞄準方向
-            fit: contain
         - title: 辦公室｜滅火完成
           content: 比較火勢撲滅後的場景狀態
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-office-complete.png
             alt: VR 辦公室場景顯示滅火完成
             ratio: 16 / 9
-            fit: contain
-    - kind: media
-      title: 測驗進行與成果回饋
-      intro: 在不同模擬場景中進行操作測驗，並於完成後顯示操作結果及完成時間，作為學員自我檢視與再次練習的依據
-      items:
         - title: 測驗進行中
           content: 操作畫面顯示火勢與 60 秒計時
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
             alt: VR 滅火測驗畫面，火勢仍在燃燒，上方顯示計時 60 秒
-            fit: contain
             ratio: 16 / 9
         - title: 火勢已撲滅
           content: 火勢撲滅後顯示「滅火完成」
@@ -192,7 +183,6 @@ landing:
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
             alt: VR 訓練畫面顯示「滅火完成」，火勢已撲滅
-            fit: contain
 relatedProducts: []
 relatedSolutions:
   - fire-rescue
