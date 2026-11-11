@@ -7,6 +7,7 @@
  * Images are placeholders until approved photos are supplied.
  */
 import SplitSection from "./SplitSection.astro";
+import ContentBody from "./ContentBody.astro";
 import { localePath, type Lang } from "../i18n";
 import { getLocalized } from "../lib/content";
 import { getUi } from "../lib/ui";
@@ -20,22 +21,22 @@ import ScenarioCards from "./ScenarioCards.astro";
 import ValueCards from "./ValueCards.astro";
 import Text from "./Text.astro";
 
-interface Props { lang: Lang; L: any }
-const { lang, L } = Astro.props;
+interface Props { lang: Lang; L: any; entryFile:string }
+const { lang, L, entryFile } = Astro.props;
 const ui = getUi(lang);
 const t = ui.productLanding;
 const e = t.eyebrows;
 const need = t.mediaNeed;
 const badge = t.illustrationLabel;
 const pending = t.mediaPending;
-const images = L.approach?.images ?? [];
+const images = (L.approach?.images ?? []).filter((image: any) => image.src && image.alt);
 const paras = (s: string) => s.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
 // Featured items link to a solution page only when it exists in this language.
 const needsLinks = !!L.featured || (L.blocks ?? []).some((b: any) => b.kind === "featured");
 const solutions = needsLinks ? await getLocalized("solutions", lang) : [];
 const products = needsLinks ? await getLocalized("products", lang) : [];
 let n = 0;
-const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
+const alt = () => (n++ % 2 === 1 ? "section section--alt tac-ruler" : (n > 1 ? "section tac-ruler" : "section"));
 ---
   <!-- Training challenge: heading and introduction beside the numbered problems -->
   {L.challenge && (
@@ -67,7 +68,7 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
               {images.map((img: any, i: number) => (
                 <>
                   {i === 1 && images.length === 2 && <span class="link" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 11h16M13 5l6 6-6 6" /></svg></span>}
-                  <MediaSlot media={img} ratio={images.length === 1 || images.length === 3 ? "4 / 3" : "4 / 5"} fallbackLabel={pending} needPrefix={need} badge={badge} sizes="(max-width: 767px) 50vw, 28vw" />
+                  <MediaSlot media={img} ratio="16 / 9" fallbackLabel={pending} needPrefix={need} badge={badge} sizes="(max-width: 767px) 50vw, 28vw" />
                 </>
               ))}
             </div>
@@ -148,10 +149,9 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
         {b.kind === "prose" ? (
           <SplitSection>
             <div class="pb-head" slot="head">
-              {b.eyebrow && <p class="t-label eyebrow"><Text value={b.eyebrow} /></p>}
               <h2 class="t-h2" id={`h-block-${i}`}><Text value={b.title} /></h2>
             </div>
-            <div class="prose">{paras(b.body ?? "").map((p: string) => <p><Text value={p} /></p>)}</div>
+            <div class="landing-body"><ContentBody markdown={b.body??""} lang={lang} entryFile={entryFile} /></div>
           </SplitSection>
         ) : (
           <>
@@ -204,21 +204,23 @@ const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
   .challenge-head { display: grid; gap: var(--space-4); align-content: start; position: sticky; top: calc(var(--header-h) + var(--space-4)); }
   .challenge-head :global(.section-head) { margin-bottom: 0; }
   .split { display: grid; grid-template-columns: 5fr 7fr; gap: var(--content-gap); align-items: start; }
-  .split.solo, .split.wide { grid-template-columns: 1fr; }
+  .split.solo, .split.wide { grid-template-columns: minmax(0, 1fr); }
   .pair.triple { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pair.single { grid-template-columns: 1fr; }
+  .pair.single { grid-template-columns: minmax(0, 1fr); }
   .pair.stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pair.stack .link svg { transform: none; }
-  .pair { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .pair { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
   .link { position: absolute; left: 50%; top: 50%; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; transform: translate(-50%, -50%); background: var(--bxr-black); color: var(--bxr-white); border-bottom: 2px solid var(--bxr-red); }
-  .copy { display: grid; gap: var(--space-4); align-content: start; }
+  .copy { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-content: start; }
   .copy :global(.section-head) { margin-bottom: 0; }
-  .prose { display: grid; gap: var(--space-2); max-width: 44rem; }
+  .prose { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: var(--space-2); max-width: 44rem; }
   .prose p { margin: 0; }
   .after { margin-top: var(--content-gap); }
   .note { margin: var(--space-5) 0 0; max-width: 48rem; color: var(--ink-muted); padding-left: var(--space-2); border-left: 2px solid var(--bxr-red); }
   .note.closing { color: var(--ink); font-size: var(--fs-h4); line-height: var(--lh-h4); max-width: 64rem; }
   .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 1023px) { .split, .challenge { grid-template-columns: 1fr; gap: var(--space-4); } .challenge-head { position: static; } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .cards, .pair.triple, .featured { grid-template-columns: 1fr; } }
+  @media (max-width: 1023px) { .split, .challenge { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); } .challenge-head { position: static; } .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 767px) { .cards, .pair.triple, .featured { grid-template-columns: minmax(0, 1fr); } }
 </style>
+
+<style is:global>.landing-body .bxr-inline-media img{aspect-ratio:16/9;object-fit:cover;width:100%;height:auto}</style>

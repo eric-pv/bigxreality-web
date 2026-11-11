@@ -12,23 +12,27 @@
     "insights": "Insights",
     "caseStudies": "Case Studies",
     "resourcesMenu": "Resources menu",
-    "aboutUs": "About Us",
+    "aboutUs": "Company Profile",
     "history": "History",
     "team": "Management Team",
     "partners": "Partners",
     "investors": "Investor Relations",
     "companyMenu": "About BXR menu",
-    "planned": "(coming soon)"
+    "planned": "(coming soon)",
+    "csr": "Corporate Social Responsibility"
   },
-  "contact": "Contact Us",
+  "contact": "Contact BXR",
   "search": "Search",
   "menuOpen": "Open menu",
   "menuClose": "Close menu",
+  "motionToggle": "Pause motion",
+  "motionToggleMenu": "Pause",
+  "motionReducedNote": "Your device is set to reduce motion, so animations are turned off.",
   "languageLabel": "Switch language",
   "home": "Home",
   "logoHome": "Big x Reality home",
   "breadcrumbLabel": "Breadcrumb",
-  "translationPending": "[待翻譯] 本頁尚未完成翻譯。",
+  "translationPending": "Additional content is being prepared in this language.",
   "imagePending": "Product image",
   "solutionImagePending": "Solution image",
   "syntheticImage": "Composite illustration",
@@ -37,7 +41,7 @@
     "demo": "Book a Live Demo",
     "viewAll": "View all",
     "explore": "Learn more",
-    "formPending": "[待翻譯] 表單網址待提供",
+    "formPending": "Form link pending",
     "opensInNewTab": " (opens in a new tab)"
   },
   "filter": {
@@ -46,7 +50,7 @@
     "searchLabel": "Search products",
     "searchPlaceholder": "Enter a product name or keyword",
     "results": "{n} products",
-    "empty": "No products match the selected filters.",
+    "empty": "Adjust the filters to explore product information.",
     "reset": "Clear filters"
   },
   "domains": {
@@ -56,74 +60,67 @@
     "smart-city": "Smart City",
     "other": "Other"
   },
-  "domainCodes": {
-    "military": "MILITARY",
-    "police": "POLICE",
-    "fire-rescue": "FIRE & RESCUE",
-    "smart-city": "SMART CITY",
-    "other": "OTHER"
-  },
   "productDomains": {
     "military": "Military Training",
     "police": "Police Training",
     "fire-rescue": "Fire & Disaster Prevention"
   },
   "product": {
-    "onThisPage": "[待翻譯] 頁內導覽",
+    "onThisPage": "On this page",
     "sections": {
       "overview": {
         "eyebrow": "Overview",
-        "title": "[待翻譯] 產品概述"
+        "title": "Product overview"
       },
       "capabilities": {
         "eyebrow": "Key Capabilities",
-        "title": "[待翻譯] 核心能力"
+        "title": "Core capabilities"
       },
       "howItWorks": {
         "eyebrow": "How It Works",
-        "title": "[待翻譯] 運作方式"
+        "title": "How it works"
       },
       "scenarios": {
         "eyebrow": "Training Scenarios",
-        "title": "[待翻譯] 訓練情境"
+        "title": "Training scenarios"
       },
       "components": {
         "eyebrow": "System Components",
-        "title": "[待翻譯] 系統組成"
+        "title": "System components"
       },
       "deployment": {
         "eyebrow": "Deployment / Configuration",
-        "title": "[待翻譯] 部署方式"
+        "title": "Deployment"
       },
       "integratedOps": {
         "eyebrow": "Integrated Operations",
-        "title": "[待翻譯] 整合作戰"
+        "title": "Integrated operations"
       },
       "relatedSolutions": {
         "eyebrow": "Related Solutions",
-        "title": "[待翻譯] 關聯解決方案"
+        "title": "Related solutions"
       },
       "relatedArticles": {
         "eyebrow": "Related Insights / News",
-        "title": "[待翻譯] 相關文章"
+        "title": "Related articles"
       }
     },
     "deployment": {
-      "personnel": "[待翻譯] 人數",
-      "area": "[待翻譯] 空間",
-      "setupTime": "[待翻譯] 時間",
-      "notes": "[待翻譯] 說明",
-      "personUnit": "[待翻譯] 人",
+      "personnel": "Personnel",
+      "area": "Space",
+      "setupTime": "Time",
+      "notes": "Notes",
+      "personUnit": "people",
       "areaUnit": "m²",
-      "minuteUnit": "[待翻譯] 分鐘",
-      "approx": "[待翻譯] 約"
+      "minuteUnit": "minutes",
+      "approx": "Approx."
     },
-    "integratesWith": "[待翻譯] 可整合的產品"
+    "integratesWith": "Compatible products"
   },
   "articleTypes": {
-    "insights": "[待翻譯] 技術文章",
-    "news": "[待翻譯] 消息",
-    "case-studies": "[待翻譯] 案例"
+    "insights": "Insights",
+    "news": "News",
+    "case-studies": "Case studies"
   },
   "footer": {
     "navLabel": "Footer menu",
@@ -141,111 +138,115 @@
     "sections": {
       "overview": {
         "eyebrow": "Overview",
-        "title": "[待翻譯] 方案概述"
+        "title": "Solution overview"
       },
       "challenges": {
         "eyebrow": "Challenges",
-        "title": "[待翻譯] 面臨的挑戰"
+        "title": "Challenges"
       },
       "capabilities": {
         "eyebrow": "Capabilities",
-        "title": "[待翻譯] 方案能力"
+        "title": "Capabilities"
       },
       "relatedProducts": {
         "eyebrow": "Related Products",
-        "title": "[待翻譯] 相關產品"
+        "title": "Related products"
       },
       "caseStudies": {
         "eyebrow": "Case Studies",
-        "title": "[待翻譯] 相關案例"
+        "title": "Related case studies"
       },
       "insights": {
         "eyebrow": "Insights",
-        "title": "[待翻譯] 相關技術文章"
+        "title": "Related insights"
       },
       "news": {
         "eyebrow": "News",
-        "title": "[待翻譯] 相關消息"
+        "title": "Related news"
       }
     },
-    "explore": "[待翻譯] 了解方案"
+    "explore": "Explore solution",
+    "eyebrow": "Solution"
   },
   "article": {
-    "published": "[待翻譯] 發布",
-    "updated": "[待翻譯] 更新",
-    "author": "[待翻譯] 作者",
-    "readingTime": "[待翻譯] 閱讀時間約 {n} 分鐘",
-    "tags": "[待翻譯] 標籤",
+    "published": "Published",
+    "updated": "Updated",
+    "author": "Author",
+    "readingTime": "{n} min read",
+    "tags": "Tags",
     "related": {
       "eyebrow": "Related",
-      "title": "[待翻譯] 延伸閱讀"
+      "title": "Further reading"
     },
     "relatedProducts": {
       "eyebrow": "Related Products",
-      "title": "[待翻譯] 相關產品"
+      "title": "Related products"
     },
     "relatedSolutions": {
       "eyebrow": "Related Solutions",
-      "title": "[待翻譯] 相關解決方案"
+      "title": "Related solutions"
     },
     "categories": {
-      "company": "[待翻譯] 公司消息",
-      "exhibition": "[待翻譯] 展覽活動",
-      "award": "[待翻譯] 獲獎",
-      "product-launch": "[待翻譯] 產品發表",
-      "partnership": "[待翻譯] 合作夥伴",
-      "media": "[待翻譯] 媒體報導"
+      "company": "Company",
+      "exhibition": "Exhibitions",
+      "award": "Awards",
+      "product-launch": "Product launches",
+      "partnership": "Partnerships",
+      "media": "Media",
+      "event": "Event",
+      "product": "Product",
+      "insight": "Insight"
     },
-    "event": "[待翻譯] 活動",
-    "location": "[待翻譯] 地點",
-    "date": "[待翻譯] 日期",
-    "source": "[待翻譯] 報導來源",
-    "sourceLink": "[待翻譯] 閱讀原文",
-    "client": "[待翻譯] 客戶",
-    "anonymized": "[待翻譯] （匿名）",
-    "domains": "[待翻譯] 領域",
-    "products": "[待翻譯] 使用產品",
-    "challenge": "[待翻譯] 挑戰",
-    "solution": "[待翻譯] 導入方案",
-    "outcomes": "[待翻譯] 成果"
+    "event": "Event",
+    "location": "Location",
+    "date": "Date",
+    "source": "Source",
+    "sourceLink": "Read original",
+    "client": "Client",
+    "anonymized": "(Anonymous)",
+    "domains": "Domain",
+    "products": "Products used",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "outcomes": "Outcomes"
   },
   "listing": {
-    "empty": "[待翻譯] 目前還沒有內容。",
-    "count": "[待翻譯] 共 {n} 篇",
-    "pagination": "[待翻譯] 分頁",
-    "previous": "[待翻譯] 上一頁",
-    "next": "[待翻譯] 下一頁",
-    "page": "[待翻譯] 第 {n} 頁",
-    "pageOf": "[待翻譯] 第 {n} 頁，共 {total} 頁",
-    "filterEmpty": "[待翻譯] 沒有符合條件的案例。",
-    "filterResults": "[待翻譯] 共 {n} 個案例",
-    "filterSearchLabel": "[待翻譯] 搜尋案例",
-    "filterSearchPlaceholder": "[待翻譯] 輸入客戶、產品或關鍵字"
+    "empty": "Contact BXR for article information.",
+    "count": "{n} articles",
+    "pagination": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {n}",
+    "pageOf": "Page {n} of {total}",
+    "filterEmpty": "Adjust the filters to explore relevant case studies.",
+    "filterResults": "{n} case studies",
+    "filterSearchLabel": "Search case studies",
+    "filterSearchPlaceholder": "Client, product or keyword"
   },
   "tags": {
     "eyebrow": "Tags",
-    "title": "[待翻譯] 標籤",
-    "count": "[待翻譯] {n} 篇",
-    "allTags": "[待翻譯] 所有標籤"
+    "title": "Tags",
+    "count": "{n} articles",
+    "allTags": "All tags"
   },
   "searchPage": {
-    "label": "[待翻譯] 搜尋關鍵字",
-    "placeholder": "[待翻譯] 輸入產品、解決方案或文章關鍵字",
-    "submit": "[待翻譯] 搜尋",
-    "typesLabel": "[待翻譯] 內容類型",
+    "label": "Search keywords",
+    "placeholder": "Search products, solutions or articles",
+    "submit": "Search",
+    "typesLabel": "Content type",
     "types": {
-      "all": "[待翻譯] 全部",
-      "products": "[待翻譯] 產品",
-      "solutions": "[待翻譯] 解決方案",
-      "news": "[待翻譯] 消息",
-      "insights": "[待翻譯] 技術文章",
-      "case-studies": "[待翻譯] 案例"
+      "all": "All",
+      "products": "Products",
+      "solutions": "Solutions",
+      "news": "News",
+      "insights": "Insights",
+      "case-studies": "Case studies"
     },
-    "results": "[待翻譯] 找到 {n} 筆結果",
-    "empty": "[待翻譯] 找不到符合「{q}」的結果。",
-    "hint": "[待翻譯] 請輸入至少兩個字。",
-    "noscript": "[待翻譯] 搜尋功能需要啟用 JavaScript。",
-    "error": "[待翻譯] 搜尋暫時無法使用，請稍後再試。"
+    "results": "{n} results",
+    "empty": "No results for “{q}”.",
+    "hint": "Enter at least two characters.",
+    "noscript": "Enable JavaScript to search.",
+    "error": "Try the search again or contact BXR for assistance."
   },
   "cta": {
     "exploreProducts": "Explore Products",
@@ -257,7 +258,7 @@
     "productInquiry": "Product Enquiry",
     "solutionInquiry": "Solution Enquiry",
     "solutionDemo": "Book a Demo",
-    "discussNeeds": "Discuss Your Needs",
+    "discussNeeds": "Discuss Training Requirements",
     "learnMore": "Learn More"
   },
   "productLanding": {
@@ -274,7 +275,7 @@
     },
     "eyebrows": {
       "challenge": "Training Challenge",
-      "approach": "Our Approach",
+      "approach": "Solution Approach",
       "capabilities": "Key Capabilities",
       "flow": "Training Flow",
       "scenarios": "Applications",
@@ -288,155 +289,196 @@
     "stepLabel": "STEP",
     "mediaNeed": "Image needed | ",
     "mediaPending": "Image",
-    "illustrationLabel": "Scenario illustration"
+    "illustrationLabel": "Concept visual"
   },
   "contactPage": {
-    "topicLabel": "[待翻譯] 洽詢項目",
+    "topicLabel": "Inquiry topic",
     "topics": {
       "general": {
-        "title": "[待翻譯] 一般洽詢",
-        "subject": "[待翻譯] 一般洽詢"
+        "title": "General inquiry",
+        "subject": "General inquiry"
       },
       "demo": {
-        "title": "[待翻譯] 預約產品展示",
-        "subject": "[待翻譯] 預約產品展示"
+        "title": "Request a demonstration",
+        "subject": "Request a demonstration"
       },
       "info": {
-        "title": "[待翻譯] 索取產品資料",
-        "subject": "[待翻譯] 索取產品資料"
+        "title": "Request product information",
+        "subject": "Request product information"
       },
       "product": {
-        "title": "[待翻譯] 洽詢產品",
-        "subject": "[待翻譯] 產品洽詢"
+        "title": "Product inquiry",
+        "subject": "Product inquiry"
       },
       "solution": {
-        "title": "[待翻譯] 洽詢解決方案",
-        "subject": "[待翻譯] 解決方案洽詢"
+        "title": "Solution inquiry",
+        "subject": "Solution inquiry"
       },
       "solution-demo": {
-        "title": "[待翻譯] 預約展示",
-        "subject": "[待翻譯] 預約解決方案展示"
+        "title": "Request a solution demonstration",
+        "subject": "Request a solution demonstration"
       },
       "needs": {
-        "title": "[待翻譯] 討論訓練需求",
-        "subject": "[待翻譯] 訓練需求討論"
+        "title": "Discuss training requirements",
+        "subject": "Discuss training requirements"
       }
     },
-    "about": "[待翻譯] 關於",
+    "about": "About",
     "steps": {
-      "eyebrow": "How to Reach Us",
-      "title": "[待翻譯] 以 Email 與我們聯繫",
+      "eyebrow": "BXR Contact Information",
+      "title": "Contact BXR by email",
       "items": [
         {
-          "title": "[待翻譯] 按下「寄送 Email」",
-          "description": "[待翻譯] 系統會開啟您的郵件軟體，主旨與信件格式已依洽詢項目填好。"
+          "title": "Select “Send email”",
+          "description": "The email application opens with an inquiry subject and message template."
         },
         {
-          "title": "[待翻譯] 補上聯絡資料與需求",
-          "description": "[待翻譯] 請填寫姓名、單位、職稱、國家、電話，以及希望了解的內容。"
+          "title": "Add contact details and requirements",
+          "description": "Include the contact name, organization, job title, country, phone number, and requested information."
         },
         {
-          "title": "[待翻譯] 寄出後由業務聯繫",
-          "description": "[待翻譯] 我們收到來信後，將由業務人員與您聯繫，確認需求與後續安排。"
+          "title": "BXR follow-up",
+          "description": "The BXR sales team follows up on incoming inquiries to confirm requirements and next steps."
         }
       ]
     },
-    "sendEmail": "[待翻譯] 寄送 Email",
-    "orWrite": "[待翻譯] 或直接寄信至",
+    "sendEmail": "Send email",
+    "orWrite": "Or write directly to",
     "bodyFields": [
-      "[待翻譯] 姓名：",
-      "[待翻譯] 公司／單位：",
-      "[待翻譯] 職稱：",
-      "[待翻譯] 國家：",
-      "[待翻譯] 電話：",
-      "[待翻譯] 需求說明："
+      "Name:",
+      "Company / organization:",
+      "Job title:",
+      "Country:",
+      "Phone:",
+      "Requirements:"
     ],
-    "noEmail": "[待翻譯] 聯絡信箱尚未設定。"
+    "noEmail": "Contact information is listed on the contact page.",
+    "form": {
+      "intro": "Complete the form below and the BXR sales team will contact you shortly. Fields marked “Required” must be completed.",
+      "required": "Required",
+      "optional": "Optional",
+      "name": "Full name",
+      "nameHint": "Enter your given and family names in your preferred order and spelling. A single name is also accepted.",
+      "organization": "Company / Organization",
+      "jobTitle": "Job title",
+      "country": "Country / Region",
+      "countryPlaceholder": "Select a country / region",
+      "email": "Email",
+      "phone": "Phone",
+      "topic": "Inquiry topic",
+      "interest": "Products / solutions (multiple selections)",
+      "closeInline": "Close inquiry form",
+      "interestPlaceholder": "Choose products / solutions",
+      "interestSelected": "{count} selected",
+      "interestNone": "Other / not decided",
+      "interestProducts": "Products",
+      "interestSolutions": "Solutions",
+      "message": "Your requirements",
+      "messageHint": "For example, trainees, group size, timeline or the information you need.",
+      "consentBefore": "By selecting “Agree and submit”, you confirm that you have read and agree to our ",
+      "consentLink": "Privacy Policy",
+      "consentAfter": " and consent to BXR processing the information you provide to respond to this inquiry.",
+      "submit": "Agree and submit",
+      "submitting": "Submitting…",
+      "successTitle": "Thank you for your inquiry",
+      "successBody": "We have received your message. The BXR sales team will contact you shortly.",
+      "reference": "Inquiry reference",
+      "errorRequired": "Complete this field.",
+      "errorEmail": "Enter a valid email address.",
+      "errorPhone": "Enter a valid phone number.",
+      "errorSummary": "Some fields need attention. Check the highlighted fields.",
+      "errorUnknown": "We could not confirm whether your inquiry was received. Your entries are kept on this page; select “Agree and submit” again. The same inquiry reference is reused, so no duplicate is created.",
+      "errorBusy": "The system is busy. Wait a moment and select “Agree and submit” again.",
+      "errorFailed": "The form cannot be submitted right now. Try again later or email",
+      "emailAlternative": "Prefer email? Write to",
+      "decline": "Do not agree",
+      "declined": "You have not agreed to the Privacy Policy, so the form will not be sent and nothing you entered reaches us. You can still email"
+    }
   },
   "cases": {
-    "filterLabel": "[待翻譯] 篩選成功案例",
-    "domain": "[待翻譯] 應用領域",
-    "product": "[待翻譯] 關聯產品",
-    "solution": "[待翻譯] 關聯解決方案",
-    "all": "[待翻譯] 全部",
-    "learnMore": "[待翻譯] 了解完整案例",
-    "count": "[待翻譯] 共 {n} 個案例",
-    "filterResults": "[待翻譯] 共 {n} 個案例",
-    "filterEmpty": "[待翻譯] 沒有符合條件的案例",
-    "empty": "[待翻譯] 成功案例整理中，目前尚無已發布的案例",
-    "emptyHint": "[待翻譯] 如需了解沉浸式模擬訓練如何配合您的任務需求，歡迎與我們聯絡",
-    "emptyCta": "[待翻譯] 聯絡我們",
-    "client": "[待翻譯] 導入單位",
-    "domains": "[待翻譯] 應用領域",
-    "products": "[待翻譯] 關聯產品",
-    "solutions": "[待翻譯] 關聯解決方案",
-    "anonymized": "[待翻譯] （單位資訊匿名）",
+    "filterLabel": "Filter case studies",
+    "domain": "Application domain",
+    "product": "Related products",
+    "solution": "Related solutions",
+    "all": "All",
+    "learnMore": "View case study",
+    "count": "{n} case studies",
+    "filterResults": "{n} case studies",
+    "filterEmpty": "Adjust the filters to explore relevant case studies.",
+    "empty": "Contact BXR for case study information.",
+    "emptyHint": "BXR provides consultation on simulation training requirements.",
+    "emptyCta": "Contact BXR",
+    "client": "Organization",
+    "domains": "Application domain",
+    "products": "Related products",
+    "solutions": "Related solutions",
+    "anonymized": "(Organization withheld)",
     "section": {
-      "background": "[待翻譯] 專案背景",
-      "challenge": "[待翻譯] 面臨的訓練挑戰",
-      "solution": "[待翻譯] 導入解決方案",
-      "application": "[待翻譯] 實際應用方式",
-      "results": "[待翻譯] 專案成果與效益",
-      "gallery": "[待翻譯] 現場影像",
-      "details": "[待翻譯] 專案詳述",
-      "relatedItems": "[待翻譯] 相關產品與解決方案",
-      "more": "[待翻譯] 延伸閱讀"
+      "background": "Project background",
+      "challenge": "Training challenges",
+      "solution": "Solution",
+      "application": "Application",
+      "results": "Results and benefits",
+      "gallery": "Gallery",
+      "details": "Project details",
+      "relatedItems": "Related products and solutions",
+      "more": "Further reading"
     },
-    "viewProduct": "[待翻譯] 前往產品頁",
-    "viewSolution": "[待翻譯] 前往解決方案頁",
+    "viewProduct": "View product",
+    "viewSolution": "View solution",
     "block": {
       "title": "Related Case Studies",
       "description": "",
       "more": "Case Studies",
-      "learnMore": "[待翻譯] 了解完整案例"
+      "learnMore": "View case study"
     },
     "cta": {
-      "title": "[待翻譯] 與我們討論您的訓練需求",
-      "description": "[待翻譯] 歡迎洽詢，了解 Big x Reality 如何依據實際任務需求規劃訓練應用",
-      "button": "[待翻譯] 聯絡我們"
+      "title": "Training Requirement Consultation",
+      "description": "Contact Big x Reality to plan training around your mission requirements.",
+      "button": "Contact BXR"
     }
   },
   "companyPages": {
-    "empty": "[待翻譯] 資料整理中，目前尚無已公開的內容",
-    "hint": "[待翻譯] 如需進一步了解，歡迎與我們聯絡",
-    "cta": "[待翻譯] 聯絡我們",
-    "download": "[待翻譯] 下載",
-    "date": "[待翻譯] 日期",
-    "category": "[待翻譯] 分類",
-    "modulesLabel": "[待翻譯] 投資人專區模組",
+    "empty": "Contact BXR for further information.",
+    "hint": "Contact BXR for further information.",
+    "cta": "Contact BXR",
+    "download": "Download",
+    "date": "Date",
+    "category": "Category",
+    "modulesLabel": "Investor information sections",
     "partnerCategories": {
-      "technology": "[待翻譯] 技術合作",
-      "integration": "[待翻譯] 系統整合",
-      "international": "[待翻譯] 國際通路合作"
+      "technology": "Technology partnerships",
+      "integration": "System integration",
+      "international": "International distribution"
     },
     "investorModules": {
       "profile": {
-        "title": "[待翻譯] 公司基本資料",
-        "description": "[待翻譯] 公司名稱、登記資訊、設立日期、實收資本額及其他正式公開的企業基本資訊"
+        "title": "Company profile",
+        "description": "Company name, registration, incorporation date, paid-in capital and other public company information."
       },
       "financials": {
-        "title": "[待翻譯] 財務資訊",
-        "description": "[待翻譯] 年度財務報告、營收資訊、財務相關文件及下載功能"
+        "title": "Financial information",
+        "description": "Annual financial reports, revenue information and financial documents for download."
       },
       "governance": {
-        "title": "[待翻譯] 公司治理",
-        "description": "[待翻譯] 公司治理架構、董事會資訊、重要治理政策及相關公開文件"
+        "title": "Corporate governance",
+        "description": "Governance structure, board information, key policies and public documents."
       },
       "shareholders": {
-        "title": "[待翻譯] 股東資訊",
-        "description": "[待翻譯] 股東會資訊、股務公告、股利資訊及相關文件"
+        "title": "Shareholder information",
+        "description": "Shareholder meetings, share administration notices, dividends and related documents."
       },
       "announcements": {
-        "title": "[待翻譯] 重大訊息與公告",
-        "description": "[待翻譯] 公司正式對外揭露的重要訊息、公告日期及附件"
+        "title": "Announcements",
+        "description": "Official company disclosures, publication dates and attachments."
       },
       "briefings": {
-        "title": "[待翻譯] 法人說明會",
-        "description": "[待翻譯] 投資人簡報、法人說明會資料及相關影音或文件"
+        "title": "Investor presentations",
+        "description": "Investor presentations, briefing materials, videos and documents."
       },
       "contact": {
-        "title": "[待翻譯] 投資人聯絡窗口",
-        "description": "[待翻譯] 投資人關係聯絡資訊及正式洽詢管道"
+        "title": "Investor relations contact",
+        "description": "Investor relations contact details and official inquiry channels."
       }
     }
   },
@@ -444,5 +486,57 @@
   "backToProducts": "",
   "faq": {
     "title": "Frequently Asked Questions"
+  },
+  "clientCategories": {
+    "defense-public-safety": "Defense & Public Safety",
+    "research-technology": "Research & Technology Institutions",
+    "government-public-enterprises": "Government & Public Enterprises",
+    "industry-professional-associations": "Industry & Professional Associations"
+  },
+  "newsListing": {
+    "intro": "Exhibitions, company updates, and developments in simulation training.",
+    "all": "All",
+    "allYears": "All years",
+    "categories": "News categories",
+    "years": "Publication year",
+    "undated": "Date unconfirmed",
+    "categoryLabels": {
+      "event": "Exhibitions & Events",
+      "exhibition": "Exhibitions",
+      "media": "Media Coverage"
+    }
+  },
+  "homeSections": {
+    "products": "Featured Products"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "eyebrow": "404",
+    "heading": "Page not found",
+    "description": "The page may have moved or been removed. Please check the address.",
+    "metaDescription": "The requested Big x Reality page could not be found.",
+    "linksLabel": "Return to website",
+    "home": "Back to home"
+  },
+  "careers": {
+    "title": "Careers at BXR",
+    "description": "View current openings, role requirements and application details on 104 Job Bank.",
+    "viewOpenings": "View jobs on 104",
+    "listDescription": "Current openings from our 104 Job Bank page. Select “Apply on 104” for full details and to apply.",
+    "apply": "Apply on 104",
+    "updated": "Openings synced from 104 on ",
+    "none": "There are no open positions right now. Follow our 104 company page for new openings.",
+    "experience": "Experience",
+    "education": "Education",
+    "salary": "Salary",
+    "headcount": "Openings",
+    "sourceLanguage": "Job details are shown as published on 104 (Traditional Chinese)."
+  },
+  "privacyNotice": {
+    "title": "Privacy Policy",
+    "description": "Please read our Privacy Policy and choose whether you agree. You can browse public content if you disagree. Sending an inquiry requires separate consent.",
+    "read": "Read the Privacy Policy",
+    "accept": "Agree",
+    "decline": "Disagree"
   }
 }

@@ -25,7 +25,7 @@ const listHref = localePath(lang, "case-studies");
 {cases.length > 0 && (
   <section class:list={["section", { "section--alt": alt }]} id={id} aria-labelledby="h-cases" data-related-cases>
     <div class="container">
-      <SectionHead id="h-cases" eyebrow="Case Studies" title={b.title} description={description ?? b.description} viewAll={cases.length > 1 ? { href: listHref, label: b.more } : undefined} />
+      <SectionHead id="h-cases" eyebrow={ui.nav.caseStudies} title={b.title} description={description ?? b.description} viewAll={cases.length > 1 ? { href: listHref, label: b.more } : undefined} />
       {one ? (
         <article class="feature">
           <CaseVisual cover={one.cover} sizes="(max-width: 1023px) 100vw, 640px" />

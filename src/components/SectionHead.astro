@@ -1,22 +1,20 @@
 ---
-/** Section heading group (DS P.14): Label → H2 → description (≤ 6 columns), optional "view all". */
+/** Section heading group (DS P.14): H2 → description (≤ 6 columns), optional "view all". */
 import Text from "./Text.astro";
-interface Props { eyebrow: string; title: string; description?: string; id?: string; viewAll?: { href: string; label: string } }
-const { eyebrow, title, description, id, viewAll } = Astro.props;
+interface Props { eyebrow?: string; title: string; description?: string; id?: string; viewAll?: { href: string; label: string } }
+const { title, description, id, viewAll } = Astro.props;
 ---
 <div class="section-head">
   <div class="copy">
-    <p class="t-label eyebrow">{eyebrow}</p>
     <h2 class="t-h2" id={id}><Text value={title} /></h2>
     {description && <p class="desc t-muted"><Text value={description} /></p>}
   </div>
   {viewAll && <a class="view-all" href={viewAll.href}><Text value={viewAll.label} /> <span aria-hidden="true">→</span></a>}
 </div>
 <style>
-  .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--content-gap); }
-  .copy { max-width: 50%; min-width: min(100%, 36rem); }
-  .eyebrow { color: var(--ink-muted); margin-bottom: var(--space-2); }
+  .section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--content-gap); }
+  .copy { flex: 1 1 34rem; max-width: min(100%, 48rem); min-width: 0; }
   .desc { margin-top: var(--space-2); }
   .view-all { flex: none; min-height: 24px; }
-  @media (max-width: 767px) { .section-head { flex-direction: column; align-items: flex-start; } .copy { max-width: none; min-width: 0; } }
+  @media (max-width: 767px) { .section-head { flex-direction: column; align-items: flex-start; } .copy { flex:none; width:100%; max-width: none; min-width: 0; } }
 </style>

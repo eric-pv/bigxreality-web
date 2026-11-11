@@ -1,0 +1,131 @@
+{
+  "baseline": "45ced0a",
+  "sourceCommit": "a3488b54b0469bcaec67998cce0909ea5617f976",
+  "checks": [
+    {
+      "command": "check",
+      "passed": true
+    },
+    {
+      "command": "test",
+      "passed": true
+    },
+    {
+      "command": "cms:sveltia:check",
+      "passed": true
+    },
+    {
+      "command": "qa:seo",
+      "passed": true
+    },
+    {
+      "command": "qa:ui-v1",
+      "passed": true
+    },
+    {
+      "command": "qa:motion",
+      "passed": true
+    },
+    {
+      "command": "qa:links",
+      "passed": true
+    },
+    {
+      "command": "qa:technologies",
+      "passed": true
+    },
+    {
+      "command": "qa:news-import",
+      "passed": true
+    },
+    {
+      "command": "qa:team",
+      "passed": true
+    },
+    {
+      "command": "build",
+      "passed": true
+    },
+    {
+      "command": "sveltia browser and typography edit",
+      "passed": true
+    },
+    {
+      "command": "accessibility",
+      "passed": true
+    },
+    {
+      "command": "Pages subpath",
+      "passed": true
+    }
+  ],
+  "browser": {
+    "pageViewportChecks": 597,
+    "headingChecks": 9453,
+    "phraseChecks": 45325,
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "fullRouteChecks": [
+      320,
+      1440
+    ],
+    "representativeRoutes": [
+      "/tw/",
+      "/en/",
+      "/jp/",
+      "/tw/products/",
+      "/en/products/",
+      "/jp/products/",
+      "/tw/products/sniper-simulator/",
+      "/en/products/sniper-simulator/",
+      "/jp/products/sniper-simulator/",
+      "/tw/products/sut/",
+      "/en/products/sut/",
+      "/jp/products/sut/",
+      "/tw/solutions/military/",
+      "/en/solutions/military/",
+      "/jp/solutions/military/",
+      "/tw/technologies/xr/",
+      "/en/technologies/xr/",
+      "/jp/technologies/xr/",
+      "/tw/news/",
+      "/en/news/",
+      "/jp/news/",
+      "/tw/company/",
+      "/en/company/",
+      "/jp/company/",
+      "/tw/company/team/",
+      "/en/company/team/",
+      "/jp/company/team/",
+      "/tw/company/csr/",
+      "/en/company/csr/",
+      "/jp/company/csr/",
+      "/tw/contact/",
+      "/en/contact/",
+      "/jp/contact/"
+    ],
+    "manualReviewCandidates": 0,
+    "jsErrors": 0
+  },
+  "unchangedSampledHeadingSets": 27,
+  "originalContentFilesChanged": 0,
+  "screenshots": {
+    "before": 21,
+    "after": 21
+  },
+  "noJavaScriptSmoke": "TW/EN/JP at 320px passed",
+  "editorialReviewTitles": 3,
+  "limitations": [
+    "Chromium viewport emulation; physical Safari/Android review pending",
+    "Live GitHub authorization and publishing not tested",
+    "Natural-language meaning cannot be fully verified with CSS and browser geometry; see MANUAL-TITLES.csv",
+    "Remote CI status not verified"
+  ]
+}

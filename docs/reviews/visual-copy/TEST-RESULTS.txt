@@ -1,0 +1,100 @@
+qa:technologies
+PASS: 864 checks; .qa/technologies-content-audit.md
+
+qa:english
+PASS
+
+qa:japanese
+PASS
+
+qa:faq
+PASS
+
+qa:header
+PASS
+
+qa:footer
+
+
+qa:company
+PASS
+
+qa:team
+PASS: three languages, 1440/768/390px; original team routes, complete capabilities, responsive framework, SEO and removed history.
+
+qa:csr
+PASS: CSR and currently linked news pages across 9 language/viewport combinations; SEO, topics, bidirectional links, no overflow or failed requests.
+
+qa:news-preview
+PASS: 90 article paths, 6555 local references and 36 desktop/mobile TW/EN/JP pages under /bigxreality-web/
+
+qa:ui-v1
+PASS: 342 TW/EN/JP template/viewports at 1366/1440/1920/768/390/430px, static filters/reload, complete current Git article archive, no duplicate CSR, no home logos, no overflow/errors/development copy. Screenshots: /tmp/bxr-ui-v1
+
+qa:client-logos
+PASS: 26 unique logos in exact 11/3/9/3 groups/order, first Ministry of National Defense; TW/EN/JP × 1440/768/390; home 760px/4-column/2×2 statistics without logos, About without logos, partner 4/2 grids and no captions, valid images.
+
+qa:team
+PASS: three languages, 1440/768/390px; original team routes, complete capabilities, responsive framework, SEO and removed history.
+
+fixture:qa:phase2
+PASS
+
+fixture:qa:search
+PASS
+
+fixture:qa:technologies
+PASS: 906 checks; .qa/technologies-content-audit.md
+
+check
+Result (219 files): 
+- 0 errors
+- 0 warnings
+
+test
+# tests 36
+# pass 36
+# fail 0
+
+cms:sveltia:check
+PASS: Sveltia fields match the current Astro schemas.
+PASS: 1470 nested schema fields; 183 existing files unchanged/round-trippable; three language paths, unknown dates, typed unions, media registry and isolated test folder.
+
+qa:behaviour
+PASS
+
+qa:solutions
+PASS
+
+check
+Result (220 files): 
+- 0 errors
+- 0 warnings
+
+qa:images
+PASS: 15 unchanged original assets, 171 routes/viewports, shared three-language sources, image decode/404/alt/fit checks
+
+qa:seo
+
+
+qa:news-import
+PASS: 90 three-language articles matching current Git source, dynamic lists, dates/undated metadata, image placeholders, desktop/mobile and no old-site image requests
+
+qa:news-media
+PASS: 9 language/viewport gallery+video controls; keyboard close/focus, click-to-load, no autoplay, pagehide reset, Facebook fallback. Remote player requests intercepted, no media downloaded.
+
+qa:motion
+PASS: 9 language/viewport combinations; one-time entrance, stable height, reduced motion, card feedback, keyboard focus, history/reload, no-JS/no-observer fallbacks
+PASS: 54 template/language/viewport cases; first visit, reload, restored scroll, navigation/back/forward, dynamic insertion, router/BFCache reset and reduced motion
+
+qa:density-navigation
+PASS: 9 language/viewport combinations; dropdowns, links, category filters, keyboard and reduced-motion back-to-top
+
+qa:links
+
+
+check:sitemap
+PASS (199 URLs)
+
+qa:ui-v1-preview
+PASS: 293 rebased HTML pages, 23758 local references, 42 TW/EN/JP desktop/mobile pages including static filters and logo paths.

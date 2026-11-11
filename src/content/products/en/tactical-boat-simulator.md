@@ -19,7 +19,6 @@ landing:
   heroImage:
     need: 'Realistic scenario illustration: speedboat simulation equipment, boat operators and a maritime training scene; no USV unmanned vessel imagery (16:9)'
     ratio: 16 / 9
-    kind: illustration
   ctaLabel: Enquire About the Speedboat Vehicle Training System
   challenge:
     title: Maritime Training Has to Deal with More Environmental and Resource Conditions
@@ -52,20 +51,20 @@ landing:
     - title: Basic Speedboat Operation
       content: Helps trainees build boat operating familiarity and basic training concepts
       image:
-        need: Speedboat simulation equipment image for an alternating text-and-image layout (3:2)
-        ratio: 3 / 2
+        need: Speedboat simulation equipment image for an alternating text-and-image layout (16:9)
+        ratio: 16 / 9
     - title: Maritime Environment Observation
       content: Practise understanding the surrounding space and environmental information in simulated waters
       image:
-        need: Simulated waters image for an alternating text-and-image layout (3:2)
-        ratio: 3 / 2
+        need: Simulated waters image for an alternating text-and-image layout (16:9)
+        ratio: 16 / 9
     - title: Navigation Safety Awareness
       content: Safety requirements and situational judgement are included in the related training
     - title: Motion Platform Experience
       content: Combines the motion platform to extend how boat handling training is experienced
       image:
-        need: Motion platform image for an alternating text-and-image layout (3:2)
-        ratio: 3 / 2
+        need: Motion platform image for an alternating text-and-image layout (16:9)
+        ratio: 16 / 9
     - title: Understanding Maritime Missions
       content: Simulated practice is arranged against different mission backgrounds, helping trainees understand the relationship between the mission and boat handling judgement
   flow:

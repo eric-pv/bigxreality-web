@@ -4,7 +4,8 @@
  * Hover: title turns Text Red, image scales to 1.02 over 400 ms.
  * The whole card is clickable through the title link (stretched link).
  */
-import { Picture } from "astro:assets";
+import ProductImage from './ProductImage.astro';
+import { primaryImage } from '../data/primary-images';
 import type { ImageMetadata } from "astro";
 import type { Lang } from "../i18n";
 import type { ProductDomain } from "../lib/domains";
@@ -17,29 +18,28 @@ interface Props {
   lang: Lang;
   href: string;
   name: string;
-  englishName?: string;
   summary?: string;
   /** Product categories (lib/domains.ts PRODUCT_DOMAINS). */
   domains: ProductDomain[];
-  /** Tag names; the products overview passes ui.productDomains, other pages keep ui.domains. */
+  /** Tag names; default: the product categories (ui.productDomains), the same wording on every page. */
   domainLabels?: Partial<Record<ProductDomain, string>>;
   image?: { src: ImageMetadata; alt: string };
   headingLevel?: 2 | 3;
 }
-const { lang, href, name, englishName, summary, domains, domainLabels, image, headingLevel = 3 } = Astro.props;
+const { lang, href, name, summary, domains, domainLabels, image, headingLevel = 3 } = Astro.props;
 const ui = getUi(lang);
+const resolvedImage = image ?? primaryImage('products', href.match(/\/products\/([^/?#]+)/)?.[1] ?? '', lang);
 const H = `h${headingLevel}` as "h2" | "h3";
 ---
 <article data-interactive-card class="card">
   <div class="media">
-    {image
-      ? <Picture src={image.src} alt={image.alt} formats={["avif", "webp"]} widths={[400, 640, 960, 1280].filter((w) => w <= image.src.width)} sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 400px" width={640} height={360} fit="cover" />
+    {resolvedImage
+      ? <ProductImage src={resolvedImage.src} alt={resolvedImage.alt} ambient />
       : <ImagePlaceholder label={ui.imagePending} />}
   </div>
   <div class="body">
-    <ul role="list" class="tags">{domains.map((d) => <li><SectorTag domain={d} lang={lang} label={domainLabels?.[d]} /></li>)}</ul>
+    <ul role="list" class="tags">{domains.map((d) => <li><SectorTag domain={d} lang={lang} label={(domainLabels ?? ui.productDomains)[d as keyof typeof ui.productDomains]} /></li>)}</ul>
     <H class="t-h4 title"><a href={href}><Text value={name} /></a></H>
-    {englishName && <p class="t-tech english"><Text value={englishName} /></p>}
     {summary && <p class="t-small summary"><Text value={summary} /></p>}
   </div>
 </article>
@@ -47,7 +47,6 @@ const H = `h${headingLevel}` as "h2" | "h3";
   .card { position: relative; display: flex; flex-direction: column; height: 100%; border: 1px solid var(--divider); background: var(--surface); }
   .media { overflow: hidden; aspect-ratio: 16 / 9; }
   .media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-standard) var(--ease-precise); }
-  .card:hover .media :global(img) { transform: scale(1.02); }
   .body { display: grid; gap: var(--space-1); padding: var(--card-padding); align-content: start; }
   .tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0 0 var(--space-1); padding: 0; list-style: none; }
   .title a { color: var(--ink); text-decoration: none; transition: color var(--dur-micro) var(--ease-precise); }
@@ -55,8 +54,24 @@ const H = `h${headingLevel}` as "h2" | "h3";
   .card:hover .title a { color: var(--bxr-text-red); }
   .title a:focus-visible { outline: none; }
   .card:has(.title a:focus-visible) { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-  .english { color: var(--ink-muted); }
   .summary { color: var(--ink-muted); margin-top: var(--space-1); }
   .tags :global(li) { position: relative; z-index: 1; }
   .media:has(:global(.placeholder)) { aspect-ratio: auto; height: auto; }
+</style>
+
+<style>.body { display: flex; flex-direction: column; flex: 1; } .summary { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } .more { margin-top: auto; padding-top: var(--space-2); }</style>
+<style>
+  /* Hover/keyboard feedback: image grows inside its clipped frame (no layout change), a red gradient rises from the bottom. */
+  .media { position: relative; }
+  .media::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: linear-gradient(0deg, color-mix(in srgb, var(--bxr-red) 42%, transparent), transparent 55%);
+    transition: opacity var(--dur-standard) var(--ease-precise); }
+  @media (prefers-reduced-motion: no-preference) {
+    .card:has(.title a:focus-visible) .media :global(img) { transform: scale(1.05); }
+  }
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .card:hover .media :global(img) { transform: scale(1.05); }
+  }
+  .card:hover .media::after, .card:has(.title a:focus-visible) .media::after { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .media::after { transition: none; } .card .media :global(img) { transition: none; transform: none; } }
 </style>

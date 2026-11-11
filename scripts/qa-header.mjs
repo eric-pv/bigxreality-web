@@ -32,7 +32,7 @@ try {
         const sub = await page.$$eval("#sub-resources a", (as) => as.map((a) => [a.textContent.trim(), a.getAttribute("href")]));
         check(`${l}: Resources menu has three items in order`, JSON.stringify(sub.map((x) => x[0])) === JSON.stringify(want.sub) && JSON.stringify(sub.map((x) => x[1])) === JSON.stringify(SUB_HREFS(l)), JSON.stringify(sub));
         const about = await page.$$eval("#sub-company a", (as) => as.map((a) => [a.textContent.trim(), a.getAttribute("href")]));
-        check(`${l}: About BXR menu has six items in order`, JSON.stringify(about.map((x) => x[1])) === JSON.stringify([`/${l}/company/`, `/${l}/company/history/`, `/${l}/company/team/`, `/${l}/company/partners/`, `/${l}/company/investors/`, `/${l}/contact/`]) && (l !== "tw" || JSON.stringify(about.map((x) => x[0])) === JSON.stringify(["關於我們", "發展歷程", "經營團隊", "合作夥伴", "投資人專區", "聯絡我們"])), JSON.stringify(about));
+        check(`${l}: About BXR menu has six items including CSR in order`, JSON.stringify(about.map((x) => x[1])) === JSON.stringify([`/${l}/company/`, `/${l}/company/csr/`, `/${l}/company/team/`, `/${l}/company/partners/`, `/${l}/company/investors/`, `/${l}/contact/`]) && (l !== "tw" || JSON.stringify(about.map((x) => x[0])) === JSON.stringify(["公司簡介", "企業社會責任", "經營團隊", "合作夥伴", "投資人專區", "聯絡 BXR"])), JSON.stringify(about));
       }
       const m = await page.evaluate(() => {
         const bar = document.querySelector(".site-header .bar");
@@ -98,7 +98,7 @@ try {
   check("Active: 解決方案 on a solution page", JSON.stringify(await current("/tw/solutions/military/")) === '["解決方案"]');
   await page.goto(`${base}/tw/company/`, { waitUntil: "networkidle" });
   check("company page: heading, three paragraphs and slogan", (await page.locator("h1").innerText()).trim() === "虛擬訓練．真實應變．守護未來" && (await page.locator(".page-hero .desc").count()) === 3 && (await page.locator("#company-slogan").innerText()).includes("Turn Every Drill into Real"));
-  check("Active: 關於 BXR on a sub-page and on the contact page", JSON.stringify(await current("/tw/company/history/")) === '["關於 BXR"]' && JSON.stringify(await current("/tw/contact/")) === '["關於 BXR"]');
+  check("Active: 關於 BXR on a sub-page and on the contact page", JSON.stringify(await current("/tw/company/team/")) === '["關於 BXR"]' && JSON.stringify(await current("/tw/contact/")) === '["關於 BXR"]');
   await page.goto(`${base}/tw/company/investors/`, { waitUntil: "networkidle" });
   await page.locator('[aria-controls="sub-company"]').click();
   check("Active: the open About BXR menu marks 投資人專區", (await page.locator('#sub-company a[aria-current="page"]').textContent()).trim() === "投資人專區");

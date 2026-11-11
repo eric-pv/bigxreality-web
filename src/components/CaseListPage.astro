@@ -1,4 +1,6 @@
 ---
+import { publicUrl } from '../lib/public-url.ts';
+
 /**
  * /[lang]/cases/ — the success-case overview. Cards come from the published, client-approved
  * case studies; the filters are built from what those cases use. With no published case the
@@ -8,6 +10,7 @@ import { getEntry } from "astro:content";
 import { LANGS, localePath, type Lang } from "../i18n";
 import { getCases } from "../lib/cases";
 import { getArticles, articleHref } from "../lib/articles";
+import { isEditorialPlaceholder as isPending } from "../lib/pending";
 import { getUi } from "../lib/ui";
 import { plain } from "../lib/text";
 import { site } from "../lib/site";
@@ -30,7 +33,7 @@ const breadcrumbs = [
   { name: ui.home, path: localePath(lang) },
   { name: ui.nav.caseStudies, path: localePath(lang, "case-studies") },
 ];
-const abs = (p: string) => new URL(p, site.url).toString();
+const abs = (p: string) => publicUrl(p).toString();
 const collectionLd = {
   "@type": "CollectionPage",
   name: plain(copy.hero.title),
@@ -44,10 +47,10 @@ const collectionLd = {
   headerTheme="dark" current="resources" currentResource="case-studies" fallbackPath="/{lang}/cases/" breadcrumbs={breadcrumbs}
   structuredData={cases.length ? [collectionLd] : []}
 >
-  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={copy.hero.title} lead={copy.hero.lead} description={copy.hero.description} />
+  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={isPending(copy.hero.title)?ui.nav.caseStudies:copy.hero.title} lead={copy.hero.lead && !isPending(copy.hero.lead)?copy.hero.lead:undefined} description={copy.hero.description && !isPending(copy.hero.description)?copy.hero.description:undefined} />
   <section class="section" aria-labelledby="h-case-list">
     <div class="container">
-      <h2 id="h-case-list" class="visually-hidden"><Text value={copy.hero.title} /></h2>
+      <h2 id="h-case-list" class="visually-hidden"><Text value={isPending(copy.hero.title)?ui.nav.caseStudies:copy.hero.title} /></h2>
       {cases.length === 0 ? (
         <div class="empty" role="status" data-case-empty>
           <p class="t-h4"><Text value={c.empty} /></p>

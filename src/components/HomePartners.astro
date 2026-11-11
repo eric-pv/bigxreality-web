@@ -1,0 +1,17 @@
+---
+import { localePath, type Lang } from '../i18n';
+import { getUi } from '../lib/ui';
+import SectionHead from './SectionHead.astro';
+import PartnerStatistics from './PartnerStatistics.astro';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const ui = getUi(lang);
+const view = {tw:'查看合作夥伴', en:'View partners', jp:'パートナーを見る'}[lang];
+---
+<section class="section home-partners" aria-labelledby="h-partners" data-home-partners>
+ <div class="container">
+  <SectionHead id="h-partners" title={ui.nav.partners} viewAll={{href:localePath(lang,'company','partners'),label:view}} />
+  <PartnerStatistics lang={lang} showHeading={false} embedded />
+ </div>
+</section>
+<style>.home-partners { padding-block: var(--home-section-py, 56px); }</style>

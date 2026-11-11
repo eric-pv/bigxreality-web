@@ -1,0 +1,48 @@
+{
+  "scope": "Synthetic planning wireframes, not production CMS",
+  "cases": [
+    {
+      "screen": "dashboard",
+      "width": 1440,
+      "visible": true
+    },
+    {
+      "screen": "list",
+      "width": 1440,
+      "visible": true
+    },
+    {
+      "screen": "editor",
+      "width": 1440,
+      "visible": true
+    },
+    {
+      "screen": "blocks",
+      "width": 1440,
+      "visible": true
+    },
+    {
+      "screen": "media",
+      "width": 1440,
+      "visible": true
+    },
+    {
+      "screen": "status",
+      "width": 1440,
+      "visible": true
+    },
+    {
+      "screen": "editor",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "screen": "media",
+      "width": 390,
+      "overflow": false
+    }
+  ],
+  "unsavedTabDemo": true,
+  "externalNetworkRequests": [],
+  "jsErrors": []
+}

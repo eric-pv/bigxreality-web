@@ -4,17 +4,24 @@
  * and the product / solution come in the query (?topic=demo&item=SUT); the page turns
  * them into a heading and a pre-filled e-mail (subject + the fields sales needs).
  * Without JavaScript the general e-mail link still works.
+ *
+ * Inquiry form (docs/inquiry/PRODUCTION-SETUP.md): built only when site.inquiry.endpoint holds the
+ * Apps Script /exec URL, and then only if the privacy policy is published (its link is part of the
+ * consent). The form posts with lib/inquiry.ts and shows success only after the script confirms the
+ * row was written; e-mail stays available below the form.
  */
 import { getEntry } from "astro:content";
 import { LANGS, localePath, type Lang } from "../../../i18n";
 import { getUi } from "../../../lib/ui";
 import { site } from "../../../lib/site";
-import { isPending } from "../../../lib/pending";
+import { isPending as isUnset } from "../../../lib/pending";
+import { isEditorialPlaceholder as isPending } from "../../../lib/pending";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
 import SectionHead from "../../../components/SectionHead.astro";
 import ProcessSteps from "../../../components/ProcessSteps.astro";
 import Text from "../../../components/Text.astro";
+import InquiryForm from "../../../components/InquiryForm.astro";
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -25,8 +32,7 @@ const ui = getUi(lang);
 const t = ui.contactPage;
 const copy = (await getEntry("pages", `${lang}/contact`))!.data;
 const email = isPending(site.contact.email) ? null : site.contact.email;
-const mailto = (subject: string) =>
-  `mailto:${email}?subject=${encodeURIComponent(`[Big x Reality] ${subject}`)}&body=${encodeURIComponent(t.bodyFields.join("\n") + "\n")}`;
+const inquiryEndpoint = isUnset(site.inquiry.endpoint) ? null : site.inquiry.endpoint;
 const breadcrumbs = [
   { name: ui.home, path: localePath(lang) },
   { name: ui.contact, path: localePath(lang, "contact") },
@@ -36,25 +42,22 @@ const breadcrumbs = [
   lang={lang} title={copy.seo.title} description={copy.seo.description} pathTemplate="/{lang}/contact/" alternates={[...LANGS]}
   pendingTranslation={copy.translationStatus === "pending"} headerTheme="dark" current="company" currentCompany="contact" breadcrumbs={breadcrumbs}
 >
-  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={copy.hero.title} description={copy.hero.description} />
+  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={isPending(copy.hero.title)?ui.contact:copy.hero.title} description={copy.hero.description && !isPending(copy.hero.description)?copy.hero.description:copy.seo.description} />
   <section class="section">
     <div class="container">
       {email ? (
-        <div class="request" data-contact data-topics={JSON.stringify(t.topics)} data-email={email} data-body={t.bodyFields.join("\n") + "\n"}>
+        <div class="request" data-contact>
           <p class="t-label label"><Text value={t.topicLabel} /></p>
           <h2 class="t-h2" data-topic-title><Text value={t.topics.general.title} /></h2>
           <p class="t-h4 item" data-topic-item hidden></p>
-          <div class="actions">
-            <a class="btn btn--primary" href={mailto(t.topics.general.subject)} data-mailto><Text value={t.sendEmail} /></a>
-            <p class="t-small t-muted"><Text value={t.orWrite} /> <a href={`mailto:${email}`}>{email}</a></p>
-          </div>
+          <InquiryForm lang={lang} />
         </div>
       ) : (
         <p class="t-muted"><Text value={t.noEmail} /></p>
       )}
     </div>
   </section>
-  {email && (
+  {email && !inquiryEndpoint && (
     <section class="section section--alt" aria-labelledby="h-steps">
       <div class="container">
         <SectionHead id="h-steps" eyebrow={t.steps.eyebrow} title={t.steps.title} />
@@ -64,28 +67,7 @@ const breadcrumbs = [
   )}
 </BaseLayout>
 
-<script>
-  const box = document.querySelector<HTMLElement>("[data-contact]");
-  if (box) {
-    const topics: Record<string, { title: string; subject: string }> = JSON.parse(box.dataset.topics!);
-    const params = new URLSearchParams(location.search);
-    const topic = topics[params.get("topic") ?? ""] ? params.get("topic")! : "general";
-    // Product codes / solution names only: letters, digits, CJK and a few separators.
-    const item = (params.get("item") ?? "").replace(/[^\p{L}\p{N} &·()（）\-–]/gu, "").slice(0, 60);
-    const { title, subject } = topics[topic];
-    box.querySelector("[data-topic-title]")!.textContent = title;
-    const itemEl = box.querySelector<HTMLElement>("[data-topic-item]")!;
-    if (item) { itemEl.textContent = item; itemEl.hidden = false; }
-    const full = `[Big x Reality] ${subject}${item ? ` – ${item}` : ""}`;
-    box.querySelector<HTMLAnchorElement>("[data-mailto]")!.href =
-      `mailto:${box.dataset.email}?subject=${encodeURIComponent(full)}&body=${encodeURIComponent(box.dataset.body!)}`;
-  }
-</script>
-
 <style>
-  .request { display: grid; gap: var(--space-2); max-width: 44rem; }
-  .label { color: var(--ink-muted); }
-  .item { color: var(--ink-muted); }
-  .actions { display: grid; gap: var(--space-2); justify-items: start; margin-top: var(--space-3); }
-  @media (max-width: 767px) { .actions .btn { width: 100%; justify-content: center; } }
+.request { display: grid; gap: var(--space-2); max-width: 44rem; }
+.label, .item { color: var(--ink-muted); }
 </style>

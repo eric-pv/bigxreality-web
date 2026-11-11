@@ -1,0 +1,2697 @@
+{
+  "versions": {
+    "blocknote": "0.57.0",
+    "milkdown": "7.23.0"
+  },
+  "scope": "Actual Markdown import/export, headless/jsdom; not a visual usability acceptance test.",
+  "rows": [
+    {
+      "id": "src/content/news/en/news-01-ds-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-01-ds-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-02-gbp-cover.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-02-gbp-cover.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-03-leadership-uncertainty.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-03-leadership-uncertainty.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-04-seecat-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-04-seecat-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-05-tadte-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-05-tadte-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-06-military-forum-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-06-military-forum-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-07-indo-defence.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-07-indo-defence.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-08-fire-agency-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-08-fire-agency-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-09-seecat-earlier.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-09-seecat-earlier.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-10-xr-shooting-sports.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-10-xr-shooting-sports.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-11-sushi-tech-2024.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-11-sushi-tech-2024.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-12-asia-xr-awards-2023.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-12-asia-xr-awards-2023.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-13-future-combat.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-13-future-combat.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-15-media-visit-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-15-media-visit-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-16-seecat-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-16-seecat-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-17-defense-education-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-17-defense-education-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-18-decision-training-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-18-decision-training-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-19-cna-simulation-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-19-cna-simulation-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-20-taipei-education-expo-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-20-taipei-education-expo-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-21-forum-22-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-21-forum-22-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-22-dsa-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-22-dsa-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-23-songshan-school-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-23-songshan-school-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-24-new-office-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-24-new-office-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-25-defense-expo-preview-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-25-defense-expo-preview-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-26-disaster-resilience-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-26-disaster-resilience-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-27-military-simulation-overview-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-27-military-simulation-overview-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-28-fire-extinguisher-launch-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-28-fire-extinguisher-launch-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-29-xr-defense-platform-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-29-xr-defense-platform-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-30-baseball-csr-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-30-baseball-csr-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-31-trap-shooting-championship-2024.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/en/news-31-trap-shooting-championship-2024.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-01-ds-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-01-ds-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-02-gbp-cover.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-02-gbp-cover.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-03-leadership-uncertainty.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-03-leadership-uncertainty.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-04-seecat-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-04-seecat-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-05-tadte-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-05-tadte-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-06-military-forum-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-06-military-forum-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-07-indo-defence.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-07-indo-defence.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-08-fire-agency-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-08-fire-agency-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-09-seecat-earlier.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-09-seecat-earlier.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-10-xr-shooting-sports.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-10-xr-shooting-sports.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-11-sushi-tech-2024.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-11-sushi-tech-2024.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-12-asia-xr-awards-2023.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-12-asia-xr-awards-2023.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-13-future-combat.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-13-future-combat.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-15-media-visit-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-15-media-visit-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-16-seecat-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-16-seecat-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-17-defense-education-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-17-defense-education-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-18-decision-training-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-18-decision-training-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-19-cna-simulation-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-19-cna-simulation-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-20-taipei-education-expo-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-20-taipei-education-expo-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-21-forum-22-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-21-forum-22-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-22-dsa-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-22-dsa-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-23-songshan-school-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-23-songshan-school-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-24-new-office-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-24-new-office-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-25-defense-expo-preview-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-25-defense-expo-preview-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-26-disaster-resilience-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-26-disaster-resilience-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-27-military-simulation-overview-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-27-military-simulation-overview-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-28-fire-extinguisher-launch-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-28-fire-extinguisher-launch-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-29-xr-defense-platform-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-29-xr-defense-platform-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-30-baseball-csr-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-30-baseball-csr-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-31-trap-shooting-championship-2024.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/jp/news-31-trap-shooting-championship-2024.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-01-ds-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-01-ds-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-02-gbp-cover.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-02-gbp-cover.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-03-leadership-uncertainty.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-03-leadership-uncertainty.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-04-seecat-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-04-seecat-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-05-tadte-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-05-tadte-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-06-military-forum-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-06-military-forum-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-07-indo-defence.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-07-indo-defence.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-08-fire-agency-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-08-fire-agency-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-09-seecat-earlier.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-09-seecat-earlier.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-10-xr-shooting-sports.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-10-xr-shooting-sports.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-11-sushi-tech-2024.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-11-sushi-tech-2024.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-12-asia-xr-awards-2023.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-12-asia-xr-awards-2023.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-13-future-combat.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-13-future-combat.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-15-media-visit-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-15-media-visit-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-16-seecat-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-16-seecat-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-17-defense-education-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-17-defense-education-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-18-decision-training-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-18-decision-training-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-19-cna-simulation-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-19-cna-simulation-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-20-taipei-education-expo-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-20-taipei-education-expo-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-21-forum-22-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-21-forum-22-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-22-dsa-2026.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-22-dsa-2026.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-23-songshan-school-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-23-songshan-school-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-24-new-office-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-24-new-office-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-25-defense-expo-preview-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-25-defense-expo-preview-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-26-disaster-resilience-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-26-disaster-resilience-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-27-military-simulation-overview-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-27-military-simulation-overview-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-28-fire-extinguisher-launch-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-28-fire-extinguisher-launch-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-29-xr-defense-platform-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-29-xr-defense-platform-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-30-baseball-csr-2025.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-30-baseball-csr-2025.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-31-trap-shooting-championship-2024.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/news/tw/news-31-trap-shooting-championship-2024.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/case-studies.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/case-studies.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/company.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/company.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/contact.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/contact.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/history.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/history.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/insights.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/insights.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/investors.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/investors.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/news.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/news.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/partners.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/partners.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/privacy.md",
+      "editor": "blocknote",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/privacy.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/products.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/products.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/search.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/search.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/solutions.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/solutions.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/tags.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/tags.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/team.md",
+      "editor": "blocknote",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/en/team.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/case-studies.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/case-studies.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/company.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/company.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/contact.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/contact.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/history.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/history.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/insights.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/insights.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/investors.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/investors.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/news.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/news.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/partners.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/partners.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/privacy.md",
+      "editor": "blocknote",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/privacy.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/products.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/products.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/search.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/search.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/solutions.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/solutions.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/tags.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/tags.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/team.md",
+      "editor": "blocknote",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/jp/team.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/case-studies.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/case-studies.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/company.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/company.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/contact.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/contact.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/history.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/history.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/insights.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/insights.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/investors.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/investors.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/news.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/news.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/partners.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/partners.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/privacy.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/privacy.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/products.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/products.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/search.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/search.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/solutions.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/solutions.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/tags.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/tags.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/team.md",
+      "editor": "blocknote",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/pages/tw/team.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/fire-extinguisher-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/fire-extinguisher-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/full-scale-police-training.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/full-scale-police-training.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/hmmwv-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/hmmwv-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/machine-gun-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/machine-gun-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/mortar-observation.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/mortar-observation.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/police-box.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/police-box.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/sniper-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/sniper-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/sut.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/sut.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/tactical-boat-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/tactical-boat-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/uav.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/uav.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/usv.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/usv.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/wargaming-table.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/en/wargaming-table.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/fire-extinguisher-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/fire-extinguisher-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/full-scale-police-training.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/full-scale-police-training.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/hmmwv-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/hmmwv-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/machine-gun-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/machine-gun-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/mortar-observation.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/mortar-observation.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/police-box.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/police-box.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/sniper-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/sniper-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/sut.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/sut.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/tactical-boat-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/tactical-boat-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/uav.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/uav.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/usv.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/usv.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/wargaming-table.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/jp/wargaming-table.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/fire-extinguisher-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/fire-extinguisher-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/full-scale-police-training.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/full-scale-police-training.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/hmmwv-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/hmmwv-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/machine-gun-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/machine-gun-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/mortar-observation.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/mortar-observation.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/police-box.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/police-box.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/sniper-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/sniper-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/sut.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/sut.md",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/tactical-boat-simulator.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/tactical-boat-simulator.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/uav.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/uav.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/usv.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/usv.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/wargaming-table.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/products/tw/wargaming-table.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/fire-rescue.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/fire-rescue.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/military.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/military.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/mum-t.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/mum-t.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/nova.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/nova.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/police.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/police.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/smart-city.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/en/smart-city.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/fire-rescue.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/fire-rescue.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/military.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/military.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/mum-t.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/mum-t.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/nova.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/nova.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/police.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/police.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/smart-city.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/jp/smart-city.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/fire-rescue.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/fire-rescue.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/military.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/military.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/mum-t.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/mum-t.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/nova.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/nova.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/police.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/police.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/smart-city.md",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "src/content/solutions/tw/smart-city.md",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "synthetic:double",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "synthetic:double",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "synthetic:video",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "synthetic:video",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "synthetic:youtube",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "synthetic:youtube",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "synthetic:table",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "synthetic:table",
+      "editor": "milkdown",
+      "bytesEqual": true,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "synthetic:basic",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "synthetic:basic",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    },
+    {
+      "id": "synthetic:comment",
+      "editor": "blocknote",
+      "bytesEqual": false,
+      "renderedHtmlEqual": false,
+      "error": ""
+    },
+    {
+      "id": "synthetic:comment",
+      "editor": "milkdown",
+      "bytesEqual": false,
+      "renderedHtmlEqual": true,
+      "error": ""
+    }
+  ]
+}

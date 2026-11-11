@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BXR GAS 測試工具（非正式收件表單）</title>
+<style>body{font:16px/1.7 system-ui;max-width:760px;margin:40px auto;padding:0 20px;color:#171a20}label,input,button{display:block}input{box-sizing:border-box;width:100%;padding:12px;margin:8px 0 20px}button{background:#d02753;color:white;border:0;padding:12px 20px;font:inherit;cursor:pointer}button:disabled{opacity:.6}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f4f6;padding:20px}a:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid #d02753;outline-offset:3px}</style>
+<h1>GAS → Google Sheets 最小驗證</h1>
+<p>僅寫入 BXR-POC 合成測試資料。四項測試全部取得可讀且相符的回應後才顯示通過。請另到測試試算表確認只有一筆新紀錄。</p>
+<label for="endpoint">測試 Web App /exec 網址</label><input id="endpoint" type="url" placeholder="https://script.google.com/macros/s/…/exec" autocomplete="off" spellcheck="false">
+<button id="run" type="button">執行成功／重複／衝突／驗證失敗測試</button>
+<pre id="result" role="status" aria-live="polite">尚未測試。</pre>
+<script type="module" src="./probe.js"></script>
+</html>

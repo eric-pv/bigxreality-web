@@ -1,10 +1,12 @@
+import { newsArchive } from "./news-listing";
 import { getEntry } from "astro:content";
 import { LANGS, segmentOf, type Lang } from "../i18n";
 import { ARTICLE_COLLECTIONS, getLocalized } from "./content";
 import { articlesWithTag, getArticles, pageSize, paginate, TAG_INDEX_MIN } from "./articles";
 import { isNoIndexBuild } from "./content-source";
 import { INVESTOR_MODULES, companyContent } from "./company";
-import { LIVE_TECHNOLOGY_IDS } from "./technologies";
+import {overviewContent} from "../data/technologies-content";
+import { LIVE_TECHNOLOGY_IDS, technologyAvailableLangs } from "./technologies";
 
 
 export interface IndexablePage { lang: Lang; path: string; alternates: Lang[] }
@@ -24,16 +26,20 @@ async function collect(): Promise<IndexablePage[]> {
 
   if (!isNoIndexBuild()) {
     add("/{lang}/", [...LANGS]);
-    add("/{lang}/technologies/", [...LANGS]);
-    for (const id of LIVE_TECHNOLOGY_IDS) add(`/{lang}/technologies/${id}/`, [...LANGS]);
+    add("/{lang}/technologies/", LANGS.filter(lang=>overviewContent[lang].translationStatus!=="pending"));
+    for (const id of LIVE_TECHNOLOGY_IDS) add(`/{lang}/technologies/${id}/`, technologyAvailableLangs(id));
     add("/{lang}/products/", await filter((l) => copyOk("products", l)));
     add("/{lang}/solutions/", await filter((l) => copyOk("solutions", l)));
     add("/{lang}/contact/", await filter((l) => copyOk("contact", l)));
+    // Privacy routes exist only when the shared TW source is published.
+    add("/{lang}/privacy/", await filter(async (l) =>
+      (await getLocalized("pages", l)).some((entry) => entry.slug === "privacy" && !entry.pendingTranslation)));
+    add("/{lang}/company/csr/", [...LANGS]);
     add("/{lang}/company/", await filter((l) => copyOk("company", l)));
     // About BXR sub-pages: only languages in which they have published content (otherwise noindex).
     const companyByLang = new Map<Lang, Awaited<ReturnType<typeof companyContent>>>();
     for (const l of LANGS) companyByLang.set(l, await companyContent(l));
-    for (const page of ["history", "team", "partners", "investors"] as const) {
+    for (const page of ["team", "partners", "investors"] as const) {
       add(`/{lang}/company/${page}/`, await filter(async (l) => companyByLang.get(l)![page] && (await copyOk(page, l))));
     }
     for (const m of INVESTOR_MODULES) add(`/{lang}/company/investors/${m}/`, await filter(async (l) => companyByLang.get(l)!.modules.includes(m) && (await copyOk("investors", l))));
@@ -50,7 +56,7 @@ async function collect(): Promise<IndexablePage[]> {
       const pageCount = new Map<Lang, number>();
       for (const l of LANGS) {
         const all = await getArticles(collection, l);
-        if (all.length && (await copyOk(collection, l))) pageCount.set(l, paginate(all, pageSize(collection)).length);
+        if (all.length && (await copyOk(collection, l))) pageCount.set(l, collection === "news" ? newsArchive(all).total : paginate(all, pageSize(collection)).length);
       }
       const maxPages = Math.max(0, ...pageCount.values());
       for (let n = 1; n <= maxPages; n++) {

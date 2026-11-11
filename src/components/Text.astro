@@ -1,7 +1,7 @@
 ---
 /** Renders a content string, making [待提供] / [待翻譯] markers visible. */
-import { markPending } from "../lib/text";
+import { typeset } from "../lib/text";
 interface Props { value: string | number }
 const { value } = Astro.props;
 ---
-<Fragment set:html={markPending(String(value))} />
+<span class="typeset" set:html={typeset(String(value), Astro.params.lang ?? "en")} />

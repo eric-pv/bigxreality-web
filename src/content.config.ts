@@ -1,3 +1,4 @@
+import {contentEntryId} from "./lib/content-locale";
 import { TECHNOLOGY_IDS } from "./lib/technologies";
 import { resolveSlot } from "./lib/slot";
 import { existsSync } from "node:fs";
@@ -8,7 +9,6 @@ import { PENDING } from "./lib/pending";
 import { DOMAINS, PRODUCT_DOMAINS } from "./lib/domains";
 import { INVESTOR_MODULES, PARTNER_CATEGORIES } from "./lib/company";
 import { contentSource } from "./lib/content-source";
-import { emdashLoader } from "./lib/emdash/loader";
 
 /*
  * Entry ids are `<lang>/<slug>` (lang = URL segment en / tw / jp) whatever the source.
@@ -16,18 +16,17 @@ import { emdashLoader } from "./lib/emdash/loader";
  * entry only; see docs/PLAN.md §2.1. Relations store bare slugs and are checked at
  * build time in src/lib/content.ts (unknown slugs fail the build).
  *
- * Content comes from EmDash in production, or from Markdown files (backup / local);
- * see src/lib/content-source.ts. Both produce exactly the same entry shapes.
+ * Official content comes from Git Markdown; TEST FIXTURE builds read tests/fixtures/content
+ * (see src/lib/content-source.ts). Both produce exactly the same entry shapes.
  */
 
 const source = contentSource();
 const FOLDER: Record<string, string> = { "case-studies": "case-studies" };
-function loader(collection: string, emdashCollection: string) {
-  if (source === "emdash") return emdashLoader(emdashCollection);
+function loader(collection: string) {
   const folder = FOLDER[collection] ?? collection;
   const fixture = `./tests/fixtures/content/${folder}`;
   const base = source === "fixtures" && existsSync(fixture) ? fixture : `./src/content/${folder}`;
-  return glob({ pattern: "*/*.md", base });
+  return glob({ pattern: ["technologies", "technology-overview"].includes(collection) ? "*/*.json" : "*/*.md", base, generateId:({entry})=>contentEntryId(entry,{allowLegacy:source==="fixtures"&&base===fixture}) });
 }
 
 const pending = z.literal(PENDING);
@@ -89,6 +88,8 @@ const landing = (ctx: SchemaContext) => z.object({
   subheadline: text,
   /** Short product introduction shown under the sub-headline. */
   intro: text.optional(),
+  /** Optional photo shown under the introduction (3:2 by default). */
+  introImage: slot(ctx).optional(),
   /** Hero image position (16:9). */
   heroImage: slot(ctx).optional(),
   /** Button text of the hero and closing CTA, e.g. 洽詢 SUT 訓練系統. */
@@ -181,7 +182,7 @@ const landing = (ctx: SchemaContext) => z.object({
 });
 
 const products = defineCollection({
-  loader: loader("products", "products"),
+  loader: loader("products"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -233,7 +234,7 @@ const products = defineCollection({
 
 /** Market domains. Overview text is the Markdown body; related products and articles are reverse lookups. */
 const solutions = defineCollection({
-  loader: loader("solutions", "solutions"),
+  loader: loader("solutions"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -266,10 +267,15 @@ const solutions = defineCollection({
 
 /** Copy for fixed page templates (one entry per page per language). */
 const pages = defineCollection({
-  loader: loader("pages", "pages"),
+  loader: loader("pages"),
   schema: (ctx) =>
     z.object({
       translationStatus,
+      /**
+       * TW only, and read only by pages routed through getLocalized (today: privacy). true = the page
+       * is not built and its Footer legal link stays hidden. Other fixed pages ignore it.
+       */
+      draft: z.boolean().default(false),
       seo: z.object({ title: text, description: text }),
       hero: z.object({
         eyebrow: text,
@@ -291,7 +297,7 @@ const pages = defineCollection({
 
 /** Fixed tag list; articles can only use these (docs/PHASE-2-PLAN.md §3.5). */
 const tags = defineCollection({
-  loader: loader("tags", "tags"),
+  loader: loader("tags"),
   schema: z.object({ translationStatus, name: text, description: text.optional() }),
 });
 
@@ -314,12 +320,28 @@ const articleBase = (ctx: SchemaContext) =>
     seo: seo(ctx),
   });
 
-export const NEWS_CATEGORIES = ["company", "exhibition", "award", "product-launch", "partnership", "media"] as const;
+export const NEWS_CATEGORIES = ["event", "product", "insight", "company", "exhibition", "award", "product-launch", "partnership", "media"] as const;
 
 const news = defineCollection({
-  loader: loader("news", "news"),
+  loader: loader("news"),
   schema: (ctx) =>
     articleBase(ctx).extend({
+      // Historical news may lack a known publication date; never coerce null to 1970.
+      publishDate: z.preprocess(value => value === null ? undefined : value, z.coerce.date().optional()),
+      dateUnconfirmed: z.boolean().default(false),
+      dateNote: text.optional(),
+      dateCandidate: text.optional(),
+      dateSource: text.optional(),
+      dateReviewNote: text.optional(),
+      featured: z.boolean().default(false),
+      featuredPriority: z.number().int().default(0),
+      featuredInCSR: z.boolean().default(false),
+      csrCategories: z.array(z.enum(["defense-education", "disaster-resilience", "technology-education", "community-engagement"])).default([]),
+      articleId: slug.optional(),
+      imageId: slug.optional(),
+      mediaId: slug.optional(),
+      sourceCategory: text.optional(),
+      importNote: text.optional(),
       category: z.enum(NEWS_CATEGORIES),
       event: z.object({ name: text, location: text.optional(), startDate: z.coerce.date(), endDate: z.coerce.date().optional() }).optional(),
       source: z.object({ name: text, url: z.url() }).optional(),
@@ -327,7 +349,7 @@ const news = defineCollection({
 });
 
 const insights = defineCollection({
-  loader: loader("insights", "insights"),
+  loader: loader("insights"),
   schema: (ctx) => articleBase(ctx).extend({ author: text.optional(), technologyTags: z.array(z.enum(TECHNOLOGY_IDS)).default([]) }),
 });
 
@@ -335,7 +357,7 @@ const insights = defineCollection({
 const CASE_DOMAINS = [...DOMAINS, "other"] as const;
 
 const caseStudies = defineCollection({
-  loader: loader("case-studies", "case_studies"),
+  loader: loader("case-studies"),
   schema: (ctx) =>
     articleBase(ctx).extend({
       /**
@@ -360,7 +382,7 @@ const caseStudies = defineCollection({
 
 /** Company history: one entry per milestone (date is YYYY or YYYY-MM). */
 const milestones = defineCollection({
-  loader: loader("milestones", "milestones"),
+  loader: loader("milestones"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -374,7 +396,7 @@ const milestones = defineCollection({
 
 /** Management team: only people who agreed to be listed. */
 const team = defineCollection({
-  loader: loader("team", "team_members"),
+  loader: loader("team"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -389,7 +411,7 @@ const team = defineCollection({
 
 /** Partners. An entry is public only with the partner's authorisation (approval), like case studies. */
 const partners = defineCollection({
-  loader: loader("partners", "partners"),
+  loader: loader("partners"),
   schema: (ctx) =>
     z.object({
       translationStatus,
@@ -411,7 +433,7 @@ const partners = defineCollection({
  * Only officially approved, public material belongs here.
  */
 const investorItems = defineCollection({
-  loader: loader("investor-items", "investor_items"),
+  loader: loader("investor-items"),
   schema: z.object({
     translationStatus,
     draft: z.boolean().default(false),
@@ -425,4 +447,26 @@ const investorItems = defineCollection({
   }),
 });
 
-export const collections = { products, solutions, pages, tags, insights, news, "case-studies": caseStudies, milestones, team, partners, "investor-items": investorItems };
+/** Full technology copy is canonical JSON in Git, edited using regular CMS fields. */
+const technologySection = z.object({
+ id: slug, title: text, paragraphs:z.array(text).default([]),
+ items:z.array(z.object({title:text,paragraphs:z.array(text).default([])})).optional(),
+ bullets:z.array(text).optional(),note:text.optional(),body:z.string().optional(),
+});
+const technologies = defineCollection({loader:loader("technologies"),schema:(ctx)=>z.object({
+ heroImage:picture(ctx).optional(),
+ translationStatus,draft:z.boolean().default(false),eyebrow:text,title:text,lead:text,intro:z.array(text).default([]),
+ primaryCta:text,secondaryCta:text,sections:z.array(technologySection).min(1),relatedTitle:text,
+ faq:z.array(z.object({question:text,answer:text})).default([]),closing:z.object({title:text,body:text,cta:text}),
+ seo:z.object({title:text,description:text}),relatedProducts:slugs,relatedSolutions:slugs,
+ primaryDestination:z.enum(["products","solutions"]),relationNotes:z.array(text).default([]),body:z.string().optional(),
+})});
+const technologyOverview = defineCollection({loader:loader("technology-overview"),schema:(ctx)=>z.object({
+ heroImage:picture(ctx).optional(),
+ translationStatus,eyebrow:text,title:text,lead:text,intro:z.array(text).default([]),
+ technologies:z.object(Object.fromEntries(TECHNOLOGY_IDS.map(id=>[id,z.object({title:text,description:text})]))),
+ seo:z.object({title:text,description:text}),
+})});
+
+export const collections = {
+  technologies, "technology-overview": technologyOverview, products, solutions, pages, tags, insights, news, "case-studies": caseStudies, milestones, team, partners, "investor-items": investorItems };

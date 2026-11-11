@@ -19,7 +19,8 @@ try {
       await page.waitForFunction(() => !!window.bxrMotionDispose);
       // Includes templates with no below-fold heading: hero/buttons/cards remain interactive.
       assert.ok(await page.locator('main h1').count());
-      const target = page.locator('main h2:not(.visually-hidden)').last();
+      // The hidden inline inquiry form (InlineInquiry.astro) is not page content until opened.
+      const target = page.locator('main h2:not(.visually-hidden):not([data-inline-inquiry] h2)').last();
       if (await target.count()) {
         await target.scrollIntoViewIfNeeded();
         await page.waitForFunction(text => window.motionStarts.some(value => value.includes(text)), (await target.textContent()).trim());

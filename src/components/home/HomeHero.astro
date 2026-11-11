@@ -7,27 +7,35 @@
  * pause button is shown because the loop runs longer than five seconds (WCAG 2.2.2).
  */
 import { Picture } from "astro:assets";
-import poster from "../../assets/images/home/hero-poster.jpg";
+import poster from "../../assets/images/home/hero-poster.webp";
 import type { HomeCopy } from "../../data/home";
 import Text from "../Text.astro";
+import { heroClips } from "../../data/hero-clips";
 
 interface Props { copy: HomeCopy["hero"]; primaryHref: string; secondaryHref: string }
 const { copy, primaryHref, secondaryHref } = Astro.props;
-const clips = ["/video/hero/hero-2", "/video/hero/hero-1"];
+const clips = heroClips;
 ---
-<section class="hero" data-theme="dark" aria-labelledby="home-title" data-hero>
+<section class="hero" data-theme="dark" aria-labelledby="home-title" data-hero data-motion-loop>
   <div class="media">
     <Picture src={poster} alt={copy.posterAlt} formats={["avif", "webp"]} widths={[640, 960, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" class="poster" />
-    {clips.map((c) => (
-      <video muted playsinline preload="none" aria-label={copy.videoLabel} data-clip hidden>
-        <source data-src={`${c}.webm`} type="video/webm" />
-        <source data-src={`${c}.mp4`} type="video/mp4" />
-      </video>
-    ))}
     <div class="shade" aria-hidden="true"></div>
+    <!-- Stage = the footage's exact rendered 16:9 area; the videos and the HUD corners both fill it (inset: 0). -->
+    <div class="stage">
+      <div class="stage-media">
+        {clips.map((c) => (
+          <video muted playsinline preload="none" aria-label={copy.videoLabel} data-clip hidden style={`--clip-desktop:${c.desktopPosition};--clip-mobile:${c.mobilePosition}`}>
+            <source data-src={`${c.src}.webm`} type="video/webm" />
+            <source data-src={`${c.src}.mp4`} type="video/mp4" />
+          </video>
+        ))}
+        <span class="scan tac-scan" aria-hidden="true"><span class="sweep tac-sweep"></span></span>
+      </div>
+      <span class="fog tac-fog" aria-hidden="true"></span>
+      <span class="hud tac-hud" aria-hidden="true"><span class="corner tac-corner tac-tl"></span><span class="corner tac-corner tac-tr"></span><span class="corner tac-corner tac-bl"></span><span class="corner tac-corner tac-br"></span></span>
+    </div>
   </div>
   <div class="container inner">
-    <p class="t-label eyebrow">{copy.eyebrow}</p>
     <h1 class="t-h1 title" id="home-title"><Text value={copy.title} /></h1>
     <p class="subtitle t-h3"><Text value={copy.subtitle} /></p>
     <p class="desc"><Text value={copy.description} /></p>
@@ -36,56 +44,93 @@ const clips = ["/video/hero/hero-2", "/video/hero/hero-1"];
       <a class="btn btn--secondary" href={secondaryHref}><Text value={copy.secondary} /></a>
     </div>
   </div>
-  <button type="button" class="toggle" data-toggle hidden aria-pressed="false" data-pause={copy.pause} data-play={copy.play} aria-label={copy.pause}>
+  <button type="button" class="toggle keyboard-control" data-toggle hidden aria-pressed="false" data-pause={copy.pause} data-play={copy.play} aria-label={copy.pause}>
     <svg class="i-pause" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor" /></svg>
     <svg class="i-play" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="currentColor" /></svg>
   </button>
 </section>
 
 <script>
-  const root = document.querySelector<HTMLElement>("[data-hero]");
-  const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  const still = matchMedia("(prefers-reduced-motion: reduce)").matches || conn?.saveData;
-  if (root && !still) {
+  function initializeHero() {
+    const root = document.querySelector<HTMLElement>("[data-hero]");
+    if (!root || root.dataset.initialized) return;
+    root.dataset.initialized = "true";
     const clips = [...root.querySelectorAll<HTMLVideoElement>("[data-clip]")];
     const toggle = root.querySelector<HTMLButtonElement>("[data-toggle]")!;
-    const load = (v: HTMLVideoElement) => {
-      if (v.dataset.loaded) return;
-      v.querySelectorAll<HTMLSourceElement>("source").forEach((s) => { s.src = s.dataset.src!; });
-      v.load();
-      v.dataset.loaded = "1";
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    // The site-wide "pause animations" choice (header control, stored per visitor) also holds the looping footage.
+    const globallyOff = () => document.documentElement.classList.contains('motion-off');
+    const controller = new AbortController(), options = { signal: controller.signal };
+    let current = 0, paused = false, switching = false;
+    const load = (video: HTMLVideoElement) => {
+      if (video.dataset.loaded) return;
+      video.querySelectorAll<HTMLSourceElement>("source").forEach(source => { source.src = source.dataset.src!; });
+      video.load(); video.dataset.loaded = "1";
     };
-    let current = 0;
-    let paused = false;
-    const show = (i: number) => {
-      current = i;
-      clips.forEach((v, j) => v.classList.toggle("is-on", j === i));
-      const v = clips[i];
-      v.currentTime = 0;
-      if (!paused) v.play().catch(() => {});
-    };
-    clips.forEach((v, i) => {
-      v.hidden = false;
-      v.addEventListener("ended", () => show((i + 1) % clips.length));
-    });
-    clips[0].addEventListener("playing", () => { clips.slice(1).forEach(load); toggle.hidden = false; }, { once: true });
-    load(clips[0]);
-    show(0);
-    toggle.addEventListener("click", () => {
-      paused = !paused;
-      const v = clips[current];
-      if (paused) v.pause(); else v.play().catch(() => {});
+    const updateControl = () => {
       toggle.setAttribute("aria-pressed", String(paused));
       toggle.setAttribute("aria-label", (paused ? toggle.dataset.play : toggle.dataset.pause)!);
+    };
+    const show = async (index: number) => {
+      if (switching || paused || motion.matches || saveData || globallyOff() || document.hidden) return;
+      switching = true;
+      const next = clips[index]; load(next);
+      next.currentTime = 0;
+      // Keep the previous last frame/poster until the next decoded frame actually plays.
+      let resolvePlaying: () => void, rejectPlaying: () => void;
+      const playing = new Promise<void>((resolve,reject) => { resolvePlaying=resolve;rejectPlaying=reject; });
+      const onPlaying=()=>resolvePlaying(),onError=()=>rejectPlaying();
+      next.addEventListener('playing',onPlaying,{once:true,signal:controller.signal});
+      next.addEventListener('error',onError,{once:true,signal:controller.signal});
+      try {
+        await next.play(); await playing;
+        if (paused || motion.matches) { next.pause(); return; }
+        const previous = clips[current]; current = index;
+        clips.forEach((video,i) => video.classList.toggle('is-on',i===index));
+        root.dataset.currentClip = String(index);
+        if (previous !== next) previous.pause();
+        load(clips[(index+1)%clips.length]);
+      } catch { /* The poster/previous decoded frame remains available. */ }
+      finally {
+        next.removeEventListener('playing',onPlaying);next.removeEventListener('error',onError);
+        switching = false;
+      }
+    };
+    clips.forEach((video,index) => {
+      video.hidden = false; video.muted = true;
+      video.addEventListener('ended',()=>{ if(index===current) void show((index+1)%clips.length); },options);
     });
+    toggle.hidden = false;
+    toggle.addEventListener('click',()=>{
+      paused = !paused; updateControl();
+      if(paused) clips.forEach(video=>video.pause());
+      else { if(motion.matches || saveData || globallyOff()) { paused=true;updateControl(); } else if(clips[current].ended) void show((current+1)%clips.length); else {load(clips[current]);clips[current].play().catch(()=>{});} }
+    },options);
+    const applyPreference = () => {
+      if(motion.matches || saveData || globallyOff()){clips.forEach(video=>video.pause());paused=true;updateControl();}
+      else {paused=false;updateControl();void show(current);}
+    };
+    motion.addEventListener('change',applyPreference,options);
+    document.addEventListener('bxr:motion-change',applyPreference,options);
+    document.addEventListener('visibilitychange',()=>{
+      if(document.hidden) clips.forEach(video=>video.pause());
+      else if(!paused&&!motion.matches&&!saveData&&!globallyOff()) { if(clips[current].ended)void show((current+1)%clips.length);else clips[current].play().catch(()=>{}); }
+    },options);
+    window.addEventListener('pagehide',()=>clips.forEach(video=>video.pause()),options);
+    window.addEventListener('pageshow',event=>{if(event.persisted&&!paused&&!motion.matches&&!saveData&&!globallyOff())clips[current].play().catch(()=>{});},options);
+    document.addEventListener('astro:before-swap',()=>{controller.abort();clips.forEach(video=>video.pause());},{once:true,signal:controller.signal});
+    applyPreference();
   }
+  initializeHero();
+  document.addEventListener('astro:page-load',initializeHero);
 </script>
 
 <style>
   .hero { position: relative; isolation: isolate; overflow: hidden; background: var(--bxr-black); color: var(--bxr-white); display: flex; align-items: center; min-height: clamp(480px, 70vh, 600px); }
   .media, .media :global(picture), .media :global(img), .media video, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
   .media { z-index: -1; }
-  .media :global(img), .media video { object-fit: cover; object-position: 60% center; }
+  .media :global(img), .media video { object-fit: cover; object-position: 50% 0%; }
   .media video { opacity: 0; transition: opacity 600ms var(--ease-precise); }
   .media video.is-on { opacity: 1; }
   .shade { background: linear-gradient(90deg, rgb(11 15 20 / 0.92) 0%, rgb(11 15 20 / 0.72) 45%, rgb(11 15 20 / 0.25) 100%); }
@@ -116,4 +161,113 @@ const clips = ["/video/hero/hero-2", "/video/hero/hero-1"];
     .title, :lang(zh) .title, :lang(ja) .title { font-size: var(--fs-h1); line-height: 1.25; }
     .shade { background: linear-gradient(180deg, rgb(11 15 20 / 0.6) 0%, rgb(11 15 20 / 0.88) 60%); }
   }
+</style>
+
+<style>
+/* Full landscape footage on smaller screens: no face cropping and no dark film over the video.
+   Copy stays readable in its own brand-colored area below the footage. */
+@media(max-width:1023px) {
+ .hero { display: block; min-height: 0; }
+ .media { position: relative; inset: auto; width: 100%; height: auto; aspect-ratio: 16 / 9; z-index: 0; }
+ .media :global(img),.media video { object-fit: contain; object-position: 50% 0%; }
+ .shade { background: none; }
+ .inner { background: var(--bxr-black); padding-block: 28px 40px; }
+ .toggle { top: calc(56.25vw - 52px); bottom: auto; width: 44px; height: 44px; z-index: 2; }
+}
+</style>
+
+<style>
+/* The whole landscape frame sits on a subdued extension of the approved poster. */
+@media(min-width:1024px) {
+ .hero { min-height:clamp(520px,43vw,640px); }
+ .media :global(.poster) { object-fit:contain; object-position:100% 50%; }
+ .hero[data-current-clip] .media :global(.poster) { object-fit:cover;filter:blur(20px);opacity:.3; }
+ .media video { object-fit:contain; object-position:var(--clip-desktop); }
+ .shade { background:linear-gradient(90deg,#0b0f14 0%,rgb(11 15 20 / .96) 18%,rgb(11 15 20 / .87) 33%,rgb(11 15 20 / .25) 50%,transparent 70%,rgb(11 15 20 / .22)); }
+ .inner > * { max-width:34rem; }
+ .inner > .title { max-width:38rem; }
+ .title { font-size:clamp(36px,3.8vw,52px); }
+}
+.desc,.eyebrow { color:#e4e8ed; }
+.keyboard-control { left:var(--margin); right:auto; top:12px; bottom:auto; width:auto; height:auto; padding:12px; border-radius:4px; opacity:0; pointer-events:none; transform:translateY(-160%); }
+.keyboard-control:focus-visible { opacity:1; pointer-events:auto; transform:none; outline:3px solid white; outline-offset:3px; z-index:5; }
+@media(max-width:1023px) {
+ .media video { object-fit:contain;object-position:var(--clip-mobile); }
+ .keyboard-control { top:12px;bottom:auto; }
+}
+@media(prefers-reduced-motion:reduce) { .media video { transition:none; } }
+</style>
+
+<style>
+@media(min-width:1024px) and (max-width:1199px) {
+ .hero { display:block;min-height:0; }
+ .media { position:relative;inset:auto;aspect-ratio:16/9;height:auto;z-index:0; }
+ .media video,.media :global(.poster) { object-fit:contain;object-position:var(--clip-mobile,50% 50%); }
+ .shade { background:none; }
+ .inner { background:var(--bxr-black);padding-block:28px 40px; }
+ .inner > *, .inner > .title { max-width:48rem; }
+}
+</style>
+<style>
+@media(min-width:1200px) {
+ .inner > *, .inner > .title { max-width:min(32vw,34rem); }
+ /* Before a clip plays, the poster occupies exactly the stage's 16:9 area (right-aligned, vertically centred). */
+ .media :global(img.poster) { inset:auto 0 auto auto; top:var(--stage-top); width:var(--stage-w); height:auto; aspect-ratio:16 / 9; object-fit:contain; }
+ .hero:not([data-current-clip]) .media :global(img.poster) { mask-image:var(--stage-mask); mask-composite:intersect; }
+ .hero[data-current-clip] .media :global(img.poster) { inset:0; width:100%; height:100%; aspect-ratio:auto; object-fit:cover; }
+}
+@media(max-width:1199px) { .media video { filter:brightness(1.08); } }
+</style>
+<style>
+/* Stage: the footage's rendered area. ≥ 1200 px it is the 16:9 box that object-fit: contain produced before
+   (right 70 %, vertically centred); below that the media block itself is 16:9. No transform, so it does not
+   create a stacking context and the shade / fog / HUD layers below keep one z-order. */
+.stage, .stage-media, .scan, .fog, .hud { position:absolute; inset:0; }
+.stage-media { z-index:0; }
+.shade { z-index:1; }
+.fog { z-index:2; pointer-events:none; display:none; }
+.hud { z-index:3; }
+.media .stage video { inset:0; width:100%; height:100%; object-fit:contain; object-position:50% 50%; }
+/* Corners, scan texture, sweep and haze come from src/styles/tactical.css (.tac-*); only the hero's placement is here. */
+@media(min-width:1200px) {
+ .media { container-type:size;
+   --stage-w:min(70cqw, 100cqh * 16 / 9); --stage-top:calc((100cqh - var(--stage-w) * 9 / 16) / 2);
+   /* Soft entry into the background: transparent → opaque across the left ~30 %, light fade top and bottom. */
+   --stage-fade-x:var(--tac-fade-start);
+   --stage-mask:var(--stage-fade-x),linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent); }
+ .stage { inset:auto 0 auto auto; top:var(--stage-top); width:var(--stage-w); aspect-ratio:16 / 9; }
+ .stage-media { mask-image:var(--stage-mask); mask-composite:intersect; }
+ /* The corners follow the footage's horizontal fade exactly (same gradient, same positions): the left pair stays
+    ≤ 0.11 opaque over the copy column, the right pair is fully visible. */
+ .hud { mask-image:var(--stage-fade-x); }
+ /* Haze over the transition band: background-colour gradient plus faint grain, itself masked so it has no edge. */
+ .fog { display:block; inset:-4% auto -4% -8%; width:50%; }
+}
+
+.title { position:relative; }
+.eyebrow :global(.type-visual > span) { position:relative; }
+.eyebrow :global(.type-visual > span.last::after) { content:"_"; position:absolute; left:100%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Pre-state only while the head script's motion-ready flag is set (removed after 1.5 s if JS never takes over). */
+  :global(.motion-ready) [data-hero]:not([data-motion]) .title,
+  :global(.motion-ready) [data-hero]:not([data-motion]) .eyebrow,
+  :global(.motion-ready) [data-hero]:not([data-motion]) .corner { opacity:0; }
+  [data-hero][data-motion="running"] .corner { animation:hud-lock 600ms var(--ease-precise) both; }
+  .eyebrow :global(.type-visual > span) { animation:hero-type 1ms steps(1) both; animation-delay:calc(var(--i) * 55ms); }
+  .eyebrow :global(.type-visual > span::after) { content:"_"; position:absolute; left:100%; opacity:0; animation:hero-caret-step 55ms steps(1) forwards; animation-delay:calc(var(--i) * 55ms); }
+  /* Loops: one pass, then a ~5 s rest, repeating — only while the hero is on screen. */
+  .eyebrow :global(.type-visual > span.last::after) { animation:hero-caret 6.5s step-end infinite paused; animation-delay:calc(var(--i) * 55ms); }
+  [data-hero][data-in-view] .eyebrow :global(.type-visual > span.last::after) { animation-play-state:running; }
+  /* The hero's pause control (WCAG 2.2.2) stops the sweep together with the footage. */
+  [data-hero]:has([data-toggle][aria-pressed="true"]) .sweep { animation-play-state:paused; }
+}
+@keyframes hero-type { from { opacity:0; } to { opacity:1; } }
+@keyframes hero-caret-step { from { opacity:1; } to { opacity:0; } }
+/* 6.5 s: three blinks in 1.5 s, then steady for 5 s. */
+@keyframes hero-caret { 0% { opacity:1; } 3.85% { opacity:0; } 7.7% { opacity:1; } 11.55% { opacity:0; } 15.4% { opacity:1; } 19.25% { opacity:0; } 23.1%, 100% { opacity:1; } }
+@media (prefers-reduced-motion: reduce) {
+  .corner, .eyebrow :global(.type-visual > span), .eyebrow :global(.type-visual > span::after) { animation:none !important; transform:none !important; clip-path:none !important; opacity:1 !important; }
+  .eyebrow :global(.type-visual > span:not(.last)::after) { content:none; }
+}
 </style>

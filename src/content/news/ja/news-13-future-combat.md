@@ -1,0 +1,23 @@
+---
+translationStatus: "translated"
+draft: false
+publishDate: "2025-09-26"
+dateReviewNote: "這是英文舊站的獨立文章。原文標題2025，但內文展期為2024-09-18～20，年份不一致；不可與 news-05 自動合併。"
+articleId: "news-13-future-combat"
+imageId: "news-13-future-combat"
+mediaId: "news-13-future-combat"
+title: "未来の戦闘に備える訓練環境"
+summary: "Big x Reality（全球動力科技）は、台北国際航空宇宙・防衛産業展への出展を準備しています。防衛産業協会とともに、LVC（Live-Virtual-Constructive）を基盤にAI XR、モジュール式設計、即時の物理フィードバックを組み合わせた訓練ソリューションを紹介する予定です。"
+category: "media"
+sourceCategory: "媒體消息 / Media / メディア"
+importNote: "這是英文舊站的獨立文章。原文標題2025，但內文展期為2024-09-18～20，年份不一致；不可與 news-05 自動合併。"
+seo:
+  title: "未来の戦闘に備える訓練環境"
+  description: "Big x Reality（全球動力科技）は、台北国際航空宇宙・防衛産業展への出展を準備しています。防衛産業協会とともに、LVC（Live-Virtual-Constructive）を基盤にAI XR、モジュール式設計、即時の物理フィードバックを組み合わせた訓練ソリューションを紹介する予定です。"
+---
+
+Big x Reality（全球動力科技）は、台北国際航空宇宙・防衛産業展への出展を準備しています。防衛産業協会とともに、LVC（Live-Virtual-Constructive）を基盤にAI XR、モジュール式設計、即時の物理フィードバックを組み合わせた訓練ソリューションを紹介する予定です。
+
+今回の展示では、作戦準備、シミュレーションの再現性、次世代訓練技術に焦点を当て、防衛分野の専門家や組織に向けて、実環境と仮想環境を統合した訓練の可能性を示します。
+
+元の英文告知に記載された開催情報は、2024年9月18日～20日、ブースJ0418（防衛産業協会の共同出展エリア）です。ただし、記事の掲載日と周辺の文脈は2025年を示しているため、開催情報の確認が必要です。

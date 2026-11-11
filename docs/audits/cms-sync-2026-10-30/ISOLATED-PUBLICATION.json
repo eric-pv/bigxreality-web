@@ -1,0 +1,22 @@
+[
+  {
+    "stage": "draft-created",
+    "pass": true,
+    "commit": "b98a766beabc530e76e678622032f628a5ac76b7"
+  },
+  {
+    "stage": "edited-and-published",
+    "pass": true,
+    "commit": "d45b2a736cbbc1a65a6564959d33f90a72b05e52"
+  },
+  {
+    "stage": "unpublished",
+    "pass": true,
+    "commit": "f6d9f05b344e87c1c63b278fee4b89dd7a34795a"
+  },
+  {
+    "stage": "deleted",
+    "pass": true,
+    "commit": "9c1969d9f68b1b72b00aca2e4315443a6a2227ed"
+  }
+]

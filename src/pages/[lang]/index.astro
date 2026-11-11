@@ -1,24 +1,27 @@
 ---
+import { publicUrl } from '../../lib/public-url.ts';
+
 /**
  * /[lang]/ — home page. AIDA order: Hero → why simulation → featured products →
  * core technologies → four solutions → case studies → latest news → contact CTA.
  * Home-only copy and the selection of items live in src/data/home.ts; names, images
  * and routes are read from the products / solutions collections and the technology data.
  */
-import { Picture } from "astro:assets";
-import { LANGS, localePath, type Lang } from "../../i18n";
+import ProductImage from '../../components/ProductImage.astro';
+import { primaryImage } from '../../data/primary-images';
+import { HTML_LANG, LANGS, localePath, type Lang } from "../../i18n";
 import { getLocalized } from "../../lib/content";
 import { getUi } from "../../lib/ui";
 import { site } from "../../lib/site";
 import { technologyHref, technologyName } from "../../lib/technologies";
-import { featuredCases, latestNews } from "../../lib/home";
+import { latestNews } from "../../lib/home";
 import { homeConfig, homeCopy } from "../../data/home";
-import poster from "../../assets/images/home/hero-poster.jpg";
+import poster from "../../assets/images/home/hero-poster.webp";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HomeHero from "../../components/home/HomeHero.astro";
+import HomePartners from "../../components/HomePartners.astro";
 import SectionHead from "../../components/SectionHead.astro";
 import CardSolution from "../../components/CardSolution.astro";
-import FeaturedCases from "../../components/FeaturedCases.astro";
 import LatestNews from "../../components/LatestNews.astro";
 import ImagePlaceholder from "../../components/ImagePlaceholder.astro";
 import Text from "../../components/Text.astro";
@@ -36,7 +39,7 @@ const products = homeConfig.featuredProducts.flatMap((slug) => {
   const p = allProducts.find((e) => e.slug === slug);
   if (!p) return [];
   const d = p.loc.data;
-  const img = p.base.data.hero.image && { src: p.base.data.hero.image.src, alt: d.hero.image?.alt ?? p.base.data.hero.image.alt };
+  const img = p.base.data.hero.image ? { src: p.base.data.hero.image.src, alt: d.hero.image?.alt ?? p.base.data.hero.image.alt } : primaryImage('products', p.slug, lang);
   return [{ slug, name: d.hero.name, href: localePath(lang, "products", slug), image: img, ...copy.products.items[slug] }];
 });
 const [lead, ...others] = products;
@@ -44,16 +47,16 @@ const [lead, ...others] = products;
 const allSolutions = await getLocalized("solutions", lang);
 const solutions = homeConfig.solutions.flatMap((slug) => allSolutions.filter((s) => s.slug === slug && !s.base.data.parent));
 
-const cases = await featuredCases(lang);
+
 const news = await latestNews(lang);
 
 const breadcrumbs = [{ name: ui.home, path: localePath(lang) }];
 const website = {
   "@type": "WebSite",
-  "@id": `${site.url}/#website`,
+  "@id": `${publicUrl(localePath(lang))}#website`,
   name: site.brand,
-  url: new URL(localePath(lang), site.url).toString(),
-  inLanguage: lang,
+  url: publicUrl(localePath(lang)).toString(),
+  inLanguage: HTML_LANG[lang],
   publisher: { "@id": `${site.url}/#organization` },
 };
 ---
@@ -69,11 +72,10 @@ const website = {
     <section class="section block" aria-labelledby="h-value">
       <div class="container value">
         <div class="value-copy">
-          <p class="t-label t-muted">{copy.value.eyebrow}</p>
           <h2 class="t-h2" id="h-value"><Text value={copy.value.title} /></h2>
           {copy.value.paragraphs.map((p) => <p class="t-muted"><Text value={p} /></p>)}
         </div>
-        <ul role="list" class="points">
+        <ul role="list" class="points balanced">
           {copy.value.points.map((pt, i) => (
             <li class="point">
               <span class="icon" aria-hidden="true">
@@ -90,22 +92,22 @@ const website = {
     </section>
 
     <!-- 03 Featured products -->
-    <section class="section section--alt block" aria-labelledby="h-products">
+    <section class="section section--alt block ruled ruled--end" aria-labelledby="h-products">
       <div class="container">
-        <SectionHead id="h-products" eyebrow={copy.products.eyebrow} title={copy.products.title} description={copy.products.description} />
+        <SectionHead id="h-products" eyebrow={copy.products.eyebrow} title={ui.homeSections.products} description={copy.products.description} />
         <div class="showcase">
           {lead && (
             <article class="feature feature--lead">
               <div class="feature-media">
                 {lead.image
-                  ? <Picture src={lead.image.src} alt={lead.image.alt} formats={["avif", "webp"]} widths={[640, 960, 1280].filter((w) => w <= lead.image!.src.width)} sizes="(max-width: 1023px) 100vw, 760px" width={1280} height={720} fit="cover" />
+                  ? <ProductImage src={lead.image.src} alt={lead.image.alt} sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) calc(100vw - 80px), (max-width: 1279px) calc(100vw - 162px), 684px" />
                   : <ImagePlaceholder label={ui.imagePending} />}
               </div>
               <div class="feature-body">
-                <p class="t-tech t-muted"><Text value={lead.name} /></p>
-                <h3 class="t-h3"><a href={lead.href}><Text value={lead.title} /></a></h3>
+                <p class="t-small t-muted"><Text value={lead.title} /></p>
+                <h3 class="t-h3"><a href={lead.href}><Text value={lead.name} /></a></h3>
                 <p class="t-small t-muted"><Text value={lead.description} /></p>
-                <p class="more" aria-hidden="true"><Text value={copy.products.more} /> →</p>
+                <p class="more" aria-hidden="true"><Text value={copy.products.more} /> <span class="arrow">→</span></p>
               </div>
             </article>
           )}
@@ -115,12 +117,12 @@ const website = {
                 <article class="feature feature--row">
                   <div class="feature-media">
                     {p.image
-                      ? <Picture src={p.image.src} alt={p.image.alt} formats={["avif", "webp"]} widths={[320, 640]} sizes="(max-width: 767px) 40vw, 240px" width={640} height={360} fit="cover" />
+                      ? <ProductImage src={p.image.src} alt={p.image.alt} sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 38vw, (max-width: 1279px) calc(42vw - 68px), 205px" />
                       : <ImagePlaceholder label={ui.imagePending} />}
                   </div>
                   <div class="feature-body">
-                    <p class="t-tech t-muted"><Text value={p.name} /></p>
-                    <h3 class="t-h4"><a href={p.href}><Text value={p.title} /></a></h3>
+                    <p class="t-small t-muted"><Text value={p.title} /></p>
+                    <h3 class="t-h4"><a href={p.href}><Text value={p.name} /></a></h3>
                     <p class="t-small t-muted desc"><Text value={p.description} /></p>
                   </div>
                 </article>
@@ -133,17 +135,17 @@ const website = {
     </section>
 
     <!-- 04 Core technologies -->
-    <section class="section block tech" data-theme="dark" aria-labelledby="h-tech">
+    <section class="section block tech" data-theme="dark" aria-labelledby="h-tech" data-motion-loop>
       <div class="container tech-grid">
         <div class="tech-copy">
-          <p class="t-label eyebrow">{copy.technologies.eyebrow}</p>
-          <h2 class="t-h2" id="h-tech"><Text value={copy.technologies.title} /></h2>
+          <h2 class="t-h2" id="h-tech"><Text value={ui.nav.technologies} /></h2>
           {copy.technologies.paragraphs.map((p) => <p class="muted-dark"><Text value={p} /></p>)}
           <p><a class="btn btn--primary" href={localePath(lang, "technologies")}><Text value={copy.technologies.button} /></a></p>
         </div>
         <ol role="list" class="tech-list">
           {homeConfig.featuredTechnologies.map((id, i) => (
             <li>
+              <span class="beam" aria-hidden="true"><span></span></span>
               <span class="t-tech num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
               <h3 class="t-h4"><a href={technologyHref(id, lang)}><Text value={technologyName(id, lang)} /></a></h3>
               <p class="t-small muted-dark"><Text value={copy.technologies.items[id]} /></p>
@@ -154,15 +156,15 @@ const website = {
     </section>
 
     <!-- 05 Solutions -->
-    <section class="section block" aria-labelledby="h-solutions">
+    <section class="section block ruled" aria-labelledby="h-solutions">
       <div class="container">
-        <SectionHead id="h-solutions" eyebrow={copy.solutions.eyebrow} title={copy.solutions.title} description={copy.solutions.description} viewAll={{ href: localePath(lang, "solutions"), label: copy.solutions.viewAll }} />
-        <ul role="list" class="solutions">
+        <SectionHead id="h-solutions" eyebrow={copy.solutions.eyebrow} title={ui.nav.solutions} description={copy.solutions.description} viewAll={{ href: localePath(lang, "solutions"), label: copy.solutions.viewAll }} />
+        <ul role="list" class="solutions balanced">
           {solutions.map((s) => (
             <li>
               <CardSolution
                 lang={lang} href={localePath(lang, "solutions", s.slug)} domain={s.base.data.domain}
-                name={s.loc.data.name} englishName={s.loc.data.englishName} summary={copy.solutions.items[s.slug] ?? s.loc.data.summary} label={s.loc.data.cardLabel}
+                name={s.loc.data.name} summary={copy.solutions.items[s.slug] ?? s.loc.data.summary} label={s.loc.data.cardLabel}
                 image={s.base.data.image && { src: s.base.data.image.src, alt: s.loc.data.image?.alt ?? s.base.data.image.alt }}
               />
             </li>
@@ -171,14 +173,16 @@ const website = {
       </div>
     </section>
 
-    <!-- 06 Case studies (hidden on built pages until published cases exist) -->
-    <FeaturedCases lang={lang} items={cases} copy={copy.cases} viewAllHref={localePath(lang, "case-studies")} alt />
+    <HomePartners lang={lang} />
+
+    <!-- Latest news follows partners; approved case pages remain available in navigation. -->
+
 
     <!-- 07 Latest news (hidden on built pages until published news exists) -->
     <LatestNews lang={lang} items={news} copy={copy.news} viewAllHref={localePath(lang, "news")} />
 
     <!-- 08 Contact -->
-    <section class="cta" aria-labelledby="h-cta">
+    <section class="cta" aria-labelledby="h-cta" data-motion-loop>
       <div class="container cta-inner">
         <div class="cta-copy">
           <h2 class="t-h2" id="h-cta"><Text value={copy.cta.title} /></h2>
@@ -201,7 +205,7 @@ const website = {
   /* 02 */
   .value { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-6); align-items: start; }
   .value-copy { display: grid; gap: var(--space-2); }
-  .points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
+  .points { gap: var(--gutter); }
   .point { display: grid; gap: var(--space-1); align-content: start; padding-top: var(--space-2); border-top: 2px solid var(--bxr-red); }
   .icon { color: var(--bxr-red); margin-bottom: var(--space-1); }
 
@@ -211,7 +215,6 @@ const website = {
   :global(.section--alt) .feature { background: var(--bxr-white); }
   .feature-media { overflow: hidden; aspect-ratio: 16 / 9; }
   .feature-media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-standard) var(--ease-precise); }
-  .feature:hover .feature-media :global(img) { transform: scale(1.02); }
   .feature-media:has(:global(.placeholder)) { aspect-ratio: auto; }
   .feature-body { display: grid; gap: var(--space-1); padding: var(--card-padding); align-content: start; }
   .feature h3 a { color: var(--ink); text-decoration: none; }
@@ -220,7 +223,7 @@ const website = {
   .feature h3 a:focus-visible { outline: none; }
   .feature:has(h3 a:focus-visible) { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
   .more { font-weight: 500; margin-top: var(--space-1); }
-  .side { display: grid; gap: var(--gutter); grid-auto-rows: 1fr; }
+  .side { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); grid-auto-rows: 1fr; }
   .feature--row { flex-direction: row; }
   .feature--row .feature-media { flex: 0 0 38%; aspect-ratio: auto; }
   .feature--row .feature-media :global(.placeholder) { height: 100%; max-height: none; }
@@ -241,7 +244,7 @@ const website = {
   .tech-list a:hover { text-decoration: underline; }
 
   /* 05 */
-  .solutions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); }
+  .solutions { gap: var(--gutter); }
 
   /* 08 */
   .cta { background: var(--bxr-red); color: var(--bxr-white); padding-block: var(--space-6); }
@@ -255,18 +258,118 @@ const website = {
   .cta-secondary:hover { background: rgb(255 255 255 / 0.12); }
   .cta :focus-visible { outline-color: var(--bxr-white); }
 
+  /* 1024–1279: a 7/5 split leaves the side cards ~150px of text, so CJK product names break per character. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .showcase { grid-template-columns: minmax(0, 1fr); gap: var(--content-gap); }
+  }
   @media (max-width: 1023px) {
     .value, .tech-grid, .showcase { grid-template-columns: minmax(0, 1fr); gap: var(--content-gap); }
-    .solutions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 767px) {
-    .points { grid-template-columns: 1fr; gap: var(--space-3); }
+    .points { gap: var(--space-3); }
     .tech-list { grid-template-columns: 1fr; }
-    .solutions { grid-template-columns: 1fr; }
     /* No approved solution artwork yet: skip the empty frames on phones instead of stacking four. */
     .solutions :global(.media:has(.placeholder)) { display: none; }
     .feature--row .feature-media { flex-basis: 36%; }
     .feature--row .desc { display: none; }
     .cta { padding-block: var(--space-5); }
   }
+</style>
+
+<style>
+.feature-body { display: flex; flex-direction: column; }
+.feature-body .more { margin-top: auto; }
+.feature-body .t-muted { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.feature-body h3 { order: -1; font-size: 22px; }
+</style>
+
+<style>
+.feature--row .feature-media { flex:0 0 42%; aspect-ratio:16/9;align-self:center; }
+.feature-media { background:#101722; }
+.tech .muted-dark,.tech-copy .eyebrow { color:#dce3ec; }
+@media(max-width:767px) {
+ .feature--row { flex-direction:column; }
+ .feature--row .feature-media { width:100%; flex:0 0 auto;aspect-ratio:16/9; }
+ .feature--row .feature-body { padding:20px; }
+ .feature--row .desc { display:block; }
+}
+</style>
+<style>
+.feature-media { position:relative;min-height:0;flex-shrink:0; }
+.feature-media :global(.asset-frame) { position:absolute;inset:0; }
+</style>
+<style>
+/* 04 Core technologies: blueprint grid + slow glow (decorative, behind the content). */
+.tech { position: relative; isolation: isolate; overflow: hidden; }
+.tech::before, .tech::after { content: ""; position: absolute; pointer-events: none; z-index: -1; }
+.tech::before { inset: 0; opacity: .07; background: var(--tac-grid-bg);
+  mask-image: radial-gradient(ellipse at 60% 50%, black, transparent 80%); }
+.tech::after { width: 70vmax; height: 70vmax; left: 30%; top: 50%; margin: -35vmax 0 0 -35vmax; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--bxr-red) 10%, transparent), transparent 62%); }
+/* Tech cards: a red beam runs once around the frame on hover or keyboard focus; the number glitches once. */
+.tech-list li { position: relative; }
+.beam { position: absolute; inset: 0; padding: 1px; overflow: hidden; pointer-events: none;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.beam > span { position: absolute; left: 50%; top: 50%; width: 160%; aspect-ratio: 1; opacity: 0; transform: translate(-50%, -50%);
+  background: conic-gradient(from 0deg, transparent 0 70%, color-mix(in srgb, var(--bxr-red) 40%, transparent) 86%, var(--bxr-red) 96%, transparent); }
+.num { display: inline-block; justify-self: start; }
+@media (prefers-reduced-motion: no-preference) {
+  /* 22 s: 6 s drift → 5 s rest → 6 s drift back → 5 s rest. */
+  .tech::after { animation: tech-drift 22s ease-in-out infinite paused; }
+  .tech[data-in-view]::after { animation-play-state: running; }
+  .tech-list li:has(a:focus-visible) .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
+  .tech-list li:has(a:focus-visible) .num { animation: tech-glitch 180ms steps(1) 1; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .tech-list li:hover .beam > span { animation: tech-beam 1.2s var(--ease-precise) 1; }
+  .tech-list li:hover .num { animation: tech-glitch 180ms steps(1) 1; }
+}
+/* Keyframes tech-drift / tech-beam / tech-glitch: src/styles/tactical.css. */
+@media (prefers-reduced-motion: reduce) {
+  .beam { display: none; }
+  .tech::after, .num { animation: none !important; transform: none !important; }
+}
+</style>
+<style>
+/* 03 Featured product cards: same feedback as CardProduct; the lead card's arrow steps 4 px right. */
+.feature-media::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: linear-gradient(0deg, color-mix(in srgb, var(--bxr-red) 42%, transparent), transparent 55%);
+  transition: opacity var(--dur-standard) var(--ease-precise); }
+.more .arrow { display: inline-block; transition: transform var(--dur-standard) var(--ease-precise); }
+.feature:hover .feature-media::after, .feature:has(h3 a:focus-visible) .feature-media::after { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .feature:has(h3 a:focus-visible) .feature-media :global(img) { transform: scale(1.05); }
+  .feature:has(h3 a:focus-visible) .more .arrow { transform: translateX(4px); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .feature:hover .feature-media :global(img) { transform: scale(1.05); }
+  .feature:hover .more .arrow { transform: translateX(4px); }
+}
+
+/* Section seams (white / grey / graphite): a thin red ruler with minor and major ticks. Static decoration. */
+.ruled { position: relative; }
+.ruled::before, .ruled--end::after { content: ""; position: absolute; left: 0; right: 0; height: 7px; pointer-events: none; opacity: .55;
+  background: var(--tac-ruler-bg); }
+.ruled::before { top: 0; }
+.ruled--end::after { bottom: 0; transform: scaleY(-1); }
+
+/* 08 CTA: slow diagonal stripes (opacity 0.05) and a radar ring on the main button, both only while on screen. */
+.cta { position: relative; isolation: isolate; overflow: hidden; }
+.cta::before { content: ""; position: absolute; inset: 0 -48px 0 -48px; z-index: -1; pointer-events: none; opacity: .05;
+  background: var(--tac-stripes-bg); }
+.cta-primary { position: relative; }
+.cta-primary::after { content: ""; position: absolute; inset: -1px; border: 1px solid var(--bxr-white); border-radius: inherit; pointer-events: none; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  /* 11 s: one stripe period (22px / sin 45° ≈ 31.11px, seamless) in 6 s, then 5 s still. */
+  .cta::before { animation: cta-stripes 11s ease-in-out infinite paused; }
+  .cta[data-in-view]::before { animation-play-state: running; }
+  /* 6.5 s: one 1.5 s pulse, then 5 s still; only while the band is on screen. */
+  .cta[data-in-view] .cta-primary::after { animation: cta-radar 6.5s var(--ease-precise) infinite; }
+}
+/* Keyframes cta-stripes / cta-radar: src/styles/tactical.css. */
+@media (prefers-reduced-motion: reduce) {
+  .feature-media::after, .more .arrow { transition: none; }
+  .feature .feature-media :global(img), .more .arrow { transform: none !important; }
+  .cta::before, .cta-primary::after { animation: none !important; }
+}
 </style>

@@ -5,10 +5,11 @@
  * variant "benefit" marks them with a check (what the customer gains).
  */
 import Text from "./Text.astro";
-interface Props { items: { title: string; description?: string }[]; variant?: "default" | "numbered" | "benefit"; columns?: 2 | 3 | 4 }
-const { items, variant = "default", columns = 3 } = Astro.props;
+/** Rows follow the shared count rule (.balanced, docs/LAYOUT-RULES.md). */
+interface Props { items: { title: string; description?: string }[]; variant?: "default" | "numbered" | "benefit" }
+const { items, variant = "default" } = Astro.props;
 ---
-<ul role="list" class:list={["tiles", `tiles--${variant}`]} style={`--cols: ${columns}`}>
+<ul role="list" class:list={["tiles", "balanced", `tiles--${variant}`]}>
   {items.map((c, i) => (
     <li class="tile">
       {variant === "numbered" && <span class="t-tech mark" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>}
@@ -19,12 +20,10 @@ const { items, variant = "default", columns = 3 } = Astro.props;
   ))}
 </ul>
 <style>
-  .tiles { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  .tiles { margin: 0; padding: 0; list-style: none; }
   .tile { display: grid; gap: var(--space-1); align-content: start; padding: var(--space-3); background: var(--surface); border-top: 2px solid var(--bxr-black); }
   :global(.section--alt) .tile { background: var(--bxr-white); }
   .mark { color: var(--ink-muted); }
   
   .tiles--benefit .check { color: var(--bxr-black); }
-  @media (max-width: 1023px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .tiles { grid-template-columns: 1fr; } }
 </style>

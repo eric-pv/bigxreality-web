@@ -10,12 +10,18 @@ public/favicon.svg
 public/fonts/
 public/icon-*.png
 
-# Cloudflare / EmDash local state and secrets
-.wrangler/
+# Local secrets
 .env
-.dev.vars
-src/assets/.emdash-media/
-public/media/
+
+# Local state left over from the retired Cloudflare/EmDash build
+.wrangler/
 src/data/.cms-site.json
+
+# Only the news media folder is versioned under public/media
+public/media/*
+!public/media/news/
 dist-fixtures/
 dist-preview/
+
+# Official GitHub Pages artifact (packaged from dist/)
+dist-pages/

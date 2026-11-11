@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry, type CollectionKey } from "astro:content";
+import { comparePublicationDates } from "./publication-date";
 import { LANGS, SOURCE_LANG, type Lang } from "../i18n";
 
 /*
@@ -69,7 +70,7 @@ async function load<C extends LocalizableKey>(collection: C, lang: Lang): Promis
     const ad = a.base.data as { order?: number; publishDate?: Date };
     const bd = b.base.data as { order?: number; publishDate?: Date };
     if (ad.order !== undefined && bd.order !== undefined) return ad.order - bd.order;
-    return (bd.publishDate?.getTime() ?? 0) - (ad.publishDate?.getTime() ?? 0);
+    return comparePublicationDates(ad.publishDate, bd.publishDate);
   });
 }
 
@@ -117,6 +118,13 @@ export function validateRelations(): Promise<void> {
       expect(file, "relatedSolutions", e.data.relatedSolutions, solutions);
       expect(file, "relatedProducts", e.data.relatedProducts, products);
       for (const it of e.data.landing?.featured?.items ?? []) expect(file, "landing.featured", [it.solution], solutions);
+    }
+    for(const entry of await getCollection("technologies")){
+      if(split(entry.id).lang!==SOURCE_LANG)continue;
+      expect(`technologies/${entry.id}.json`,"relatedProducts",entry.data.relatedProducts,products);
+      expect(`technologies/${entry.id}.json`,"relatedSolutions",entry.data.relatedSolutions,solutions);
+      const ids=entry.data.sections.map(section=>section.id);
+      if(new Set(ids).size!==ids.length)errors.push(`technologies/${entry.id}.json: duplicate section IDs`);
     }
     const tags = await slugs("tags");
     const articles = { news: await slugs("news"), insights: await slugs("insights"), "case-studies": await slugs("case-studies") };

@@ -1,0 +1,47 @@
+{
+  "tw": {
+    "headline": "TEST FIXTURE inline landing",
+    "subheadline": "TEST FIXTURE rich text block",
+    "ctaLabel": "TEST FIXTURE contact",
+    "blocks": [
+      {
+        "kind": "prose",
+        "title": "TEST FIXTURE inline content",
+        "body": "TEST FIXTURE landing before media\n\n<!-- bxr-image: {\"src\":\"/src/assets/images/clients/中央警察大學.webp\",\"alt\":\"TEST FIXTURE tw landing image\",\"approved\":true} -->\n\nTEST FIXTURE landing after media"
+      }
+    ],
+    "closing": {
+      "title": "TEST FIXTURE closing"
+    }
+  },
+  "en": {
+    "headline": "TEST FIXTURE inline landing",
+    "subheadline": "TEST FIXTURE rich text block",
+    "ctaLabel": "TEST FIXTURE contact",
+    "blocks": [
+      {
+        "kind": "prose",
+        "title": "TEST FIXTURE inline content",
+        "body": "TEST FIXTURE landing before media\n\n<!-- bxr-image: {\"src\":\"/src/assets/images/clients/中央警察大學.webp\",\"alt\":\"TEST FIXTURE en landing image\",\"approved\":true} -->\n\nTEST FIXTURE landing after media"
+      }
+    ],
+    "closing": {
+      "title": "TEST FIXTURE closing"
+    }
+  },
+  "jp": {
+    "headline": "TEST FIXTURE inline landing",
+    "subheadline": "TEST FIXTURE rich text block",
+    "ctaLabel": "TEST FIXTURE contact",
+    "blocks": [
+      {
+        "kind": "prose",
+        "title": "TEST FIXTURE inline content",
+        "body": "TEST FIXTURE landing before media\n\n<!-- bxr-image: {\"src\":\"/src/assets/images/clients/中央警察大學.webp\",\"alt\":\"TEST FIXTURE jp landing image\",\"approved\":true} -->\n\nTEST FIXTURE landing after media"
+      }
+    ],
+    "closing": {
+      "title": "TEST FIXTURE closing"
+    }
+  }
+}

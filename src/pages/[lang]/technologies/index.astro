@@ -1,30 +1,39 @@
 ---
+import {getEntry} from "astro:content";
+import { publicUrl } from '../../../lib/public-url.ts';
+
+import Text from '../../../components/Text.astro';
 import { LANGS, localePath, type Lang } from "../../../i18n";
 import { overviewContent } from "../../../data/technologies-content";
-import { TECHNOLOGY_IDS, LIVE_TECHNOLOGY_IDS } from "../../../lib/technologies";
+import { TECHNOLOGY_IDS, LIVE_TECHNOLOGY_IDS, technologyAvailableLangs } from "../../../lib/technologies";
 import { getUi } from "../../../lib/ui";
 import { site } from "../../../lib/site";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { technologyMedia } from "../../../lib/technology-media";
+import { pageOgImage } from "../../../lib/og-image";
 import PageHero from "../../../components/PageHero.astro";
+import ProductImage from "../../../components/ProductImage.astro";
 export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
 const lang = Astro.params.lang as Lang;
-const content = overviewContent[lang];
+const content = (await getEntry("technology-overview",`${lang}/overview`))!.data;
+const hero=content.heroImage??technologyMedia("overview",lang);
 const ui = getUi(lang);
-const live = (id: string) => (LIVE_TECHNOLOGY_IDS as readonly string[]).includes(id);
+const live = (id: string) => (LIVE_TECHNOLOGY_IDS as readonly string[]).includes(id)&&technologyAvailableLangs(id as (typeof TECHNOLOGY_IDS)[number]).includes(lang);
 const labels = { tw: "探索技術", en: "Explore Technology", jp: "技術を詳しく見る" };
 const imageSlotLabel = { tw: "核心技術圖片位置", en: "Core technologies image", jp: "コア技術イメージの掲載位置" };
 const breadcrumbs = [{ name: ui.home, path: localePath(lang) }, { name: content.title, path: localePath(lang, "technologies") }];
-const structuredData = [{ "@type": "CollectionPage", name: content.title, description: content.seo.description, url: new URL(localePath(lang, "technologies"), site.url).href, mainEntity: { "@type": "ItemList", itemListElement: TECHNOLOGY_IDS.map((id, index) => ({ "@type": "ListItem", position: index + 1, name: content.technologies[id].title, ...(live(id) ? { url: new URL(localePath(lang, "technologies", id), site.url).href } : {}) })) } }];
+const structuredData = [{ "@type": "CollectionPage", name: content.title, description: content.seo.description, url: publicUrl(localePath(lang, "technologies")).href, mainEntity: { "@type": "ItemList", itemListElement: TECHNOLOGY_IDS.map((id, index) => ({ "@type": "ListItem", position: index + 1, name: content.technologies[id].title, ...(live(id) ? { url: publicUrl(localePath(lang, "technologies", id)).href } : {}) })) } }];
 ---
-<BaseLayout hidePendingFooter lang={lang} title={content.seo.title} description={content.seo.description} pathTemplate="/{lang}/technologies/" alternates={[...LANGS]} headerTheme="dark" current="technologies" breadcrumbs={breadcrumbs} structuredData={structuredData}>
-  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={content.eyebrow} title={content.title} lead={content.lead} description={content.intro.join("\n\n")} imagePending={imageSlotLabel[lang]} />
+<BaseLayout hidePendingFooter lang={lang} title={content.seo.title} description={content.seo.description} pathTemplate="/{lang}/technologies/" alternates={LANGS.filter(l=>overviewContent[l].translationStatus!=="pending")} pendingTranslation={content.translationStatus==="pending"} headerTheme="dark" current="technologies" breadcrumbs={breadcrumbs} structuredData={structuredData} {...pageOgImage(hero?.src, hero?.alt)}>
+  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={content.eyebrow} title={content.title} lead={content.lead} description={content.intro.join("\n\n")} image={hero} imageBadge={(!content.heroImage&&technologyMedia("overview",lang)?.illustration) ? ({tw:"概念視覺",en:"Concept visual",jp:"コンセプトビジュアル"}[lang]) : undefined} />
   <section class="section technology-overview" aria-label={content.title}>
     <div class="container">
       <ol class="technology-list" role="list">
         {TECHNOLOGY_IDS.map((id, index) => <li class:list={["technology", { live: live(id) }]} data-technology-id={id} id={id}>
           <span class="index t-tech" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-          <div class="copy"><h2 class="t-h2">{live(id) ? <a href={localePath(lang, "technologies", id)}>{content.technologies[id].title}</a> : content.technologies[id].title}</h2><p>{content.technologies[id].description}</p></div>
-          {live(id) && <a class="explore" href={localePath(lang, "technologies", id)} aria-label={`${labels[lang]} · ${content.technologies[id].title}`}>{labels[lang]} <span aria-hidden="true">↗</span></a>}
+          <div class="copy"><h2 class="t-h2">{live(id) ? <a href={localePath(lang, "technologies", id)}><Text value={content.technologies[id].title} /></a> : <Text value={content.technologies[id].title} />}</h2><p><Text value={content.technologies[id].description} /></p></div>
+          <span class="thumb" aria-hidden="true">{technologyMedia(id, lang) ? <ProductImage src={technologyMedia(id, lang)!.src} alt="" showType={false} sizes="240px" /> : <span class="thumb-blueprint"><span class="tac-hud"><span class="tac-corner tac-tl"></span><span class="tac-corner tac-tr"></span><span class="tac-corner tac-bl"></span><span class="tac-corner tac-br"></span></span></span>}</span>
+          {live(id) && <a class="explore" href={localePath(lang, "technologies", id)} aria-label={`${labels[lang]} · ${content.technologies[id].title}`}>{labels[lang]} <span class="arrow" aria-hidden="true">↗</span></a>}
         </li>)}
       </ol>
     </div>
@@ -41,4 +50,28 @@ const structuredData = [{ "@type": "CollectionPage", name: content.title, descri
   .copy p { max-width: 46rem; color: var(--ink-muted); }
   .explore { min-height: 44px; display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--fs-small); }
   @media (max-width: 767px) { .technology { grid-template-columns: 28px minmax(0, 1fr); gap: var(--space-2); } .explore { grid-column: 2; } }
+</style>
+<style>
+  /* Tactical list: mono index; on hover or keyboard focus a red rule slides in on the left and the arrow steps out.
+     ≥ 1280 px a thumbnail of the technology's existing image fades in on the right (AI simulation, with no image yet,
+     shows a blueprint tile instead). Decorative only. The thumbnail has its own reserved grid column between the copy
+     and the explore link, so revealing it never covers text or the link; below 1280 px there is no room for that
+     column and the thumbnail stays hidden (scripts/qa-technologies-overview-layout.mjs guards this). */
+  .technology { position: relative; }
+  .technology::before { content: ""; position: absolute; left: -16px; top: var(--space-4); bottom: var(--space-4); width: 2px; background: var(--bxr-red); opacity: 0; transform: scaleY(.4); transform-origin: 50% 0; transition: opacity var(--dur-standard) var(--ease-precise), transform var(--dur-standard) var(--ease-precise); pointer-events: none; }
+  .index { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .arrow { display: inline-block; transition: transform var(--dur-standard) var(--ease-precise); }
+  .thumb { display: none; }
+  .technology:hover::before, .technology:focus-within::before { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: no-preference) { .technology:hover .arrow, .technology:focus-within .arrow { transform: translate(3px, -3px); } }
+  @media (min-width: 1280px) {
+    .technology { grid-template-columns: 64px minmax(0, 1fr) 200px auto; }
+    .thumb { display: block; grid-column: 3; align-self: center; position: relative; width: 200px; aspect-ratio: 16 / 9; overflow: hidden; pointer-events: none; opacity: 0; transform: translateX(8px); transition: opacity var(--dur-standard) var(--ease-precise), transform var(--dur-standard) var(--ease-precise); }
+    .explore { grid-column: 4; }
+    .technology:hover .thumb, .technology:focus-within .thumb { opacity: 1; transform: none; }
+  }
+  .thumb-blueprint { position: absolute; inset: 0; background: var(--bxr-graphite); }
+  .thumb-blueprint::before { content: ""; position: absolute; inset: 0; opacity: .12; background: var(--tac-grid-bg); }
+  .thumb-blueprint .tac-hud { --corner: 14px; }
+  @media (prefers-reduced-motion: reduce) { .technology::before, .arrow, .thumb { transition: none; } }
 </style>

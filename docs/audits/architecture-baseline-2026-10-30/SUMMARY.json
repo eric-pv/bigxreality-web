@@ -1,0 +1,20 @@
+{
+  "baseline": "7c9602b",
+  "trackedFiles": 1047,
+  "fileClasses": {
+    "歷史遺留": 51,
+    "正式使用": 984,
+    "無法確認": 12
+  },
+  "directPackages": 26,
+  "directClasses": {
+    "歷史遺留": 9,
+    "正式使用": 17
+  },
+  "lockEntries": 893,
+  "lockClasses": {
+    "正式使用": 491,
+    "歷史遺留": 402
+  },
+  "method": "Source/config and lock graph inventory; neither network deployment nor account/resource existence is inferred from file presence."
+}

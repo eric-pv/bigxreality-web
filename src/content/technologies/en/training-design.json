@@ -1,0 +1,158 @@
+{
+  "translationStatus": "translated",
+  "draft": false,
+  "eyebrow": "Core Technology",
+  "title": "Simulation-Based Training Design",
+  "lead": "Effective simulation training gives every action a training purpose, rather than simply making the visuals more game-like",
+  "intro": [
+    "The value of a professional training system comes from visual realism and simulation content aligned with actual training objectives.",
+    "From mission scenarios and operating procedures to interactive events, simulation training must translate professional requirements into content that is understandable, actionable, and suitable for repeated practice.",
+    "BXR combines XR technology, scenario design, and serious games principles to make digital interaction a tool for professional training, rather than simply an entertainment experience."
+  ],
+  "primaryCta": "Explore simulation training products",
+  "secondaryCta": "Discuss Training Design Requirements",
+  "sections": [
+    {
+      "id": "concept",
+      "title": "Define training objectives before designing simulated scenarios",
+      "paragraphs": [
+        "Training requirements vary between professional organisations. Even with similar XR equipment, military tactics, police response, and firefighting operations may require entirely different modes of interaction, mission workflows, and scenario conditions.",
+        "Simulation-based training design should therefore begin with the training purpose: which operations trainees need to become familiar with, which scenarios they need to face, and how they can practise them through simulation."
+      ],
+      "items": [
+        {
+          "title": "Training objectives",
+          "paragraphs": [
+            "Identify the operational familiarity, situational awareness, or response capabilities that the training aims to develop."
+          ]
+        },
+        {
+          "title": "Scenarios and missions",
+          "paragraphs": [
+            "Plan settings, events, and mission conditions according to the training purpose."
+          ]
+        },
+        {
+          "title": "Interaction and operation",
+          "paragraphs": [
+            "Design the actions, choices, and procedures that trainees need to carry out within the scenario."
+          ]
+        },
+        {
+          "title": "Repeated practice",
+          "paragraphs": [
+            "Enable workflows suited to simulation to be repeated under controlled conditions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "serious-games",
+      "title": "Serious games: interaction designed for training",
+      "paragraphs": [
+        "Serious games is an application concept that combines game design methods with education, training, or other clearly defined purposes.",
+        "It does not mean turning professional training into entertainment. Instead, it uses design approaches such as interaction, missions, feedback, and participation in scenarios to encourage users to act and think actively throughout the process.",
+        "In professional simulation training, serious games principles can be used to build engagement with missions, structure interactive workflows, and help trainees become familiar with specific procedures and scenarios through repeated practice.",
+        "BXR focuses on whether these interactive mechanisms serve the training objectives, rather than on the entertainment effect of game visuals."
+      ]
+    },
+    {
+      "id": "process",
+      "title": "Translate training requirements into actionable simulation content",
+      "paragraphs": [
+        "The design of simulation training requires professional organisations’ needs to be translated into concrete system plans.",
+        "Depending on the project scope and actual requirements, design work may include:"
+      ],
+      "items": [
+        {
+          "title": "01 | Understand requirements",
+          "paragraphs": [
+            "Clarify who will be trained, the training purpose, the operating environment, and operational conditions."
+          ]
+        },
+        {
+          "title": "02 | Plan scenarios",
+          "paragraphs": [
+            "Organise mission workflows, settings, and events suited to simulation."
+          ]
+        },
+        {
+          "title": "03 | Design interaction",
+          "paragraphs": [
+            "Plan operating methods, scenario changes, and any necessary user guidance."
+          ]
+        },
+        {
+          "title": "04 | Build the system",
+          "paragraphs": [
+            "Combine virtual content, operating equipment, and system functions to form a usable simulation training environment."
+          ]
+        },
+        {
+          "title": "05 | Review and refine",
+          "paragraphs": [
+            "Adjust the relevant operating procedures and presentation of content based on project testing and user feedback."
+          ]
+        }
+      ],
+      "note": "This describes a design approach; it does not mean that every product or project follows exactly the same development process."
+    },
+    {
+      "id": "value",
+      "title": "Turn technical performance into practical training value",
+      "paragraphs": [
+        "A professional simulation training system should help trainees understand which tasks they need to complete, how to participate in the scenario, and which operations and judgements are the focus of practice.",
+        "When scenario design aligns with training objectives, simulation systems can more effectively support the organisation of professional training."
+      ],
+      "bullets": [
+        "Establish a clear relationship between training objectives and interactive content.",
+        "Turn selected scenarios that are difficult to arrange frequently into simulation exercises.",
+        "Help trainees become familiar with specific operations and mission workflows.",
+        "Support the planning and adjustment of different training scenarios.",
+        "Provide a supporting approach for physical training and professional instruction."
+      ]
+    }
+  ],
+  "relatedTitle": "Simulation-based training design in different products",
+  "faq": [
+    {
+      "question": "What is simulation-based training design?",
+      "answer": "Simulation-based training design plans suitable scenarios, operating procedures, modes of interaction, and system configurations according to training objectives, enabling trainees to practise specific tasks in a simulated environment. Its focus is on aligning simulation content with training requirements, rather than simply creating realistic virtual imagery."
+    },
+    {
+      "question": "How do serious games differ from conventional video games?",
+      "answer": "Conventional video games usually focus primarily on entertainment, while serious games apply interaction design to education, training, or other clearly defined objectives. They may use similar technologies and interaction methods, but their design purposes and the criteria used to assess content differ."
+    },
+    {
+      "question": "Does simulation training always need scores or leaderboards?",
+      "answer": "No. Simulation training can provide operational guidance, task outcomes, or other forms of feedback according to its objectives, but not every type of training requires scores, rankings, or competition. Whether these features are used should depend on the training requirements and the actual product design."
+    },
+    {
+      "question": "Which tasks are suitable for simulation training?",
+      "answer": "Content suited to simulation may include operating procedures, scenario recognition, mission workflows, and selected exercises in response judgement. The actual scope must take account of the training purpose, equipment conditions, and professional safety requirements; not every task is suitable for being conducted entirely virtually."
+    },
+    {
+      "question": "Can BXR plan simulated scenarios for the needs of different organisations?",
+      "answer": "Within the product’s capabilities and project scope, BXR can discuss the scenario and interaction configurations needed for different training objectives. The items that can be adjusted, the development scope, and the implementation approach still need to be assessed against individual requirements."
+    }
+  ],
+  "closing": {
+    "title": "Give every simulated scenario a clear training purpose",
+    "body": "From understanding requirements and planning scenarios to designing interaction, BXR continues to explore how digital simulation can better reflect the practical use of professional training.",
+    "cta": "Discuss simulation training planning"
+  },
+  "seo": {
+    "title": "Simulation-Based Training Design｜Serious Games & XR",
+    "description": "Discover how BXR combines simulation-based training design, serious games, and interactive XR technology to translate military, police, and fire and disaster response training requirements into actionable, repeatable simulated scenarios."
+  },
+  "relatedProducts": [
+    "sut",
+    "mortar-observation",
+    "full-scale-police-training",
+    "police-box",
+    "fire-extinguisher-simulator"
+  ],
+  "relatedSolutions": [],
+  "primaryDestination": "products",
+  "relationNotes": []
+}

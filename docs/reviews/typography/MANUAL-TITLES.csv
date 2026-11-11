@@ -1,0 +1,4 @@
+language,route,width,title,observed_lines,review,mechanism
+tw,/tw/news/,390,Big x Reality 參展 SEECAT 2026，展示 MR CQB 與無人載具模擬訓練,Big x Reality 參展 / SEECAT 2026，展示 / MR CQB 與無人載具模擬訓練,長標題含正式活動名稱／縮寫，請人工確認語意分組與節奏；並非自動確認錯誤,Sveltia 多語文字換行 → headings；保留原文，不必逐頁修改 CSS
+en,/en/news/,390,Big x Reality Presents XR USV Training and Nova Tactical XR at the 22nd Simulation Forum,Big x Reality Presents XR USV / Training and Nova Tactical XR / at the 22nd Simulation Forum,長標題含正式活動名稱／縮寫，請人工確認語意分組與節奏；並非自動確認錯誤,Sveltia 多語文字換行 → headings；保留原文，不必逐頁修改 CSS
+jp,/jp/news/,390,第22回モデリング・シミュレーションフォーラムでXR USV訓練とNova Tactical XRを展示,第22回モデリング・ / シミュレーションフォーラムでXR / USV訓練とNova Tactical XRを展示,長標題含正式活動名稱／縮寫，請人工確認語意分組與節奏；並非自動確認錯誤,Sveltia 多語文字換行 → headings；保留原文，不必逐頁修改 CSS

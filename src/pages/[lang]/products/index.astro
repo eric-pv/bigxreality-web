@@ -8,6 +8,7 @@ import { getEntry } from "astro:content";
 import { LANGS, SOURCE_LANG, localePath, type Lang } from "../../../i18n";
 import { PRODUCT_DOMAINS } from "../../../lib/domains";
 import { getLocalized, validateRelations } from "../../../lib/content";
+import { isEditorialPlaceholder as isPending } from "../../../lib/pending";
 import { getUi } from "../../../lib/ui";
 import { plain } from "../../../lib/text";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
@@ -17,6 +18,7 @@ import CardProduct from "../../../components/CardProduct.astro";
 import CtaBand from "../../../components/CtaBand.astro";
 import FormButton from "../../../components/FormButton.astro";
 import Text from "../../../components/Text.astro";
+import { pageOgImage } from "../../../lib/og-image";
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -50,15 +52,14 @@ const pending = copy.translationStatus === "pending";
   headerTheme="dark"
   current="products"
   breadcrumbs={breadcrumbs}
-  ogImage={heroImage?.src}
-  ogImageAlt={heroImage?.alt}
+  {...pageOgImage(heroImage?.src, copy.hero.image?.alt, pending)}
 >
   <PageHero
     breadcrumbs={breadcrumbs}
     breadcrumbLabel={ui.breadcrumbLabel}
     eyebrow={copy.hero.eyebrow}
     title={copy.hero.title}
-    description={copy.hero.description}
+    description={copy.hero.description && !isPending(copy.hero.description)?copy.hero.description:undefined}
     image={heroImage}
     imageCaption={copy.hero.imageCaption}
   />
@@ -77,7 +78,7 @@ const pending = copy.translationStatus === "pending";
                 lang={lang}
                 href={localePath(lang, "products", p.slug)}
                 name={d.hero.name}
-                englishName={d.hero.englishName}
+               
                 summary={d.summary ?? d.hero.tagline}
                 domains={p.base.data.domains}
                 domainLabels={ui.productDomains}
@@ -92,7 +93,7 @@ const pending = copy.translationStatus === "pending";
   </section>
 
   {copy.cta && (
-    <CtaBand id="products-cta" title={copy.cta.title} description={copy.cta.description}>
+    <CtaBand id="products-cta" title={isPending(copy.cta.title)?ui.contact:copy.cta.title} description={isPending(copy.cta.description)?undefined:copy.cta.description}>
       <a class="btn btn--primary" href={localePath(lang, "contact")}><Text value={ui.contact} /></a>
       <FormButton kind="brochure" lang={lang} variant="secondary" />
     </CtaBand>

@@ -1,0 +1,49 @@
+---
+import Text from './Text.astro';
+import type { Article } from '../lib/articles';
+import { articleHref } from '../lib/articles';
+import { newsMedia } from '../lib/news-media';
+import { newsCategory } from '../lib/news-listing';
+import { getUi } from '../lib/ui';
+import { INTL_LOCALE } from '../i18n';
+import EditorialCover from './EditorialCover.astro';
+import ProductImage from './ProductImage.astro';
+interface Props { article: Article; featured?: boolean }
+const { article:a, featured = false } = Astro.props;
+const ui = getUi(a.lang), base = a.base.data;
+const id = 'mediaId' in base && base.mediaId ? base.mediaId : 'imageId' in base ? base.imageId : undefined;
+const cover = newsMedia(id,a.lang).cover ?? (base.cover && {src:base.cover.src,alt:a.loc.data.cover?.alt ?? base.cover.alt});
+const date = base.publishDate;
+const category = newsCategory(a);
+const read = {tw:'閱讀完整內容',en:'Read the story',jp:'記事を読む'}[a.lang];
+---
+<article data-news-id={a.slug} data-news-category={category} data-news-year={date?.getUTCFullYear() ?? "undated"} class:list={['news-card','card',{featured}]}>
+ <div class="media">{cover ? <ProductImage src={cover.src} alt={cover.alt} loading={featured?'eager':'lazy'} sizes={featured?'(max-width: 767px) calc(100vw - 32px), 660px':'(max-width: 767px) calc(100vw - 32px), 240px'} /> : <EditorialCover title={a.loc.data.title} category={ui.newsListing.categoryLabels[category as keyof typeof ui.newsListing.categoryLabels] ?? ui.article.categories[category]} date={date} />}</div>
+ <div class="body">
+  <p class="meta t-caption">{date && <time datetime={date.toISOString().slice(0,10)}>{new Intl.DateTimeFormat(INTL_LOCALE[a.lang],{year:'numeric',month:'2-digit',day:'2-digit'}).format(date)}</time>}<span>{ui.newsListing.categoryLabels[category as keyof typeof ui.newsListing.categoryLabels] ?? ui.article.categories[category]}</span></p>
+  <h2 class="title"><a href={articleHref(a)}><Text value={a.loc.data.title} /></a></h2>
+  <p class="summary"><Text value={a.loc.data.summary} /></p>
+  <span class="read t-small" aria-hidden="true">{read} →</span>
+ </div>
+</article>
+<style>
+.news-card { display: grid; grid-template-columns: 240px minmax(0,1fr); gap: 32px; padding-block: 24px; border: 0; border-bottom: 1px solid var(--divider); position: relative; }
+.media { aspect-ratio: 16/9; overflow: hidden; align-self: start; }
+.media img { width: 100%; height: 100%; object-fit: cover; }
+.media :global(.placeholder) { height: 100%; max-height: none; }
+.body { min-width: 0; display: flex; flex-direction: column; align-items: start; gap: 10px; }
+.meta { display: flex; flex-wrap: wrap; gap: 12px; color: var(--ink-muted); }
+.title { font-size: clamp(21px,1.8vw,24px); line-height: 1.45; }
+.title a { color: var(--ink); text-decoration: none; }
+.title a::after { content: ''; position: absolute; inset: 0; }
+.title a:focus-visible { outline: none; }
+.news-card:has(a:focus-visible) { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
+.news-card:hover .title a { color: var(--bxr-text-red); }
+.summary { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--ink-muted); line-height: 1.7; }
+.read { color: var(--link); margin-top: auto; padding-top: 4px; }
+.featured { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); align-items: center; padding-top: 0; padding-bottom: 40px; gap: 40px; }
+.featured .media { align-self: center; }
+.featured .title { font-size: clamp(24px,2.4vw,34px); }
+.featured .summary { -webkit-line-clamp: 3; }
+@media(max-width:767px) { .news-card,.featured { grid-template-columns: 1fr; gap: 18px; padding-block: 24px; } .featured { padding-top: 0; } .media { width: 100%; } .title { font-size: 22px; } }
+</style>

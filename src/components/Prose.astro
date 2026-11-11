@@ -1,12 +1,12 @@
 ---
 /** Rich text from the CMS or Markdown (already HTML; `[待…]` markers highlighted). Max 6 columns wide (DS P.11). */
-import { markPendingHtml } from "../lib/text";
+import { markPendingHtml, typesetHtml } from "../lib/text";
 interface Props { html: string; class?: string }
 const { html, class: cls } = Astro.props;
 ---
-<div class:list={["prose", cls]} set:html={markPendingHtml(html)} />
+<div class:list={["prose", cls]} set:html={typesetHtml(markPendingHtml(html), Astro.params.lang ?? "en")} />
 <style>
-  .prose { display: grid; gap: var(--space-2); max-width: 44rem; }
+  .prose { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: var(--space-3); line-height: 1.8; max-width: var(--reading-width); }
   .prose :global(h2) { font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 500; margin-top: var(--space-4); }
   .prose :global(h3) { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: 500; margin-top: var(--space-3); }
   .prose :global(h4) { font-size: var(--fs-body, 1rem); font-weight: 600; margin-top: var(--space-2); }
@@ -17,5 +17,5 @@ const { html, class: cls } = Astro.props;
   .prose :global(img) { max-width: 100%; height: auto; }
   .prose :global(figcaption) { margin-top: var(--space-1); color: var(--ink-muted); font-size: var(--fs-caption); }
   .prose :global(pre) { overflow-x: auto; padding: var(--space-2); background: var(--bxr-paper); font-family: var(--font-mono); font-size: var(--fs-small); }
-  .prose :global(a) { color: inherit; }
+  .prose :global(a) { color: inherit; overflow-wrap: anywhere; }
 </style>

@@ -1,57 +1,14 @@
 ---
-/**
- * /[lang]/company/partners/ — authorised partners grouped by cooperation type (technology,
- * system integration, international channels). A group with no partner is not shown; a partner
- * without authorisation is never built (content schema), so no name or logo leaks.
- */
-import { Picture } from "astro:assets";
-import { LANGS, type Lang } from "../../../../i18n";
-import { getLocalized } from "../../../../lib/content";
-import { PARTNER_CATEGORIES, companyContent } from "../../../../lib/company";
-import { getUi } from "../../../../lib/ui";
-import CompanyShell from "../../../../components/CompanyShell.astro";
-import Text from "../../../../components/Text.astro";
-
-export function getStaticPaths() {
-  return LANGS.map((lang) => ({ params: { lang } }));
-}
+/** The existing partner route: the shared, ordered client-logo catalogue. */
+import { LANGS, type Lang } from '../../../../i18n';
+import { clientLogos } from '../../../../lib/client-logos';
+import CompanyShell from '../../../../components/CompanyShell.astro';
+import PartnerStatistics from '../../../../components/PartnerStatistics.astro';
+import ClientLogos from '../../../../components/ClientLogos.astro';
+export const getStaticPaths = () => LANGS.map(lang => ({ params: { lang } }));
 const lang = Astro.params.lang as Lang;
-const t = getUi(lang).companyPages;
-const partners = await getLocalized("partners", lang);
-const groups = PARTNER_CATEGORIES.map((c) => ({ key: c, items: partners.filter((p) => p.base.data.category === c) })).filter((g) => g.items.length > 0);
-const alternates: Lang[] = [];
-for (const l of LANGS) if ((await companyContent(l)).partners) alternates.push(l);
 ---
-<CompanyShell lang={lang} page="partners" currentCompany="partners" path="partners" empty={partners.length === 0} alternates={alternates}>
-  {groups.map((g) => (
-    <section class="group" aria-labelledby={`h-${g.key}`}>
-      <h2 class="t-h3" id={`h-${g.key}`}><Text value={t.partnerCategories[g.key]} /></h2>
-      <ul role="list" class="grid">
-        {g.items.map((p) => (
-          <li class="card">
-            {p.base.data.logo && (
-              <figure class="logo">
-                <Picture src={p.base.data.logo.src} alt={p.loc.data.logo?.alt ?? p.base.data.logo.alt} formats={["avif", "webp"]} widths={[240, 480]} sizes="240px" width={480} height={240} fit="contain" loading="lazy" />
-              </figure>
-            )}
-            <h3 class="t-h4">
-              {p.base.data.url ? <a href={p.base.data.url} rel="noopener" target="_blank"><Text value={p.loc.data.name} /><span class="visually-hidden"><Text value={getUi(lang).buttons.opensInNewTab} /></span></a> : <Text value={p.loc.data.name} />}
-            </h3>
-            {p.loc.data.description && <p class="t-small t-muted"><Text value={p.loc.data.description} /></p>}
-          </li>
-        ))}
-      </ul>
-    </section>
-  ))}
+<CompanyShell lang={lang} page="partners" currentCompany="partners" path="partners" empty={clientLogos(lang).length === 0} alternates={[...LANGS]}>
+  <PartnerStatistics lang={lang} />
+  <ClientLogos lang={lang} />
 </CompanyShell>
-<style>
-  .group { display: grid; gap: var(--space-3); margin-bottom: var(--space-6); }
-  .group h2 { margin: 0; padding-top: var(--space-2); border-top: 2px solid var(--ink); }
-  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  .card { display: grid; gap: var(--space-2); align-content: start; padding: var(--space-3); border: 1px solid var(--divider); background: var(--surface); }
-  .card h3, .card p { margin: 0; }
-  .logo { margin: 0; }
-  .logo :global(img) { display: block; width: auto; max-width: 100%; height: 72px; object-fit: contain; }
-  @media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .grid { grid-template-columns: 1fr; } }
-</style>

@@ -1,3 +1,5 @@
+import {contentLocale} from "../../src/lib/content-locale.ts";
+import {publicUrl} from '../../src/lib/public-url.ts';
 // Shared checks for the English and Japanese product and solution pages (qa-english.mjs, qa-japanese.mjs).
 // The Traditional Chinese pages are the master: every localized page must render its own content file
 // (headline, hero button, name), keep the same sections and item counts as the Chinese page, carry the
@@ -12,7 +14,7 @@ export const PRODUCTS = ["sut", "uav", "usv", "wargaming-table", "mortar-observa
 export const SOLUTIONS = ["military", "mum-t", "nova", "police", "fire-rescue", "smart-city"];
 const MILITARY_PRODUCTS = ["sut", "uav", "wargaming-table", "mortar-observation", "sniper-simulator", "machine-gun-simulator", "hmmwv-simulator", "tactical-boat-simulator", "usv"];
 
-const content = (kind, lang, slug) => YAML.parse(readFileSync(path.join("src/content", kind, lang, `${slug}.md`), "utf8").split(/^---$/m)[1]);
+const content = (kind, lang, slug) => YAML.parse(readFileSync(path.join("src/content", kind, contentLocale(lang), `${slug}.md`), "utf8").split(/^---$/m)[1]);
 
 /**
  * @param {object} o
@@ -45,9 +47,9 @@ export async function runLocalizedQa({ lang, port, foreign, nav, scope, htmlLang
     check("nav: contact button", (await page.locator("a.contact").innerText()).trim() === nav.contact);
 
     // solutions landing: same blocks as the Chinese page, four category cards, no closing band (the master has none)
-    const overview = YAML.parse(readFileSync(`src/content/pages/${lang}/solutions.md`, "utf8").split(/^---$/m)[1]);
+    const overview = YAML.parse(readFileSync(`src/content/pages/${contentLocale(lang)}/solutions.md`, "utf8").split(/^---$/m)[1]);
     check("landing: headline", (await page.locator("h1").innerText()).trim() === overview.hero.title);
-    const cards = await page.$$eval("#solution-list article.card h3", (hs) => hs.map((h) => h.textContent.trim()));
+    const cards = await page.$$eval("#solution-list article.card .title", (hs) => hs.map((h) => h.textContent.trim()));
     check("landing: four category cards in order", JSON.stringify(cards) === JSON.stringify(["military", "police", "fire-rescue", "smart-city"].map((s) => content("solutions", lang, s).name)), cards.join(" | "));
     check("landing: four approach items, no closing band", (await page.locator("section[aria-labelledby=h-highlights] .value").count()) === 4 && (await page.locator("section[aria-labelledby=solutions-cta]").count()) === 0);
     const twOverview = await (async () => { const p = await browser.newPage(); await p.goto(`${base}/tw/solutions/`, { waitUntil: "networkidle" }); const o = await outline(p); await p.close(); return o; })();
@@ -62,15 +64,15 @@ export async function runLocalizedQa({ lang, port, foreign, nav, scope, htmlLang
       await tw.goto(`${base}/tw/${kind}/${slug}/`, { waitUntil: "networkidle" });
       await page.goto(base + url, { waitUntil: "networkidle" });
       const body = await page.locator("main").innerText();
-      check(`${url}: headline`, (await page.locator("h1").innerText()).trim() === d.landing.headline);
+      check(`${url}: product/solution identity in H1 and value headline retained`, (await page.locator("h1").innerText()).trim() === name && (await page.locator(".landing-overview h2").innerText()).trim() === d.landing.headline);
       check(`${url}: hero button label`, (await page.locator(".page-hero a.btn").first().innerText()).trim() === d.landing.ctaLabel);
-      check(`${url}: name in title`, (await page.title()).startsWith(name));
+      check(`${url}: approved SEO title (or name) in title`, (await page.title()).startsWith((d.seo?.title ?? name).replace(/\s*[|｜]\s*(?:Big\s*x\s*Reality|BXR)\s*$/i, "")));
       check(`${url}: no Chinese or placeholder text`, !foreign.test(body) && !body.includes("[待"), (body.match(foreign)?.[0] ?? "") + (body.includes("[待") ? " [待" : ""));
       const [o, t] = [await outline(page), await outline(tw)];
       check(`${url}: same sections and items as the Chinese page`, JSON.stringify(o) === JSON.stringify(t), `${JSON.stringify(o)} vs ${JSON.stringify(t)}`);
       check(`${url}: no back link (the Chinese page has none)`, (await page.locator(".back a").count()) === 0);
       const raw = html(`${lang}/${kind}/${slug}`);
-      check(`${url}: indexable, canonical and hreflang`, !/name="robots" content="noindex"/.test(raw) && raw.includes(`rel="canonical" href="https://www.bigxreality.com${url}"`) && raw.includes('hreflang="zh-Hant-TW"') && !raw.includes("translation-banner"));
+      check(`${url}: indexable, canonical and hreflang`, !/name="robots" content="noindex"/.test(raw) && raw.includes(`rel="canonical" href="${publicUrl(url).href}"`) && raw.includes('hreflang="zh-TW"') && !raw.includes("translation-banner"));
       const empties = await page.locator("main section").evaluateAll((ss) => ss.filter((s) => !s.innerText.trim()).length);
       check(`${url}: no empty sections`, empties === 0);
       if (kind === "products") {

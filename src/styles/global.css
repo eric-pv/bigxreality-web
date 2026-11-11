@@ -1,6 +1,16 @@
 /* Design tokens: the only source for color, spacing, layout and motion values. */
 @import "../../design-source/BXR_Web_Tokens_v1.0.css";
 
+/* --font-mono face (copied by scripts/build-fonts.mjs). Declared here instead of in its own
+   stylesheet: the browser fetches the file only on pages that render B612 Mono text. */
+@font-face {
+  font-family: "B612 Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/fonts/b612-mono-latin-400-normal.woff2) format("woff2");
+}
+
 /*
  * Type scale and component sizes from BXR Web Design System v1.0
  * (P.09 type scale, P.10 Chinese setting and web extensions, P.11 grid,
@@ -8,21 +18,22 @@
  * Values marked 提案 in the PDF are used as written there.
  */
 :root {
-  --fs-display: 64px; --lh-display: 1.05; --ls-display: -0.015em;
-  --fs-h1: 40px; --lh-h1: 1.15; --ls-h1: -0.01em;
-  --fs-h2: 26px; --lh-h2: 1.3;
-  --fs-h3: 20px; --lh-h3: 1.4;
-  --fs-h4: 18px; --lh-h4: 1.4;
+  --fs-display: 52px; --lh-display: 1.05; --ls-display: -0.015em;
+  --fs-h1: 48px; --lh-h1: 1.22; --ls-h1: -0.01em;
+  --fs-h2: 34px; --lh-h2: 1.3;
+  --fs-h3: 24px; --lh-h3: 1.4;
+  --fs-h4: 21px; --lh-h4: 1.4;
   --fs-body: 16px; --lh-body: 1.7; --ls-body: 0.01em;
   --fs-small: 14px; --lh-small: 1.6;
   --fs-caption: 13px; --lh-caption: 1.6; --ls-caption: 0.03em;
   --fs-label: 11px; --lh-label: 1.4; --ls-label: 0.14em;
-  --fs-tech: 11px; --lh-tech: 1.5; --ls-tech: 0.04em;
+  --fs-tech: 12px; --lh-tech: 1.5; --ls-tech: 0.04em;
   --fs-nav: 15px;
   --fs-cta: 16px;
   --btn-h: 48px; --btn-px: var(--space-4);
   --btn-sm-h: 40px; --btn-sm-px: 20px;
   --logo-h: 32px;
+  --container: 1200px; --reading-width: 780px;
   --section-py: 64px;
   --content-gap: 32px;
   --card-padding: 24px;
@@ -34,7 +45,7 @@
 }
 @media (max-width: 767px) {
   :root {
-    --fs-display: 40px; --fs-h1: 30px; --fs-h2: 22px; --fs-h3: 18px; --fs-h4: 17px;
+    --fs-display: 38px; --fs-h1: 34px; --fs-h2: 29px; --fs-h3: 22px; --fs-h4: 20px;
     --section-py: 40px; --content-gap: 20px; --card-padding: 20px; --placeholder-max: 144px; --gutter: 16px;
   }
 }
@@ -78,7 +89,7 @@ h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
 ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
 button, input { font: inherit; letter-spacing: inherit; }
 
-h1, h2, h3, h4 { font-weight: 500; color: var(--ink); }
+h1, h2, h3, h4 { text-wrap: balance; overflow-wrap: break-word; word-break: normal; font-weight: 500; color: var(--ink); }
 .t-display { font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); font-weight: 500; }
 .t-h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); font-weight: 500; }
 .t-h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 500; }
@@ -97,6 +108,11 @@ h1, h2, h3, h4 { font-weight: 500; color: var(--ink); }
 
 /* Links: light = Text Red + underline; dark = white + underline; hover removes underline (P.12) */
 a { color: var(--link); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+/* Underlines run unbroken under a link's whole text. The typesetting groups (.type-phrase / .type-group) are
+   inline-blocks, and CSS never propagates a decoration into atomic inlines, so they inherit it explicitly;
+   skip-ink is off so CJK and descender glyphs do not cut gaps into the line. */
+a { text-decoration-skip-ink: none; }
+:where(a) :where(span) { text-decoration: inherit; }
 a:hover { text-decoration: none; }
 
 /* Focus: 2px ring, 2px offset (P.06, P.20) */
@@ -155,3 +171,49 @@ a:hover { text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; scroll-behavior: auto !important; }
 }
+
+/* Shared first-pass reading rhythm; no CIS color or font-family changes. */
+.container.narrow { max-width: calc(var(--reading-width) + 2 * var(--margin)); }
+:lang(en) .t-h1 { font-size: clamp(32px, 3.4vw, 48px); }
+:lang(ja) .t-h1 { font-size: clamp(30px, 3.1vw, 44px); line-height: 1.4; }
+.card { height: 100%; }
+.card .body { min-width: 0; }
+.prose, .summary { overflow-wrap: break-word; }
+a[target="_blank"]:not(:has(svg)):not(.btn)::after { content: " ↗"; font-size: .8em; }
+
+/* Follow each language’s line-breaking rules. Dictionary annotations must not
+   turn ordinary prose into disconnected inline-block boxes. */
+:lang(zh) { word-break: normal; line-break: strict; }
+:lang(ja) { word-break: normal; word-break: auto-phrase; line-break: strict; }
+:lang(en) { word-break: normal; line-break: auto; hyphens: manual; }
+h1, h2, h3, h4 { min-inline-size: 0; max-inline-size: 100%; overflow-wrap: anywhere; }
+p, .summary, .desc { text-wrap: pretty; overflow-wrap: anywhere; }
+/* Balance short CJK copy without forcing a sentence or a word onto a new line. */
+:lang(zh) :is(p, .summary, .desc, li, dt, dd, figcaption), :lang(ja) :is(p, .summary, .desc, li, dt, dd, figcaption) { text-wrap: balance; }
+.typeset { min-inline-size: 0; max-inline-size: 100%; }
+.type-group { display: inline; word-break: inherit; overflow-wrap: inherit; }
+.type-phrase { display: inline; white-space: normal; word-break: inherit; overflow-wrap: inherit; }
+/* Chinese words stay intact without becoming separate layout boxes. */
+:lang(zh) .type-phrase { white-space: nowrap; }
+.btn { min-inline-size: 0; overflow-wrap: anywhere; max-inline-size: 100%; white-space: normal; text-wrap: balance; text-align: center; line-height: 1.4; padding-block: 10px; }
+@media(max-width:430px) {
+ :root { --fs-h1: clamp(30px, 7.9vw, 34px); }
+ :lang(en) .t-h1 { font-size:clamp(30px,7.9vw,34px); }
+ :lang(ja) .t-h1 { font-size:clamp(28px,7.5vw,32px); }
+}
+
+/*
+ * Side-by-side card groups (docs/LAYOUT-RULES.md §1). Rows are balanced by item count:
+ * 1–3 in one row, 4 as 2 + 2, 5 as 3 + 2, more as rows of 3; an incomplete last row is centred
+ * and keeps the same card width. Tablet: at most 2 per row. Phone: one per row.
+ * Set --balanced-gap when the group uses a gap other than --gutter.
+ */
+.balanced { --per: 3; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--balanced-gap, var(--gutter)); }
+.balanced:has(> :nth-child(2):last-child), .balanced:has(> :nth-child(4):last-child) { --per: 2; }
+.balanced > * { flex: 0 0 calc((100% - (var(--per) - 1) * var(--balanced-gap, var(--gutter))) / var(--per)); min-width: 0; }
+.balanced > :only-child { flex-basis: min(100%, 640px); }
+@media (max-width: 1023px) {
+  .balanced > * { --per-t: min(var(--per), 2); flex-basis: calc((100% - (var(--per-t) - 1) * var(--balanced-gap, var(--gutter))) / var(--per-t)); }
+  .balanced > :only-child { flex-basis: min(100%, 640px); }
+}
+@media (max-width: 767px) { .balanced > *, .balanced > :only-child { flex-basis: 100%; } }

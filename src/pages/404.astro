@@ -1,0 +1,91 @@
+---
+/**
+ * The site's only 404 page. GitHub Pages serves one file, <base>/404.html, for every missing
+ * URL, so this page carries the message and return links in all three languages:
+ * - Without JavaScript all three blocks are shown (TW first).
+ * - With JavaScript a small inline script reads the language prefix of the visited path
+ *   (/tw/, /en/, /jp/ after the base; none → TW), keeps that block only and sets the document
+ *   language, title and font stylesheet. Header and footer are the TW site chrome.
+ * Always noindex and never in the sitemap (indexable-pages.ts does not list it).
+ * Links are root-relative like every page; scripts/pages/package.mjs rebases them.
+ */
+import { HTML_LANG, localePath, type Lang } from "../i18n";
+import { getUi } from "../lib/ui";
+import { typeset } from "../lib/text";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const ORDER: Lang[] = ["tw", "en", "jp"];
+const ui = getUi("tw");
+const blocks = ORDER.map((lang) => {
+  const u = getUi(lang), t = u.notFound;
+  return {
+    lang, t,
+    links: [
+      { key: "home", href: localePath(lang), label: t.home, primary: true },
+      { key: "products", href: localePath(lang, "products"), label: u.nav.products },
+      { key: "solutions", href: localePath(lang, "solutions"), label: u.nav.solutions },
+      { key: "contact", href: localePath(lang, "contact"), label: u.contact },
+      { key: "search", href: localePath(lang, "search"), label: u.search },
+    ],
+  };
+});
+const titles = Object.fromEntries(blocks.map((b) => [b.lang, `${b.t.title} | Big x Reality`]));
+const html = (lang: Lang, s: string) => typeset(s, lang);
+---
+<BaseLayout
+  lang="tw" title={ui.notFound.title} description={ui.notFound.metaDescription} pathTemplate="/404.html" alternates={[]}
+  noindex headerTheme="light" fallbackPath="/{lang}/" breadcrumbs={[{ name: ui.home, path: localePath("tw") }]}
+>
+  <section class="section not-found" data-not-found>
+    <div class="container">
+      {blocks.map((b) => (
+        <div class="nf-block" lang={HTML_LANG[b.lang]} data-nf-lang={b.lang}>
+          <p class="t-label nf-code">{b.t.eyebrow}</p>
+          <h1 class="t-h1" set:html={html(b.lang, b.t.heading)} />
+          <p class="t-body nf-text" set:html={html(b.lang, b.t.description)} />
+          <nav aria-label={b.t.linksLabel}>
+            <ul role="list" class="nf-links">
+              {b.links.map((l) => (
+                <li><a class={l.primary ? "btn btn--primary" : "btn btn--secondary"} href={l.href} data-nf-link={l.key}><span set:html={html(b.lang, l.label)} /></a></li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      ))}
+    </div>
+  </section>
+  <script is:inline define:vars={{ titles, htmlLang: HTML_LANG }}>
+    // Runs right after the blocks are parsed, before first paint of the other languages.
+    (() => {
+      const nf = document.querySelector("[data-not-found]");
+        // The TW home link is "<base>tw/" after packaging, which gives the deployed base path.
+        const home = nf.querySelector('[data-nf-lang="tw"] [data-nf-link="home"]').getAttribute("href");
+        const base = home.replace(/tw\/$/, "");
+        const rest = location.pathname.startsWith(base) ? location.pathname.slice(base.length) : "";
+        const first = rest.split("/")[0];
+        const lang = ["tw", "en", "jp"].includes(first) ? first : "tw";
+        for (const block of nf.querySelectorAll("[data-nf-lang]")) block.hidden = block.dataset.nfLang !== lang;
+        nf.dataset.lang = lang;
+        document.documentElement.lang = htmlLang[lang];
+        document.title = titles[lang];
+        if (lang !== "tw") {
+          const font = document.createElement("link");
+          font.rel = "stylesheet"; font.href = `${base}fonts/${lang}.css`;
+          document.head.append(font);
+        }
+        // Header language links go to each home (fallbackPath); mark the visitor's language.
+        for (const a of document.querySelectorAll(".langs a[hreflang]")) {
+          if (a.getAttribute("href") === `${base}${lang}/`) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+        }
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  .not-found { padding-block: var(--space-12); }
+  .nf-block + .nf-block { margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--bxr-line); }
+  .nf-code { color: var(--ink-muted); margin: 0 0 var(--space-2); }
+  .nf-text { max-width: 40em; margin: var(--space-3) 0 var(--space-5); color: var(--ink-muted); }
+  .nf-links { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+  .not-found[data-lang] .nf-block { margin-top: 0; padding-top: 0; border-top: 0; }
+</style>

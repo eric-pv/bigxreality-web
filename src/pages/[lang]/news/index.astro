@@ -1,10 +1,10 @@
 ---
-/** /[lang]/news/ — first page of the list (see components/ArticleListPage.astro). */
+/** /[lang]/news/ — first page of the list (see components/NewsListPage.astro). */
 import { LANGS, type Lang } from "../../../i18n";
-import ArticleListPage from "../../../components/ArticleListPage.astro";
+import NewsListPage from "../../../components/NewsListPage.astro";
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
 }
 ---
-<ArticleListPage lang={Astro.params.lang as Lang} collection="news" page={1} />
+<NewsListPage lang={Astro.params.lang as Lang} page={1} />

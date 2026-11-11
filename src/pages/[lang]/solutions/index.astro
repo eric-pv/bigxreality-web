@@ -1,4 +1,6 @@
 ---
+import { publicUrl } from '../../../lib/public-url.ts';
+
 /** /[lang]/solutions/ — the four market domains (docs/PHASE-2-PLAN.md §4). */
 import { getEntry } from "astro:content";
 import { LANGS, localePath, type Lang } from "../../../i18n";
@@ -32,10 +34,10 @@ const breadcrumbs = [
 const itemList = {
   "@type": "CollectionPage",
   name: plain(page.hero.title),
-  url: new URL(localePath(lang, "solutions"), site.url).toString(),
+  url: publicUrl(localePath(lang, "solutions")).toString(),
   mainEntity: {
     "@type": "ItemList",
-    itemListElement: solutions.map((s, i) => ({ "@type": "ListItem", position: i + 1, url: new URL(localePath(lang, "solutions", s.slug), site.url).toString() })),
+    itemListElement: solutions.map((s, i) => ({ "@type": "ListItem", position: i + 1, url: publicUrl(localePath(lang, "solutions", s.slug)).toString() })),
   },
 };
 ---
@@ -47,12 +49,12 @@ const itemList = {
   <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={page.hero.eyebrow} title={page.hero.title} lead={page.hero.lead} description={page.hero.description} image={page.hero.image} imageCaption={page.hero.imageCaption} />
   <section class="section" id="solution-list" aria-label={page.hero.title}>
     <div class="container">
-      <ul role="list" class="cards">
+      <ul role="list" class="cards balanced">
         {solutions.map((s) => (
           <li>
             <CardSolution
               lang={lang} href={localePath(lang, "solutions", s.slug)} domain={s.base.data.domain}
-              name={s.loc.data.name} englishName={s.loc.data.englishName} summary={s.loc.data.summary} label={s.loc.data.cardLabel} headline={s.loc.data.cardHeadline}
+              name={s.loc.data.name} summary={s.loc.data.summary} label={s.loc.data.cardLabel} headline={s.loc.data.cardHeadline} headingLevel={2}
               image={s.base.data.image && { src: s.base.data.image.src, alt: s.loc.data.image?.alt ?? s.base.data.image.alt }}
             />
           </li>
@@ -63,7 +65,7 @@ const itemList = {
   {page.highlights && (
     <section class="section section--alt" aria-labelledby="h-highlights">
       <div class="container">
-        <SectionHead id="h-highlights" eyebrow="Our Approach" title={page.highlights.title} />
+        <SectionHead id="h-highlights" eyebrow={ui.productLanding.eyebrows.approach} title={page.highlights.title} />
         <ValueCards items={page.highlights.items} />
       </div>
     </section>
@@ -75,6 +77,6 @@ const itemList = {
   )}
 </BaseLayout>
 <style>
-  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
+  .cards { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  @media (max-width: 767px) {  }
 </style>

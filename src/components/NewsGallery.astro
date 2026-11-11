@@ -1,0 +1,39 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import Text from './Text.astro';
+import type {ImageMetadata} from 'astro';
+import type {Lang} from '../i18n';
+interface Props {lang:Lang;images:{src:ImageMetadata;alt:string;caption?:string}[]}
+const {lang,images}=Astro.props;
+// The enlarge link opens a 1600px webp instead of the full-size original.
+const enlarged=await Promise.all(images.map(image=>getImage({src:image.src,width:Math.min(1600,image.src.width),format:'webp'})));
+const labels={tw:{heading:'相關照片',open:'放大檢視',close:'關閉圖片'},en:{heading:'Photos',open:'Enlarge image',close:'Close image'},jp:{heading:'関連写真',open:'画像を拡大',close:'画像を閉じる'}}[lang];
+---
+<section class="news-gallery" data-news-gallery hidden={images.length===0} aria-label={labels.heading}>
+  <h2 class="t-h2"><Text value={labels.heading} /></h2>
+  <ul role="list">{images.map((image,index)=><li><figure><a href={enlarged[index].src} data-gallery-open aria-label={`${labels.open}: ${image.alt}`}><Picture src={image.src} alt={image.alt} formats={['avif','webp']} widths={[320,480,640,800,1200].filter(w=>w<image.src.width).concat(Math.min(image.src.width,1600))} sizes="(max-width: 767px) calc(100vw - 32px), 600px" width={image.src.width} height={image.src.height} loading="lazy" decoding="async" /></a>{image.caption&&<figcaption class="t-small">{image.caption}</figcaption>}</figure></li>)}</ul>
+  <dialog aria-label={labels.heading}><button type="button" data-gallery-close>{labels.close} ×</button><div data-gallery-display></div><p class="t-small" data-gallery-caption></p></dialog>
+</section>
+<script>
+  for(const gallery of document.querySelectorAll<HTMLElement>('[data-news-gallery]')){
+    const dialog=gallery.querySelector<HTMLDialogElement>('dialog')!;
+    const display=dialog.querySelector<HTMLElement>('[data-gallery-display]')!;
+    let trigger:HTMLElement|undefined;
+    gallery.addEventListener('click',event=>{
+      const link=(event.target as Element).closest<HTMLAnchorElement>('a[data-gallery-open]');
+      if(!link||typeof dialog.showModal!=='function')return;
+      event.preventDefault();trigger=link;const image=document.createElement('img');image.src=link.href;image.alt=link.querySelector('img')?.alt??'';image.width=link.querySelector('img')?.naturalWidth||1200;image.height=link.querySelector('img')?.naturalHeight||800;display.replaceChildren(image);
+      dialog.querySelector('[data-gallery-caption]')!.textContent=link.closest('figure')?.querySelector('figcaption')?.textContent??'';
+      dialog.showModal();
+    });
+    dialog.querySelector('[data-gallery-close]')!.addEventListener('click',()=>dialog.close());
+    dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+    dialog.addEventListener('close',()=>{display.replaceChildren();trigger?.focus({preventScroll:true});});
+    window.addEventListener('pagehide',()=>{trigger=undefined;dialog.close();});
+  }
+</script>
+<style>
+ .news-gallery[hidden]{display:none}.news-gallery{display:grid;gap:var(--content-gap);margin-block:var(--space-4)}
+ ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gutter);padding:0}figure{margin:0}a{display:block}figure :global(img){width:100%;height:auto}figcaption{margin-top:8px;color:var(--ink-muted)}
+ dialog{width:min(1100px,calc(100% - 32px));max-height:90dvh;padding:16px;border:1px solid var(--divider);background:var(--surface);color:var(--ink);overflow:auto}dialog::backdrop{background:rgb(0 0 0 / .75)}dialog :global(img){max-height:72dvh;width:100%;height:auto;object-fit:contain}button{display:block;margin:0 0 12px auto;min-height:44px;padding:8px 16px;background:var(--bxr-red);color:white;border:0;cursor:pointer} @media(max-width:767px){ul{grid-template-columns:1fr}}
+</style>

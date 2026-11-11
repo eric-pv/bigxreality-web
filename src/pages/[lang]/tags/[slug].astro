@@ -49,6 +49,7 @@ const breadcrumbs = [
                 lang={lang} href={articleHref(a)} type={ui.articleTypes[a.collection]}
                 date={a.base.data.publishDate} title={a.loc.data.title} summary={a.loc.data.summary} tags={tags[i]}
                 cover={a.base.data.cover && { src: a.base.data.cover.src, alt: a.loc.data.cover?.alt ?? a.base.data.cover.alt }}
+                headingLevel={2}
               />
             </li>
           ))}

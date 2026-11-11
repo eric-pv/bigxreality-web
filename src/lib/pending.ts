@@ -12,6 +12,11 @@ export function isPending(value: unknown): value is typeof PENDING {
   return typeof value === "string" && value.trim() === PENDING;
 }
 
+/** Presentation guard for unfinished copy; unlike isPending, also handles prefixed translation notes. */
+export function isEditorialPlaceholder(value: unknown): boolean {
+  return typeof value === 'string' && /\[待(?:提供|翻譯)\]/.test(value);
+}
+
 /** True when a field should produce a visible section (PENDING counts as content). */
 export function hasContent(value: unknown): boolean {
   if (value === undefined || value === null) return false;

@@ -1,0 +1,40 @@
+---
+import Text from './Text.astro';
+import { clientLogoGroups } from '../lib/client-logos';
+import { getUi } from '../lib/ui';
+import type { Lang } from '../i18n';
+interface Props { lang: Lang; showHeading?: boolean; embedded?: boolean }
+const { showHeading = true, embedded = false } = Astro.props;
+const groups = clientLogoGroups(Astro.props.lang);
+const title = getUi(Astro.props.lang).nav.partners;
+---
+<section class:list={["partner-statistics",{embedded}]} data-partner-statistics aria-labelledby={showHeading?"partner-statistics-title":undefined} aria-label={!showHeading?title:undefined}>
+  {showHeading && <h2 id="partner-statistics-title" class="t-h3"><Text value={title} /></h2>}
+  <dl>{groups.map(group => <div><dt>{group.label}</dt><dd data-count>{group.items.length}</dd></div>)}</dl>
+</section>
+<style>
+.partner-statistics { max-width: 760px; width: calc(100% - 2 * var(--margin)); margin-inline: auto; padding-block: 40px; }
+h2 { text-align: center; margin: 0 0 var(--space-4); }
+dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 0; }
+dl > div { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; gap: 8px; }
+dt { font-size: .875rem; line-height: 1.6; overflow-wrap: break-word; }
+/* B612 Mono ships a single 400 weight; tabular figures keep the count-up from changing width. */
+dd { order: -1; margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1; font-weight: 400; letter-spacing: 0; color: var(--ink); }
+/* Count-up layer (src/scripts/micro-interactions.ts): width reserved for the final digits. */
+dd :global(.count-visual) { display: inline-block; text-align: center; }
+@media(max-width: 767px) { dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; } .partner-statistics { padding-block: 32px; } }
+</style>
+
+<style>
+.embedded { width: 100%; max-width: none; margin-inline: 0; padding-block: 0; }
+/* Home: four equal columns across the container, 1 px dividers; 2×2 on phones. */
+.embedded dl { gap: 0; }
+.embedded dl > div { padding: 8px 16px; }
+.embedded dl > div + div { border-inline-start: 1px solid var(--divider); }
+@media(max-width: 767px) {
+  .embedded dl { gap: 0; }
+  .embedded dl > div { padding: 20px 12px; }
+  .embedded dl > div + div:nth-child(odd) { border-inline-start: 0; }
+  .embedded dl > div:nth-child(n+3) { border-top: 1px solid var(--divider); }
+}
+</style>

@@ -1,0 +1,13 @@
+{
+  "main": "7c9602bcf147a7c256f169956510905582417497",
+  "cms": "589ecd1d3256669538c061958d211ec334bcc64d",
+  "comparedFiles": 263,
+  "changedFiles": 60,
+  "fieldDifferences": 397,
+  "mediaChanged": 0,
+  "newsChanged": 0,
+  "featureOnlyCommits": 0,
+  "mainOnlyCommits": 21,
+  "remoteCmsDraftBranches": 0,
+  "remoteDraftOrLivePublication": "尚未驗證；GitHub API／HTTPS proxy CONNECT 403"
+}

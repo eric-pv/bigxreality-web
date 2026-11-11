@@ -1,27 +1,31 @@
 ---
 /** Article card: cover, type · date (B612 Mono), title, summary, #tags. ≤ 767 px: image left, text right. */
-import { Picture } from "astro:assets";
+import ProductImage from "./ProductImage.astro";
+import EditorialCover from "./EditorialCover.astro";
 import type { ImageMetadata } from "astro";
 import { INTL_LOCALE, type Lang } from "../i18n";
 import { getUi } from "../lib/ui";
-import ImagePlaceholder from "./ImagePlaceholder.astro";
+
+import { newsCover } from "../lib/news-images";
 import Text from "./Text.astro";
 
-interface Props { lang: Lang; href: string; type: string; date: Date; title: string; summary: string; tags: string[]; cover?: { src: ImageMetadata; alt: string } }
-const { lang, href, type, date, title, summary, tags, cover } = Astro.props;
+interface Props { lang: Lang; href: string; type: string; date?: Date; title: string; summary: string; tags: string[]; cover?: { src: ImageMetadata; alt: string }; headingLevel?: 2 | 3 }
+const { lang, href, type, date, title, summary, tags, cover, headingLevel = 3 } = Astro.props;
+const H = `h${headingLevel}` as "h2" | "h3";
 const ui = getUi(lang);
-const iso = date.toISOString().slice(0, 10);
-const shown = new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
+const resolvedCover = newsCover(href.match(/\/news\/([^/?#]+)/)?.[1], lang) ?? cover;
+const iso = date?.toISOString().slice(0, 10);
+const shown = date && new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
 ---
 <article data-interactive-card class="card">
   <div class="media">
-    {cover
-      ? <Picture src={cover.src} alt={cover.alt} formats={["avif", "webp"]} widths={[320, 640, 960]} sizes="(max-width: 767px) 40vw, 400px" width={640} height={360} fit="cover" />
-      : <ImagePlaceholder label={ui.coverPending} />}
+    {resolvedCover
+      ? <ProductImage src={resolvedCover.src} alt={resolvedCover.alt} sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 50vw, 590px" />
+      : <EditorialCover title={title} category={type} date={date} />}
   </div>
   <div class="body">
-    <p class="t-tech meta"><Text value={type} /> · <time datetime={iso}>{shown}</time></p>
-    <h3 class="t-h4 title"><a href={href}><Text value={title} /></a></h3>
+    <p class="t-tech meta"><span><Text value={type} /></span>{date && <time datetime={iso}>{shown}</time>}</p>
+    <H class="t-h4 title"><a href={href}><Text value={title} /></a></H>
     <p class="t-small summary"><Text value={summary} /></p>
     {tags.length > 0 && <ul role="list" class="tags t-caption">{tags.map((t) => <li>#{t}</li>)}</ul>}
   </div>
@@ -31,7 +35,9 @@ const shown = new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeric", mont
   .media { overflow: hidden; aspect-ratio: 16 / 9; }
   .media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-standard) var(--ease-precise); }
   .card:hover .media :global(img) { transform: scale(1.02); }
-  .body { display: grid; gap: var(--space-1); padding: var(--card-padding); }
+  .body { display: flex; flex-direction: column; flex: 1; gap: var(--space-1); padding: var(--card-padding); }
+  .summary { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 12px; }
   .meta, .summary, .tags { color: var(--ink-muted); }
   .title a { color: var(--ink); text-decoration: none; }
   .title a::after { content: ""; position: absolute; inset: 0; }
@@ -40,10 +46,14 @@ const shown = new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeric", mont
   .card:has(.title a:focus-visible) { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
   .tags { display: flex; flex-wrap: wrap; gap: var(--space-1); margin: 0; padding: 0; }
   @media (max-width: 767px) {
-    .card { display: grid; grid-template-columns: 40% 1fr; }
+    .card { display: grid; grid-template-columns: 40% minmax(0, 1fr); }
     .media { aspect-ratio: auto; height: 100%; }
     .body { padding: var(--space-2); }
     .summary { display: none; }
   }
   .media:has(:global(.placeholder)) { aspect-ratio: auto; height: auto; }
+</style>
+
+<style>
+@media(max-width:767px) { .card { display:flex; } .media { width:100%;height:auto;aspect-ratio:16/9; } }
 </style>

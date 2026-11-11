@@ -1,17 +1,19 @@
 ---
+import { publicUrl } from '../lib/public-url.ts';
+
 import { getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import { DEFAULT_LANG, HREFLANG, LANGS, OG_LOCALE, HTML_LANG, type Lang } from "../i18n";
 import { site, companyName } from "../lib/site";
-import { isPending } from "../lib/pending";
+import { isEditorialPlaceholder, isPending } from "../lib/pending";
 import { plain } from "../lib/text";
 import { indexablePages } from "../lib/indexable-pages";
 import { seoTitle } from "../lib/seo-title";
 
 export interface Crumb { name: string; path: string }
-export interface ProductLd { name: string; description: string; code?: string; image?: string }
+export interface ProductLd { name: string; description: string; code?: string }
 /** Article metadata: og:type=article tags. */
-export interface ArticleMeta { published: Date; modified?: Date; tags: string[] }
+export interface ArticleMeta { published?: Date; modified?: Date; tags: string[] }
 
 interface Props {
   lang: Lang;
@@ -32,7 +34,7 @@ interface Props {
 }
 
 const { lang, title, description, pathTemplate, alternates, noindex = false, ogImage, ogImageAlt, breadcrumbs, product, article, structuredData = [] } = Astro.props;
-const abs = (path: string) => new URL(path, site.url).toString();
+const abs = (path: string) => publicUrl(path).toString();
 const pathFor = (l: Lang) => pathTemplate.replace("{lang}", l);
 const canonical = abs(pathFor(lang));
 const fullTitle = seoTitle(title);
@@ -40,9 +42,16 @@ const indexable = await indexablePages();
 const seoAlternates = noindex ? [] : alternates.filter(l => indexable.some(p => p.lang === l && p.path === pathTemplate));
 const desc = plain(description);
 
-const approvedImage = ogImage && ogImageAlt && !isPending(ogImageAlt) ? ogImage : undefined;
-const og = approvedImage
-  ? abs((await getImage({ src: approvedImage, width: 1200, height: 630, fit: "cover", format: "jpg" })).src)
+// Only the page's own image with this language's approved alt; [待提供]／[待翻譯] keeps the site fallback.
+const approvedImage = ogImage && ogImageAlt?.trim() && !isEditorialPlaceholder(ogImageAlt) ? ogImage : undefined;
+// 1200×630 (1.91:1) social card, cropped from the centre. Images are never enlarged, so a
+// smaller source gives the largest 1.91:1 crop it holds, and og:image:width/height state
+// the size of the file actually written.
+const OG_W = 1200, OG_H = 630;
+const ogWidth = approvedImage ? Math.min(OG_W, approvedImage.width, Math.floor((approvedImage.height * OG_W) / OG_H)) : 0;
+const ogSize = approvedImage ? { width: ogWidth, height: Math.round((ogWidth * OG_H) / OG_W) } : undefined;
+const og = approvedImage && ogSize
+  ? abs((await getImage({ src: approvedImage, ...ogSize, fit: "cover", format: "jpg" })).src)
   : abs("/icon-512.png");
 
 const org: Record<string, unknown> = {
@@ -58,13 +67,14 @@ if (!isPending(site.contact.email)) org.email = site.contact.email;
 if (!isPending(site.contact.phone)) org.telephone = site.contact.phone;
 if (Array.isArray(site.social) && site.social.length) org.sameAs = site.social.map((s) => s.url);
 
-const graph: Record<string, unknown>[] = [
-  org,
-  {
+const graph: Record<string, unknown>[] = [org];
+// An untranslated crumb ("[待翻譯] …") would put another language's text into this page's data; leave the list out until it is translated.
+if (!breadcrumbs.some((c) => c.name.includes("[待"))) {
+  graph.push({
     "@type": "BreadcrumbList",
     itemListElement: breadcrumbs.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: plain(c.name), item: abs(c.path) })),
-  },
-];
+  });
+}
 if (product) {
   const p: Record<string, unknown> = {
     "@type": "Product",
@@ -75,11 +85,26 @@ if (product) {
   };
   // JSON-LD never carries placeholder text.
   if (!product.description.includes("[待")) p.description = plain(product.description);
-  if (product.image) p.image = abs(product.image);
+  // Same file as og:image; no page image, no schema image.
+  if (approvedImage) p.image = og;
   graph.push(p);
 }
 const principal = structuredData.some(node => ["WebPage", "CollectionPage", "Article", "NewsArticle"].includes(String(node["@type"])));
 if (!product && !principal) graph.push({ "@type": /\/(products|solutions|technologies|news|insights|cases|tags)\/(?:page\/\d+\/)?$/.test(pathFor(lang)) ? "CollectionPage" : "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: fullTitle, description: desc, inLanguage: HTML_LANG[lang] });
+// Page-level nodes share the page language, and list/web pages fall back to the meta description.
+for (const node of structuredData) {
+  const type = String(node["@type"]);
+  if (!["WebPage", "CollectionPage", "Article", "NewsArticle"].includes(type)) continue;
+  node.inLanguage ??= HTML_LANG[lang];
+  // An untranslated heading ("[待翻譯] …") is not this page's language; url and description still identify the page.
+  if (typeof node.name === "string" && node.name.includes("[待")) delete node.name;
+  if (type === "WebPage" || type === "CollectionPage") node.description ??= desc;
+  // Articles carry the same file as og:image, or no image.
+  if (type === "Article" || type === "NewsArticle") {
+    if (approvedImage) node.image = og;
+    else delete node.image;
+  }
+}
 graph.push(...structuredData);
 const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
 ---
@@ -90,7 +115,7 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 {seoAlternates.map((l) => <link rel="alternate" hreflang={HREFLANG[l]} href={abs(pathFor(l))} />)}
 {seoAlternates.includes(DEFAULT_LANG) && <link rel="alternate" hreflang="x-default" href={abs(pathFor(DEFAULT_LANG))} />}
 <meta property="og:type" content={product ? "product" : article ? "article" : "website"} />
-{article && <meta property="article:published_time" content={article.published.toISOString()} />}
+{article?.published && <meta property="article:published_time" content={article.published.toISOString()} />}
 {article?.modified && <meta property="article:modified_time" content={article.modified.toISOString()} />}
 {article?.tags.map((t) => <meta property="article:tag" content={plain(t)} />)}
 <meta property="og:site_name" content={site.brand} />
@@ -100,8 +125,8 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 <meta property="og:locale" content={OG_LOCALE[lang]} />
 {LANGS.filter((l) => l !== lang && seoAlternates.includes(l)).map((l) => <meta property="og:locale:alternate" content={OG_LOCALE[l]} />)}
 <meta property="og:image" content={og} />
-{approvedImage && <meta property="og:image:width" content="1200" />}
-{approvedImage && <meta property="og:image:height" content="630" />}
+{ogSize && <meta property="og:image:width" content={String(ogSize.width)} />}
+{ogSize && <meta property="og:image:height" content={String(ogSize.height)} />}
 <meta property="og:image:alt" content={approvedImage && ogImageAlt ? plain(ogImageAlt) : site.brand} />
 <meta name="twitter:card" content={approvedImage ? "summary_large_image" : "summary"} />
 <meta name="twitter:title" content={fullTitle} />

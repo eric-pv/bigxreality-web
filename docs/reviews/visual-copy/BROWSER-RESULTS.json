@@ -1,0 +1,20 @@
+{
+  "pageViewportChecks": 1062,
+  "decodedImages": 4767,
+  "videoCases": 21,
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1440
+  ],
+  "originalVideos": "Unchanged; whole native frame is retained",
+  "realEndedAndWrapCaptures": [
+    1440,
+    390
+  ],
+  "exceptions": "News photos and unprovided UI/scenario material remain pending; no unrelated imagery used."
+}

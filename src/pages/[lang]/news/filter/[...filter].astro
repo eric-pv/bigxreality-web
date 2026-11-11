@@ -1,0 +1,11 @@
+---
+import { LANGS } from '../../../../i18n';
+import { newsFilterPaths } from '../../../../lib/news-listing';
+import NewsListPage from '../../../../components/NewsListPage.astro';
+export async function getStaticPaths() {
+ const paths=[];
+ for(const lang of LANGS) for(const entry of await newsFilterPaths(lang)) paths.push({params:{lang,filter:entry.route},props:{lang,page:entry.page,filter:entry.filter}});
+ return paths;
+}
+---
+<NewsListPage {...Astro.props}/>

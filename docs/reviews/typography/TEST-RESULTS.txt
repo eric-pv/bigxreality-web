@@ -1,0 +1,47 @@
+check
+Result (223 files): 
+- 0 errors
+- 0 warnings
+
+test
+# tests 43
+# pass 43
+# fail 0
+
+cms:sveltia:check
+PASS: Sveltia fields match the current Astro schemas.
+PASS: 1470 nested schema fields; 183 existing files unchanged/round-trippable; three language paths, unknown dates, typed unions, media registry and isolated test folder.
+
+qa:seo
+
+
+qa:ui-v1
+PASS: 342 TW/EN/JP template/viewports at 1366/1440/1920/768/390/430px, static filters/reload, complete current Git article archive, no duplicate CSR, no home logos, no overflow/errors/development copy. Screenshots: /tmp/bxr-ui-v1
+
+qa:motion
+PASS: 9 language/viewport combinations; one-time entrance, stable height, reduced motion, card feedback, keyboard focus, history/reload, no-JS/no-observer fallbacks
+PASS: 54 template/language/viewport cases; first visit, reload, restored scroll, navigation/back/forward, dynamic insertion, router/BFCache reset and reduced motion
+
+qa:links
+
+
+qa:technologies
+PASS: 864 checks; .qa/technologies-content-audit.md
+
+qa:news-import
+PASS: 90 three-language articles matching current Git source, dynamic lists, dates/undated metadata, image placeholders, desktop/mobile and no old-site image requests
+
+qa:team
+PASS: three languages, 1440/768/390px; original team routes, complete capabilities, responsive framework, SEO and removed history.
+
+build
+
+
+sveltia browser and typography edit
+PASS: real pinned CMS config loads at /admin/ and Pages subpath; token form; local-clone create/edit/image-byte upload; existing article save plus three new draft news siblings, correct optional fields, unchanged translations and lossless media JSON save; typography JSON edit with unchanged language lists; mobile login. Live GitHub auth/write not tested.
+
+accessibility
+PASS: 0 serious/critical
+
+Pages subpath
+PASS: 293 rebased HTML pages, 23758 local references, 42 TW/EN/JP desktop/mobile pages including static filters and logo paths.

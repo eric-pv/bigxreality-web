@@ -1,0 +1,43 @@
+---
+import Text from '../../../../components/Text.astro';
+import { LANGS, localePath, type Lang } from '../../../../i18n';
+import { getArticles, articleHref } from '../../../../lib/articles';
+import { CSR_CATEGORIES, csrCopy, csrCategories, csrLabel } from '../../../../lib/csr';
+import { getUi } from '../../../../lib/ui';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageHero from '../../../../components/PageHero.astro';
+import CardArticle from '../../../../components/CardArticle.astro';
+export const getStaticPaths = () => LANGS.map(lang => ({ params: { lang } }));
+const lang = Astro.params.lang as Lang;
+const copy = csrCopy(lang);
+const ui = getUi(lang);
+const articles = (await getArticles('news', lang)).filter(a => csrCategories(a.base.data).length);
+const breadcrumbs = [{ name: ui.home, path: localePath(lang) }, { name: ui.nav.aboutUs, path: localePath(lang, 'company') }, { name: copy.title, path: localePath(lang, 'company', 'csr') }];
+---
+<BaseLayout lang={lang} title={copy.title} description={copy.lead} pathTemplate="/{lang}/company/csr/" alternates={[...LANGS]} current="company" currentCompany="csr" headerTheme="dark" breadcrumbs={breadcrumbs}>
+  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} title={copy.title} lead={copy.lead} />
+  <section class="section"><div class="container narrow"><h2 class="t-h2"><Text value={copy.heading} /></h2>{copy.principles.map(p => <p class="principle"><Text value={p} /></p>)}</div></section>
+  {CSR_CATEGORIES.map((category, index) => (
+    <section class="section topic" id={category}><div class="container">
+      <h2 class="t-h2"><Text value={copy.topics[index]} /></h2>
+      <p class="description"><Text value={copy.descriptions[index]} /></p>
+      <ul role="list" class="csr-cards">{articles.filter(a => csrCategories(a.base.data)[0] === category).map(a => <li>
+        <CardArticle lang={lang} href={articleHref(a)} type={copy.title} date={a.base.data.publishDate} title={a.loc.data.title} summary={a.loc.data.summary} tags={csrCategories(a.base.data).map(c => csrLabel(c, lang))} cover={a.base.data.cover && {src: a.base.data.cover.src, alt: a.loc.data.cover?.alt ?? a.base.data.cover.alt}} />
+        <a class="read" href={articleHref(a)}>{copy.read}<span class="visually-hidden"> — {a.loc.data.title}</span></a>
+      </li>)}</ul>
+    </div></section>
+  ))}
+</BaseLayout>
+<style>
+.principle { line-height: 1.8; margin-top: var(--space-3); }
+.topic { border-top: 1px solid var(--divider); }
+.description { margin-block: var(--space-2) var(--space-4); max-width: 65ch; }
+.csr-cards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gutter); }
+.csr-cards:empty { display: none; }
+.csr-cards li { min-width: 0; }
+.read { display: inline-block; margin-top: var(--space-2); }
+/* CSR summaries remain visible on mobile, including future articles. */
+.csr-cards :global(.summary) { display: block; }
+.csr-cards :global(.tags) { flex-wrap: wrap; list-style: none; }
+@media(max-width: 767px) { .csr-cards { grid-template-columns: 1fr; } .csr-cards :global(.card) { display: flex; } .csr-cards :global(.media) { aspect-ratio: 16 / 9; } }
+</style>

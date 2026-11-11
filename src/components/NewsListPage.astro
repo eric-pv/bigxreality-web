@@ -1,0 +1,65 @@
+---
+import { publicUrl } from '../lib/public-url.ts';
+
+import { getEntry } from 'astro:content';
+import { LANGS, localePath, type Lang } from '../i18n';
+import { site } from '../lib/site';
+import { getArticles, articleHref } from '../lib/articles';
+import { newsArchive, selectNews, newsCategory, newsYear, newsListPath, type NewsFilter } from '../lib/news-listing';
+import { getUi, format } from '../lib/ui';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import NewsCard from './NewsCard.astro';
+import Pagination from './Pagination.astro';
+interface Props { lang: Lang; page?: number; filter?: NewsFilter }
+const {lang,page=1,filter={}}=Astro.props;
+const ui=getUi(lang),all=await getArticles('news',lang),own=selectNews(all,filter),archive=newsArchive(own,page);
+const copy=(await getEntry('pages',`${lang}/news`))!.data;
+const categories=[...new Set(all.map(newsCategory))];
+const years=[...new Set(selectNews(all,{category:filter.category}).map(newsYear))].sort((a,b)=>a==='undated'?1:b==='undated'?-1:Number(b)-Number(a));
+const filtered=!!(filter.category||filter.year);
+const alternates:Lang[]=[];
+for(const otherLang of LANGS){const other=selectNews(await getArticles('news',otherLang),filter);if((!filtered||other.length>0)&&newsArchive(other).total>=page)alternates.push(otherLang);}
+
+const categoryLabel=(id:string)=>ui.newsListing.categoryLabels[id as keyof typeof ui.newsListing.categoryLabels] ?? ui.article.categories[id as keyof typeof ui.article.categories];
+const labelYear=(year:string)=>year==='undated'?ui.newsListing.undated:year;
+const suffix=[filter.category&&categoryLabel(filter.category),filter.year&&labelYear(filter.year),page>1&&format(ui.listing.page,{n:page})].filter(Boolean).join(' · ');
+const path=newsListPath(lang,filter,page).replace(`/${lang}/`,'/{lang}/');
+const title=suffix?`${copy.seo.title} · ${suffix}`:copy.seo.title;
+const breadcrumbs=[{name:ui.home,path:localePath(lang)},{name:ui.nav.news,path:localePath(lang,'news')},...(filtered||page>1?[{name:suffix,path:newsListPath(lang,filter,page)}]:[])];
+const linkCategory=(category?:string)=>newsListPath(lang,{category,year:filter.year&&selectNews(all,{category,year:filter.year}).length?filter.year:undefined});
+const base=filtered?`news/filter/${filter.category??'all'}/${filter.year??'all'}`:'news';
+const listingLd={
+ '@type':'CollectionPage', name:ui.nav.news, url:publicUrl(newsListPath(lang,filter,page)).toString(),
+ mainEntity:{'@type':'ItemList',itemListElement:[...(archive.featured?[archive.featured]:[]),...archive.items].map((a,i)=>({'@type':'ListItem',position:i+1,url:publicUrl(articleHref(a)).toString()}))},
+};
+---
+<BaseLayout lang={lang} title={title} description={suffix?`${copy.seo.description} ${suffix}`:copy.seo.description} pathTemplate={path} alternates={alternates} fallbackPath="/{lang}/news/" noindex={filtered||own.length===0} pendingTranslation={copy.translationStatus==='pending'} current="resources" currentResource="news" headerTheme="dark" breadcrumbs={breadcrumbs} structuredData={own.length?[listingLd]:[]}>
+ <div class="news-heading"><PageHero decor={false} breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} title={ui.nav.news} description={ui.newsListing.intro} /></div>
+ <section class="section archive"><div class="container">
+  <div class="filters">
+   <nav aria-label={ui.newsListing.categories} class="category-filter"><ul role="list"><li><a href={linkCategory()} aria-current={!filter.category?'true':undefined}>{ui.newsListing.all}</a></li>{categories.map(id=><li><a href={linkCategory(id)} aria-current={filter.category===id?'true':undefined}>{categoryLabel(id)}</a></li>)}</ul></nav>
+   <nav aria-label={ui.newsListing.years} class="year-filter"><ul role="list"><li><a href={newsListPath(lang,{category:filter.category})} aria-current={!filter.year?'true':undefined}>{ui.newsListing.allYears}</a></li>{years.map(year=><li><a href={newsListPath(lang,{category:filter.category,year})} aria-current={filter.year===year?'true':undefined}>{labelYear(year)}</a></li>)}</ul></nav>
+  </div>
+  {own.length===0&&<p class="empty" role="status">{ui.listing.empty}</p>}
+  <div id="article-grid">
+   {archive.featured&&<div data-news-featured><NewsCard article={archive.featured} featured /></div>}
+   <ul role="list" class="news-rows">{archive.items.map(a=><li><NewsCard article={a}/></li>)}</ul>
+  </div>
+  <Pagination lang={lang} base={base} current={page} total={archive.total}/>
+ </div></section>
+</BaseLayout>
+<style>
+.news-heading :global(.page-hero) { padding-block: 32px 40px; }
+.news-heading :global(.grid) { display: block; }
+.news-heading :global(h1) { font-size: 40px; }
+.news-heading :global(.copy) { max-width: 760px; }
+.empty { padding-block: 32px; color: var(--ink-muted); }
+.archive { padding-top: 32px; }
+.filters { display: grid; gap: 12px; margin-bottom: 36px; }
+.filters ul { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.filters a { display: inline-flex; min-height: 40px; align-items: center; color: var(--ink-muted); text-decoration: none; font-size: 14px; border-bottom: 2px solid transparent; }
+.filters a[aria-current] { color: var(--ink); border-color: var(--bxr-red); }
+.year-filter a { font-size: 13px; }
+@media(max-width:767px) { .news-heading :global(h1) { font-size: 32px; } .filters { margin-bottom: 24px; } }
+</style>

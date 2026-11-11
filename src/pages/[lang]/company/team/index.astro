@@ -1,46 +1,61 @@
 ---
-/** /[lang]/company/team/ — management team: only people who agreed to be listed (published entries). */
-import { Picture } from "astro:assets";
+import Text from '../../../../components/Text.astro';
+import { getEntry } from "astro:content";
+import { marked } from "marked";
 import { LANGS, type Lang } from "../../../../i18n";
-import { getLocalized } from "../../../../lib/content";
-import { companyContent } from "../../../../lib/company";
+import { teamLabels } from "../../../../data/team-labels";
 import CompanyShell from "../../../../components/CompanyShell.astro";
-import Text from "../../../../components/Text.astro";
-
-export function getStaticPaths() {
-  return LANGS.map((lang) => ({ params: { lang } }));
-}
+export function getStaticPaths() { return LANGS.map((lang) => ({ params: { lang } })); }
 const lang = Astro.params.lang as Lang;
-const members = await getLocalized("team", lang);
-const alternates: Lang[] = [];
-for (const l of LANGS) if ((await companyContent(l)).team) alternates.push(l);
+const entry = (await getEntry("pages", `${lang}/team`))!;
+const body = entry.body ?? "";
+const boundary = body.indexOf("\n## ");
+const intro = await marked.parse(boundary < 0 ? body : body.slice(0, boundary));
+const capabilities = await Promise.all((boundary < 0 ? [] : body.slice(boundary).trim().split(/\n(?=## )/)).map(async (section) => {
+  const [heading, ...paragraphs] = section.split("\n");
+  const [title, subtitle] = heading.replace(/^## /, "").split("｜");
+  return { title, subtitle, html: await marked.parse(paragraphs.join("\n")) };
+}));
+const labels = teamLabels[lang];
 ---
-<CompanyShell lang={lang} page="team" currentCompany="team" path="team" empty={members.length === 0} alternates={alternates}>
-  <ul role="list" class="grid">
-    {members.map((m) => (
-      <li class="card">
-        {m.base.data.photo && (
-          <figure class="photo">
-            <Picture src={m.base.data.photo.src} alt={m.loc.data.photo?.alt ?? m.base.data.photo.alt} formats={["avif", "webp"]} widths={[320, 640]} sizes="(max-width: 767px) 100vw, 320px" width={640} height={800} fit="cover" loading="lazy" />
-          </figure>
-        )}
-        <div class="body">
-          <h2 class="t-h4"><Text value={m.loc.data.name} /></h2>
-          <p class="t-tech role"><Text value={m.loc.data.role} /></p>
-          {m.loc.data.bio && <p class="t-small t-muted"><Text value={m.loc.data.bio} /></p>}
-        </div>
-      </li>
-    ))}
-  </ul>
+<CompanyShell lang={lang} page="team" currentCompany="team" path="team" empty={false} alternates={[...LANGS]}>
+  <div class="team-content">
+    <div class="team-intro" set:html={intro} />
+    <div class="team-framework">
+      <div class="management">{labels.management}</div>
+      <ul role="list" class="areas">{labels.areas.map((area) => <li>{area}</li>)}</ul>
+    </div>
+    <div class="capabilities">
+      {capabilities.map((item) => <article class="capability">
+        <h2><Text value={item.title} />{item.subtitle && <span lang="en"><Text value={item.subtitle} /></span>}</h2>
+        <div set:html={item.html} />
+      </article>)}
+    </div>
+  </div>
 </CompanyShell>
 <style>
-  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
-  .card { display: flex; flex-direction: column; border: 1px solid var(--divider); background: var(--surface); }
-  .photo { margin: 0; }
-  .photo :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-  .body { display: grid; gap: var(--space-1); padding: var(--space-3); }
-  .body h2, .body p { margin: 0; }
-  .role { color: var(--ink-muted); }
-  @media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 767px) { .grid { grid-template-columns: 1fr; } }
+  .team-content { max-width: 1040px; margin-inline: auto; }
+  .team-intro { max-width: 800px; }
+  .team-intro :global(p) { line-height: 1.8; margin: 0 0 1em; }
+  .team-framework { margin: 40px 0 32px; }
+  .management { position: relative; width: fit-content; max-width: 100%; margin: auto; padding: 18px 32px; text-align: center; background: var(--bxr-ink, #0b0f14); color: white; font-size: 20px; font-weight: 700; border-top: 3px solid #D02753; }
+  .management::after { content: ""; position: absolute; height: 24px; width: 1px; background: var(--bxr-line); top: 100%; left: 50%; }
+  .areas { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; padding: 24px 0 0; margin: 0; list-style: none; }
+  .areas li { position: relative; padding: 22px 12px; text-align: center; font-size: 18px; font-weight: 700; background: var(--bxr-paper); border-top: 2px solid #D02753; }
+  .areas li::before { content: ""; position: absolute; top: -26px; height: 24px; width: 1px; left: 50%; background: var(--bxr-line); }
+  .areas::before { content: ""; position: absolute; left: calc(100% / 6); right: calc(100% / 6); top: 0; border-top: 1px solid var(--bxr-line); }
+  .areas { position: relative; margin-top: 24px; }
+  .capabilities { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .capability { border-top: 1px solid var(--bxr-line); padding-top: 24px; min-width: 0; }
+  .capability h2 { font-size: 22px; line-height: 1.5; margin: 0 0 16px; }
+  .capability h2 span { display: block; margin-top: 6px; font-size: 14px; font-weight: 400; color: var(--ink-muted); }
+  .capability :global(p) { font-size: 16px; line-height: 1.8; margin: 0; }
+  @media(max-width:1023px) { .capabilities { grid-template-columns: 1fr; gap: 28px; } }
+  @media(max-width:767px) {
+    .team-framework { margin: 32px 0; }
+    .areas { grid-template-columns: 1fr; gap: 12px; padding-top: 0; }
+    .areas::before, .areas li::before { display: none; }
+    .areas li { padding: 16px; }
+    .management { font-size: 18px; padding: 16px 24px; }
+  }
 </style>

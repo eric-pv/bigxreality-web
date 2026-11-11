@@ -1,7 +1,7 @@
 {
   "brand": "Big x Reality",
   "tagline": "Turn every drill into real.",
-  "url": "https://www.bigxreality.com",
+  "url": "https://eric-pv.github.io/bigxreality-web",
   "companyName": {
     "tw": "全球動力科技股份有限公司",
     "en": "[待提供]",
@@ -17,8 +17,21 @@
     "email": "service@gptt.com.tw",
     "mapUrl": "https://maps.app.goo.gl/JP7JfUAfWUWUu3FP9"
   },
-  "social": "[待提供]",
-  "careersUrl": "[待提供]",
+  "social": [
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/gpttcom"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@BigxReality"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/company/bigxreality/"
+    }
+  ],
+  "careersUrl": "https://www.104.com.tw/company/1a2x6bjhcz?jobsource=index_s",
   "forms": {
     "brochure": {
       "url": "[待提供]",
@@ -29,12 +42,16 @@
       "productEntry": "[待提供]"
     }
   },
+  "inquiry": {
+    "endpoint": "https://script.google.com/macros/s/AKfycbzujEwgbXI1vGk5yBycXrGDv7hdrUBpN7SXeB3ctn-q7qTW2mc-LFzP8uM5GfJwlowaXg/exec",
+    "privacyVersion": "2026-11-09"
+  },
   "analytics": {
     "gaId": "G-CSKFKPZTTE"
   },
   "listing": {
     "pageSize": {
-      "news": 12,
+      "news": 10,
       "insights": 12,
       "case-studies": null
     }

@@ -1,0 +1,212 @@
+{
+  "observedAtUTC": "2026-11-05T12:41:04.972Z",
+  "runtime": {
+    "node": "v24.22.1",
+    "chromium": "155.0.8059.79",
+    "sveltia": "0.257.0"
+  },
+  "unitTests": {
+    "passed": 74,
+    "failed": 0
+  },
+  "typeCheck": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 38
+  },
+  "cmsBrowser": {
+    "passed": true,
+    "scope": "Actual pinned Sveltia; disposable OPFS only; one entry/three languages, desktop/mobile buffers and one save, shared fields, image create/edit/remove, native clipboard and exact pending upload bytes, external/local video edits and bytes, technology/overview JSON save, isolated delete"
+  },
+  "technologyChecks": {
+    "production": 864,
+    "fixtures": 906
+  },
+  "unchangedLocaleMigrationFilesVerified": 148,
+  "workflowChecks": [
+    {
+      "name": "cms:sveltia:check",
+      "status": "passed",
+      "seconds": 2.9
+    },
+    {
+      "name": "test",
+      "status": "passed",
+      "seconds": 1.4
+    },
+    {
+      "name": "check",
+      "status": "passed",
+      "seconds": 16.2
+    },
+    {
+      "name": "qa:inquiry-poc",
+      "status": "passed",
+      "seconds": 2.1
+    },
+    {
+      "name": "build",
+      "status": "passed",
+      "seconds": 10.8
+    },
+    {
+      "name": "qa:inquiry-production",
+      "status": "passed",
+      "seconds": 51.7
+    },
+    {
+      "name": "qa:technologies",
+      "status": "passed",
+      "seconds": 55.5
+    },
+    {
+      "name": "qa:news-preview",
+      "status": "passed",
+      "seconds": 14.4
+    },
+    {
+      "name": "qa:news-media",
+      "status": "passed",
+      "seconds": 7.2
+    },
+    {
+      "name": "qa:csr",
+      "status": "passed",
+      "seconds": 9.6
+    },
+    {
+      "name": "qa:news-import",
+      "status": "passed",
+      "seconds": 43.9
+    },
+    {
+      "name": "qa:client-logos",
+      "status": "passed",
+      "seconds": 17.3
+    },
+    {
+      "name": "qa:images",
+      "status": "passed",
+      "seconds": 132.3
+    },
+    {
+      "name": "qa:seo",
+      "status": "passed",
+      "seconds": 3.9
+    },
+    {
+      "name": "check:sitemap",
+      "status": "passed",
+      "seconds": 0.5
+    },
+    {
+      "name": "qa:links",
+      "status": "passed",
+      "seconds": 2.8
+    },
+    {
+      "name": "qa:behaviour",
+      "status": "passed",
+      "seconds": 43.8
+    },
+    {
+      "name": "qa:header",
+      "status": "passed",
+      "seconds": 33.8
+    },
+    {
+      "name": "qa:footer",
+      "status": "passed",
+      "seconds": 106.5
+    },
+    {
+      "name": "qa:solutions",
+      "status": "passed",
+      "seconds": 29.1
+    },
+    {
+      "name": "qa:company",
+      "status": "passed",
+      "seconds": 11.4
+    },
+    {
+      "name": "qa:team",
+      "status": "passed",
+      "seconds": 5.7
+    },
+    {
+      "name": "qa:english",
+      "status": "passed",
+      "seconds": 71.7
+    },
+    {
+      "name": "qa:japanese",
+      "status": "passed",
+      "seconds": 78.2
+    },
+    {
+      "name": "qa:faq",
+      "status": "passed",
+      "seconds": 26.5
+    },
+    {
+      "name": "build:fixtures",
+      "status": "passed",
+      "seconds": 12.3
+    },
+    {
+      "name": "qa:inline-media",
+      "status": "passed",
+      "seconds": 9.7
+    },
+    {
+      "name": "qa:technologies (dist-fixtures)",
+      "status": "passed",
+      "seconds": 78.9
+    },
+    {
+      "name": "qa:phase2",
+      "status": "passed",
+      "seconds": 14.9
+    },
+    {
+      "name": "qa:company (dist-fixtures)",
+      "status": "passed",
+      "seconds": 14.7
+    },
+    {
+      "name": "qa:search",
+      "status": "passed",
+      "seconds": 13.3
+    },
+    {
+      "name": "qa:a11y (dist-fixtures)",
+      "status": "passed",
+      "seconds": 27.2
+    },
+    {
+      "name": "pages:package",
+      "status": "passed",
+      "seconds": 3.7
+    },
+    {
+      "name": "pages:check",
+      "status": "passed",
+      "seconds": 20.3
+    },
+    {
+      "name": "qa:cms-publication",
+      "status": "passed",
+      "seconds": 108.6
+    }
+  ],
+  "resolvedDuringValidation": [
+    "Japanese QA helper still used the old physical jp folder; corrected through contentLocale and revalidated.",
+    "Fixture-only renderer page required breadcrumbs/headerTheme; supplied and revalidated.",
+    "Sveltia 0.253.1 custom component clipboard props were lost; upgraded to official 0.257.0, verified npm/CDN/SRI and actual clipboard/pending-image bytes."
+  ],
+  "notVerified": [
+    "Live personal GitHub sign-in and write permissions",
+    "Remote PR CI, main merge and GitHub Pages deployment of this integration branch"
+  ]
+}

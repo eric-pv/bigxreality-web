@@ -1,0 +1,319 @@
+{
+  "news-01-ds-2025": {
+    "publicationDate": "2025-11-24",
+    "cover": {
+      "filename": "2025-defense-security-xr-tactical-training.png",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-02-gbp-cover": {
+    "publicationDate": "2025-11-11",
+    "cover": {
+      "filename": "2025-gbp-daily-news-cover.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-03-leadership-uncertainty": {
+    "publicationDate": "2025-10-29",
+    "cover": {
+      "filename": "2025-leadership-ai-industry-interview.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-04-seecat-2025": {
+    "publicationDate": "2025-10-16",
+    "cover": {
+      "filename": "2025-seecat-sut-box-training.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-05-tadte-2025": {
+    "publicationDate": "2025-09-26",
+    "cover": {
+      "filename": "2025-tadte-ai-xr-training.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-06-military-forum-2025": {
+    "publicationDate": "2025-08-26",
+    "cover": {
+      "filename": "2025-military-simulation-forum-lvc-training.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-07-indo-defence": {
+    "publicationDate": null,
+    "cover": {
+      "filename": "2025-indo-defence-cqb-training.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [
+      {
+        "type": "youtube",
+        "url": "https://youtu.be/GUrKtH_TKjU",
+        "embedApproved": false
+      }
+    ],
+    "sourceLinks": []
+  },
+  "news-08-fire-agency-2025": {
+    "publicationDate": "2025-04-22",
+    "cover": {
+      "filename": "2025-fire-agency-xr-disaster-response.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-09-seecat-earlier": {
+    "publicationDate": "2025-04-09",
+    "cover": {
+      "filename": "2025-seecat-police-box-training.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-10-xr-shooting-sports": {
+    "publicationDate": "2024-08-16",
+    "cover": {
+      "filename": "2024-xr-clay-target-shooting.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-11-sushi-tech-2024": {
+    "publicationDate": null,
+    "cover": {
+      "filename": "2024-sushi-tech-tokyo-taiwan-pavilion.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-12-asia-xr-awards-2023": {
+    "publicationDate": "2023-08-20",
+    "cover": {
+      "filename": "2023-asia-xr-golden-star-awards.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-13-future-combat": {
+    "publicationDate": "2025-09-26",
+    "cover": {
+      "filename": "2025-future-combat-lvc-training.jpeg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-15-media-visit-2026": {
+    "publicationDate": null,
+    "cover": {
+      "filename": "2026-media-visit-ai-xr-training.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-16-seecat-2026": {
+    "publicationDate": "2026-09-30",
+    "cover": {
+      "filename": "2026-seecat-mr-cqb-training.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-17-defense-education-2026": {
+    "publicationDate": "2026-07-20",
+    "cover": {
+      "filename": "2026-xr-defense-education.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-18-decision-training-2026": {
+    "publicationDate": "2026-06-24",
+    "cover": {
+      "filename": "2026-xr-scenario-decision-training.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-19-cna-simulation-2026": {
+    "publicationDate": "2026-06-08",
+    "cover": {
+      "filename": "2026-cna-xr-simulation-report.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": [
+      "https://www.cna.com.tw/news/aipl/202605270252.aspx"
+    ]
+  },
+  "news-20-taipei-education-expo-2026": {
+    "publicationDate": "2026-06-06",
+    "cover": {
+      "filename": "2026-taipei-education-expo-xr-learning.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-21-forum-22-2026": {
+    "publicationDate": "2026-05-29",
+    "cover": {
+      "filename": "2026-military-simulation-forum-usv-nova-xr.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-22-dsa-2026": {
+    "publicationDate": "2026-04-18",
+    "cover": {
+      "filename": "2026-dsa-sut-mum-t-training.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-23-songshan-school-2025": {
+    "publicationDate": "2025-12-30",
+    "cover": {
+      "filename": "2025-songshan-school-xr-education.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-24-new-office-2025": {
+    "publicationDate": "2025-11-29",
+    "cover": {
+      "filename": "2025-taipei-office-xr-technology.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": [
+      "https://www.ctee.com.tw/news/20251129700015-431202",
+      "https://money.udn.com/money/story/5635/9170171"
+    ]
+  },
+  "news-25-defense-expo-preview-2025": {
+    "publicationDate": "2025-08-28",
+    "cover": {
+      "filename": "2025-tadte-ai-xr-exhibition-preview.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-26-disaster-resilience-2025": {
+    "publicationDate": "2025-07-16",
+    "cover": {
+      "filename": "2025-disaster-education-community-resilience.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-27-military-simulation-overview-2025": {
+    "publicationDate": "2025-07-01",
+    "cover": {
+      "filename": "2025-military-xr-simulation-training.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-28-fire-extinguisher-launch-2025": {
+    "publicationDate": "2025-05-05",
+    "cover": {
+      "filename": "2025-xr-fire-extinguisher-training.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-29-xr-defense-platform-2025": {
+    "publicationDate": "2025-04-09",
+    "cover": {
+      "filename": "2025-ai-xr-defense-simulation-platform.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [
+      {
+        "type": "facebook",
+        "url": "https://www.facebook.com/gpttcom/videos/1741246489814363/",
+        "embedApproved": false
+      }
+    ],
+    "sourceLinks": []
+  },
+  "news-30-baseball-csr-2025": {
+    "publicationDate": "2025-03-06",
+    "cover": {
+      "filename": "2025-chiayi-baseball-community-education.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  },
+  "news-31-trap-shooting-championship-2024": {
+    "publicationDate": "2024-11-20",
+    "cover": {
+      "filename": "2024-chung-cheng-cup-xr-trap-shooting.jpg",
+      "approved": false
+    },
+    "gallery": [],
+    "videos": [],
+    "sourceLinks": []
+  }
+}

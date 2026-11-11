@@ -1,17 +1,16 @@
 ---
-/** Shown where an approved image has not been supplied yet. Retains the image position with a compact preview until artwork is supplied. */
-import Text from "./Text.astro";
+/** A branded default visual, never a public material-request label. */
 interface Props { label: string; ratio?: string }
-const { label, ratio = "16 / 9" } = Astro.props;
+const { ratio = "16 / 9" } = Astro.props;
 ---
-<div class="placeholder" style={`aspect-ratio:${ratio}`} role="img" aria-label={label}>
-  <span class="t-tech" aria-hidden="true"><Text value={label} /></span>
+<div class="placeholder brand-default" style={`aspect-ratio:${ratio}`} role="img" aria-label="Big x Reality">
+  <span aria-hidden="true"><strong>BXR</strong><small>Big x Reality</small></span>
 </div>
 <style>
-  .placeholder {
-    display: grid; place-items: center; width: 100%; max-height: var(--placeholder-max); min-height: 72px; padding: var(--space-2); text-align: center; overflow-wrap: anywhere;
-    background: var(--bxr-paper); color: var(--bxr-slate);
-    border: 1px dashed var(--bxr-mist);
-  }
-  :global([data-theme="dark"]) .placeholder { background: var(--bxr-graphite); color: var(--bxr-mist); border-color: var(--bxr-slate); }
+.placeholder { display: grid; place-items: center; width: 100%; min-height: 96px; max-height: var(--placeholder-max); background: var(--bxr-paper); color: var(--bxr-slate); overflow: hidden; border: 0; }
+span { display: grid; gap: 4px; text-align: center; }
+strong { font-size: clamp(24px, 3vw, 40px); font-weight: 600; letter-spacing: -.04em; }
+strong::after { content: ""; display: block; width: 24px; height: 2px; background: var(--bxr-red); margin: 8px auto; }
+small { font-size: 11px; letter-spacing: .08em; }
+:global([data-theme="dark"]) .placeholder { background: var(--bxr-graphite); color: var(--bxr-mist); }
 </style>

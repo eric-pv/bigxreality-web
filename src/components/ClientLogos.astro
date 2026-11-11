@@ -1,0 +1,30 @@
+---
+import { Picture } from 'astro:assets';
+import Text from './Text.astro';
+import { clientLogoGroups } from '../lib/client-logos';
+import type { Lang } from '../i18n';
+interface Props { lang: Lang }
+const groups = clientLogoGroups(Astro.props.lang);
+---
+<div data-client-logos="partners">
+  {groups.map(group => <section class="logo-category" aria-labelledby={`logos-${group.id}`} data-logo-category={group.id}>
+    <h2 id={`logos-${group.id}`} class="t-h3"><Text value={group.label} /></h2>
+    <ul role="list" class="logo-grid">{group.items.map(logo => <li data-logo-file={logo.file}>
+      <Picture src={logo.image} formats={['webp']} fallbackFormat="webp" widths={[160,240,320,480].filter(w=>w<logo.image.width).concat(Math.min(logo.image.width,640))} sizes="(max-width: 767px) calc(50vw - 56px), 210px" width={logo.image.width} height={logo.image.height} alt={logo.alt} loading="lazy" decoding="async" />
+    </li>)}</ul>
+  </section>)}
+</div>
+<style>
+.logo-category + .logo-category { margin-top: var(--space-6); }
+h2 { margin: 0 0 var(--space-3); }
+.logo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); list-style: none; margin: 0; padding: 0; }
+li { height: 120px; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 20px; background: #fff; }
+li :global(picture) { display: contents; }
+li :global(img) { display: block; width: 100%; height: 100%; object-fit: contain; }
+@media(max-width: 767px) { .logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } li { height: 100px; padding: 16px; } }
+</style>
+<style>
+/* One visual size per row: every logo the same height, centred, in colour (several are official emblems). */
+li :global(img) { width: auto; height: 64px; max-width: 100%; margin-inline: auto; }
+@media(max-width: 767px) { li :global(img) { height: 52px; } }
+</style>

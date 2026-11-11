@@ -1,5 +1,6 @@
 ---
-import { Picture } from "astro:assets";
+import ProductImage from './ProductImage.astro';
+import { primaryImage } from '../data/primary-images';
 import type { ImageMetadata } from "astro";
 import type { Lang } from "../i18n";
 import { getUi } from "../lib/ui";
@@ -7,21 +8,23 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
 import Text from "./Text.astro";
 
 type Domain = "military" | "police" | "fire-rescue" | "smart-city";
-interface Props { lang: Lang; href: string; domain: Domain; name: string; englishName: string; summary: string; image?: { src: ImageMetadata; alt: string }; label?: string; headline?: string }
-const { lang, href, domain, name, englishName, summary, image, label, headline } = Astro.props;
+interface Props { lang: Lang; href: string; domain: Domain; name: string; summary: string; image?: { src: ImageMetadata; alt: string }; label?: string; headline?: string; headingLevel?: 2 | 3 }
+const { lang, href, domain, name, summary, image, label, headline, headingLevel = 3 } = Astro.props;
+const H = `h${headingLevel}` as "h2" | "h3";
 const ui = getUi(lang);
-// The English-name line repeats nothing on the English site, where it equals the name.
-const subtitle = headline ?? (englishName !== name ? englishName : undefined);
+const resolvedImage = image ?? primaryImage('solutions', href.match(/\/solutions\/([^/?#]+)/)?.[1] ?? '', lang) ?? primaryImage('solutions', domain, lang);
+// One name per card, in the page language: the English name and the domain code only repeated it.
+// The sector colour is carried by the left border (approved card design).
+const subtitle = headline;
 ---
 <article data-interactive-card class={`card sector--${domain}`}>
   <div class="media">
-    {image
-      ? <Picture src={image.src} alt={image.alt} formats={["avif", "webp"]} widths={[400, 640, 960]} sizes="(max-width: 767px) 100vw, 400px" width={640} height={360} fit="cover" />
+    {resolvedImage
+      ? <ProductImage src={resolvedImage.src} alt={resolvedImage.alt} sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) 50vw, 584px" />
       : <ImagePlaceholder label={ui.solutionImagePending} />}
   </div>
   <div class="body">
-    <p class="t-label code"><span class="dot" aria-hidden="true"></span>{ui.domainCodes[domain]}</p>
-    <h3 class="t-h4 title"><a href={href}><Text value={name} /></a></h3>
+    <H class="t-h4 title"><a href={href}><Text value={name} /></a></H>
     {subtitle && <p class="t-tech english"><Text value={subtitle} /></p>}
     <p class="t-small summary"><Text value={summary} /></p>
     {label && <p class="more" aria-hidden="true"><Text value={label} /> →</p>}
@@ -30,13 +33,11 @@ const subtitle = headline ?? (englishName !== name ? englishName : undefined);
 <style>
   .more { margin: var(--space-2) 0 0; font-weight: 500; color: var(--ink); }
   .card:hover .more { color: var(--bxr-text-red); }
-  .card { position: relative; display: flex; flex-direction: column; height: 100%; border: 1px solid var(--divider); background: var(--surface); }
+  .card { position: relative; display: flex; flex-direction: column; height: 100%; border: 1px solid var(--divider); border-left: 3px solid var(--sector-color); background: var(--surface); }
   .media { overflow: hidden; aspect-ratio: 16 / 9; }
   .media :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-standard) var(--ease-precise); }
   .card:hover .media :global(img) { transform: scale(1.02); }
   .body { display: grid; gap: var(--space-1); padding: var(--card-padding); }
-  .code { display: inline-flex; align-items: center; gap: var(--space-1); color: var(--sector-color); }
-  .dot { width: 8px; height: 8px; background: var(--sector-color); }
   .title a { color: var(--ink); text-decoration: none; }
   .title a::after { content: ""; position: absolute; inset: 0; }
   .card:hover .title a { color: var(--bxr-text-red); }
@@ -45,3 +46,5 @@ const subtitle = headline ?? (englishName !== name ? englishName : undefined);
   .english, .summary { color: var(--ink-muted); }
   .media:has(:global(.placeholder)) { aspect-ratio: auto; height: auto; }
 </style>
+
+<style>.body { display: flex; flex-direction: column; flex: 1; } .summary { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } .more { margin-top: auto; padding-top: var(--space-2); }</style>

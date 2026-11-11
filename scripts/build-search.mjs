@@ -13,7 +13,7 @@ import * as pagefind from "pagefind";
 import { tokenize, searchLanguage } from "../src/lib/search-tokenize.ts";
 
 const fixtures = process.env.BXR_CONTENT_SOURCE === "fixtures";
-const ROOT = path.resolve(import.meta.dirname, "..", fixtures ? "dist-fixtures/client" : "dist/client");
+const ROOT = path.resolve(import.meta.dirname, "..", fixtures ? "dist-fixtures" : "dist");
 
 const decode = (s) =>
   s.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n))).replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))

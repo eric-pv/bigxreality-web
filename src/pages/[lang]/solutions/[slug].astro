@@ -19,13 +19,14 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
 import SectionHead from "../../../components/SectionHead.astro";
 import InPageNav from "../../../components/InPageNav.astro";
-import Prose from "../../../components/Prose.astro";
+import ContentBody from "../../../components/ContentBody.astro";
 import TileGrid from "../../../components/TileGrid.astro";
 import CardProduct from "../../../components/CardProduct.astro";
 import CardArticle from "../../../components/CardArticle.astro";
 import CtaBand from "../../../components/CtaBand.astro";
 import FormButton from "../../../components/FormButton.astro";
 import SolutionLanding from "../../../components/SolutionLanding.astro";
+import { pageOgImage } from "../../../lib/og-image";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -87,13 +88,12 @@ const cta = d.cta ?? page?.cta;
   current="solutions"
   fallbackPath="/{lang}/solutions/"
   breadcrumbs={breadcrumbs}
-  ogImage={base.seo?.ogImage ?? heroImage?.src}
-  ogImageAlt={heroImage?.alt}
+  {...pageOgImage(base.seo?.ogImage ?? heroImage?.src, d.image?.alt, solution.pendingTranslation)}
   search={{ type: "solutions" }}
 >
   <PageHero
     breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel}
-    eyebrow={`Solution · ${ui.domainCodes[base.domain]}`} title={d.name} subtitle={d.englishName}
+    eyebrow={d.name === ui.domains[base.domain] ? ui.solution.eyebrow : `${ui.solution.eyebrow} · ${ui.domains[base.domain]}`} title={d.name} subtitle={d.englishName}
     description={d.heroDescription ?? d.summary} image={heroImage} imagePending={ui.solutionImagePending}
   >
     <FormButton slot="actions" kind="demo" lang={lang} variant="primary" />
@@ -105,7 +105,7 @@ const cta = d.cta ?? page?.cta;
     <section class={alt(order.indexOf("overview"))} id="overview" aria-labelledby="h-overview">
       <div class="container"><SplitSection gap="var(--space-8)">
         <SectionHead slot="head" id="h-overview" eyebrow={t.overview.eyebrow} title={t.overview.title} />
-        <Prose html={overviewHtml} />
+        <ContentBody html={overviewHtml} lang={lang} entryFile={`src/content/solutions/${lang}/${slug}.md`} />
       </SplitSection></div>
     </section>
   )}
@@ -137,7 +137,7 @@ const cta = d.cta ?? page?.cta;
             <li>
               <CardProduct
                 lang={lang} href={localePath(lang, "products", p.slug)} name={p.loc.data.hero.name}
-                englishName={p.loc.data.hero.englishName} summary={p.loc.data.summary ?? p.loc.data.hero.tagline}
+                summary={p.loc.data.summary ?? p.loc.data.hero.tagline}
                 domains={p.base.data.domains}
                 image={p.base.data.hero.image && { src: p.base.data.hero.image.src, alt: p.loc.data.hero.image?.alt ?? p.base.data.hero.image.alt }}
               />

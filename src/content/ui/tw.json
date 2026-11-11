@@ -12,29 +12,33 @@
     "insights": "技術專欄",
     "caseStudies": "成功案例",
     "resourcesMenu": "資源選單",
-    "aboutUs": "關於我們",
+    "aboutUs": "公司簡介",
     "history": "發展歷程",
     "team": "經營團隊",
     "partners": "合作夥伴",
     "investors": "投資人專區",
     "companyMenu": "關於 BXR 選單",
-    "planned": "（即將推出）"
+    "planned": "（即將推出）",
+    "csr": "企業社會責任"
   },
-  "contact": "聯絡我們",
+  "contact": "聯絡 BXR",
   "search": "搜尋",
   "menuOpen": "開啟選單",
   "menuClose": "關閉選單",
+  "motionToggle": "暫停動畫效果",
+  "motionToggleMenu": "暫停動畫",
+  "motionReducedNote": "您的裝置已開啟減少動態設定，本站動畫已自動停用。",
   "languageLabel": "切換語言",
   "home": "首頁",
   "logoHome": "Big x Reality 首頁",
   "breadcrumbLabel": "麵包屑",
-  "translationPending": "[待翻譯] 本頁尚未完成翻譯。",
+  "translationPending": "語言版本資訊請洽 BXR。",
   "imagePending": "產品圖片",
   "solutionImagePending": "解決方案圖片",
   "syntheticImage": "合成示意",
   "buttons": {
-    "brochure": "型錄申請 Request brochure",
-    "demo": "預約展示 Book a demo",
+    "brochure": "型錄申請",
+    "demo": "預約展示",
     "viewAll": "查看全部",
     "explore": "了解產品",
     "formPending": "表單網址待提供",
@@ -46,7 +50,7 @@
     "searchLabel": "搜尋產品",
     "searchPlaceholder": "輸入產品名稱或關鍵字",
     "results": "共 {n} 項產品",
-    "empty": "沒有符合條件的產品。",
+    "empty": "調整分類條件，探索產品資訊。",
     "reset": "清除篩選"
   },
   "domains": {
@@ -55,13 +59,6 @@
     "fire-rescue": "消防防災",
     "smart-city": "智慧城市",
     "other": "其他"
-  },
-  "domainCodes": {
-    "military": "MILITARY",
-    "police": "POLICE",
-    "fire-rescue": "FIRE & RESCUE",
-    "smart-city": "SMART CITY",
-    "other": "OTHER"
   },
   "productDomains": {
     "military": "軍事訓練",
@@ -72,39 +69,39 @@
     "onThisPage": "頁內導覽",
     "sections": {
       "overview": {
-        "eyebrow": "Overview",
+        "eyebrow": "",
         "title": "產品概述"
       },
       "capabilities": {
-        "eyebrow": "Key Capabilities",
+        "eyebrow": "",
         "title": "核心能力"
       },
       "howItWorks": {
-        "eyebrow": "How It Works",
+        "eyebrow": "",
         "title": "運作方式"
       },
       "scenarios": {
-        "eyebrow": "Training Scenarios",
+        "eyebrow": "",
         "title": "訓練情境"
       },
       "components": {
-        "eyebrow": "System Components",
+        "eyebrow": "",
         "title": "系統組成"
       },
       "deployment": {
-        "eyebrow": "Deployment / Configuration",
+        "eyebrow": "",
         "title": "部署方式"
       },
       "integratedOps": {
-        "eyebrow": "Integrated Operations",
+        "eyebrow": "",
         "title": "整合作戰"
       },
       "relatedSolutions": {
-        "eyebrow": "Related Solutions",
+        "eyebrow": "",
         "title": "關聯解決方案"
       },
       "relatedArticles": {
-        "eyebrow": "Related Insights / News",
+        "eyebrow": "",
         "title": "相關文章"
       }
     },
@@ -140,35 +137,36 @@
   "solution": {
     "sections": {
       "overview": {
-        "eyebrow": "Overview",
+        "eyebrow": "",
         "title": "方案概述"
       },
       "challenges": {
-        "eyebrow": "Challenges",
+        "eyebrow": "",
         "title": "面臨的挑戰"
       },
       "capabilities": {
-        "eyebrow": "Capabilities",
+        "eyebrow": "",
         "title": "方案能力"
       },
       "relatedProducts": {
-        "eyebrow": "Related Products",
+        "eyebrow": "",
         "title": "相關產品"
       },
       "caseStudies": {
-        "eyebrow": "Case Studies",
+        "eyebrow": "",
         "title": "實際應用案例"
       },
       "insights": {
-        "eyebrow": "Insights",
+        "eyebrow": "",
         "title": "相關技術文章"
       },
       "news": {
-        "eyebrow": "News",
+        "eyebrow": "",
         "title": "相關消息"
       }
     },
-    "explore": "了解方案"
+    "explore": "了解方案",
+    "eyebrow": "解決方案"
   },
   "article": {
     "published": "發布",
@@ -177,15 +175,15 @@
     "readingTime": "閱讀時間約 {n} 分鐘",
     "tags": "標籤",
     "related": {
-      "eyebrow": "Related",
+      "eyebrow": "延伸閱讀",
       "title": "延伸閱讀"
     },
     "relatedProducts": {
-      "eyebrow": "Related Products",
+      "eyebrow": "相關產品",
       "title": "相關產品"
     },
     "relatedSolutions": {
-      "eyebrow": "Related Solutions",
+      "eyebrow": "相關解決方案",
       "title": "相關解決方案"
     },
     "categories": {
@@ -194,7 +192,10 @@
       "award": "獲獎",
       "product-launch": "產品發表",
       "partnership": "合作夥伴",
-      "media": "媒體報導"
+      "media": "媒體消息",
+      "event": "活動消息",
+      "product": "產品消息",
+      "insight": "技術觀點"
     },
     "event": "活動",
     "location": "地點",
@@ -210,20 +211,20 @@
     "outcomes": "成果"
   },
   "listing": {
-    "empty": "目前還沒有內容。",
+    "empty": "相關資訊請洽 BXR。",
     "count": "共 {n} 篇",
     "pagination": "分頁",
     "previous": "上一頁",
     "next": "下一頁",
     "page": "第 {n} 頁",
     "pageOf": "第 {n} 頁，共 {total} 頁",
-    "filterEmpty": "沒有符合條件的案例。",
+    "filterEmpty": "調整篩選條件，探索相關案例。",
     "filterResults": "共 {n} 個案例",
     "filterSearchLabel": "搜尋案例",
     "filterSearchPlaceholder": "輸入客戶、產品或關鍵字"
   },
   "tags": {
-    "eyebrow": "Tags",
+    "eyebrow": "標籤",
     "title": "標籤",
     "count": "{n} 篇",
     "allTags": "所有標籤"
@@ -245,7 +246,7 @@
     "empty": "找不到符合「{q}」的結果。",
     "hint": "請輸入至少兩個字。",
     "noscript": "搜尋功能需要啟用 JavaScript。",
-    "error": "搜尋暫時無法使用，請稍後再試。"
+    "error": "請重新搜尋，或透過聯絡頁洽詢。"
   },
   "cta": {
     "exploreProducts": "探索產品",
@@ -261,10 +262,10 @@
     "learnMore": "了解更多"
   },
   "productLanding": {
-    "eyebrow": "Product",
+    "eyebrow": "產品",
     "sections": {
       "challenge": {
-        "eyebrow": "Training Challenge",
+        "eyebrow": "訓練挑戰",
         "title": "訓練挑戰"
       }
     },
@@ -273,22 +274,22 @@
       "showcase": "產品展示圖"
     },
     "eyebrows": {
-      "challenge": "Training Challenge",
-      "approach": "Our Approach",
-      "capabilities": "Key Capabilities",
-      "flow": "Training Flow",
-      "scenarios": "Applications",
-      "values": "Value",
-      "related": "Related",
-      "featured": "Integration",
-      "audience": "Suited For"
+      "challenge": "訓練挑戰",
+      "approach": "整合做法",
+      "capabilities": "核心能力",
+      "flow": "訓練流程",
+      "scenarios": "應用情境",
+      "values": "導入價值",
+      "related": "相關產品與方案",
+      "featured": "系統整合",
+      "audience": "適用對象"
     },
     "valueLabel": "訓練價值",
     "focusLabel": "訓練重點",
-    "stepLabel": "STEP",
+    "stepLabel": "步驟",
     "mediaNeed": "素材需求｜",
     "mediaPending": "圖片",
-    "illustrationLabel": "情境示意圖"
+    "illustrationLabel": "概念視覺"
   },
   "contactPage": {
     "topicLabel": "洽詢項目",
@@ -324,12 +325,12 @@
     },
     "about": "關於",
     "steps": {
-      "eyebrow": "How to Reach Us",
-      "title": "以 Email 與我們聯繫",
+      "eyebrow": "聯絡方式",
+      "title": "以 Email 聯絡 BXR",
       "items": [
         {
           "title": "按下「寄送 Email」",
-          "description": "系統會開啟您的郵件軟體，主旨與信件格式已依洽詢項目填好。"
+          "description": "郵件軟體將開啟洽詢信件，並帶入主旨與信件格式。"
         },
         {
           "title": "補上聯絡資料與需求",
@@ -337,7 +338,7 @@
         },
         {
           "title": "寄出後由業務聯繫",
-          "description": "我們收到來信後，將由業務人員與您聯繫，確認需求與後續安排。"
+          "description": "BXR 業務團隊收到來信後，將聯繫洽詢單位，確認需求與後續安排。"
         }
       ]
     },
@@ -351,7 +352,48 @@
       "電話：",
       "需求說明："
     ],
-    "noEmail": "聯絡信箱尚未設定。"
+    "noEmail": "聯絡方式請洽 BXR 服務窗口。",
+    "form": {
+      "intro": "請填寫下列資料，BXR 業務團隊將儘快與您聯繫。標示「必填」的欄位必須填寫。",
+      "required": "必填",
+      "optional": "選填",
+      "name": "姓名",
+      "nameHint": "請填寫完整姓名，依慣用順序與文字輸入；僅有單一姓名亦可。",
+      "organization": "公司／單位",
+      "jobTitle": "職稱",
+      "country": "國家／地區",
+      "countryPlaceholder": "請選擇國家／地區",
+      "email": "Email",
+      "phone": "電話",
+      "topic": "洽詢項目",
+      "interest": "產品／解決方案（可複選）",
+      "closeInline": "關閉詢問表單",
+      "interestPlaceholder": "選擇產品／解決方案",
+      "interestSelected": "已選擇 {count} 項",
+      "interestNone": "其他／尚未決定",
+      "interestProducts": "產品",
+      "interestSolutions": "解決方案",
+      "message": "需求說明",
+      "messageHint": "例如訓練對象、人數、預計時程，或想了解的內容。",
+      "consentBefore": "按下「同意並送出」，即表示您已閱讀並同意本公司的",
+      "consentLink": "隱私權政策",
+      "consentAfter": "，並同意 BXR 依該政策處理您提供的資料，以回覆本次詢問。",
+      "submit": "同意並送出",
+      "submitting": "送出中…",
+      "successTitle": "已收到您的詢問",
+      "successBody": "感謝您的來信，BXR 業務團隊將儘快與您聯繫。",
+      "reference": "詢問編號",
+      "errorRequired": "請填寫此欄位。",
+      "errorEmail": "請輸入正確的 Email。",
+      "errorPhone": "請輸入正確的電話號碼。",
+      "errorSummary": "部分欄位需要修正，請檢查標示的欄位。",
+      "errorUnknown": "目前無法確認是否送出成功。您填寫的資料仍保留在畫面上，請再按一次「同意並送出」；系統會沿用同一個詢問編號，不會重複建立。",
+      "errorBusy": "系統忙碌中，請稍候再按一次「同意並送出」。",
+      "errorFailed": "目前無法送出，請稍後再試，或直接寄信至",
+      "emailAlternative": "不方便使用表單？也可以直接寄信至",
+      "decline": "不同意",
+      "declined": "您未同意隱私權政策，表單不會送出，填寫的內容也不會傳給我們。您仍可直接寄信至"
+    }
   },
   "cases": {
     "filterLabel": "篩選成功案例",
@@ -362,10 +404,10 @@
     "learnMore": "了解完整案例",
     "count": "共 {n} 個案例",
     "filterResults": "共 {n} 個案例",
-    "filterEmpty": "沒有符合條件的案例",
-    "empty": "成功案例整理中，目前尚無已發布的案例",
-    "emptyHint": "如需了解沉浸式模擬訓練如何配合您的任務需求，歡迎與我們聯絡",
-    "emptyCta": "聯絡我們",
+    "filterEmpty": "調整篩選條件，探索相關案例",
+    "empty": "導入案例資訊請洽 BXR。",
+    "emptyHint": "BXR 提供沉浸式模擬訓練需求洽詢。",
+    "emptyCta": "聯絡 BXR",
     "client": "導入單位",
     "domains": "應用領域",
     "products": "關聯產品",
@@ -391,15 +433,15 @@
       "learnMore": "了解完整案例"
     },
     "cta": {
-      "title": "與我們討論您的訓練需求",
+      "title": "訓練需求洽詢",
       "description": "歡迎洽詢，了解 Big x Reality 如何依據實際任務需求規劃訓練應用",
-      "button": "聯絡我們"
+      "button": "聯絡 BXR"
     }
   },
   "companyPages": {
-    "empty": "資料整理中，目前尚無已公開的內容",
-    "hint": "如需進一步了解，歡迎與我們聯絡",
-    "cta": "聯絡我們",
+    "empty": "相關資訊請洽 BXR。",
+    "hint": "進一步資訊請洽 BXR。",
+    "cta": "聯絡 BXR",
     "download": "下載",
     "date": "日期",
     "category": "分類",
@@ -444,5 +486,56 @@
   "backToProducts": "",
   "faq": {
     "title": "常見問題"
+  },
+  "clientCategories": {
+    "defense-public-safety": "國防與公共安全",
+    "research-technology": "研究與技術機構",
+    "government-public-enterprises": "政府與公共事業",
+    "industry-professional-associations": "產業與專業協會"
+  },
+  "newsListing": {
+    "intro": "展會活動、企業動態與模擬訓練的新進展。",
+    "all": "全部",
+    "allYears": "所有年份",
+    "categories": "新聞分類",
+    "years": "發布年份",
+    "undated": "日期待確認",
+    "categoryLabels": {
+      "event": "展會活動",
+      "exhibition": "展會活動",
+      "media": "媒體報導"
+    }
+  },
+  "homeSections": {
+    "products": "精選產品"
+  },
+  "notFound": {
+    "title": "找不到頁面",
+    "eyebrow": "404",
+    "heading": "找不到這個頁面",
+    "description": "您要找的頁面可能已移除、改名，或網址輸入有誤。",
+    "metaDescription": "Big x Reality 找不到您要開啟的頁面。",
+    "linksLabel": "返回網站",
+    "home": "返回首頁"
+  },
+  "careers": {
+    "title": "徵才資訊",
+    "description": "最新職缺、工作條件與應徵方式，請至 104 人力銀行查看。",
+    "viewOpenings": "查看 104 職缺",
+    "listDescription": "以下為公司在 104 人力銀行的公開職缺，點選「前往 104 應徵」查看完整內容並應徵。",
+    "apply": "前往 104 應徵",
+    "updated": "職缺資料自 104 同步：",
+    "none": "目前沒有公開職缺，歡迎至 104 公司頁追蹤最新消息。",
+    "experience": "經歷",
+    "education": "學歷",
+    "salary": "待遇",
+    "headcount": "需求人數"
+  },
+  "privacyNotice": {
+    "title": "隱私權政策",
+    "description": "請閱讀本站隱私權政策，並選擇是否同意。不同意仍可瀏覽公開內容；送出詢問前會另行徵求同意。",
+    "read": "閱讀隱私權政策",
+    "accept": "同意",
+    "decline": "不同意"
   }
 }

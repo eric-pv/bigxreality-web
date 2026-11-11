@@ -1,4 +1,6 @@
 ---
+import { publicUrl } from '../lib/public-url.ts';
+
 /**
  * Case page, one template for every published case (docs/EDITOR-GUIDE.md "成功案例").
  * Hero → facts → background → challenge → solution → application → results → gallery →
@@ -7,7 +9,8 @@
  * case record contains; nothing is calculated or filled in.
  */
 import SmartCardGrid from "./SmartCardGrid.astro";
-import { Picture, getImage } from "astro:assets";
+import { Picture } from "astro:assets";
+import { pageOgImage } from "../lib/og-image";
 import { HTML_LANG, INTL_LOCALE, localePath, type Lang } from "../i18n";
 import { availableLangs } from "../lib/content";
 import { articleHref, tagMap, type Article } from "../lib/articles";
@@ -19,7 +22,7 @@ import { site } from "../lib/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import SectionHead from "./SectionHead.astro";
-import Prose from "./Prose.astro";
+import ContentBody from "./ContentBody.astro";
 import CardProduct from "./CardProduct.astro";
 import CardSolution from "./CardSolution.astro";
 import CaseCard from "./CaseCard.astro";
@@ -34,11 +37,15 @@ const ui = getUi(lang as Lang);
 const c = ui.cases;
 const s = c.section;
 const base = caseBase(article);
+const published = base.publishDate;
+if (!published) throw new Error("Case studies require a confirmed publication date");
 const d = caseLoc(article);
 const client = clientLabel(article);
 const view = (await toViews([article], lang as Lang))[0];
 
 const cover = view.cover;
+// og:image and the Article schema image: this case's own cover with this language's own alt.
+const og = pageOgImage(base.seo?.ogImage ?? cover?.src, d.cover?.alt, article.pendingTranslation);
 const fmt = (date: Date) => new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
 const iso = (date: Date) => date.toISOString().slice(0, 10);
 const html = article.loc.rendered?.html ?? "";
@@ -70,18 +77,16 @@ const breadcrumbs = [
   { name: d.title, path: articleHref(article) },
 ];
 const clean = (v: string | undefined) => (v && !v.includes("[待") ? plain(v) : undefined);
-const ldImage = cover ? new URL((await getImage({ src: cover.src, width: 1280, format: "jpg" })).src, site.url).toString() : undefined;
 const articleLd: Record<string, unknown> = {
   "@type": "Article",
   headline: clean(d.title),
   description: clean(d.seo?.description ?? d.summary),
-  datePublished: base.publishDate.toISOString(),
+  datePublished: published.toISOString(),
   ...(base.updatedAt ? { dateModified: base.updatedAt.toISOString() } : {}),
   inLanguage: HTML_LANG[lang],
-  url: new URL(articleHref(article), site.url).toString(),
+  url: publicUrl(articleHref(article)).toString(),
   publisher: { "@id": `${site.url}/#organization` },
   author: { "@id": `${site.url}/#organization` },
-  ...(ldImage ? { image: ldImage } : {}),
 };
 for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete articleLd[k];
 
@@ -106,11 +111,10 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
   current="resources" currentResource="case-studies"
   fallbackPath="/{lang}/cases/"
   breadcrumbs={breadcrumbs}
-  ogImage={base.seo?.ogImage ?? cover?.src}
-  ogImageAlt={cover?.alt}
-  article={{ published: base.publishDate, modified: base.updatedAt, tags: tagLinks.map((x) => x.name) }}
+  {...og}
+  article={{ published: published, modified: base.updatedAt, tags: tagLinks.map((x) => x.name) }}
   structuredData={[articleLd]}
-  search={{ type: "case-studies", date: base.publishDate }}
+  search={{ type: "case-studies", date: published }}
 >
   <article>
     <header class="case-header">
@@ -135,7 +139,7 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
         {view.domains.length > 0 && <div><dt><Text value={c.domains} /></dt><dd>{view.domains.map((x, i) => <>{i > 0 && "、"}<Text value={ui.domains[x]} /></>)}</dd></div>}
         {view.products.length > 0 && <div><dt><Text value={c.products} /></dt><dd>{view.products.map((p, i) => <>{i > 0 && "、"}<a href={p.href}><Text value={p.name} /></a></>)}</dd></div>}
         {view.solutions.length > 0 && <div><dt><Text value={c.solutions} /></dt><dd>{view.solutions.map((p, i) => <>{i > 0 && "、"}<a href={p.href}><Text value={p.name} /></a></>)}</dd></div>}
-        <div><dt class="visually-hidden"><Text value={ui.article.published} /></dt><dd><time datetime={iso(base.publishDate)}>{fmt(base.publishDate)}</time></dd></div>
+        <div><dt class="visually-hidden"><Text value={ui.article.published} /></dt><dd><time datetime={iso(published)}>{fmt(published)}</time></dd></div>
       </dl>
     </div>
 
@@ -192,7 +196,7 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
       <section class="section" aria-labelledby="h-details">
         <div class="container row">
           <h2 class="t-h2 details-title" id="h-details"><Text value={s.details} /></h2>
-          <div class="paras"><Prose html={html} /></div>
+          <div class="paras"><ContentBody html={html} lang={lang} entryFile={`src/content/${article.collection}/${lang}/${article.slug}.md`} /></div>
         </div>
       </section>
     )}
@@ -207,7 +211,7 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
             <li>
               <CardProduct
                 lang={lang} href={localePath(lang, "products", p.slug)} name={p.loc.data.hero.name}
-                englishName={p.loc.data.hero.englishName} summary={p.loc.data.summary ?? p.loc.data.hero.tagline}
+                summary={p.loc.data.summary ?? p.loc.data.hero.tagline}
                 domains={p.base.data.domains}
                 image={p.base.data.hero.image && { src: p.base.data.hero.image.src, alt: p.loc.data.hero.image?.alt ?? p.base.data.hero.image.alt }}
               />
@@ -217,7 +221,7 @@ const galleryImages = [...sideImages.filter((x) => x && !shownSide.has(x)), ...r
             <li>
               <CardSolution
                 lang={lang} href={localePath(lang, "solutions", x.slug)} domain={x.base.data.domain}
-                name={x.loc.data.name} englishName={x.loc.data.englishName} summary={x.loc.data.summary}
+                name={x.loc.data.name} summary={x.loc.data.summary}
                 image={x.base.data.image && { src: x.base.data.image.src, alt: x.loc.data.image?.alt ?? x.base.data.image.alt }}
               />
             </li>

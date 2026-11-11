@@ -1,3 +1,4 @@
+import {publicUrl,artifactPath,publicSiteRoot} from '../src/lib/public-url.ts';
 // Scans every HTML file in dist/ for internal links and assets, and lists targets
 // that do not exist. Pages planned for later phases are reported separately.
 import { readdir, readFile } from "node:fs/promises";
@@ -23,10 +24,10 @@ for await (const file of htmlFiles(DIST)) {
     if (m[1].startsWith("data:")) continue; // inlined assets
     for (const raw of m[1].split(",").map((s) => s.trim().split(/\s+/)[0])) {
       let url;
-      try { url = new URL(raw, "https://www.bigxreality.com" + page); } catch { continue; }
-      if (url.origin !== "https://www.bigxreality.com" || raw.startsWith("#")) continue;
+      try { url = new URL(raw, publicUrl(page)); } catch { continue; }
+      if (url.origin !== new URL(publicSiteRoot).origin || raw.startsWith("#")) continue;
       checked++;
-      if (!(await resolveDist(url.pathname))) {
+      if (!(await resolveDist(artifactPath(url)))) {
         if (!missing.has(url.pathname)) missing.set(url.pathname, new Set());
         missing.get(url.pathname).add(page);
       }

@@ -1,0 +1,309 @@
+{
+  "scope": "Local isolated validation only; not live GitHub authorization, review, Actions or Pages deployment.",
+  "sourceCommit": "282af4c0490540c3fe615aba26070f63382fcf27",
+  "checks": [
+    {
+      "command": "build",
+      "exit": 0,
+      "evidence": []
+    },
+    {
+      "command": "build:fixtures",
+      "exit": 0,
+      "evidence": []
+    },
+    {
+      "command": "check",
+      "exit": 0,
+      "evidence": [
+        "Result (226 files): ",
+        "- 0 errors",
+        "- 0 warnings"
+      ]
+    },
+    {
+      "command": "check:sitemap",
+      "exit": 0,
+      "evidence": [
+        "PASS (199 URLs)"
+      ]
+    },
+    {
+      "command": "cms:sveltia:check",
+      "exit": 0,
+      "evidence": [
+        "PASS: Sveltia fields match the current Astro schemas.",
+        "PASS: 1470 nested schema fields; 183 existing files unchanged/round-trippable; three language paths, unknown dates, typed unions, media registry and isolated test folder."
+      ]
+    },
+    {
+      "command": "fixtures:qa:a11y",
+      "exit": 0,
+      "evidence": [
+        "PASS: 0 serious/critical"
+      ]
+    },
+    {
+      "command": "fixtures:qa:company",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "fixtures:qa:phase2",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "fixtures:qa:search",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "fixtures:qa:technologies",
+      "exit": 0,
+      "evidence": [
+        "PASS: 906 checks; .qa/technologies-content-audit.md"
+      ]
+    },
+    {
+      "command": "pages:check",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "qa:behaviour",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "qa:client-logos",
+      "exit": 0,
+      "evidence": [
+        "PASS: 26 unique logos in exact 11/3/9/3 groups/order, first Ministry of National Defense; TW/EN/JP × 1440/768/390; home 760px/4-column/2×2 statistics without logos, About without logos, partner 4/2 grids and no captions, valid images."
+      ]
+    },
+    {
+      "command": "qa:cms-publication",
+      "exit": 0,
+      "evidence": [
+        "PASS edited-and-published: routes, sitemap, three languages and existing articles",
+        "PASS unpublished: routes, sitemap, three languages and existing articles",
+        "PASS deleted: routes, sitemap, three languages and existing articles",
+        "PASS local Git → Astro publication lifecycle. Results: /workspace/bigxreality-web/.qa/cms-publication-NrPXMq/RESULTS.json. Live authorization, GitHub review, Actions and online Pages are NOT tested."
+      ]
+    },
+    {
+      "command": "qa:company",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "qa:csr",
+      "exit": 0,
+      "evidence": [
+        "PASS: CSR and currently linked news pages across 9 language/viewport combinations; SEO, topics, bidirectional links, no overflow or failed requests."
+      ]
+    },
+    {
+      "command": "qa:density-navigation",
+      "exit": 0,
+      "evidence": [
+        "PASS: 9 language/viewport combinations; dropdowns, links, category filters, keyboard and reduced-motion back-to-top"
+      ]
+    },
+    {
+      "command": "qa:english",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "qa:faq",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "qa:footer",
+      "exit": 0,
+      "evidence": []
+    },
+    {
+      "command": "qa:header",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "qa:hero-framing",
+      "exit": 0,
+      "evidence": [
+        "PASS: 324 trilingual scene/equipment/interface Heroes with complete subjects and reviewed framing; 18 home viewports verify 1→2 video order, top framing, full 16:9 mobile footage with no dark shade, pause/next controls and shared fire cover."
+      ]
+    },
+    {
+      "command": "qa:images",
+      "exit": 0,
+      "evidence": [
+        "PASS: 15 unchanged original assets, 171 routes/viewports, shared three-language sources, image decode/404/alt/fit checks"
+      ]
+    },
+    {
+      "command": "qa:japanese",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "qa:links",
+      "exit": 0,
+      "evidence": []
+    },
+    {
+      "command": "qa:media-composition",
+      "exit": 0,
+      "evidence": [
+        "PASS {\"pageViewportChecks\":1062,\"decodedImages\":4767,\"videoCases\":21,\"widths\":[320,375,390,430,768,1024,1440],\"originalVideos\":\"Unchanged; whole native frame is retained\",\"realEndedAndWrapCaptures\":[1440,390],\"exceptions\":\"News photos and unprovided UI/scenario material remain pending; no unrelated imagery used.\"}"
+      ]
+    },
+    {
+      "command": "qa:motion",
+      "exit": 0,
+      "evidence": [
+        "PASS: 9 language/viewport combinations; one-time entrance, stable height, reduced motion, card feedback, keyboard focus, history/reload, no-JS/no-observer fallbacks",
+        "PASS: 54 template/language/viewport cases; first visit, reload, restored scroll, navigation/back/forward, dynamic insertion, router/BFCache reset and reduced motion"
+      ]
+    },
+    {
+      "command": "qa:news-import",
+      "exit": 0,
+      "evidence": [
+        "PASS: 90 three-language articles matching current Git source, dynamic lists, dates/undated metadata, image placeholders, desktop/mobile and no old-site image requests"
+      ]
+    },
+    {
+      "command": "qa:news-media",
+      "exit": 0,
+      "evidence": [
+        "PASS: 9 language/viewport gallery+video controls; keyboard close/focus, click-to-load, no autoplay, pagehide reset, Facebook fallback. Remote player requests intercepted, no media downloaded."
+      ]
+    },
+    {
+      "command": "qa:news-preview",
+      "exit": 0,
+      "evidence": [
+        "PASS: current published historical article paths, 6555 local references and 36 desktop/mobile TW/EN/JP pages under /bigxreality-web/"
+      ]
+    },
+    {
+      "command": "qa:seo",
+      "exit": 0,
+      "evidence": []
+    },
+    {
+      "command": "qa:solutions",
+      "exit": 0,
+      "evidence": [
+        "PASS"
+      ]
+    },
+    {
+      "command": "qa:sveltia",
+      "exit": 0,
+      "evidence": [
+        "PASS: real pinned CMS config loads at /admin/ and Pages subpath; token form; local-clone create/edit/image-byte upload; existing article save plus three new draft news siblings, correct optional fields, unchanged translations and lossless media JSON save; typography JSON edit with unchanged language lists; isolated deletion; mobile login. Live GitHub auth/write not tested."
+      ]
+    },
+    {
+      "command": "qa:team",
+      "exit": 0,
+      "evidence": [
+        "PASS: three languages, 1440/768/390px; original team routes, complete capabilities, responsive framework, SEO and removed history."
+      ]
+    },
+    {
+      "command": "qa:technologies",
+      "exit": 0,
+      "evidence": [
+        "PASS: 864 checks; .qa/technologies-content-audit.md"
+      ]
+    },
+    {
+      "command": "qa:typography",
+      "exit": 0,
+      "evidence": [
+        "PASS: wrapping, text overflow, protected terms; manual candidates 0"
+      ]
+    },
+    {
+      "command": "qa:ui-v1",
+      "exit": 0,
+      "evidence": [
+        "PASS: 342 TW/EN/JP template/viewports at 1366/1440/1920/768/390/430px, static filters/reload, complete current Git article archive, no duplicate CSR, no home logos, no overflow/errors/development copy. Screenshots: /tmp/bxr-ui-v1"
+      ]
+    },
+    {
+      "command": "qa:ui-v1-preview",
+      "exit": 0,
+      "evidence": [
+        "PASS: 293 rebased HTML pages, 23758 local references, 42 TW/EN/JP desktop/mobile pages including static filters and logo paths."
+      ]
+    },
+    {
+      "command": "test",
+      "exit": 0,
+      "evidence": [
+        "# tests 44",
+        "# pass 44",
+        "# fail 0"
+      ]
+    }
+  ],
+  "isolatedPublication": [
+    {
+      "stage": "draft-created",
+      "pass": true,
+      "commit": "b98a766beabc530e76e678622032f628a5ac76b7"
+    },
+    {
+      "stage": "edited-and-published",
+      "pass": true,
+      "commit": "d45b2a736cbbc1a65a6564959d33f90a72b05e52"
+    },
+    {
+      "stage": "unpublished",
+      "pass": true,
+      "commit": "f6d9f05b344e87c1c63b278fee4b89dd7a34795a"
+    },
+    {
+      "stage": "deleted",
+      "pass": true,
+      "commit": "9c1969d9f68b1b72b00aca2e4315443a6a2227ed"
+    }
+  ],
+  "officialContentAndMediaChanged": [],
+  "remoteUnverified": [
+    "GitHub sign-in and administrator roles",
+    "Remote editorial draft/review/publish",
+    "Main write after real Publish and Actions trigger",
+    "Deployed Pages content/SHA/SEO",
+    "Cloudflare external resources"
+  ],
+  "prCreation": "Branch pushed; gh pr create and escalated retry returned GraphQL Forbidden. PR not created."
+}

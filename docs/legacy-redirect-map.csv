@@ -1,0 +1,23 @@
+old_url,new_url,status,type,evidence,note
+https://www.bigxreality.com/,待確認,待確認,固定路徑,design-source/requirements-2.0.md「預設導向 /en/」；scripts/pages/package.mjs 現行產生的根目錄 index.html 導向 /tw/,兩份來源不一致：需求文件寫 /en/，封裝程式現為 /tw/（無 TW 首頁時 /tw/products/）。屬於根網址行為，由封裝程式負責，不是另外的轉址頁；須確認以哪一份為準
+https://www.bigxreality.com/tw/home,https://www.bigxreality.com/tw/,已確認,固定路徑,design-source/requirements-2.0.md §4；docs/legacy-urls.md A,新網址 src/pages/[lang]/index.astro（tw）
+https://www.bigxreality.com/en/home,https://www.bigxreality.com/en/,待確認（舊網址是否存在）,固定路徑,docs/legacy-urls.md A（比照 /tw/home 推測）,對應關係明確，但舊站是否真有此網址未經證實；未證實前不建立轉址頁
+https://www.bigxreality.com/jp/home,https://www.bigxreality.com/jp/,待確認（舊網址是否存在）,固定路徑,docs/legacy-urls.md A（比照 /tw/home 推測）,同上；另需確認舊站日文前綴是 /jp/ 還是其他（例如 /ja/）
+https://www.bigxreality.com/tw/packages,待確認,待確認,固定路徑,design-source/requirements-2.0.md §1（舊套裝方案頁）；docs/legacy-urls.md A,legacy-urls.md 提案 /tw/products/，但舊頁內容是套裝方案，可能較接近 /tw/solutions/；須依舊頁實際內容確認
+https://www.bigxreality.com/tw/solutions,https://www.bigxreality.com/tw/solutions/,已確認,固定路徑,docs/legacy-urls.md A；src/pages/[lang]/solutions/index.astro,只差結尾斜線。GitHub Pages 遇到有同名目錄的路徑會自動補斜線（伺服器端轉址），不需轉址頁；切換當天抽樣驗證
+https://www.bigxreality.com/en/solutions,https://www.bigxreality.com/en/solutions/,已確認,固定路徑,docs/legacy-urls.md A；src/pages/[lang]/solutions/index.astro,同上
+https://www.bigxreality.com/news_content?param=…,待確認,待確認,參數型新聞,docs/legacy-urls.md A（業主告知 2026-10-19）,缺逐筆參數值清單；舊路徑的語言前綴（/tw/news_content 或根目錄）與副檔名（無、.php、.aspx…）也未知，會影響 GitHub Pages 能否在原路徑提供頁面
+https://www.bigxreality.com/news_content?uuid=…,待確認,待確認,參數型新聞,docs/legacy-urls.md A（業主告知 2026-10-19）,同上
+https://www.bigxreality.com/news_content?id=…,待確認,待確認,參數型新聞,docs/legacy-urls.md A（業主告知 2026-10-19）,同上
+https://www.bigxreality.com/upload/news/1763973944524.png,待確認,待確認,舊站新聞圖片,docs/sources/BXR_NEWS_TRILINGUAL_EXPANDED_V2_2026-10-27.txt IMAGE_SOURCE,所屬文章 news-01-ds-2025。新站圖片為建置雜湊檔名；圖片無法用 meta refresh 或 JS 轉址，只能接受失效或改用 CDN 方案。可作為該文章舊參數型網址確實存在的旁證
+https://www.bigxreality.com/upload/news/1775526399338.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-02-gbp-cover；同上
+https://www.bigxreality.com/upload/news/1763975038949.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-03-leadership-uncertainty；同上
+https://www.bigxreality.com/upload/news/1763974825088.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-04-seecat-2025；同上
+https://www.bigxreality.com/upload/news/1756465213996.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-05-tadte-2025；同上
+https://www.bigxreality.com/upload/news/1756893836982.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-06-military-forum-2025；同上
+https://www.bigxreality.com/upload/news/1745315494773.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-07-indo-defence；同上
+https://www.bigxreality.com/upload/news/1744167055539.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-08-fire-agency-2025；同上
+https://www.bigxreality.com/upload/news/1729576192684.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-09-seecat-earlier；同上
+https://www.bigxreality.com/upload/news/1729577940121.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-11-sushi-tech-2024；同上
+https://www.bigxreality.com/upload/news/1756895320322.jpeg,待確認,待確認,舊站新聞圖片,同上,所屬文章 news-13-future-combat；同上
+（其他所有舊頁面）,待確認,待確認,—,—,附件未收到；須取得舊站 sitemap.xml、Search Console「網頁」報表或伺服器 log 匯出後逐列補上

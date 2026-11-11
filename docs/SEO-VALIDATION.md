@@ -31,3 +31,17 @@
 未發現阻擋性異常；上述 31 頁依既有發布狀態或工具頁政策保留 noindex。GitHub CI 結果請查看 PR。
 
 重跑：`npm run qa:seo`、`npm run check:sitemap`、`npm run qa:links`。
+
+## 2026-10-22 全站技術 SEO 複查
+
+修正（未改動核定 Title / Description、正文、版面或圖片槽位）：
+
+- hreflang 繁中代碼改為 `zh-TW`（HTML lang 維持 `zh-Hant-TW`，JSON-LD `inLanguage` 與 HTML lang 一致）。
+- 首頁 `WebSite` JSON-LD：`inLanguage` 原輸出 `tw` / `jp` 無效代碼，改為正式語言代碼；三語各自使用獨立 `@id`。
+- `WebPage` / `CollectionPage` / `Article` 節點自動補 `inLanguage` 與頁面 Description；未翻譯（`[待翻譯]`）的名稱與 Breadcrumb 不再寫入 JSON-LD。
+- 解決方案總覽、文章列表、標籤頁卡片標題由 `h3` 改為 `h2`（樣式類別不變），消除 H1 → H3 跳層。
+- EmDash 後台（`/_emdash/*`，非預先產生的頁面）回應加上 `X-Robots-Tag: noindex, nofollow`；robots.txt 不封鎖任何公開頁、CSS、JS 或圖片。
+
+`npm run qa:seo` 新增檢查：HTML lang / og:locale、重複 Meta、og:url、hreflang 代碼、所有 JSON-LD 區塊可解析且無佔位文字、Article 必要欄位、BreadcrumbList 終點為本頁、單一 H1 與標題層級、圖片 alt 與寬高、Sitemap 與 noindex 精確對應、robots.txt。可索引頁正文仍有 `[待提供]` 時列為 warning。
+
+待補（需正式素材或業主確認）：三語產品總覽頁正文 Description 與 CTA 標題仍為 `[待提供]`；正式品牌 OG 分享圖（目前以 `icon-512.png` 備援）；社群帳號網址（`sameAs`）；EN / JP 公司介紹與聯絡頁翻譯。

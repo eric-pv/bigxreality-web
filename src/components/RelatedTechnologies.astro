@@ -1,4 +1,5 @@
 ---
+import Text from './Text.astro';
 /** Reverse subject links use the same relation map as the technology detail pages. */
 import type { Lang } from "../i18n";
 import { technologyRelations } from "../data/technology-relations";
@@ -14,7 +15,7 @@ const copy = {
 ---
 {related.length > 0 && <section class="section related-technologies" aria-labelledby="h-related-technologies" data-related-technologies>
   <div class="container">
-    <h2 class="t-h2" id="h-related-technologies">{copy[lang].title}</h2>
+    <h2 class="t-h2" id="h-related-technologies"><Text value={copy[lang].title} /></h2>
     <p class="description">{copy[lang].description}</p>
     <ul role="list">{related.map((id) => <li><a href={technologyHref(id, lang)}>{technologyName(id, lang)} <span aria-hidden="true">↗</span></a></li>)}</ul>
   </div>

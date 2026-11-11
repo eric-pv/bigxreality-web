@@ -1,0 +1,5109 @@
+[
+  {
+    "lang": "tw",
+    "width": 320,
+    "route": "",
+    "headings": [
+      {
+        "text": "虛擬訓練．真實應變．守護未來",
+        "lines": [
+          "虛擬訓練．",
+          "真實應變．守護未來"
+        ]
+      },
+      {
+        "text": "以反覆演練，累積專業應變能力。",
+        "lines": [
+          "以反覆演練，累積",
+          "專業應變能力。"
+        ]
+      },
+      {
+        "text": "安全可控",
+        "lines": [
+          "安全可控"
+        ]
+      },
+      {
+        "text": "反覆演練",
+        "lines": [
+          "反覆演練"
+        ]
+      },
+      {
+        "text": "彈性配置",
+        "lines": [
+          "彈性配置"
+        ]
+      },
+      {
+        "text": "精選產品",
+        "lines": [
+          "精選產品"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戰術訓練系統",
+        "lines": [
+          "SUT 小部隊",
+          "戰術訓練系統"
+        ]
+      },
+      {
+        "text": "攜帶式警勤訓練器（BOX）",
+        "lines": [
+          "攜帶式警勤訓練",
+          "器（BOX）"
+        ]
+      },
+      {
+        "text": "無人機戰術與反制無人機訓練系統",
+        "lines": [
+          "無人機戰術與反制",
+          "無人機訓練系統"
+        ]
+      },
+      {
+        "text": "VR 虛擬滅火訓練系統",
+        "lines": [
+          "VR 虛擬滅火訓練系統"
+        ]
+      },
+      {
+        "text": "核心技術",
+        "lines": [
+          "核心技術"
+        ]
+      },
+      {
+        "text": "XR 延展實境",
+        "lines": [
+          "XR 延展實境"
+        ]
+      },
+      {
+        "text": "AI 智慧模擬",
+        "lines": [
+          "AI 智慧模擬"
+        ]
+      },
+      {
+        "text": "數位場景與模擬建構",
+        "lines": [
+          "數位場景與模擬建構"
+        ]
+      },
+      {
+        "text": "通訊與系統整合",
+        "lines": [
+          "通訊與系統整合"
+        ]
+      },
+      {
+        "text": "解決方案",
+        "lines": [
+          "解決方案"
+        ]
+      },
+      {
+        "text": "軍事模擬",
+        "lines": [
+          "軍事模擬"
+        ]
+      },
+      {
+        "text": "警勤模擬",
+        "lines": [
+          "警勤模擬"
+        ]
+      },
+      {
+        "text": "消防防災",
+        "lines": [
+          "消防防災"
+        ]
+      },
+      {
+        "text": "智慧城市",
+        "lines": [
+          "智慧城市"
+        ]
+      },
+      {
+        "text": "合作夥伴",
+        "lines": [
+          "合作夥伴"
+        ]
+      },
+      {
+        "text": "最新消息",
+        "lines": [
+          "最新消息"
+        ]
+      },
+      {
+        "text": "Big x Reality 參展 SEECAT 2026，展示 MR CQB 與無人載具模擬訓練",
+        "lines": [
+          "Big x Reality 參",
+          "展 SEECAT 2026，",
+          "展示 MR CQB 與",
+          "無人載具模擬訓練"
+        ]
+      },
+      {
+        "text": "從教育開始累積應變能力：XR 情境訓練與全民國防",
+        "lines": [
+          "從教育開始累積應變能力：",
+          "XR 情境訓練與全民國防"
+        ]
+      },
+      {
+        "text": "不只是射擊：XR 情境訓練如何培養臨場判斷",
+        "lines": [
+          "不只是射擊：XR 情境",
+          "訓練如何培養臨場判斷"
+        ]
+      },
+      {
+        "text": "下一次訓練，可以從更好的規劃開始。",
+        "lines": [
+          "下一次訓練，可以",
+          "從更好的規劃開始。"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "tw",
+    "width": 320,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "狙擊槍模擬系統",
+        "lines": [
+          "狙擊槍模擬系統"
+        ]
+      },
+      {
+        "text": "精準射擊的訓練，從理解每一項環境變因開始",
+        "lines": [
+          "精準射擊的訓練，",
+          "從理解每一項",
+          "環境變因開始"
+        ]
+      },
+      {
+        "text": "結合照準、觀測與情境判斷的精準射擊訓練",
+        "lines": [
+          "結合照準、觀測",
+          "與情境判斷的",
+          "精準射擊訓練"
+        ]
+      },
+      {
+        "text": "實際射擊訓練受到場地限制",
+        "lines": [
+          "實際射擊訓練",
+          "受到場地限制"
+        ]
+      },
+      {
+        "text": "環境變因增加判斷難度",
+        "lines": [
+          "環境變因增加判斷難度"
+        ]
+      },
+      {
+        "text": "基本瞄準與射擊判斷需要結合",
+        "lines": [
+          "基本瞄準與射擊",
+          "判斷需要結合"
+        ]
+      },
+      {
+        "text": "訓練需要反覆練習與檢討",
+        "lines": [
+          "訓練需要反覆",
+          "練習與檢討"
+        ]
+      },
+      {
+        "text": "將瞄準操作與環境判讀，整合至模擬射擊訓練",
+        "lines": [
+          "將瞄準操作與",
+          "環境判讀，整合",
+          "至模擬射擊訓練"
+        ]
+      },
+      {
+        "text": "瞄準與射擊操作訓練",
+        "lines": [
+          "瞄準與射擊操作訓練"
+        ]
+      },
+      {
+        "text": "距離與環境條件判讀",
+        "lines": [
+          "距離與環境條件判讀"
+        ]
+      },
+      {
+        "text": "多元情境練習",
+        "lines": [
+          "多元情境練習"
+        ]
+      },
+      {
+        "text": "從瞄準操作到環境判讀，建立更完整的射擊訓練基礎",
+        "lines": [
+          "從瞄準操作到",
+          "環境判讀，建立更",
+          "完整的射擊訓練基礎"
+        ]
+      },
+      {
+        "text": "瞄準操作訓練",
+        "lines": [
+          "瞄準操作訓練"
+        ]
+      },
+      {
+        "text": "目標距離判讀",
+        "lines": [
+          "目標距離判讀"
+        ]
+      },
+      {
+        "text": "風向與環境變因理解",
+        "lines": [
+          "風向與環境變因理解"
+        ]
+      },
+      {
+        "text": "模擬射擊練習",
+        "lines": [
+          "模擬射擊練習"
+        ]
+      },
+      {
+        "text": "射擊表現檢討",
+        "lines": [
+          "射擊表現檢討"
+        ]
+      },
+      {
+        "text": "從操作熟悉到環境判斷，循序建立射擊訓練能力",
+        "lines": [
+          "從操作熟悉到",
+          "環境判斷，循序",
+          "建立射擊訓練能力"
+        ]
+      },
+      {
+        "text": "熟悉模擬操作",
+        "lines": [
+          "熟悉模擬操作"
+        ]
+      },
+      {
+        "text": "掌握目標與環境條件",
+        "lines": [
+          "掌握目標與環境條件"
+        ]
+      },
+      {
+        "text": "進行模擬射擊",
+        "lines": [
+          "進行模擬射擊"
+        ]
+      },
+      {
+        "text": "檢討訓練表現",
+        "lines": [
+          "檢討訓練表現"
+        ]
+      },
+      {
+        "text": "從基礎瞄準到不同環境條件，安排多元射擊訓練",
+        "lines": [
+          "從基礎瞄準到不",
+          "同環境條件，安",
+          "排多元射擊訓練"
+        ]
+      },
+      {
+        "text": "基礎瞄準訓練",
+        "lines": [
+          "基礎瞄準訓練"
+        ]
+      },
+      {
+        "text": "不同距離射擊訓練",
+        "lines": [
+          "不同距離射擊訓練"
+        ]
+      },
+      {
+        "text": "環境變因判讀訓練",
+        "lines": [
+          "環境變因判讀訓練"
+        ]
+      },
+      {
+        "text": "綜合模擬射擊訓練",
+        "lines": [
+          "綜合模擬射擊訓練"
+        ]
+      },
+      {
+        "text": "讓精準射擊訓練，擁有更多可控的練習條件",
+        "lines": [
+          "讓精準射擊訓練，擁",
+          "有更多可控的練習條件"
+        ]
+      },
+      {
+        "text": "補充實體射擊課程",
+        "lines": [
+          "補充實體射擊課程"
+        ]
+      },
+      {
+        "text": "增加環境變因的練習機會",
+        "lines": [
+          "增加環境變因的練習機會"
+        ]
+      },
+      {
+        "text": "結合操作與判斷能力",
+        "lines": [
+          "結合操作與判斷能力"
+        ]
+      },
+      {
+        "text": "支援分階段教學安排",
+        "lines": [
+          "支援分階段教學安排"
+        ]
+      },
+      {
+        "text": "從個人射擊能力，延伸至多元軍事訓練",
+        "lines": [
+          "從個人射擊能力，",
+          "延伸至多元軍事訓練"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戰術訓練系統",
+        "lines": [
+          "SUT 小部隊戰術訓練系統"
+        ]
+      },
+      {
+        "text": "機槍模擬系統",
+        "lines": [
+          "機槍模擬系統"
+        ]
+      },
+      {
+        "text": "軍事模擬",
+        "lines": [
+          "軍事模擬"
+        ]
+      },
+      {
+        "text": "常見問題",
+        "lines": [
+          "常見問題"
+        ]
+      },
+      {
+        "text": "狙擊槍模擬系統與一般射擊遊戲有什麼不同？",
+        "lines": [
+          "狙擊槍模擬系統與一般",
+          "射擊遊戲有什麼不同？"
+        ]
+      },
+      {
+        "text": "這套系統主要訓練哪些技能？",
+        "lines": [
+          "這套系統主要訓練哪些技能？"
+        ]
+      },
+      {
+        "text": "狙擊槍模擬訓練可以取代實彈射擊嗎？",
+        "lines": [
+          "狙擊槍模擬訓練可",
+          "以取代實彈射擊嗎？"
+        ]
+      },
+      {
+        "text": "模擬系統可以練習不同距離的射擊嗎？",
+        "lines": [
+          "模擬系統可以練習",
+          "不同距離的射擊嗎？"
+        ]
+      },
+      {
+        "text": "這套系統適合哪些單位使用？",
+        "lines": [
+          "這套系統適合哪些單位使用？"
+        ]
+      },
+      {
+        "text": "讓每一次模擬射擊，都成為理解環境與操作的練習",
+        "lines": [
+          "讓每一次模擬",
+          "射擊，都成為理解",
+          "環境與操作的練習"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "tw",
+    "width": 320,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "最新消息",
+        "lines": [
+          "最新消息"
+        ]
+      },
+      {
+        "text": "Big x Reality 參展 SEECAT 2026，展示 MR CQB 與無人載具模擬訓練",
+        "lines": [
+          "Big x Reality 參",
+          "展 SEECAT 2026，",
+          "展示 MR CQB 與",
+          "無人載具模擬訓練"
+        ]
+      },
+      {
+        "text": "從教育開始累積應變能力：XR 情境訓練與全民國防",
+        "lines": [
+          "從教育開始累積應變能力：",
+          "XR 情境訓練與全民國防"
+        ]
+      },
+      {
+        "text": "不只是射擊：XR 情境訓練如何培養臨場判斷",
+        "lines": [
+          "不只是射擊：XR 情境",
+          "訓練如何培養臨場判斷"
+        ]
+      },
+      {
+        "text": "中央社關注 XR 模擬訓練應用：從無人船到小部隊協同",
+        "lines": [
+          "中央社關注 XR",
+          "模擬訓練應用：從",
+          "無人船到小部隊協同"
+        ]
+      },
+      {
+        "text": "全球動力科技參與台北教育博覽會，展示 XR 沉浸式情境學習",
+        "lines": [
+          "全球動力科技參與",
+          "台北教育博覽會，展",
+          "示 XR 沉浸式情境學習"
+        ]
+      },
+      {
+        "text": "第 22 屆模式模擬論壇：全球動力科技展示 XR 無人船與 Nova Tactical XR",
+        "lines": [
+          "第 22 屆模式模擬論壇：",
+          "全球動力科技展示 XR",
+          "無人船與 Nova Tactical XR"
+        ]
+      },
+      {
+        "text": "全球動力科技參展 DSA 2026，展示 SUT 與 MUM-T 協作訓練",
+        "lines": [
+          "全球動力科技參展",
+          "DSA 2026，展示 SUT",
+          "與 MUM-T 協作訓練"
+        ]
+      },
+      {
+        "text": "XR 情境訓練走進松山家商，推動全民國防教育體驗",
+        "lines": [
+          "XR 情境訓練走進松山家",
+          "商，推動全民國防教育體驗"
+        ]
+      },
+      {
+        "text": "全球動力科技台北大安新基地啟用，持續拓展 XR 國防科技應用",
+        "lines": [
+          "全球動力科技台北大",
+          "安新基地啟用，持續",
+          "拓展 XR 國防科技應用"
+        ]
+      },
+      {
+        "text": "泰國 D&S 2025 國際大展：XR 小部隊戰術訓練系統展現年度成果與突破",
+        "lines": [
+          "泰國 D&S 2025 國際大",
+          "展：XR 小部隊戰術訓練",
+          "系統展現年度成果與突破"
+        ]
+      },
+      {
+        "text": "Big x Reality 登上《GBP Daily News》封面報導",
+        "lines": [
+          "Big x Reality 登上《GBP",
+          "Daily News》封面報導"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "tw",
+    "width": 390,
+    "route": "",
+    "headings": [
+      {
+        "text": "虛擬訓練．真實應變．守護未來",
+        "lines": [
+          "虛擬訓練．",
+          "真實應變．守護未來"
+        ]
+      },
+      {
+        "text": "以反覆演練，累積專業應變能力。",
+        "lines": [
+          "以反覆演練，累積",
+          "專業應變能力。"
+        ]
+      },
+      {
+        "text": "安全可控",
+        "lines": [
+          "安全可控"
+        ]
+      },
+      {
+        "text": "反覆演練",
+        "lines": [
+          "反覆演練"
+        ]
+      },
+      {
+        "text": "彈性配置",
+        "lines": [
+          "彈性配置"
+        ]
+      },
+      {
+        "text": "精選產品",
+        "lines": [
+          "精選產品"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戰術訓練系統",
+        "lines": [
+          "SUT 小部隊戰術訓練系統"
+        ]
+      },
+      {
+        "text": "攜帶式警勤訓練器（BOX）",
+        "lines": [
+          "攜帶式警勤訓練器（BOX）"
+        ]
+      },
+      {
+        "text": "無人機戰術與反制無人機訓練系統",
+        "lines": [
+          "無人機戰術與反制",
+          "無人機訓練系統"
+        ]
+      },
+      {
+        "text": "VR 虛擬滅火訓練系統",
+        "lines": [
+          "VR 虛擬滅火訓練系統"
+        ]
+      },
+      {
+        "text": "核心技術",
+        "lines": [
+          "核心技術"
+        ]
+      },
+      {
+        "text": "XR 延展實境",
+        "lines": [
+          "XR 延展實境"
+        ]
+      },
+      {
+        "text": "AI 智慧模擬",
+        "lines": [
+          "AI 智慧模擬"
+        ]
+      },
+      {
+        "text": "數位場景與模擬建構",
+        "lines": [
+          "數位場景與模擬建構"
+        ]
+      },
+      {
+        "text": "通訊與系統整合",
+        "lines": [
+          "通訊與系統整合"
+        ]
+      },
+      {
+        "text": "解決方案",
+        "lines": [
+          "解決方案"
+        ]
+      },
+      {
+        "text": "軍事模擬",
+        "lines": [
+          "軍事模擬"
+        ]
+      },
+      {
+        "text": "警勤模擬",
+        "lines": [
+          "警勤模擬"
+        ]
+      },
+      {
+        "text": "消防防災",
+        "lines": [
+          "消防防災"
+        ]
+      },
+      {
+        "text": "智慧城市",
+        "lines": [
+          "智慧城市"
+        ]
+      },
+      {
+        "text": "合作夥伴",
+        "lines": [
+          "合作夥伴"
+        ]
+      },
+      {
+        "text": "最新消息",
+        "lines": [
+          "最新消息"
+        ]
+      },
+      {
+        "text": "Big x Reality 參展 SEECAT 2026，展示 MR CQB 與無人載具模擬訓練",
+        "lines": [
+          "Big x Reality 參展",
+          "SEECAT 2026，展示",
+          "MR CQB 與無人載具模擬訓練"
+        ]
+      },
+      {
+        "text": "從教育開始累積應變能力：XR 情境訓練與全民國防",
+        "lines": [
+          "從教育開始累積應變能力：",
+          "XR 情境訓練與全民國防"
+        ]
+      },
+      {
+        "text": "不只是射擊：XR 情境訓練如何培養臨場判斷",
+        "lines": [
+          "不只是射擊：XR 情境",
+          "訓練如何培養臨場判斷"
+        ]
+      },
+      {
+        "text": "下一次訓練，可以從更好的規劃開始。",
+        "lines": [
+          "下一次訓練，可以",
+          "從更好的規劃開始。"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "tw",
+    "width": 390,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "狙擊槍模擬系統",
+        "lines": [
+          "狙擊槍模擬系統"
+        ]
+      },
+      {
+        "text": "精準射擊的訓練，從理解每一項環境變因開始",
+        "lines": [
+          "精準射擊的訓練，從",
+          "理解每一項環境變因開始"
+        ]
+      },
+      {
+        "text": "結合照準、觀測與情境判斷的精準射擊訓練",
+        "lines": [
+          "結合照準、觀測與",
+          "情境判斷的精準射擊訓練"
+        ]
+      },
+      {
+        "text": "實際射擊訓練受到場地限制",
+        "lines": [
+          "實際射擊訓練受到場地限制"
+        ]
+      },
+      {
+        "text": "環境變因增加判斷難度",
+        "lines": [
+          "環境變因增加判斷難度"
+        ]
+      },
+      {
+        "text": "基本瞄準與射擊判斷需要結合",
+        "lines": [
+          "基本瞄準與射擊判斷需要結合"
+        ]
+      },
+      {
+        "text": "訓練需要反覆練習與檢討",
+        "lines": [
+          "訓練需要反覆練習與檢討"
+        ]
+      },
+      {
+        "text": "將瞄準操作與環境判讀，整合至模擬射擊訓練",
+        "lines": [
+          "將瞄準操作與環境判讀，",
+          "整合至模擬射擊訓練"
+        ]
+      },
+      {
+        "text": "瞄準與射擊操作訓練",
+        "lines": [
+          "瞄準與射擊操作訓練"
+        ]
+      },
+      {
+        "text": "距離與環境條件判讀",
+        "lines": [
+          "距離與環境條件判讀"
+        ]
+      },
+      {
+        "text": "多元情境練習",
+        "lines": [
+          "多元情境練習"
+        ]
+      },
+      {
+        "text": "從瞄準操作到環境判讀，建立更完整的射擊訓練基礎",
+        "lines": [
+          "從瞄準操作到環境判讀，",
+          "建立更完整的射擊訓練基礎"
+        ]
+      },
+      {
+        "text": "瞄準操作訓練",
+        "lines": [
+          "瞄準操作訓練"
+        ]
+      },
+      {
+        "text": "目標距離判讀",
+        "lines": [
+          "目標距離判讀"
+        ]
+      },
+      {
+        "text": "風向與環境變因理解",
+        "lines": [
+          "風向與環境變因理解"
+        ]
+      },
+      {
+        "text": "模擬射擊練習",
+        "lines": [
+          "模擬射擊練習"
+        ]
+      },
+      {
+        "text": "射擊表現檢討",
+        "lines": [
+          "射擊表現檢討"
+        ]
+      },
+      {
+        "text": "從操作熟悉到環境判斷，循序建立射擊訓練能力",
+        "lines": [
+          "從操作熟悉到環境判斷，",
+          "循序建立射擊訓練能力"
+        ]
+      },
+      {
+        "text": "熟悉模擬操作",
+        "lines": [
+          "熟悉模擬操作"
+        ]
+      },
+      {
+        "text": "掌握目標與環境條件",
+        "lines": [
+          "掌握目標與環境條件"
+        ]
+      },
+      {
+        "text": "進行模擬射擊",
+        "lines": [
+          "進行模擬射擊"
+        ]
+      },
+      {
+        "text": "檢討訓練表現",
+        "lines": [
+          "檢討訓練表現"
+        ]
+      },
+      {
+        "text": "從基礎瞄準到不同環境條件，安排多元射擊訓練",
+        "lines": [
+          "從基礎瞄準到不同環境",
+          "條件，安排多元射擊訓練"
+        ]
+      },
+      {
+        "text": "基礎瞄準訓練",
+        "lines": [
+          "基礎瞄準訓練"
+        ]
+      },
+      {
+        "text": "不同距離射擊訓練",
+        "lines": [
+          "不同距離射擊訓練"
+        ]
+      },
+      {
+        "text": "環境變因判讀訓練",
+        "lines": [
+          "環境變因判讀訓練"
+        ]
+      },
+      {
+        "text": "綜合模擬射擊訓練",
+        "lines": [
+          "綜合模擬射擊訓練"
+        ]
+      },
+      {
+        "text": "讓精準射擊訓練，擁有更多可控的練習條件",
+        "lines": [
+          "讓精準射擊訓練，擁",
+          "有更多可控的練習條件"
+        ]
+      },
+      {
+        "text": "補充實體射擊課程",
+        "lines": [
+          "補充實體射擊課程"
+        ]
+      },
+      {
+        "text": "增加環境變因的練習機會",
+        "lines": [
+          "增加環境變因的練習機會"
+        ]
+      },
+      {
+        "text": "結合操作與判斷能力",
+        "lines": [
+          "結合操作與判斷能力"
+        ]
+      },
+      {
+        "text": "支援分階段教學安排",
+        "lines": [
+          "支援分階段教學安排"
+        ]
+      },
+      {
+        "text": "從個人射擊能力，延伸至多元軍事訓練",
+        "lines": [
+          "從個人射擊能力，",
+          "延伸至多元軍事訓練"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戰術訓練系統",
+        "lines": [
+          "SUT 小部隊戰術訓練系統"
+        ]
+      },
+      {
+        "text": "機槍模擬系統",
+        "lines": [
+          "機槍模擬系統"
+        ]
+      },
+      {
+        "text": "軍事模擬",
+        "lines": [
+          "軍事模擬"
+        ]
+      },
+      {
+        "text": "常見問題",
+        "lines": [
+          "常見問題"
+        ]
+      },
+      {
+        "text": "狙擊槍模擬系統與一般射擊遊戲有什麼不同？",
+        "lines": [
+          "狙擊槍模擬系統與一般",
+          "射擊遊戲有什麼不同？"
+        ]
+      },
+      {
+        "text": "這套系統主要訓練哪些技能？",
+        "lines": [
+          "這套系統主要訓練哪些技能？"
+        ]
+      },
+      {
+        "text": "狙擊槍模擬訓練可以取代實彈射擊嗎？",
+        "lines": [
+          "狙擊槍模擬訓練可以取代實彈射擊嗎？"
+        ]
+      },
+      {
+        "text": "模擬系統可以練習不同距離的射擊嗎？",
+        "lines": [
+          "模擬系統可以練習不同距離的射擊嗎？"
+        ]
+      },
+      {
+        "text": "這套系統適合哪些單位使用？",
+        "lines": [
+          "這套系統適合哪些單位使用？"
+        ]
+      },
+      {
+        "text": "讓每一次模擬射擊，都成為理解環境與操作的練習",
+        "lines": [
+          "讓每一次模擬射擊，都成",
+          "為理解環境與操作的練習"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "tw",
+    "width": 390,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "最新消息",
+        "lines": [
+          "最新消息"
+        ]
+      },
+      {
+        "text": "Big x Reality 參展 SEECAT 2026，展示 MR CQB 與無人載具模擬訓練",
+        "lines": [
+          "Big x Reality 參展",
+          "SEECAT 2026，展示",
+          "MR CQB 與無人載具模擬訓練"
+        ]
+      },
+      {
+        "text": "從教育開始累積應變能力：XR 情境訓練與全民國防",
+        "lines": [
+          "從教育開始累積應變能力：",
+          "XR 情境訓練與全民國防"
+        ]
+      },
+      {
+        "text": "不只是射擊：XR 情境訓練如何培養臨場判斷",
+        "lines": [
+          "不只是射擊：XR 情境",
+          "訓練如何培養臨場判斷"
+        ]
+      },
+      {
+        "text": "中央社關注 XR 模擬訓練應用：從無人船到小部隊協同",
+        "lines": [
+          "中央社關注 XR 模擬訓練",
+          "應用：從無人船到小部隊協同"
+        ]
+      },
+      {
+        "text": "全球動力科技參與台北教育博覽會，展示 XR 沉浸式情境學習",
+        "lines": [
+          "全球動力科技參與台北教育博",
+          "覽會，展示 XR 沉浸式情境學習"
+        ]
+      },
+      {
+        "text": "第 22 屆模式模擬論壇：全球動力科技展示 XR 無人船與 Nova Tactical XR",
+        "lines": [
+          "第 22 屆模式模擬論壇：",
+          "全球動力科技展示 XR",
+          "無人船與 Nova Tactical XR"
+        ]
+      },
+      {
+        "text": "全球動力科技參展 DSA 2026，展示 SUT 與 MUM-T 協作訓練",
+        "lines": [
+          "全球動力科技參展 DSA 2026，",
+          "展示 SUT 與 MUM-T 協作訓練"
+        ]
+      },
+      {
+        "text": "XR 情境訓練走進松山家商，推動全民國防教育體驗",
+        "lines": [
+          "XR 情境訓練走進松山家",
+          "商，推動全民國防教育體驗"
+        ]
+      },
+      {
+        "text": "全球動力科技台北大安新基地啟用，持續拓展 XR 國防科技應用",
+        "lines": [
+          "全球動力科技台北大安新基地啟",
+          "用，持續拓展 XR 國防科技應用"
+        ]
+      },
+      {
+        "text": "泰國 D&S 2025 國際大展：XR 小部隊戰術訓練系統展現年度成果與突破",
+        "lines": [
+          "泰國 D&S 2025 國際大",
+          "展：XR 小部隊戰術訓練",
+          "系統展現年度成果與突破"
+        ]
+      },
+      {
+        "text": "Big x Reality 登上《GBP Daily News》封面報導",
+        "lines": [
+          "Big x Reality 登上《GBP",
+          "Daily News》封面報導"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "tw",
+    "width": 1440,
+    "route": "",
+    "headings": [
+      {
+        "text": "虛擬訓練．真實應變．守護未來",
+        "lines": [
+          "虛擬訓練．",
+          "真實應變．守護未來"
+        ]
+      },
+      {
+        "text": "以反覆演練，累積專業應變能力。",
+        "lines": [
+          "以反覆演練，累積專業應變能力。"
+        ]
+      },
+      {
+        "text": "安全可控",
+        "lines": [
+          "安全可控"
+        ]
+      },
+      {
+        "text": "反覆演練",
+        "lines": [
+          "反覆演練"
+        ]
+      },
+      {
+        "text": "彈性配置",
+        "lines": [
+          "彈性配置"
+        ]
+      },
+      {
+        "text": "精選產品",
+        "lines": [
+          "精選產品"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戰術訓練系統",
+        "lines": [
+          "SUT 小部隊戰術訓練系統"
+        ]
+      },
+      {
+        "text": "攜帶式警勤訓練器（BOX）",
+        "lines": [
+          "攜帶式警勤訓練",
+          "器（BOX）"
+        ]
+      },
+      {
+        "text": "無人機戰術與反制無人機訓練系統",
+        "lines": [
+          "無人機戰術與反制",
+          "無人機訓練系統"
+        ]
+      },
+      {
+        "text": "VR 虛擬滅火訓練系統",
+        "lines": [
+          "VR 虛擬滅火訓練系統"
+        ]
+      },
+      {
+        "text": "核心技術",
+        "lines": [
+          "核心技術"
+        ]
+      },
+      {
+        "text": "XR 延展實境",
+        "lines": [
+          "XR 延展實境"
+        ]
+      },
+      {
+        "text": "AI 智慧模擬",
+        "lines": [
+          "AI 智慧模擬"
+        ]
+      },
+      {
+        "text": "數位場景與模擬建構",
+        "lines": [
+          "數位場景與模擬建構"
+        ]
+      },
+      {
+        "text": "通訊與系統整合",
+        "lines": [
+          "通訊與系統整合"
+        ]
+      },
+      {
+        "text": "解決方案",
+        "lines": [
+          "解決方案"
+        ]
+      },
+      {
+        "text": "軍事模擬",
+        "lines": [
+          "軍事模擬"
+        ]
+      },
+      {
+        "text": "警勤模擬",
+        "lines": [
+          "警勤模擬"
+        ]
+      },
+      {
+        "text": "消防防災",
+        "lines": [
+          "消防防災"
+        ]
+      },
+      {
+        "text": "智慧城市",
+        "lines": [
+          "智慧城市"
+        ]
+      },
+      {
+        "text": "合作夥伴",
+        "lines": [
+          "合作夥伴"
+        ]
+      },
+      {
+        "text": "最新消息",
+        "lines": [
+          "最新消息"
+        ]
+      },
+      {
+        "text": "Big x Reality 參展 SEECAT 2026，展示 MR CQB 與無人載具模擬訓練",
+        "lines": [
+          "Big x Reality 參展",
+          "SEECAT 2026，展示",
+          "MR CQB 與無人載具模擬訓練"
+        ]
+      },
+      {
+        "text": "從教育開始累積應變能力：XR 情境訓練與全民國防",
+        "lines": [
+          "從教育開始累積應變能力：",
+          "XR 情境訓練與全民國防"
+        ]
+      },
+      {
+        "text": "不只是射擊：XR 情境訓練如何培養臨場判斷",
+        "lines": [
+          "不只是射擊：XR 情境",
+          "訓練如何培養臨場判斷"
+        ]
+      },
+      {
+        "text": "下一次訓練，可以從更好的規劃開始。",
+        "lines": [
+          "下一次訓練，可以從更好的規劃開始。"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "tw",
+    "width": 1440,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "狙擊槍模擬系統",
+        "lines": [
+          "狙擊槍模擬系統"
+        ]
+      },
+      {
+        "text": "精準射擊的訓練，從理解每一項環境變因開始",
+        "lines": [
+          "精準射擊的訓練，從理解每一項環境變因開始"
+        ]
+      },
+      {
+        "text": "結合照準、觀測與情境判斷的精準射擊訓練",
+        "lines": [
+          "結合照準、觀測與",
+          "情境判斷的精準射擊訓練"
+        ]
+      },
+      {
+        "text": "實際射擊訓練受到場地限制",
+        "lines": [
+          "實際射擊訓練受到場地限制"
+        ]
+      },
+      {
+        "text": "環境變因增加判斷難度",
+        "lines": [
+          "環境變因增加判斷難度"
+        ]
+      },
+      {
+        "text": "基本瞄準與射擊判斷需要結合",
+        "lines": [
+          "基本瞄準與射擊判斷需要結合"
+        ]
+      },
+      {
+        "text": "訓練需要反覆練習與檢討",
+        "lines": [
+          "訓練需要反覆練習與檢討"
+        ]
+      },
+      {
+        "text": "將瞄準操作與環境判讀，整合至模擬射擊訓練",
+        "lines": [
+          "將瞄準操作與環境判讀，整合至模擬射擊訓練"
+        ]
+      },
+      {
+        "text": "瞄準與射擊操作訓練",
+        "lines": [
+          "瞄準與射擊操作訓練"
+        ]
+      },
+      {
+        "text": "距離與環境條件判讀",
+        "lines": [
+          "距離與環境條件判讀"
+        ]
+      },
+      {
+        "text": "多元情境練習",
+        "lines": [
+          "多元情境練習"
+        ]
+      },
+      {
+        "text": "從瞄準操作到環境判讀，建立更完整的射擊訓練基礎",
+        "lines": [
+          "從瞄準操作到環境判讀，建立更完整的射擊訓練基礎"
+        ]
+      },
+      {
+        "text": "瞄準操作訓練",
+        "lines": [
+          "瞄準操作訓練"
+        ]
+      },
+      {
+        "text": "目標距離判讀",
+        "lines": [
+          "目標距離判讀"
+        ]
+      },
+      {
+        "text": "風向與環境變因理解",
+        "lines": [
+          "風向與環境變因理解"
+        ]
+      },
+      {
+        "text": "模擬射擊練習",
+        "lines": [
+          "模擬射擊練習"
+        ]
+      },
+      {
+        "text": "射擊表現檢討",
+        "lines": [
+          "射擊表現檢討"
+        ]
+      },
+      {
+        "text": "從操作熟悉到環境判斷，循序建立射擊訓練能力",
+        "lines": [
+          "從操作熟悉到環境判斷，循序建立射擊訓練能力"
+        ]
+      },
+      {
+        "text": "熟悉模擬操作",
+        "lines": [
+          "熟悉模擬操作"
+        ]
+      },
+      {
+        "text": "掌握目標與環境條件",
+        "lines": [
+          "掌握目標與環境條件"
+        ]
+      },
+      {
+        "text": "進行模擬射擊",
+        "lines": [
+          "進行模擬射擊"
+        ]
+      },
+      {
+        "text": "檢討訓練表現",
+        "lines": [
+          "檢討訓練表現"
+        ]
+      },
+      {
+        "text": "從基礎瞄準到不同環境條件，安排多元射擊訓練",
+        "lines": [
+          "從基礎瞄準到不同環境條件，安排多元射擊訓練"
+        ]
+      },
+      {
+        "text": "基礎瞄準訓練",
+        "lines": [
+          "基礎瞄準訓練"
+        ]
+      },
+      {
+        "text": "不同距離射擊訓練",
+        "lines": [
+          "不同距離射擊訓練"
+        ]
+      },
+      {
+        "text": "環境變因判讀訓練",
+        "lines": [
+          "環境變因判讀訓練"
+        ]
+      },
+      {
+        "text": "綜合模擬射擊訓練",
+        "lines": [
+          "綜合模擬射擊訓練"
+        ]
+      },
+      {
+        "text": "讓精準射擊訓練，擁有更多可控的練習條件",
+        "lines": [
+          "讓精準射擊訓練，擁有更多可控的練習條件"
+        ]
+      },
+      {
+        "text": "補充實體射擊課程",
+        "lines": [
+          "補充實體射擊課程"
+        ]
+      },
+      {
+        "text": "增加環境變因的練習機會",
+        "lines": [
+          "增加環境變因的練習機會"
+        ]
+      },
+      {
+        "text": "結合操作與判斷能力",
+        "lines": [
+          "結合操作與判斷能力"
+        ]
+      },
+      {
+        "text": "支援分階段教學安排",
+        "lines": [
+          "支援分階段教學安排"
+        ]
+      },
+      {
+        "text": "從個人射擊能力，延伸至多元軍事訓練",
+        "lines": [
+          "從個人射擊能力，延伸至多元軍事訓練"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戰術訓練系統",
+        "lines": [
+          "SUT 小部隊戰術訓練系統"
+        ]
+      },
+      {
+        "text": "機槍模擬系統",
+        "lines": [
+          "機槍模擬系統"
+        ]
+      },
+      {
+        "text": "軍事模擬",
+        "lines": [
+          "軍事模擬"
+        ]
+      },
+      {
+        "text": "常見問題",
+        "lines": [
+          "常見問題"
+        ]
+      },
+      {
+        "text": "狙擊槍模擬系統與一般射擊遊戲有什麼不同？",
+        "lines": [
+          "狙擊槍模擬系統與一般射擊遊戲有什麼不同？"
+        ]
+      },
+      {
+        "text": "這套系統主要訓練哪些技能？",
+        "lines": [
+          "這套系統主要訓練哪些技能？"
+        ]
+      },
+      {
+        "text": "狙擊槍模擬訓練可以取代實彈射擊嗎？",
+        "lines": [
+          "狙擊槍模擬訓練可以取代實彈射擊嗎？"
+        ]
+      },
+      {
+        "text": "模擬系統可以練習不同距離的射擊嗎？",
+        "lines": [
+          "模擬系統可以練習不同距離的射擊嗎？"
+        ]
+      },
+      {
+        "text": "這套系統適合哪些單位使用？",
+        "lines": [
+          "這套系統適合哪些單位使用？"
+        ]
+      },
+      {
+        "text": "讓每一次模擬射擊，都成為理解環境與操作的練習",
+        "lines": [
+          "讓每一次模擬射擊，都成",
+          "為理解環境與操作的練習"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "tw",
+    "width": 1440,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "最新消息",
+        "lines": [
+          "最新消息"
+        ]
+      },
+      {
+        "text": "Big x Reality 參展 SEECAT 2026，展示 MR CQB 與無人載具模擬訓練",
+        "lines": [
+          "Big x Reality 參展",
+          "SEECAT 2026，展示",
+          "MR CQB 與無人載具模擬訓練"
+        ]
+      },
+      {
+        "text": "從教育開始累積應變能力：XR 情境訓練與全民國防",
+        "lines": [
+          "從教育開始累積應變能力：XR 情境訓練與全民國防"
+        ]
+      },
+      {
+        "text": "不只是射擊：XR 情境訓練如何培養臨場判斷",
+        "lines": [
+          "不只是射擊：XR 情境訓練如何培養臨場判斷"
+        ]
+      },
+      {
+        "text": "中央社關注 XR 模擬訓練應用：從無人船到小部隊協同",
+        "lines": [
+          "中央社關注 XR 模擬訓練應用：從無人船到小部隊協同"
+        ]
+      },
+      {
+        "text": "全球動力科技參與台北教育博覽會，展示 XR 沉浸式情境學習",
+        "lines": [
+          "全球動力科技參與台北教育博覽會，展示 XR 沉浸式情境學習"
+        ]
+      },
+      {
+        "text": "第 22 屆模式模擬論壇：全球動力科技展示 XR 無人船與 Nova Tactical XR",
+        "lines": [
+          "第 22 屆模式模擬論壇：全球動力科技展示 XR 無人船與 Nova Tactical XR"
+        ]
+      },
+      {
+        "text": "全球動力科技參展 DSA 2026，展示 SUT 與 MUM-T 協作訓練",
+        "lines": [
+          "全球動力科技參展 DSA 2026，展示 SUT 與 MUM-T 協作訓練"
+        ]
+      },
+      {
+        "text": "XR 情境訓練走進松山家商，推動全民國防教育體驗",
+        "lines": [
+          "XR 情境訓練走進松山家商，推動全民國防教育體驗"
+        ]
+      },
+      {
+        "text": "全球動力科技台北大安新基地啟用，持續拓展 XR 國防科技應用",
+        "lines": [
+          "全球動力科技台北大安新基地啟用，持續拓展 XR 國防科技應用"
+        ]
+      },
+      {
+        "text": "泰國 D&S 2025 國際大展：XR 小部隊戰術訓練系統展現年度成果與突破",
+        "lines": [
+          "泰國 D&S 2025 國際大展：XR 小部隊戰術訓練系統展現年度成果與突破"
+        ]
+      },
+      {
+        "text": "Big x Reality 登上《GBP Daily News》封面報導",
+        "lines": [
+          "Big x Reality 登上《GBP Daily News》封面報導"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "route": "",
+    "headings": [
+      {
+        "text": "Virtual Training. Real Response. Protecting the Future.",
+        "lines": [
+          "Virtual Training.",
+          "Real Response.",
+          "Protecting",
+          "the Future."
+        ]
+      },
+      {
+        "text": "Build professional response skills through repeated practice.",
+        "lines": [
+          "Build professional",
+          "response",
+          "skills through",
+          "repeated practice."
+        ]
+      },
+      {
+        "text": "Safe and Controlled",
+        "lines": [
+          "Safe and Controlled"
+        ]
+      },
+      {
+        "text": "Repeatable Practice",
+        "lines": [
+          "Repeatable Practice"
+        ]
+      },
+      {
+        "text": "Flexible Configuration",
+        "lines": [
+          "Flexible Configuration"
+        ]
+      },
+      {
+        "text": "Featured Products",
+        "lines": [
+          "Featured Products"
+        ]
+      },
+      {
+        "text": "SUT Small Unit Tactical Training System",
+        "lines": [
+          "SUT Small",
+          "Unit Tactical",
+          "Training System"
+        ]
+      },
+      {
+        "text": "Portable Police Training Unit (BOX)",
+        "lines": [
+          "Portable Police",
+          "Training Unit (BOX)"
+        ]
+      },
+      {
+        "text": "Drone Tactics and Counter-Drone Training System",
+        "lines": [
+          "Drone Tactics and",
+          "Counter-Drone",
+          "Training System"
+        ]
+      },
+      {
+        "text": "VR Fire Extinguisher Training System",
+        "lines": [
+          "VR Fire Extinguisher",
+          "Training System"
+        ]
+      },
+      {
+        "text": "Core Technology",
+        "lines": [
+          "Core Technology"
+        ]
+      },
+      {
+        "text": "Extended Reality (XR)",
+        "lines": [
+          "Extended Reality (XR)"
+        ]
+      },
+      {
+        "text": "AI-Enhanced Simulation",
+        "lines": [
+          "AI-Enhanced",
+          "Simulation"
+        ]
+      },
+      {
+        "text": "Digital Environments and Simulation Development",
+        "lines": [
+          "Digital Environments",
+          "and Simulation",
+          "Development"
+        ]
+      },
+      {
+        "text": "Communication & System Integration",
+        "lines": [
+          "Communication &",
+          "System Integration"
+        ]
+      },
+      {
+        "text": "Solutions",
+        "lines": [
+          "Solutions"
+        ]
+      },
+      {
+        "text": "Military Simulation",
+        "lines": [
+          "Military Simulation"
+        ]
+      },
+      {
+        "text": "Police Simulation",
+        "lines": [
+          "Police Simulation"
+        ]
+      },
+      {
+        "text": "Fire & Disaster Prevention",
+        "lines": [
+          "Fire & Disaster",
+          "Prevention"
+        ]
+      },
+      {
+        "text": "Smart City",
+        "lines": [
+          "Smart City"
+        ]
+      },
+      {
+        "text": "Partners",
+        "lines": [
+          "Partners"
+        ]
+      },
+      {
+        "text": "News",
+        "lines": [
+          "News"
+        ]
+      },
+      {
+        "text": "Big x Reality Showcases MR CQB and Unmanned-System Simulation at SEECAT 2026",
+        "lines": [
+          "Big x Reality Showcases",
+          "MR CQB and Unmanned-",
+          "System Simulation",
+          "at SEECAT 2026"
+        ]
+      },
+      {
+        "text": "Building Readiness Through Education: XR Scenario Training and Civil Defense",
+        "lines": [
+          "Building Readiness",
+          "Through Education:",
+          "XR Scenario Training",
+          "and Civil Defense"
+        ]
+      },
+      {
+        "text": "Beyond Marksmanship: Training Judgment with XR Scenarios",
+        "lines": [
+          "Beyond Marksmanship:",
+          "Training Judgment",
+          "with XR Scenarios"
+        ]
+      },
+      {
+        "text": "Effective training starts with considered planning.",
+        "lines": [
+          "Effective training",
+          "starts with",
+          "considered",
+          "planning."
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "Sniper Rifle Simulation System",
+        "lines": [
+          "Sniper Rifle",
+          "Simulation System"
+        ]
+      },
+      {
+        "text": "Precision Shooting Training Starts with Understanding Every Environmental Variable",
+        "lines": [
+          "Precision Shooting",
+          "Training Starts with",
+          "Understanding",
+          "Every",
+          "Environmental",
+          "Variable"
+        ]
+      },
+      {
+        "text": "Precision Shooting Is More Than Putting the Reticle on the Target",
+        "lines": [
+          "Precision Shooting",
+          "Is More Than",
+          "Putting the Reticle",
+          "on the Target"
+        ]
+      },
+      {
+        "text": "Live Shooting Training Is Limited by the Range",
+        "lines": [
+          "Live Shooting",
+          "Training Is Limited",
+          "by the Range"
+        ]
+      },
+      {
+        "text": "Environmental Variables Make Judgement Harder",
+        "lines": [
+          "Environmental",
+          "Variables Make",
+          "Judgement Harder"
+        ]
+      },
+      {
+        "text": "Basic Aiming Must Be Combined with Shooting Judgement",
+        "lines": [
+          "Basic Aiming Must",
+          "Be Combined with",
+          "Shooting Judgement"
+        ]
+      },
+      {
+        "text": "Training Requires Repeated Practice and Review",
+        "lines": [
+          "Training Requires",
+          "Repeated Practice",
+          "and Review"
+        ]
+      },
+      {
+        "text": "Bringing Aiming and Environmental Interpretation Together in Simulated Shooting Training",
+        "lines": [
+          "Bringing Aiming",
+          "and Environmental",
+          "Interpretation",
+          "Together in",
+          "Simulated",
+          "Shooting Training"
+        ]
+      },
+      {
+        "text": "Aiming and Shooting Operation Training",
+        "lines": [
+          "Aiming and Shooting",
+          "Operation Training"
+        ]
+      },
+      {
+        "text": "Interpreting Distance and Environmental Conditions",
+        "lines": [
+          "Interpreting Distance",
+          "and Environmental",
+          "Conditions"
+        ]
+      },
+      {
+        "text": "Practice in Varied Scenarios",
+        "lines": [
+          "Practice in",
+          "Varied Scenarios"
+        ]
+      },
+      {
+        "text": "From Aiming to Environmental Interpretation, a More Complete Foundation for Shooting Training",
+        "lines": [
+          "From Aiming to",
+          "Environmental",
+          "Interpretation, a",
+          "More Complete",
+          "Foundation for",
+          "Shooting Training"
+        ]
+      },
+      {
+        "text": "Aiming Operation Training",
+        "lines": [
+          "Aiming Operation",
+          "Training"
+        ]
+      },
+      {
+        "text": "Target Distance Interpretation",
+        "lines": [
+          "Target Distance",
+          "Interpretation"
+        ]
+      },
+      {
+        "text": "Understanding Wind Direction and Environmental Variables",
+        "lines": [
+          "Understanding",
+          "Wind Direction and",
+          "Environmental",
+          "Variables"
+        ]
+      },
+      {
+        "text": "Simulated Shooting Practice",
+        "lines": [
+          "Simulated",
+          "Shooting Practice"
+        ]
+      },
+      {
+        "text": "Shooting Performance Review",
+        "lines": [
+          "Shooting",
+          "Performance",
+          "Review"
+        ]
+      },
+      {
+        "text": "From Familiarisation to Environmental Judgement, Building Shooting Skill Step by Step",
+        "lines": [
+          "From",
+          "Familiarisation",
+          "to Environmental",
+          "Judgement,",
+          "Building Shooting",
+          "Skill Step by Step"
+        ]
+      },
+      {
+        "text": "Become Familiar with the Simulator",
+        "lines": [
+          "Become Familiar",
+          "with the Simulator"
+        ]
+      },
+      {
+        "text": "Assess the Target and Environmental Conditions",
+        "lines": [
+          "Assess the Target",
+          "and Environmental",
+          "Conditions"
+        ]
+      },
+      {
+        "text": "Conduct Simulated Shooting",
+        "lines": [
+          "Conduct Simulated",
+          "Shooting"
+        ]
+      },
+      {
+        "text": "Review Training Performance",
+        "lines": [
+          "Review Training",
+          "Performance"
+        ]
+      },
+      {
+        "text": "Varied Shooting Training, from Basic Aiming to Different Environmental Conditions",
+        "lines": [
+          "Varied Shooting",
+          "Training, from Basic",
+          "Aiming to Different",
+          "Environmental",
+          "Conditions"
+        ]
+      },
+      {
+        "text": "Basic Aiming Training",
+        "lines": [
+          "Basic Aiming Training"
+        ]
+      },
+      {
+        "text": "Shooting Training at Different Distances",
+        "lines": [
+          "Shooting Training at",
+          "Different Distances"
+        ]
+      },
+      {
+        "text": "Environmental Variable Interpretation Training",
+        "lines": [
+          "Environmental Variable",
+          "Interpretation Training"
+        ]
+      },
+      {
+        "text": "Combined Simulated Shooting Training",
+        "lines": [
+          "Combined Simulated",
+          "Shooting Training"
+        ]
+      },
+      {
+        "text": "More Controllable Practice Conditions for Precision Shooting Training",
+        "lines": [
+          "More Controllable",
+          "Practice Conditions",
+          "for Precision",
+          "Shooting Training"
+        ]
+      },
+      {
+        "text": "Supplementing Live Shooting Courses",
+        "lines": [
+          "Supplementing Live",
+          "Shooting Courses"
+        ]
+      },
+      {
+        "text": "More Opportunities to Practise with Environmental Variables",
+        "lines": [
+          "More Opportunities",
+          "to Practise with",
+          "Environmental Variables"
+        ]
+      },
+      {
+        "text": "Combining Operation and Judgement",
+        "lines": [
+          "Combining Operation",
+          "and Judgement"
+        ]
+      },
+      {
+        "text": "Supporting Staged Instruction",
+        "lines": [
+          "Supporting",
+          "Staged Instruction"
+        ]
+      },
+      {
+        "text": "From Individual Shooting Skill to Varied Military Training",
+        "lines": [
+          "From Individual",
+          "Shooting",
+          "Skill to Varied",
+          "Military Training"
+        ]
+      },
+      {
+        "text": "SUT Small Unit Tactical Training System",
+        "lines": [
+          "SUT Small Unit Tactical",
+          "Training System"
+        ]
+      },
+      {
+        "text": "Machine Gun Simulation System",
+        "lines": [
+          "Machine Gun",
+          "Simulation System"
+        ]
+      },
+      {
+        "text": "Military Simulation",
+        "lines": [
+          "Military Simulation"
+        ]
+      },
+      {
+        "text": "Frequently Asked Questions",
+        "lines": [
+          "Frequently",
+          "Asked Questions"
+        ]
+      },
+      {
+        "text": "How is the Sniper Rifle Simulation System different from an ordinary shooting game?",
+        "lines": [
+          "How is the Sniper Rifle",
+          "Simulation System",
+          "different from an",
+          "ordinary shooting game?"
+        ]
+      },
+      {
+        "text": "What skills does this system mainly train?",
+        "lines": [
+          "What skills does this",
+          "system mainly train?"
+        ]
+      },
+      {
+        "text": "Can sniper rifle simulation training replace live-fire shooting?",
+        "lines": [
+          "Can sniper rifle",
+          "simulation training",
+          "replace live-fire shooting?"
+        ]
+      },
+      {
+        "text": "Can the simulation system be used to practise shooting at different distances?",
+        "lines": [
+          "Can the simulation system",
+          "be used to practise shooting",
+          "at different distances?"
+        ]
+      },
+      {
+        "text": "Which units is this system suitable for?",
+        "lines": [
+          "Which units is this",
+          "system suitable for?"
+        ]
+      },
+      {
+        "text": "Making Every Simulated Shot Practice in Understanding the Environment and Operation",
+        "lines": [
+          "Making Every",
+          "Simulated Shot",
+          "Practice in",
+          "Understanding",
+          "the Environment",
+          "and Operation"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "News",
+        "lines": [
+          "News"
+        ]
+      },
+      {
+        "text": "Big x Reality Showcases MR CQB and Unmanned-System Simulation at SEECAT 2026",
+        "lines": [
+          "Big x Reality",
+          "Showcases MR CQB",
+          "and Unmanned-",
+          "System Simulation",
+          "at SEECAT 2026"
+        ]
+      },
+      {
+        "text": "Building Readiness Through Education: XR Scenario Training and Civil Defense",
+        "lines": [
+          "Building Readiness",
+          "Through Education:",
+          "XR Scenario Training",
+          "and Civil Defense"
+        ]
+      },
+      {
+        "text": "Beyond Marksmanship: Training Judgment with XR Scenarios",
+        "lines": [
+          "Beyond Marksmanship:",
+          "Training Judgment",
+          "with XR Scenarios"
+        ]
+      },
+      {
+        "text": "CNA Highlights XR Simulation Training, from USV Operations to Small-Unit Coordination",
+        "lines": [
+          "CNA Highlights XR",
+          "Simulation Training,",
+          "from USV Operations to",
+          "Small-Unit Coordination"
+        ]
+      },
+      {
+        "text": "Big x Reality Presents Immersive XR Learning at Taipei Education Expo 2026",
+        "lines": [
+          "Big x Reality Presents",
+          "Immersive XR",
+          "Learning at Taipei",
+          "Education Expo 2026"
+        ]
+      },
+      {
+        "text": "Big x Reality Presents XR USV Training and Nova Tactical XR at the 22nd Simulation Forum",
+        "lines": [
+          "Big x Reality Presents",
+          "XR USV Training and",
+          "Nova Tactical XR at the",
+          "22nd Simulation Forum"
+        ]
+      },
+      {
+        "text": "Big x Reality to Showcase SUT and MUM-T Training at DSA 2026",
+        "lines": [
+          "Big x Reality to Showcase",
+          "SUT and MUM-T",
+          "Training at DSA 2026"
+        ]
+      },
+      {
+        "text": "XR Scenario Training Comes to Songshan Vocational School",
+        "lines": [
+          "XR Scenario Training",
+          "Comes to Songshan",
+          "Vocational School"
+        ]
+      },
+      {
+        "text": "Big x Reality Opens New Taipei Headquarters to Advance XR Defense Technology",
+        "lines": [
+          "Big x Reality Opens New",
+          "Taipei Headquarters",
+          "to Advance XR",
+          "Defense Technology"
+        ]
+      },
+      {
+        "text": "XR Small Unit Tactical Training at Defense & Security 2025 in Bangkok",
+        "lines": [
+          "XR Small Unit Tactical",
+          "Training at Defense &",
+          "Security 2025 in Bangkok"
+        ]
+      },
+      {
+        "text": "Big x Reality Featured on the Cover of GBP Daily News",
+        "lines": [
+          "Big x Reality Featured",
+          "on the Cover of",
+          "GBP Daily News"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "route": "",
+    "headings": [
+      {
+        "text": "Virtual Training. Real Response. Protecting the Future.",
+        "lines": [
+          "Virtual Training.",
+          "Real Response.",
+          "Protecting the Future."
+        ]
+      },
+      {
+        "text": "Build professional response skills through repeated practice.",
+        "lines": [
+          "Build professional",
+          "response skills through",
+          "repeated practice."
+        ]
+      },
+      {
+        "text": "Safe and Controlled",
+        "lines": [
+          "Safe and Controlled"
+        ]
+      },
+      {
+        "text": "Repeatable Practice",
+        "lines": [
+          "Repeatable Practice"
+        ]
+      },
+      {
+        "text": "Flexible Configuration",
+        "lines": [
+          "Flexible Configuration"
+        ]
+      },
+      {
+        "text": "Featured Products",
+        "lines": [
+          "Featured Products"
+        ]
+      },
+      {
+        "text": "SUT Small Unit Tactical Training System",
+        "lines": [
+          "SUT Small Unit Tactical",
+          "Training System"
+        ]
+      },
+      {
+        "text": "Portable Police Training Unit (BOX)",
+        "lines": [
+          "Portable Police",
+          "Training Unit (BOX)"
+        ]
+      },
+      {
+        "text": "Drone Tactics and Counter-Drone Training System",
+        "lines": [
+          "Drone Tactics and Counter-",
+          "Drone Training System"
+        ]
+      },
+      {
+        "text": "VR Fire Extinguisher Training System",
+        "lines": [
+          "VR Fire Extinguisher",
+          "Training System"
+        ]
+      },
+      {
+        "text": "Core Technology",
+        "lines": [
+          "Core Technology"
+        ]
+      },
+      {
+        "text": "Extended Reality (XR)",
+        "lines": [
+          "Extended Reality (XR)"
+        ]
+      },
+      {
+        "text": "AI-Enhanced Simulation",
+        "lines": [
+          "AI-Enhanced Simulation"
+        ]
+      },
+      {
+        "text": "Digital Environments and Simulation Development",
+        "lines": [
+          "Digital Environments and",
+          "Simulation Development"
+        ]
+      },
+      {
+        "text": "Communication & System Integration",
+        "lines": [
+          "Communication &",
+          "System Integration"
+        ]
+      },
+      {
+        "text": "Solutions",
+        "lines": [
+          "Solutions"
+        ]
+      },
+      {
+        "text": "Military Simulation",
+        "lines": [
+          "Military Simulation"
+        ]
+      },
+      {
+        "text": "Police Simulation",
+        "lines": [
+          "Police Simulation"
+        ]
+      },
+      {
+        "text": "Fire & Disaster Prevention",
+        "lines": [
+          "Fire & Disaster Prevention"
+        ]
+      },
+      {
+        "text": "Smart City",
+        "lines": [
+          "Smart City"
+        ]
+      },
+      {
+        "text": "Partners",
+        "lines": [
+          "Partners"
+        ]
+      },
+      {
+        "text": "News",
+        "lines": [
+          "News"
+        ]
+      },
+      {
+        "text": "Big x Reality Showcases MR CQB and Unmanned-System Simulation at SEECAT 2026",
+        "lines": [
+          "Big x Reality Showcases",
+          "MR CQB and Unmanned-System",
+          "Simulation at SEECAT 2026"
+        ]
+      },
+      {
+        "text": "Building Readiness Through Education: XR Scenario Training and Civil Defense",
+        "lines": [
+          "Building Readiness Through",
+          "Education: XR Scenario",
+          "Training and Civil Defense"
+        ]
+      },
+      {
+        "text": "Beyond Marksmanship: Training Judgment with XR Scenarios",
+        "lines": [
+          "Beyond Marksmanship: Training",
+          "Judgment with XR Scenarios"
+        ]
+      },
+      {
+        "text": "Effective training starts with considered planning.",
+        "lines": [
+          "Effective training",
+          "starts with",
+          "considered planning."
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "Sniper Rifle Simulation System",
+        "lines": [
+          "Sniper Rifle",
+          "Simulation System"
+        ]
+      },
+      {
+        "text": "Precision Shooting Training Starts with Understanding Every Environmental Variable",
+        "lines": [
+          "Precision Shooting",
+          "Training Starts with",
+          "Understanding Every",
+          "Environmental Variable"
+        ]
+      },
+      {
+        "text": "Precision Shooting Is More Than Putting the Reticle on the Target",
+        "lines": [
+          "Precision Shooting Is",
+          "More Than Putting the",
+          "Reticle on the Target"
+        ]
+      },
+      {
+        "text": "Live Shooting Training Is Limited by the Range",
+        "lines": [
+          "Live Shooting Training",
+          "Is Limited by the Range"
+        ]
+      },
+      {
+        "text": "Environmental Variables Make Judgement Harder",
+        "lines": [
+          "Environmental Variables",
+          "Make Judgement Harder"
+        ]
+      },
+      {
+        "text": "Basic Aiming Must Be Combined with Shooting Judgement",
+        "lines": [
+          "Basic Aiming Must",
+          "Be Combined with",
+          "Shooting Judgement"
+        ]
+      },
+      {
+        "text": "Training Requires Repeated Practice and Review",
+        "lines": [
+          "Training Requires Repeated",
+          "Practice and Review"
+        ]
+      },
+      {
+        "text": "Bringing Aiming and Environmental Interpretation Together in Simulated Shooting Training",
+        "lines": [
+          "Bringing Aiming",
+          "and Environmental",
+          "Interpretation",
+          "Together in Simulated",
+          "Shooting Training"
+        ]
+      },
+      {
+        "text": "Aiming and Shooting Operation Training",
+        "lines": [
+          "Aiming and Shooting",
+          "Operation Training"
+        ]
+      },
+      {
+        "text": "Interpreting Distance and Environmental Conditions",
+        "lines": [
+          "Interpreting Distance and",
+          "Environmental Conditions"
+        ]
+      },
+      {
+        "text": "Practice in Varied Scenarios",
+        "lines": [
+          "Practice in Varied Scenarios"
+        ]
+      },
+      {
+        "text": "From Aiming to Environmental Interpretation, a More Complete Foundation for Shooting Training",
+        "lines": [
+          "From Aiming to",
+          "Environmental",
+          "Interpretation, a More",
+          "Complete Foundation",
+          "for Shooting Training"
+        ]
+      },
+      {
+        "text": "Aiming Operation Training",
+        "lines": [
+          "Aiming Operation Training"
+        ]
+      },
+      {
+        "text": "Target Distance Interpretation",
+        "lines": [
+          "Target Distance",
+          "Interpretation"
+        ]
+      },
+      {
+        "text": "Understanding Wind Direction and Environmental Variables",
+        "lines": [
+          "Understanding",
+          "Wind Direction and",
+          "Environmental Variables"
+        ]
+      },
+      {
+        "text": "Simulated Shooting Practice",
+        "lines": [
+          "Simulated",
+          "Shooting Practice"
+        ]
+      },
+      {
+        "text": "Shooting Performance Review",
+        "lines": [
+          "Shooting",
+          "Performance Review"
+        ]
+      },
+      {
+        "text": "From Familiarisation to Environmental Judgement, Building Shooting Skill Step by Step",
+        "lines": [
+          "From Familiarisation",
+          "to Environmental",
+          "Judgement,",
+          "Building Shooting",
+          "Skill Step by Step"
+        ]
+      },
+      {
+        "text": "Become Familiar with the Simulator",
+        "lines": [
+          "Become Familiar",
+          "with the Simulator"
+        ]
+      },
+      {
+        "text": "Assess the Target and Environmental Conditions",
+        "lines": [
+          "Assess the Target and",
+          "Environmental Conditions"
+        ]
+      },
+      {
+        "text": "Conduct Simulated Shooting",
+        "lines": [
+          "Conduct Simulated",
+          "Shooting"
+        ]
+      },
+      {
+        "text": "Review Training Performance",
+        "lines": [
+          "Review Training",
+          "Performance"
+        ]
+      },
+      {
+        "text": "Varied Shooting Training, from Basic Aiming to Different Environmental Conditions",
+        "lines": [
+          "Varied Shooting",
+          "Training, from Basic",
+          "Aiming to Different",
+          "Environmental",
+          "Conditions"
+        ]
+      },
+      {
+        "text": "Basic Aiming Training",
+        "lines": [
+          "Basic Aiming Training"
+        ]
+      },
+      {
+        "text": "Shooting Training at Different Distances",
+        "lines": [
+          "Shooting Training at",
+          "Different Distances"
+        ]
+      },
+      {
+        "text": "Environmental Variable Interpretation Training",
+        "lines": [
+          "Environmental Variable",
+          "Interpretation Training"
+        ]
+      },
+      {
+        "text": "Combined Simulated Shooting Training",
+        "lines": [
+          "Combined Simulated",
+          "Shooting Training"
+        ]
+      },
+      {
+        "text": "More Controllable Practice Conditions for Precision Shooting Training",
+        "lines": [
+          "More Controllable",
+          "Practice Conditions",
+          "for Precision",
+          "Shooting Training"
+        ]
+      },
+      {
+        "text": "Supplementing Live Shooting Courses",
+        "lines": [
+          "Supplementing Live",
+          "Shooting Courses"
+        ]
+      },
+      {
+        "text": "More Opportunities to Practise with Environmental Variables",
+        "lines": [
+          "More Opportunities to Practise",
+          "with Environmental Variables"
+        ]
+      },
+      {
+        "text": "Combining Operation and Judgement",
+        "lines": [
+          "Combining Operation",
+          "and Judgement"
+        ]
+      },
+      {
+        "text": "Supporting Staged Instruction",
+        "lines": [
+          "Supporting Staged Instruction"
+        ]
+      },
+      {
+        "text": "From Individual Shooting Skill to Varied Military Training",
+        "lines": [
+          "From Individual",
+          "Shooting Skill to",
+          "Varied Military Training"
+        ]
+      },
+      {
+        "text": "SUT Small Unit Tactical Training System",
+        "lines": [
+          "SUT Small Unit Tactical",
+          "Training System"
+        ]
+      },
+      {
+        "text": "Machine Gun Simulation System",
+        "lines": [
+          "Machine Gun",
+          "Simulation System"
+        ]
+      },
+      {
+        "text": "Military Simulation",
+        "lines": [
+          "Military Simulation"
+        ]
+      },
+      {
+        "text": "Frequently Asked Questions",
+        "lines": [
+          "Frequently",
+          "Asked Questions"
+        ]
+      },
+      {
+        "text": "How is the Sniper Rifle Simulation System different from an ordinary shooting game?",
+        "lines": [
+          "How is the Sniper Rifle Simulation",
+          "System different from an",
+          "ordinary shooting game?"
+        ]
+      },
+      {
+        "text": "What skills does this system mainly train?",
+        "lines": [
+          "What skills does this",
+          "system mainly train?"
+        ]
+      },
+      {
+        "text": "Can sniper rifle simulation training replace live-fire shooting?",
+        "lines": [
+          "Can sniper rifle simulation",
+          "training replace live-fire shooting?"
+        ]
+      },
+      {
+        "text": "Can the simulation system be used to practise shooting at different distances?",
+        "lines": [
+          "Can the simulation system",
+          "be used to practise shooting",
+          "at different distances?"
+        ]
+      },
+      {
+        "text": "Which units is this system suitable for?",
+        "lines": [
+          "Which units is this system suitable for?"
+        ]
+      },
+      {
+        "text": "Making Every Simulated Shot Practice in Understanding the Environment and Operation",
+        "lines": [
+          "Making Every Simulated",
+          "Shot Practice in",
+          "Understanding",
+          "the Environment",
+          "and Operation"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "News",
+        "lines": [
+          "News"
+        ]
+      },
+      {
+        "text": "Big x Reality Showcases MR CQB and Unmanned-System Simulation at SEECAT 2026",
+        "lines": [
+          "Big x Reality Showcases",
+          "MR CQB and Unmanned-",
+          "System Simulation",
+          "at SEECAT 2026"
+        ]
+      },
+      {
+        "text": "Building Readiness Through Education: XR Scenario Training and Civil Defense",
+        "lines": [
+          "Building Readiness Through",
+          "Education: XR Scenario",
+          "Training and Civil Defense"
+        ]
+      },
+      {
+        "text": "Beyond Marksmanship: Training Judgment with XR Scenarios",
+        "lines": [
+          "Beyond Marksmanship: Training",
+          "Judgment with XR Scenarios"
+        ]
+      },
+      {
+        "text": "CNA Highlights XR Simulation Training, from USV Operations to Small-Unit Coordination",
+        "lines": [
+          "CNA Highlights XR Simulation",
+          "Training, from USV Operations",
+          "to Small-Unit Coordination"
+        ]
+      },
+      {
+        "text": "Big x Reality Presents Immersive XR Learning at Taipei Education Expo 2026",
+        "lines": [
+          "Big x Reality Presents",
+          "Immersive XR Learning at",
+          "Taipei Education Expo 2026"
+        ]
+      },
+      {
+        "text": "Big x Reality Presents XR USV Training and Nova Tactical XR at the 22nd Simulation Forum",
+        "lines": [
+          "Big x Reality Presents XR USV",
+          "Training and Nova Tactical XR",
+          "at the 22nd Simulation Forum"
+        ]
+      },
+      {
+        "text": "Big x Reality to Showcase SUT and MUM-T Training at DSA 2026",
+        "lines": [
+          "Big x Reality to Showcase SUT",
+          "and MUM-T Training at DSA 2026"
+        ]
+      },
+      {
+        "text": "XR Scenario Training Comes to Songshan Vocational School",
+        "lines": [
+          "XR Scenario Training Comes to",
+          "Songshan Vocational School"
+        ]
+      },
+      {
+        "text": "Big x Reality Opens New Taipei Headquarters to Advance XR Defense Technology",
+        "lines": [
+          "Big x Reality Opens New Taipei",
+          "Headquarters to Advance",
+          "XR Defense Technology"
+        ]
+      },
+      {
+        "text": "XR Small Unit Tactical Training at Defense & Security 2025 in Bangkok",
+        "lines": [
+          "XR Small Unit Tactical",
+          "Training at Defense &",
+          "Security 2025 in Bangkok"
+        ]
+      },
+      {
+        "text": "Big x Reality Featured on the Cover of GBP Daily News",
+        "lines": [
+          "Big x Reality Featured on",
+          "the Cover of GBP Daily News"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "route": "",
+    "headings": [
+      {
+        "text": "Virtual Training. Real Response. Protecting the Future.",
+        "lines": [
+          "Virtual Training.",
+          "Real Response.",
+          "Protecting",
+          "the Future."
+        ]
+      },
+      {
+        "text": "Build professional response skills through repeated practice.",
+        "lines": [
+          "Build professional",
+          "response skills through",
+          "repeated practice."
+        ]
+      },
+      {
+        "text": "Safe and Controlled",
+        "lines": [
+          "Safe and Controlled"
+        ]
+      },
+      {
+        "text": "Repeatable Practice",
+        "lines": [
+          "Repeatable Practice"
+        ]
+      },
+      {
+        "text": "Flexible Configuration",
+        "lines": [
+          "Flexible",
+          "Configuration"
+        ]
+      },
+      {
+        "text": "Featured Products",
+        "lines": [
+          "Featured Products"
+        ]
+      },
+      {
+        "text": "SUT Small Unit Tactical Training System",
+        "lines": [
+          "SUT Small Unit Tactical Training System"
+        ]
+      },
+      {
+        "text": "Portable Police Training Unit (BOX)",
+        "lines": [
+          "Portable Police",
+          "Training Unit (BOX)"
+        ]
+      },
+      {
+        "text": "Drone Tactics and Counter-Drone Training System",
+        "lines": [
+          "Drone Tactics and",
+          "Counter-Drone",
+          "Training System"
+        ]
+      },
+      {
+        "text": "VR Fire Extinguisher Training System",
+        "lines": [
+          "VR Fire Extinguisher",
+          "Training System"
+        ]
+      },
+      {
+        "text": "Core Technology",
+        "lines": [
+          "Core Technology"
+        ]
+      },
+      {
+        "text": "Extended Reality (XR)",
+        "lines": [
+          "Extended Reality (XR)"
+        ]
+      },
+      {
+        "text": "AI-Enhanced Simulation",
+        "lines": [
+          "AI-Enhanced Simulation"
+        ]
+      },
+      {
+        "text": "Digital Environments and Simulation Development",
+        "lines": [
+          "Digital Environments and",
+          "Simulation Development"
+        ]
+      },
+      {
+        "text": "Communication & System Integration",
+        "lines": [
+          "Communication &",
+          "System Integration"
+        ]
+      },
+      {
+        "text": "Solutions",
+        "lines": [
+          "Solutions"
+        ]
+      },
+      {
+        "text": "Military Simulation",
+        "lines": [
+          "Military Simulation"
+        ]
+      },
+      {
+        "text": "Police Simulation",
+        "lines": [
+          "Police Simulation"
+        ]
+      },
+      {
+        "text": "Fire & Disaster Prevention",
+        "lines": [
+          "Fire & Disaster",
+          "Prevention"
+        ]
+      },
+      {
+        "text": "Smart City",
+        "lines": [
+          "Smart City"
+        ]
+      },
+      {
+        "text": "Partners",
+        "lines": [
+          "Partners"
+        ]
+      },
+      {
+        "text": "News",
+        "lines": [
+          "News"
+        ]
+      },
+      {
+        "text": "Big x Reality Showcases MR CQB and Unmanned-System Simulation at SEECAT 2026",
+        "lines": [
+          "Big x Reality Showcases",
+          "MR CQB and Unmanned-System",
+          "Simulation at SEECAT 2026"
+        ]
+      },
+      {
+        "text": "Building Readiness Through Education: XR Scenario Training and Civil Defense",
+        "lines": [
+          "Building Readiness Through",
+          "Education: XR Scenario",
+          "Training and Civil Defense"
+        ]
+      },
+      {
+        "text": "Beyond Marksmanship: Training Judgment with XR Scenarios",
+        "lines": [
+          "Beyond Marksmanship: Training",
+          "Judgment with XR Scenarios"
+        ]
+      },
+      {
+        "text": "Effective training starts with considered planning.",
+        "lines": [
+          "Effective training starts",
+          "with considered planning."
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "Sniper Rifle Simulation System",
+        "lines": [
+          "Sniper Rifle",
+          "Simulation System"
+        ]
+      },
+      {
+        "text": "Precision Shooting Training Starts with Understanding Every Environmental Variable",
+        "lines": [
+          "Precision Shooting Training Starts with",
+          "Understanding Every Environmental Variable"
+        ]
+      },
+      {
+        "text": "Precision Shooting Is More Than Putting the Reticle on the Target",
+        "lines": [
+          "Precision Shooting Is",
+          "More Than Putting the",
+          "Reticle on the Target"
+        ]
+      },
+      {
+        "text": "Live Shooting Training Is Limited by the Range",
+        "lines": [
+          "Live Shooting Training Is Limited by the Range"
+        ]
+      },
+      {
+        "text": "Environmental Variables Make Judgement Harder",
+        "lines": [
+          "Environmental Variables Make Judgement Harder"
+        ]
+      },
+      {
+        "text": "Basic Aiming Must Be Combined with Shooting Judgement",
+        "lines": [
+          "Basic Aiming Must Be Combined with Shooting Judgement"
+        ]
+      },
+      {
+        "text": "Training Requires Repeated Practice and Review",
+        "lines": [
+          "Training Requires Repeated Practice and Review"
+        ]
+      },
+      {
+        "text": "Bringing Aiming and Environmental Interpretation Together in Simulated Shooting Training",
+        "lines": [
+          "Bringing Aiming and Environmental",
+          "Interpretation Together in",
+          "Simulated Shooting Training"
+        ]
+      },
+      {
+        "text": "Aiming and Shooting Operation Training",
+        "lines": [
+          "Aiming and Shooting",
+          "Operation Training"
+        ]
+      },
+      {
+        "text": "Interpreting Distance and Environmental Conditions",
+        "lines": [
+          "Interpreting Distance and",
+          "Environmental Conditions"
+        ]
+      },
+      {
+        "text": "Practice in Varied Scenarios",
+        "lines": [
+          "Practice in Varied Scenarios"
+        ]
+      },
+      {
+        "text": "From Aiming to Environmental Interpretation, a More Complete Foundation for Shooting Training",
+        "lines": [
+          "From Aiming to Environmental",
+          "Interpretation, a More Complete",
+          "Foundation for Shooting Training"
+        ]
+      },
+      {
+        "text": "Aiming Operation Training",
+        "lines": [
+          "Aiming Operation Training"
+        ]
+      },
+      {
+        "text": "Target Distance Interpretation",
+        "lines": [
+          "Target Distance Interpretation"
+        ]
+      },
+      {
+        "text": "Understanding Wind Direction and Environmental Variables",
+        "lines": [
+          "Understanding Wind Direction",
+          "and Environmental Variables"
+        ]
+      },
+      {
+        "text": "Simulated Shooting Practice",
+        "lines": [
+          "Simulated Shooting Practice"
+        ]
+      },
+      {
+        "text": "Shooting Performance Review",
+        "lines": [
+          "Shooting Performance Review"
+        ]
+      },
+      {
+        "text": "From Familiarisation to Environmental Judgement, Building Shooting Skill Step by Step",
+        "lines": [
+          "From Familiarisation to",
+          "Environmental Judgement,",
+          "Building Shooting Skill Step by Step"
+        ]
+      },
+      {
+        "text": "Become Familiar with the Simulator",
+        "lines": [
+          "Become Familiar",
+          "with the Simulator"
+        ]
+      },
+      {
+        "text": "Assess the Target and Environmental Conditions",
+        "lines": [
+          "Assess the Target and",
+          "Environmental Conditions"
+        ]
+      },
+      {
+        "text": "Conduct Simulated Shooting",
+        "lines": [
+          "Conduct Simulated",
+          "Shooting"
+        ]
+      },
+      {
+        "text": "Review Training Performance",
+        "lines": [
+          "Review Training",
+          "Performance"
+        ]
+      },
+      {
+        "text": "Varied Shooting Training, from Basic Aiming to Different Environmental Conditions",
+        "lines": [
+          "Varied Shooting Training, from Basic Aiming",
+          "to Different Environmental Conditions"
+        ]
+      },
+      {
+        "text": "Basic Aiming Training",
+        "lines": [
+          "Basic Aiming Training"
+        ]
+      },
+      {
+        "text": "Shooting Training at Different Distances",
+        "lines": [
+          "Shooting Training at Different Distances"
+        ]
+      },
+      {
+        "text": "Environmental Variable Interpretation Training",
+        "lines": [
+          "Environmental Variable Interpretation Training"
+        ]
+      },
+      {
+        "text": "Combined Simulated Shooting Training",
+        "lines": [
+          "Combined Simulated Shooting Training"
+        ]
+      },
+      {
+        "text": "More Controllable Practice Conditions for Precision Shooting Training",
+        "lines": [
+          "More Controllable Practice Conditions",
+          "for Precision Shooting Training"
+        ]
+      },
+      {
+        "text": "Supplementing Live Shooting Courses",
+        "lines": [
+          "Supplementing Live Shooting Courses"
+        ]
+      },
+      {
+        "text": "More Opportunities to Practise with Environmental Variables",
+        "lines": [
+          "More Opportunities to Practise",
+          "with Environmental Variables"
+        ]
+      },
+      {
+        "text": "Combining Operation and Judgement",
+        "lines": [
+          "Combining Operation and Judgement"
+        ]
+      },
+      {
+        "text": "Supporting Staged Instruction",
+        "lines": [
+          "Supporting Staged Instruction"
+        ]
+      },
+      {
+        "text": "From Individual Shooting Skill to Varied Military Training",
+        "lines": [
+          "From Individual Shooting Skill",
+          "to Varied Military Training"
+        ]
+      },
+      {
+        "text": "SUT Small Unit Tactical Training System",
+        "lines": [
+          "SUT Small Unit Tactical",
+          "Training System"
+        ]
+      },
+      {
+        "text": "Machine Gun Simulation System",
+        "lines": [
+          "Machine Gun Simulation System"
+        ]
+      },
+      {
+        "text": "Military Simulation",
+        "lines": [
+          "Military Simulation"
+        ]
+      },
+      {
+        "text": "Frequently Asked Questions",
+        "lines": [
+          "Frequently Asked Questions"
+        ]
+      },
+      {
+        "text": "How is the Sniper Rifle Simulation System different from an ordinary shooting game?",
+        "lines": [
+          "How is the Sniper Rifle Simulation System",
+          "different from an ordinary shooting game?"
+        ]
+      },
+      {
+        "text": "What skills does this system mainly train?",
+        "lines": [
+          "What skills does this system mainly train?"
+        ]
+      },
+      {
+        "text": "Can sniper rifle simulation training replace live-fire shooting?",
+        "lines": [
+          "Can sniper rifle simulation training replace live-fire shooting?"
+        ]
+      },
+      {
+        "text": "Can the simulation system be used to practise shooting at different distances?",
+        "lines": [
+          "Can the simulation system be used to",
+          "practise shooting at different distances?"
+        ]
+      },
+      {
+        "text": "Which units is this system suitable for?",
+        "lines": [
+          "Which units is this system suitable for?"
+        ]
+      },
+      {
+        "text": "Making Every Simulated Shot Practice in Understanding the Environment and Operation",
+        "lines": [
+          "Making Every Simulated Shot",
+          "Practice in Understanding the",
+          "Environment and Operation"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "News",
+        "lines": [
+          "News"
+        ]
+      },
+      {
+        "text": "Big x Reality Showcases MR CQB and Unmanned-System Simulation at SEECAT 2026",
+        "lines": [
+          "Big x Reality Showcases",
+          "MR CQB and Unmanned-System",
+          "Simulation at SEECAT 2026"
+        ]
+      },
+      {
+        "text": "Building Readiness Through Education: XR Scenario Training and Civil Defense",
+        "lines": [
+          "Building Readiness Through Education: XR Scenario Training and Civil Defense"
+        ]
+      },
+      {
+        "text": "Beyond Marksmanship: Training Judgment with XR Scenarios",
+        "lines": [
+          "Beyond Marksmanship: Training Judgment with XR Scenarios"
+        ]
+      },
+      {
+        "text": "CNA Highlights XR Simulation Training, from USV Operations to Small-Unit Coordination",
+        "lines": [
+          "CNA Highlights XR Simulation Training, from",
+          "USV Operations to Small-Unit Coordination"
+        ]
+      },
+      {
+        "text": "Big x Reality Presents Immersive XR Learning at Taipei Education Expo 2026",
+        "lines": [
+          "Big x Reality Presents Immersive XR Learning at Taipei Education Expo 2026"
+        ]
+      },
+      {
+        "text": "Big x Reality Presents XR USV Training and Nova Tactical XR at the 22nd Simulation Forum",
+        "lines": [
+          "Big x Reality Presents XR USV Training and",
+          "Nova Tactical XR at the 22nd Simulation Forum"
+        ]
+      },
+      {
+        "text": "Big x Reality to Showcase SUT and MUM-T Training at DSA 2026",
+        "lines": [
+          "Big x Reality to Showcase SUT and MUM-T Training at DSA 2026"
+        ]
+      },
+      {
+        "text": "XR Scenario Training Comes to Songshan Vocational School",
+        "lines": [
+          "XR Scenario Training Comes to Songshan Vocational School"
+        ]
+      },
+      {
+        "text": "Big x Reality Opens New Taipei Headquarters to Advance XR Defense Technology",
+        "lines": [
+          "Big x Reality Opens New Taipei Headquarters to Advance XR Defense Technology"
+        ]
+      },
+      {
+        "text": "XR Small Unit Tactical Training at Defense & Security 2025 in Bangkok",
+        "lines": [
+          "XR Small Unit Tactical Training at Defense & Security 2025 in Bangkok"
+        ]
+      },
+      {
+        "text": "Big x Reality Featured on the Cover of GBP Daily News",
+        "lines": [
+          "Big x Reality Featured on the Cover of GBP Daily News"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 320,
+    "route": "",
+    "headings": [
+      {
+        "text": "バーチャル訓練・リアルな対応・未来を守る",
+        "lines": [
+          "バーチャル訓練・",
+          "リアルな対応・",
+          "未来を守る"
+        ]
+      },
+      {
+        "text": "繰り返しの演習で、専門的な対応力を育成。",
+        "lines": [
+          "繰り返しの演",
+          "習で、専門的な",
+          "対応力を育成。"
+        ]
+      },
+      {
+        "text": "安全で制御可能",
+        "lines": [
+          "安全で制御可能"
+        ]
+      },
+      {
+        "text": "繰り返し演習",
+        "lines": [
+          "繰り返し演習"
+        ]
+      },
+      {
+        "text": "柔軟な構成",
+        "lines": [
+          "柔軟な構成"
+        ]
+      },
+      {
+        "text": "注目の製品",
+        "lines": [
+          "注目の製品"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戦術訓練システム",
+        "lines": [
+          "SUT 小部隊戦",
+          "術訓練システム"
+        ]
+      },
+      {
+        "text": "可搬型警察訓練装置（BOX）",
+        "lines": [
+          "可搬型警察訓練",
+          "装置（BOX）"
+        ]
+      },
+      {
+        "text": "ドローン戦術・対ドローン訓練システム",
+        "lines": [
+          "ドローン戦術・対ド",
+          "ローン訓練システム"
+        ]
+      },
+      {
+        "text": "VR 消火訓練システム",
+        "lines": [
+          "VR 消火訓練システム"
+        ]
+      },
+      {
+        "text": "コア技術",
+        "lines": [
+          "コア技術"
+        ]
+      },
+      {
+        "text": "XR（エクステンデッド・リアリティ）",
+        "lines": [
+          "XR（エクステンデッ",
+          "ド・リアリティ）"
+        ]
+      },
+      {
+        "text": "AI シミュレーション",
+        "lines": [
+          "AI シミュレーション"
+        ]
+      },
+      {
+        "text": "デジタル環境・シミュレーション構築",
+        "lines": [
+          "デジタル環境・",
+          "シミュレーション構築"
+        ]
+      },
+      {
+        "text": "通信・システム統合",
+        "lines": [
+          "通信・システム統合"
+        ]
+      },
+      {
+        "text": "ソリューション",
+        "lines": [
+          "ソリューション"
+        ]
+      },
+      {
+        "text": "軍事シミュレーション",
+        "lines": [
+          "軍事シミュレーション"
+        ]
+      },
+      {
+        "text": "警察業務シミュレーション",
+        "lines": [
+          "警察業務",
+          "シミュレーション"
+        ]
+      },
+      {
+        "text": "消防・防災",
+        "lines": [
+          "消防・防災"
+        ]
+      },
+      {
+        "text": "スマートシティ",
+        "lines": [
+          "スマートシティ"
+        ]
+      },
+      {
+        "text": "パートナー",
+        "lines": [
+          "パートナー"
+        ]
+      },
+      {
+        "text": "ニュース",
+        "lines": [
+          "ニュース"
+        ]
+      },
+      {
+        "text": "Big x Reality、SEECAT 2026でMR CQBと無人システム訓練を展示",
+        "lines": [
+          "Big x Reality、",
+          "SEECAT 2026でMR CQBと",
+          "無人システム訓練を展示"
+        ]
+      },
+      {
+        "text": "教育から備える力を育む――XRシナリオ訓練と全民防衛教育",
+        "lines": [
+          "教育から備える力を",
+          "育む――XRシナリオ",
+          "訓練と全民防衛教育"
+        ]
+      },
+      {
+        "text": "射撃技術だけではない――XRシナリオ訓練で判断力を養う",
+        "lines": [
+          "射撃技術だけではな",
+          "い――XRシナリオ",
+          "訓練で判断力を養う"
+        ]
+      },
+      {
+        "text": "次の訓練は、より良い計画から始められる。",
+        "lines": [
+          "次の訓練は、より良い",
+          "計画から始められる。"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 320,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "狙撃銃シミュレーションシステム",
+        "lines": [
+          "狙撃銃",
+          "シミュレーション",
+          "システム"
+        ]
+      },
+      {
+        "text": "精密射撃の訓練は、一つひとつの環境要因を理解することから",
+        "lines": [
+          "精密射撃の訓練は、",
+          "一つひとつの環境要因",
+          "を理解することから"
+        ]
+      },
+      {
+        "text": "精密射撃は、照準を目標に合わせるだけではない",
+        "lines": [
+          "精密射撃は、照",
+          "準を目標に合わ",
+          "せるだけではない"
+        ]
+      },
+      {
+        "text": "実際の射撃訓練は射撃場に制約される",
+        "lines": [
+          "実際の射撃訓練は",
+          "射撃場に制約される"
+        ]
+      },
+      {
+        "text": "環境要因が判断を難しくする",
+        "lines": [
+          "環境要因が判",
+          "断を難しくする"
+        ]
+      },
+      {
+        "text": "基本的な照準と射撃判断を組み合わせる必要がある",
+        "lines": [
+          "基本的な照準と射",
+          "撃判断を組み合わ",
+          "せる必要がある"
+        ]
+      },
+      {
+        "text": "訓練には反復練習と振り返りが必要",
+        "lines": [
+          "訓練には反復練習",
+          "と振り返りが必要"
+        ]
+      },
+      {
+        "text": "照準操作と環境の判読を、シミュレーション射撃訓練に統合",
+        "lines": [
+          "照準操作と環境の判読",
+          "を、シミュレーション",
+          "射撃訓練に統合"
+        ]
+      },
+      {
+        "text": "照準・射撃操作訓練",
+        "lines": [
+          "照準・射撃操作訓練"
+        ]
+      },
+      {
+        "text": "距離と環境条件の判読",
+        "lines": [
+          "距離と環境条件の判読"
+        ]
+      },
+      {
+        "text": "多様なシナリオでの練習",
+        "lines": [
+          "多様なシナ",
+          "リオでの練習"
+        ]
+      },
+      {
+        "text": "照準操作から環境の判読まで、より充実した射撃訓練の基礎を構築",
+        "lines": [
+          "照準操作から環境の判",
+          "読まで、より充実した",
+          "射撃訓練の基礎を構築"
+        ]
+      },
+      {
+        "text": "照準操作訓練",
+        "lines": [
+          "照準操作訓練"
+        ]
+      },
+      {
+        "text": "目標距離の判読",
+        "lines": [
+          "目標距離の判読"
+        ]
+      },
+      {
+        "text": "風向と環境要因の理解",
+        "lines": [
+          "風向と環境",
+          "要因の理解"
+        ]
+      },
+      {
+        "text": "シミュレーション射撃の練習",
+        "lines": [
+          "シミュレーション",
+          "射撃の練習"
+        ]
+      },
+      {
+        "text": "射撃成績の振り返り",
+        "lines": [
+          "射撃成績の振り返り"
+        ]
+      },
+      {
+        "text": "操作への習熟から環境の判断まで、段階的に射撃訓練能力を構築",
+        "lines": [
+          "操作への習熟から環境",
+          "の判断まで、段階的に",
+          "射撃訓練能力を構築"
+        ]
+      },
+      {
+        "text": "シミュレーション操作に慣れる",
+        "lines": [
+          "シミュレーション",
+          "操作に慣れる"
+        ]
+      },
+      {
+        "text": "目標と環境条件を把握する",
+        "lines": [
+          "目標と環境条",
+          "件を把握する"
+        ]
+      },
+      {
+        "text": "シミュレーション射撃を行う",
+        "lines": [
+          "シミュレーション",
+          "射撃を行う"
+        ]
+      },
+      {
+        "text": "訓練成果を振り返る",
+        "lines": [
+          "訓練成果を振り返る"
+        ]
+      },
+      {
+        "text": "基礎的な照準からさまざまな環境条件まで、多様な射撃訓練を設定",
+        "lines": [
+          "基礎的な照準からさま",
+          "ざまな環境条件まで、",
+          "多様な射撃訓練を設定"
+        ]
+      },
+      {
+        "text": "基礎照準訓練",
+        "lines": [
+          "基礎照準訓練"
+        ]
+      },
+      {
+        "text": "さまざまな距離での射撃訓練",
+        "lines": [
+          "さまざまな距離",
+          "での射撃訓練"
+        ]
+      },
+      {
+        "text": "環境要因の判読訓練",
+        "lines": [
+          "環境要因の判読訓練"
+        ]
+      },
+      {
+        "text": "総合シミュレーション射撃訓練",
+        "lines": [
+          "総合シミュレーション",
+          "射撃訓練"
+        ]
+      },
+      {
+        "text": "精密射撃訓練に、より多くの管理された練習条件を",
+        "lines": [
+          "精密射撃訓練に、",
+          "より多くの管理さ",
+          "れた練習条件を"
+        ]
+      },
+      {
+        "text": "実射課程を補完",
+        "lines": [
+          "実射課程を補完"
+        ]
+      },
+      {
+        "text": "環境要因を練習する機会を拡大",
+        "lines": [
+          "環境要因を練習",
+          "する機会を拡大"
+        ]
+      },
+      {
+        "text": "操作と判断の能力を結び付ける",
+        "lines": [
+          "操作と判断の能",
+          "力を結び付ける"
+        ]
+      },
+      {
+        "text": "段階的な指導計画を支援",
+        "lines": [
+          "段階的な指導計画を支援"
+        ]
+      },
+      {
+        "text": "個人の射撃能力から、多様な軍事訓練へ",
+        "lines": [
+          "個人の射撃能力から、",
+          "多様な軍事訓練へ"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戦術訓練システム",
+        "lines": [
+          "SUT 小部隊戦",
+          "術訓練システム"
+        ]
+      },
+      {
+        "text": "機関銃シミュレーションシステム",
+        "lines": [
+          "機関銃シミュレーション",
+          "システム"
+        ]
+      },
+      {
+        "text": "軍事シミュレーション",
+        "lines": [
+          "軍事シミュレーション"
+        ]
+      },
+      {
+        "text": "よくあるご質問",
+        "lines": [
+          "よくあるご質問"
+        ]
+      },
+      {
+        "text": "狙撃銃シミュレーションシステムと一般的な射撃ゲームは何が違いますか？",
+        "lines": [
+          "狙撃銃シミュレーション",
+          "システムと一般的な射撃",
+          "ゲームは何が違いますか？"
+        ]
+      },
+      {
+        "text": "このシステムでは主にどのような技能を訓練できますか？",
+        "lines": [
+          "このシステムでは主にどのよ",
+          "うな技能を訓練できますか？"
+        ]
+      },
+      {
+        "text": "狙撃銃のシミュレーション訓練は実弾射撃の代わりになりますか？",
+        "lines": [
+          "狙撃銃のシミュレーション",
+          "訓練は実弾射撃の代",
+          "わりになりますか？"
+        ]
+      },
+      {
+        "text": "シミュレーションシステムでさまざまな距離の射撃を練習できますか？",
+        "lines": [
+          "シミュレーションシステム",
+          "でさまざまな距離の射",
+          "撃を練習できますか？"
+        ]
+      },
+      {
+        "text": "このシステムはどのような部隊・機関に適していますか？",
+        "lines": [
+          "このシステムはどのような部",
+          "隊・機関に適していますか？"
+        ]
+      },
+      {
+        "text": "すべてのシミュレーション射撃を、環境と操作を理解する練習に",
+        "lines": [
+          "すべての",
+          "シミュレーション射",
+          "撃を、環境と操作",
+          "を理解する練習に"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 320,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "ニュース",
+        "lines": [
+          "ニュース"
+        ]
+      },
+      {
+        "text": "Big x Reality、SEECAT 2026でMR CQBと無人システム訓練を展示",
+        "lines": [
+          "Big x Reality、",
+          "SEECAT 2026で",
+          "MR CQBと無人",
+          "システム訓練を展示"
+        ]
+      },
+      {
+        "text": "教育から備える力を育む――XRシナリオ訓練と全民防衛教育",
+        "lines": [
+          "教育から備える力を",
+          "育む――XRシナリオ",
+          "訓練と全民防衛教育"
+        ]
+      },
+      {
+        "text": "射撃技術だけではない――XRシナリオ訓練で判断力を養う",
+        "lines": [
+          "射撃技術だけではな",
+          "い――XRシナリオ",
+          "訓練で判断力を養う"
+        ]
+      },
+      {
+        "text": "中央通信社がXRシミュレーション訓練を紹介――USV操作から小部隊連携まで",
+        "lines": [
+          "中央通信社がXR",
+          "シミュレーション訓練",
+          "を紹介――USV操作",
+          "から小部隊連携まで"
+        ]
+      },
+      {
+        "text": "Big x Reality、2026台北教育博覧会でXR体験型学習を紹介",
+        "lines": [
+          "Big x Reality、2026",
+          "台北教育博覧会でXR",
+          "体験型学習を紹介"
+        ]
+      },
+      {
+        "text": "第22回モデリング・シミュレーションフォーラムでXR USV訓練とNova Tactical XRを展示",
+        "lines": [
+          "第22回モデリング・",
+          "シミュレーションフォー",
+          "ラムでXR USV訓練と",
+          "Nova Tactical XRを展示"
+        ]
+      },
+      {
+        "text": "Big x Reality、DSA 2026でSUTとMUM-T協調訓練を紹介",
+        "lines": [
+          "Big x Reality、DSA",
+          "2026でSUTとMUM-",
+          "T協調訓練を紹介"
+        ]
+      },
+      {
+        "text": "松山家商でXRシナリオ訓練を実施、全民防衛教育を体験型学習へ",
+        "lines": [
+          "松山家商でXRシナリ",
+          "オ訓練を実施、全民防",
+          "衛教育を体験型学習へ"
+        ]
+      },
+      {
+        "text": "Big x Reality、台北市大安区に新拠点を開設――XR防衛技術の国際展開を推進",
+        "lines": [
+          "Big x Reality、台北市大安",
+          "区に新拠点を開設――XR",
+          "防衛技術の国際展開を推進"
+        ]
+      },
+      {
+        "text": "Defense & Security 2025でXR小部隊戦術訓練システムの成果を披露",
+        "lines": [
+          "Defense & Security 2025",
+          "でXR小部隊戦術訓練",
+          "システムの成果を披露"
+        ]
+      },
+      {
+        "text": "Big x Realityが『GBP Daily News』の表紙に掲載",
+        "lines": [
+          "Big x Realityが『GBP",
+          "Daily News』の表紙に掲載"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 390,
+    "route": "",
+    "headings": [
+      {
+        "text": "バーチャル訓練・リアルな対応・未来を守る",
+        "lines": [
+          "バーチャル訓練・",
+          "リアルな対応・",
+          "未来を守る"
+        ]
+      },
+      {
+        "text": "繰り返しの演習で、専門的な対応力を育成。",
+        "lines": [
+          "繰り返しの演習で、",
+          "専門的な対応力を育成。"
+        ]
+      },
+      {
+        "text": "安全で制御可能",
+        "lines": [
+          "安全で制御可能"
+        ]
+      },
+      {
+        "text": "繰り返し演習",
+        "lines": [
+          "繰り返し演習"
+        ]
+      },
+      {
+        "text": "柔軟な構成",
+        "lines": [
+          "柔軟な構成"
+        ]
+      },
+      {
+        "text": "注目の製品",
+        "lines": [
+          "注目の製品"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戦術訓練システム",
+        "lines": [
+          "SUT 小部隊戦術訓練システム"
+        ]
+      },
+      {
+        "text": "可搬型警察訓練装置（BOX）",
+        "lines": [
+          "可搬型警察訓練装置（BOX）"
+        ]
+      },
+      {
+        "text": "ドローン戦術・対ドローン訓練システム",
+        "lines": [
+          "ドローン戦術・対ド",
+          "ローン訓練システム"
+        ]
+      },
+      {
+        "text": "VR 消火訓練システム",
+        "lines": [
+          "VR 消火訓練システム"
+        ]
+      },
+      {
+        "text": "コア技術",
+        "lines": [
+          "コア技術"
+        ]
+      },
+      {
+        "text": "XR（エクステンデッド・リアリティ）",
+        "lines": [
+          "XR（エクステンデッ",
+          "ド・リアリティ）"
+        ]
+      },
+      {
+        "text": "AI シミュレーション",
+        "lines": [
+          "AI シミュレーション"
+        ]
+      },
+      {
+        "text": "デジタル環境・シミュレーション構築",
+        "lines": [
+          "デジタル環境・",
+          "シミュレーション構築"
+        ]
+      },
+      {
+        "text": "通信・システム統合",
+        "lines": [
+          "通信・システム統合"
+        ]
+      },
+      {
+        "text": "ソリューション",
+        "lines": [
+          "ソリューション"
+        ]
+      },
+      {
+        "text": "軍事シミュレーション",
+        "lines": [
+          "軍事シミュレーション"
+        ]
+      },
+      {
+        "text": "警察業務シミュレーション",
+        "lines": [
+          "警察業務シミュレーション"
+        ]
+      },
+      {
+        "text": "消防・防災",
+        "lines": [
+          "消防・防災"
+        ]
+      },
+      {
+        "text": "スマートシティ",
+        "lines": [
+          "スマートシティ"
+        ]
+      },
+      {
+        "text": "パートナー",
+        "lines": [
+          "パートナー"
+        ]
+      },
+      {
+        "text": "ニュース",
+        "lines": [
+          "ニュース"
+        ]
+      },
+      {
+        "text": "Big x Reality、SEECAT 2026でMR CQBと無人システム訓練を展示",
+        "lines": [
+          "Big x Reality、",
+          "SEECAT 2026でMR CQBと",
+          "無人システム訓練を展示"
+        ]
+      },
+      {
+        "text": "教育から備える力を育む――XRシナリオ訓練と全民防衛教育",
+        "lines": [
+          "教育から備える力を育む――XR",
+          "シナリオ訓練と全民防衛教育"
+        ]
+      },
+      {
+        "text": "射撃技術だけではない――XRシナリオ訓練で判断力を養う",
+        "lines": [
+          "射撃技術だけではない――XR",
+          "シナリオ訓練で判断力を養う"
+        ]
+      },
+      {
+        "text": "次の訓練は、より良い計画から始められる。",
+        "lines": [
+          "次の訓練は、より良い",
+          "計画から始められる。"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 390,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "狙撃銃シミュレーションシステム",
+        "lines": [
+          "狙撃銃シミュレーション",
+          "システム"
+        ]
+      },
+      {
+        "text": "精密射撃の訓練は、一つひとつの環境要因を理解することから",
+        "lines": [
+          "精密射撃の訓練は、",
+          "一つひとつの環境要因",
+          "を理解することから"
+        ]
+      },
+      {
+        "text": "精密射撃は、照準を目標に合わせるだけではない",
+        "lines": [
+          "精密射撃は、照準を目標",
+          "に合わせるだけではない"
+        ]
+      },
+      {
+        "text": "実際の射撃訓練は射撃場に制約される",
+        "lines": [
+          "実際の射撃訓練は",
+          "射撃場に制約される"
+        ]
+      },
+      {
+        "text": "環境要因が判断を難しくする",
+        "lines": [
+          "環境要因が判断を難しくする"
+        ]
+      },
+      {
+        "text": "基本的な照準と射撃判断を組み合わせる必要がある",
+        "lines": [
+          "基本的な照準と射撃判断を",
+          "組み合わせる必要がある"
+        ]
+      },
+      {
+        "text": "訓練には反復練習と振り返りが必要",
+        "lines": [
+          "訓練には反復練習",
+          "と振り返りが必要"
+        ]
+      },
+      {
+        "text": "照準操作と環境の判読を、シミュレーション射撃訓練に統合",
+        "lines": [
+          "照準操作と環境の判読",
+          "を、シミュレーション",
+          "射撃訓練に統合"
+        ]
+      },
+      {
+        "text": "照準・射撃操作訓練",
+        "lines": [
+          "照準・射撃操作訓練"
+        ]
+      },
+      {
+        "text": "距離と環境条件の判読",
+        "lines": [
+          "距離と環境条件の判読"
+        ]
+      },
+      {
+        "text": "多様なシナリオでの練習",
+        "lines": [
+          "多様なシナリオでの練習"
+        ]
+      },
+      {
+        "text": "照準操作から環境の判読まで、より充実した射撃訓練の基礎を構築",
+        "lines": [
+          "照準操作から環境の判",
+          "読まで、より充実した",
+          "射撃訓練の基礎を構築"
+        ]
+      },
+      {
+        "text": "照準操作訓練",
+        "lines": [
+          "照準操作訓練"
+        ]
+      },
+      {
+        "text": "目標距離の判読",
+        "lines": [
+          "目標距離の判読"
+        ]
+      },
+      {
+        "text": "風向と環境要因の理解",
+        "lines": [
+          "風向と環境要因の理解"
+        ]
+      },
+      {
+        "text": "シミュレーション射撃の練習",
+        "lines": [
+          "シミュレーション射撃の練習"
+        ]
+      },
+      {
+        "text": "射撃成績の振り返り",
+        "lines": [
+          "射撃成績の振り返り"
+        ]
+      },
+      {
+        "text": "操作への習熟から環境の判断まで、段階的に射撃訓練能力を構築",
+        "lines": [
+          "操作への習熟から環境",
+          "の判断まで、段階的に",
+          "射撃訓練能力を構築"
+        ]
+      },
+      {
+        "text": "シミュレーション操作に慣れる",
+        "lines": [
+          "シミュレーション",
+          "操作に慣れる"
+        ]
+      },
+      {
+        "text": "目標と環境条件を把握する",
+        "lines": [
+          "目標と環境条件を把握する"
+        ]
+      },
+      {
+        "text": "シミュレーション射撃を行う",
+        "lines": [
+          "シミュレーション射撃を行う"
+        ]
+      },
+      {
+        "text": "訓練成果を振り返る",
+        "lines": [
+          "訓練成果を振り返る"
+        ]
+      },
+      {
+        "text": "基礎的な照準からさまざまな環境条件まで、多様な射撃訓練を設定",
+        "lines": [
+          "基礎的な照準からさま",
+          "ざまな環境条件まで、",
+          "多様な射撃訓練を設定"
+        ]
+      },
+      {
+        "text": "基礎照準訓練",
+        "lines": [
+          "基礎照準訓練"
+        ]
+      },
+      {
+        "text": "さまざまな距離での射撃訓練",
+        "lines": [
+          "さまざまな距離での射撃訓練"
+        ]
+      },
+      {
+        "text": "環境要因の判読訓練",
+        "lines": [
+          "環境要因の判読訓練"
+        ]
+      },
+      {
+        "text": "総合シミュレーション射撃訓練",
+        "lines": [
+          "総合シミュレーション射撃訓練"
+        ]
+      },
+      {
+        "text": "精密射撃訓練に、より多くの管理された練習条件を",
+        "lines": [
+          "精密射撃訓練に、より多く",
+          "の管理された練習条件を"
+        ]
+      },
+      {
+        "text": "実射課程を補完",
+        "lines": [
+          "実射課程を補完"
+        ]
+      },
+      {
+        "text": "環境要因を練習する機会を拡大",
+        "lines": [
+          "環境要因を練習する機会を拡大"
+        ]
+      },
+      {
+        "text": "操作と判断の能力を結び付ける",
+        "lines": [
+          "操作と判断の能力を結び付ける"
+        ]
+      },
+      {
+        "text": "段階的な指導計画を支援",
+        "lines": [
+          "段階的な指導計画を支援"
+        ]
+      },
+      {
+        "text": "個人の射撃能力から、多様な軍事訓練へ",
+        "lines": [
+          "個人の射撃能力から、",
+          "多様な軍事訓練へ"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戦術訓練システム",
+        "lines": [
+          "SUT 小部隊戦術訓練システム"
+        ]
+      },
+      {
+        "text": "機関銃シミュレーションシステム",
+        "lines": [
+          "機関銃シミュレーションシステム"
+        ]
+      },
+      {
+        "text": "軍事シミュレーション",
+        "lines": [
+          "軍事シミュレーション"
+        ]
+      },
+      {
+        "text": "よくあるご質問",
+        "lines": [
+          "よくあるご質問"
+        ]
+      },
+      {
+        "text": "狙撃銃シミュレーションシステムと一般的な射撃ゲームは何が違いますか？",
+        "lines": [
+          "狙撃銃シミュレーションシステムと一",
+          "般的な射撃ゲームは何が違いますか？"
+        ]
+      },
+      {
+        "text": "このシステムでは主にどのような技能を訓練できますか？",
+        "lines": [
+          "このシステムでは主にどのよ",
+          "うな技能を訓練できますか？"
+        ]
+      },
+      {
+        "text": "狙撃銃のシミュレーション訓練は実弾射撃の代わりになりますか？",
+        "lines": [
+          "狙撃銃のシミュレーション訓練は",
+          "実弾射撃の代わりになりますか？"
+        ]
+      },
+      {
+        "text": "シミュレーションシステムでさまざまな距離の射撃を練習できますか？",
+        "lines": [
+          "シミュレーションシステムでさまざ",
+          "まな距離の射撃を練習できますか？"
+        ]
+      },
+      {
+        "text": "このシステムはどのような部隊・機関に適していますか？",
+        "lines": [
+          "このシステムはどのような部",
+          "隊・機関に適していますか？"
+        ]
+      },
+      {
+        "text": "すべてのシミュレーション射撃を、環境と操作を理解する練習に",
+        "lines": [
+          "すべてのシミュレーション",
+          "射撃を、環境と操",
+          "作を理解する練習に"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 390,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "ニュース",
+        "lines": [
+          "ニュース"
+        ]
+      },
+      {
+        "text": "Big x Reality、SEECAT 2026でMR CQBと無人システム訓練を展示",
+        "lines": [
+          "Big x Reality、",
+          "SEECAT 2026でMR CQBと",
+          "無人システム訓練を展示"
+        ]
+      },
+      {
+        "text": "教育から備える力を育む――XRシナリオ訓練と全民防衛教育",
+        "lines": [
+          "教育から備える力を育む――XR",
+          "シナリオ訓練と全民防衛教育"
+        ]
+      },
+      {
+        "text": "射撃技術だけではない――XRシナリオ訓練で判断力を養う",
+        "lines": [
+          "射撃技術だけではない――XR",
+          "シナリオ訓練で判断力を養う"
+        ]
+      },
+      {
+        "text": "中央通信社がXRシミュレーション訓練を紹介――USV操作から小部隊連携まで",
+        "lines": [
+          "中央通信社がXRシミュレーション",
+          "訓練を紹介――USV操",
+          "作から小部隊連携まで"
+        ]
+      },
+      {
+        "text": "Big x Reality、2026台北教育博覧会でXR体験型学習を紹介",
+        "lines": [
+          "Big x Reality、2026台北教育",
+          "博覧会でXR体験型学習を紹介"
+        ]
+      },
+      {
+        "text": "第22回モデリング・シミュレーションフォーラムでXR USV訓練とNova Tactical XRを展示",
+        "lines": [
+          "第22回モデリング・",
+          "シミュレーションフォーラムでXR",
+          "USV訓練とNova Tactical XRを展示"
+        ]
+      },
+      {
+        "text": "Big x Reality、DSA 2026でSUTとMUM-T協調訓練を紹介",
+        "lines": [
+          "Big x Reality、DSA 2026で",
+          "SUTとMUM-T協調訓練を紹介"
+        ]
+      },
+      {
+        "text": "松山家商でXRシナリオ訓練を実施、全民防衛教育を体験型学習へ",
+        "lines": [
+          "松山家商でXRシナリオ訓練を実",
+          "施、全民防衛教育を体験型学習へ"
+        ]
+      },
+      {
+        "text": "Big x Reality、台北市大安区に新拠点を開設――XR防衛技術の国際展開を推進",
+        "lines": [
+          "Big x Reality、台北市大安",
+          "区に新拠点を開設――XR",
+          "防衛技術の国際展開を推進"
+        ]
+      },
+      {
+        "text": "Defense & Security 2025でXR小部隊戦術訓練システムの成果を披露",
+        "lines": [
+          "Defense & Security 2025でXR小部",
+          "隊戦術訓練システムの成果を披露"
+        ]
+      },
+      {
+        "text": "Big x Realityが『GBP Daily News』の表紙に掲載",
+        "lines": [
+          "Big x Realityが『GBP",
+          "Daily News』の表紙に掲載"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 1440,
+    "route": "",
+    "headings": [
+      {
+        "text": "バーチャル訓練・リアルな対応・未来を守る",
+        "lines": [
+          "バーチャル訓練・",
+          "リアルな対応・",
+          "未来を守る"
+        ]
+      },
+      {
+        "text": "繰り返しの演習で、専門的な対応力を育成。",
+        "lines": [
+          "繰り返しの演習で、",
+          "専門的な対応力を育成。"
+        ]
+      },
+      {
+        "text": "安全で制御可能",
+        "lines": [
+          "安全で制御可能"
+        ]
+      },
+      {
+        "text": "繰り返し演習",
+        "lines": [
+          "繰り返し演習"
+        ]
+      },
+      {
+        "text": "柔軟な構成",
+        "lines": [
+          "柔軟な構成"
+        ]
+      },
+      {
+        "text": "注目の製品",
+        "lines": [
+          "注目の製品"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戦術訓練システム",
+        "lines": [
+          "SUT 小部隊戦術訓練システム"
+        ]
+      },
+      {
+        "text": "可搬型警察訓練装置（BOX）",
+        "lines": [
+          "可搬型警察訓練",
+          "装置（BOX）"
+        ]
+      },
+      {
+        "text": "ドローン戦術・対ドローン訓練システム",
+        "lines": [
+          "ドローン戦術・対ド",
+          "ローン訓練システム"
+        ]
+      },
+      {
+        "text": "VR 消火訓練システム",
+        "lines": [
+          "VR 消火訓練システム"
+        ]
+      },
+      {
+        "text": "コア技術",
+        "lines": [
+          "コア技術"
+        ]
+      },
+      {
+        "text": "XR（エクステンデッド・リアリティ）",
+        "lines": [
+          "XR（エクステンデッ",
+          "ド・リアリティ）"
+        ]
+      },
+      {
+        "text": "AI シミュレーション",
+        "lines": [
+          "AI シミュレーション"
+        ]
+      },
+      {
+        "text": "デジタル環境・シミュレーション構築",
+        "lines": [
+          "デジタル環境・",
+          "シミュレーション構築"
+        ]
+      },
+      {
+        "text": "通信・システム統合",
+        "lines": [
+          "通信・システム統合"
+        ]
+      },
+      {
+        "text": "ソリューション",
+        "lines": [
+          "ソリューション"
+        ]
+      },
+      {
+        "text": "軍事シミュレーション",
+        "lines": [
+          "軍事シミュレーション"
+        ]
+      },
+      {
+        "text": "警察業務シミュレーション",
+        "lines": [
+          "警察業務",
+          "シミュレーション"
+        ]
+      },
+      {
+        "text": "消防・防災",
+        "lines": [
+          "消防・防災"
+        ]
+      },
+      {
+        "text": "スマートシティ",
+        "lines": [
+          "スマートシティ"
+        ]
+      },
+      {
+        "text": "パートナー",
+        "lines": [
+          "パートナー"
+        ]
+      },
+      {
+        "text": "ニュース",
+        "lines": [
+          "ニュース"
+        ]
+      },
+      {
+        "text": "Big x Reality、SEECAT 2026でMR CQBと無人システム訓練を展示",
+        "lines": [
+          "Big x Reality、SEECAT 2026で",
+          "MR CQBと無人システム訓練を展示"
+        ]
+      },
+      {
+        "text": "教育から備える力を育む――XRシナリオ訓練と全民防衛教育",
+        "lines": [
+          "教育から備える力を育む――XR",
+          "シナリオ訓練と全民防衛教育"
+        ]
+      },
+      {
+        "text": "射撃技術だけではない――XRシナリオ訓練で判断力を養う",
+        "lines": [
+          "射撃技術だけではない――XR",
+          "シナリオ訓練で判断力を養う"
+        ]
+      },
+      {
+        "text": "次の訓練は、より良い計画から始められる。",
+        "lines": [
+          "次の訓練は、より良い計画から始められる。"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 1440,
+    "route": "products/sniper-simulator/",
+    "headings": [
+      {
+        "text": "狙撃銃シミュレーションシステム",
+        "lines": [
+          "狙撃銃",
+          "シミュレーション",
+          "システム"
+        ]
+      },
+      {
+        "text": "精密射撃の訓練は、一つひとつの環境要因を理解することから",
+        "lines": [
+          "精密射撃の訓練は、一つひとつ",
+          "の環境要因を理解することから"
+        ]
+      },
+      {
+        "text": "精密射撃は、照準を目標に合わせるだけではない",
+        "lines": [
+          "精密射撃は、照準を目標",
+          "に合わせるだけではない"
+        ]
+      },
+      {
+        "text": "実際の射撃訓練は射撃場に制約される",
+        "lines": [
+          "実際の射撃訓練は射撃場に制約される"
+        ]
+      },
+      {
+        "text": "環境要因が判断を難しくする",
+        "lines": [
+          "環境要因が判断を難しくする"
+        ]
+      },
+      {
+        "text": "基本的な照準と射撃判断を組み合わせる必要がある",
+        "lines": [
+          "基本的な照準と射撃判断を組み合わせる必要がある"
+        ]
+      },
+      {
+        "text": "訓練には反復練習と振り返りが必要",
+        "lines": [
+          "訓練には反復練習と振り返りが必要"
+        ]
+      },
+      {
+        "text": "照準操作と環境の判読を、シミュレーション射撃訓練に統合",
+        "lines": [
+          "照準操作と環境の判読を、",
+          "シミュレーション射撃訓練に統合"
+        ]
+      },
+      {
+        "text": "照準・射撃操作訓練",
+        "lines": [
+          "照準・射撃操作訓練"
+        ]
+      },
+      {
+        "text": "距離と環境条件の判読",
+        "lines": [
+          "距離と環境条件の判読"
+        ]
+      },
+      {
+        "text": "多様なシナリオでの練習",
+        "lines": [
+          "多様なシナリオでの練習"
+        ]
+      },
+      {
+        "text": "照準操作から環境の判読まで、より充実した射撃訓練の基礎を構築",
+        "lines": [
+          "照準操作から環境の判読まで、よ",
+          "り充実した射撃訓練の基礎を構築"
+        ]
+      },
+      {
+        "text": "照準操作訓練",
+        "lines": [
+          "照準操作訓練"
+        ]
+      },
+      {
+        "text": "目標距離の判読",
+        "lines": [
+          "目標距離の判読"
+        ]
+      },
+      {
+        "text": "風向と環境要因の理解",
+        "lines": [
+          "風向と環境要因の理解"
+        ]
+      },
+      {
+        "text": "シミュレーション射撃の練習",
+        "lines": [
+          "シミュレーション射撃の練習"
+        ]
+      },
+      {
+        "text": "射撃成績の振り返り",
+        "lines": [
+          "射撃成績の振り返り"
+        ]
+      },
+      {
+        "text": "操作への習熟から環境の判断まで、段階的に射撃訓練能力を構築",
+        "lines": [
+          "操作への習熟から環境の判断ま",
+          "で、段階的に射撃訓練能力を構築"
+        ]
+      },
+      {
+        "text": "シミュレーション操作に慣れる",
+        "lines": [
+          "シミュレーション",
+          "操作に慣れる"
+        ]
+      },
+      {
+        "text": "目標と環境条件を把握する",
+        "lines": [
+          "目標と環境条件を把握する"
+        ]
+      },
+      {
+        "text": "シミュレーション射撃を行う",
+        "lines": [
+          "シミュレーション射撃を行う"
+        ]
+      },
+      {
+        "text": "訓練成果を振り返る",
+        "lines": [
+          "訓練成果を振り返る"
+        ]
+      },
+      {
+        "text": "基礎的な照準からさまざまな環境条件まで、多様な射撃訓練を設定",
+        "lines": [
+          "基礎的な照準からさまざまな環境",
+          "条件まで、多様な射撃訓練を設定"
+        ]
+      },
+      {
+        "text": "基礎照準訓練",
+        "lines": [
+          "基礎照準訓練"
+        ]
+      },
+      {
+        "text": "さまざまな距離での射撃訓練",
+        "lines": [
+          "さまざまな距離での射撃訓練"
+        ]
+      },
+      {
+        "text": "環境要因の判読訓練",
+        "lines": [
+          "環境要因の判読訓練"
+        ]
+      },
+      {
+        "text": "総合シミュレーション射撃訓練",
+        "lines": [
+          "総合シミュレーション射撃訓練"
+        ]
+      },
+      {
+        "text": "精密射撃訓練に、より多くの管理された練習条件を",
+        "lines": [
+          "精密射撃訓練に、より多くの管理された練習条件を"
+        ]
+      },
+      {
+        "text": "実射課程を補完",
+        "lines": [
+          "実射課程を補完"
+        ]
+      },
+      {
+        "text": "環境要因を練習する機会を拡大",
+        "lines": [
+          "環境要因を練習する機会を拡大"
+        ]
+      },
+      {
+        "text": "操作と判断の能力を結び付ける",
+        "lines": [
+          "操作と判断の能力を結び付ける"
+        ]
+      },
+      {
+        "text": "段階的な指導計画を支援",
+        "lines": [
+          "段階的な指導計画を支援"
+        ]
+      },
+      {
+        "text": "個人の射撃能力から、多様な軍事訓練へ",
+        "lines": [
+          "個人の射撃能力から、多様な軍事訓練へ"
+        ]
+      },
+      {
+        "text": "SUT 小部隊戦術訓練システム",
+        "lines": [
+          "SUT 小部隊戦術訓練システム"
+        ]
+      },
+      {
+        "text": "機関銃シミュレーションシステム",
+        "lines": [
+          "機関銃シミュレーションシステム"
+        ]
+      },
+      {
+        "text": "軍事シミュレーション",
+        "lines": [
+          "軍事シミュレーション"
+        ]
+      },
+      {
+        "text": "よくあるご質問",
+        "lines": [
+          "よくあるご質問"
+        ]
+      },
+      {
+        "text": "狙撃銃シミュレーションシステムと一般的な射撃ゲームは何が違いますか？",
+        "lines": [
+          "狙撃銃シミュレーションシステムと一般的な射撃ゲームは何が違いますか？"
+        ]
+      },
+      {
+        "text": "このシステムでは主にどのような技能を訓練できますか？",
+        "lines": [
+          "このシステムでは主にどのような技能を訓練できますか？"
+        ]
+      },
+      {
+        "text": "狙撃銃のシミュレーション訓練は実弾射撃の代わりになりますか？",
+        "lines": [
+          "狙撃銃のシミュレーション訓練は実弾射撃の代わりになりますか？"
+        ]
+      },
+      {
+        "text": "シミュレーションシステムでさまざまな距離の射撃を練習できますか？",
+        "lines": [
+          "シミュレーションシステムでさまざまな距離の射撃を練習できますか？"
+        ]
+      },
+      {
+        "text": "このシステムはどのような部隊・機関に適していますか？",
+        "lines": [
+          "このシステムはどのような部隊・機関に適していますか？"
+        ]
+      },
+      {
+        "text": "すべてのシミュレーション射撃を、環境と操作を理解する練習に",
+        "lines": [
+          "すべてのシミュレーション射撃",
+          "を、環境と操作を理解する練習に"
+        ]
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "width": 1440,
+    "route": "news/",
+    "headings": [
+      {
+        "text": "ニュース",
+        "lines": [
+          "ニュース"
+        ]
+      },
+      {
+        "text": "Big x Reality、SEECAT 2026でMR CQBと無人システム訓練を展示",
+        "lines": [
+          "Big x Reality、",
+          "SEECAT 2026でMR CQBと",
+          "無人システム訓練を展示"
+        ]
+      },
+      {
+        "text": "教育から備える力を育む――XRシナリオ訓練と全民防衛教育",
+        "lines": [
+          "教育から備える力を育む――XRシナリオ訓練と全民防衛教育"
+        ]
+      },
+      {
+        "text": "射撃技術だけではない――XRシナリオ訓練で判断力を養う",
+        "lines": [
+          "射撃技術だけではない――XRシナリオ訓練で判断力を養う"
+        ]
+      },
+      {
+        "text": "中央通信社がXRシミュレーション訓練を紹介――USV操作から小部隊連携まで",
+        "lines": [
+          "中央通信社がXRシミュレーション訓練を紹介――USV操作から小部隊連携まで"
+        ]
+      },
+      {
+        "text": "Big x Reality、2026台北教育博覧会でXR体験型学習を紹介",
+        "lines": [
+          "Big x Reality、2026台北教育博覧会でXR体験型学習を紹介"
+        ]
+      },
+      {
+        "text": "第22回モデリング・シミュレーションフォーラムでXR USV訓練とNova Tactical XRを展示",
+        "lines": [
+          "第22回モデリング・シミュレーションフォー",
+          "ラムでXR USV訓練とNova Tactical XRを展示"
+        ]
+      },
+      {
+        "text": "Big x Reality、DSA 2026でSUTとMUM-T協調訓練を紹介",
+        "lines": [
+          "Big x Reality、DSA 2026でSUTとMUM-T協調訓練を紹介"
+        ]
+      },
+      {
+        "text": "松山家商でXRシナリオ訓練を実施、全民防衛教育を体験型学習へ",
+        "lines": [
+          "松山家商でXRシナリオ訓練を実施、全民防衛教育を体験型学習へ"
+        ]
+      },
+      {
+        "text": "Big x Reality、台北市大安区に新拠点を開設――XR防衛技術の国際展開を推進",
+        "lines": [
+          "Big x Reality、台北市大安区に新拠点を開設――XR防衛技術の国際展開を推進"
+        ]
+      },
+      {
+        "text": "Defense & Security 2025でXR小部隊戦術訓練システムの成果を披露",
+        "lines": [
+          "Defense & Security 2025でXR小部隊戦術訓練システムの成果を披露"
+        ]
+      },
+      {
+        "text": "Big x Realityが『GBP Daily News』の表紙に掲載",
+        "lines": [
+          "Big x Realityが『GBP Daily News』の表紙に掲載"
+        ]
+      }
+    ]
+  }
+]

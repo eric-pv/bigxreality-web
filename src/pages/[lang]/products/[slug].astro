@@ -1,4 +1,5 @@
 ---
+import ContentBody from "../../../components/ContentBody.astro";
 /**
  * /[lang]/products/[slug]/ — the fixed 12-block product template (task brief §5.2).
  * A block whose field is left out is not rendered; a field holding [待提供] is
@@ -7,7 +8,6 @@
  */
 import SplitSection from "../../../components/SplitSection.astro";
 import SmartCardGrid from "../../../components/SmartCardGrid.astro";
-import { getImage } from "astro:assets";
 import { LANGS, localePath, type Lang } from "../../../i18n";
 import { getLocalized, availableLangs, integratedProducts, validateRelations } from "../../../lib/content";
 import { articlesAbout, articleHref, tagNames } from "../../../lib/articles";
@@ -15,7 +15,6 @@ import { casesAbout } from "../../../lib/cases";
 import RelatedCases from "../../../components/RelatedCases.astro";
 import { visibleProductSections, isPending, type ProductSection } from "../../../lib/pending";
 import { getUi } from "../../../lib/ui";
-import { markPendingHtml } from "../../../lib/text";
 import RelatedTechnologies from "../../../components/RelatedTechnologies.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
@@ -27,6 +26,7 @@ import CtaBand from "../../../components/CtaBand.astro";
 import FormButton from "../../../components/FormButton.astro";
 import Text from "../../../components/Text.astro";
 import ProductLanding from "../../../components/ProductLanding.astro";
+import { pageOgImage } from "../../../lib/og-image";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -44,7 +44,7 @@ const product = (await getLocalized("products", lang)).find((p) => p.slug === sl
 const base = product.base.data; // structural fields (tw)
 const d = product.loc.data; // wording in this language
 const overview = product.loc.body?.trim();
-const overviewHtml = markPendingHtml(product.loc.rendered?.html ?? "");
+const overviewHtml = product.loc.rendered?.html ?? "";
 
 const heroImage = base.hero.image && { src: base.hero.image.src, alt: d.hero.image?.alt ?? base.hero.image.alt };
 const integrated = await integratedProducts(slug, lang);
@@ -81,7 +81,8 @@ const breadcrumbs = [
   { name: ui.nav.products, path: localePath(lang, "products") },
   { name: d.hero.name, path: localePath(lang, "products", slug) },
 ];
-const jsonLdImage = heroImage ? (await getImage({ src: heroImage.src, width: 1280, format: "jpg" })).src : undefined;
+// og:image and the Product schema image: this page's hero with this language's own alt.
+const og = pageOgImage(base.seo?.ogImage ?? heroImage?.src, d.hero.image?.alt, product.pendingTranslation);
 const t = ui.product.deployment;
 const amount = (v: number | string | undefined, unit: string) => (v === undefined ? undefined : isPending(v) ? v : `${v} ${unit}`);
 const personnel =
@@ -110,16 +111,15 @@ const deploymentRows = [
   headerTheme="dark"
   current="products"
   breadcrumbs={breadcrumbs}
-  ogImage={base.seo?.ogImage ?? heroImage?.src}
-  ogImageAlt={heroImage?.alt}
+  {...og}
   search={{ type: "products" }}
-  product={{ name: d.hero.name, description: d.seo?.description ?? d.hero.tagline, code: base.hero.code, image: jsonLdImage }}
+  product={{ name: d.hero.name, description: d.seo?.description ?? d.hero.tagline, code: base.hero.code }}
 >
   <!-- 1 Hero -->
   <PageHero
     breadcrumbs={breadcrumbs}
     breadcrumbLabel={ui.breadcrumbLabel}
-    eyebrow={base.hero.code ? `Product · ${base.hero.code}` : "Product"}
+    eyebrow={ui.productLanding.eyebrow}
     title={d.hero.name}
     subtitle={d.hero.englishName}
     description={d.hero.tagline}
@@ -146,7 +146,7 @@ const deploymentRows = [
     <section class="section" id="overview" aria-labelledby="h-overview">
       <div class="container"><SplitSection gap="var(--space-8)">
         <SectionHead slot="head" id="h-overview" eyebrow={head("overview").eyebrow} title={head("overview").title} />
-        <div class="prose" set:html={overviewHtml} />
+        <ContentBody html={overviewHtml} lang={lang} entryFile={`src/content/products/${lang}/${slug}.md`} />
       </SplitSection></div>
     </section>
   )}
@@ -156,7 +156,7 @@ const deploymentRows = [
     <section class="section section--alt" id="capabilities" aria-labelledby="h-capabilities">
       <div class="container">
         <SectionHead id="h-capabilities" eyebrow={head("capabilities").eyebrow} title={head("capabilities").title} />
-        <ul role="list" class="tiles">
+        <ul role="list" class="tiles balanced">
           {d.capabilities!.map((c) => (
             <li class="tile"><h3 class="t-h4"><Text value={c.title} /></h3><p class="t-muted"><Text value={c.description} /></p></li>
           ))}
@@ -170,7 +170,7 @@ const deploymentRows = [
     <section class="section" id="howItWorks" aria-labelledby="h-howItWorks">
       <div class="container">
         <SectionHead id="h-howItWorks" eyebrow={head("howItWorks").eyebrow} title={head("howItWorks").title} />
-        <ol role="list" class="steps">
+        <ol role="list" class="steps balanced">
           {d.howItWorks!.map((s, i) => (
             <li class="step">
               <span class="t-tech num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
@@ -188,7 +188,7 @@ const deploymentRows = [
     <section class="section section--alt" id="scenarios" aria-labelledby="h-scenarios">
       <div class="container">
         <SectionHead id="h-scenarios" eyebrow={head("scenarios").eyebrow} title={head("scenarios").title} />
-        <ul role="list" class="tiles">
+        <ul role="list" class="tiles balanced">
           {d.scenarios!.map((s) => (
             <li class="tile"><h3 class="t-h4"><Text value={s.title} /></h3><p class="t-muted"><Text value={s.description} /></p></li>
           ))}
@@ -214,7 +214,7 @@ const deploymentRows = [
     <section class="section section--alt" id="deployment" aria-labelledby="h-deployment">
       <div class="container">
         <SectionHead id="h-deployment" eyebrow={head("deployment").eyebrow} title={head("deployment").title} />
-        <dl class="figures">
+        <dl class="figures balanced">
           {deploymentRows.map(([k, v]) => (<div><dt class="t-label"><Text value={k} /></dt><dd><Text value={v} /></dd></div>))}
         </dl>
       </div>
@@ -234,7 +234,7 @@ const deploymentRows = [
                 <li>
                   <CardProduct
                     lang={lang} href={localePath(lang, "products", p.slug)} name={p.loc.data.hero.name}
-                    englishName={p.loc.data.hero.englishName} summary={p.loc.data.summary ?? p.loc.data.hero.tagline}
+                    summary={p.loc.data.summary ?? p.loc.data.hero.tagline}
                     domains={p.base.data.domains}
                     image={p.base.data.hero.image && { src: p.base.data.hero.image.src, alt: p.loc.data.hero.image?.alt ?? p.base.data.hero.image.alt }}
                   />
@@ -257,7 +257,7 @@ const deploymentRows = [
             <li>
               <CardSolution
                 lang={lang} href={localePath(lang, "solutions", s.slug)} domain={s.base.data.domain}
-                name={s.loc.data.name} englishName={s.loc.data.englishName} summary={s.loc.data.summary}
+                name={s.loc.data.name} summary={s.loc.data.summary}
                 image={s.base.data.image && { src: s.base.data.image.src, alt: s.loc.data.image?.alt ?? s.base.data.image.alt }}
               />
             </li>
@@ -338,17 +338,17 @@ const deploymentRows = [
   :global(html) { scroll-padding-top: calc(var(--header-h) + 48px + var(--space-2)); }
 
   .prose { display: grid; gap: var(--space-2); max-width: 44rem; }
-  .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  .tiles { gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
   .tile { display: grid; gap: var(--space-1); align-content: start; padding: var(--space-3); background: var(--surface); border-top: 2px solid var(--bxr-black); }
   .section--alt .tile { background: var(--bxr-white); }
-  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; counter-reset: none; }
+  .steps { gap: var(--gutter); margin: 0; padding: 0; list-style: none; counter-reset: none; }
   .step { display: grid; gap: var(--space-1); align-content: start; padding-top: var(--space-2); border-top: 1px solid var(--bxr-line); }
   .num { color: var(--ink-muted); }
   .spec { display: grid; margin: 0; border-top: 1px solid var(--bxr-black); }
   .spec div { display: grid; grid-template-columns: 4fr 8fr; gap: var(--space-3); padding-block: var(--space-2); border-bottom: 1px solid var(--bxr-line); }
   .spec dt { font-weight: 500; }
   .spec dd { margin: 0; color: var(--ink-muted); }
-  .figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin: 0; }
+  .figures { gap: var(--gutter); margin: 0; }
   .figures div { display: grid; gap: var(--space-1); padding-top: var(--space-2); border-top: 1px solid var(--bxr-black); }
   .figures dt { color: var(--ink-muted); }
   .figures dd { margin: 0; font-size: var(--fs-h3); font-weight: 500; }

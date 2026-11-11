@@ -1,0 +1,17 @@
+{
+  "buildFingerprint": "6b1a6ba3e01848e611949d6b504c12e0184b2d068a5473433a6e0a2167c31166",
+  "routes": 219,
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1440
+  ],
+  "pageViewportChecks": 1533,
+  "visibleTextBlockChecks": 67822,
+  "issues": 0,
+  "jsErrors": []
+}

@@ -1,0 +1,75 @@
+/**
+ * Browser transport for the contact-page inquiry form → Google Apps Script Web App
+ * (integrations/google-apps-script/inquiry/Code.gs). Same rules as the verified POC
+ * (docs/inquiry/GAS-POC-SETUP.md §5): cors fetch, URLSearchParams body, no custom
+ * headers or cookies; only a readable JSON reply with our protocol and request ID counts.
+ * An opaque, unreadable or mismatched reply means "result unknown", never success.
+ */
+export const INQUIRY_PROTOCOL = "bxr-inquiry-v1";
+
+export const INQUIRY_FIELDS = [
+  "name", "organization", "jobTitle", "country", "email", "phone", "topic", "interest", "message",
+  "language", "sourcePage", "privacyConsent", "privacyVersion",
+] as const;
+export type InquiryField = (typeof INQUIRY_FIELDS)[number];
+export type InquiryPayload = Record<InquiryField, string>;
+
+export interface InquiryReply {
+  ok: boolean;
+  persisted: boolean;
+  /** Public reference, Taipei date + daily sequence (20261104001). Assigned by the receiver only.
+   *  Absent from receivers deployed before 2026-11 numbering; then no reference is shown. */
+  inquiryId?: string;
+  duplicate?: boolean;
+  code?: string;
+  field?: string;
+}
+
+/** Only a deployed Apps Script Web App (/exec) is accepted as an endpoint. */
+export function endpointUrl(value: string): string {
+  const url = new URL(value);
+  if (url.origin !== "https://script.google.com" || !/^\/macros\/s\/[\w-]+\/exec$/.test(url.pathname) || url.search || url.hash || url.username || url.password) {
+    throw new Error("Inquiry endpoint must be an Apps Script https://script.google.com/macros/s/…/exec URL.");
+  }
+  return url.href;
+}
+
+export class UnknownResult extends Error {}
+
+export async function sendInquiry(endpoint: string, requestId: string, payload: InquiryPayload, website = "", fetcher: typeof fetch = fetch): Promise<InquiryReply> {
+  const body = new URLSearchParams({ protocol: INQUIRY_PROTOCOL, requestId, website });
+  for (const key of INQUIRY_FIELDS) body.set(key, payload[key] ?? "");
+  let response: Response;
+  try {
+    response = await fetcher(endpointUrl(endpoint), {
+      method: "POST", mode: "cors", credentials: "omit", redirect: "follow", body,
+      signal: AbortSignal.timeout(30000),
+    });
+  } catch (error) {
+    throw new UnknownResult(String(error));
+  }
+  if (!response.ok || response.type === "opaque") throw new UnknownResult(`HTTP ${response.status}`);
+  let value: Record<string, unknown>;
+  try { value = await response.json(); } catch { throw new UnknownResult("unreadable reply"); }
+  if (value.protocol !== INQUIRY_PROTOCOL || value.requestId !== requestId || typeof value.ok !== "boolean" || typeof value.persisted !== "boolean") {
+    throw new UnknownResult("unexpected reply");
+  }
+  // A reference that is present but malformed is never shown (or invented); the result counts as unknown.
+  if (value.inquiryId !== undefined && !isInquiryId(value.inquiryId)) throw new UnknownResult("malformed inquiry reference");
+  return value as unknown as InquiryReply;
+}
+
+/** YYYYMMDD + at least three digits, e.g. 20261104001 or 202611041000. */
+export function isInquiryId(value: unknown): value is string {
+  return typeof value === "string" && /^20\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])\d{3,}$/.test(value);
+}
+
+/** One existing Sheets cell, with every selected product/solution retained in a stable order. */
+export function serializeInterests(values: Iterable<string>): string {
+  return [...new Set([...values].filter(Boolean))].join("; ");
+}
+
+/** Local hooks for a future consent-aware analytics integration. No network, storage or personal data. */
+export function emitInquiryEvent(stage: "open" | "submit" | "success" | "error", sourcePage: string, topic: string, interestCount: number): void {
+  document.dispatchEvent(new CustomEvent("bxr:inquiry", {detail: {stage, sourcePage, topic, interestCount}}));
+}

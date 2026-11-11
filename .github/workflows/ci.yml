@@ -3,43 +3,176 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Monthly 104 openings sync (docs/careers/104-INTEGRATION.md): 1st of each month, 10:17 Taipei.
+  schedule:
+    - cron: "17 2 1 * *"
+  workflow_dispatch:
+    inputs:
+      careers_allow_empty:
+        description: "Confirm that 0 openings on 104 is real and may empty the careers list"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: website-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  build-and-test:
+  # Scheduled / manual runs on main only. Commits src/data/careers-104.json when a fully validated
+  # 104 response changed it; the build below then tests and deploys that exact commit. Failure or
+  # a held empty result stops the run, so Pages keeps the last good deployment and snapshot.
+  careers-sync:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.sync.outputs.changed }}
+      sha: ${{ steps.commit.outputs.sha }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+      - id: sync
+        name: Sync public openings from the 104 Open API
+        env:
+          BXR_104_CLIENT_ID: ${{ secrets.BXR_104_CLIENT_ID }}
+          BXR_104_CLIENT_SECRET: ${{ secrets.BXR_104_CLIENT_SECRET }}
+          BXR_104_ALLOW_EMPTY: ${{ inputs.careers_allow_empty && '1' || '0' }}
+        run: node scripts/careers/sync-104.mjs
+      - id: commit
+        if: steps.sync.outputs.changed == 'true'
+        name: Commit the validated snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/careers-104.json
+          git commit -m "Sync 104 openings ($(date -u +%Y-%m-%d))"
+          git push origin HEAD:main
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  build-and-test:
+    needs: careers-sync
+    # Runs for PRs, pushes and manual runs; a scheduled run builds only when the sync published a change.
+    if: ${{ !cancelled() && needs.careers-sync.result != 'failure' && (github.event_name != 'schedule' || needs.careers-sync.outputs.changed == 'true') }}
+    runs-on: ubuntu-latest
+    env:
+      BXR_CONTENT_SOURCE: markdown
+      BXR_PREVIEW: "0"
+    steps:
+      # Shallow checkout: the build needs only HEAD. The CMS media guard (sveltia/check.mjs)
+      # diffs against origin/main on cms/* branches, so only that ref is fetched (depth 1).
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.careers-sync.outputs.sha || github.sha }}
+      - name: Fetch main for the CMS media guard
+        if: github.ref != 'refs/heads/main'
+        run: git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .node-version
           cache: npm
       - run: npm ci
       - run: npx playwright-core install --with-deps chromium
+      - name: Sveltia schema and content compatibility
+        run: npm run cms:sveltia:check
+      - name: Sveltia real-browser isolated editing
+        run: npm run qa:sveltia
+      - name: Upload CMS browser failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cms-browser-failure-${{ github.run_attempt }}
+          path: |
+            .qa/sveltia/failure.png
+            .qa/sveltia/failure.txt
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Inquiry transport harness (mock only, not Google acceptance)
+        run: npm run qa:inquiry-poc
       - name: Unit tests
         run: npm test
       - name: Type check
         run: npx astro check
-      # Markdown backup content (production builds read EmDash in Workers Builds)
+      # Astro's optimised-image cache only (not the content data store). Entries are keyed by
+      # source hash + transform, so a hit yields byte-identical images; a lockfile change
+      # (Astro/sharp upgrade) starts a fresh cache. Only main saves it; PRs restore main's cache.
+      - name: Restore Astro image cache
+        uses: actions/cache/restore@v6
+        with:
+          path: node_modules/.astro/assets
+          key: astro-assets-v1-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/assets/**', 'astro.config.mjs') }}
+          restore-keys: astro-assets-v1-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+      # Git main is the only official content source. No remote CMS is queried.
       - name: Build
         run: npm run build
+      - name: Save Astro image cache
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/cache/save@v6
+        with:
+          path: node_modules/.astro/assets
+          key: astro-assets-v1-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/assets/**', 'astro.config.mjs') }}
+        continue-on-error: true
+      - name: Production inquiry form (mock Google only; no real writes)
+        run: npm run qa:inquiry-production
       - run: npm run qa:technologies
+      - run: npm run qa:news-preview
+      - run: npm run qa:news-media
+      - run: npm run qa:csr
+      - run: npm run qa:news-import
+      # Screenshot/layout/motion QA (~18 min) runs in qa-full.yml and does not delay publishing.
+      - run: npm run qa:client-logos
+      - run: npm run qa:images
       - run: npm run qa:seo
       - run: npm run check:sitemap
       - run: npm run qa:links
       - run: npm run qa:behaviour
-      - run: npm run qa:motion
-      - run: npm run qa:density-navigation
       - run: npm run qa:header
       - run: npm run qa:footer
       - run: npm run qa:solutions
       - run: npm run qa:company
+      - run: npm run qa:team
       - run: npm run qa:english
       - run: npm run qa:japanese
       - run: npm run qa:faq
       # TEST FIXTURE content: pages, search and accessibility of phase 2 templates
       - name: Build test fixtures
         run: npm run build:fixtures
-      - run: QA_DIST=dist-fixtures/client npm run qa:technologies
+      - run: QA_DIST=dist-fixtures npm run qa:technologies
+      - name: Inline CMS media renderer (isolated fixtures)
+        run: npm run qa:inline-media
       - run: npm run qa:phase2
-      - run: QA_DIST=dist-fixtures/client npm run qa:company
+      - run: QA_DIST=dist-fixtures npm run qa:company
       - run: npm run qa:search
-      - run: QA_DIST=dist-fixtures/client npm run qa:a11y -- /tw/solutions/police/ /tw/news/ /tw/news/fixture-news-02/ /tw/cases/fixture-case-1/ /tw/tags/xr-training/ /tw/search/
+      - run: QA_DIST=dist-fixtures npm run qa:a11y -- /tw/solutions/police/ /tw/news/ /tw/news/fixture-news-02/ /tw/cases/fixture-case-1/ /tw/tags/xr-training/ /tw/search/
+      - name: Package the verified Pages artifact
+        run: npm run pages:package && npm run pages:check
+      - name: Publish build summary
+        if: always()
+        run: |
+          echo "## BXR website" >> "$GITHUB_STEP_SUMMARY"
+          echo "Commit: $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+          echo "CMS target: main; source: Git Markdown; hosting: GitHub Pages" >> "$GITHUB_STEP_SUMMARY"
+          echo "Pages publication requires every build-and-test step to pass." >> "$GITHUB_STEP_SUMMARY"
+      # v5 wraps upload-artifact v7 (Node 24). Since v4 it drops dotfiles by default; keep the
+      # packager's .nojekyll so the artifact contents stay identical to what pages:check verified.
+      - uses: actions/upload-pages-artifact@v5
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: dist-pages
+          include-hidden-files: true
+  deploy-pages:
+    if: ${{ !cancelled() && needs.build-and-test.result == 'success' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

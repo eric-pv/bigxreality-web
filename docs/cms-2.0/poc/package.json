@@ -1,0 +1,10 @@
+{
+  "name": "bxr-cms2-phase0-isolated-proof",
+  "private": true,
+  "type": "module",
+  "scripts": {"audit":"node audit.mjs", "test":"node --test roundtrip.test.mjs", "editors":"node editors.mjs", "sizes":"node sizes.mjs", "sveltia":"node sveltia-i18n.mjs"},
+  "dependencies": {
+    "@tiptap/core":"3.32.2", "@tiptap/starter-kit":"3.32.2", "@tiptap/extension-image":"3.32.2", "@tiptap/markdown":"3.32.2",
+    "@blocknote/core":"0.57.0", "@milkdown/kit":"7.23.0", "jsdom":"26.1.0", "esbuild":"0.25.12", "yaml":"2.9.1", "marked":"17.0.6"
+  }
+}

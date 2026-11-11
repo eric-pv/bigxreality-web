@@ -1,0 +1,745 @@
+{
+  "purpose": "BCP-47 storage names for native Sveltia i18n; public URLs and logical IDs remain tw/en/jp",
+  "files": [
+    {
+      "from": "src/content/case-studies/tw/.gitkeep",
+      "to": "src/content/case-studies/zh-Hant/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "from": "src/content/case-studies/jp/.gitkeep",
+      "to": "src/content/case-studies/ja/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "from": "src/content/insights/tw/.gitkeep",
+      "to": "src/content/insights/zh-Hant/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "from": "src/content/insights/jp/.gitkeep",
+      "to": "src/content/insights/ja/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "from": "src/content/news/tw/.gitkeep",
+      "to": "src/content/news/zh-Hant/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "from": "src/content/news/tw/news-01-ds-2025.md",
+      "to": "src/content/news/zh-Hant/news-01-ds-2025.md",
+      "sha256": "448d9807c927dc6bc67dcfc34d3435838e5272d7157a67b9e1a1aadff8509465"
+    },
+    {
+      "from": "src/content/news/tw/news-02-gbp-cover.md",
+      "to": "src/content/news/zh-Hant/news-02-gbp-cover.md",
+      "sha256": "772c93d620a1dc5a10a0f55bfc40b2d196cd23fc8e026c8f2722a48a97f40c69"
+    },
+    {
+      "from": "src/content/news/tw/news-03-leadership-uncertainty.md",
+      "to": "src/content/news/zh-Hant/news-03-leadership-uncertainty.md",
+      "sha256": "18edac9bcf5b0415425cacedbc760fa7924cdbde85d4c59ad83927952695a8f5"
+    },
+    {
+      "from": "src/content/news/tw/news-04-seecat-2025.md",
+      "to": "src/content/news/zh-Hant/news-04-seecat-2025.md",
+      "sha256": "9cb38f3d39024879ab1ac1f0bd26779f43ef42b6ccc6f2b435a98a7883e6613c"
+    },
+    {
+      "from": "src/content/news/tw/news-05-tadte-2025.md",
+      "to": "src/content/news/zh-Hant/news-05-tadte-2025.md",
+      "sha256": "745a97dfa98a19053e8f907bb7a03bc2c03523fcf2b033e0d2910ef26c837401"
+    },
+    {
+      "from": "src/content/news/tw/news-06-military-forum-2025.md",
+      "to": "src/content/news/zh-Hant/news-06-military-forum-2025.md",
+      "sha256": "8878b8b30e3b2c3035bebedc5d419e3690616b0b2a1574bf7ff142e448f0e410"
+    },
+    {
+      "from": "src/content/news/tw/news-07-indo-defence.md",
+      "to": "src/content/news/zh-Hant/news-07-indo-defence.md",
+      "sha256": "dd294bdbb5d216425260fde61ce8daec3f003a387f698e5c50da810c1c38ca80"
+    },
+    {
+      "from": "src/content/news/tw/news-08-fire-agency-2025.md",
+      "to": "src/content/news/zh-Hant/news-08-fire-agency-2025.md",
+      "sha256": "29e101335ba0292ed36d43ef1fcc40d56147153ac50667045dcf8a158d047365"
+    },
+    {
+      "from": "src/content/news/tw/news-09-seecat-earlier.md",
+      "to": "src/content/news/zh-Hant/news-09-seecat-earlier.md",
+      "sha256": "667240656ba4336096f73aba43094ab5ae409f141bf0f522b9f24bd975e27588"
+    },
+    {
+      "from": "src/content/news/tw/news-10-xr-shooting-sports.md",
+      "to": "src/content/news/zh-Hant/news-10-xr-shooting-sports.md",
+      "sha256": "d527a3ac324eaf8168487de22875175895ac5f17e6430900c562d343c0b017bd"
+    },
+    {
+      "from": "src/content/news/tw/news-11-sushi-tech-2024.md",
+      "to": "src/content/news/zh-Hant/news-11-sushi-tech-2024.md",
+      "sha256": "dbe388ddb9f9e3ed100a2a73295776fbbf2a6a5b8c1ee90513bc4bf17308d83f"
+    },
+    {
+      "from": "src/content/news/tw/news-12-asia-xr-awards-2023.md",
+      "to": "src/content/news/zh-Hant/news-12-asia-xr-awards-2023.md",
+      "sha256": "1067287d0adb1f63428b9734abe85a721378a599ff5a7db545819c7c85797451"
+    },
+    {
+      "from": "src/content/news/tw/news-13-future-combat.md",
+      "to": "src/content/news/zh-Hant/news-13-future-combat.md",
+      "sha256": "d60cd17b35c906c4ab92ce6765a01cef6e919a78fc9535dae15cc457c4d1d446"
+    },
+    {
+      "from": "src/content/news/tw/news-15-media-visit-2026.md",
+      "to": "src/content/news/zh-Hant/news-15-media-visit-2026.md",
+      "sha256": "5066910e05fc62d0333fddf5b68c575cce3bafa469064dc63c19b4929c46250d"
+    },
+    {
+      "from": "src/content/news/tw/news-16-seecat-2026.md",
+      "to": "src/content/news/zh-Hant/news-16-seecat-2026.md",
+      "sha256": "f583a5167966859edbc799e7c969a01530a4f60b49f9076947ecbdbc0f904552"
+    },
+    {
+      "from": "src/content/news/tw/news-17-defense-education-2026.md",
+      "to": "src/content/news/zh-Hant/news-17-defense-education-2026.md",
+      "sha256": "9e1f5139e54732a5be37b5797b2d6575b683d45eaf724c4f2a378cbc60d3d7bb"
+    },
+    {
+      "from": "src/content/news/tw/news-18-decision-training-2026.md",
+      "to": "src/content/news/zh-Hant/news-18-decision-training-2026.md",
+      "sha256": "e2d7f935d92cbebbac23679038acd9178e365e4ef193ced61934b5a3188088d3"
+    },
+    {
+      "from": "src/content/news/tw/news-19-cna-simulation-2026.md",
+      "to": "src/content/news/zh-Hant/news-19-cna-simulation-2026.md",
+      "sha256": "17cb759f52d86689085ea3466fefb3ab6e74f12696394db4cd9ae7eb8eb3122e"
+    },
+    {
+      "from": "src/content/news/tw/news-20-taipei-education-expo-2026.md",
+      "to": "src/content/news/zh-Hant/news-20-taipei-education-expo-2026.md",
+      "sha256": "8c88b0b0e40d689ff6309d7b32611b95dea283543cc1d3ad716446b55bd615aa"
+    },
+    {
+      "from": "src/content/news/tw/news-21-forum-22-2026.md",
+      "to": "src/content/news/zh-Hant/news-21-forum-22-2026.md",
+      "sha256": "22653b393c7e597b1a2d34dd6aa02a92ed37041a3bbc600ca776c368e555e4a6"
+    },
+    {
+      "from": "src/content/news/tw/news-22-dsa-2026.md",
+      "to": "src/content/news/zh-Hant/news-22-dsa-2026.md",
+      "sha256": "9053b2b61587919944d96c568c222bea7984b01e6b9383d59fcf4e67c0c46ca8"
+    },
+    {
+      "from": "src/content/news/tw/news-23-songshan-school-2025.md",
+      "to": "src/content/news/zh-Hant/news-23-songshan-school-2025.md",
+      "sha256": "beed325b1e09a930a69edfa5ff81b4e6b95c3343cf7970e2161c16253aeb4373"
+    },
+    {
+      "from": "src/content/news/tw/news-24-new-office-2025.md",
+      "to": "src/content/news/zh-Hant/news-24-new-office-2025.md",
+      "sha256": "b7d2e3eadc015e2cb072fdd5e112e8ea889721708e2d87ad9734b3164367d192"
+    },
+    {
+      "from": "src/content/news/tw/news-25-defense-expo-preview-2025.md",
+      "to": "src/content/news/zh-Hant/news-25-defense-expo-preview-2025.md",
+      "sha256": "59b43ae4efa8ff1fd3ae2d6575bad7bd064794e3feb6349a20be4a6a816d2028"
+    },
+    {
+      "from": "src/content/news/tw/news-26-disaster-resilience-2025.md",
+      "to": "src/content/news/zh-Hant/news-26-disaster-resilience-2025.md",
+      "sha256": "822afd722c372c765a9ac442eec9823865c2ae0ab3bf23665d34c974fc5331af"
+    },
+    {
+      "from": "src/content/news/tw/news-27-military-simulation-overview-2025.md",
+      "to": "src/content/news/zh-Hant/news-27-military-simulation-overview-2025.md",
+      "sha256": "d4955cb79474e4384d57f054b1173ea7f2f77f1a8fd7df84de245793154cbaba"
+    },
+    {
+      "from": "src/content/news/tw/news-28-fire-extinguisher-launch-2025.md",
+      "to": "src/content/news/zh-Hant/news-28-fire-extinguisher-launch-2025.md",
+      "sha256": "24557bca7418917d23b8ede0f1849fada80de2004a21b075f8dc1d64e01e4210"
+    },
+    {
+      "from": "src/content/news/tw/news-29-xr-defense-platform-2025.md",
+      "to": "src/content/news/zh-Hant/news-29-xr-defense-platform-2025.md",
+      "sha256": "923e3fdd0ae4abf1fe031fc9ddbfb7ec1d656a10080aee699f3bb5244aa197f5"
+    },
+    {
+      "from": "src/content/news/tw/news-30-baseball-csr-2025.md",
+      "to": "src/content/news/zh-Hant/news-30-baseball-csr-2025.md",
+      "sha256": "765e4ff97d0c6c4ec8ad564df1adc52f09c9b8f5f55e1b17ab2fab1bb7afcaad"
+    },
+    {
+      "from": "src/content/news/tw/news-31-trap-shooting-championship-2024.md",
+      "to": "src/content/news/zh-Hant/news-31-trap-shooting-championship-2024.md",
+      "sha256": "6eebdfe91dd4b2bc98831f7aa7ef8be535803a83468a6bf57413c8915601a9a3"
+    },
+    {
+      "from": "src/content/news/jp/.gitkeep",
+      "to": "src/content/news/ja/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "from": "src/content/news/jp/news-01-ds-2025.md",
+      "to": "src/content/news/ja/news-01-ds-2025.md",
+      "sha256": "9638301c1d7723293844a389facb69515c8953c5956073f0835b9d8caf99e357"
+    },
+    {
+      "from": "src/content/news/jp/news-02-gbp-cover.md",
+      "to": "src/content/news/ja/news-02-gbp-cover.md",
+      "sha256": "5b6eb4e8158bc1a96bb2f9b71b565a0f063f8833bf7e6182e142cd504241b16b"
+    },
+    {
+      "from": "src/content/news/jp/news-03-leadership-uncertainty.md",
+      "to": "src/content/news/ja/news-03-leadership-uncertainty.md",
+      "sha256": "2cd228e554ab52d616b0c9a65dade44590a19010f4e77fa98b6ce629feffb02b"
+    },
+    {
+      "from": "src/content/news/jp/news-04-seecat-2025.md",
+      "to": "src/content/news/ja/news-04-seecat-2025.md",
+      "sha256": "1342f0f75558f5b57aa2362e44b4f0daeb6c431f3403cd34882c4497c3b24384"
+    },
+    {
+      "from": "src/content/news/jp/news-05-tadte-2025.md",
+      "to": "src/content/news/ja/news-05-tadte-2025.md",
+      "sha256": "ac2d188d457bfbe52810bc1a60f5d0c59dba25a9e337eb2c382b17f76285bace"
+    },
+    {
+      "from": "src/content/news/jp/news-06-military-forum-2025.md",
+      "to": "src/content/news/ja/news-06-military-forum-2025.md",
+      "sha256": "a874934258592f1db1828f36aa4ab973d818f6dc6e3ee22db5a75b24bb46a33c"
+    },
+    {
+      "from": "src/content/news/jp/news-07-indo-defence.md",
+      "to": "src/content/news/ja/news-07-indo-defence.md",
+      "sha256": "1e4a80cc6360f26fdf2ea9aab5c01821d6da390c1abdb19d6f2b0dcaf5673c91"
+    },
+    {
+      "from": "src/content/news/jp/news-08-fire-agency-2025.md",
+      "to": "src/content/news/ja/news-08-fire-agency-2025.md",
+      "sha256": "e5329f2c4cbe688a0b9b644b93c05bb50357153bdb9a43dec719f8fc0281f30e"
+    },
+    {
+      "from": "src/content/news/jp/news-09-seecat-earlier.md",
+      "to": "src/content/news/ja/news-09-seecat-earlier.md",
+      "sha256": "c83464d53b2a2a52724bb82f62d152da2a05a1b8b013f51efbfb712ce50b8b9d"
+    },
+    {
+      "from": "src/content/news/jp/news-10-xr-shooting-sports.md",
+      "to": "src/content/news/ja/news-10-xr-shooting-sports.md",
+      "sha256": "8e2d7eccbf48ff00643781fdafd95bad0166419205fa4614bc3b38ff01ba1fc9"
+    },
+    {
+      "from": "src/content/news/jp/news-11-sushi-tech-2024.md",
+      "to": "src/content/news/ja/news-11-sushi-tech-2024.md",
+      "sha256": "9d54fd04fb6be50789660f8cd3f06c436ccee3aac42679a2ed81c79cd4f1526c"
+    },
+    {
+      "from": "src/content/news/jp/news-12-asia-xr-awards-2023.md",
+      "to": "src/content/news/ja/news-12-asia-xr-awards-2023.md",
+      "sha256": "9a871d05270812ed6742f7cce83affaf6d9f9f2ae021e4099cd78130cdb4aba5"
+    },
+    {
+      "from": "src/content/news/jp/news-13-future-combat.md",
+      "to": "src/content/news/ja/news-13-future-combat.md",
+      "sha256": "e0749b0f1c18c580441b14b36cbc0b41b7a650d89b10ede0c950b8ae36df2477"
+    },
+    {
+      "from": "src/content/news/jp/news-15-media-visit-2026.md",
+      "to": "src/content/news/ja/news-15-media-visit-2026.md",
+      "sha256": "f52260ca076c6b07ff1a30c3bb5295cd2ac0674ec2bf63d8305610d2f4b5a825"
+    },
+    {
+      "from": "src/content/news/jp/news-16-seecat-2026.md",
+      "to": "src/content/news/ja/news-16-seecat-2026.md",
+      "sha256": "81e35d2d1d8911ee304644de525336ad197c9b1aa4bd126f68119c14fd4d4e52"
+    },
+    {
+      "from": "src/content/news/jp/news-17-defense-education-2026.md",
+      "to": "src/content/news/ja/news-17-defense-education-2026.md",
+      "sha256": "4ddaa1cddf8ecaeaccadb76f87f69c268b1df41f269fc6a3247bf8feb73d3c73"
+    },
+    {
+      "from": "src/content/news/jp/news-18-decision-training-2026.md",
+      "to": "src/content/news/ja/news-18-decision-training-2026.md",
+      "sha256": "7a88a25f7fea22d09069190c1c0e2160118734e6e223b518a694051153a0bc03"
+    },
+    {
+      "from": "src/content/news/jp/news-19-cna-simulation-2026.md",
+      "to": "src/content/news/ja/news-19-cna-simulation-2026.md",
+      "sha256": "b37831931b325373888125933f357170dacc2e5490ce65d37b12602b2eb88811"
+    },
+    {
+      "from": "src/content/news/jp/news-20-taipei-education-expo-2026.md",
+      "to": "src/content/news/ja/news-20-taipei-education-expo-2026.md",
+      "sha256": "9aab2f3ee81d73ba82751cda90ed627ed0520e59029ed6f01602e06e61d9cd27"
+    },
+    {
+      "from": "src/content/news/jp/news-21-forum-22-2026.md",
+      "to": "src/content/news/ja/news-21-forum-22-2026.md",
+      "sha256": "1b0d1af26a75c06e790144bd7f5350fe2ef20408434e589424bc89a3032033e2"
+    },
+    {
+      "from": "src/content/news/jp/news-22-dsa-2026.md",
+      "to": "src/content/news/ja/news-22-dsa-2026.md",
+      "sha256": "ae22418030814e973447dcafac8ddb83ab9a48083b2dcbe94b4aed22c4401ff4"
+    },
+    {
+      "from": "src/content/news/jp/news-23-songshan-school-2025.md",
+      "to": "src/content/news/ja/news-23-songshan-school-2025.md",
+      "sha256": "2cc78256dcd5aa47683c420931902e105cf225bdfda57a18c7737c0b194fd9e9"
+    },
+    {
+      "from": "src/content/news/jp/news-24-new-office-2025.md",
+      "to": "src/content/news/ja/news-24-new-office-2025.md",
+      "sha256": "c40dba702798506af7878ebadf1515c89917fde49bd2eeed277c25be72ddd314"
+    },
+    {
+      "from": "src/content/news/jp/news-25-defense-expo-preview-2025.md",
+      "to": "src/content/news/ja/news-25-defense-expo-preview-2025.md",
+      "sha256": "b2d90662f56b29055f475b309f036e29e3cfe05035444d14259edad8230874c3"
+    },
+    {
+      "from": "src/content/news/jp/news-26-disaster-resilience-2025.md",
+      "to": "src/content/news/ja/news-26-disaster-resilience-2025.md",
+      "sha256": "7cd7c84d4131f512c2d34ebfe5fd72b5079fd9773cd02f104ca334088386ee95"
+    },
+    {
+      "from": "src/content/news/jp/news-27-military-simulation-overview-2025.md",
+      "to": "src/content/news/ja/news-27-military-simulation-overview-2025.md",
+      "sha256": "c543751a7d567fcb9b2212877b266513b934892e1c0316e76681a98dbcf34a51"
+    },
+    {
+      "from": "src/content/news/jp/news-28-fire-extinguisher-launch-2025.md",
+      "to": "src/content/news/ja/news-28-fire-extinguisher-launch-2025.md",
+      "sha256": "7849dbb769861614a65f6b7ad10d0f7ebf15e8518b4f3d343b414fbcd92ab78d"
+    },
+    {
+      "from": "src/content/news/jp/news-29-xr-defense-platform-2025.md",
+      "to": "src/content/news/ja/news-29-xr-defense-platform-2025.md",
+      "sha256": "e17212c175e308c2688bacc8f041df93a466788adb2538becaab00139042aae2"
+    },
+    {
+      "from": "src/content/news/jp/news-30-baseball-csr-2025.md",
+      "to": "src/content/news/ja/news-30-baseball-csr-2025.md",
+      "sha256": "a2e63354fdac820fe8b6786ae05caa0fadb3268d6c943ad2141bde42cf8e6595"
+    },
+    {
+      "from": "src/content/news/jp/news-31-trap-shooting-championship-2024.md",
+      "to": "src/content/news/ja/news-31-trap-shooting-championship-2024.md",
+      "sha256": "8dfbe300b4a8adfeb47c7869e8d57539cd1e6add7e7c122f8b2ecf53714b62bd"
+    },
+    {
+      "from": "src/content/pages/tw/case-studies.md",
+      "to": "src/content/pages/zh-Hant/case-studies.md",
+      "sha256": "a711dc7633959d7ee83654f142a27b5e49c2b54aa19db3c1cbb446f73f4bd885"
+    },
+    {
+      "from": "src/content/pages/tw/company.md",
+      "to": "src/content/pages/zh-Hant/company.md",
+      "sha256": "144f81f199d32f574448016076d70f8c3c87976b57c044dc45ade4246bd1d06d"
+    },
+    {
+      "from": "src/content/pages/tw/contact.md",
+      "to": "src/content/pages/zh-Hant/contact.md",
+      "sha256": "822222252e8f83b82e1535d948a8a6deee9a46198ae3dd28dadf461c8ea71be1"
+    },
+    {
+      "from": "src/content/pages/tw/history.md",
+      "to": "src/content/pages/zh-Hant/history.md",
+      "sha256": "e2e69bc6901025e9df46a6ebefe39f9888ad162ca67b402a10398df58a18a3d4"
+    },
+    {
+      "from": "src/content/pages/tw/insights.md",
+      "to": "src/content/pages/zh-Hant/insights.md",
+      "sha256": "47963cb98919dc8a219500c1450e5a80d5499083f5bb90ccf8ea5b73f9a4b023"
+    },
+    {
+      "from": "src/content/pages/tw/investors.md",
+      "to": "src/content/pages/zh-Hant/investors.md",
+      "sha256": "02138e2d783f2e8fb9b46ca19efeb12b6d0969dd96ce1e8ad6a73a8dbf11ce04"
+    },
+    {
+      "from": "src/content/pages/tw/news.md",
+      "to": "src/content/pages/zh-Hant/news.md",
+      "sha256": "4df55e3e7099f4bd48136c541becd57bc7f89ff88bf3d4c6dbac5dbe74d8ef32"
+    },
+    {
+      "from": "src/content/pages/tw/partners.md",
+      "to": "src/content/pages/zh-Hant/partners.md",
+      "sha256": "45fc5141133c5045db5f89b2d4ccbedf0f0f0f8b0c4cf720c51d2966367ca902"
+    },
+    {
+      "from": "src/content/pages/tw/privacy.md",
+      "to": "src/content/pages/zh-Hant/privacy.md",
+      "sha256": "2dc80cd065f81fd540f96ccd5da16e7d4d5fdf5394b40e3829a2cc23f8fa648d"
+    },
+    {
+      "from": "src/content/pages/tw/products.md",
+      "to": "src/content/pages/zh-Hant/products.md",
+      "sha256": "6b948265f179f9ef5cdd349978575565bf397c854254d4d91d649e6efff21335"
+    },
+    {
+      "from": "src/content/pages/tw/search.md",
+      "to": "src/content/pages/zh-Hant/search.md",
+      "sha256": "7bd3a6d276a5001f4c90b9e56b733a29e05212467f6f3ec8078ef3f35384488f"
+    },
+    {
+      "from": "src/content/pages/tw/solutions.md",
+      "to": "src/content/pages/zh-Hant/solutions.md",
+      "sha256": "152c5d1722127c4197f19b4edb81e83ee899f46c03ed5925fce6f1623483d305"
+    },
+    {
+      "from": "src/content/pages/tw/tags.md",
+      "to": "src/content/pages/zh-Hant/tags.md",
+      "sha256": "484fc8e67ce2f46b0388156c0e3a349c2406e674e4ab6665efe3cb34375c299f"
+    },
+    {
+      "from": "src/content/pages/tw/team.md",
+      "to": "src/content/pages/zh-Hant/team.md",
+      "sha256": "08afe7f46072897cc839c14cb5b3389656151575d9b17ccea1279f095961da0f"
+    },
+    {
+      "from": "src/content/pages/jp/case-studies.md",
+      "to": "src/content/pages/ja/case-studies.md",
+      "sha256": "0cc1afdf5093529e037fbd136113bd1459774e4751b68ac08fecdee851406b6b"
+    },
+    {
+      "from": "src/content/pages/jp/company.md",
+      "to": "src/content/pages/ja/company.md",
+      "sha256": "1b8fdee391b4aa42492ec01f2018a6ac217f4e48f6777be5ceafe29b2cf86371"
+    },
+    {
+      "from": "src/content/pages/jp/contact.md",
+      "to": "src/content/pages/ja/contact.md",
+      "sha256": "010480177778aabc5f5c890c879f1620be740f8e0f7876c3d3e465b90f465d50"
+    },
+    {
+      "from": "src/content/pages/jp/history.md",
+      "to": "src/content/pages/ja/history.md",
+      "sha256": "a9bf4a4f2d56b8bf7c0dbde315e06258bb920f5ff32a2ae7c9955f187d96d1e4"
+    },
+    {
+      "from": "src/content/pages/jp/insights.md",
+      "to": "src/content/pages/ja/insights.md",
+      "sha256": "824fdafd9eb8e12ee86fc93f4a0df217174636554e17cb8f75277e8c2429ea0d"
+    },
+    {
+      "from": "src/content/pages/jp/investors.md",
+      "to": "src/content/pages/ja/investors.md",
+      "sha256": "67119c4e7c9f27361ed2a3a1f48538702477138426f31b912a3e13fc7947c992"
+    },
+    {
+      "from": "src/content/pages/jp/news.md",
+      "to": "src/content/pages/ja/news.md",
+      "sha256": "624befcaa2c217b92ee7ce42f4674c02af798fd1c97efe028c9b966508d22025"
+    },
+    {
+      "from": "src/content/pages/jp/partners.md",
+      "to": "src/content/pages/ja/partners.md",
+      "sha256": "296302100d9975ddcc6cd0b6a1a2c87a3bd3649d905bcd5c0af7597e9d0c6f58"
+    },
+    {
+      "from": "src/content/pages/jp/privacy.md",
+      "to": "src/content/pages/ja/privacy.md",
+      "sha256": "8ce3a1ed921a05d7e147af56b1bef45e7b76a5b538db75576ad7fbc37dd84daf"
+    },
+    {
+      "from": "src/content/pages/jp/products.md",
+      "to": "src/content/pages/ja/products.md",
+      "sha256": "0efbfe740d322520803509be2629d7f286ceb32a5fbd27af045caa038f15d4bb"
+    },
+    {
+      "from": "src/content/pages/jp/search.md",
+      "to": "src/content/pages/ja/search.md",
+      "sha256": "b1cd477e87a130fca2eabae0a863192715dfea7fae0de970bb0a982b4231d27b"
+    },
+    {
+      "from": "src/content/pages/jp/solutions.md",
+      "to": "src/content/pages/ja/solutions.md",
+      "sha256": "7e621128210a97979b0833e6b11b871359f271635b3e9b6111b2d7bd207f2e64"
+    },
+    {
+      "from": "src/content/pages/jp/tags.md",
+      "to": "src/content/pages/ja/tags.md",
+      "sha256": "cf661ce639864b1b0518e962f04900da3c0cdb8c3e19810b5edd84af0fdf4945"
+    },
+    {
+      "from": "src/content/pages/jp/team.md",
+      "to": "src/content/pages/ja/team.md",
+      "sha256": "0b2c043976654b4cc1000ec9069757d08ebe3e043720df3fc5d624d8b20c6fc3"
+    },
+    {
+      "from": "src/content/products/tw/fire-extinguisher-simulator.md",
+      "to": "src/content/products/zh-Hant/fire-extinguisher-simulator.md",
+      "sha256": "fcf7035e7ebade4398ab632c592927e7cfd57b448f477eea78813f0345e05c32"
+    },
+    {
+      "from": "src/content/products/tw/full-scale-police-training.md",
+      "to": "src/content/products/zh-Hant/full-scale-police-training.md",
+      "sha256": "16a87be580ca1cff5fc04b9ec6e68956a9bc9008bf4465611eee0615edf57893"
+    },
+    {
+      "from": "src/content/products/tw/hmmwv-simulator.md",
+      "to": "src/content/products/zh-Hant/hmmwv-simulator.md",
+      "sha256": "4102487d6cb113d3d68d4e2236f6e896e3b7eb2d910d5a63c3ea1e9e0eee62b5"
+    },
+    {
+      "from": "src/content/products/tw/machine-gun-simulator.md",
+      "to": "src/content/products/zh-Hant/machine-gun-simulator.md",
+      "sha256": "cb36b977168c6393b04c2747116076118be9916c982cd5391b9f02d5ae273bcb"
+    },
+    {
+      "from": "src/content/products/tw/mortar-observation.md",
+      "to": "src/content/products/zh-Hant/mortar-observation.md",
+      "sha256": "51c50408ed9bb35bf3653ca38d38b6fd6eb1972101d91d055792e6794c5c8f31"
+    },
+    {
+      "from": "src/content/products/tw/police-box.md",
+      "to": "src/content/products/zh-Hant/police-box.md",
+      "sha256": "696168e3115acc6c432c70f16d2cc65a086f01bf483aa1c5428bee053c9287c1"
+    },
+    {
+      "from": "src/content/products/tw/sniper-simulator.md",
+      "to": "src/content/products/zh-Hant/sniper-simulator.md",
+      "sha256": "e8d85c09ef4678b5a103f8e9d65dda46db711a6c8dfdc5c522dfb8cfefbcd863"
+    },
+    {
+      "from": "src/content/products/tw/sut.md",
+      "to": "src/content/products/zh-Hant/sut.md",
+      "sha256": "75881c89e698f701f20219d7031b583b74a90d7ae28e789a6eed0cb80be7f28a"
+    },
+    {
+      "from": "src/content/products/tw/tactical-boat-simulator.md",
+      "to": "src/content/products/zh-Hant/tactical-boat-simulator.md",
+      "sha256": "ced1c13726f33357e5ba5568de5534a85832408ab022f999277240654d655b29"
+    },
+    {
+      "from": "src/content/products/tw/uav.md",
+      "to": "src/content/products/zh-Hant/uav.md",
+      "sha256": "da7bb954bad3472fb7d774cee41c0bcf22e879be088c93a46d562b3930609554"
+    },
+    {
+      "from": "src/content/products/tw/usv.md",
+      "to": "src/content/products/zh-Hant/usv.md",
+      "sha256": "7e4a9158b4321b6397599aa460fdd8319df6e6105d3166c37146fc14fa4158f0"
+    },
+    {
+      "from": "src/content/products/tw/wargaming-table.md",
+      "to": "src/content/products/zh-Hant/wargaming-table.md",
+      "sha256": "5d2d63c2d1f536c5217fb70651c8ac26a636115b78b79b30e53c444ff76f047e"
+    },
+    {
+      "from": "src/content/products/jp/fire-extinguisher-simulator.md",
+      "to": "src/content/products/ja/fire-extinguisher-simulator.md",
+      "sha256": "4e738d7af10221499af443518f43c7939e2ab678468c5dd0a41da6c1c3b0293d"
+    },
+    {
+      "from": "src/content/products/jp/full-scale-police-training.md",
+      "to": "src/content/products/ja/full-scale-police-training.md",
+      "sha256": "37c2060b47cd489c06fd20797d40b82d54a5df843203c7a88a0627097cb045f1"
+    },
+    {
+      "from": "src/content/products/jp/hmmwv-simulator.md",
+      "to": "src/content/products/ja/hmmwv-simulator.md",
+      "sha256": "433d2f8f46c39d4ec5e29de03dd269ab2669cf8c8ce4c0ce33b57a156cfef965"
+    },
+    {
+      "from": "src/content/products/jp/machine-gun-simulator.md",
+      "to": "src/content/products/ja/machine-gun-simulator.md",
+      "sha256": "13bc8d9714122426bbe424d4a94424de1b1158ad2e4aee1473327ebf9cc2084e"
+    },
+    {
+      "from": "src/content/products/jp/mortar-observation.md",
+      "to": "src/content/products/ja/mortar-observation.md",
+      "sha256": "6c0dbbfd0eb46ed62c54166543dd9df4d2ab04baf9ba96472b969b1c9fb4a5d0"
+    },
+    {
+      "from": "src/content/products/jp/police-box.md",
+      "to": "src/content/products/ja/police-box.md",
+      "sha256": "0d9b8d17e571ebae72607212b95c7046d67f839b57b5d409bd348b155f90a48f"
+    },
+    {
+      "from": "src/content/products/jp/sniper-simulator.md",
+      "to": "src/content/products/ja/sniper-simulator.md",
+      "sha256": "cba88d4641d02cd99aa6ddfca31cdc5491df18e99af026c2210ca3a980931826"
+    },
+    {
+      "from": "src/content/products/jp/sut.md",
+      "to": "src/content/products/ja/sut.md",
+      "sha256": "42373df94770f5274a27f1e8baf00da407cfda0c47941010301d493856ae1530"
+    },
+    {
+      "from": "src/content/products/jp/tactical-boat-simulator.md",
+      "to": "src/content/products/ja/tactical-boat-simulator.md",
+      "sha256": "f8cede12f73413a7b02bde6c60b07e2c76e3257727e65e0a6dabfe0db1be4c5f"
+    },
+    {
+      "from": "src/content/products/jp/uav.md",
+      "to": "src/content/products/ja/uav.md",
+      "sha256": "37e9ce1d62ee241f543c4f30789a5a9102430dd37e1f5e8100fc8b5bd4fedadc"
+    },
+    {
+      "from": "src/content/products/jp/usv.md",
+      "to": "src/content/products/ja/usv.md",
+      "sha256": "c995e6efaf31d2e191cf357920b32bd0828be12b71cc63f2fd5b083aebd727cf"
+    },
+    {
+      "from": "src/content/products/jp/wargaming-table.md",
+      "to": "src/content/products/ja/wargaming-table.md",
+      "sha256": "446c64ea2db85674248117970ac5dd3c61884f72ed0526391a357a71842f8e06"
+    },
+    {
+      "from": "src/content/solutions/tw/fire-rescue.md",
+      "to": "src/content/solutions/zh-Hant/fire-rescue.md",
+      "sha256": "2fb6d420b494bb943fa202c7094e503191cc708799280e9d8235cefe20dc40f1"
+    },
+    {
+      "from": "src/content/solutions/tw/military.md",
+      "to": "src/content/solutions/zh-Hant/military.md",
+      "sha256": "5c544bb2637ac9404f37b3b12741ca02a587adc01198e5b5f95034930b2fef55"
+    },
+    {
+      "from": "src/content/solutions/tw/mum-t.md",
+      "to": "src/content/solutions/zh-Hant/mum-t.md",
+      "sha256": "8383be1189d9eed7091ef51fb8e6748bdd1940ef5b468d0b912285143d57dc76"
+    },
+    {
+      "from": "src/content/solutions/tw/nova.md",
+      "to": "src/content/solutions/zh-Hant/nova.md",
+      "sha256": "b36d8537db9d5ca807fb24e85e294a44dd62175b2dbcb94451c031ec24f94ef1"
+    },
+    {
+      "from": "src/content/solutions/tw/police.md",
+      "to": "src/content/solutions/zh-Hant/police.md",
+      "sha256": "45101705273500daab253c34bd2ccff648df5e7b7e45a1d4f34a614536ff5d62"
+    },
+    {
+      "from": "src/content/solutions/tw/smart-city.md",
+      "to": "src/content/solutions/zh-Hant/smart-city.md",
+      "sha256": "ac166c7269a73cb57862419f6f0c35886c45df1642c25c8be4f9927fb796eba1"
+    },
+    {
+      "from": "src/content/solutions/jp/fire-rescue.md",
+      "to": "src/content/solutions/ja/fire-rescue.md",
+      "sha256": "e8a4df88d9326776ea20297f9b3dc33195e00a0627d8b30758f622d8590a8d38"
+    },
+    {
+      "from": "src/content/solutions/jp/military.md",
+      "to": "src/content/solutions/ja/military.md",
+      "sha256": "2efa25180e4f63057cf501410e12b1ee407e09363bf74d903470fdc4bf1726a9"
+    },
+    {
+      "from": "src/content/solutions/jp/mum-t.md",
+      "to": "src/content/solutions/ja/mum-t.md",
+      "sha256": "5bde658fd9369f7e5a8b588688073c1530208ea3e671f3073833b9e117e41dad"
+    },
+    {
+      "from": "src/content/solutions/jp/nova.md",
+      "to": "src/content/solutions/ja/nova.md",
+      "sha256": "a6d27a6d178e979c5bf79e00c2d259d9714af9571c2a88faa04d991f39b00b7d"
+    },
+    {
+      "from": "src/content/solutions/jp/police.md",
+      "to": "src/content/solutions/ja/police.md",
+      "sha256": "57b83cdeacef8fdf2a48afec5f8b7a7569e1ebf791c0196ae06d2311653af52d"
+    },
+    {
+      "from": "src/content/solutions/jp/smart-city.md",
+      "to": "src/content/solutions/ja/smart-city.md",
+      "sha256": "d8dde9a36e08314f5787088537dba7006d090b7b5043a8a75cb9a0e79f1c19b5"
+    },
+    {
+      "from": "src/content/tags/tw/.gitkeep",
+      "to": "src/content/tags/zh-Hant/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "from": "src/content/tags/jp/.gitkeep",
+      "to": "src/content/tags/ja/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "from": "src/content/technologies/tw/ai-simulation.json",
+      "to": "src/content/technologies/zh-Hant/ai-simulation.json",
+      "sha256": "70731a1f74158ede9b1d1187aff2390f99e67331bc40060558e0334579c9868c"
+    },
+    {
+      "from": "src/content/technologies/tw/decision-visualization.json",
+      "to": "src/content/technologies/zh-Hant/decision-visualization.json",
+      "sha256": "d27503c3cf9e253c4ec23a962ca36559f9a6154840fb9b0f2f83733b0b9e9cec"
+    },
+    {
+      "from": "src/content/technologies/tw/digital-simulation.json",
+      "to": "src/content/technologies/zh-Hant/digital-simulation.json",
+      "sha256": "afcbd353b2371040edefcc07cda4670a520fb017336d84c7b5e1ec67c3a34fec"
+    },
+    {
+      "from": "src/content/technologies/tw/domain-expertise.json",
+      "to": "src/content/technologies/zh-Hant/domain-expertise.json",
+      "sha256": "1ead834a535c4a99235d76ad78973560b2823684e201dd830bdd273955a710b8"
+    },
+    {
+      "from": "src/content/technologies/tw/system-integration.json",
+      "to": "src/content/technologies/zh-Hant/system-integration.json",
+      "sha256": "15ca9d3a5a7a3c1c24e8a32010dd5d4defd5db7f829a1d2da4f251c10c0951fb"
+    },
+    {
+      "from": "src/content/technologies/tw/training-design.json",
+      "to": "src/content/technologies/zh-Hant/training-design.json",
+      "sha256": "4f0a71e18e8b9a10d276b1e45eab04fd4181ab1932cc8f3275708d3866e04ead"
+    },
+    {
+      "from": "src/content/technologies/tw/xr.json",
+      "to": "src/content/technologies/zh-Hant/xr.json",
+      "sha256": "a1c8d5b6cf50e4d8968557c793cd979b6cd6c538d576cb96ad8134d4a1f266fa"
+    },
+    {
+      "from": "src/content/technologies/jp/ai-simulation.json",
+      "to": "src/content/technologies/ja/ai-simulation.json",
+      "sha256": "fb1cff4bde8fcb0582c917513943588d4586284992e6a2850d75db72d1efd359"
+    },
+    {
+      "from": "src/content/technologies/jp/decision-visualization.json",
+      "to": "src/content/technologies/ja/decision-visualization.json",
+      "sha256": "cfc79c29f71c15cf050c290186e50c5dfd1f6c9881651395dfe92f9682621fd0"
+    },
+    {
+      "from": "src/content/technologies/jp/digital-simulation.json",
+      "to": "src/content/technologies/ja/digital-simulation.json",
+      "sha256": "373312ad62545b4c80f5580d15c7fec7028671f92067322a39557dbd3ca3dfc3"
+    },
+    {
+      "from": "src/content/technologies/jp/domain-expertise.json",
+      "to": "src/content/technologies/ja/domain-expertise.json",
+      "sha256": "ea3d42e0817daabf01a33982f3707e0900d05e81b1e6a1a7dafee10a12af2374"
+    },
+    {
+      "from": "src/content/technologies/jp/system-integration.json",
+      "to": "src/content/technologies/ja/system-integration.json",
+      "sha256": "5275644ac9a102618566ea40b5fd38ea544c7a19836eabab25ebacdc1fd67a49"
+    },
+    {
+      "from": "src/content/technologies/jp/training-design.json",
+      "to": "src/content/technologies/ja/training-design.json",
+      "sha256": "2be10b21b730ca798e4f0ea007e5d2fffc887a4ebb59aa92d791f93065fda7fe"
+    },
+    {
+      "from": "src/content/technologies/jp/xr.json",
+      "to": "src/content/technologies/ja/xr.json",
+      "sha256": "e394ab606cf87b927f8438b259a7e261a542259961d97c4b55c92060bd76454d"
+    },
+    {
+      "from": "src/content/technology-overview/tw/overview.json",
+      "to": "src/content/technology-overview/zh-Hant/overview.json",
+      "sha256": "a3b62865b2de1200ec49854306dda8b965c76e29d4ac0d6be455d7b8d7ee8f1c"
+    },
+    {
+      "from": "src/content/technology-overview/jp/overview.json",
+      "to": "src/content/technology-overview/ja/overview.json",
+      "sha256": "7910a2f6e8a221e2722a778ffabb23f64a54fd09430f966e78a5144478c6bb51"
+    }
+  ]
+}

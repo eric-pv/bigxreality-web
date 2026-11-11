@@ -1,16 +1,17 @@
 ---
 /** /[lang]/news/page/[n]/ — pages 2…n; none when the list is not paged (site.json listing.pageSize). */
 import { LANGS, type Lang } from "../../../../i18n";
-import { getArticles, pageSize, paginate } from "../../../../lib/articles";
-import ArticleListPage from "../../../../components/ArticleListPage.astro";
+import { getArticles } from "../../../../lib/articles";
+import { newsArchive } from "../../../../lib/news-listing";
+import NewsListPage from "../../../../components/NewsListPage.astro";
 
 export async function getStaticPaths() {
   const paths = [];
   for (const lang of LANGS) {
-    const pages = paginate(await getArticles("news", lang), pageSize("news"));
-    for (let n = 2; n <= pages.length; n++) paths.push({ params: { lang, page: String(n) } });
+    const total = newsArchive(await getArticles("news", lang)).total;
+    for (let n = 2; n <= total; n++) paths.push({ params: { lang, page: String(n) } });
   }
   return paths;
 }
 ---
-<ArticleListPage lang={Astro.params.lang as Lang} collection="news" page={Number(Astro.params.page)} />
+<NewsListPage lang={Astro.params.lang as Lang} page={Number(Astro.params.page)} />

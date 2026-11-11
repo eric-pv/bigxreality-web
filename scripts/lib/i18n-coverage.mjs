@@ -1,3 +1,4 @@
+import {contentLocale} from "../../src/lib/content-locale.ts";
 // Scans src/content/<collection>/<lang>/<slug>.md and reports, per collection,
 // slugs that are missing in some language and files still marked pending.
 import { readdir, readFile } from "node:fs/promises";
@@ -14,16 +15,16 @@ export async function i18nCoverage(root) {
     for (const lang of LANGS) {
       let files = [];
       try {
-        files = (await readdir(path.join(contentDir, collection, lang))).filter((f) => f.endsWith(".md"));
+        files = (await readdir(path.join(contentDir, collection, contentLocale(lang)))).filter((f) => /\.(md|json)$/.test(f));
       } catch {
         continue; // collections that are not split by language folders (e.g. ui)
       }
       for (const f of files) {
-        const slug = f.slice(0, -3);
+        const slug = f.replace(/\.(md|json)$/, "");
         if (!slugs.has(slug)) slugs.set(slug, new Set());
         slugs.get(slug).add(lang);
-        const text = await readFile(path.join(contentDir, collection, lang, f), "utf8");
-        if (/^translationStatus:\s*pending\s*$/m.test(text)) pending.push(`${collection}/${lang}/${f}`);
+        const text = await readFile(path.join(contentDir, collection, contentLocale(lang), f), "utf8");
+        if ((f.endsWith(".json") && JSON.parse(text).translationStatus === "pending") || /^translationStatus:\s*pending\s*$/m.test(text)) pending.push(`${collection}/${lang}/${f}`);
       }
     }
     for (const [slug, langs] of slugs) {

@@ -8,7 +8,7 @@ export const DEFAULT_LANG: Lang = "en";
 export const SOURCE_LANG: Lang = "tw";
 
 export const HTML_LANG: Record<Lang, string> = { en: "en", tw: "zh-Hant-TW", jp: "ja-JP" };
-export const HREFLANG: Record<Lang, string> = { en: "en", tw: "zh-Hant-TW", jp: "ja" };
+export const HREFLANG: Record<Lang, string> = { en: "en", tw: "zh-TW", jp: "ja" };
 export const LANG_LABEL: Record<Lang, string> = { en: "EN", tw: "TW", jp: "JP" };
 export const OG_LOCALE: Record<Lang, string> = { en: "en_US", tw: "zh_TW", jp: "ja_JP" };
 export const INTL_LOCALE: Record<Lang, string> = { en: "en-US", tw: "zh-TW", jp: "ja-JP" };

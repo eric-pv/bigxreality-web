@@ -1,0 +1,9 @@
+{
+  "comparisonBase": "3c6e9ac",
+  "inspectedTextFields": 10286,
+  "changedTextFields": 258,
+  "exceptions": 362,
+  "historicalExceptions": 79,
+  "remainingTechnicalReview": 283,
+  "policy": "Historical quotations and necessary limitations remain review exceptions; no automatic word substitution is used in production."
+}

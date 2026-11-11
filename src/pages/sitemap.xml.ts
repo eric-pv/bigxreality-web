@@ -1,3 +1,4 @@
+import { publicUrl } from '../lib/public-url.ts';
 import type { APIRoute } from "astro";
 import { HREFLANG, DEFAULT_LANG, type Lang } from "../i18n";
 import { site } from "../lib/site";
@@ -5,7 +6,7 @@ import { indexablePages } from "../lib/indexable-pages";
 
 export const GET: APIRoute = async () => {
   const pages = await indexablePages();
-  const abs = (path: string, l: Lang) => new URL(path.replace("{lang}", l), site.url).toString();
+  const abs = (path: string, l: Lang) => publicUrl(path.replace("{lang}", l)).toString();
   const body = pages
     .map((p) => {
       const alts = p.alternates.map((l) => `    <xhtml:link rel="alternate" hreflang="${HREFLANG[l]}" href="${abs(p.path, l)}"/>`);

@@ -1,0 +1,195 @@
+{
+  "status": "Completed listed local QA passed; human copy/material review, real devices, remote GitHub CI and live GitHub publishing remain pending",
+  "checks": {
+    "qa:technologies": {
+      "exitCode": 0,
+      "scope": "a"
+    },
+    "qa:behaviour": {
+      "exitCode": 0,
+      "scope": "fixes"
+    },
+    "qa:solutions": {
+      "exitCode": 0,
+      "scope": "fixes"
+    },
+    "qa:english": {
+      "exitCode": 0,
+      "scope": "a"
+    },
+    "qa:japanese": {
+      "exitCode": 0,
+      "scope": "a"
+    },
+    "qa:faq": {
+      "exitCode": 0,
+      "scope": "a"
+    },
+    "qa:header": {
+      "exitCode": 0,
+      "scope": "a"
+    },
+    "qa:footer": {
+      "exitCode": 0,
+      "scope": "a"
+    },
+    "qa:company": {
+      "exitCode": 0,
+      "scope": "a"
+    },
+    "qa:team": {
+      "exitCode": 0,
+      "scope": "c"
+    },
+    "qa:csr": {
+      "exitCode": 0,
+      "scope": "a"
+    },
+    "qa:news-preview": {
+      "exitCode": 0,
+      "scope": "c"
+    },
+    "qa:ui-v1": {
+      "exitCode": 0,
+      "scope": "c"
+    },
+    "qa:client-logos": {
+      "exitCode": 0,
+      "scope": "c"
+    },
+    "fixture:qa:phase2": {
+      "exitCode": 0,
+      "scope": "fixtures"
+    },
+    "fixture:qa:search": {
+      "exitCode": 0,
+      "scope": "fixtures"
+    },
+    "fixture:qa:technologies": {
+      "exitCode": 0,
+      "scope": "fixture-render"
+    },
+    "check": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "test": {
+      "exitCode": 0,
+      "scope": "final-static"
+    },
+    "cms:sveltia:check": {
+      "exitCode": 0,
+      "scope": "final-static"
+    },
+    "qa:images": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "qa:seo": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "qa:news-import": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "qa:news-media": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "build": {
+      "verifiedPassMarker": true,
+      "scope": "bxr-final-combined-build.log"
+    },
+    "homeVideoIsolated": {
+      "verifiedPassMarker": true,
+      "scope": "bxr-video-isolated-qa.log"
+    },
+    "imageHeroIsolated": {
+      "verifiedPassMarker": true,
+      "scope": "bxr-images-isolated-hero.log"
+    },
+    "imageTemplatesIsolated": {
+      "verifiedPassMarker": true,
+      "scope": "bxr-images-isolated-ui.log"
+    },
+    "sveltiaBrowser": {
+      "verifiedPassMarker": true,
+      "scope": "bxr-visual-sveltia.log"
+    },
+    "fixtureCompany": {
+      "verifiedPassMarker": true,
+      "scope": "bxr-final-fixture-company.log"
+    },
+    "fixtureAccessibility": {
+      "verifiedPassMarker": true,
+      "scope": "bxr-final-fixture-a11y.log"
+    },
+    "qa:motion": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "qa:density-navigation": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "qa:links": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "check:sitemap": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "qa:ui-v1-preview": {
+      "exitCode": 0,
+      "scope": "final"
+    },
+    "imageTechnologyIsolated": {
+      "verifiedPassMarker": true,
+      "scope": "independent image worktree"
+    },
+    "imageBehaviourIsolated": {
+      "verifiedPassMarker": true,
+      "scope": "independent image worktree"
+    },
+    "imageSolutionsIsolated": {
+      "verifiedPassMarker": true,
+      "scope": "independent image worktree"
+    },
+    "imageNewsIsolated": {
+      "verifiedPassMarker": true,
+      "scope": "independent image worktree"
+    }
+  },
+  "responsive": {
+    "pageViewportChecks": 1062,
+    "decodedImages": 4767,
+    "videoCases": 21,
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "originalVideos": "Unchanged; whole native frame is retained",
+    "realEndedAndWrapCaptures": [
+      1440,
+      390
+    ],
+    "exceptions": "News photos and unprovided UI/scenario material remain pending; no unrelated imagery used."
+  },
+  "limitations": [
+    "Remote GitHub CI cannot be read through blocked API",
+    "GitHub real-user authorization and production publishing remain untested",
+    "Chromium viewport emulation; real mobile Safari/Android review pending",
+    "Historical wording and necessary limitations individually listed for human review"
+  ],
+  "unexecutedOptionalChecks": [
+    "Lighthouse performance score",
+    "qa:ui-language broad keyword scan; semantic CSV audit used instead"
+  ]
+}

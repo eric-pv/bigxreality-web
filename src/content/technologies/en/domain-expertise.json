@@ -1,0 +1,145 @@
+{
+  "translationStatus": "translated",
+  "draft": false,
+  "eyebrow": "Core Technology",
+  "title": "Domain Expertise in Professional Training",
+  "lead": "Understanding professional training requirements is an essential starting point for simulation system development",
+  "intro": [
+    "Even a simulation training system with excellent visuals and interactive technology can struggle to deliver its intended practical value if it does not address actual training purposes.",
+    "Military, police, and fire and disaster response each involve different mission environments, operating procedures, and training requirements. Translating these professional requirements into usable simulation systems requires more than software development capabilities: it also requires an understanding of the application domain.",
+    "Through product and project development in different professional fields, BXR continues to accumulate experience in training scenario design and requirements translation, bringing technology development closer to its practical purpose."
+  ],
+  "primaryCta": "Explore professional training solutions",
+  "secondaryCta": "Discuss Training Application Requirements",
+  "sections": [
+    {
+      "id": "concept",
+      "title": "Understand the problem training needs to solve before developing technology",
+      "paragraphs": [
+        "Professional training across fields combines scenarios, operating procedures, and mission objectives.",
+        "Even when the same XR or simulation technology is used, military organisations, police agencies, and fire services may differ significantly in their trainees, mission workflows, operating methods, and safety requirements.",
+        "The value of domain expertise in professional training therefore lies in helping development teams understand usage scenarios and translate requirements into appropriate directions for system design."
+      ],
+      "items": [
+        {
+          "title": "Understanding mission scenarios",
+          "paragraphs": [
+            "Understand training purposes and application contexts in different fields."
+          ]
+        },
+        {
+          "title": "Translating operating procedures",
+          "paragraphs": [
+            "Translate operating procedures suited to simulation into interaction design requirements."
+          ]
+        },
+        {
+          "title": "Analysing training requirements",
+          "paragraphs": [
+            "Clarify who will be trained, the conditions of use, and scenario arrangements."
+          ]
+        },
+        {
+          "title": "Assessing technology applications",
+          "paragraphs": [
+            "Evaluate which content is suitable for presentation through XR, simulation systems, or other modes of interaction."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "domains",
+      "title": "Different mission domains call for different approaches to simulation design",
+      "paragraphs": [],
+      "items": [
+        {
+          "title": "Military simulation",
+          "paragraphs": [
+            "Military training encompasses different missions, operating procedures, and coordination requirements. Simulation system design needs to consider training purposes, the equipment used, mission conditions, and how trainees operate.",
+            "BXR’s military simulation products cover training applications related to small-unit tactics, the operation of specific equipment, vehicles, and unmanned systems."
+          ]
+        },
+        {
+          "title": "Police simulation",
+          "paragraphs": [
+            "Police training involves different duty scenarios, on-scene judgement, and operating procedures. Simulation design needs to consider how scenarios are presented, modes of interaction, and the needs of training personnel.",
+            "BXR supports specific law enforcement response and professional operational training through different forms of police simulation systems."
+          ]
+        },
+        {
+          "title": "Fire and disaster response",
+          "paragraphs": [
+            "Fire and disaster response training involves safety awareness, operating procedures, and situational judgement. Virtual environments can help present selected training content, increasing opportunities for understanding scenarios and practising operations.",
+            "BXR applies XR and interactive simulation to suitable fire and disaster response training and educational scenarios."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "translation",
+      "title": "Connect technology and application by translating professional requirements into simulation systems",
+      "paragraphs": [
+        "The training requirements raised by professional organisations are usually more than a simple list of software functions.",
+        "In actual projects, it may be necessary to first understand who will be trained, the operating environment, usage workflows, and the purpose of scenarios before evaluating suitable simulation approaches and system configurations.",
+        "BXR combines technology development, project experience, and discussions with user organisations to turn relevant information into input for product design, interactive workflows, and application planning.",
+        "This capability does not depend on the background of a single individual. It needs to be built gradually through project delivery, communication across domains, and continuous improvement."
+      ]
+    },
+    {
+      "id": "value",
+      "title": "Build Simulation Systems around Intended Applications",
+      "paragraphs": [
+        "Domain expertise in professional training helps connect technology development with practical applications.",
+        "From requirements discussions to system design, an understanding of training scenarios helps clarify which content a product should present, which operations it should support, and how suitable modes of interaction should be arranged."
+      ],
+      "bullets": [
+        "Help technology teams understand requirements in different professional fields.",
+        "Translate training objectives into concrete directions for system design.",
+        "Bring scenarios and operating procedures closer to the intended usage.",
+        "Support requirements communication and application planning across different projects.",
+        "Continue building organisational experience through development and user feedback."
+      ]
+    }
+  ],
+  "relatedTitle": "Apply domain understanding to different training requirements",
+  "faq": [
+    {
+      "question": "What is domain expertise in professional training?",
+      "answer": "Domain expertise in professional training is an understanding of training objectives, mission scenarios, operating procedures, and user requirements within a particular field. In simulation system development, this knowledge helps translate actual training requirements into suitable functions, scenarios, and interaction design."
+    },
+    {
+      "question": "Why does XR training system development require an understanding of professional domains?",
+      "answer": "Training purposes and operating methods vary across fields. XR development capabilities alone, without an understanding of training requirements, may not be enough to design scenarios and operating procedures that meet the intended purpose. Domain understanding helps technology teams plan simulation content more accurately."
+    },
+    {
+      "question": "Can military, police, and fire simulation training use the same design approach?",
+      "answer": "Some technology architectures and interaction methods can be shared, but mission objectives, operating procedures, and safety requirements differ across fields. Scenarios, operating methods, and system configurations therefore still need to be adjusted according to actual requirements."
+    },
+    {
+      "question": "How does BXR translate training requirements into simulation systems?",
+      "answer": "Through requirements discussions, scenario planning, technology assessment, and product development, BXR translates training content suited to simulation into system functions and interaction design. The actual process and development scope depend on the requirements of the product or project."
+    },
+    {
+      "question": "Can simulation training systems fully reproduce real missions?",
+      "answer": "Simulation systems can present particular scenarios, operations, or mission conditions according to training objectives, but this does not mean they can reproduce every factor in a real environment. Simulation training should be used for its designed purpose and combined with necessary physical training and professional instruction."
+    }
+  ],
+  "closing": {
+    "title": "Start with an understanding of requirements to plan suitable professional training applications",
+    "body": "Different missions require different training methods. Through technology development and requirements discussions, BXR continues to explore simulation training solutions that serve the intended use in each field.",
+    "cta": "Discuss Professional Training Requirements"
+  },
+  "seo": {
+    "title": "Professional Training Expertise｜Military, Police & Fire",
+    "description": "Discover how BXR combines an understanding of military, police, and fire and disaster response training requirements, project experience, and XR simulation technology to translate professional mission scenarios into suitable simulation training system designs."
+  },
+  "relatedProducts": [],
+  "relatedSolutions": [
+    "military",
+    "police",
+    "fire-rescue",
+    "smart-city"
+  ],
+  "primaryDestination": "solutions",
+  "relationNotes": []
+}

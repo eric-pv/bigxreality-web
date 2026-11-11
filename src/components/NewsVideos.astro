@@ -1,0 +1,33 @@
+---
+import Text from './Text.astro';
+import type {Lang} from '../i18n';
+import type {newsMedia} from '../lib/news-media';
+interface Props {lang:Lang;videos:ReturnType<typeof newsMedia>['videos']}
+const {lang,videos}=Astro.props;
+const t={tw:{heading:'相關影片',load:'載入播放器',link:'開啟影片連結'},en:{heading:'Videos',load:'Load player',link:'Open video link'},jp:{heading:'関連動画',load:'プレーヤーを読み込む',link:'動画リンクを開く'}}[lang];
+---
+<section class="news-videos" data-news-videos hidden={videos.length===0} aria-label={t.heading}>
+<h2 class="t-h2"><Text value={t.heading} /></h2>
+{videos.map(video=><div class="video-item">
+  {video.title?.[lang]&&<h3 class="t-h3"><Text value={video.title[lang]} /></h3>}
+  {video.type==='local'?<video controls playsinline preload="metadata" poster={video.poster} aria-label={video.title?.[lang]??t.heading}><source src={video.url} type={video.url.endsWith('.webm')?'video/webm':'video/mp4'} /><a href={video.url}>{t.link}</a></video>:<>
+    {video.embed&&<div class="player"><button type="button" data-video-player={video.embed} data-video-title={video.title?.[lang]??`${video.type} ${t.heading}`}>{t.load}</button></div>}
+    <a href={video.url} target="_blank" rel="noopener noreferrer">{t.link} ({video.type==='youtube'?'YouTube':'Facebook'}) ↗</a>
+  </>}
+</div>)}
+</section>
+<script>
+ document.addEventListener('click',event=>{
+  const button=(event.target as Element).closest<HTMLButtonElement>('[data-video-player]');if(!button)return;
+  const frame=document.createElement('iframe');frame.src=button.dataset.videoPlayer!;frame.title=button.dataset.videoTitle!;frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';
+  frame.setAttribute('allow','fullscreen; picture-in-picture');frame.addEventListener('error',()=>{frame.remove();button.hidden=false;});button.hidden=true;button.parentElement!.append(frame);
+ });
+ window.addEventListener('pagehide',()=>{
+  document.querySelectorAll('.news-videos iframe').forEach(frame=>frame.remove());
+  document.querySelectorAll<HTMLButtonElement>('.news-videos [data-video-player]').forEach(button=>button.hidden=false);
+  document.querySelectorAll<HTMLVideoElement>('.news-videos video').forEach(video=>video.pause());
+ });
+</script>
+<style>
+ .news-videos[hidden]{display:none}.news-videos{display:grid;gap:var(--content-gap);margin-block:var(--space-4)}.video-item{display:grid;gap:16px;min-width:0}.player,video{width:100%;aspect-ratio:16/9;background:var(--bxr-graphite);object-fit:contain}.player{display:grid;place-items:center}.player :global(iframe){width:100%;height:100%;border:0}button{min-height:48px;padding:12px 24px;background:var(--bxr-red);color:white;border:0;cursor:pointer}a{overflow-wrap:anywhere}
+</style>

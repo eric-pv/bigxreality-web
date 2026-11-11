@@ -6,13 +6,14 @@ import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
 import { startPreview, CHROMIUM, DIST } from "./lib/serve.mjs";
+import { publicSiteRoot } from "../src/lib/public-url.ts";
 
 let failed = 0;
 const check = (name, ok, detail = "") => {
   if (!ok) failed++;
   console.log(`${ok ? "ok  " : "FAIL"} ${name}${ok || !detail ? "" : `  — ${detail}`}`);
 };
-const dir = "src/content/products/tw";
+const dir = "src/content/products/zh-Hant";
 const products = readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""));
 const faqOf = (slug) => YAML.parse(readFileSync(path.join(dir, `${slug}.md`), "utf8").split(/^---$/m)[1]).faq ?? [];
 const decode = (s) => s.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
@@ -36,7 +37,7 @@ try {
     const m = [...raw.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map((x) => JSON.parse(x[1]));
     const faqNode = m.flatMap((g) => g["@graph"] ?? []).find((n) => n["@type"] === "FAQPage");
     check(`${url}: FAQPage JSON-LD matches the visible list`, !!faqNode && faqNode.mainEntity.length === 5 && faqNode.mainEntity.every((q, i) => q.name === items[i].question && q.acceptedAnswer.text === items[i].answer) && faqNode.inLanguage === "zh-Hant-TW", JSON.stringify(faqNode)?.slice(0, 80));
-    check(`${url}: indexable with canonical and hreflang`, !/name="robots" content="noindex"/.test(raw) && raw.includes(`rel="canonical" href="https://www.bigxreality.com${url}"`) && raw.includes('hreflang="zh-Hant-TW"'));
+    check(`${url}: indexable with canonical and hreflang`, !/name="robots" content="noindex"/.test(raw) && raw.includes(`rel="canonical" href="${publicSiteRoot}${url}"`) && raw.includes('hreflang="zh-TW"'));
 
     await page.goto(base + url, { waitUntil: "networkidle" });
     check(`${url}: heading is 常見問題, not FAQ`, (await page.locator("[data-faq] h2").innerText()).trim() === "常見問題" && !/\bFAQ\b/.test(await page.locator("main").innerText()));

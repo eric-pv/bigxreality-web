@@ -1,0 +1,576 @@
+BXR 官網舊新聞三語完整內容｜TW / EN / JP
+編製日期：2026-10-27
+資料來源：使用者在本次對話提供的舊新聞文字。不得將本檔視為已經外部查證的歷史資料。
+
+使用規則：
+1. 每一個 ARTICLE_ID 為獨立文章；三語共用同一 ID、日期及圖片。
+2. TW = 台灣正體中文；EN = 英文；JP = 日文。
+3. [待確認] 為原文缺失或互相矛盾之處，不可擅自填補。
+4. 本檔保留原文所載之宣稱與年份；不代表已核實其真實性。
+5. 原始社群 hashtag 不必逐字作為文章正文；核心主題已保留在標題與內文。
+6. 原文沒有明確日期的文章，不得自行杜撰日期。
+
+================================================================
+ARTICLE_ID: news-01-ds-2025
+DATE: [待確認；原文未提供明確發文日期，活動為2025年]
+CATEGORY: 活動消息 / Event / イベント
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1763973944524.png
+
+[TW]
+標題：泰國 D&S 2025 國際大展：XR 小部隊戰術訓練系統展現年度成果與突破
+內文：
+在今年最後一場國際大展 Defense & Security 2025 曼谷國防展中，Big x Reality 全球動力科技以 XR 小部隊戰術訓練系統，展現全年度的研發成果與技術突破。
+
+從戰術射擊、城市巷戰，到無人機操作與反制無人機模擬訓練，展會現場迎來各國軍警單位、產業專家及合作夥伴的交流與體驗。我們也再次確認一件事：科技能提升戰力，訓練能創造安全；而 XR 正在讓「準備」成為真正的優勢。
+
+在國際舞台上，我們以真實的技術成果與訓練體驗面對每一位來訪者。現場的討論、回饋與肯定，都是持續前進的重要動力。
+
+感謝所有參與、支持與合作的夥伴。展望 2026 年，Big x Reality 將以更強的技術與更完整的模組，持續拓展智慧戰術訓練的可能性。
+
+Big x Reality — Train Beyond Reality.
+活動地點：Defense & Security 2025，泰國曼谷。
+
+[EN]
+Title: XR Small Unit Tactical Training at Defense & Security 2025 in Bangkok
+Body:
+At Defense & Security 2025 in Bangkok, our final major international exhibition of the year, Big x Reality (Global Power Technologies) showcased a year of progress and innovation through its XR Small Unit Tactical Training System.
+
+From tactical shooting and urban combat scenarios to UAV operation and counter-drone simulation, we welcomed military and police representatives, industry specialists, and partners from around the world for demonstrations and meaningful exchanges. One message stood out once again: technology enhances capability, while training creates safety. XR is turning preparation into a real operational advantage.
+
+Throughout the exhibition, we presented our work through authentic technology demonstrations and hands-on experiences. Every discussion, observation, and encouraging response motivates us to keep moving forward.
+
+We thank all visitors, supporters, and partners. Looking ahead to 2026, Big x Reality will continue developing stronger technology and more comprehensive modules to expand the possibilities of intelligent tactical training.
+
+Big x Reality — Train Beyond Reality.
+Location: Defense & Security 2025, Bangkok, Thailand.
+
+[JP]
+タイトル：Defense & Security 2025でXR小部隊戦術訓練システムの成果を披露
+本文：
+Big x Reality（全球動力科技）は、2025年最後の主要国際展示会となるタイ・バンコクの「Defense & Security 2025」に出展し、XR小部隊戦術訓練システムを通じて、年間の開発成果と技術的な進展を紹介しました。
+
+戦術射撃や市街地戦闘の訓練から、無人航空機（UAV）の操作、対ドローン訓練のシミュレーションまで、各国の軍・警察関係者、業界専門家、パートナーの皆様と幅広い交流を行いました。今回の展示会を通じて、技術は能力を高め、訓練は安全を生み出すという考えを改めて確認しました。XRは、事前の備えを実際の任務における強みへと変えていきます。
+
+国際舞台では、実際の技術成果と体験型デモンストレーションを通じて来場者の皆様と向き合いました。現場での議論やご意見、評価の一つひとつが、今後の開発を進める原動力となっています。
+
+ご来場、ご支援、ご協力いただいた皆様に感謝申し上げます。2026年も、より高度な技術と充実したモジュールにより、次世代の戦術訓練の可能性を広げてまいります。
+
+Big x Reality — Train Beyond Reality.
+開催地：Defense & Security 2025、タイ・バンコク。
+
+================================================================
+ARTICLE_ID: news-02-gbp-cover
+DATE: 2025-11-11
+CATEGORY: 媒體消息 / Media / メディア
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1775526399338.jpeg
+
+[TW]
+標題：Big x Reality 登上《GBP Daily News》封面報導
+內文：
+Big x Reality 全球動力科技很榮幸在泰國曼谷舉辦的 Defense & Security 2025 國防展期間，登上 GBP Aerospace & Defence 發行的《GBP Daily News》第二天封面。
+
+GBP Aerospace & Defence 長期關注軍事與防務領域的企業及創新技術。此次獲選登上封面，對我們而言是國際交流中的重要肯定。
+
+報導聚焦 SUT（Small Unit Tactical）AI 戰術訓練系統，介紹其 AI 行為建模與即時數據分析、XR 沉浸式虛擬訓練環境，以及可依教室、訓練中心或前線基地需求部署的模組化設計。依原始報導摘要，系統可依學員表現調整訓練難度，並重現戰術場景與互動。
+
+展出模組也涵蓋無人機操作模擬與反制無人機射擊模擬。前者著重偵查、監控與遠端任務操作，後者結合威脅偵測、瞄準、反應訓練、後座力回饋與 AI 行為演算。
+
+這次封面報導讓更多國際防務領域讀者認識 Big x Reality 的 AI、VR 與 XR 模擬訓練技術。我們將持續推動科技與國防訓練的整合，協助軍警單位以更智慧、安全的方式提升任務準備度。
+
+活動地點：Defense & Security 2025，泰國曼谷。
+
+[EN]
+Title: Big x Reality Featured on the Cover of GBP Daily News
+Body:
+Big x Reality (Global Power Technologies) was honored to appear on the second-day cover of GBP Daily News, published by GBP Aerospace & Defence during Defense & Security 2025 in Bangkok, Thailand.
+
+GBP Aerospace & Defence covers companies and emerging technologies in the military and defense sectors. Being featured on its cover was an important milestone for our international outreach.
+
+The coverage highlighted our SUT (Small Unit Tactical) AI tactical training system, including AI behavior modeling and real-time data analysis, immersive XR training environments, and a modular architecture designed for deployment in classrooms, training centers, or forward operating facilities. According to the original news summary, the system can adapt training difficulty to trainee performance and recreate interactive tactical scenarios.
+
+The featured training modules also included UAV operation simulation and counter-drone engagement simulation. The UAV module focuses on reconnaissance, surveillance, and remote mission operation, while the counter-drone module addresses threat detection, aiming, response training, recoil feedback, and AI-driven behavior simulation.
+
+The cover feature introduced Big x Reality's AI, VR, and XR simulation capabilities to a wider international defense audience. We will continue integrating advanced technology with defense training to help military and police organizations improve readiness in smarter and safer ways.
+
+Location: Defense & Security 2025, Bangkok, Thailand.
+
+[JP]
+タイトル：Big x Realityが『GBP Daily News』の表紙に掲載
+本文：
+Big x Reality（全球動力科技）は、タイ・バンコクで開催された「Defense & Security 2025」において、GBP Aerospace & Defence発行の『GBP Daily News』第2日目の表紙に掲載されました。
+
+GBP Aerospace & Defenceは、軍事・防衛分野の企業や先端技術を継続的に取り上げる専門メディアです。今回の表紙掲載は、当社の国際的な情報発信にとって重要な機会となりました。
+
+記事では、SUT（Small Unit Tactical）AI戦術訓練システムが紹介され、AIによる行動モデリングとリアルタイムデータ分析、没入型XR訓練環境、教室・訓練センター・前方拠点などに対応するモジュール式設計が取り上げられました。元記事の要約によると、訓練者の実績に応じた難易度調整や、戦術状況の再現とインタラクションに対応しています。
+
+展示モジュールには、UAV操作シミュレーションと対ドローン射撃訓練も含まれます。前者は偵察・監視・遠隔任務操作、後者は脅威の検知・照準・対応訓練に加え、反動フィードバックやAIによる行動シミュレーションを扱います。
+
+今回の表紙掲載を通じて、当社のAI・VR・XRシミュレーション技術を、より多くの国際的な防衛関係者に紹介することができました。今後も軍・警察機関の任務準備を、より高度かつ安全な訓練技術で支援してまいります。
+
+開催地：Defense & Security 2025、タイ・バンコク。
+
+================================================================
+ARTICLE_ID: news-03-leadership-uncertainty
+DATE: 2025-10-30
+CATEGORY: 媒體消息 / Media / メディア
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1763975038949.jpeg
+
+[TW]
+標題：在不確定中，找出前進的力量
+內文：
+中美科技競爭、供應鏈重組與 AI 浪潮，正在重塑全球產業版圖。過去的成功公式未必適用於未來，唯一不變的就是「變」。
+
+Big x Reality 全球動力科技總經理陳俊男分享：「在這樣的時代，領導者要先打破自我邊界。英雄式領導已成過去，唯有具備集體思辨與快速應變的組織，才能面對變局。」
+
+他也提出領導者應具備的「四顆心」：正直心，以誠實對話建立信任；氣度心，以虛懷若谷的態度接納不同意見；膽識心，勇於承擔並迎向挑戰；好奇心，持續探索、推動創新。
+
+他並引用前 Google 總經理簡立峰的提醒：「當 AI 來臨，第一個要革命的就是自己。」
+
+企業轉型不只是技術與市場策略的調整，也涉及文化底蘊與價值信念。真正的領導力，在於讓團隊共享價值觀，在共鳴與信任中保持清晰、沉著與韌性。
+
+特別感謝《天下雜誌》的專訪與報導。
+
+[EN]
+Title: Finding a Way Forward in Uncertain Times
+Body:
+Competition between China and the United States in technology, supply-chain restructuring, and the rapid rise of AI are reshaping industries worldwide. Yesterday's formulas for success may no longer apply; change is the only constant.
+
+Hanson Chen, General Manager of Big x Reality (Global Power Technologies), shared his perspective: “In times like these, leaders must first break through their own boundaries. The era of hero-style leadership has passed. Only organizations capable of collective reflection and rapid adaptation can navigate uncertainty.”
+
+He also described four qualities leaders should cultivate: integrity, through honest dialogue and trust; openness, through humility and receptiveness to different views; courage, through accountability and willingness to face challenges; and curiosity, through continuous exploration and innovation.
+
+Chen also cited a reminder from Chien Lee-feng, former Google Taiwan General Manager: “When AI arrives, the first person who needs a revolution is yourself.”
+
+Corporate transformation is not only about technology and market strategy. It also requires a renewed commitment to organizational culture and shared values. True leadership enables teams to act with clarity, composure, and resilience through mutual trust.
+
+We thank CommonWealth Magazine for the interview and coverage.
+
+[JP]
+タイトル：不確実な時代に前進する力を見いだす
+本文：
+米中間の技術競争、サプライチェーンの再編、AIの急速な普及が、世界の産業構造を変えつつあります。過去の成功法則が今後も通用するとは限りません。変化こそが唯一の不変の要素です。
+
+Big x Reality（全球動力科技）の陳俊男総経理は、次のように述べています。「このような時代には、リーダー自身がまず従来の枠を超えなければなりません。英雄型のリーダーシップの時代は過ぎ、組織全体で考え、迅速に適応できることが変化への対応力になります。」
+
+また、リーダーに必要な「四つの心」として、誠実な対話によって信頼を築く「正直さ」、異なる意見を受け入れる「度量」、責任を引き受け挑戦する「勇気」、探究を続け革新を促す「好奇心」を挙げました。
+
+さらに、Google台湾の元ゼネラルマネージャーである簡立峰氏の言葉「AIが到来したとき、最初に変革すべきなのは自分自身である」を引用しました。
+
+企業変革は技術や市場戦略の見直しにとどまらず、組織文化と価値観の再確認にも関わります。真のリーダーシップとは、共有する価値観と相互信頼を通じて、チームが明確な判断力、冷静さ、しなやかな対応力を保てるようにすることです。
+
+取材・掲載いただいた『天下雑誌（CommonWealth Magazine）』に感謝申し上げます。
+
+================================================================
+ARTICLE_ID: news-04-seecat-2025
+DATE: 2025-10-16
+CATEGORY: 媒體消息 / Media / メディア
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1763974825088.jpeg
+
+[TW]
+標題：Big x Reality 圓滿參與 SEECAT 2025 反恐特種裝備展
+內文：
+10 月 1 日至 3 日，Big x Reality 全球動力科技參與日本東京 SEECAT 2025（テロ対策特殊装備展），展示 BXR SUT BOX 小部隊戰術訓練系統。
+
+系統融合 XR 技術與模擬戰場環境，支援無人機操作及反制無人機模擬訓練，提供貼近前線任務需求的訓練情境。
+
+模組化設計與沉浸式體驗吸引防衛、安全及訓練領域的專業人士駐足交流，獲得廣泛關注。
+
+未來，Big x Reality 將持續推進 XR 軍警應用，拓展全球戰術訓練市場，協助各單位強化面對複雜威脅時的應變能力。
+
+[EN]
+Title: Big x Reality Concludes SEECAT 2025 with XR Tactical Training Demonstrations
+Body:
+From October 1 to 3, Big x Reality (Global Power Technologies) participated in SEECAT 2025 (Special Equipment Exhibition & Conference for Anti-Terrorism) in Tokyo, Japan, presenting the BXR SUT BOX Small Unit Tactical Training System.
+
+Combining XR technology with simulated battlefield environments, the system supports UAV operation and counter-drone training simulations, offering scenarios designed around frontline training requirements.
+
+Its modular architecture and immersive experience attracted interest and discussions with professionals from the defense, security, and training sectors.
+
+Big x Reality will continue advancing XR applications for military and police training, expanding its international reach and helping organizations strengthen their ability to respond to complex threats.
+
+[JP]
+タイトル：Big x Reality、SEECAT 2025への出展を盛況のうちに終了
+本文：
+Big x Reality（全球動力科技）は、10月1日から3日まで東京で開催された「SEECAT 2025（テロ対策特殊装備展）」に出展し、小部隊戦術訓練システム「BXR SUT BOX」を展示しました。
+
+XR技術と模擬戦場環境を組み合わせた本システムは、UAVの操作訓練や対ドローン訓練のシミュレーションに対応し、現場の任務要件に即した訓練シナリオを提供します。
+
+モジュール式の設計と没入型の体験は、防衛・警備・訓練分野の専門家から関心を集め、多くの意見交換につながりました。
+
+今後もBig x Realityは、軍・警察向けXR技術の応用と国際展開を進め、複雑な脅威に対する対応力の向上を支援してまいります。
+
+================================================================
+ARTICLE_ID: news-05-tadte-2025
+DATE: 2025-09-26
+CATEGORY: 媒體消息 / Media / メディア
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1756465213996.jpeg
+
+[TW]
+標題：2025 台北國際航太暨國防工業展：AI XR 模擬訓練系統亮相
+內文：
+Big x Reality 全球動力科技參與《2025 台北國際航太暨國防工業展》，以 AI XR 技術為核心，展示多項模擬訓練系統。
+
+展出內容涵蓋 LVC 合成化戰訓平台、50 機槍模擬器、刺針與標槍飛彈模擬器、SUT 小部隊戰術訓練系統，以及戰術無人機模擬訓練。
+
+展會現場吸引國防單位、產業專業人士及國際合作夥伴交流，帶來寶貴回饋，也再次凸顯虛實融合訓練在現代軍事訓練中的重要性。
+
+此次參展進一步呈現模組化部署、實務應用與 AI 演算的整合方向，持續推動訓練模式數位化、智慧化與實戰化。
+
+下一站，日本國防相關展會，敬請期待 Big x Reality 的國際布局。
+
+[EN]
+Title: Big x Reality Showcases AI XR Training at Taipei Aerospace & Defense Exhibition 2025
+Body:
+Big x Reality (Global Power Technologies) participated in the 2025 Taipei Aerospace & Defense Industry Exhibition, presenting a range of simulation training systems built around AI and XR technologies.
+
+The exhibits included an LVC (Live-Virtual-Constructive) synthetic training platform, a .50-caliber machine gun simulator, Stinger and Javelin missile simulators, the SUT Small Unit Tactical Training System, and tactical UAV simulation training.
+
+The exhibition brought opportunities to exchange ideas with defense organizations, industry professionals, and international partners. Their feedback highlighted the growing importance of integrating live, virtual, and constructive training approaches into modern military preparation.
+
+The showcase emphasized modular deployment, practical applications, and AI-based computation, reflecting our commitment to more digital, intelligent, and mission-oriented training.
+
+Our next stop is Japan, as Big x Reality continues expanding its international engagement.
+
+[JP]
+タイトル：2025年台北国際航空宇宙・防衛産業展でAI XR訓練技術を展示
+本文：
+Big x Reality（全球動力科技）は、「2025年台北国際航空宇宙・防衛産業展」に出展し、AIとXRを中核とした各種シミュレーション訓練システムを紹介しました。
+
+展示内容には、LVC（Live-Virtual-Constructive）統合訓練プラットフォーム、12.7mm（.50口径）機関銃シミュレーター、スティンガーおよびジャベリンのミサイルシミュレーター、SUT小部隊戦術訓練システム、戦術UAVシミュレーションが含まれます。
+
+会場では、防衛機関、業界関係者、海外パートナーとの交流を通じて貴重な意見を得ることができ、実環境・仮想環境・構成的シミュレーションを組み合わせた訓練の重要性を改めて確認しました。
+
+今回の出展では、モジュール式の展開、実務への応用、AI演算の統合を重点的に紹介し、訓練のデジタル化・高度化・実践性の向上に向けた取り組みを示しました。
+
+次の展示先は日本です。今後の国際展開にもぜひご注目ください。
+
+================================================================
+ARTICLE_ID: news-06-military-forum-2025
+DATE: 2025-08-27
+CATEGORY: 活動消息 / Event / イベント
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1756893836982.jpeg
+
+[TW]
+標題：軍事作業研究與模式模擬論壇：展示 LVC 合成化戰場系統
+內文：
+Big x Reality 全球動力科技參與在清華大學舉辦、由國防部主辦的「軍事作業研究與模式模擬論壇」，展示 LVC 合成化戰場相關模擬訓練技術。
+
+現場展出兵棋圖台系統、刺針飛彈模擬器、50 機槍操作模擬，以及直升機駕駛訓練系統。
+
+Big x Reality 結合 LVC（Live-Virtual-Constructive）合成技術，整合實體、虛擬與構建模擬環境，呈現未來戰場訓練平台的應用方向，並與現場軍方長官及專業教官進行交流。
+
+我們將持續深耕 AI XR 軍事應用，推動訓練模式朝數位化、智慧化及實戰化發展。
+
+[EN]
+Title: Big x Reality Demonstrates LVC Training at Military Operations Research and Simulation Forum
+Body:
+Big x Reality (Global Power Technologies) participated in the Military Operations Research and Modeling & Simulation Forum, hosted by Taiwan's Ministry of National Defense at National Tsing Hua University, to demonstrate LVC synthetic battlefield training technologies.
+
+The exhibits included a wargaming table system, a Stinger missile simulator, a .50-caliber machine gun operation simulator, and a helicopter pilot training system.
+
+By integrating LVC (Live-Virtual-Constructive) technology, Big x Reality connects live, virtual, and constructive environments to demonstrate possibilities for future battlefield training platforms. The event also provided opportunities to exchange ideas with military officers and professional instructors.
+
+We will continue advancing AI and XR applications in military training, supporting the evolution toward more digital, intelligent, and mission-oriented simulation.
+
+[JP]
+タイトル：軍事作戦研究・モデリング＆シミュレーションフォーラムでLVC訓練技術を展示
+本文：
+Big x Reality（全球動力科技）は、台湾国防部が国立清華大学で開催した「軍事作戦研究・モデリング＆シミュレーションフォーラム」に参加し、LVC統合戦場訓練技術を展示しました。
+
+会場では、ウォーゲーミングテーブルシステム、スティンガーミサイルシミュレーター、12.7mm（.50口径）機関銃操作シミュレーター、ヘリコプター操縦訓練システムを紹介しました。
+
+Big x Realityは、LVC（Live-Virtual-Constructive）技術を活用し、実環境・仮想環境・構成的シミュレーションを統合することで、将来の戦場訓練プラットフォームの可能性を示しました。会場では軍関係者や専門教官との意見交換も行いました。
+
+今後もAIとXRの軍事訓練への応用を深め、訓練のデジタル化、高度化、実践性の向上に取り組んでまいります。
+
+================================================================
+ARTICLE_ID: news-07-indo-defence
+DATE: 2025-06-20
+CATEGORY: 活動消息 / Event / イベント
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1745315494773.jpeg
+NOTE: 原文標題稱2025年6月參展，但活動名稱為「2024 Indo Defence Expo & Forum」；請保留原始兩者，待確認展會正式屆次。
+
+[TW]
+標題：Big x Reality 參與印尼 Indo Defence 展示 CQB 模擬訓練系統
+內文：
+Big x Reality 全球動力科技於六月參加印尼國防展「2024 Indo Defence Expo & Forum」，向東南亞市場展示近身距離作戰（CQB）模擬訓練系統。
+
+從虛擬場景到實體部署，系統採用模組化設計，可因應不同訓練需求靈活運用，協助提升戰術應變與決策效率。
+
+展出期間，來自軍方、警政及國防產業單位的來賓對模擬演練方式與部署便利性展現關注，現場也獲得 METRO TV、CNN Indonesia，以及 YouTuber Auto Rich 等媒體與創作者報導。
+
+展後回顧影片：https://youtu.be/GUrKtH_TKjU
+
+Big x Reality 將持續以 AI XR 技術為核心，拓展全球戰術訓練應用，推動訓練模式升級。
+
+[EN]
+Title: Big x Reality Presents CQB Simulation at Indo Defence Expo & Forum
+Body:
+In June, Big x Reality (Global Power Technologies) participated in the event identified in the original announcement as the “2024 Indo Defence Expo & Forum” in Indonesia, showcasing its Close-Quarters Battle (CQB) simulation training system to the Southeast Asian market.
+
+From virtual scenarios to physical deployment, the modular system is designed for flexible use across different training requirements, supporting tactical response and decision-making practice.
+
+During the exhibition, military, police, and defense-industry visitors showed interest in the simulation approach and ease of deployment. The event also drew coverage from METRO TV, CNN Indonesia, and YouTuber Auto Rich.
+
+Post-event recap video: https://youtu.be/GUrKtH_TKjU
+
+Big x Reality will continue advancing global tactical training applications through AI and XR technology and supporting the evolution of simulation-based training.
+
+[JP]
+タイトル：Big x Reality、インドネシア防衛展示会でCQB訓練システムを紹介
+本文：
+Big x Reality（全球動力科技）は6月、元の発表で「2024 Indo Defence Expo & Forum」と記載されたインドネシアの防衛展示会に参加し、東南アジア市場に向けて近接戦闘（CQB）シミュレーション訓練システムを紹介しました。
+
+仮想シナリオから実際の機器展開まで、モジュール式の設計により多様な訓練要件に柔軟に対応し、戦術的な対応力と意思決定能力の向上を支援します。
+
+展示期間中、軍・警察・防衛産業の来場者から訓練方式と展開の容易さに関心が寄せられ、METRO TV、CNN Indonesia、YouTuberのAuto Richによる取材・紹介も行われました。
+
+展示会振り返り動画：https://youtu.be/GUrKtH_TKjU
+
+Big x Realityは今後もAIとXRを活用し、世界各地で戦術訓練の応用を広げ、シミュレーション訓練の高度化に取り組んでまいります。
+
+================================================================
+ARTICLE_ID: news-08-fire-agency-2025
+DATE: 2025-04-22
+CATEGORY: 活動消息 / Event / イベント
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1744167055539.jpeg
+
+[TW]
+標題：全球動力科技執行長應邀至消防署分享 XR 智慧防救災應用
+內文：
+2025 年 4 月 22 日，全球動力科技股份有限公司執行長陳俊男（Hanson Chen）應邀前往內政部消防署南投訓練中心擔任專題講座講師，分享「智慧城市 AI XR 多維度防救災可視化解決方案」。
+
+演講聚焦如何運用 XR（擴增實境、虛擬實境、混合實境）技術，提升防救災訓練效率與應變能力，介紹智慧科技在防災領域的研發成果與實務應用。
+
+本次講座邀請來自 13 個國家的 19 位學員參與，涵蓋亞洲、非洲、中南美洲及歐洲。原文列出的國家及地區包括印度（清奈）、史瓦帝尼、貝里斯、瓜地馬拉、宏都拉斯、智利、厄瓜多、巴拉圭、秘魯、聖露西亞、聖文森及格瑞那丁、立陶宛與密克羅尼西亞。
+
+陳俊男於現場介紹「消防員 AR 眼鏡與即時定位系統」、「5G AI Cloud XR 智慧防救災模擬訓練系統」、「3D 災情儀表板」及「滅火器 XR 模擬訓練系統」等應用，呈現 XR 技術整合資料、場景與行動裝置後，如何提升訓練臨場感、資訊可視性與決策效率。
+
+全球動力科技將持續推動防災與智慧科技的整合，以提升第一線人員安全與效率為目標，拓展智慧防救災解決方案的應用。
+
+[EN]
+Title: Big x Reality CEO Shares XR Disaster Response Innovations at Taiwan's Fire Agency
+Body:
+On April 22, 2025, Hanson Chen, CEO of Global Power Technologies (Big x Reality), was invited to speak at the Ministry of the Interior Fire Agency's Training Center in Nantou, Taiwan. His presentation, “AI XR Multi-Dimensional Visualization Solutions for Smart City Disaster Prevention and Response,” explored how immersive technology can support emergency preparedness.
+
+The talk focused on XR technologies—including augmented reality, virtual reality, and mixed reality—and their potential to improve disaster-response training efficiency and operational readiness, drawing on practical development and application experience.
+
+Nineteen participants from 13 countries attended the session, representing Asia, Africa, Central and South America, and Europe. The original announcement listed India (Chennai), Eswatini, Belize, Guatemala, Honduras, Chile, Ecuador, Paraguay, Peru, Saint Lucia, Saint Vincent and the Grenadines, Lithuania, and Micronesia.
+
+Chen introduced applications including AR glasses with real-time firefighter positioning, a 5G AI Cloud XR disaster-response simulation platform, a 3D disaster situation dashboard, and an XR fire extinguisher training system. The presentation demonstrated how XR can combine data, scenarios, and mobile devices to enhance training realism, information visibility, and decision-making.
+
+Global Power Technologies will continue integrating disaster preparedness with smart technologies to improve frontline safety and operational effectiveness.
+
+[JP]
+タイトル：Big x RealityのCEO、台湾消防署でXR防災・災害対応技術を紹介
+本文：
+2025年4月22日、全球動力科技（Big x Reality）の陳俊男（Hanson Chen）CEOは、台湾内政部消防署の南投訓練センターに招かれ、「スマートシティにおけるAI XR多次元防災・災害対応可視化ソリューション」をテーマに講演しました。
+
+講演では、AR（拡張現実）、VR（仮想現実）、MR（複合現実）を含むXR技術を活用し、防災訓練の効率と災害対応能力を高めるための開発成果や実務への応用を紹介しました。
+
+当日は、アジア、アフリカ、中南米、欧州の13か国から19名が参加しました。元の発表では、インド（チェンナイ）、エスワティニ、ベリーズ、グアテマラ、ホンジュラス、チリ、エクアドル、パラグアイ、ペルー、セントルシア、セントビンセントおよびグレナディーン諸島、リトアニア、ミクロネシアが挙げられています。
+
+陳CEOは、消防隊員向けARグラスとリアルタイム位置把握システム、5G AI Cloud XR防災シミュレーション訓練システム、3D災害状況ダッシュボード、XR消火器訓練システムなどを紹介しました。データ、シナリオ、モバイル機器を組み合わせることで、訓練の臨場感、情報の可視性、意思決定の効率を高める取り組みを説明しました。
+
+全球動力科技は、第一線で活動する人々の安全性と業務効率の向上を目指し、防災とスマート技術の融合を進めてまいります。
+
+================================================================
+ARTICLE_ID: news-09-seecat-earlier
+DATE: 2025-04-09
+CATEGORY: 媒體消息 / Media / メディア
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1729576192684.jpeg
+NOTE: 原文使用「去年」，依發文日推定活動為2024年，但請保留為待確認，不將其視為已查證。
+
+[TW]
+標題：全球動力科技參與日本 SEECAT 展，深化國際安全防衛合作
+內文：
+全球動力科技（Big x Reality）於去年應邀參與日本東京舉辦的 SEECAT 特殊裝備與反恐技術展（Special Equipment Exhibition & Conference for Anti-Terrorism），積極拓展國際市場，展示台灣在安全防衛科技領域的創新成果。
+
+SEECAT 是日本專注反恐與特殊裝備的專業展覽，吸引政府、軍方、執法機構及安全產業的專業人士與決策者交流技術與應用趨勢。
+
+展會期間，全球動力科技展示 XR 沉浸式訓練系統，並首次於日本公開 BXR Police Box 攜帶式警勤訓練模擬器。該系統可模擬不同執法場景及突發狀況，協助警勤與特勤人員進行臨場應變及決策訓練，吸引專業觀眾與潛在合作夥伴關注。
+
+透過此次參展，公司深入了解日本市場對先進訓練系統的需求，並與多家在地業者展開初步合作洽談。未來將持續投入研發，提供高效、安全且可擴充的訓練解決方案，拓展全球合作機會。
+
+[EN]
+Title: Big x Reality Expands Security Training Partnerships at Japan's SEECAT
+Body:
+Big x Reality (Global Power Technologies) was invited to participate in SEECAT (Special Equipment Exhibition & Conference for Anti-Terrorism) in Tokyo, Japan, in the year preceding the original announcement, showcasing Taiwan's innovation in security and defense technology and expanding its international engagement.
+
+SEECAT is a specialized exhibition focused on counterterrorism and special equipment, bringing together government agencies, military organizations, law enforcement bodies, and security-industry decision-makers to exchange insights on emerging technology.
+
+During the event, Big x Reality presented its immersive XR training systems and introduced the portable BXR Police Box training simulator in Japan for the first time. The system recreates law-enforcement scenarios and unexpected situations to support response and decision-making training for police and special units, attracting attention from professional visitors and prospective partners.
+
+The exhibition helped the company better understand Japanese market needs and initiate discussions with local businesses. Big x Reality will continue developing efficient, safe, and scalable training solutions while pursuing opportunities for international cooperation.
+
+[JP]
+タイトル：Big x Reality、日本のSEECATでXR警備訓練技術を紹介
+本文：
+Big x Reality（全球動力科技）は、元の発表の前年に東京で開催された「SEECAT（テロ対策特殊装備展）」に招かれ、台湾の安全保障・防衛技術分野における取り組みを紹介するとともに、国際的な事業展開を進めました。
+
+SEECATは、テロ対策と特殊装備に特化した専門展示会であり、政府機関、軍、法執行機関、警備関連企業の専門家や意思決定者が技術と応用動向について情報交換を行う場です。
+
+会場では没入型XR訓練システムを展示し、携帯型警察訓練シミュレーター「BXR Police Box」を日本で初めて公開しました。本システムは多様な法執行場面や突発事態を再現し、警察・特殊部隊の状況対応と意思決定の訓練を支援します。専門来場者や協業を検討する企業から関心が寄せられました。
+
+今回の出展を通じて、日本市場における高度な訓練システムへのニーズを把握し、現地企業との初期的な協業協議も行いました。今後も安全で拡張性の高い訓練ソリューションの開発と国際連携を進めてまいります。
+
+================================================================
+ARTICLE_ID: news-10-xr-shooting-sports
+DATE: 2024-08-16
+CATEGORY: 媒體消息 / Media / メディア
+IMAGE_SOURCE: 原文未附可明確對應的圖片 URL
+
+[TW]
+標題：媒體報導：全球動力科技推出射擊運動 XR 模擬系統
+內文：
+隨著 VR 電競與沉浸式運動體驗受到關注，全球動力科技將 XR 模擬技術拓展至運動科技領域，推出依奧運飛靶比賽規範設計的「射擊運動 XR 模擬系統」。
+
+系統結合 XR 技術與模擬霰彈槍，重現飛靶射擊的訓練與比賽情境，讓學員可以在不同地點進行訓練與競賽，降低時間及空間限制。
+
+原始報導提及，這項技術延續 2023 年新加坡奧林匹克電競賽跆拳道 VR 電競比賽所帶動的運動科技趨勢，並將本系統描述為全球首創的相關解決方案。此為原始報導中的說法，尚未另行驗證。
+
+為推廣飛靶運動，全球動力科技與臺北市政府體育局、數位發展部數位產業署及中華民國射擊協會合作，規劃於 2024 年 8 月 6 日至 8 日，在臺北田徑場室內教室舉辦「2025 雙北世界壯年運動會暖身訓練營」的科技 XR 飛靶射擊體驗課程。
+
+[EN]
+Title: Media Report: Big x Reality Introduces an XR Shooting Sports Simulation System
+Body:
+As VR esports and immersive sports experiences gain attention, Big x Reality (Global Power Technologies) is expanding its XR simulation technology into sports technology with a Shooting Sports XR Simulation System designed around Olympic clay-target shooting rules.
+
+Combining XR technology with a simulated shotgun, the system recreates clay-target shooting practice and competition scenarios. It enables participants to train and compete from different locations, reducing time and space constraints.
+
+The original report connected this development with interest generated by the taekwondo VR esports event at the 2023 Olympic Esports Series in Singapore and described the shooting system as a world-first solution. This wording reflects the source report and has not been independently verified.
+
+To promote clay-target shooting, Big x Reality collaborated with the Taipei City Government Department of Sports, the Ministry of Digital Affairs' Administration for Digital Industries, and the Chinese Taipei Shooting Association on an XR clay-target shooting experience course. The course was planned for August 6–8, 2024, in an indoor classroom at Taipei Municipal Stadium, as part of a warm-up training program for the 2025 World Masters Games in Taipei and New Taipei City.
+
+[JP]
+タイトル：メディア報道：Big x RealityがXR射撃スポーツシミュレーターを発表
+本文：
+VRを活用したeスポーツや没入型スポーツ体験への関心が高まる中、Big x Reality（全球動力科技）はXRシミュレーション技術をスポーツテクノロジー分野へ展開し、オリンピックのクレー射撃競技規則に基づいて設計した「射撃スポーツXRシミュレーションシステム」を紹介しました。
+
+XR技術と模擬ショットガンを組み合わせ、クレー射撃の練習や競技を再現します。参加者は場所の制約を受けにくい環境で訓練や競技を行うことができます。
+
+元の報道では、2023年にシンガポールで開催されたオリンピックeスポーツシリーズのVRテコンドー競技を背景に挙げ、本システムを世界初の取り組みと表現しています。この表現は原文に基づくものであり、独自の検証は行っていません。
+
+クレー射撃の普及に向けて、Big x Realityは台北市政府体育局、台湾デジタル発展部デジタル産業署、中華民国射撃協会と協力し、2024年8月6日から8日に台北陸上競技場の屋内教室で「2025年台北・新北ワールドマスターズゲームズ」の事前体験プログラムとして、XRクレー射撃体験講座を実施する計画を発表しました。
+
+================================================================
+ARTICLE_ID: news-11-sushi-tech-2024
+DATE: [待確認；原文僅有2024年5月15日至16日活動日期]
+CATEGORY: 活動消息 / Event / イベント
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1729577940121.jpeg
+
+[TW]
+標題：Big x Reality 參與 SusHi Tech Tokyo 2024 國際新創交流
+內文：
+東京都政府宣布，亞洲大型新創盛會 SusHi Tech Tokyo Global Startup Program 2024 於 2024 年 5 月 15 日至 16 日在 Tokyo Big Sight 舉行。
+
+SusHi Tech Tokyo 以「Sustainable High City Tokyo」為概念，強調永續新價值，聚焦基礎設施、環境、生活、文化及影響五大主題，促進全球新創與產業交流，共同探討氣候變遷、人口變化、基礎建設及能源等挑戰。
+
+Big x Reality 全球動力科技與 Startup Island TAIWAN 一同參與，代表台灣館「影響」主題，展現台灣科技創新與國際合作的可能性。
+
+[EN]
+Title: Big x Reality Joins SusHi Tech Tokyo 2024 with Startup Island TAIWAN
+Body:
+The Tokyo Metropolitan Government announced SusHi Tech Tokyo Global Startup Program 2024, held on May 15–16, 2024, at Tokyo Big Sight. The event brought together startups and businesses from around the world to exchange ideas on sustainable innovation.
+
+SusHi Tech Tokyo, short for Sustainable High City Tokyo, highlighted the concept of “Sustainable New Values” through five themes: infrastructure, environment, life, culture, and impact. The program explored challenges including climate change, demographic shifts, infrastructure, and energy.
+
+Big x Reality (Global Power Technologies) joined Startup Island TAIWAN at the Taiwan Pavilion, participating under the “Impact” theme and presenting opportunities for Taiwanese technology innovation and international collaboration.
+
+[JP]
+タイトル：Big x Reality、Startup Island TAIWANとともにSusHi Tech Tokyo 2024に参加
+本文：
+東京都が主催する「SusHi Tech Tokyo Global Startup Program 2024」は、2024年5月15日から16日まで東京ビッグサイトで開催されました。世界各地のスタートアップや企業が集まり、持続可能なイノベーションについて交流する機会となりました。
+
+「SusHi Tech Tokyo」は「Sustainable High City Tokyo」に由来し、「Sustainable New Values」を掲げています。インフラ、環境、生活、文化、インパクトの五つのテーマを通じて、気候変動、人口動態、都市基盤、エネルギーなどの課題に向き合う取り組みを紹介しました。
+
+Big x Reality（全球動力科技）はStartup Island TAIWANとともに台湾パビリオンに参加し、「インパクト」分野の一員として、台湾発の技術革新と国際連携の可能性を発信しました。
+
+================================================================
+ARTICLE_ID: news-12-asia-xr-awards-2023
+DATE: 2023-08-20
+CATEGORY: 媒體消息 / Media / メディア
+IMAGE_SOURCE: 原文未附可明確對應的圖片 URL
+NOTE: 原文是獎項及活動介紹，沒有明確敘述 BXR 得獎；不得改寫成 BXR 獲獎。
+
+[TW]
+標題：亞洲 XR 創星金點大賞得獎者將閃耀東京
+內文：
+由國家發展委員會指導、Startup Island TAIWAN 支持，並由 TAVAR 台灣虛擬及擴增實境產業協會與 XR EXPRESS Taiwan 共同推動的第二屆「亞洲 XR 創星金點大賞頒獎典禮」，於 8 月 11 日登場。
+
+本屆活動與 XR、VTuber 專業媒體 MoguraVR，以及日本 XR Consortium 合作，並與 XR Consortium 簽署合作備忘錄（MOU），促進台灣 XR 產業的國際交流。
+
+活動邀請來自日本 XR、元宇宙及新創領域的代表參與，包括 XR Consortium 執行長久保田瞬（Shun Kubota）、Metaverse Japan 代表理事長馬渕邦美（Kuniyoshi Mabuchi），以及 Knowledge Capital 集團總監野村卓也（Takuya Nomura），共同參與論壇及頒獎。
+
+活動頒發 15 個獎項，獲獎團隊預計於 12 月前往日本參加 XR KAIGI，在國際舞台展示台灣 XR 創新成果。
+
+[EN]
+Title: Asia XR Golden Star Award Winners Prepare to Shine in Tokyo
+Body:
+The second Asia XR Golden Star Awards ceremony was held on August 11 under the guidance of Taiwan's National Development Council, with support from Startup Island TAIWAN and organization by the Taiwan Association for Virtual and Augmented Reality (TAVAR) and XR EXPRESS Taiwan.
+
+The event partnered with XR and VTuber media outlet MoguraVR and Japan's XR Consortium, including the signing of a memorandum of understanding (MOU) with XR Consortium to encourage international exchange in the XR industry.
+
+Japanese experts and industry representatives joined the event, including Shun Kubota, Executive Director of XR Consortium; Kuniyoshi Mabuchi, Representative Director of Metaverse Japan; and Takuya Nomura, a group director at Knowledge Capital. They participated in the international forum and awards program.
+
+Fifteen awards were presented, and winning teams were expected to travel to Japan in December to participate in XR KAIGI, bringing Taiwanese XR innovation to an international audience.
+
+[JP]
+タイトル：アジアXRアワード受賞チーム、東京のXR KAIGIへ
+本文：
+台湾の国家発展委員会の指導、Startup Island TAIWANの支援のもと、台湾VR・AR産業協会（TAVAR）とXR EXPRESS Taiwanが推進する第2回「アジアXR創星金点大賞」の授賞式が8月11日に開催されました。
+
+今回は、XR・VTuber専門メディアのMoguraVR、日本のXR Consortiumとも連携し、XR Consortiumとの覚書（MOU）締結を通じて国際交流を促進しました。
+
+イベントには、XR Consortiumの久保田瞬氏、Metaverse Japan代表理事の馬渕邦美氏、Knowledge Capitalの野村卓也氏など、日本のXR・メタバース・スタートアップ分野の関係者が参加し、国際フォーラムや授賞式を盛り上げました。
+
+計15の賞が授与され、受賞チームは12月に日本で開催される「XR KAIGI」に参加し、台湾のXR分野の成果を国際的に紹介する予定です。
+
+================================================================
+ARTICLE_ID: news-13-future-combat
+DATE: 2025-09-26
+CATEGORY: 媒體消息 / Media / メディア
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1756895320322.jpeg
+NOTE: 這是英文舊站的獨立文章。原文標題2025，但內文展期為2024-09-18～20，年份不一致；不可與 news-05 自動合併。
+
+[TW]
+標題：為未來作戰打造擬真訓練環境
+內文：
+Big x Reality 全球動力科技為台北國際航太暨國防工業展積極準備，計畫與國防產業發展協會共同展出以 LVC（Live-Virtual-Constructive）模擬技術為基礎，並結合 AI XR、模組化設計及即時實體回饋的先進訓練解決方案。
+
+本次展出將聚焦作戰準備、模擬真實度及未來訓練科技，向關注國防技術與戰術訓練的專業人士展示虛實整合的應用方向。
+
+原始英文文章列出的活動資訊為：2024 年 9 月 18 日至 20 日，攤位 J0418（國防產業發展協會聯合展區）。由於原文標題與發文日期指向 2025 年，展期資訊仍待確認。
+
+[EN]
+Title: Building Realistic Training for Future Combat
+Body:
+Big x Reality is gearing up for the Taipei Aerospace & Defense Industry Exhibition. Together with the Defense Industry Association, we plan to present advanced training solutions based on LVC (Live-Virtual-Constructive) simulation, enhanced by AI XR integration, modular design, and real-time physical feedback.
+
+The exhibition is an opportunity to demonstrate approaches to combat readiness, simulation realism, and future training technologies for defense professionals and organizations interested in advanced tactical training.
+
+The original English announcement lists the following event details: September 18–20, 2024; Booth J0418, in the joint pavilion with the Defense Industry Association. These details require confirmation because the article's publication date and surrounding context refer to 2025.
+
+[JP]
+タイトル：未来の戦闘に向けたリアルな訓練環境を構築
+本文：
+Big x Reality（全球動力科技）は、台北国際航空宇宙・防衛産業展への出展に向けて準備を進めています。防衛産業協会とともに、LVC（Live-Virtual-Constructive）シミュレーションを基盤とし、AI XRの統合、モジュール式設計、リアルタイムの物理フィードバックを組み合わせた先進的な訓練ソリューションを紹介する予定です。
+
+今回の展示では、作戦準備、シミュレーションの再現性、次世代訓練技術に焦点を当て、防衛分野の専門家や組織に向けて、実環境と仮想環境を統合した訓練の可能性を示します。
+
+元の英文告知に記載された開催情報は、2024年9月18日～20日、ブースJ0418（防衛産業協会の共同出展エリア）です。ただし、記事の掲載日と周辺の文脈は2025年を示しているため、開催情報の確認が必要です。
+
+================================================================
+ARTICLE_ID: news-14-ds-2025-en-source
+STATUS: NOT A SEPARATE ARTICLE
+NOTE: 使用者提供的英文「XR Small Unit Tactical Training System at Defense & Security 2025 in Bangkok」與 news-01 為同一事件之英文版本，已合併至 news-01；不重複發布。
+IMAGE_SOURCE: https://www.bigxreality.com/upload/news/1763974963549.jpeg
+
+================================================================
+來源圖片網址與文章對應說明：
+- 上述 IMAGE_SOURCE 依使用者貼文中各篇內文後方的「閱讀全文 / image」對應整理，仍請人工核對圖像實際內容；不要讓 Codex 下載舊站圖片。
+- news-01 與 news-14 為同一事件，但英文版另有一張圖片來源；可在圖片清單列作候選素材。
+- 原文有「2024 SusHi Tech Tokyo」但無可確認的新聞發布日期；不得以活動日期冒充發文日期。
+- 原文中各新聞所附的 hashtag 不構成已查證的產品功能或技術能力。
+
+END OF FILE

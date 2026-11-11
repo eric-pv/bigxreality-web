@@ -1,26 +1,29 @@
 ---
+import Text from './Text.astro';
+import ContentBody from './ContentBody.astro';
 /** Shared editorial sections; the content model retains each source paragraph and list. */
 import SplitSection from "./SplitSection.astro";
 interface Section {
   id: string; title: string; paragraphs: readonly string[];
   items?: readonly { title: string; paragraphs: readonly string[] }[];
-  bullets?: readonly string[]; note?: string;
+  bullets?: readonly string[]; note?: string; body?:string;
 }
-interface Props { sections: readonly Section[]; variant: string }
-const { sections, variant } = Astro.props;
+interface Props { sections: readonly Section[]; variant: string; lang: "tw"|"en"|"jp" }
+const { sections, variant, lang } = Astro.props;
 ---
 <div class={`technology-sections variant-${variant}`}>
   {sections.map((section, index) => (
     <section class:list={["section editorial", { "section--alt": index % 2 === 1 }]} id={section.id} aria-labelledby={`h-${section.id}`} data-technology-section={section.id}>
       <div class="container"><SplitSection columns="minmax(0, 4fr) minmax(0, 7fr)" stackGap="var(--space-4)">
-        <header slot="head"><p class="t-tech section-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</p><h2 class="t-h2" id={`h-${section.id}`}>{section.title}</h2></header>
+        <header slot="head"><p class="t-tech section-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</p><h2 class="t-h2" id={`h-${section.id}`}><Text value={section.title} /></h2></header>
         <div class="section-body">
-          <div class="paragraphs">{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
+          <div class="paragraphs">{section.paragraphs.map((paragraph) => <p><Text value={paragraph} /></p>)}</div>
           {section.items && <div class:list={["topics", { "process": ["training-design", "digital-simulation"].includes(variant) && section.items.length === 5 }]}>
-            {section.items.map((item) => <div class="topic"><h3 class="t-h3">{item.title}</h3>{item.paragraphs.map((p) => <p>{p}</p>)}</div>)}
+            {section.items.map((item) => <div class="topic"><h3 class="t-h3"><Text value={item.title} /></h3>{item.paragraphs.map((p) => <p><Text value={p} /></p>)}</div>)}
           </div>}
-          {section.bullets && <ul class="value-list">{section.bullets.map((item) => <li>{item}</li>)}</ul>}
-          {section.note && <p class="note t-small">{section.note}</p>}
+          {section.bullets && <ul class="value-list">{section.bullets.map((item) => <li><Text value={item} /></li>)}</ul>}
+          {section.body && <ContentBody markdown={section.body} lang={lang} entryFile={`src/content/technologies/${lang}/${variant}.json`} />}
+          {section.note && <p class="note t-small"><Text value={section.note} /></p>}
         </div>
       </SplitSection></div>
     </section>

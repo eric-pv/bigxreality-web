@@ -3,17 +3,24 @@
  * Dark page hero (DS P.16): breadcrumb, English label, H1, description, image on
  * the right, at most two buttons (passed in the "actions" slot).
  */
-import { Picture } from "astro:assets";
+import { imagePresentation } from "../data/primary-images";
+import ProductImage from './ProductImage.astro';
 import type { ImageMetadata } from "astro";
 import type { Crumb } from "./SeoHead.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
 import Text from "./Text.astro";
+import { distinctLabel } from "../lib/eyebrow";
 
 interface Props {
+  scenePosition?: string;
+  sceneHeadroom?: number;
+  sceneFit?: "cover" | "contain";
+  variant?: "split" | "scene" | "equipment" | "interface";
   breadcrumbs: Crumb[];
   breadcrumbLabel: string;
-  eyebrow: string;
+  /** Short page-type label; left out when it repeats the kicker or H1. */
+  eyebrow?: string;
   /** Line above the H1 (e.g. the product name when the H1 is a headline). */
   kicker?: string;
   title: string;
@@ -26,47 +33,55 @@ interface Props {
   imagePending?: string;
   /** Label drawn bottom-right on illustrations (情境示意圖). */
   imageBadge?: string;
+  /** Tactical decoration (HUD on images, blueprint on text-only heroes). Off for pages kept out of a redesign. */
+  decor?: boolean;
+  /** Sibling pages (the product and solution landings) share one hero layout: the image box is always 16:9 at the same
+   *  place, the image fills it (cover, cropped around its focus point, centred), and the copy is top-aligned so
+   *  breadcrumb and H1 never shift. */
+  uniformMedia?: boolean;
 }
-const { breadcrumbs, breadcrumbLabel, eyebrow, kicker, title, subtitle, lead, description, image, imageCaption, imagePending, imageBadge } = Astro.props;
+const { scenePosition = "60% 0%", sceneHeadroom = 24, sceneFit = "cover", variant = "split", breadcrumbs, breadcrumbLabel, kicker, title, subtitle, lead, description, image, imageCaption, imagePending, decor = true, uniformMedia = false } = Astro.props;
+// The hero's own focus point, as 0–1 fractions, places the visible-image box the way object-position placed the image.
+const [heroPx, heroPy] = scenePosition.split(/\s+/).map((v) => Math.min(Math.max(parseFloat(v) / 100, 0), 1));
+const sub = distinctLabel(subtitle, kicker, title);
+const uniform = uniformMedia && !!image;
+// Crop focus for uniform heroes: the image's approved focus point, horizontally centred.
+const crop = image ? `50% ${imagePresentation(image.src).position.split(/\s+/)[1] ?? "50%"}` : "50% 50%";
 ---
-<section class="page-hero" data-theme="dark">
-  <div class:list={["container", "grid", { "no-media": !image && !imagePending }]}>
+<section class:list={["page-hero", `hero--${variant}`, { "has-decor": decor, "media-uniform": uniform }]} data-theme="dark" data-hero-variant={variant} data-scene-fit={sceneFit} data-hero-uniform={uniform ? "" : undefined} data-motion-loop={decor && image ? "" : undefined} style={`--hero-scene-fit:${sceneFit};--hero-headroom:${sceneHeadroom}px;--hero-focus:${scenePosition};--hero-px:${heroPx};--hero-py:${heroPy}${uniform ? `;--hero-crop:${crop}` : ""}`}>
+  {decor && !image && <span class="tac-blueprint" aria-hidden="true"></span>}
+  <div class:list={["container", "grid", { "no-media": !image }]}>
     <div class="copy">
       <Breadcrumb items={breadcrumbs} label={breadcrumbLabel} />
-      <p class="t-label eyebrow">{eyebrow}</p>
       {kicker && <p class="kicker t-h4"><Text value={kicker} /></p>}
       <h1 class="t-h1"><Text value={title} /></h1>
-      {subtitle && <p class="subtitle"><Text value={subtitle} /></p>}
+      {sub && <p class="subtitle"><Text value={sub} /></p>}
       {lead && <p class="lead"><Text value={lead} /></p>}
       {description && description.split(/\n\s*\n/).map((para) => <p class="desc"><Text value={para.trim()} /></p>)}
       {Astro.slots.has("actions") && <div class="actions"><slot name="actions" /></div>}
     </div>
-    {(image || imagePending) && <figure class="media">
+    {(image) && <figure class="media">
       {image ? (
-        <Picture
-          src={image.src} alt={image.alt} formats={["avif", "webp"]}
-          widths={[640, 960, 1280, 1920, 2560].filter((w) => w <= image.src.width)}
-          sizes="(max-width: 1023px) calc(100vw - 2 * var(--margin)), 50vw"
-          width={1280} height={720} fit="cover" loading="eager" fetchpriority="high"
-        />
+        <ProductImage src={image.src} alt={image.alt} loading="eager" priority showType={false} ambient={decor} sizes="(max-width: 1023px) calc(100vw - 32px), (max-width: 1439px) 70vw, 940px">
+          {decor && <span class="tac-scan hero-scan" aria-hidden="true"><span class="tac-sweep"></span></span>}
+          {decor && <span class="tac-hud hero-hud" aria-hidden="true"><span class="tac-corner tac-tl"></span><span class="tac-corner tac-tr"></span><span class="tac-corner tac-bl"></span><span class="tac-corner tac-br"></span></span>}
+        </ProductImage>
       ) : imagePending && <ImagePlaceholder label={imagePending} />}
-      {image && imageBadge && <span class="badge t-caption">{imageBadge}</span>}
       {image && imageCaption && <figcaption class="t-tech"><Text value={imageCaption} /></figcaption>}
     </figure>}
   </div>
 </section>
 <style>
   .page-hero { padding-block: var(--section-py); }
-  .grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--content-gap); align-items: center; }
+  .grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--content-gap); align-items: center; }
   .no-media { grid-template-columns: minmax(0, 8fr) 4fr; }
-  .copy { display: grid; gap: var(--space-3); align-content: start; }
-  .eyebrow { color: var(--bxr-mist); margin-top: var(--space-3); }
+  .copy { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); align-content: start; }
   .kicker { color: var(--bxr-white); font-weight: 500; }
   .subtitle { color: var(--bxr-mist); font-size: var(--fs-h4); }
   .lead { color: var(--bxr-white); font-size: var(--fs-h4); line-height: var(--lh-h4); max-width: 36rem; }
   .desc { color: var(--ink-muted); max-width: 36rem; }
   .desc + .desc { margin-top: calc(-1 * var(--space-2)); }
-  .actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
+  .actions { display: flex; min-width: 0; max-width: 100%; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
   .media { position: relative; margin: 0; }
   .media :global(img) { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
   .badge {
@@ -74,5 +89,97 @@ const { breadcrumbs, breadcrumbLabel, eyebrow, kicker, title, subtitle, lead, de
     background: rgb(10 12 16 / 0.72); color: var(--bxr-white); line-height: 1.5; pointer-events: none;
   }
   figcaption { position: absolute; right: var(--space-2); bottom: var(--space-1); color: var(--bxr-mist); }
-  @media (max-width: 1023px) { .grid { grid-template-columns: 1fr; } .page-hero { padding-block: var(--section-py); } }
+  @media (max-width: 1023px) { .grid { grid-template-columns: minmax(0, 1fr); } .page-hero { padding-block: var(--section-py); } }
+</style>
+
+<style>
+.hero--equipment .grid,.hero--interface .grid { grid-template-columns: minmax(0,4fr) minmax(0,6fr); }
+.hero--equipment .media :global(img),.hero--interface .media :global(img) { aspect-ratio: auto; max-height: 480px; object-fit: contain !important; }
+.hero--interface .grid { grid-template-columns: minmax(0,3.5fr) minmax(0,6.5fr); }
+.hero--scene { min-height: 520px; position: relative; isolation: isolate; overflow: hidden; display: grid; align-items: center; }
+.hero--scene .grid { display: block; }
+.hero--scene .copy { position: relative; z-index: 2; max-width: 46%; }
+.hero--scene .media { position: absolute; inset: 0; width: 100%; z-index: 0; }
+.hero--scene .media :global(img) { height: 100%; width: 100%; object-fit: var(--hero-scene-fit, cover) !important; object-position: var(--hero-focus) !important; aspect-ratio: auto; }
+.hero--scene::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg,rgb(11 15 20 / .97) 0%,rgb(11 15 20 / .9) 24%,rgb(11 15 20 / .58) 43%,rgb(11 15 20 / .12) 65%,rgb(11 15 20 / .35) 86%,rgb(11 15 20 / .82) 100%),linear-gradient(180deg,rgb(11 15 20 / .15),transparent 35%,transparent 75%,rgb(11 15 20 / .48)); }
+@media(max-width:1023px) { .hero--equipment .grid,.hero--interface .grid { grid-template-columns: minmax(0, 1fr); } }
+@media(max-width:1023px) { .hero--scene { min-height: 0; padding-bottom: 0; } .hero--scene::before { display: none; } .hero--scene .grid { display: grid; } .hero--scene .copy { max-width: 100%; } .hero--scene .media { position: relative; inset: auto; width: 100%; padding: 0; } .hero--scene .media :global(img) { height: auto; aspect-ratio: 3/2; object-fit: contain !important; } }
+</style>
+
+<style>.no-media { grid-template-columns: minmax(0, 1fr); } .no-media .copy,.no-media .desc { max-width: var(--reading-width); }</style>
+
+<style>
+@media(min-width:1024px) {
+ /* Blend the actual image edges, not a separate rectangular panel. */
+ .hero--scene[data-scene-fit="contain"] .media :global(img) { position: absolute; right: 0; top: var(--hero-headroom); height: calc(100% - var(--hero-headroom)); width: auto; max-width: 88%; object-fit: contain !important; mask-image: linear-gradient(90deg,transparent,black 16%,black 84%,transparent),linear-gradient(180deg,transparent,black 7%,black 94%,transparent); mask-composite: intersect; }
+}
+</style>
+
+<style>
+.desc { color:#dce3ec; }
+.hero--scene .media :global(.asset-frame) { height:100%; }
+@media(min-width:1024px) {
+ .hero--scene { min-height:560px; }
+ .hero--scene .copy { max-width:40%; }
+ .hero--scene[data-scene-fit="contain"] .media :global(img) { top:16px;right:0;height:calc(100% - 32px);max-width:70%;object-position:var(--hero-focus);mask-image:linear-gradient(90deg,transparent,black 8%,black 96%,transparent),linear-gradient(180deg,transparent,black 6%,black 94%,transparent);mask-composite:intersect; }
+ .hero--scene::before { background:linear-gradient(90deg,#0b0f14 0%,rgb(11 15 20 / .96) 22%,rgb(11 15 20 / .75) 35%,rgb(11 15 20 / .15) 52%,transparent 76%,rgb(11 15 20 / .4)); }
+}
+@media(max-width:1023px) {
+ .hero--scene .media :global(img),.hero--equipment .media :global(img),.hero--interface .media :global(img) { aspect-ratio:16/9;max-height:none;object-fit:contain!important; }
+ .hero--scene .media :global(.asset-frame) { height:auto; }
+ .hero--equipment .media,.hero--interface .media { margin-top:12px; }
+}
+</style>
+<style>
+/* Tactical sub-page hero (decor). ProductImage's .asset-fit is the image's exact visible box; the image inside gets
+   soft edges (its own mask), the blurred backdrop of the same image fades out at the frame edge, so there is no hard
+   box. HUD corners and the scan layer sit in .asset-fit, unmasked except on the copy side, where the corners fade with
+   the image's own edge (same gradient, same box). Text-only heroes get a static blueprint grid and tick scale. */
+.has-decor { --hero-fade-copy:linear-gradient(90deg,transparent,#000 14%); --hero-img-x:linear-gradient(90deg,transparent,#000 14%,#000 97%,transparent);
+  --hero-img-y:linear-gradient(180deg,transparent,#000 6%,#000 94%,transparent); }
+.has-decor .media :global(.asset-frame) { background:transparent; aspect-ratio:16 / 9; height:auto; }
+.has-decor .media :global(.asset-fit img), .has-decor.hero--scene[data-scene-fit] .media :global(.asset-fit img) { position:absolute; inset:0; top:0; right:0; width:100%; height:100%; max-width:none; max-height:none; aspect-ratio:auto;
+  mask-image:var(--hero-img-x),var(--hero-img-y) !important; mask-composite:intersect; }
+.hero-scan, .hero-hud { z-index:1; }
+.has-decor .hero-hud { mask-image:var(--hero-fade-copy); }
+/* The hero decides the fit (contain unless a cover context below), not the image's catalogue default. */
+.has-decor .media :global(.asset-fit) { inset:auto; width:min(100cqw, 100cqh * var(--ar)); height:min(100cqh, 100cqw / var(--ar));
+  left:calc((100cqw - min(100cqw, 100cqh * var(--ar))) * var(--px)); top:calc((100cqh - min(100cqh, 100cqw / var(--ar))) * var(--py)); }
+.has-decor.hero--scene .media :global(.asset-frame) { --px:var(--hero-px) !important; --py:var(--hero-py) !important; }
+/* split = 16:9 frame; the image keeps its own fit (inline object-fit wins there), so only cover images fill it. */
+.has-decor.hero--split .media :global(.is-cover .asset-fit) { inset:0; width:auto; height:auto; left:0; top:0; }
+@media(min-width:1024px) {
+ .has-decor.hero--equipment .media :global(.asset-frame), .has-decor.hero--interface .media :global(.asset-frame) { max-height:480px; }
+ /* Scene: the image is the hero background. Cover fills it under the copy gradient; contain sits in the right 70 %. */
+ .has-decor.hero--scene .media :global(.asset-frame) { aspect-ratio:auto; height:100%; --ambient-edge-x:linear-gradient(90deg,transparent,#000 20%,#000 97%,transparent); }
+ .has-decor.hero--scene[data-scene-fit="cover"] .media :global(.asset-fit) { inset:0; width:auto; height:auto; left:0; top:0; }
+ .has-decor.hero--scene[data-scene-fit="cover"] .media :global(.asset-fit img) { mask-image:none !important; }
+ .has-decor.hero--scene[data-scene-fit="cover"] .hero-hud { mask-image:var(--tac-fade-start); }
+ .has-decor.hero--scene[data-scene-fit="contain"] .media :global(.asset-frame) { position:absolute; right:0; top:16px; width:70%; height:calc(100% - 32px); --px:1 !important; --py:.5 !important; }
+ .has-decor.hero--scene[data-scene-fit="contain"] { --hero-img-x:linear-gradient(90deg,transparent,#000 20%,#000 97%,transparent); --hero-fade-copy:linear-gradient(90deg,transparent,#000 20%); }
+}
+@media(max-width:1023px) {
+ .has-decor { --hero-img-x:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); --hero-img-y:linear-gradient(180deg,transparent,#000 4%,#000 96%,transparent); }
+ .has-decor .hero-hud { mask-image:none; }
+}
+.has-decor.page-hero:has(> .tac-blueprint) { position:relative; isolation:isolate; overflow:hidden; }
+.has-decor > .tac-blueprint ~ .container { position:relative; z-index:1; }
+</style>
+<style>
+/* uniformMedia: every sibling hero shows the same 16:9 image box (size, position, HUD corners) at every width;
+   the frame decides the size, not each source file's ratio. The image fills that box (cover) and is cropped around
+   its approved focus point (primary-images position, horizontally centred), so no page shows bars or an offset
+   picture. Copy starts at the same height on every page. */
+.media-uniform .media :global(.asset-frame) { --ar:1.7778 !important; }
+.media-uniform .media :global(.asset-fit img), .media-uniform.has-decor.hero--scene[data-scene-fit] .media :global(.asset-fit img) { object-fit:cover !important; object-position:var(--hero-crop) !important; }
+@media(min-width:1024px) {
+ .media-uniform.hero--scene { align-items:start; }
+ /* Fixed frame (hero min-height 560 − 2 × 16) so longer EN/JP copy that grows the hero never resizes the image. */
+ .media-uniform.has-decor.hero--scene[data-scene-fit="contain"] .media :global(.asset-frame) { height:528px; }
+}
+</style>
+<style>
+/* Stacked (mobile/tablet) heroes: the image is always centred in its frame. The desktop scene focus (right-aligned
+   beside the copy) must not leak into the single-column layout, where it pushed narrower images to one side. */
+@media(max-width:1023px) { .has-decor.page-hero .media :global(.asset-frame) { --px:.5 !important; --py:.5 !important; } }
 </style>

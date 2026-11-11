@@ -1,4 +1,6 @@
 ---
+import { publicUrl } from '../lib/public-url.ts';
+
 /**
  * News / Insights / Case Studies list (docs/PHASE-2-PLAN.md §4, §11.4).
  * One template for all three: `listing.pageSize` in site.json decides whether the
@@ -23,6 +25,7 @@ import FormButton from "./FormButton.astro";
 import FilterBar from "./FilterBar.astro";
 import Pagination from "./Pagination.astro";
 import EmptyState from "./EmptyState.astro";
+import { isEditorialPlaceholder as isPending } from "../lib/pending";
 import Text from "./Text.astro";
 
 interface Props { lang: Lang; collection: ArticleCollection; page: number }
@@ -49,7 +52,7 @@ const breadcrumbs = [
   { name: listName, path: localePath(lang, collection) },
   ...(page > 1 ? [{ name: format(ui.listing.page, { n: page }), path: localePath(lang, collection, "page", String(page)) }] : []),
 ];
-const abs = (p: string) => new URL(p, site.url).toString();
+const abs = (p: string) => publicUrl(p).toString();
 const collectionLd = {
   "@type": "CollectionPage",
   name: plain(copy.hero.title),
@@ -69,7 +72,7 @@ const title = page > 1 ? `${copy.seo.title} · ${format(ui.listing.page, { n: pa
   fallbackPath={`/{lang}/${segmentOf(collection)}/`} breadcrumbs={breadcrumbs}
   structuredData={all.length ? [collectionLd] : []}
 >
-  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={copy.hero.title} description={copy.hero.description} />
+  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={isPending(copy.hero.title) ? listName : copy.hero.title} description={isPending(copy.hero.description) ? undefined : copy.hero.description} />
   <section class="section">
     <div class="container">
       {all.length === 0 ? (
@@ -83,7 +86,7 @@ const title = page > 1 ? `${copy.seo.title} · ${format(ui.listing.page, { n: pa
             />
           )}
           <p class="t-small t-muted count"><Text value={format(ui.listing.count, { n: all.length })} /></p>
-          <ul role="list" class="cards" id="article-grid">
+          <ul role="list" class:list={["cards", { "topic-cards": collection === "insights", "case-cards": collection === "case-studies" }]} id="article-grid">
             {items.map((a, i) => (
               <li
                 data-filter-item={filterable ? "" : undefined}
@@ -91,9 +94,10 @@ const title = page > 1 ? `${copy.seo.title} · ${format(ui.listing.page, { n: pa
                 data-text={filterable ? plain([a.loc.data.title, a.loc.data.summary, (a.loc.data as { client?: { name: string } }).client?.name ?? "", ...tags[i]].join(" ")) : undefined}
               >
                 <CardArticle
-                  lang={lang} href={articleHref(a)} type={ui.articleTypes[collection]}
+                  lang={lang} href={articleHref(a)} type={collection === "news" ? ui.article.categories[(a.loc.data as {category:keyof typeof ui.article.categories}).category] : ui.articleTypes[collection]}
                   date={a.base.data.publishDate} title={a.loc.data.title} summary={a.loc.data.summary} tags={tags[i]}
                   cover={a.base.data.cover && { src: a.base.data.cover.src, alt: a.loc.data.cover?.alt ?? a.base.data.cover.alt }}
+                  headingLevel={2}
                 />
               </li>
             ))}
@@ -104,7 +108,7 @@ const title = page > 1 ? `${copy.seo.title} · ${format(ui.listing.page, { n: pa
       )}
     </div>
   </section>
-  {copy.cta && (
+  {copy.cta && !isPending(copy.cta.title) && (
     <CtaBand id="list-cta" title={copy.cta.title} description={copy.cta.description}>
       <FormButton kind="demo" lang={lang} variant="primary" />
       <FormButton kind="brochure" lang={lang} variant="secondary" />
@@ -118,3 +122,5 @@ const title = page > 1 ? `${copy.seo.title} · ${format(ui.listing.page, { n: pa
   @media (max-width: 1023px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
 </style>
+
+<style>.topic-cards,.case-cards { grid-template-columns: repeat(2,minmax(0,1fr)); } .case-cards :global(.media) { aspect-ratio: 3 / 2; } @media(max-width:767px) { .topic-cards,.case-cards { grid-template-columns: 1fr; } }</style>

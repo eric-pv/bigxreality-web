@@ -33,7 +33,7 @@ const copy = (await getEntry("pages", `${lang}/${page}`))!.data;
 const heroTitle = title ?? copy.hero.title;
 const breadcrumbs = [
   { name: ui.home, path: localePath(lang) },
-  { name: copy.hero.title, path: localePath(lang, "company", page) },
+  { name: page === "team" ? copy.hero.eyebrow : copy.hero.title, path: localePath(lang, "company", page) },
   ...crumbs,
 ];
 ---

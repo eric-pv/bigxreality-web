@@ -1,0 +1,102 @@
+{
+  "runtime": "Production build and unit tests: Node 22",
+  "buildFingerprint": "6b1a6ba3e01848e611949d6b504c12e0184b2d068a5473433a6e0a2167c31166",
+  "typography": {
+    "buildFingerprint": "6b1a6ba3e01848e611949d6b504c12e0184b2d068a5473433a6e0a2167c31166",
+    "routes": 219,
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "pageViewportChecks": 1533,
+    "visibleTextBlockChecks": 67822,
+    "issues": 0,
+    "jsErrors": []
+  },
+  "faqReview": "All answers expanded before fonts.ready; native grouping and local toggle listeners isolated in the QA page only",
+  "footer": {
+    "buildFingerprint": "8b2542ae12041e373b1a6f862d0a4068f1f8540725dcf8afb47236df026aed8d",
+    "routes": 3,
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "pageViewportChecks": 21,
+    "visibleTextBlockChecks": 651,
+    "issues": 0,
+    "jsErrors": []
+  },
+  "checks": [
+    {
+      "name": "Node 22 unit tests",
+      "result": "PASS",
+      "detail": "75 passed"
+    },
+    {
+      "name": "Astro check",
+      "result": "PASS",
+      "detail": "0 errors; 38 existing hints"
+    },
+    {
+      "name": "Sveltia schema and round trip",
+      "result": "PASS",
+      "detail": "871 fields; 210 existing files"
+    },
+    {
+      "name": "Links",
+      "result": "PASS",
+      "detail": "0 broken links"
+    },
+    {
+      "name": "English product and solution regression",
+      "result": "PASS",
+      "detail": "passed"
+    },
+    {
+      "name": "Japanese product and solution regression",
+      "result": "PASS",
+      "detail": "passed"
+    },
+    {
+      "name": "Technology content and layout",
+      "result": "PASS",
+      "detail": "864 passed"
+    },
+    {
+      "name": "Pages package and browser checks",
+      "result": "PASS",
+      "detail": "passed"
+    }
+  ],
+  "sharedUi": {
+    "englishTranslationsCompleted": 123,
+    "japaneseTranslationsCompleted": 97,
+    "remainingTranslationMarkers": 0
+  },
+  "pendingFixedPages": [
+    "pages/en/case-studies.md",
+    "pages/en/company.md",
+    "pages/en/history.md",
+    "pages/en/insights.md",
+    "pages/en/investors.md",
+    "pages/en/search.md",
+    "pages/en/tags.md",
+    "pages/jp/case-studies.md",
+    "pages/jp/company.md",
+    "pages/jp/history.md",
+    "pages/jp/insights.md",
+    "pages/jp/investors.md",
+    "pages/jp/search.md",
+    "pages/jp/tags.md"
+  ]
+}

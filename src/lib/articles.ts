@@ -1,9 +1,10 @@
 /**
- * News, insights and case studies. Relations are stored once (one side, or both
- * when they come from EmDash); every lookup here merges both directions.
+ * News, insights and case studies. A relation may be stored on one side or on both;
+ * every lookup here merges both directions.
  */
 import { ARTICLE_COLLECTIONS, getLocalized, type ArticleCollection, type Localized } from "./content";
 import { localePath, type Lang } from "../i18n";
+import { comparePublicationDates } from "./publication-date";
 import { site } from "./site";
 
 export type Article = Localized<ArticleCollection> & { collection: ArticleCollection };
@@ -36,7 +37,7 @@ export function getArticles(collection: ArticleCollection, lang: Lang): Promise<
   return cache.get(key)!;
 }
 
-export const byDate = (a: Article, b: Article) => b.base.data.publishDate.getTime() - a.base.data.publishDate.getTime();
+export const byDate = (a: Article, b: Article) => comparePublicationDates(a.base.data.publishDate, b.base.data.publishDate) || a.slug.localeCompare(b.slug);
 
 export async function allArticles(lang: Lang): Promise<Article[]> {
   return (await Promise.all(ARTICLE_COLLECTIONS.map((c) => getArticles(c, lang)))).flat().sort(byDate);

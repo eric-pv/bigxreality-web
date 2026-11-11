@@ -1,13 +1,20 @@
 ---
 import SmartCardGrid from "../../../components/SmartCardGrid.astro";
+import {getEntry} from "astro:content";
+import { publicUrl } from '../../../lib/public-url.ts';
+
+import ContentBody from "../../../components/ContentBody.astro";
+import Text from '../../../components/Text.astro';
 import { LANGS, HTML_LANG, localePath, type Lang } from "../../../i18n";
 import { technologyRelations, technologyRelationNotes } from "../../../data/technology-relations";
 import { technologyContent } from "../../../data/technologies-content";
-import { LIVE_TECHNOLOGY_IDS, technologyResources } from "../../../lib/technologies";
+import { LIVE_TECHNOLOGY_IDS, technologyResources, technologyAvailableLangs } from "../../../lib/technologies";
 import { getLocalized } from "../../../lib/content";
 import { getUi } from "../../../lib/ui";
 import { site } from "../../../lib/site";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { technologyMedia } from "../../../lib/technology-media";
+import { pageOgImage } from "../../../lib/og-image";
 import PageHero from "../../../components/PageHero.astro";
 import TechnologySections from "../../../components/TechnologySections.astro";
 import RelatedTechnologyArticles from "../../../components/RelatedTechnologyArticles.astro";
@@ -16,10 +23,11 @@ import CardSolution from "../../../components/CardSolution.astro";
 import FaqAccordion from "../../../components/FaqAccordion.astro";
 import CtaBand from "../../../components/CtaBand.astro";
 
-export function getStaticPaths() { return LANGS.flatMap((lang) => LIVE_TECHNOLOGY_IDS.map((slug) => ({ params: { lang, slug } }))); }
+export function getStaticPaths() { return LIVE_TECHNOLOGY_IDS.flatMap((slug) => technologyAvailableLangs(slug).map((lang) => ({ params: { lang, slug } }))); }
 const lang = Astro.params.lang as Lang;
 const slug = Astro.params.slug as keyof typeof technologyContent;
-const content = technologyContent[slug][lang];
+const content = (await getEntry("technologies",`${lang}/${slug}`))!.data;
+const hero=content.heroImage??technologyMedia(slug,lang);
 const ui = getUi(lang);
 const relations = technologyRelations[slug];
 const allProducts = await getLocalized("products", lang);
@@ -33,22 +41,23 @@ const imageSlotLabel = { tw: "技術應用圖片位置", en: "Technology applica
 const breadcrumbs = [{ name: ui.home, path: localePath(lang) }, { name: ui.nav.technologies, path: localePath(lang, "technologies") }, { name: content.title, path: localePath(lang, "technologies", slug) }];
 const faqTitle = { tw: "常見問題", en: "Frequently Asked Questions", jp: "よくある質問" };
 // BXR is not a government/health authority: omit FAQPage rich-result markup, retain full visible FAQ HTML.
-const structuredData = [{ "@type": "WebPage", name: content.title, description: content.seo.description, inLanguage: HTML_LANG[lang], url: new URL(localePath(lang, "technologies", slug), site.url).href, about: { "@type": "Thing", name: content.title }, isPartOf: { "@type": "CollectionPage", url: new URL(localePath(lang, "technologies"), site.url).href } }];
+const structuredData = [{ "@type": "WebPage", name: content.title, description: content.seo.description, inLanguage: HTML_LANG[lang], url: publicUrl(localePath(lang, "technologies", slug)).href, about: { "@type": "Thing", name: content.title }, isPartOf: { "@type": "CollectionPage", url: publicUrl(localePath(lang, "technologies")).href } }];
 ---
-<BaseLayout hidePendingFooter lang={lang} title={content.seo.title} description={content.seo.description} pathTemplate={`/{lang}/technologies/${slug}/`} alternates={[...LANGS]} headerTheme="dark" current="technologies" breadcrumbs={breadcrumbs} structuredData={structuredData}>
+<BaseLayout hidePendingFooter lang={lang} title={content.seo.title} description={content.seo.description} pathTemplate={`/{lang}/technologies/${slug}/`} alternates={technologyAvailableLangs(slug)} headerTheme="dark" current="technologies" breadcrumbs={breadcrumbs} structuredData={structuredData} {...pageOgImage(hero?.src, hero?.alt)}>
   <div class={`technology-page technology-${slug}`}>
-    <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={content.eyebrow} title={content.title} lead={content.lead} description={content.intro.join("\n\n")} imagePending={imageSlotLabel[lang]}>
+    <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={content.eyebrow} title={content.title} lead={content.lead} description={content.intro.join("\n\n")} image={hero} imageBadge={(!content.heroImage&&technologyMedia(slug,lang)?.illustration) ? ({tw:"概念視覺",en:"Concept visual",jp:"コンセプトビジュアル"}[lang]) : undefined}>
       <div slot="actions" class="technology-actions"><a class="btn btn--primary" href={localePath(lang, relations.primaryDestination)}>{content.primaryCta}</a><a class="btn btn--secondary" href={localePath(lang, "contact")}>{content.secondaryCta}</a></div>
     </PageHero>
-    <TechnologySections sections={content.sections} variant={slug} />
+    <TechnologySections sections={content.sections} variant={slug} lang={lang} />
+    {content.body && <section class="section"><div class="container narrow"><ContentBody markdown={content.body} lang={lang} entryFile={`src/content/technologies/${lang}/${slug}.json`} /></div></section>}
     <section class="section related-resources" id="related-resources" aria-labelledby="h-related-resources">
       <div class="container">
-        <h2 class="t-h2" id="h-related-resources">{content.relatedTitle}</h2>
+        <h2 class="t-h2" id="h-related-resources"><Text value={content.relatedTitle} /></h2>
         {relationNotes.length > 0 && <div class="relation-notes">{relationNotes.map((note) => <p>{note}</p>)}</div>}
         {products.length > 0 && solutions.length > 0 && <p class="t-label resource-heading">{relatedLabels[lang].products}</p>}
         {products.length > 0 && <SmartCardGrid data-related-products>{products.map((product) => <li><CardProduct lang={lang} href={localePath(lang, "products", product.slug)} name={product.loc.data.hero.name} summary={product.loc.data.summary ?? product.loc.data.hero.tagline} domains={product.base.data.domains} /></li>)}</SmartCardGrid>}
         {products.length > 0 && solutions.length > 0 && <p class="t-label resource-heading">{relatedLabels[lang].solutions}</p>}
-        {solutions.length > 0 && <SmartCardGrid data-related-solutions>{solutions.map((solution) => <li><CardSolution lang={lang} href={localePath(lang, "solutions", solution.slug)} domain={solution.base.data.domain} name={solution.loc.data.name} englishName={solution.loc.data.englishName} summary={solution.loc.data.summary} /></li>)}
+        {solutions.length > 0 && <SmartCardGrid data-related-solutions>{solutions.map((solution) => <li><CardSolution lang={lang} href={localePath(lang, "solutions", solution.slug)} domain={solution.base.data.domain} name={solution.loc.data.name} summary={solution.loc.data.summary} /></li>)}
         </SmartCardGrid>}
       </div>
     </section>

@@ -1,29 +1,12 @@
 ---
-/** Request Brochure / Book a Demo: Google Form link, product code pre-filled. Disabled while the form URL is PENDING. */
-import type { Lang } from "../i18n";
-import { formHref, type FormKind } from "../lib/site";
-import { getUi } from "../lib/ui";
-import Text from "./Text.astro";
-import { uid } from "../lib/ids";
-
-interface Props { kind: FormKind; lang: Lang; productCode?: string; variant: "primary" | "secondary" }
-const { kind, lang, productCode, variant } = Astro.props;
-const ui = getUi(lang);
-const href = formHref(kind, productCode);
-const label = ui.buttons[kind];
-const noteId = uid(`form-note-${kind}`);
+/** Use a configured request form; otherwise route to the existing localized email inquiry flow. */
+import { localePath, type Lang } from '../i18n';
+import { formHref, type FormKind } from '../lib/site';
+import { getUi } from '../lib/ui';
+interface Props { kind: FormKind; lang: Lang; productCode?: string; variant: 'primary' | 'secondary' }
+const {kind,lang,productCode,variant}=Astro.props;
+const ui=getUi(lang), form=formHref(kind,productCode);
+const query=new URLSearchParams({topic:kind==='brochure'?'info':'demo',...(productCode?{item:productCode}:{})});
+const href=form??`${localePath(lang,'contact')}?${query}`;
 ---
-{href ? (
-  <a class={`btn btn--${variant}`} href={href} target="_blank" rel="noopener">
-    <Text value={label} /><span class="visually-hidden"><Text value={ui.buttons.opensInNewTab} /></span>
-  </a>
-) : (
-  <span class="form-btn">
-    <a class={`btn btn--${variant}`} role="link" aria-disabled="true" aria-describedby={noteId}><Text value={label} /></a>
-    <span id={noteId} class="t-caption note"><Text value={ui.buttons.formPending} /> <mark class="pending">[待提供]</mark></span>
-  </span>
-)}
-<style>
-  .form-btn { display: inline-flex; flex-direction: column; gap: 4px; }
-  .note { color: var(--ink-muted); }
-</style>
+<a class={`btn btn--${variant}`} href={href} target={form?'_blank':undefined} rel={form?'noopener':undefined}>{ui.buttons[kind]}{form&&<span class="visually-hidden">{ui.buttons.opensInNewTab}</span>}</a>

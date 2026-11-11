@@ -8,7 +8,7 @@ await runLocalizedQa({
   port: 4339,
   htmlLang: "en",
   foreign: /[぀-ヿ㐀-鿿]/,
-  nav: { top: ["Solutions", "Products", "Core Technology", "Resources", "About BXR"], resources: ["News", "Insights", "Case Studies"], contact: "Contact Us" },
+  nav: { top: ["Solutions", "Products", "Core Technology", "Resources", "About BXR"], resources: ["News", "Insights", "Case Studies"], contact: "Contact BXR" },
   scope: {
     sut: ["One integration application confirmed so far is that image information from the USV system can be sent to the SUT training environment."],
     uav: ["is not equivalent to deployed drone detection, jamming or interception equipment"],

@@ -36,7 +36,8 @@ const currentSub: string | undefined = currentResource ?? currentCompany;
 const entries = navigation(lang);
 const langNames: Record<Lang, string> = { en: "English", tw: "繁體中文", jp: "日本語" };
 ---
-<header class="site-header" data-theme={theme}>
+<header class="site-header" data-theme={theme} data-site-header>
+  <span class="read-progress" aria-hidden="true"></span>
   <div class="container bar">
     <a class="logo" href={localePath(lang)} aria-label={ui.logoHome}><Logo theme={theme} /></a>
 
@@ -84,13 +85,23 @@ const langNames: Record<Lang, string> = { en: "English", tw: "繁體中文", jp:
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5L21 21" /></svg>
           <span class="visually-hidden"><Text value={ui.search} /></span>
         </a>
-        <ul role="list" class="langs" aria-label={ui.languageLabel}>
-          {LANGS.map((l) => (
-            <li>
-              <a href={langLinks[l]} hreflang={HREFLANG[l]} lang={HREFLANG[l]} aria-current={l === lang ? "true" : undefined}>{LANG_LABEL[l]}<span class="visually-hidden"> {langNames[l]}</span></a>
-            </li>
-          ))}
-        </ul>
+        <div class="langs-wrap">
+          <ul role="list" class="langs" aria-label={ui.languageLabel}>
+            {LANGS.map((l) => (
+              <li>
+                <a href={langLinks[l]} hreflang={HREFLANG[l]} lang={HREFLANG[l]} aria-current={l === lang ? "true" : undefined}>{LANG_LABEL[l]}<span class="visually-hidden"> {langNames[l]}</span></a>
+              </li>
+            ))}
+          </ul>
+          <!-- Pause animations (WCAG 2.2.2). Wired by src/scripts/micro-interactions.ts; hidden without JS, where nothing loops. -->
+          <button type="button" class="motion-toggle" data-motion-toggle data-note-id="motion-note-header" aria-pressed="false" hidden>
+            <svg class="i-pause" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 3h2.5v10H4zM9.5 3H12v10H9.5z" fill="currentColor" /></svg>
+            <svg class="i-play" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4.5 2.5l9 5.5-9 5.5z" fill="currentColor" /></svg>
+            <span class="visually-hidden">{ui.motionToggle}</span>
+            <span class="motion-toggle-menu" aria-hidden="true">{ui.motionToggleMenu}</span>
+          </button>
+          <span id="motion-note-header" hidden>{ui.motionReducedNote}</span>
+        </div>
         <a class="btn btn--secondary btn--sm contact" href={localePath(lang, "contact")}><Text value={ui.contact} /></a>
       </div>
     </div>
@@ -288,4 +299,47 @@ const langNames: Record<Lang, string> = { en: "English", tw: "繁體中文", jp:
     :global(.no-js) .menu { display: flex; position: static; padding: 0; }
   }
   :global(html.menu-open) { overflow: hidden; }
+</style>
+<style>
+  /* Scrolled state + reading progress (src/scripts/micro-interactions.ts sets .is-scrolled and --read).
+     Two background layers so only opacity changes: a solid one that fades out after ~40 px of scroll,
+     and a translucent one whose blur is switched on only while scrolled (iOS cost). backdrop-filter sits on a
+     pseudo-element, never on the header, so the fixed mobile menu keeps the viewport as its containing block. */
+  .site-header { background: transparent; isolation: isolate; }
+  .site-header::before, .site-header::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+  .site-header::after { background: color-mix(in srgb, var(--surface) 82%, transparent); }
+  .site-header::before { background: var(--surface); transition: opacity var(--feedback-duration, 180ms) var(--ease-precise); }
+  .site-header.is-scrolled:not(.is-open)::before { opacity: 0; }
+  .site-header.is-scrolled:not(.is-open)::after { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  .read-progress { position: absolute; inset: 0 0 auto; height: 2px; z-index: 1; pointer-events: none; background: var(--bxr-red);
+    transform: scaleX(var(--read, 0)); transform-origin: 0 50%; }
+  @media (prefers-reduced-motion: reduce) { .site-header::before { transition: none; } }
+</style>
+<style>
+  /* Pause control: icon only on desktop, in the 24 px gap left of the language switch (absolutely placed, so no
+     existing element moves); inside the mobile menu it is an icon + short label row with a 44 px target. */
+  .langs-wrap { position: relative; display: flex; align-items: center; }
+  .motion-toggle { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); padding: 0; border: 0;
+    background: none; color: var(--ink-muted); font: inherit; font-family: var(--font-mono); font-size: 13px; cursor: pointer; }
+  .motion-toggle[hidden] { display: none; }
+  .motion-toggle:hover, .motion-toggle:focus-visible { color: var(--ink); }
+  .motion-toggle .i-play, .motion-toggle[aria-pressed="true"] .i-pause { display: none; }
+  .motion-toggle[aria-pressed="true"] .i-play { display: block; }
+  .motion-toggle[aria-disabled="true"] { cursor: default; }
+  @media (min-width: 1140px) {
+    .motion-toggle { position: absolute; right: 100%; top: 50%; width: 24px; height: 24px; margin-top: -12px; }
+    .motion-toggle-menu { display: none; }
+  }
+  /* 1140–1279 px: redistribute the tool-area gaps only (16 + 16 → 24 + 8), so the tool area keeps its width and the
+     logo and main menu do not move; the 24 px gap left of the language switch holds the control. */
+  @media (min-width: 1140px) and (max-width: 1279px) {
+    .tools { gap: 8px; }
+    .langs-wrap { margin-left: 16px; }
+  }
+  /* 1024–1139 px: the gaps are 8 px and the English menu has no slack, so the control lives in the footer here. */
+  @media (min-width: 1024px) and (max-width: 1139px) { .motion-toggle { display: none !important; } }
+  @media (max-width: 1023px) {
+    .langs-wrap { gap: var(--space-3); flex-wrap: wrap; }
+    .motion-toggle { min-width: 44px; min-height: 44px; padding-inline: var(--space-1); }
+  }
 </style>

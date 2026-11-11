@@ -1,0 +1,17 @@
+{
+  "version": "0.253.1",
+  "scope": "Real pinned app with synthetic browser OPFS, NOT GitHub authorization/API/atomic publishing.",
+  "singleCollection": true,
+  "languageSwitchPreservesUnsaved": true,
+  "oneLocalSaveWritesThreeFiles": true,
+  "localeLabelProblem": [
+    "tw is displayed as Akan",
+    "jp is displayed as jp"
+  ],
+  "saved": {
+    "tw": "---\ntitle: Edited tw\ndraft: true\n---\n\nSynthetic tw body.\n",
+    "en": "---\ntitle: Edited en\ndraft: true\n---\n\nSynthetic en body.\n",
+    "jp": "---\ntitle: Edited jp\ndraft: true\n---\n\nSynthetic jp body.\n"
+  },
+  "jsErrors": []
+}

@@ -20,8 +20,6 @@ const src = icon ? icons[domain] : undefined;
 ---
 <span class={`sector-tag t-label sector--${domain}`}>
   {src && <img src={src} alt="" width="16" height="16" />}
-  <span>{ui.domainCodes[domain]}</span>
-  <span aria-hidden="true">·</span>
   <span><Text value={label ?? ui.domains[domain]} /></span>
 </span>
 <style>

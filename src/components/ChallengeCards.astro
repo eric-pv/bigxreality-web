@@ -4,9 +4,9 @@ import Text from "./Text.astro";
 interface Props { items: { title: string; description: string }[]; columns?: 1 | 2 }
 const { items, columns = 2 } = Astro.props;
 ---
-<ol role="list" class="challenges" style={`--cols: ${columns}`}>
+<ol role="list" class="challenges" data-reveal style={`--cols: ${columns}`}>
   {items.map((c, i) => (
-    <li class="item">
+    <li class="item" style={`--i:${i}`}>
       <span class="num t-tech" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
       <h3 class="t-h4"><Text value={c.title} /></h3>
       <p class="t-muted"><Text value={c.description} /></p>
@@ -20,4 +20,11 @@ const { items, columns = 2 } = Astro.props;
   .item h3 { grid-column: 2; }
   .item p { grid-column: 2; margin: 0; }
   @media (max-width: 767px) { .challenges { grid-template-columns: 1fr; } .item { grid-template-columns: 44px 1fr; } }
+</style>
+<style>
+  .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: no-preference) {
+    .challenges.is-revealed .item { animation: challenge-in 420ms var(--ease-precise) both; animation-delay: calc(var(--i) * 80ms); }
+  }
+  @keyframes challenge-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 </style>

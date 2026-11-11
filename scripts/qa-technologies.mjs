@@ -1,9 +1,10 @@
 // Inspect actual prerendered HTML and exercise the shared FAQ at three viewport sizes.
-// Usage: node scripts/qa-technologies.mjs (or QA_DIST=dist-fixtures/client ...).
+// Usage: node scripts/qa-technologies.mjs (or QA_DIST=dist-fixtures ...).
 import { chromium } from 'playwright-core';
 import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { startPreview, CHROMIUM, DIST } from './lib/serve.mjs';
+import { publicSiteRoot } from '../src/lib/public-url.ts';
 import { technologyContent, overviewContent } from '../src/data/technologies-content.ts';
 import { technologyRelationNotes } from '../src/data/technology-relations.ts';
 
@@ -19,7 +20,7 @@ const related = {
   'system-integration': { products: ['sut', 'usv'], solutions: ['military', 'mum-t', 'nova'] },
   'decision-visualization': { products: ['wargaming-table'], solutions: ['military', 'nova'] },
 };
-const locale = { tw: 'zh-Hant-TW', en: 'en', jp: 'ja' };
+const locale = { tw: 'zh-TW', en: 'en', jp: 'ja' };
 const fixture = DIST.includes('dist-fixtures');
 let failed = 0, checked = 0;
 const check = (name, ok, detail = '') => {
@@ -80,20 +81,20 @@ try {
     }, raw);
     check(`${url}: one H1 with localized title`, initial.h1 === 1 && text(await page.locator('h1').innerText()) === text(data.title));
     check(`${url}: unique localized SEO`, (await page.title()).includes(data.seo.title) && await page.locator('meta[name="description"]').getAttribute('content') === data.seo.description);
-    check(`${url}: canonical`, await page.locator('link[rel="canonical"]').getAttribute('href') === `https://www.bigxreality.com${url}`);
-    check(`${url}: hreflang only targets indexable translations`, fixture ? await page.locator('link[rel="alternate"][hreflang]').count() === 0 : (await Promise.all(languages.map(async (l) => page.locator(`link[rel="alternate"][hreflang="${locale[l]}"]`).getAttribute('href')))).every((href, i) => href === `https://www.bigxreality.com/${languages[i]}/technologies/${slug ? `${slug}/` : ''}`));
+    check(`${url}: canonical`, await page.locator('link[rel="canonical"]').getAttribute('href') === `${publicSiteRoot}${url}`);
+    check(`${url}: hreflang only targets indexable translations`, fixture ? await page.locator('link[rel="alternate"][hreflang]').count() === 0 : (await Promise.all(languages.map(async (l) => page.locator(`link[rel="alternate"][hreflang="${locale[l]}"]`).getAttribute('href')))).every((href, i) => href === `${publicSiteRoot}/${languages[i]}/technologies/${slug ? `${slug}/` : ''}`));
     const robots = page.locator('meta[name="robots"]');
     const noindex = await robots.count() ? await robots.getAttribute('content') : '';
-    check(`${url}: correct index/sitemap policy`, fixture ? /noindex/.test(noindex ?? '') && !sitemap.includes(`<loc>https://www.bigxreality.com${url}</loc>`) : !/noindex/.test(noindex ?? '') && sitemap.includes(`<loc>https://www.bigxreality.com${url}</loc>`));
-    check(`${url}: BreadcrumbList agrees with visible breadcrumb`, initial.graphs.some((g) => g['@type'] === 'BreadcrumbList' && g.itemListElement.at(-1)?.item === `https://www.bigxreality.com${url}`) && await page.locator('main nav.breadcrumb [aria-current="page"]').count() === 1);
+    check(`${url}: correct index/sitemap policy`, fixture ? /noindex/.test(noindex ?? '') && !sitemap.includes(`<loc>${publicSiteRoot}${url}</loc>`) : !/noindex/.test(noindex ?? '') && sitemap.includes(`<loc>${publicSiteRoot}${url}</loc>`));
+    check(`${url}: BreadcrumbList agrees with visible breadcrumb`, initial.graphs.some((g) => g['@type'] === 'BreadcrumbList' && g.itemListElement.at(-1)?.item === `${publicSiteRoot}${url}`) && await page.locator('main nav.breadcrumb [aria-current="page"]').count() === 1);
     check(`${url}: no untranslated markers or writing instructions`, !/\[待[^\]]*\]|Attention|Interest|Desire|^Action$|AIDA/.test(initial.main));
     check(`${url}: entire page has no pending translation/content markers`, !/\[待[^\]]*\]/.test(initial.fullText));
-    check(`${url}: content images have descriptive alt; decorative sector icons use empty alt`, await page.locator('main img').evaluateAll((imgs) => imgs.every((img) => img.hasAttribute('alt') && (img.alt.trim().length > 0 || !!img.closest('.sector-tag')))));
+    check(`${url}: content images have descriptive alt; explicitly hidden decorative images may use empty alt`, await page.locator('main img').evaluateAll((imgs) => imgs.every((img) => img.hasAttribute('alt') && (img.alt.trim().length > 0 || !!img.closest('.sector-tag, [aria-hidden="true"]')))));
     if (lang === 'en') check(`${url}: English content image alternatives are localized`, await page.locator('main img').evaluateAll((imgs) => imgs.every((img) => !/[\u3400-\u9fff]/.test(img.alt))));
     check(`${url}: heading hierarchy never skips a level`, await page.locator('main').evaluate((main) => { let previous = 0; return [...main.querySelectorAll('h1,h2,h3,h4,h5,h6')].every((h) => { const level = Number(h.tagName[1]); const ok = level <= previous + 1; previous = level; return ok; }); }));
-    check(`${url}: hero retains an accessible image position without a photograph`, await page.locator('.page-hero .placeholder[role="img"]').count() === 1);
-    check(`${url}: only image positions are retained; no content photograph is inserted`, await page.locator('main img:not(.sector-tag img)').count() === 0);
-    check(`${url}: image positions have localized accessible labels`, await page.locator('main .placeholder[role="img"]').evaluateAll((els) => els.every((el) => el.getAttribute('aria-label')?.trim().length > 0)));
+    check(`${url}: Hero uses relevant supplied media or a text-led layout`, await page.locator('.page-hero .placeholder').count() === 0 && (await page.locator('.page-hero img').count()) === (slug === 'ai-simulation' ? 0 : 1));
+    for(const image of await page.locator('main img').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(img=>img.decode());}
+    check(`${url}: supplied images decode with localized alt`, await page.locator('main img').evaluateAll(imgs=>imgs.every(img=>img.complete&&img.naturalWidth>0&&(img.alt.trim()||img.closest('.sector-tag, [aria-hidden="true"]')))));
     if (slug) {
       const normalizedInitial = text(initial.main);
       const allCopy = [...headings(data), ...paragraphs(data), ...data.sections.flatMap((s) => s.bullets ?? []), data.primaryCta, data.secondaryCta, data.closing.cta];

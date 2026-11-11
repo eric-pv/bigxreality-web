@@ -1,5 +1,7 @@
 # 核心技術第二批
 
+> 現況（2026-11-09）：技術頁文案的唯一編輯來源已改為 `src/content/technologies／technology-overview/<zh-Hant|en|ja>/*.json`，可在 CMS 編輯；`src/data/technologies-content.ts` 只負責載入。下文提到的 TS 檔為當時紀錄。
+
 沿用第一批共用資料格式、Astro 模板、Header／Footer、SEO、FAQ Accordion 與技術文章 CMS，補齊 `ai-simulation`、`digital-simulation`、`system-integration`、`decision-visualization` 的繁中、英文、日文詳細頁。全模組現在應有三語總覽與七項技術的三語詳細頁，共 24 頁。第一批三項技術的正文與既有產品／解決方案正式內容不得修改。
 
 依業主持續有效的圖片要求，只保留既有圖位，不插入照片，也不新增網站圖片資產或動畫。圖位使用當語 `aria-label`；內容照片 Alt 為 N/A。

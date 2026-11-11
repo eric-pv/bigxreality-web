@@ -1,4 +1,6 @@
 ---
+import { publicUrl } from '../lib/public-url.ts';
+
 /**
  * Article page shared by news, insights and case studies (docs/PHASE-2-PLAN.md §4):
  * light header (breadcrumb, type · date, H1, summary, cover) → news event/source or
@@ -6,8 +8,17 @@
  * The only red buttons are in the closing CTA band.
  */
 import SmartCardGrid from "./SmartCardGrid.astro";
+import { csrCopy, csrCategories, csrLabel } from "../lib/csr";
+import { marked } from "marked";
+import { newsMedia } from "../lib/news-media";
+import NewsGallery from "./NewsGallery.astro";
+import NewsVideos from "./NewsVideos.astro";
+import { isPending } from "../lib/pending";
+import { pageOgImage } from "../lib/og-image";
+import ProductImage from "./ProductImage.astro";
+import ImagePlaceholder from "./ImagePlaceholder.astro";
 import { articleTechnologyLinks } from "../lib/technologies";
-import { Picture, getImage } from "astro:assets";
+import { Picture } from "astro:assets";
 import { getEntry } from "astro:content";
 import { HTML_LANG, INTL_LOCALE, localePath, segmentOf, type Lang } from "../i18n";
 import { availableLangs, getLocalized } from "../lib/content";
@@ -18,7 +29,7 @@ import { site } from "../lib/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import SectionHead from "./SectionHead.astro";
-import Prose from "./Prose.astro";
+import ContentBody from "./ContentBody.astro";
 import CardProduct from "./CardProduct.astro";
 import CardSolution from "./CardSolution.astro";
 import CardArticle from "./CardArticle.astro";
@@ -41,8 +52,16 @@ const author = collection === "insights" ? (d as typeof d & { author?: string })
 
 const fmt = (date: Date) => new Intl.DateTimeFormat(INTL_LOCALE[lang], { year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
 const iso = (date: Date) => date.toISOString().slice(0, 10);
-const cover = base.cover && { src: base.cover.src, alt: d.cover?.alt ?? base.cover.alt };
-const html = article.loc.rendered?.html ?? "";
+const newsImageId = collection === "news" ? ((base as typeof base & { mediaId?: string; imageId?: string }).mediaId ?? (base as typeof base & { imageId?: string }).imageId) : undefined;
+const csrTopics = collection === "news" ? csrCategories(base) : [];
+const csr = csrCopy(lang);
+const media = newsMedia(newsImageId, lang);
+const cover = media.cover ?? (base.cover && { src: base.cover.src, alt: d.cover?.alt ?? base.cover.alt });
+// og:image and the Article schema image: this article's own cover with this language's own alt.
+const og = pageOgImage(base.seo?.ogImage ?? cover?.src, media.cover ? media.cover.alt : d.cover?.alt, article.pendingTranslation);
+// Imported TXT punctuation is authoritative: avoid Astro's automatic smart-quote substitutions.
+const historicalImport = collection === "news" && "articleId" in base && !!base.articleId;
+const html = historicalImport ? marked.parse(article.loc.body ?? "", { async: false }) : (article.loc.rendered?.html ?? "");
 const minutes = readingMinutes(article.loc.body ?? "");
 
 const technologyLinks = articleTechnologyLinks(article);
@@ -64,17 +83,15 @@ const copy = (await getEntry("pages", `${lang}/${collection}`))?.data;
 
 // JSON-LD never carries placeholder text.
 const clean = (s: string | undefined) => (s && !s.includes("[待") ? plain(s) : undefined);
-const ldImage = cover ? new URL((await getImage({ src: cover.src, width: 1280, format: "jpg" })).src, site.url).toString() : undefined;
 const articleLd: Record<string, unknown> = {
-  "@type": collection === "news" ? "NewsArticle" : "Article",
+  "@type": collection === "news" && news?.category !== "insight" ? "NewsArticle" : "Article",
   headline: clean(d.title),
   description: clean(d.seo?.description ?? d.summary),
-  datePublished: base.publishDate.toISOString(),
+  ...(base.publishDate ? { datePublished: base.publishDate.toISOString() } : {}),
   ...(base.updatedAt ? { dateModified: base.updatedAt.toISOString() } : {}),
   inLanguage: HTML_LANG[lang],
-  url: new URL(articleHref(article), site.url).toString(),
+  url: publicUrl(articleHref(article)).toString(),
   publisher: { "@id": `${site.url}/#organization` },
-  ...(ldImage ? { image: ldImage } : {}),
   ...(clean(author) ? { author: { "@type": "Person", name: clean(author) } } : { author: { "@id": `${site.url}/#organization` } }),
   ...(tagLinks.length ? { keywords: tagLinks.map((x) => plain(x.name)).join(", ") } : {}),
 };
@@ -92,22 +109,22 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
   currentResource={collection}
   fallbackPath={`/{lang}/${segmentOf(collection)}/`}
   breadcrumbs={breadcrumbs}
-  ogImage={base.seo?.ogImage ?? cover?.src}
-  ogImageAlt={cover?.alt}
+  {...og}
   article={{ published: base.publishDate, modified: base.updatedAt, tags: tagLinks.map((x) => x.name) }}
   structuredData={[articleLd]}
   search={{ type: collection, date: base.publishDate }}
 >
-  <article>
+  <article class:list={{"news-article": collection === "news"}}>
     <header class="article-header">
       <div class="container narrow">
         <Breadcrumb items={breadcrumbs} label={ui.breadcrumbLabel} />
         <p class="t-tech meta">
           <Text value={ui.articleTypes[collection]} />
           {news && <> · <Text value={t.categories[newsBase!.category]} /></>}
-          {" · "}<span class="visually-hidden"><Text value={t.published} /> </span><time datetime={iso(base.publishDate)}>{fmt(base.publishDate)}</time>
+          {base.publishDate && <> · <span class="visually-hidden"><Text value={t.published} /> </span><time datetime={iso(base.publishDate)}>{fmt(base.publishDate)}</time></>}
           {base.updatedAt && <> · <Text value={t.updated} /> <time datetime={iso(base.updatedAt)}>{fmt(base.updatedAt)}</time></>}
         </p>
+        {csrTopics.length > 0 && <div class="csr-links"><a href={localePath(lang, "company", "csr")}>{csr.back}</a><ul role="list">{csrTopics.map(c => <li><a href={`${localePath(lang, "company", "csr")}#${c}`}>{csrLabel(c, lang)}</a></li>)}</ul></div>}
         <h1 class="t-h1"><Text value={d.title} /></h1>
         <p class="summary"><Text value={d.summary} /></p>
         <p class="t-small t-muted byline">
@@ -117,12 +134,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
       </div>
       {cover && (
         <figure class="container cover">
-          <Picture
-            src={cover.src} alt={cover.alt} formats={["avif", "webp"]}
-            widths={[640, 960, 1280, 1920].filter((w) => w <= cover.src.width)}
-            sizes="(max-width: 1023px) calc(100vw - 2 * var(--margin)), 1200px"
-            width={1280} height={720} fit="cover" loading="eager" fetchpriority="high"
-          />
+          <ProductImage src={cover.src} alt={cover.alt} loading="eager" priority sizes="(max-width: 1279px) calc(100vw - 32px), 1200px" />
         </figure>
       )}
     </header>
@@ -159,7 +171,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
         {cs.outcomes && cs.outcomes.length > 0 && (
           <>
             <h2 class="t-h4 outcomes-title"><Text value={t.outcomes} /></h2>
-            <dl class="outcomes">
+            <dl class="outcomes balanced">
               {cs.outcomes.map((o) => <div><dd class="value"><Text value={o.value} /></dd><dt class="t-small t-muted"><Text value={o.label} /></dt></div>)}
             </dl>
           </>
@@ -168,10 +180,13 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     )}
 
     <div class="container narrow body">
-      <Prose html={html} />
+      <ContentBody html={html} lang={lang} entryFile={`src/content/${article.collection}/${lang}/${article.slug}.md`} />
+      {collection === "news" && <><NewsGallery lang={lang} images={media.gallery} /><NewsVideos lang={lang} videos={media.videos} />
+        {media.sourceLinks.length > 0 && <nav class="news-sources" aria-label={{tw:"相關來源",en:"Sources",jp:"関連ソース"}[lang]}><ul role="list">{media.sourceLinks.map(url=><li><a href={url} target="_blank" rel="noopener noreferrer">{url}</a></li>)}</ul></nav>}
+      </>}
       {technologyLinks.length > 0 && (
         <nav class="tags technology-links" aria-label={technologyLabel}>
-          <h2 class="t-h4">{technologyLabel}</h2>
+          <h2 class="t-h4"><Text value={technologyLabel} /></h2>
           <ul role="list">{technologyLinks.map((x) => <li><a href={x.href}>{x.name}</a></li>)}</ul>
         </nav>
       )}
@@ -193,7 +208,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
             <li>
               <CardProduct
                 lang={lang} href={localePath(lang, "products", p.slug)} name={p.loc.data.hero.name}
-                englishName={p.loc.data.hero.englishName} summary={p.loc.data.summary ?? p.loc.data.hero.tagline}
+                summary={p.loc.data.summary ?? p.loc.data.hero.tagline}
                 domains={p.base.data.domains}
                 image={p.base.data.hero.image && { src: p.base.data.hero.image.src, alt: p.loc.data.hero.image?.alt ?? p.base.data.hero.image.alt }}
               />
@@ -213,7 +228,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
             <li>
               <CardSolution
                 lang={lang} href={localePath(lang, "solutions", s.slug)} domain={s.base.data.domain}
-                name={s.loc.data.name} englishName={s.loc.data.englishName} summary={s.loc.data.summary}
+                name={s.loc.data.name} summary={s.loc.data.summary}
                 image={s.base.data.image && { src: s.base.data.image.src, alt: s.loc.data.image?.alt ?? s.base.data.image.alt }}
               />
             </li>
@@ -242,7 +257,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     </section>
   )}
 
-  {copy?.cta && (
+  {copy?.cta && !isPending(copy.cta.title) && (
     <CtaBand id="article-cta" title={copy.cta.title} description={copy.cta.description}>
       <FormButton kind="demo" lang={lang} variant="primary" />
       <FormButton kind="brochure" lang={lang} variant="secondary" />
@@ -250,11 +265,15 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
   )}
 </BaseLayout>
 <style>
+  .news-article .body { min-width: 0; }
+  .news-article .body :global(.prose), .news-sources { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+  .news-sources a { overflow-wrap: anywhere; }
+
   .article-header { padding-block: var(--space-8) var(--space-6); background: var(--bxr-paper); border-bottom: 1px solid var(--bxr-line); }
-  .narrow > * { max-width: 48rem; }
-  .narrow { display: grid; gap: var(--space-3); }
+  .narrow > * { max-width: 100%; }
+  .narrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
   .meta { color: var(--ink-muted); margin-top: var(--space-3); }
-  .summary { font-size: var(--fs-h4); line-height: var(--lh-h4); color: var(--ink-muted); }
+  .summary { font-size: 18px; line-height: 1.75; color: var(--ink-muted); }
   .cover { margin-top: var(--space-6); margin-bottom: 0; }
   .cover :global(img) { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
   .facts-wrap { padding-top: var(--space-6); }
@@ -264,7 +283,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
   .facts dt { color: var(--ink-muted); font-size: var(--fs-small); }
   .facts dd { margin: 0; }
   .outcomes-title { margin-top: var(--space-5); }
-  .outcomes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; }
+  .outcomes { gap: var(--gutter); margin: 0; }
   .outcomes div { display: flex; flex-direction: column-reverse; gap: 4px; padding-top: var(--space-2); border-top: 1px solid var(--bxr-line); }
   .outcomes .value { margin: 0; font-size: var(--fs-h3); font-weight: 500; }
   .body { padding-block: var(--space-6) var(--space-10); }
@@ -274,5 +293,7 @@ for (const k of Object.keys(articleLd)) if (articleLd[k] === undefined) delete a
     border: 1px solid var(--bxr-ash); color: var(--ink); text-decoration: none; font-size: var(--fs-small);
   }
   .tags a:hover { border-color: var(--bxr-black); }
-  @media (max-width: 767px) { .facts, .outcomes { grid-template-columns: 1fr; } }
+  @media (max-width: 767px) { .facts { grid-template-columns: 1fr; } }
 </style>
+
+<style>.csr-links { margin-block: var(--space-3); } .csr-links ul { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; padding: 0; margin-top: var(--space-2); } .csr-links li { border: 1px solid var(--divider); padding: .25rem .5rem; }</style>

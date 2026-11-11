@@ -1,5 +1,5 @@
 ---
-/** Filter bar + responsive grid of case cards (3 columns, 2 on tablets, 1 on phones). */
+/** Filter bar + responsive grid of case cards (2 columns, 1 on phones). */
 import type { Lang } from "../i18n";
 import { facets, type CaseView } from "../lib/cases";
 import { getUi, format } from "../lib/ui";
@@ -24,7 +24,7 @@ const f = facets(cases);
 <p class="empty t-muted" data-filter-empty={id} hidden><Text value={c.filterEmpty} /></p>
 <style>
   .count { margin-bottom: var(--space-3); }
-  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gutter); margin: 0; padding: 0; list-style: none; }
   .grid > li[hidden] { display: none; }
   .empty { padding: var(--space-5) 0; }
   @media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

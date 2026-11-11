@@ -9,6 +9,7 @@
  * The hero and closing band share one CTA definition (lib/cta.ts).
  */
 import SmartCardGrid from "./SmartCardGrid.astro";
+import {contentLocale} from "../lib/content-locale";
 import type { CollectionEntry } from "astro:content";
 import { localePath, type Lang } from "../i18n";
 import { availableLangs, getLocalized } from "../lib/content";
@@ -17,6 +18,7 @@ import { isPending } from "../lib/pending";
 import { getUi } from "../lib/ui";
 import RelatedTechnologies from "./RelatedTechnologies.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { heroPresentation, heroSceneFit, heroSceneHeadroom, heroScenePosition } from "../lib/hero-presentation";
 import PageHero from "./PageHero.astro";
 import SectionHead from "./SectionHead.astro";
 import CardProduct from "./CardProduct.astro";
@@ -27,7 +29,10 @@ import RelatedCases from "./RelatedCases.astro";
 import LandingSections from "./LandingSections.astro";
 import { alternatingSections } from "../lib/landing";
 import { casesAbout } from "../lib/cases";
+import { primaryImage } from '../data/primary-images';
+import { pageOgImage } from "../lib/og-image";
 import Text from "./Text.astro";
+import MediaSlot from "./MediaSlot.astro";
 import FaqAccordion from "./FaqAccordion.astro";
 import { faqLd } from "../lib/faq";
 import { site } from "../lib/site";
@@ -50,8 +55,20 @@ const backLabel = ui.backToProducts;
 const backHref = localePath(lang, "products");
 const need = t.mediaNeed;
 const badge = t.illustrationLabel;
-const hero = L.heroImage;
+const uploadedHero = primaryImage('products', slug, lang);
+// Explicit Git/CMS image wins; the approved catalogue remains the unchanged fallback.
+const assignedHero = base.landing?.heroImage?.src
+  ? { ...base.landing.heroImage, alt: L.heroImage?.alt ?? base.landing.heroImage.alt }
+  : base.hero.image ? { ...L.heroImage, need: L.heroImage?.need, caption: L.heroImage?.caption, illustration: false, ...base.hero.image, alt: d.hero.image?.alt ?? base.hero.image.alt }
+  : L.heroImage?.src ? L.heroImage : undefined;
+const hero = assignedHero ?? (uploadedHero ? { ...L.heroImage, ...uploadedHero } : L.heroImage);
 const heroReady = hero?.src && hero.alt;
+// og:image uses the same hero, but only with this language's own alt (the tw alt never stands in).
+const heroOwnAlt = base.landing?.heroImage?.src ? L.heroImage?.alt
+  : base.hero.image ? d.hero.image?.alt
+  : L.heroImage?.src ? L.heroImage.alt
+  : uploadedHero?.alt;
+const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined), heroOwnAlt, pendingTranslation);
 
 // Related products / solutions: only entries that have a built page in this language.
 // Confirmed integrations (either direction) come first, then the products this one lists
@@ -92,16 +109,20 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
   breadcrumbs={breadcrumbs}
   search={{ type: "products" }}
   structuredData={faqStructured}
+  {...og}
   product={{ name: d.hero.name, description: d.seo?.description ?? L.subheadline, code: base.hero.code }}
 >
   <PageHero
+    uniformMedia
+    variant={heroPresentation("products", slug, !!heroReady)}
+    sceneFit={heroSceneFit("products", slug)}
+    sceneHeadroom={heroSceneHeadroom("products", slug)}
+    scenePosition={heroScenePosition("products", slug)}
     breadcrumbs={breadcrumbs}
     breadcrumbLabel={ui.breadcrumbLabel}
-    eyebrow={base.hero.code ? `Product · ${base.hero.code}` : "Product"}
-    kicker={d.hero.name}
-    title={L.headline}
+    eyebrow={ui.productLanding.eyebrow}
+    title={d.hero.name}
     lead={L.subheadline}
-    description={L.intro}
     image={heroReady ? { src: hero!.src!, alt: hero!.alt! } : undefined}
     imageCaption={hero?.caption}
     imageBadge={hero?.illustration ? badge : undefined}
@@ -110,7 +131,9 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
     <CtaGroup slot="actions" actions={cta.hero} />
   </PageHero>
 
-  <LandingSections lang={lang} L={L} />
+  <section class="section landing-overview" aria-labelledby="landing-overview-title"><div class="container narrow"><h2 class="t-h2" id="landing-overview-title"><Text value={L.headline} /></h2>{L.intro?.split(/\n\s*\n/).map(paragraph => <p><Text value={paragraph} /></p>)}{L.introImage?.src && L.introImage.alt && <div class="intro-media"><MediaSlot media={L.introImage} ratio="16 / 9" fallbackLabel={t.placeholders.hero} needPrefix={t.mediaNeed} badge={t.illustrationLabel} sizes="(max-width: 767px) 100vw, 860px" /></div>}</div></section>
+
+  <LandingSections lang={lang} L={L} entryFile={`src/content/products/${contentLocale(lang)}/${slug}.md`} />
 
   <!-- Applied cases: relations are stored on the case; nothing renders without a published case -->
   <RelatedCases lang={lang} cases={cases} description={L.casesIntro} alt={cases.length > 0 && n++ % 2 === 1} />
@@ -125,7 +148,7 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
             <li>
               <CardProduct
                 lang={lang} href={localePath(lang, "products", p.slug)} name={p.loc.data.hero.name}
-                englishName={known(p.loc.data.hero.englishName)} summary={known(p.loc.data.summary) ?? known(p.loc.data.hero.tagline)}
+                summary={known(p.loc.data.summary) ?? known(p.loc.data.hero.tagline)}
                 domains={p.base.data.domains}
                 image={p.base.data.hero.image && { src: p.base.data.hero.image.src, alt: p.loc.data.hero.image?.alt ?? p.base.data.hero.image.alt }}
               />
@@ -135,7 +158,7 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
             <li>
               <CardSolution
                 lang={lang} href={localePath(lang, "solutions", s.slug)} domain={s.base.data.domain}
-                name={s.loc.data.name} englishName={s.loc.data.englishName} summary={s.loc.data.summary}
+                name={s.loc.data.name} summary={s.loc.data.summary}
                 image={s.base.data.image && { src: s.base.data.image.src, alt: s.loc.data.image?.alt ?? s.base.data.image.alt }}
               />
             </li>
@@ -161,4 +184,9 @@ const faqStructured = faq ? [faqLd(faq, `${site.url}${localePath(lang, "products
   .back { padding-block: var(--space-4); }
   .back a { color: var(--ink); text-decoration: none; font-weight: 500; }
   .back a:hover { color: var(--bxr-text-red); }
+</style>
+
+<style>.landing-overview .narrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); } .landing-overview p { line-height: 1.8; } .landing-overview .intro-media { margin-top: var(--space-3); }</style>
+
+<style>
 </style>

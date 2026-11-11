@@ -1,0 +1,27 @@
+package,version,group,status,evidence,action
+@astrojs/cloudflare,14.3.4,dependencies,歷史遺留,"astro.config.mjs:5,22; emits dist/client and Worker build",先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+@astrojs/react,7.1.0,dependencies,正式使用,astro.config.mjs integrations.react; Footer.astro SSR React icons,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+@cloudflare/kumo,2.6.0,dependencies,歷史遺留,no app import found; package-lock.json EmDash/admin dependency,先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+@emdash-cms/cloudflare,1.3.1,dependencies,歷史遺留,astro.config.mjs:8; src/worker.ts,先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+@fontsource-variable/noto-sans-jp,5.3.1,dependencies,正式使用,scripts/build-fonts.mjs uses installed fontsource assets,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+@fontsource-variable/noto-sans-tc,5.3.1,dependencies,正式使用,scripts/build-fonts.mjs uses installed fontsource assets,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+@fontsource/b612-mono,5.3.0,dependencies,正式使用,scripts/build-fonts.mjs uses installed fontsource assets,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+@phosphor-icons/react,2.1.10,dependencies,正式使用,src/components/Footer.astro:14,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+astro,7.3.8,dependencies,正式使用,astro.config.mjs; src/pages; src/content.config.ts,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+bxr-cms,file:plugins/bxr-cms,dependencies,歷史遺留,"astro.config.mjs:9,33; plugins/bxr-cms",先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+emdash,1.3.1,dependencies,歷史遺留,"astro.config.mjs:7,29; src/live.config.ts; plugin",先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+github-slugger,2.0.0,dependencies,歷史遺留,only src/lib/emdash/portable-text.ts; mixed tests/search-tokenize.test.ts,先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+kysely,0.29.7,dependencies,歷史遺留,no app import found; package-lock.json EmDash dependency,先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+react,19.2.4,dependencies,正式使用,Footer.astro imports @phosphor-icons/react/dist/ssr; Astro React renderer,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+react-dom,19.2.4,dependencies,正式使用,@astrojs/react renderer SSR peer; package-lock.json,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+sharp,0.35.5,dependencies,正式使用,scripts/make-favicons.mjs:4; astro:assets,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+@astrojs/check,0.9.10,devDependencies,正式使用,package.json check script; CI Type check,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+@axe-core/playwright,4.14.0,devDependencies,正式使用,scripts/qa-a11y.mjs,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+@cloudflare/workers-types,5.20261019.1,devDependencies,歷史遺留,src/worker.ts type import,先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+lighthouse,13.5.0,devDependencies,正式使用,scripts/qa-lighthouse.mjs; package.json qa:lighthouse,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+marked,17.0.6,devDependencies,正式使用,src/components/ArticleDetail.astro; src/pages/[lang]/company/team/index.astro,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+pagefind,1.5.2,devDependencies,正式使用,scripts/build-search.mjs; src/pages/[lang]/search/index.astro,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+playwright-core,1.64.1,devDependencies,正式使用,scripts/qa-*.mjs; GitHub Actions browser install,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+typescript,5.9.3,devDependencies,正式使用,scripts/sveltia/schema.mjs; Astro type checks,保留；包含必要開發/驗證相依，非全部為瀏覽器執行
+wrangler,4.151.2,devDependencies,歷史遺留,"docs/DEPLOY.md; Cloudflare adapter tooling, not Pages deploy command",先拆除程式/測試引用，再 npm 移除及重建 lock；不是直接刪 node_modules
+yaml,2.9.1,devDependencies,正式使用,scripts/sveltia/generate.mjs/check.mjs; scripts/lib/cms-content.mjs,保留；包含必要開發/驗證相依，非全部為瀏覽器執行

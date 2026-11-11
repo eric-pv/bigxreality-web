@@ -1,0 +1,1048 @@
+file,status,role,evidence,action
+.emdash/migrations.json,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+.github/workflows/ci.yml,正式使用,CI/部署設定,ci.yml 驗證；preview.yml 唯一 repo 內 Pages deploy；不把 CI 誤認第二個正式部署,保留職責，串接正式 gate，消除重複建置/preview noindex
+.github/workflows/preview.yml,正式使用,CI/部署設定,ci.yml 驗證；preview.yml 唯一 repo 內 Pages deploy；不把 CI 誤認第二個正式部署,保留職責，串接正式 gate，消除重複建置/preview noindex
+.gitignore,正式使用,開發約束,Actions setup-node、Astro check、忽略本機 secrets/artifacts,保留並清理已退役引用
+.node-version,正式使用,開發約束,Actions setup-node、Astro check、忽略本機 secrets/artifacts,保留並清理已退役引用
+CLIENT-LOGO-REVIEW.csv,正式使用,媒體核對/上傳清單,docs 中新聞/Logo/圖片上傳規格；非執行中的另一個資料庫,保留，不混同內容 CMS
+NEWS-MEDIA-MANIFEST.csv,正式使用,媒體核對/上傳清單,docs 中新聞/Logo/圖片上傳規格；非執行中的另一個資料庫,保留，不混同內容 CMS
+README.md,正式使用,混合用途,實際描述靜態/Decap 與現況混用；改為唯一架構入口,修改／拆分，保留仍使用部分
+UI-V1-MEDIA-REVIEW.csv,正式使用,媒體核對/上傳清單,docs 中新聞/Logo/圖片上傳規格；非執行中的另一個資料庫,保留，不混同內容 CMS
+astro.config.mjs,正式使用,混合用途,整體設定仍有效；移除 Cloudflare/React 以外的 EmDash integration，保留 frontend 需要的 React/i18n coverage,修改／拆分，保留仍使用部分
+design-source/01_Logo/PNG/BXR_Logo_H_Black.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Logo_H_Color.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Logo_H_Reverse.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Logo_H_White.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Logo_V_Black.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Logo_V_Color.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Logo_V_Reverse.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Logo_V_White.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Symbol_Black.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Symbol_Outline_Red.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Symbol_Outline_White.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Symbol_Red.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/PNG/BXR_Symbol_White.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Logo_H_Black.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Logo_H_Color.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Logo_H_Reverse.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Logo_H_White.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Logo_V_Black.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Logo_V_Color.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Logo_V_Reverse.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Logo_V_White.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Symbol_Black.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Symbol_Outline_Red.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Symbol_Outline_White.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Symbol_Red.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/01_Logo/SVG/BXR_Symbol_White.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/BXR_Colors_v3.1.ase,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/BXR_Colors_v3.1.css,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/BXR_Colors_v3.1.json,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/BXR_Colors_v3.2.ase,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/BXR_Colors_v3.2.css,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/BXR_Colors_v3.2.json,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P12_color-architecture.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P13_brand-core.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P14_text-red.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P15_auxiliary.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P16_neutral-functional.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P17_ratio.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P18_sector-colors.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P19_sector-rules.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P20_multi-sector.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P21_asset-colors.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P22_color-dodont.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P69_sector-army.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P70_sector-navy.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P71_sector-air.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P72_sector-fire.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P73_sector-police.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P12_color-architecture.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P13_brand-core.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P14_text-red.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P15_brass.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P16_neutral-functional.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P17_usage-context.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P18_sector-colors.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P19_sector-review.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P20_sector-rules.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P21_sector-proof.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P22_multi-sector.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P23_asset-colors.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P24_color-dodont.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P34_sector-graphics.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P35_sector-graphics-use.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P53_product-sector.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P75_sector-army.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P76_sector-navy.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P77_sector-air.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P78_sector-fire.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P79_sector-police.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P81_corporate-kv.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/03_Fonts/README_Fonts.txt,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/BXR_RealityLine.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/BXR_Terrain_Dark.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/BXR_Terrain_Light.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/BXR_XGrid_Dark.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/BXR_XGrid_Light.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_AI.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Analytics.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Command.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Communication.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Fire_Disaster.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Military.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Police.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Sensor_Radar.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Simulation.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_Training.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_UAV.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Icons/BXR_Icon_XR.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_AIR_OnBlock_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_AIR_OnDark_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_AIR_OnLight_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_ARMY_OnBlock_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_ARMY_OnDark_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_ARMY_OnLight_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_FIRE_OnBlock_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_FIRE_OnDark_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_FIRE_OnLight_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_NAVY_OnBlock_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_NAVY_OnDark_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_NAVY_OnLight_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_POLICE_OnBlock_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_POLICE_OnDark_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_GFX_SECTOR_POLICE_OnLight_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_ICON_SECTOR_AIR_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_ICON_SECTOR_ARMY_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_ICON_SECTOR_FIRE_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_ICON_SECTOR_NAVY_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/04_Graphics/Sector/BXR_ICON_SECTOR_POLICE_v3.2.svg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_A_AIM_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_A_BACK_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_A_FRONT_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_A_KNEEL_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_A_LOWREADY_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_A_MOVE_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_A_REAR_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_A_SIDE_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_AIM_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_BACK_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_FRONT_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_KNEEL_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_LOWREADY_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_MOVE_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_REAR_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_SIDE-L_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_B_SIDE-R_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_AIM_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_BACK_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_FRONT_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_KNEEL_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_LOWREADY_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_MOVE_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_REAR_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_SIDE-L_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Cutouts/BXR_CHR_C_SIDE-R_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Reference_Sheets/BXR_CHR_A_ReferenceSheet_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Reference_Sheets/BXR_CHR_B_ReferenceSheet_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Reference_Sheets/BXR_CHR_C_ReferenceSheet_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/05_Characters/Reference_Sheets/BXR_CHR_PoseOverview_v1.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_AI_NPC_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_A_CQB_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_B_SEAM_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_B_TERRAIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_CORP_AI_TERRAIN_v3.2.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_CORP_DIGITAL_TWIN_v3.2.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_CORP_SMART_CITY_v3.2.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_CORP_TERRAIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_CORP_TRAINING_SPACE_v3.2.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_CORP_TWIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_COVER_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_C_SIM_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_EXHIBITION_WALL_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_NAVY_SEA_DARK_v3.1.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_NAVY_SEA_LIGHT_v3.1.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_TEAM_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_UAV_TERRAIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_XR_AR_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_XR_MR_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_XR_SCAN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_XR_TWIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/06_KeyVisuals/BXR_KV_XR_VR_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/07_Templates/BXR_Presentation_Template_v3.2.pptx,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/07_Templates/Social/BXR_Social_16x9_Video_v3.2.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/07_Templates/Social/BXR_Social_1x1_Post_v3.2.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/07_Templates/Social/BXR_Social_4x5_Feed_v3.2.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/07_Templates/Social/BXR_Social_9x16_Story_v3.2.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/Asset_Inventory.csv,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/Asset_Inventory_v3.2.csv,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_CIS_Changes_v3.1_to_v3.2.csv,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_AI_NPC_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_A_CQB_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_B_SEAM_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_B_TERRAIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_CORP_TERRAIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_CORP_TWIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_COVER_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_C_SIM_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_EXHIBITION_WALL_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_NAVY_SEA_DARK_v3.1.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_NAVY_SEA_LIGHT_v3.1.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_TEAM_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_UAV_TERRAIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_XR_AR_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_XR_MR_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_XR_SCAN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_XR_TWIN_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_KV_XR_VR_v3.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_Sector_Color_Comparison_v3.2.jpg,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_Social_16x9_Video.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_Social_1x1_Post.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_Social_4x5_Feed.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_Social_9x16_Story.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_Web_Design_System_v1.0.pdf,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/BXR_Web_Tokens_v1.0.css,正式使用,被程式引用,src/styles/global.css（引用證據，不代表遠端已部署）,保留
+design-source/README.txt,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/README_v3.2.txt,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/readme,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+design-source/requirements-2.0.md,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+docs/ABOUT-BXR-CONFIRMATION-LIST.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/CLIENT-LOGOS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/CSR.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/DEPLOY.md,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/EDITOR-GUIDE.md,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/FIRE-EXTINGUISHER-SIMULATOR-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/FULL-SCALE-POLICE-TRAINING-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/HERO-FRAMING.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/HERO-SCENE-UPDATE.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/HMMWV-SIMULATOR-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/IMAGE-INTEGRATION.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/IMAGE-USAGE.csv,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/MACHINE-GUN-SIMULATOR-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/MORTAR-OBSERVATION-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/NEWS-IMPORT.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/NEWS-MEDIA-UPLOAD.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/NEWS-REVIEW-V2.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/PHASE-2-PLAN.md,正式使用,混合用途,保留有效前台/SEO 規則；封存 EmDash 實驗章節,修改／拆分，保留仍使用部分
+docs/PLAN.md,正式使用,混合用途,保留前台需求規格；舊 CMS 決策標註歷史，不作現行架構規範,修改／拆分，保留仍使用部分
+docs/POLICE-BOX-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/PREVIEW.md,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/PRODUCT-CONFIRMATION-LIST.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/SEO-VALIDATION.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/SNIPER-SIMULATOR-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/SOLUTIONS-CONFIRMATION-LIST.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/SOLUTIONS-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/SUT-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/TACTICAL-BOAT-SIMULATOR-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/TEAM-PAGE-UPDATE.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/TECHNOLOGIES-BATCH-TWO-AUDIT.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/TECHNOLOGIES-BATCH-TWO.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/TECHNOLOGIES-CONTENT-AUDIT.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/TECHNOLOGIES.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/UAV-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/UI-LANGUAGE.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/UI-UX-V1.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/UI-V1-FILES.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/USV-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/WARGAMING-TABLE-IMAGE-REQUIREMENTS.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/archive/history-page.astro.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/cms/SVELTIA-AUDIT.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/cms/SVELTIA-FILES.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/cms/SVELTIA-GUIDE.md,正式使用,混合用途,目前 feature 分支及雙階段發布，目標改 main editorial workflow,修改／拆分，保留仍使用部分
+docs/cms/SVELTIA-VALIDATION.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/legacy-urls.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/01-page-inventory-and-method.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/02-shared-ui-and-site-data.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/03-product-pages-content.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/04-solutions-and-other-pages-content.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/05-content-gap-summary.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/06-technical-seo-audit.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/07-ai-search-readiness.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/08-structured-data-audit.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/09-seo-content-gaps.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/10-seo-ai-priority-roadmap.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/localization-audit/11-product-solution-localization-completion.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/README.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/after-video-1-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/after-video-1-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/after-video-2-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/after-video-2-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/before-video-1-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/before-video-1-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/before-video-2-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/home-video/before-video-2-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/README.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/all-product-solution-heroes-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/all-product-solution-heroes-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/company--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/company--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/fire-approach-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/fire-capabilities-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/fire-scenarios-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products-fire-extinguisher-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products-fire-extinguisher-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products-sut--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products-sut--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products-tactical-boat-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/products-tactical-boat-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/solutions--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/solutions--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/solutions-fire-rescue--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/solutions-fire-rescue--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/solutions-military--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/solutions-military--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/technologies--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/technologies--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/technologies-xr--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/after/technologies-xr--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/company--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/company--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products-fire-extinguisher-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products-fire-extinguisher-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products-sut--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products-sut--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products-tactical-boat-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/products-tactical-boat-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/solutions--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/solutions--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/solutions-fire-rescue--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/solutions-fire-rescue--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/solutions-military--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/solutions-military--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/technologies--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/technologies--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/technologies-xr--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/image-composition/screenshots/before/technologies-xr--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/AFTER.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/BEFORE.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/CHANGED-FILES.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/COMPARISON-320.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/MANUAL-REVIEW.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/MANUAL-TITLES.csv,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/README.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/RESULTS.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/TEST-RESULTS.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/VALIDATION.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/en-home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/en-home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/en-news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/en-news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/en-products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/en-products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/jp-home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/jp-home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/jp-news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/jp-news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/jp-products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/jp-products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-sniper-heading-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-sniper-heading-320.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/after/tw-sniper-heading-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/en-home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/en-home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/en-news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/en-news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/en-products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/en-products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/jp-home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/jp-home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/jp-news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/jp-news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/jp-products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/jp-products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-sniper-heading-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-sniper-heading-320.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/typography/before/tw-sniper-heading-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/BATCHES.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/BROWSER-RESULTS.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/CHANGED-FILES.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/CHECKED-ROUTES.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/COPY-AUDIT.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/COPY-CHANGES.csv,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/COPY-REVIEW-EXCEPTIONS.csv,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/IMAGE-CHANGES.csv,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/MEDIA-INVENTORY.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/MISSING-MATERIALS.csv,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/README.md,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/TEST-RESULTS.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/VALIDATION.json,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/VIDEO-SOURCE-FRAMES.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/all-product-solution-heroes-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/all-product-solution-heroes-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/company--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/company--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/fire-approach-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/fire-capabilities-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/fire-scenarios-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products-fire-extinguisher-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products-fire-extinguisher-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products-sut--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products-sut--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products-tactical-boat-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/products-tactical-boat-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/solutions--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/solutions--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/solutions-fire-rescue--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/solutions-fire-rescue--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/solutions-military--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/solutions-military--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/technologies--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/technologies--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/technologies-xr--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/technologies-xr--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/video-1-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/video-1-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/video-2-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/after/video-2-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/company--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/company--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/home-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/home-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/news--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/news--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products-fire-extinguisher-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products-fire-extinguisher-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products-sniper-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products-sniper-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products-sut--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products-sut--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products-tactical-boat-simulator--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/products-tactical-boat-simulator--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/solutions--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/solutions--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/solutions-fire-rescue--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/solutions-fire-rescue--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/solutions-military--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/solutions-military--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/technologies--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/technologies--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/technologies-xr--1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/technologies-xr--390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/video-1-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/video-1-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/video-2-1440.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/reviews/visual-copy/screenshots/before/video-2-390.jpg,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/footer/footer-en-1440.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/footer/footer-jp-1440.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/footer/footer-jp-390-open.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/footer/footer-tw-1440-open.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/footer/footer-tw-1440.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/footer/footer-tw-390.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/footer/footer-tw-768.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/phase-1/en-products-sut-1440.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/phase-1/en-products-sut-390.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/phase-1/tw-products-1440.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/phase-1/tw-products-390.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/phase-1/tw-products-sut-1440.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/screenshots/phase-1/tw-products-sut-390.png,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/sources/BXR_NEWS_TRILINGUAL_2026-10-27.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/sources/BXR_NEWS_TRILINGUAL_EXPANDED_V2_2026-10-27.txt,正式使用,交接/來源/稽核,既有內容/媒體來源、規格或驗收紀錄；歷史報告不是現行架構權威,保留必要規格/原 TXT/媒體紀錄；舊部署說明改指向唯一 ARCHITECTURE
+docs/spikes/emdash/README.md,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/astro.config.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/content.config.diff,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/plugins/deploy-hook/index.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/plugins/deploy-hook/package.json,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/seed/seed.json,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/src/lib/domains.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/src/lib/emdash-loader.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/src/live.config.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/src/middleware.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/src/worker.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/project/wrangler.jsonc,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/screenshots/admin-product-edit.png,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/screenshots/counter-uas-order-diff.png,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/01-model.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/02-reverse.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/03-lifecycle.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/04-admin.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/05-import.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/06-compare.py,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/07-visual.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/08-deploy-hook.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/09-builtins.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/lib.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/emdash/tests/reset.sh,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+docs/spikes/pagefind/README.md,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+docs/spikes/pagefind/cases.mjs,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+docs/spikes/pagefind/make-site.mjs,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+docs/spikes/pagefind/minimal.mjs,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+docs/spikes/pagefind/only.mjs,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+docs/spikes/pagefind/run-bigram.mjs,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+docs/spikes/pagefind/run-native.mjs,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+docs/spikes/pagefind/run-spike-fresh.mjs,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+docs/spikes/pagefind/tokenize.mjs,無法確認,研究紀錄,tsconfig exclude docs/spikes；實驗內部引用不代表正式使用,核對交接價值，必要時封存；不是正式 runtime
+emdash-env.d.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+media-src/README.md,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+media-src/hero/home-hero-video-1.mp4,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+media-src/hero/home-hero-video-2.mp4,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+package-lock.json,正式使用,混合用途,由套件管理器依保留根相依重建，不手工刪 transitive 項,修改／拆分，保留仍使用部分
+package.json,正式使用,混合用途,保留 Astro/前端/QA 腳本；移除 EmDash/Workers 相依和部署指令,修改／拆分，保留仍使用部分
+plugins/bxr-cms/index.d.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+plugins/bxr-cms/index.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+plugins/bxr-cms/package.json,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+public/admin/bootstrap.js,正式使用,唯一 CMS 靜態入口,public/admin/index.html -> pinned Sveltia -> bootstrap/config；scripts/sveltia/generate.mjs,保留
+public/admin/config.yml,正式使用,唯一 CMS 靜態入口,public/admin/index.html -> pinned Sveltia -> bootstrap/config；scripts/sveltia/generate.mjs,保留
+public/admin/index.html,正式使用,唯一 CMS 靜態入口,public/admin/index.html -> pinned Sveltia -> bootstrap/config；scripts/sveltia/generate.mjs,保留
+public/admin/value-tools.js,正式使用,被程式引用,public/admin/bootstrap.js; scripts/sveltia/check.mjs; scripts/sveltia/generate.mjs（引用證據，不代表遠端已部署）,保留
+public/media/news/README.md,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+public/video/hero/hero-1.mp4,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+public/video/hero/hero-1.webm,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+public/video/hero/hero-2.mp4,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+public/video/hero/hero-2.webm,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+scripts/build-fonts.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/build-search.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/check-i18n.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/check-links.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/check-sitemap.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/cms/check-source.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+scripts/cms/import-markdown.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+scripts/cms/lib.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+scripts/cms/pull-site.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+scripts/cms/technology-tags.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+scripts/lib/cms-content.mjs,正式使用,被程式引用,scripts/qa-csr.mjs; scripts/qa-ui-v1.mjs（引用證據，不代表遠端已部署）,保留
+scripts/lib/historical-news.mjs,正式使用,被程式引用,scripts/qa-historical-news.mjs; scripts/qa-news-preview.mjs; tests/historical-news.test.ts（引用證據，不代表遠端已部署）,保留
+scripts/lib/i18n-coverage.mjs,正式使用,被程式引用,scripts/check-i18n.mjs; src/integrations/i18n-coverage.mjs（引用證據，不代表遠端已部署）,保留
+scripts/lib/punctuation.mjs,正式使用,被程式引用,tests/punctuation.test.ts（引用證據，不代表遠端已部署）,保留
+scripts/lib/qa-localized.mjs,正式使用,被程式引用,scripts/qa-english.mjs; scripts/qa-japanese.mjs（引用證據，不代表遠端已部署）,保留
+scripts/lib/serve.mjs,正式使用,被程式引用,scripts/check-links.mjs; scripts/check-sitemap.mjs; scripts/lib/qa-localized.mjs; scripts/preview/check.mjs（引用證據，不代表遠端已部署）,保留
+scripts/make-favicons.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/preview/check.mjs,正式使用,現行 Pages 子路徑建置,.github/workflows/preview.yml；直接刪除會破壞子路徑/搜尋驗收,先完成 native base 同等驗收，再移除舊 rebase/check 流程
+scripts/preview/rebase.mjs,正式使用,現行 Pages 子路徑建置,.github/workflows/preview.yml；直接刪除會破壞子路徑/搜尋驗收,先完成 native base 同等驗收，再移除舊 rebase/check 流程
+scripts/qa-a11y.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-behaviour.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-client-logos.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-company.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-csr.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-density-navigation.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-english.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-faq.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-footer.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-header.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-hero-framing.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-historical-news.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-home-video.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-japanese.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-lighthouse.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-media-composition.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-micro-interactions.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-motion-lifecycle.mjs,正式使用,被程式引用,scripts/qa-micro-interactions.mjs（引用證據，不代表遠端已部署）,保留
+scripts/qa-news-media.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-news-preview.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-phase2.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-screenshots.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-search.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-seo.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-solutions.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-team-page.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-technologies.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-typography.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-ui-language.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-ui-v1-preview.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-ui-v1.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-uploaded-images.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/qa-visual-review.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/review/copy-report.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/review/hero-contact.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/review/media-report.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/sveltia/check.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/sveltia/generate.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/sveltia/qa-browser.mjs,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+scripts/sveltia/schema.mjs,正式使用,被程式引用,scripts/sveltia/check.mjs; scripts/sveltia/generate.mjs; scripts/sveltia/qa-browser.mjs（引用證據，不代表遠端已部署）,保留
+seed/seed.json,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+src/assets/images/clients/中央警察大學.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/中華民國交通部.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/中華民國國防部.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/中華民國海軍.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/中華民國海軍陸戰隊.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/保安警察第一總隊.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/內政部警政署.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/刑事警察局.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/勞動部勞動力發展署.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/勞動部職業安全衛生署.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/南部科學園區.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/台北市政府消防局.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/台灣中油股份有限公司.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/台灣國家級新創品牌.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/台灣國防產業發展協會.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/台灣縣市警察局.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/台灣虛擬及擴增實境產業協會.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/台灣防災產業協會.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/台灣電力公司.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/國家中山科學研究院.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/國家災害防救科技中心.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/工業技術研究院.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/桃園國際機場股份有限公司.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/經濟部工業局.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/臺灣警察專科學校.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/clients/陸軍步兵訓練指揮部.png,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/content/README.md,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/home/hero-poster.jpg,正式使用,被程式引用,src/components/home/HomeHero.astro; src/pages/[lang]/index.astro（引用證據，不代表遠端已部署）,保留
+src/assets/images/news/README.md,正式使用,素材/來源保存,Astro image imports/glob、primary-images/news-media/client-logo maps、HomeHero sources；原始素材保留規則；不是另一個 CMS,保留原始素材；個別未引用不構成可刪證據
+src/assets/images/products/full-scale-police-training-vr-facility.png,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/humvee-driving-simulator-instructor-illustration.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/machine-gun-simulator-indoor-training-illustration.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/military-simulation-training.jpg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/mortar-observation-xr-training.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/police-box-portable-training-unit-trainee.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/police-simulation-training.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/smart-city-3d-digital-twin.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/sniper-simulator-trainee-operation.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/speedboat-simulator-sea-training-illustration.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/sut-squad-vr-tactical-training.jpg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/uav-drone-training-operator-simulation.jpg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/usv-vr-training-operation.png,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/vr-fire-extinguisher-training-trainee.png,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/assets/images/products/wargaming-table-team-planning-discussion.jpeg,正式使用,被程式引用,src/data/primary-images.ts（引用證據，不代表遠端已部署）,保留
+src/components/ArticleDetail.astro,正式使用,被程式引用,src/pages/[lang]/insights/[slug].astro; src/pages/[lang]/news/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/ArticleListPage.astro,正式使用,被程式引用,src/pages/[lang]/insights/index.astro; src/pages/[lang]/insights/page/[page].astro（引用證據，不代表遠端已部署）,保留
+src/components/BackToTop.astro,正式使用,被程式引用,src/layouts/BaseLayout.astro（引用證據，不代表遠端已部署）,保留
+src/components/Breadcrumb.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/CaseDetail.astro; src/components/PageHero.astro（引用證據，不代表遠端已部署）,保留
+src/components/CapabilityShowcase.astro,正式使用,被程式引用,src/components/LandingSections.astro（引用證據，不代表遠端已部署）,保留
+src/components/CardArticle.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/LatestNews.astro; src/components/RelatedTechnologyArticles.astro（引用證據，不代表遠端已部署）,保留
+src/components/CardProduct.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/CaseDetail.astro; src/components/ProductLanding.astro; src/components/SolutionLanding.astro（引用證據，不代表遠端已部署）,保留
+src/components/CardSolution.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/CaseDetail.astro; src/components/ProductLanding.astro; src/components/SolutionLanding.astro（引用證據，不代表遠端已部署）,保留
+src/components/CaseCard.astro,正式使用,被程式引用,src/components/CaseDetail.astro; src/components/CaseList.astro; src/components/FeaturedCases.astro; src/components/RelatedCases.astro（引用證據，不代表遠端已部署）,保留
+src/components/CaseDetail.astro,正式使用,被程式引用,src/pages/[lang]/cases/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/CaseFilters.astro,正式使用,被程式引用,src/components/CaseList.astro（引用證據，不代表遠端已部署）,保留
+src/components/CaseList.astro,正式使用,被程式引用,src/components/CaseListPage.astro（引用證據，不代表遠端已部署）,保留
+src/components/CaseListPage.astro,正式使用,被程式引用,src/pages/[lang]/cases/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/CaseVisual.astro,正式使用,被程式引用,src/components/CaseCard.astro; src/components/CaseDetail.astro; src/components/RelatedCases.astro（引用證據，不代表遠端已部署）,保留
+src/components/ChallengeCards.astro,正式使用,被程式引用,src/components/LandingSections.astro（引用證據，不代表遠端已部署）,保留
+src/components/ClientLogos.astro,正式使用,被程式引用,src/pages/[lang]/company/partners/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/CompanyShell.astro,正式使用,被程式引用,src/pages/[lang]/company/investors/[module].astro; src/pages/[lang]/company/investors/index.astro; src/pages/[lang]/company/partners/index.astro; src/pages/[lang]/company/team/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/CtaBand.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/CaseDetail.astro; src/components/CaseListPage.astro（引用證據，不代表遠端已部署）,保留
+src/components/CtaGroup.astro,正式使用,被程式引用,src/components/ProductLanding.astro; src/components/SolutionLanding.astro（引用證據，不代表遠端已部署）,保留
+src/components/EditorialCover.astro,正式使用,被程式引用,src/components/CardArticle.astro; src/components/NewsCard.astro（引用證據，不代表遠端已部署）,保留
+src/components/EmptyState.astro,正式使用,被程式引用,src/components/ArticleListPage.astro; src/pages/[lang]/tags/[slug].astro; src/pages/[lang]/tags/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/FaqAccordion.astro,正式使用,被程式引用,src/components/ProductLanding.astro; src/pages/[lang]/technologies/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/FeaturedCases.astro,無法確認,需核對的程式,未在相對 import 索引找到明確引用；可能由 Astro convention/dynamic loader 引入,核對動態引用及呼叫圖後再決定；不僅因存在/未搜尋到就刪
+src/components/FilterBar.astro,正式使用,被程式引用,src/components/ArticleListPage.astro; src/pages/[lang]/products/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/FlowIcon.astro,正式使用,被程式引用,src/components/FlowSteps.astro（引用證據，不代表遠端已部署）,保留
+src/components/FlowSteps.astro,正式使用,被程式引用,src/components/LandingSections.astro（引用證據，不代表遠端已部署）,保留
+src/components/Footer.astro,正式使用,被程式引用,src/layouts/BaseLayout.astro（引用證據，不代表遠端已部署）,保留
+src/components/FormButton.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/pages/[lang]/products/[slug].astro; src/pages/[lang]/products/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/Header.astro,正式使用,被程式引用,src/components/CompanyShell.astro; src/layouts/BaseLayout.astro（引用證據，不代表遠端已部署）,保留
+src/components/HomePartners.astro,正式使用,被程式引用,src/pages/[lang]/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/ImagePlaceholder.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/CardProduct.astro; src/components/CardSolution.astro; src/components/MediaSlot.astro（引用證據，不代表遠端已部署）,保留
+src/components/InPageNav.astro,正式使用,被程式引用,src/pages/[lang]/solutions/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/LandingSections.astro,正式使用,被程式引用,src/components/ProductLanding.astro; src/components/SolutionLanding.astro（引用證據，不代表遠端已部署）,保留
+src/components/LatestNews.astro,正式使用,被程式引用,src/pages/[lang]/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/Logo.astro,正式使用,被程式引用,src/components/Footer.astro; src/components/Header.astro（引用證據，不代表遠端已部署）,保留
+src/components/MediaSlot.astro,正式使用,被程式引用,src/components/CapabilityShowcase.astro; src/components/FlowSteps.astro; src/components/LandingSections.astro; src/components/ScenarioCards.astro（引用證據，不代表遠端已部署）,保留
+src/components/MicroInteractions.astro,正式使用,被程式引用,src/layouts/BaseLayout.astro（引用證據，不代表遠端已部署）,保留
+src/components/NewsCard.astro,正式使用,被程式引用,src/components/NewsListPage.astro（引用證據，不代表遠端已部署）,保留
+src/components/NewsGallery.astro,正式使用,被程式引用,src/components/ArticleDetail.astro（引用證據，不代表遠端已部署）,保留
+src/components/NewsListPage.astro,正式使用,被程式引用,src/pages/[lang]/news/filter/[...filter].astro; src/pages/[lang]/news/index.astro; src/pages/[lang]/news/page/[page].astro（引用證據，不代表遠端已部署）,保留
+src/components/NewsVideos.astro,正式使用,被程式引用,src/components/ArticleDetail.astro（引用證據，不代表遠端已部署）,保留
+src/components/PageHero.astro,正式使用,被程式引用,src/components/ArticleListPage.astro; src/components/CaseListPage.astro; src/components/CompanyShell.astro; src/components/NewsListPage.astro（引用證據，不代表遠端已部署）,保留
+src/components/Pagination.astro,正式使用,被程式引用,src/components/ArticleListPage.astro; src/components/NewsListPage.astro（引用證據，不代表遠端已部署）,保留
+src/components/PartnerStatistics.astro,正式使用,被程式引用,src/components/HomePartners.astro; src/pages/[lang]/company/partners/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/PillarGrid.astro,正式使用,被程式引用,src/components/LandingSections.astro（引用證據，不代表遠端已部署）,保留
+src/components/ProcessSteps.astro,正式使用,被程式引用,src/pages/[lang]/contact/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/ProductImage.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/CardArticle.astro; src/components/CardProduct.astro; src/components/CardSolution.astro（引用證據，不代表遠端已部署）,保留
+src/components/ProductLanding.astro,正式使用,被程式引用,src/pages/[lang]/products/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/Prose.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/CaseDetail.astro; src/pages/[lang]/solutions/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/RelatedCases.astro,正式使用,被程式引用,src/components/ProductLanding.astro; src/components/SolutionLanding.astro; src/pages/[lang]/products/[slug].astro; src/pages/[lang]/solutions/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/RelatedTechnologies.astro,正式使用,被程式引用,src/components/ProductLanding.astro; src/components/SolutionLanding.astro; src/pages/[lang]/products/[slug].astro; src/pages/[lang]/solutions/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/RelatedTechnologyArticles.astro,正式使用,被程式引用,src/pages/[lang]/technologies/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/ScenarioCards.astro,正式使用,被程式引用,src/components/LandingSections.astro（引用證據，不代表遠端已部署）,保留
+src/components/Section.astro,無法確認,需核對的程式,未在相對 import 索引找到明確引用；可能由 Astro convention/dynamic loader 引入,核對動態引用及呼叫圖後再決定；不僅因存在/未搜尋到就刪
+src/components/SectionHead.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/CaseDetail.astro; src/components/FeaturedCases.astro; src/components/HomePartners.astro（引用證據，不代表遠端已部署）,保留
+src/components/SectorTag.astro,正式使用,被程式引用,src/components/CardProduct.astro（引用證據，不代表遠端已部署）,保留
+src/components/SeoHead.astro,正式使用,被程式引用,src/components/Breadcrumb.astro; src/components/PageHero.astro; src/layouts/BaseLayout.astro（引用證據，不代表遠端已部署）,保留
+src/components/SolutionLanding.astro,正式使用,被程式引用,src/pages/[lang]/solutions/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/TechnologySections.astro,正式使用,被程式引用,src/pages/[lang]/technologies/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/Text.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/Breadcrumb.astro; src/components/CapabilityShowcase.astro（引用證據，不代表遠端已部署）,保留
+src/components/TileGrid.astro,正式使用,被程式引用,src/pages/[lang]/solutions/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/components/ValueCards.astro,正式使用,被程式引用,src/components/LandingSections.astro; src/pages/[lang]/solutions/index.astro（引用證據，不代表遠端已部署）,保留
+src/components/home/HomeHero.astro,正式使用,被程式引用,src/pages/[lang]/index.astro（引用證據，不代表遠端已部署）,保留
+src/content.config.ts,正式使用,混合用途,正式 Astro schema 與 Sveltia schema 產生器來源；只拆 EmDash loader 分支,修改／拆分，保留仍使用部分
+src/content/case-studies/en/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/case-studies/jp/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/case-studies/tw/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/insights/en/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/insights/jp/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/insights/tw/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-01-ds-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-02-gbp-cover.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-03-leadership-uncertainty.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-04-seecat-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-05-tadte-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-06-military-forum-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-07-indo-defence.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-08-fire-agency-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-09-seecat-earlier.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-10-xr-shooting-sports.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-11-sushi-tech-2024.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-12-asia-xr-awards-2023.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-13-future-combat.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-15-media-visit-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-16-seecat-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-17-defense-education-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-18-decision-training-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-19-cna-simulation-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-20-taipei-education-expo-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-21-forum-22-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-22-dsa-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-23-songshan-school-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-24-new-office-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-25-defense-expo-preview-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-26-disaster-resilience-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-27-military-simulation-overview-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-28-fire-extinguisher-launch-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-29-xr-defense-platform-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-30-baseball-csr-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/en/news-31-trap-shooting-championship-2024.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-01-ds-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-02-gbp-cover.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-03-leadership-uncertainty.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-04-seecat-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-05-tadte-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-06-military-forum-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-07-indo-defence.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-08-fire-agency-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-09-seecat-earlier.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-10-xr-shooting-sports.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-11-sushi-tech-2024.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-12-asia-xr-awards-2023.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-13-future-combat.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-15-media-visit-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-16-seecat-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-17-defense-education-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-18-decision-training-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-19-cna-simulation-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-20-taipei-education-expo-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-21-forum-22-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-22-dsa-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-23-songshan-school-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-24-new-office-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-25-defense-expo-preview-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-26-disaster-resilience-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-27-military-simulation-overview-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-28-fire-extinguisher-launch-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-29-xr-defense-platform-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-30-baseball-csr-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/jp/news-31-trap-shooting-championship-2024.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-01-ds-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-02-gbp-cover.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-03-leadership-uncertainty.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-04-seecat-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-05-tadte-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-06-military-forum-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-07-indo-defence.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-08-fire-agency-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-09-seecat-earlier.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-10-xr-shooting-sports.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-11-sushi-tech-2024.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-12-asia-xr-awards-2023.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-13-future-combat.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-15-media-visit-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-16-seecat-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-17-defense-education-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-18-decision-training-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-19-cna-simulation-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-20-taipei-education-expo-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-21-forum-22-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-22-dsa-2026.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-23-songshan-school-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-24-new-office-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-25-defense-expo-preview-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-26-disaster-resilience-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-27-military-simulation-overview-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-28-fire-extinguisher-launch-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-29-xr-defense-platform-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-30-baseball-csr-2025.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/news/tw/news-31-trap-shooting-championship-2024.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/case-studies.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/company.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/contact.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/history.md,歷史遺留,已退役內容,src/lib/company.ts history:false；沒有 history 路由；Sveltia pages file list 排除 history,保留原文備查或封存，不放回正式頁面
+src/content/pages/en/insights.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/investors.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/news.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/partners.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/products.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/search.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/solutions.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/tags.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/en/team.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/case-studies.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/company.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/contact.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/history.md,歷史遺留,已退役內容,src/lib/company.ts history:false；沒有 history 路由；Sveltia pages file list 排除 history,保留原文備查或封存，不放回正式頁面
+src/content/pages/jp/insights.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/investors.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/news.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/partners.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/products.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/search.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/solutions.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/tags.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/jp/team.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/case-studies.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/company.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/contact.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/history.md,歷史遺留,已退役內容,src/lib/company.ts history:false；沒有 history 路由；Sveltia pages file list 排除 history,保留原文備查或封存，不放回正式頁面
+src/content/pages/tw/insights.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/investors.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/news.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/partners.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/products.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/search.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/solutions.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/tags.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/pages/tw/team.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/fire-extinguisher-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/full-scale-police-training.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/hmmwv-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/machine-gun-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/mortar-observation.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/police-box.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/sniper-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/sut.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/tactical-boat-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/uav.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/usv.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/en/wargaming-table.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/fire-extinguisher-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/full-scale-police-training.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/hmmwv-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/machine-gun-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/mortar-observation.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/police-box.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/sniper-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/sut.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/tactical-boat-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/uav.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/usv.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/jp/wargaming-table.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/fire-extinguisher-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/full-scale-police-training.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/hmmwv-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/machine-gun-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/mortar-observation.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/police-box.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/sniper-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/sut.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/tactical-boat-simulator.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/uav.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/usv.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/products/tw/wargaming-table.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/en/fire-rescue.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/en/military.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/en/mum-t.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/en/nova.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/en/police.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/en/smart-city.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/jp/fire-rescue.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/jp/military.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/jp/mum-t.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/jp/nova.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/jp/police.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/jp/smart-city.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/tw/fire-rescue.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/tw/military.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/tw/mum-t.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/tw/nova.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/tw/police.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/solutions/tw/smart-city.md,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/tags/en/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/tags/jp/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/tags/tw/.gitkeep,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/ui/en.json,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/ui/jp.json,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/content/ui/tw.json,正式使用,版本化內容/翻譯,src/content.config.ts glob * / *.md；src/lib/content.ts 三語/公開規則；src/lib/ui.ts 載入 UI JSON,保留
+src/data/client-logos.json,正式使用,被程式引用,src/lib/client-logos.ts（引用證據，不代表遠端已部署）,保留
+src/data/csr.json,正式使用,被程式引用,src/lib/csr.ts（引用證據，不代表遠端已部署）,保留
+src/data/hero-clips.ts,正式使用,被程式引用,src/components/home/HomeHero.astro（引用證據，不代表遠端已部署）,保留
+src/data/home.ts,正式使用,被程式引用,src/components/home/HomeHero.astro; src/lib/home.ts; src/pages/[lang]/index.astro（引用證據，不代表遠端已部署）,保留
+src/data/news-media.json,正式使用,被程式引用,src/lib/news-media.ts（引用證據，不代表遠端已部署）,保留
+src/data/primary-images.ts,正式使用,被程式引用,src/components/CardProduct.astro; src/components/CardSolution.astro; src/components/PageHero.astro; src/components/ProductImage.astro（引用證據，不代表遠端已部署）,保留
+src/data/site.json,正式使用,被程式引用,src/lib/site.ts（引用證據，不代表遠端已部署）,保留
+src/data/team-labels.ts,正式使用,被程式引用,src/pages/[lang]/company/team/index.astro（引用證據，不代表遠端已部署）,保留
+src/data/technologies-batch-two-a.ts,正式使用,被程式引用,src/data/technologies-content.ts（引用證據，不代表遠端已部署）,保留
+src/data/technologies-batch-two-b.ts,正式使用,被程式引用,src/data/technologies-content.ts（引用證據，不代表遠端已部署）,保留
+src/data/technologies-content.ts,正式使用,被程式引用,scripts/qa-technologies.mjs; src/data/technologies-batch-two-a.ts; src/data/technologies-batch-two-b.ts; src/lib/technologies.ts（引用證據，不代表遠端已部署）,保留
+src/data/technology-relations.ts,正式使用,被程式引用,scripts/qa-technologies.mjs; src/components/RelatedTechnologies.astro; src/pages/[lang]/technologies/[slug].astro（引用證據，不代表遠端已部署）,保留
+src/data/typography.json,正式使用,被程式引用,src/lib/typography.ts（引用證據，不代表遠端已部署）,保留
+src/i18n/index.ts,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/BackToTop.astro; src/components/CardArticle.astro（引用證據，不代表遠端已部署）,保留
+src/integrations/i18n-coverage.mjs,正式使用,被程式引用,astro.config.mjs（引用證據，不代表遠端已部署）,保留
+src/layouts/BaseLayout.astro,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/CaseDetail.astro; src/components/CaseListPage.astro（引用證據，不代表遠端已部署）,保留
+src/lib/articles.ts,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/CaseDetail.astro; src/components/CaseListPage.astro（引用證據，不代表遠端已部署）,保留
+src/lib/cases.ts,正式使用,被程式引用,src/components/CaseCard.astro; src/components/CaseDetail.astro; src/components/CaseList.astro; src/components/CaseListPage.astro（引用證據，不代表遠端已部署）,保留
+src/lib/client-logos.ts,正式使用,被程式引用,src/components/ClientLogos.astro; src/components/PartnerStatistics.astro; src/lib/company.ts; src/pages/[lang]/company/partners/index.astro（引用證據，不代表遠端已部署）,保留
+src/lib/company.ts,正式使用,混合用途,正式公司/Logo/投資人判斷；僅移除失用 Milestone type,修改／拆分，保留仍使用部分
+src/lib/content-source.ts,正式使用,混合用途,目前決定正式 noindex/fixtures；重寫只保留 Git 正式內容及隔離測試模式,修改／拆分，保留仍使用部分
+src/lib/content.ts,正式使用,混合用途,正式三語發布規則；清理空的舊 team/partners/milestones 型別須同步 schema,修改／拆分，保留仍使用部分
+src/lib/csr.ts,正式使用,被程式引用,src/components/ArticleDetail.astro; src/pages/[lang]/company/csr/index.astro（引用證據，不代表遠端已部署）,保留
+src/lib/cta.ts,正式使用,被程式引用,src/components/CtaGroup.astro; src/components/ProductLanding.astro; src/components/SolutionLanding.astro（引用證據，不代表遠端已部署）,保留
+src/lib/domains.ts,正式使用,被程式引用,src/components/ArticleListPage.astro; src/components/CardProduct.astro; src/components/CaseFilters.astro; src/content.config.ts（引用證據，不代表遠端已部署）,保留
+src/lib/emdash/client.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+src/lib/emdash/loader.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+src/lib/emdash/portable-text.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+src/lib/eyebrow.ts,正式使用,被程式引用,src/components/PageHero.astro; src/components/SectionHead.astro（引用證據，不代表遠端已部署）,保留
+src/lib/faq.ts,正式使用,被程式引用,src/components/ProductLanding.astro（引用證據，不代表遠端已部署）,保留
+src/lib/hero-presentation.ts,正式使用,被程式引用,src/components/ProductLanding.astro; src/components/SolutionLanding.astro（引用證據，不代表遠端已部署）,保留
+src/lib/home.ts,正式使用,被程式引用,src/pages/[lang]/index.astro（引用證據，不代表遠端已部署）,保留
+src/lib/ids.ts,無法確認,需核對的程式,未在相對 import 索引找到明確引用；可能由 Astro convention/dynamic loader 引入,核對動態引用及呼叫圖後再決定；不僅因存在/未搜尋到就刪
+src/lib/indexable-pages.ts,正式使用,被程式引用,src/components/SeoHead.astro; src/pages/sitemap.xml.ts（引用證據，不代表遠端已部署）,保留
+src/lib/landing.ts,正式使用,被程式引用,src/components/ProductLanding.astro; src/components/SolutionLanding.astro（引用證據，不代表遠端已部署）,保留
+src/lib/navigation.ts,正式使用,被程式引用,src/components/Footer.astro; src/components/Header.astro（引用證據，不代表遠端已部署）,保留
+src/lib/news-featured.ts,正式使用,被程式引用,src/lib/news-listing.ts; tests/news-featured.test.ts（引用證據，不代表遠端已部署）,保留
+src/lib/news-images.ts,正式使用,被程式引用,src/components/CardArticle.astro（引用證據，不代表遠端已部署）,保留
+src/lib/news-listing.ts,正式使用,被程式引用,src/components/NewsCard.astro; src/components/NewsListPage.astro; src/lib/indexable-pages.ts; src/pages/[lang]/news/filter/[...filter].astro（引用證據，不代表遠端已部署）,保留
+src/lib/news-media.ts,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/NewsCard.astro; src/components/NewsVideos.astro; src/lib/news-images.ts（引用證據，不代表遠端已部署）,保留
+src/lib/news-video.ts,正式使用,被程式引用,src/lib/news-media.ts; tests/news-video.test.ts（引用證據，不代表遠端已部署）,保留
+src/lib/pending.ts,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/CaseListPage.astro; src/components/Footer.astro（引用證據，不代表遠端已部署）,保留
+src/lib/publication-date.ts,正式使用,被程式引用,src/lib/articles.ts; src/lib/content.ts; tests/historical-news.test.ts（引用證據，不代表遠端已部署）,保留
+src/lib/search-tokenize.ts,正式使用,被程式引用,scripts/build-search.mjs; src/pages/[lang]/search/index.astro; tests/search-tokenize.test.ts（引用證據，不代表遠端已部署）,保留
+src/lib/seo-title.ts,正式使用,被程式引用,src/components/SeoHead.astro; tests/seo-title.test.ts（引用證據，不代表遠端已部署）,保留
+src/lib/site.ts,正式使用,混合用途,正式站點設定入口；移除 .cms-site.json 遠端覆寫,修改／拆分，保留仍使用部分
+src/lib/slot.ts,正式使用,被程式引用,src/content.config.ts; tests/slot.test.ts（引用證據，不代表遠端已部署）,保留
+src/lib/technologies.ts,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/RelatedTechnologies.astro; src/components/RelatedTechnologyArticles.astro; src/content.config.ts（引用證據，不代表遠端已部署）,保留
+src/lib/technology-media.ts,正式使用,被程式引用,src/pages/[lang]/technologies/[slug].astro; src/pages/[lang]/technologies/index.astro（引用證據，不代表遠端已部署）,保留
+src/lib/text.ts,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/CaseDetail.astro; src/components/CaseListPage.astro（引用證據，不代表遠端已部署）,保留
+src/lib/typography.ts,正式使用,被程式引用,src/lib/text.ts; tests/typography.test.ts（引用證據，不代表遠端已部署）,保留
+src/lib/ui.ts,正式使用,被程式引用,src/components/ArticleDetail.astro; src/components/ArticleListPage.astro; src/components/CardArticle.astro; src/components/CardProduct.astro（引用證據，不代表遠端已部署）,保留
+src/live.config.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+src/middleware.ts,正式使用,混合用途,只為 manual i18n/EmDash 回應標頭；須先確認移除 Astro CMS i18n 設定後再刪,修改／拆分，保留仍使用部分
+src/pages/[lang]/cases/[slug].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/cases/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/company/csr/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/company/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/company/investors/[module].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/company/investors/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/company/partners/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/company/team/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/contact/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/insights/[slug].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/insights/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/insights/page/[page].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/news/[slug].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/news/filter/[...filter].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/news/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/news/page/[page].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/products/[slug].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/products/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/search/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/solutions/[slug].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/solutions/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/tags/[slug].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/tags/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/technologies/[slug].astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/[lang]/technologies/index.astro,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/robots.txt.ts,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/pages/sitemap.xml.ts,正式使用,正式前台路由,Astro src/pages routing；getStaticPaths/GET；Pages workflow 靜態 artifact,保留
+src/scripts/micro-interactions.ts,正式使用,被程式引用,src/components/MicroInteractions.astro（引用證據，不代表遠端已部署）,保留
+src/styles/global.css,正式使用,被程式引用,src/layouts/BaseLayout.astro（引用證據，不代表遠端已部署）,保留
+src/styles/motion.css,正式使用,被程式引用,src/layouts/BaseLayout.astro（引用證據，不代表遠端已部署）,保留
+src/worker.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+tests/cms-plugin.test.ts,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+tests/cms/technology-tags.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+tests/cms/workflow.mjs,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存
+tests/content-source.test.ts,正式使用,混合用途,拆舊 CMS/Workers bootstrap 規則，保留測試資料不得上線之檢查,修改／拆分，保留仍使用部分
+tests/fixtures/content/case-studies/tw/fixture-case-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/case-studies/tw/fixture-case-2.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/case-studies/tw/fixture-case-3.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/case-studies/tw/fixture-case-unapproved.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/insights/jp/fixture-insight-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/insights/jp/fixture-insight-2.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/insights/jp/fixture-insight-3.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/insights/tw/fixture-insight-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/insights/tw/fixture-insight-2.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/insights/tw/fixture-insight-3.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/investor-items/tw/fixture-announcement-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/investor-items/tw/fixture-announcement-2.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/investor-items/tw/fixture-briefing-future.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/investor-items/tw/fixture-contact-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/investor-items/tw/fixture-profile-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/investor-items/tw/fixture-profile-2.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/milestones/tw/fixture-milestone-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/milestones/tw/fixture-milestone-2.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/en/fixture-news-01.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/en/fixture-news-02.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/en/fixture-news-03.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-01.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-02.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-03.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-04.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-05.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-06.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-07.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-08.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-09.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-10.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-11.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-12.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-13.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-14.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-empty.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/news/tw/fixture-news-future.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/partners/tw/fixture-partner-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/partners/tw/fixture-partner-3.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/partners/tw/fixture-partner-unapproved.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/en/digital-twin.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/en/exhibition.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/en/xr-training.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/jp/digital-twin.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/jp/exhibition.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/jp/xr-training.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/tw/digital-twin.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/tw/exhibition.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/tags/tw/xr-training.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/content/team/tw/fixture-member-1.md,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/fixtures/seo-approved.json,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/historical-news.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/news-featured.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/news-video.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/pending.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/punctuation.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/search-tokenize.test.ts,正式使用,混合用途,同檔有正式搜尋及 Portable Text 舊 CMS 測試；只拆後者,修改／拆分，保留仍使用部分
+tests/seo-title.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/slot.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/technologies.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tests/typography.test.ts,正式使用,建置/QA,package.json 註冊指令、.github/workflows/ci.yml 與測試 import；fixtures 只用於測試而非第二正式 CMS,保留；11 處舊輸出路徑需同步調整
+tsconfig.json,正式使用,開發約束,Actions setup-node、Astro check、忽略本機 secrets/artifacts,保留並清理已退役引用
+wrangler.jsonc,歷史遺留,舊 CMS/部署,astro.config.mjs 舊 integration、content-source 的 emdash 分支及 DEPLOY.md；Pages workflow 沒有部署 Worker,依新靜態路徑驗收後移除/取代；有資料先封存

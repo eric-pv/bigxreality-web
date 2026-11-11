@@ -1,5 +1,6 @@
 ---
 import SmartCardGrid from "./SmartCardGrid.astro";
+import Text from './Text.astro';
 import type { Lang } from "../i18n";
 import { getTechnologyArticles, type TechnologyId } from "../lib/technologies";
 import { articleHref, tagNames } from "../lib/articles";
@@ -14,7 +15,7 @@ const tags = await Promise.all(articles.map((article) => tagNames(article.base.d
 ---
 {articles.length > 0 && <section class="section section--alt" id="technology-articles" aria-labelledby="h-technology-articles" data-technology-articles>
   <div class="container">
-    <h2 class="t-h2" id="h-technology-articles">{labels[lang]}</h2>
+    <h2 class="t-h2" id="h-technology-articles"><Text value={labels[lang]} /></h2>
     <SmartCardGrid>{articles.map((article, index) => <li><CardArticle lang={lang} href={articleHref(article)} type={ui.articleTypes[article.collection]} date={article.base.data.publishDate} title={article.loc.data.title} summary={article.loc.data.summary} tags={tags[index]} /></li>)}</SmartCardGrid>
   </div>
 </section>}

@@ -41,13 +41,13 @@ export interface HomeCopy {
 export const homeCopy: Record<Lang, HomeCopy> = {
   tw: {
     seo: {
-      title: "沉浸式模擬訓練與 XR 系統整合",
-      description: "Big x Reality 全球動力科技結合 XR 延展實境、AI 智慧模擬、互動設備與系統整合，提供軍事、警勤、消防防災及智慧城市的專業模擬訓練與數位化應用解決方案。",
+      title: "VR／XR 模擬訓練與系統整合",
+      description: "Big x Reality 全球動力科技立足台灣，整合 VR 虛擬實境、XR 延展實境、AI 與互動設備，提供軍事、警察、消防防災的模擬訓練，以及智慧城市數位應用與系統整合服務。",
     },
     hero: {
       eyebrow: "Big x Reality",
-      title: "虛擬訓練．真實應變．守護未來",
-      subtitle: "讓每一次演練，都更接近真實任務。",
+      title: "虛擬訓練，真實應變",
+      subtitle: "讓演練更接近真實任務。",
       description: "從軍事、警勤到消防防災，Big x Reality 結合沉浸式模擬、互動設備與系統整合技術，將專業訓練需求轉化為可實際操作、反覆演練的訓練環境。",
       primary: "探索解決方案",
       secondary: "了解 BXR",
@@ -57,10 +57,10 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       posterAlt: "三名身穿警察制服的學員頭戴 VR 頭盔、手持訓練用槍械進行沉浸式警勤訓練",
     },
     value: {
-      eyebrow: "Why Simulation",
-      title: "真實任務無法預演，但專業能力可以反覆鍛鍊。",
+      eyebrow: "為什麼需要模擬訓練",
+      title: "反覆演練，累積應變能力",
       paragraphs: [
-        "面對複雜環境、突發狀況與高風險任務，專業訓練不只需要熟悉設備操作，更需要持續練習觀察、判斷與應變。",
+        "面對複雜環境、突發狀況與高風險任務，專業訓練結合設備操作熟悉與持續的觀察、判斷及應變練習。",
         "透過模擬技術與實體操作設備的結合，讓原本受到場地、資源或安全條件限制的訓練，擁有更多實施與練習的可能。",
       ],
       points: [
@@ -70,9 +70,9 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       ],
     },
     products: {
-      eyebrow: "Featured Products",
-      title: "不只是模擬場景，更是可以實際參與的訓練。",
-      description: "從戰術行動、警勤應變到無人系統與消防操作，BXR 將模擬環境與實體互動結合，讓訓練不只停留在觀看，而能進一步延伸至操作、判斷與任務練習。",
+      eyebrow: "精選產品",
+      title: "結合模擬情境與實體互動的專業訓練。",
+      description: "從戰術行動、警勤應變到無人系統與消防操作，BXR 結合模擬環境與實體互動，提供操作、判斷與任務練習。",
       viewAll: "探索所有產品",
       more: "了解產品",
       items: {
@@ -83,8 +83,8 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       },
     },
     technologies: {
-      eyebrow: "Core Technologies",
-      title: "技術的價值，不只在於呈現，而在於實際應用。",
+      eyebrow: "核心技術",
+      title: "讓技術在實際應用中創造價值。",
       paragraphs: [
         "沉浸式畫面只是開始。",
         "從虛擬環境的建構、實體設備的互動，到訓練流程與系統資訊的整合，BXR 以不同技術能力相互配合，協助專業單位建立符合實際需求的模擬訓練應用。",
@@ -98,7 +98,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       },
     },
     solutions: {
-      eyebrow: "Solutions",
+      eyebrow: "解決方案",
       title: "不同任務，同樣需要更好的準備。",
       description: "每個專業領域都有不同的任務環境與訓練挑戰。BXR 從實際使用需求出發，將模擬技術與系統整合能力應用於不同場域，協助使用單位探索更合適的訓練與數位化應用方式。",
       viewAll: "查看所有解決方案",
@@ -110,14 +110,14 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       },
     },
     cases: {
-      eyebrow: "Case Studies",
+      eyebrow: "成功案例",
       title: "從實際需求出發，讓技術走進應用現場。",
       description: "每一項專業訓練與數位化應用，都始於不同的任務需求。透過實際專案與應用經驗，持續探索模擬技術在不同場域中的可能性。",
       viewAll: "查看所有成功案例",
       placeholder: "【開發用佔位】成功案例資料尚未建立，正式網站不顯示此卡片",
     },
     news: {
-      eyebrow: "Latest News",
+      eyebrow: "最新消息",
       title: "持續探索，讓更多可能成為現實。",
       description: "從技術發展、專業展會到最新應用，掌握 BXR 在沉浸式模擬與專業訓練領域的最新動態。",
       viewAll: "查看所有最新消息",
@@ -126,18 +126,18 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     cta: {
       title: "下一次訓練，可以從更好的規劃開始。",
       description: "無論是單一設備訓練、專業情境模擬，或跨系統整合需求，BXR 都能從實際應用目標出發，共同評估適合的規劃方向。",
-      primary: "與我們聯繫",
+      primary: "聯絡 BXR",
       secondary: "探索解決方案",
     },
   },
   en: {
     seo: {
-      title: "XR Simulation Training & System Integration",
-      description: "Big x Reality delivers XR simulation training, AI-assisted simulation, interactive equipment, and system integration solutions for military, police, fire and disaster response, and smart city applications.",
+      title: "VR & XR Simulation Training | System Integration",
+      description: "Taiwan-based Big x Reality combines VR, XR, AI and interactive equipment for military, police and fire safety training, plus smart city simulation and system integration.",
     },
     hero: {
       eyebrow: "Big x Reality",
-      title: "Virtual Training. Real Response. Protecting the Future.",
+      title: "Train Today. Protect Tomorrow.",
       subtitle: "Bringing every drill closer to the real mission.",
       description: "From military and police to fire and disaster response, Big x Reality combines immersive simulation, interactive equipment and system integration to turn professional training needs into training environments that can be operated hands-on and practiced again and again.",
       primary: "Explore Solutions",
@@ -149,9 +149,9 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     value: {
       eyebrow: "Why Simulation",
-      title: "Real missions can't be rehearsed in advance, but professional skills can be trained again and again.",
+      title: "Build professional response skills through repeated practice.",
       paragraphs: [
-        "When facing complex environments, sudden incidents and high-risk missions, professional training requires more than familiarity with equipment. It requires continuous practice in observation, judgment and response.",
+        "Professional training for complex environments, sudden incidents and high-risk missions combines equipment familiarity with continuous practice in observation, judgment and response.",
         "By combining simulation technology with physical training equipment, training that was once limited by venue, resources or safety conditions gains more ways to be carried out and practiced.",
       ],
       points: [
@@ -162,7 +162,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     products: {
       eyebrow: "Featured Products",
-      title: "More than simulated scenes: training you can actually take part in.",
+      title: "Immersive simulation for hands-on training.",
       description: "From tactical operations and police response to unmanned systems and firefighting, BXR combines simulated environments with physical interaction, so training goes beyond watching and extends into operation, judgment and mission practice.",
       viewAll: "Explore All Products",
       more: "View product",
@@ -175,7 +175,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     technologies: {
       eyebrow: "Core Technologies",
-      title: "The value of technology lies not in display, but in real-world application.",
+      title: "Technology creates value through practical application.",
       paragraphs: [
         "Immersive visuals are only the beginning.",
         "From building virtual environments and interacting with physical equipment to integrating training workflows and system information, BXR brings different technical capabilities together to help professional organizations build simulation training applications that meet actual needs.",
@@ -203,7 +203,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     cases: {
       eyebrow: "Case Studies",
       title: "Starting from real needs, bringing technology into the field.",
-      description: "Every professional training and digital application begins with its own mission needs. Through actual projects and application experience, we continue to explore what simulation technology can do in different settings.",
+      description: "Professional training and digital applications begin with mission requirements. BXR draws on project and application experience to explore simulation technology across different settings.",
       viewAll: "View All Case Studies",
       placeholder: "[DEV PLACEHOLDER] No case studies yet. This card is not shown on the public site.",
     },
@@ -215,21 +215,21 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       placeholder: "[DEV PLACEHOLDER] No news yet. This card is not shown on the public site.",
     },
     cta: {
-      title: "Your next training can start with better planning.",
-      description: "Whether you need single-device training, professional scenario simulation or cross-system integration, BXR starts from your actual application goals to evaluate the right planning direction with you.",
-      primary: "Contact Us",
+      title: "Effective training starts with considered planning.",
+      description: "BXR evaluates single-device training, professional scenario simulation and cross-system integration around confirmed application goals and project requirements.",
+      primary: "Contact BXR",
       secondary: "Explore Solutions",
     },
   },
   jp: {
     seo: {
-      title: "XR シミュレーション訓練とシステム統合",
-      description: "Big x Reality は、XR、AI シミュレーション、インタラクティブ機器、システム統合技術を活用し、軍事、警察、消防・防災、スマートシティ分野に向けた専門訓練・デジタル活用ソリューションを提供します。",
+      title: "VR・XR シミュレーション訓練とシステム統合",
+      description: "台湾を拠点とする Big x Reality は、VR・XR、AI、インタラクティブ機器を組み合わせ、軍事・警察・消防防災の模擬訓練と、スマートシティのデジタル活用・システム統合を支援します。",
     },
     hero: {
       eyebrow: "Big x Reality",
-      title: "バーチャル訓練・リアルな対応・未来を守る",
-      subtitle: "すべての演習を、より実際の任務に近づける。",
+      title: "仮想の訓練から、実際の対応力へ",
+      subtitle: "演習を実際の任務に近づける。",
       description: "軍事・警察から消防防災まで、Big x Reality は没入型シミュレーション、インタラクティブ機器、システム統合技術を組み合わせ、専門訓練のニーズを、実際に操作し繰り返し演習できる訓練環境へと形にします。",
       primary: "ソリューションを見る",
       secondary: "BXR について",
@@ -239,10 +239,10 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       posterAlt: "警察の制服を着た 3 名の訓練生が VR ヘッドセットを装着し、訓練用銃器を構えて没入型警察訓練を行う様子",
     },
     value: {
-      eyebrow: "Why Simulation",
-      title: "実際の任務は予行演習できない。しかし、専門能力は繰り返し鍛えられる。",
+      eyebrow: "シミュレーション訓練の意義",
+      title: "反復演習で、対応力を育てる。",
       paragraphs: [
-        "複雑な環境、突発的な事態、高リスクな任務に向き合う専門訓練には、機器操作に慣れるだけでなく、観察・判断・対応を継続して練習することが求められます。",
+        "複雑な環境、突発的な事態、高リスクな任務に向き合う専門訓練では、機器操作の習熟と観察・判断・対応の継続的な練習を組み合わせます。",
         "シミュレーション技術と実機操作機器を組み合わせることで、これまで場所、資源、安全条件に制約されていた訓練に、より多くの実施と練習の可能性をもたらします。",
       ],
       points: [
@@ -252,7 +252,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       ],
     },
     products: {
-      eyebrow: "Featured Products",
+      eyebrow: "主要製品",
       title: "単なるシミュレーション映像ではなく、実際に参加できる訓練へ。",
       description: "戦術行動、警察対応から無人システム、消防操作まで、BXR はシミュレーション環境と実機によるインタラクションを組み合わせ、訓練を「見る」だけで終わらせず、操作・判断・任務演習へと広げます。",
       viewAll: "すべての製品を見る",
@@ -265,7 +265,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       },
     },
     technologies: {
-      eyebrow: "Core Technologies",
+      eyebrow: "コア技術",
       title: "技術の価値は、見せることではなく、実際に活かすことにある。",
       paragraphs: [
         "没入型の映像は、始まりにすぎません。",
@@ -280,7 +280,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       },
     },
     solutions: {
-      eyebrow: "Solutions",
+      eyebrow: "ソリューション",
       title: "任務は違っても、より良い備えが必要なことは同じ。",
       description: "専門分野ごとに、任務環境と訓練の課題は異なります。BXR は実際の利用ニーズから出発し、シミュレーション技術とシステム統合力をさまざまな現場に活かし、利用機関がより適した訓練とデジタル活用の方法を見いだせるよう支援します。",
       viewAll: "すべてのソリューションを見る",
@@ -292,14 +292,14 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       },
     },
     cases: {
-      eyebrow: "Case Studies",
+      eyebrow: "導入事例",
       title: "実際のニーズから出発し、技術を活用の現場へ。",
       description: "あらゆる専門訓練とデジタル活用は、それぞれの任務ニーズから始まります。実際のプロジェクトと活用経験を通じて、さまざまな現場におけるシミュレーション技術の可能性を探り続けています。",
       viewAll: "すべての導入事例を見る",
       placeholder: "【開発用プレースホルダー】導入事例データは未登録です。公開サイトには表示されません。",
     },
     news: {
-      eyebrow: "Latest News",
+      eyebrow: "ニュース",
       title: "探求を続け、より多くの可能性を現実に。",
       description: "技術開発や専門展示会から最新の活用事例まで、没入型シミュレーションと専門訓練の分野における BXR の最新情報をお届けします。",
       viewAll: "すべてのニュースを見る",

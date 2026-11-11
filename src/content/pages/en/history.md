@@ -6,5 +6,5 @@ seo:
   description: "Explore the development of Big x Reality and its journey in XR simulation training, professional training systems, and integration technologies."
 hero:
   eyebrow: History
-  title: "[待翻譯] 發展歷程"
+  title: "Company history"
 ---

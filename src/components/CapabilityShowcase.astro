@@ -1,7 +1,8 @@
 ---
 /**
  * Capabilities as an editorial sequence. A capability with an image slot becomes a
- * picture + text row (alternating sides); consecutive capabilities without one are
+ * picture + text row (alternating sides on desktop; stacked as a card with the text first
+ * and the picture below on tablet and phone); consecutive capabilities without one are
  * grouped into a two-column text row. Any number of items, any mix.
  */
 import type { ImageMetadata } from "astro";
@@ -21,7 +22,7 @@ const rows: Row[] = [];
 let flip = false;
 items.forEach((item, i) => {
   const entry = { item, n: i + 1 };
-  if (item.image) {
+  if (item.image?.src) {
     rows.push({ kind: "feature", entry, flip });
     flip = !flip;
   } else {
@@ -37,7 +38,7 @@ const num = (n: number) => String(n).padStart(2, "0");
     row.kind === "feature" ? (
       <article class:list={["feature", { flip: row.flip }]}>
         <div class="pic">
-          <MediaSlot media={row.entry.item.image} ratio="3 / 2" fallbackLabel={fallbackLabel} needPrefix={needPrefix} badge={badge} sizes="(max-width: 1023px) 100vw, 58vw" />
+          <MediaSlot media={row.entry.item.image} ratio="16 / 9" fallbackLabel={fallbackLabel} needPrefix={needPrefix} badge={badge} sizes="(max-width: 1023px) 100vw, 58vw" />
         </div>
         <div class="text">
           <p class="t-tech num" aria-hidden="true">{num(row.entry.n)}</p>
@@ -60,9 +61,10 @@ const num = (n: number) => String(n).padStart(2, "0");
   )}
 </div>
 <style>
-  .showcase { display: grid; gap: var(--content-gap); }
-  .feature { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-6); align-items: center; }
-  .feature.flip { grid-template-columns: 5fr 7fr; }
+  /* minmax(0, …): a picture that fails to load shows its long alt text, which must not widen the page. */
+  .showcase { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--content-gap); }
+  .feature { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-6); align-items: center; }
+  .feature.flip { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
   .feature.flip .pic { order: 2; }
   .text { display: grid; gap: var(--space-2); align-content: center; }
   .text .num { color: var(--ink-muted); margin: 0; }
@@ -79,10 +81,12 @@ const num = (n: number) => String(n).padStart(2, "0");
   .plain.single .cap { display: grid; grid-template-columns: 4fr 8fr; column-gap: var(--space-6); align-items: start; }
   .plain.single .cap .head { grid-row: span 2; }
   .plain.single .cap .content, .plain.single .cap .value { grid-column: 2; margin-top: 0; }
+  /* Stacked (tablet and phone, docs/LAYOUT-RULES.md §2): each picture row becomes one card,
+     text first and the picture below it, so the picture clearly belongs to the text above. */
   @media (max-width: 1023px) {
-    .feature, .feature.flip { grid-template-columns: 1fr; gap: var(--space-3); }
-    .feature.flip .pic { order: 0; }
-    .showcase { gap: var(--space-6); }
+    .feature, .feature.flip { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); padding: var(--space-3); background: var(--bxr-white); border: 1px solid var(--bxr-line); border-top: 2px solid var(--bxr-black); }
+    .feature .pic, .feature.flip .pic { order: 2; }
+    .showcase { gap: var(--space-4); }
   }
   @media (max-width: 767px) { .plain { grid-template-columns: 1fr; } .plain.single .cap { display: flex; } }
 </style>

@@ -1,10 +1,10 @@
 ---
 /** Dark call-to-action band: title, description, red primary + outline secondary (passed as slot content). */
 import Text from "./Text.astro";
-interface Props { title: string; description?: string; id?: string }
-const { title, description, id } = Astro.props;
+interface Props { title: string; description?: string; id?: string; /** Static diagonal-stripe texture (decorative). */ stripes?: boolean }
+const { title, description, id, stripes = false } = Astro.props;
 ---
-<section class="cta-band" data-theme="dark" aria-labelledby={id}>
+<section class:list={["cta-band", { "has-stripes": stripes }]} data-theme="dark" aria-labelledby={id}>
   <div class="container inner">
     <div class="copy">
       <h2 class="t-h2" id={id}><Text value={title} /></h2>
@@ -19,4 +19,9 @@ const { title, description, id } = Astro.props;
   .copy { max-width: 40rem; display: grid; gap: var(--space-2); }
   .desc { color: var(--bxr-ash); }
   .actions { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: flex-start; }
+</style>
+<style>
+  /* Static stripes (no loop: sub-page content areas stay still). */
+  .has-stripes { position: relative; isolation: isolate; overflow: hidden; }
+  .has-stripes::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .05; background: var(--tac-stripes-bg); }
 </style>

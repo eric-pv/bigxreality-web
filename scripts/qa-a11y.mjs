@@ -1,10 +1,11 @@
-// axe-core (WCAG 2.0/2.1 A + AA) on the phase 1 QA pages at 1440 px and 390 px,
+// axe-core (WCAG 2.0/2.1 A + AA) on the phase 1 QA pages and the 404 page at 1440 px and 390 px,
 // plus a keyboard check of the mobile menu. Exits 1 on any serious/critical issue.
 import { chromium } from "playwright-core";
 import { AxeBuilder } from "@axe-core/playwright";
 import { startPreview, CHROMIUM } from "./lib/serve.mjs";
 
-const PAGES = process.argv.slice(2).length ? process.argv.slice(2) : ["/tw/products/", "/tw/products/sut/", "/en/products/sut/"];
+// The 404 page is checked in each language it switches to (TW, EN, JP, no prefix → TW).
+const PAGES = process.argv.slice(2).length ? process.argv.slice(2) : ["/tw/products/", "/tw/products/sut/", "/en/products/sut/", "/tw/no-such-page/", "/en/no-such-page/", "/jp/no-such-page/", "/no-such-page/"];
 const WIDTHS = [1440, 390];
 const { base, stop } = await startPreview(4330);
 const browser = await chromium.launch({ executablePath: CHROMIUM });

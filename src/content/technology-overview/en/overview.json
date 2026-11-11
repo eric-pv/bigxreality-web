@@ -1,0 +1,45 @@
+{
+  "translationStatus": "translated",
+  "eyebrow": "Core Technologies",
+  "title": "Core Technologies",
+  "lead": "From virtual scenarios to practical training: technology that responds to professional requirements",
+  "intro": [
+    "Professional simulation training brings together realistic virtual imagery, training objectives, operational interaction, scenario design, and system integration.",
+    "Big x Reality (BXR) combines extended reality (XR), digital simulation, interaction design, and experience across application domains to continue developing simulation training systems for fields such as military, police, and fire and disaster response.",
+    "By bringing technology and training requirements together, BXR helps professional organisations build safe, repeatable training environments suited to their intended applications."
+  ],
+  "technologies": {
+    "xr": {
+      "title": "Extended Reality (XR)",
+      "description": "Integrate immersive interaction technologies such as VR, AR, and MR to create virtual and blended physical–digital training environments for different mission requirements."
+    },
+    "ai-simulation": {
+      "title": "AI-Enhanced Simulation",
+      "description": "Explore the application of artificial intelligence in virtual characters, scenario interaction, and simulation systems, introducing it according to actual product capabilities and project requirements."
+    },
+    "digital-simulation": {
+      "title": "Digital Environments and Simulation Development",
+      "description": "Use three-dimensional modelling, scene design, and digital environment development to turn the spaces, equipment, and scenarios needed for training into interactive simulated environments."
+    },
+    "training-design": {
+      "title": "Simulation-Based Training Design",
+      "description": "Combine training objectives, mission workflows, and serious games principles to translate professional training requirements into interactive simulation systems with value for repeated practice."
+    },
+    "system-integration": {
+      "title": "Communication & System Integration",
+      "description": "Integrate operating equipment, information interfaces, and related systems according to training requirements, supporting information transfer and collaborative applications in specific scenarios."
+    },
+    "decision-visualization": {
+      "title": "Command Decision-Making and Information Visualisation",
+      "description": "Use maps, tactical displays, and information visualisation interfaces to present mission scenarios and related information, supporting deployment discussions and decision-making exercises."
+    },
+    "domain-expertise": {
+      "title": "Domain Expertise in Professional Training",
+      "description": "Combine an understanding of training requirements in military, police, and fire and disaster response with project application experience to translate professional missions into directions for simulation system design."
+    }
+  },
+  "seo": {
+    "title": "VR & XR Technologies | AI and Simulation Integration",
+    "description": "Explore BXR's VR and XR technologies: AI simulation, 3D environments, training design, system integration, decision visualization and domain expertise."
+  }
+}

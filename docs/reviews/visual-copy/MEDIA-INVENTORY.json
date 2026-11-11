@@ -1,0 +1,1505 @@
+[
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Logo_H_Black.png",
+    "type": "image",
+    "width": 2000,
+    "height": 496,
+    "ratio": 4.032258064516129,
+    "sha256": "4cb853e58a38081759b5d230e1d3cde7121c497ebf689464ce055de909b9aa4c",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Logo_H_Color.png",
+    "type": "image",
+    "width": 2000,
+    "height": 496,
+    "ratio": 4.032258064516129,
+    "sha256": "00ed34b623d7c417a44139f5c05ac5beec7230153a5092898a1f03cc29b0f6cc",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Logo_H_Reverse.png",
+    "type": "image",
+    "width": 2000,
+    "height": 496,
+    "ratio": 4.032258064516129,
+    "sha256": "81b253462e6bea3c5e87e0e33376854007d2a44541545ec94214ed9b19f5c834",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Logo_H_White.png",
+    "type": "image",
+    "width": 2000,
+    "height": 496,
+    "ratio": 4.032258064516129,
+    "sha256": "7a450176c91d5ff359a89af493e32b6ef83493af66eac4cf3862e377c2dc2746",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Logo_V_Black.png",
+    "type": "image",
+    "width": 2000,
+    "height": 1544,
+    "ratio": 1.2953367875647668,
+    "sha256": "78253471e85ffec1c60c525270d14329646db3ee1a84af409b9dc51d1508d766",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Logo_V_Color.png",
+    "type": "image",
+    "width": 2000,
+    "height": 1544,
+    "ratio": 1.2953367875647668,
+    "sha256": "9f3b5c41920360f7457d3dca634bcbe3e23a2caf9a1900f1e9fc22c7b865008f",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Logo_V_Reverse.png",
+    "type": "image",
+    "width": 2000,
+    "height": 1544,
+    "ratio": 1.2953367875647668,
+    "sha256": "af52ec6e037c9d94f43bddc2827bfb12bfd330402b03b7c705239df75372305c",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Logo_V_White.png",
+    "type": "image",
+    "width": 2000,
+    "height": 1544,
+    "ratio": 1.2953367875647668,
+    "sha256": "0546f093bb86a832170acc82936bfd44c166a5225bba9249ba1c74db58f4aa49",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Symbol_Black.png",
+    "type": "image",
+    "width": 2000,
+    "height": 2050,
+    "ratio": 0.975609756097561,
+    "sha256": "d53a1dc49c2f49df84dfc1e47d5275ab2e5bcbde085f2880bc9534c29246ee32",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Symbol_Outline_Red.png",
+    "type": "image",
+    "width": 2000,
+    "height": 2049,
+    "ratio": 0.9760858955588092,
+    "sha256": "3c8a405c4b12ec09861b58d38acb40eb5e8deaba17744b4392f271c385f51371",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Symbol_Outline_White.png",
+    "type": "image",
+    "width": 2000,
+    "height": 2049,
+    "ratio": 0.9760858955588092,
+    "sha256": "8e582ea7959f6e8ec07c09d7630d388ef9d70f947a1f29460223e4a76263ab92",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Symbol_Red.png",
+    "type": "image",
+    "width": 2000,
+    "height": 2050,
+    "ratio": 0.975609756097561,
+    "sha256": "73e87115783a56a11d11b41a4a6d19b173311d82cc9728712dc4ca6d9a3a0673",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/01_Logo/PNG/BXR_Symbol_White.png",
+    "type": "image",
+    "width": 2000,
+    "height": 2050,
+    "ratio": 0.975609756097561,
+    "sha256": "22a6dda1cf6b0c04b302a8a082fb59f40accd2c1ce567405f47b96fb6ac68473",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P12_color-architecture.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "5e85bd5ff216bdc669389e860a79e348d038b65464948e60f817eda60a88e9e9",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P13_brand-core.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "fd26ea78fbcb6e681f478411693d34900a3cc4b757fb4af39937be14b0c9f278",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P14_text-red.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "a3a48b50b2f3500f68f6c61e0487592f2bc315f7aff227c10dde7219acb40d46",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P15_auxiliary.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "8f25f92f1d449358c96dced4ba19da00b559821be75a921534a5f7f6d5e45d32",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P16_neutral-functional.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "efd2e34a90440b5f226c9810a3e67d8362bb752efc927f9e136c3394455223ee",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P17_ratio.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "0de69efacc655014299eae924893a9acfdb4ce40964bb789dc0b8797395c8ef1",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P18_sector-colors.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "fae762720e17e9b50691694dd88ec319cd28cad63dbbfb4510c01dcafe083766",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P19_sector-rules.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "419e4f42bca7389586025082adf177b3b98e38847a3fa57f782f7e370da0d68f",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P20_multi-sector.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "7517722714c849d8f60c0a03fdb6626cb052a771effe16b666e0910e4f1226de",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P21_asset-colors.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "dc5982f649527b0f43cb2640b9c6e2017ea013a167abe39ad13279a5c76b5323",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P22_color-dodont.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "026902602d2165427612290369bcb545bd0bef03d13eff554ff43ed5b40474c8",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P69_sector-army.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "df29d5fcef3eeaceb2ee1558703aacdeccdc1bf280cb2d5b775ae9744ad0c3fe",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P70_sector-navy.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "cea47ba300ede102e01f6fc273a4936d3037c7de528829772dcb59b4bf35f6d5",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P71_sector-air.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "ce6c4f9d8b3c2a2d1374e6d00bed43633715cff7477eb7dac70e3cd8bec9a92c",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P72_sector-fire.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "c3c4652315895de6e41b1d84640db33880ac7139a177055185978c2a04469670",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.1_P73_sector-police.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "916bbb5d2b6b77761cded9db2ec5a1b3f812f6dac6ce18e27a78306201333f67",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P12_color-architecture.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "b874c15b905ed5587860566f128ba8e19d48fe31f57efd285beb543561ed59af",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P13_brand-core.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "f22a90f6fd4777787c17971df0987ad9a3a5036cb34df999579823a850d093c2",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P14_text-red.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "93a8bbed9c7bac82b8536943bc487f8a1b6a766699737c28d7fc0d68cd5df128",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P15_brass.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "8ecf16637aeb38266df199b9f86c088d5e011c42cdfa08367791d0a8efc22ecd",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P16_neutral-functional.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "080b05f1ab837d817e1edc24b374d6e8434d6f910a84290e3a1161e71ca04a41",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P17_usage-context.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "2edfc19df448f23bbea19d666de4336319020153af5bfc8f4d0e2b67d00dc348",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P18_sector-colors.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "9b03e9d2e2781cbef167cef2684a807fef80959119bc01416905091148b2feff",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P19_sector-review.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "1a85302cd1d2c0344669fe673971b2cdbd933f001658277ecf4145b3b71aa70a",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P20_sector-rules.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "5a5f09907a9e41f652858127f22ddb193400d497070ff372924f4198f36ae6dd",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P21_sector-proof.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "171474384280bbca3f433cfea59ba4b3b605cebb7d8a20405e3aac3586533e5e",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P22_multi-sector.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "7ca5725fa511e2b3f86e61dd1dfa06b9db09fd79f29c24e69fd40d986dc282dc",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P23_asset-colors.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "f67318998f394331bae453d699e3c0ee57393c9837c992e33ec297008e0357b0",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P24_color-dodont.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "a2719d1c0cbd18329ffe7afd4e13b712212933cc2c07767af6b59c9a72b540f4",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P34_sector-graphics.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "70277b765f7161020a322b2c6d4c6e4b942a3329c2808c68eabc09f1171d3616",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P35_sector-graphics-use.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "f79268a2ac77c6a7c10729222de07dc36e80738dbe37005373a0dd6a25cfb478",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P53_product-sector.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "327358d666f015217b914356ca7893c0c79b727a50702c5c856027643db7cff1",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P75_sector-army.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "9d7c0ec92d34fd429e72659cd7de249f441c541e4c362e383a5f2dd151efbd7e",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P76_sector-navy.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "6ef1cee208e023d514eeec07636cdfc957d172814539c4184233b2de8e80300e",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P77_sector-air.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "23989d7f7445e62f4c05623fa3032ca927a6512bd7d5e1e9f012191833aef431",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P78_sector-fire.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "bbb3d6a3610af456b457b8d170180bd1023391f56fa9822de8a847cac2667911",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P79_sector-police.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "93de230af67ddb41632de5e8b66c437b5958c1225fa7ed1f0cff038f2368b826",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/02_Color/Reference_Pages/BXR_CIS_v3.2_P81_corporate-kv.png",
+    "type": "image",
+    "width": 1600,
+    "height": 900,
+    "ratio": 1.7777777777777777,
+    "sha256": "de925015ad04ebe38e8be5b0d3fda10613f5edd22820338f7e72966f402eeacf",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_A_AIM_v1.png",
+    "type": "image",
+    "width": 558,
+    "height": 652,
+    "ratio": 0.8558282208588958,
+    "sha256": "cd4759af5d8e07e8ff508fc6445edaab843365a44f85f1796a9b8633a0b92480",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_A_BACK_v1.png",
+    "type": "image",
+    "width": 400,
+    "height": 900,
+    "ratio": 0.4444444444444444,
+    "sha256": "819ab0444a3dc5d7bdd9060dfae71ad4fd537934bbc8b60393b8b4c443c3eb7d",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_A_FRONT_v1.png",
+    "type": "image",
+    "width": 430,
+    "height": 900,
+    "ratio": 0.4777777777777778,
+    "sha256": "2ff3c881c0fa29cf22c03c6e56b8334b21d27c7a6601821fbdc4645bf3fe04d3",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_A_KNEEL_v1.png",
+    "type": "image",
+    "width": 558,
+    "height": 652,
+    "ratio": 0.8558282208588958,
+    "sha256": "1f9d0e4017bbcdbbe316e0942de3a16e12459d490e2545737416d08c486dc6f4",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_A_LOWREADY_v1.png",
+    "type": "image",
+    "width": 558,
+    "height": 652,
+    "ratio": 0.8558282208588958,
+    "sha256": "572223a83cc6d8fae1f31cfebcca41a440b0a2de40df2891048766b718c88590",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_A_MOVE_v1.png",
+    "type": "image",
+    "width": 560,
+    "height": 652,
+    "ratio": 0.8588957055214724,
+    "sha256": "11266af435b996a65bc1f1a60e2f16d739f5c53be84ad3af4767a51bd8df8c1b",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_A_REAR_v1.png",
+    "type": "image",
+    "width": 558,
+    "height": 652,
+    "ratio": 0.8558282208588958,
+    "sha256": "81e7a6fd4f1a948fe2453dd2b53dbc31df88000c9a15a2c5f2a5ac7e0475791d",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_A_SIDE_v1.png",
+    "type": "image",
+    "width": 340,
+    "height": 900,
+    "ratio": 0.37777777777777777,
+    "sha256": "613a93a1aa3f6c42c613d5b911ee4da289a32e268bc8c1a68300a908bfc39751",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_AIM_v1.png",
+    "type": "image",
+    "width": 576,
+    "height": 714,
+    "ratio": 0.8067226890756303,
+    "sha256": "8400ca17f0fc74f226949f6cfda80946dea684137a51d00ff26af2bee70f39d7",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_BACK_v1.png",
+    "type": "image",
+    "width": 372,
+    "height": 820,
+    "ratio": 0.45365853658536587,
+    "sha256": "0a1d32ad85d19d14d35bf4de961b6b88f160678dbd1fd942085fc30c7c1707ac",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_FRONT_v1.png",
+    "type": "image",
+    "width": 370,
+    "height": 820,
+    "ratio": 0.45121951219512196,
+    "sha256": "8961b32b5032b4506d79788bf79df1cb7be5be77b2e455d9f7ff36f28beb5205",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_KNEEL_v1.png",
+    "type": "image",
+    "width": 584,
+    "height": 714,
+    "ratio": 0.8179271708683473,
+    "sha256": "2b8e4dfa4a8a313357cce776731b8feceae78a71e7c9d3a695e143dbcc2aa1fa",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_LOWREADY_v1.png",
+    "type": "image",
+    "width": 544,
+    "height": 714,
+    "ratio": 0.7619047619047619,
+    "sha256": "5e43ea1f7b00640d1246d74af0bdd7af86d0d78892e6f7b330d1f8b78372b12e",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_MOVE_v1.png",
+    "type": "image",
+    "width": 600,
+    "height": 714,
+    "ratio": 0.8403361344537815,
+    "sha256": "65079224fea282293e61c272f48e8eb2df50a41bb9310861e0af3b37152b1301",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_REAR_v1.png",
+    "type": "image",
+    "width": 616,
+    "height": 714,
+    "ratio": 0.8627450980392157,
+    "sha256": "99bae348bc457f12afc6f9c409090cef1e5e65c7e47334a2bca9627927d4c078",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_SIDE-L_v1.png",
+    "type": "image",
+    "width": 334,
+    "height": 820,
+    "ratio": 0.4073170731707317,
+    "sha256": "9a9849f4512ac4e0b76e3b5159c67de1770a5a9e5347f61ea1e8262b803a2e9a",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_B_SIDE-R_v1.png",
+    "type": "image",
+    "width": 424,
+    "height": 820,
+    "ratio": 0.5170731707317073,
+    "sha256": "c6cdd45b8f0548d6cbe42cc3e7960a55f3733327892141c6c403f3081baefee5",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_AIM_v1.png",
+    "type": "image",
+    "width": 574,
+    "height": 716,
+    "ratio": 0.8016759776536313,
+    "sha256": "185db4e4b6df9a8f926b7a7319f74d8511c50c028f3463b4b065c5781d32a8b4",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_BACK_v1.png",
+    "type": "image",
+    "width": 410,
+    "height": 850,
+    "ratio": 0.4823529411764706,
+    "sha256": "63e9f25721a3d729e22be34020876b0b1a84d29932a6d4bf1557c06637dde552",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_FRONT_v1.png",
+    "type": "image",
+    "width": 376,
+    "height": 850,
+    "ratio": 0.4423529411764706,
+    "sha256": "f19c1735bb7510666ff91cc2cb3574190214686171227c1c19e0ca582d402a6b",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_KNEEL_v1.png",
+    "type": "image",
+    "width": 608,
+    "height": 716,
+    "ratio": 0.8491620111731844,
+    "sha256": "b5da32d3326747560a3ef357b34ea706d991b84ae6b7307c9f307dc1e884ad07",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_LOWREADY_v1.png",
+    "type": "image",
+    "width": 574,
+    "height": 716,
+    "ratio": 0.8016759776536313,
+    "sha256": "1c5ce113e218016d18aea71350b0269ced7a6d429e22f32c22ab77bcf613fbaf",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_MOVE_v1.png",
+    "type": "image",
+    "width": 606,
+    "height": 716,
+    "ratio": 0.8463687150837989,
+    "sha256": "4ea45286c16555925d519df4f50716073586104d511280d4597d6ea07baf4d94",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_REAR_v1.png",
+    "type": "image",
+    "width": 576,
+    "height": 716,
+    "ratio": 0.8044692737430168,
+    "sha256": "e0587bf9e68112b848e4943f7eb4b5ef292c878877b3f5645fcf71ef84c4b7e8",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_SIDE-L_v1.png",
+    "type": "image",
+    "width": 378,
+    "height": 850,
+    "ratio": 0.4447058823529412,
+    "sha256": "09be2b8a125c722acb01d9953c9b80d0b5c7a5c3678720bda5bc2345b58a19e4",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Cutouts/BXR_CHR_C_SIDE-R_v1.png",
+    "type": "image",
+    "width": 396,
+    "height": 850,
+    "ratio": 0.46588235294117647,
+    "sha256": "e3bfb35dab53e88f5355a2e214894fc506a991414bc976a6ab4bc89a7c449a2c",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Reference_Sheets/BXR_CHR_A_ReferenceSheet_v1.png",
+    "type": "image",
+    "width": 1536,
+    "height": 945,
+    "ratio": 1.6253968253968254,
+    "sha256": "477c2398563a031cd6679594138cc7abe2b7a1a76d493fcad02b688df0251674",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Reference_Sheets/BXR_CHR_B_ReferenceSheet_v1.png",
+    "type": "image",
+    "width": 1536,
+    "height": 961,
+    "ratio": 1.5983350676378771,
+    "sha256": "b505c7dd232e3ab5c50a4e2cb258b6f427237d2225d10cd770c5eefb4f3f7bf4",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Reference_Sheets/BXR_CHR_C_ReferenceSheet_v1.png",
+    "type": "image",
+    "width": 1536,
+    "height": 1024,
+    "ratio": 1.5,
+    "sha256": "d814eecba29c4082adc485581e4b7271a7d27d34e84754f52738b5c04bf4d06e",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/05_Characters/Reference_Sheets/BXR_CHR_PoseOverview_v1.png",
+    "type": "image",
+    "width": 1536,
+    "height": 968,
+    "ratio": 1.5867768595041323,
+    "sha256": "f52d4cbc34c3e2401bed648975d0b522107cd98c8c0c5b9b65d2529a8a7ac22e",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_AI_NPC_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "6892d6901ed822373fb56a2444e47c2a6bd697bab1cf22903a8c8b8475112e49",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_A_CQB_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "7217cca80a37575980e86a920d57af8d87e1c1190dd2a12b83d158a2a3e4592f",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_B_SEAM_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "f6c124f0dda11d0bbbfbedffac25dc84fc112b0e5fdc8dbf8a4330507d032a68",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_B_TERRAIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "df3cefa16b58241a27688ff7f1706639ed359666a03b325cc550728f73e48ac8",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_CORP_AI_TERRAIN_v3.2.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "5187a3d43ca9408d7e16c83ca5a4127701fa77cebabaf4a4f95f4b1bed0b3fd8",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_CORP_DIGITAL_TWIN_v3.2.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "ab4f212d439fdf7b7ae3c486f934b98969dd720c978ba30f5f75dffba1ce5d55",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_CORP_SMART_CITY_v3.2.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "c3e6f97703dafea88bf8249192aba7a5a4c93f60971710aad3baa83c1158ac33",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_CORP_TERRAIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "eaf125529efd84937ae6e6f87803fe302498d90841e97f357624530ee5441b23",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_CORP_TRAINING_SPACE_v3.2.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "34dbb893162fd166946ad0ab9d613ebe6ee00fe42826fd15716e00dd81fe4a35",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_CORP_TWIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "93b70e6a1537522a1be85448e2b13b8afd059214cf4d9c3a1c47e0bc2b1416a7",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_COVER_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "69d49afeacdfb2e3f6433d8650896d9134ca335a16225f02c53f9de79d825b7a",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_C_SIM_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "e35b673c51cbcedb0cb840cb3aef8408643df06ac4ae0b7260279a9bd6fe71d3",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_EXHIBITION_WALL_v3.jpg",
+    "type": "image",
+    "width": 2880,
+    "height": 1080,
+    "ratio": 2.6666666666666665,
+    "sha256": "0b1ea5bce21cdcdb773567865f772defc4672ae6d856ec04e19f4342585c2b40",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_NAVY_SEA_DARK_v3.1.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "928d879272306040ef789ceccaa242a07140842e973a6dca458cb9f861d5036d",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_NAVY_SEA_LIGHT_v3.1.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "cd0613c4e59b8740f64f80d002caf0a071815951e382602ddf8c83023a2587ae",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_TEAM_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "bbcee436ed20c19b7c2e0fb82dc46d8cfadf2dade99a5217e95c4dfb6b773c13",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_UAV_TERRAIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "a8bdda0cc5883b00ca578e2d066b5262ee56dbeb8b567b974713e56449d59def",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_XR_AR_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "2bbb2a7a8b272482ac9e4b2a92906e163c2d9e47858cae9d3cb2d9993d030967",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_XR_MR_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "0828fdf04adaeec1628a5829a1153e8431336b297690b072f0478f47e9c203d2",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_XR_SCAN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "97d02c8f50b784755d75c7ae8ad5c06fae4262eb8d184d28dfb5b1a5198c79ba",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_XR_TWIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "0c08b6847684065fc3a494e355b689772702cd4fe2aca9da3a701faf8221d152",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/06_KeyVisuals/BXR_KV_XR_VR_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "5209266cc7431925ed8cee61183275540d9dc63acaa2625d810dc2640e573dc7",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/07_Templates/Social/BXR_Social_16x9_Video_v3.2.png",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "19c51fe05eea59efb4f85b46ee1fb17f60f096cec5bd70ba6905ee8bbbaa1618",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/07_Templates/Social/BXR_Social_1x1_Post_v3.2.png",
+    "type": "image",
+    "width": 1080,
+    "height": 1080,
+    "ratio": 1,
+    "sha256": "ebe96d49c936db2c114cc2e2a5801839b37421e925284e218c688e95d042a643",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/07_Templates/Social/BXR_Social_4x5_Feed_v3.2.png",
+    "type": "image",
+    "width": 1080,
+    "height": 1350,
+    "ratio": 0.8,
+    "sha256": "86e55c3013de44ddae2e8fa4ec91252fdb080f0dabda76abf77d4feae152e9dd",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/07_Templates/Social/BXR_Social_9x16_Story_v3.2.png",
+    "type": "image",
+    "width": 1080,
+    "height": 1920,
+    "ratio": 0.5625,
+    "sha256": "072956816d1f3095843dc80d618369f915889ef1e8888973f77a7f2841c6ba24",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_AI_NPC_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "6892d6901ed822373fb56a2444e47c2a6bd697bab1cf22903a8c8b8475112e49",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_A_CQB_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "7217cca80a37575980e86a920d57af8d87e1c1190dd2a12b83d158a2a3e4592f",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_B_SEAM_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "f6c124f0dda11d0bbbfbedffac25dc84fc112b0e5fdc8dbf8a4330507d032a68",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_B_TERRAIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "df3cefa16b58241a27688ff7f1706639ed359666a03b325cc550728f73e48ac8",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_CORP_TERRAIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "eaf125529efd84937ae6e6f87803fe302498d90841e97f357624530ee5441b23",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_CORP_TWIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "93b70e6a1537522a1be85448e2b13b8afd059214cf4d9c3a1c47e0bc2b1416a7",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_COVER_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "69d49afeacdfb2e3f6433d8650896d9134ca335a16225f02c53f9de79d825b7a",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_C_SIM_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "e35b673c51cbcedb0cb840cb3aef8408643df06ac4ae0b7260279a9bd6fe71d3",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_EXHIBITION_WALL_v3.jpg",
+    "type": "image",
+    "width": 2880,
+    "height": 1080,
+    "ratio": 2.6666666666666665,
+    "sha256": "0b1ea5bce21cdcdb773567865f772defc4672ae6d856ec04e19f4342585c2b40",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_NAVY_SEA_DARK_v3.1.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "928d879272306040ef789ceccaa242a07140842e973a6dca458cb9f861d5036d",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_NAVY_SEA_LIGHT_v3.1.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "cd0613c4e59b8740f64f80d002caf0a071815951e382602ddf8c83023a2587ae",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_TEAM_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "bbcee436ed20c19b7c2e0fb82dc46d8cfadf2dade99a5217e95c4dfb6b773c13",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_UAV_TERRAIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "a8bdda0cc5883b00ca578e2d066b5262ee56dbeb8b567b974713e56449d59def",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_XR_AR_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "2bbb2a7a8b272482ac9e4b2a92906e163c2d9e47858cae9d3cb2d9993d030967",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_XR_MR_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "0828fdf04adaeec1628a5829a1153e8431336b297690b072f0478f47e9c203d2",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_XR_SCAN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "97d02c8f50b784755d75c7ae8ad5c06fae4262eb8d184d28dfb5b1a5198c79ba",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_XR_TWIN_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "0c08b6847684065fc3a494e355b689772702cd4fe2aca9da3a701faf8221d152",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_KV_XR_VR_v3.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "5209266cc7431925ed8cee61183275540d9dc63acaa2625d810dc2640e573dc7",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_Sector_Color_Comparison_v3.2.jpg",
+    "type": "image",
+    "width": 3200,
+    "height": 5400,
+    "ratio": 0.5925925925925926,
+    "sha256": "59abbb7bb20e69e61a0758a21d5dca73e5d0ce96d447bbb6cd495b65700a79c3",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_Social_16x9_Video.png",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "57c77828c81ef31e86a0db90264ec772d457d882fc263be7d4b49e017242bb77",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_Social_1x1_Post.png",
+    "type": "image",
+    "width": 1080,
+    "height": 1080,
+    "ratio": 1,
+    "sha256": "e5f0fe7e7b1ce53cbcb168cfc0570ba4034122cc20d48e72521260c1d3117a6e",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_Social_4x5_Feed.png",
+    "type": "image",
+    "width": 1080,
+    "height": 1350,
+    "ratio": 0.8,
+    "sha256": "cebbd3abb319a2e1d99efca972cc4957dba20796ccd87da31d4bca708d1d6a53",
+    "unchanged": true
+  },
+  {
+    "file": "design-source/BXR_Social_9x16_Story.png",
+    "type": "image",
+    "width": 1080,
+    "height": 1920,
+    "ratio": 0.5625,
+    "sha256": "b4d0c9491583dbdd8b26de331e0d84d78199759fc334b8a0f78e684e877e43c5",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/footer/footer-en-1440.png",
+    "type": "image",
+    "width": 1440,
+    "height": 351,
+    "ratio": 4.102564102564102,
+    "sha256": "b24d5f73ad7d581b702da89afa4a78e154d697358f5f19fa1cd2ff9be802b4ef",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/footer/footer-jp-1440.png",
+    "type": "image",
+    "width": 1440,
+    "height": 351,
+    "ratio": 4.102564102564102,
+    "sha256": "3f0639b7b2211ad298c843bb65a3d8c82bfa852a28eba05016e431483124e238",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/footer/footer-jp-390-open.png",
+    "type": "image",
+    "width": 390,
+    "height": 784,
+    "ratio": 0.49744897959183676,
+    "sha256": "aff0f285aed90ebabe82998c9cde6df15d168d6ac5219f7f5a82d2ee417f918f",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/footer/footer-tw-1440-open.png",
+    "type": "image",
+    "width": 1440,
+    "height": 351,
+    "ratio": 4.102564102564102,
+    "sha256": "a87905720eb0a69a6e1402ca4e61e33625f116af054606fc058934aee32af3e8",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/footer/footer-tw-1440.png",
+    "type": "image",
+    "width": 1440,
+    "height": 351,
+    "ratio": 4.102564102564102,
+    "sha256": "200e45384a6a0ba72c3e970b3974bece84c5f25c6cdf055ae09f4d8b897da265",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/footer/footer-tw-390.png",
+    "type": "image",
+    "width": 390,
+    "height": 562,
+    "ratio": 0.693950177935943,
+    "sha256": "bc36e8fc85b79a1f6592e54adf15a0f1d9ac09f4637207342e1357f5e530fd50",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/footer/footer-tw-768.png",
+    "type": "image",
+    "width": 768,
+    "height": 350,
+    "ratio": 2.1942857142857144,
+    "sha256": "792aafe9a5b81ba1c95575bb787f3330e85dbb2f1a5f93db2c0469437e975a79",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/phase-1/en-products-sut-1440.png",
+    "type": "image",
+    "width": 1440,
+    "height": 6420,
+    "ratio": 0.22429906542056074,
+    "sha256": "c950129985994a77ab387dca7ac60e76b856ac6c87d9cd104a249188bb94aa81",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/phase-1/en-products-sut-390.png",
+    "type": "image",
+    "width": 390,
+    "height": 8049,
+    "ratio": 0.048453224002981736,
+    "sha256": "d4b09530815d888c41c4535a9d5d53698a35f13cb332d409ad74b33882831a4c",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/phase-1/tw-products-1440.png",
+    "type": "image",
+    "width": 1440,
+    "height": 3019,
+    "ratio": 0.4769791321629679,
+    "sha256": "46cfa10a2f35470f16ea48f6920ffcfbb265e6483d3f271db280a4eee504a8c6",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/phase-1/tw-products-390.png",
+    "type": "image",
+    "width": 390,
+    "height": 4612,
+    "ratio": 0.08456201214223764,
+    "sha256": "fefbd3d556be0bbe52ede2335477284a042f812f135cf7f83b7cd9d3e639d331",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/phase-1/tw-products-sut-1440.png",
+    "type": "image",
+    "width": 1440,
+    "height": 6312,
+    "ratio": 0.22813688212927757,
+    "sha256": "f1242bf86a9fae76965ff80e83b4729155686efb2cdea36ba3c714b39b748f11",
+    "unchanged": true
+  },
+  {
+    "file": "docs/screenshots/phase-1/tw-products-sut-390.png",
+    "type": "image",
+    "width": 390,
+    "height": 7624,
+    "ratio": 0.051154249737670514,
+    "sha256": "98766444a8cb1533220b90713604aa13024adf4fed6d62ae6e811ad59b6c1d26",
+    "unchanged": true
+  },
+  {
+    "file": "docs/spikes/emdash/screenshots/admin-product-edit.png",
+    "type": "image",
+    "width": 1440,
+    "height": 1000,
+    "ratio": 1.44,
+    "sha256": "e49b124f6af4a879abcd1bedabd10e21ebe0e500dd26e802f32a16c808a3e01a",
+    "unchanged": true
+  },
+  {
+    "file": "docs/spikes/emdash/screenshots/counter-uas-order-diff.png",
+    "type": "image",
+    "width": 680,
+    "height": 120,
+    "ratio": 5.666666666666667,
+    "sha256": "af944117173d64d173a7a301d5737af8599e66a19441b1dbe09c8d2f0378561b",
+    "unchanged": true
+  },
+  {
+    "file": "media-src/hero/home-hero-video-1.mp4",
+    "type": "video",
+    "width": 1280,
+    "height": 720,
+    "duration": "4.111814",
+    "sha256": "77c00700053a58d79aedcdcf29ac3a7c25a3254de3c0243799188fc168890e36",
+    "unchanged": true
+  },
+  {
+    "file": "media-src/hero/home-hero-video-2.mp4",
+    "type": "video",
+    "width": 1920,
+    "height": 1080,
+    "duration": "2.949002",
+    "sha256": "3cc72e36d353b3ae49f59901257e95e3c135aa436af882022b5b460a04ad2a67",
+    "unchanged": true
+  },
+  {
+    "file": "public/video/hero/hero-1.mp4",
+    "type": "video",
+    "width": 1280,
+    "height": 720,
+    "duration": "4.041667",
+    "sha256": "be165a470c79c90f30223ce8d7d5cfa93b4bb9d492ebcde2dd605b818f46d801",
+    "unchanged": true
+  },
+  {
+    "file": "public/video/hero/hero-1.webm",
+    "type": "video",
+    "width": 1280,
+    "height": 720,
+    "duration": "4.042000",
+    "sha256": "8dfe5342f764c6bbc5c0a0ddec6e57b205e36db57aaaf57738a117c0099dc94e",
+    "unchanged": true
+  },
+  {
+    "file": "public/video/hero/hero-2.mp4",
+    "type": "video",
+    "width": 1920,
+    "height": 1080,
+    "duration": "2.933333",
+    "sha256": "7e067496013f797ca3ebfb068cd163979c311ee7a68493ca8ce0d40b7898de15",
+    "unchanged": true
+  },
+  {
+    "file": "public/video/hero/hero-2.webm",
+    "type": "video",
+    "width": 1920,
+    "height": 1080,
+    "duration": "2.933000",
+    "sha256": "5cc7c037bac00d7d673d8785b901280a13cf5771e58d81b8ec78df414dd92a8f",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/home/hero-poster.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "6989e4e277f3bc44bfe6dbb58f075e246f46ec0d9a3ee0257bf1b1f57e1d45d5",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/full-scale-police-training-vr-facility.png",
+    "type": "image",
+    "width": 1024,
+    "height": 768,
+    "ratio": 1.3333333333333333,
+    "sha256": "731dbb0faeb2b1cf94b3811a1897f2a5b0171df7f3538e8699397e59ec14903c",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/humvee-driving-simulator-instructor-illustration.jpeg",
+    "type": "image",
+    "width": 1620,
+    "height": 1080,
+    "ratio": 1.5,
+    "sha256": "6b20bc7ed3f59b43db1c5ca6a32ffc82c96400af1ef4742a281f1e0e4cf2e44a",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/machine-gun-simulator-indoor-training-illustration.jpeg",
+    "type": "image",
+    "width": 1620,
+    "height": 1080,
+    "ratio": 1.5,
+    "sha256": "55cd05d8d4eadf2a8ac3458be5097d2d37dc86f07a377a3c39e2464df337806d",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/military-simulation-training.jpg",
+    "type": "image",
+    "width": 1686,
+    "height": 1080,
+    "ratio": 1.5611111111111111,
+    "sha256": "c417a21d2e09f5a644e443225c05ee06c6256024b8dc2c9c475655604a235e9e",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/mortar-observation-xr-training.jpeg",
+    "type": "image",
+    "width": 1620,
+    "height": 1080,
+    "ratio": 1.5,
+    "sha256": "5e96413e9c54e9f5180268978cf29281f4b66a06b69b2a40ce59b94d4d500996",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/police-box-portable-training-unit-trainee.jpeg",
+    "type": "image",
+    "width": 1620,
+    "height": 911,
+    "ratio": 1.778265642151482,
+    "sha256": "c58179f82e4aa584d8068517b064d8975e3cf9ccbae978bdc244d0c27e09a1c2",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/police-simulation-training.jpeg",
+    "type": "image",
+    "width": 1872,
+    "height": 1080,
+    "ratio": 1.7333333333333334,
+    "sha256": "b8e730c1bf385b378233c570d59183ecfbf737e98d8f162a039bf3a4e111a91d",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/smart-city-3d-digital-twin.jpeg",
+    "type": "image",
+    "width": 1792,
+    "height": 1024,
+    "ratio": 1.75,
+    "sha256": "2727340e938dc8496fb9f2c38747863fe3da460f8173ad648fcc2021fde9018c",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/sniper-simulator-trainee-operation.jpeg",
+    "type": "image",
+    "width": 1620,
+    "height": 1080,
+    "ratio": 1.5,
+    "sha256": "857829be88f8f323d0843dc876f60054a5e8ed63d0f1ee85e12021bf238693f5",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/speedboat-simulator-sea-training-illustration.jpeg",
+    "type": "image",
+    "width": 810,
+    "height": 1080,
+    "ratio": 0.75,
+    "sha256": "6d254626a75c90534b4c97de3e30b818acd37cafbfdc61fff046d2c480887b0b",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/sut-squad-vr-tactical-training.jpg",
+    "type": "image",
+    "width": 7008,
+    "height": 4672,
+    "ratio": 1.5,
+    "sha256": "db93c754736c8331ef8c898053630b4a13b426c4b02156dcaf402e1fbfbaf182",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/uav-drone-training-operator-simulation.jpg",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "af6b89f747ab21a68666799eec268b887352111b39e1ba92eec8f98a46336c28",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/usv-vr-training-operation.png",
+    "type": "image",
+    "width": 1672,
+    "height": 941,
+    "ratio": 1.7768331562167907,
+    "sha256": "359e43e77559bacfe71ab549d2f7ae91a3537ff3797a3243f9636b01596cb509",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/vr-fire-extinguisher-training-trainee.png",
+    "type": "image",
+    "width": 1920,
+    "height": 1080,
+    "ratio": 1.7777777777777777,
+    "sha256": "35febc3f05ea4a7d2721d1cc58399b584a406ee7c75b45de1ab7321f184d626a",
+    "unchanged": true
+  },
+  {
+    "file": "src/assets/images/products/wargaming-table-team-planning-discussion.jpeg",
+    "type": "image",
+    "width": 1620,
+    "height": 1080,
+    "ratio": 1.5,
+    "sha256": "63137eb1b59d0d7135179e9e921b79cb020760112c70b95f9739f7e062fd57a0",
+    "unchanged": true
+  }
+]

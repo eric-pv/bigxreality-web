@@ -26,7 +26,7 @@ const browser = await chromium.launch({ executablePath: CHROMIUM });
 try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await page.goto(`${base}/tw/solutions/`, { waitUntil: "networkidle" });
-  const cards = await page.$$eval("#solution-list article.card", (as) => as.map((a) => ({ name: a.querySelector("h3")?.textContent.trim(), href: a.querySelector("h3 a")?.getAttribute("href"), more: a.querySelector(".more")?.textContent.replace(/\s+/g, " ").trim() })));
+  const cards = await page.$$eval("#solution-list article.card", (as) => as.map((a) => ({ name: a.querySelector(".title")?.textContent.trim(), href: a.querySelector(".title a")?.getAttribute("href"), more: a.querySelector(".more")?.textContent.replace(/\s+/g, " ").trim() })));
   check("overview: exactly the four categories in order", JSON.stringify(cards.map((c) => c.name)) === JSON.stringify(["軍事模擬", "警勤模擬", "消防防災", "智慧城市"]), JSON.stringify(cards.map((c) => c.name)));
   check("overview: card buttons", JSON.stringify(cards.map((c) => c.more)) === JSON.stringify(["探索軍事模擬 →", "探索警勤模擬 →", "探索消防防災 →", "探索智慧城市 →"]), JSON.stringify(cards.map((c) => c.more)));
   check("overview: MUM-T and NOVA are not cards (not a fifth category)", !cards.some((c) => /mum-t|nova/.test(c.href ?? "")));
@@ -37,13 +37,13 @@ try {
 
   for (const [slug, h1, cta, name] of PAGES) {
     await page.goto(`${base}/tw/solutions/${slug}/`, { waitUntil: "networkidle" });
-    check(`${slug}: H1`, (await page.locator("h1").innerText()).trim() === h1);
+    check(`${slug}: H1 identifies solution and retains value headline`, (await page.locator("h1").innerText()).trim() === name && (await page.locator(".landing-overview h2").innerText()).trim() === h1);
     const hrefs = await page.locator("a[href]").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
     check(`${slug}: CTA goes to the contact page with the solution name`, hrefs.some((h) => h.startsWith("/tw/contact/?topic=solution&item=")) && (await page.locator(`.page-hero a.btn`).first().innerText()).trim() === cta);
     const text = await page.locator("main").innerText();
     check(`${slug}: no placeholder or instruction wording`, !LEAK.some((w) => text.includes(w)), LEAK.filter((w) => text.includes(w)).join(","));
     check(`${slug}: breadcrumb`, (await page.locator(".breadcrumb, nav[aria-label] ol").first().innerText()).includes(name));
-    check(`${slug}: Solutions is the current header item`, (await page.locator('.nav-list > li > a[aria-current="page"]').innerText()).trim() === "解決方案");
+    check(`${slug}: Solutions is the current header item`, (await page.locator('.nav-list a.nav-link[aria-current="page"]').innerText()).trim() === "解決方案");
     const noCases = (await page.locator("[data-related-cases]").count()) === 0;
     check(`${slug}: no cases block without published cases`, noCases);
   }
@@ -60,7 +60,7 @@ try {
   check("mum-t: related SUT, UAV, USV and its parent solution", ["/tw/products/sut/", "/tw/products/uav/", "/tw/products/usv/", "/tw/solutions/military/"].every((h) => mumt.includes(h)), mumt.join(","));
   check("mum-t: breadcrumb goes through Military Simulation", (await page.locator(".breadcrumb a[href='/tw/solutions/military/'], nav a[href='/tw/solutions/military/']").count()) > 0);
   await page.goto(`${base}/tw/solutions/nova/`, { waitUntil: "networkidle" });
-  check("nova: concept images are illustrations (labelled when a picture exists)", (await page.locator("main [role=img]").count()) >= 6);
+  check("nova: approved context Hero and text-led sections replace missing concept pictures", (await page.locator(".page-hero img").count()) === 1 && (await page.locator("main .brand-default:visible").count()) === 0);
   // police / fire / smart city products
   await page.goto(`${base}/tw/solutions/police/`, { waitUntil: "networkidle" });
   const pol = await page.$$eval("section[aria-labelledby=h-related] a[href^='/tw/products/']", (as) => as.map((a) => a.getAttribute("href")));

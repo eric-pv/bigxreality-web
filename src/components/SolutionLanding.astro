@@ -7,6 +7,7 @@
  * solution names itself; with none, the block shows only related solutions, or nothing.
  */
 import SmartCardGrid from "./SmartCardGrid.astro";
+import {contentLocale} from "../lib/content-locale";
 import type { CollectionEntry } from "astro:content";
 import { localePath, type Lang } from "../i18n";
 import { availableLangs, getLocalized } from "../lib/content";
@@ -17,6 +18,7 @@ import { isPending } from "../lib/pending";
 import { getUi } from "../lib/ui";
 import RelatedTechnologies from "./RelatedTechnologies.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { heroPresentation, heroSceneFit, heroSceneHeadroom, heroScenePosition } from "../lib/hero-presentation";
 import PageHero from "./PageHero.astro";
 import SectionHead from "./SectionHead.astro";
 import LandingSections from "./LandingSections.astro";
@@ -25,7 +27,10 @@ import CardSolution from "./CardSolution.astro";
 import CtaBand from "./CtaBand.astro";
 import CtaGroup from "./CtaGroup.astro";
 import RelatedCases from "./RelatedCases.astro";
+import { primaryImage } from '../data/primary-images';
+import { pageOgImage } from "../lib/og-image";
 import Text from "./Text.astro";
+import MediaSlot from "./MediaSlot.astro";
 
 interface Props {
   lang: Lang;
@@ -40,8 +45,20 @@ const ui = getUi(lang);
 const t = ui.productLanding;
 const e = t.eyebrows;
 const cta = ctaSet(lang, { page: "solutionInquiry", name: d.name, label: L.ctaLabel });
-const hero = L.heroImage;
+// Shared primary mapping keeps fire Hero, overview and home cards on the specified VR image.
+const uploadedHero = primaryImage('solutions', slug, lang)
+  ?? (!L.heroImage?.src && base.parent ? primaryImage('solutions', base.parent, lang) : undefined);
+const assignedHero = base.landing?.heroImage?.src
+  ? { ...base.landing.heroImage, alt: L.heroImage?.alt ?? base.landing.heroImage.alt }
+  : base.image ? { ...L.heroImage, need: L.heroImage?.need, caption: L.heroImage?.caption, illustration: false, ...base.image, alt: d.image?.alt ?? base.image.alt }
+  : L.heroImage?.src ? L.heroImage : undefined;
+const hero = assignedHero ?? (uploadedHero ? { ...L.heroImage, ...uploadedHero } : L.heroImage);
 const heroReady = hero?.src && hero.alt;
+// og:image uses the same hero, but only with this language's own alt (the tw alt never stands in).
+const heroOwnAlt = base.landing?.heroImage?.src ? L.heroImage?.alt
+  : base.image ? d.image?.alt
+  : L.heroImage?.src ? L.heroImage.alt
+  : uploadedHero?.alt;
 
 const allSolutions = await getLocalized("solutions", lang);
 const parent = base.parent ? allSolutions.find((s) => s.slug === base.parent) : undefined;
@@ -66,7 +83,7 @@ let n = alternatingSections(L);
 const alt = () => (n++ % 2 === 1 ? "section section--alt" : "section");
 const backLabel = ui.backToSolutions;
 const backHref = localePath(lang, "solutions");
-const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
+const og = pageOgImage(base.seo?.ogImage ?? (heroReady ? hero!.src : undefined), heroOwnAlt, pendingTranslation);
 ---
 <BaseLayout
   lang={lang}
@@ -79,18 +96,20 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
   current="solutions"
   fallbackPath="/{lang}/solutions/"
   breadcrumbs={breadcrumbs}
-  ogImage={ogImage}
-  ogImageAlt={heroReady ? hero!.alt : undefined}
+  {...og}
   search={{ type: "solutions" }}
 >
   <PageHero
+    uniformMedia
+    variant={heroPresentation("solutions", slug, !!heroReady)}
+    sceneFit={heroSceneFit("solutions", slug)}
+    sceneHeadroom={heroSceneHeadroom("solutions", slug)}
+    scenePosition={heroScenePosition("solutions", slug)}
     breadcrumbs={breadcrumbs}
     breadcrumbLabel={ui.breadcrumbLabel}
-    eyebrow={`Solution · ${ui.domainCodes[base.domain]}`}
-    kicker={d.name}
-    title={L.headline}
+    eyebrow={d.name === ui.domains[base.domain] ? ui.solution.eyebrow : `${ui.solution.eyebrow} · ${ui.domains[base.domain]}`}
+    title={d.name}
     lead={L.subheadline}
-    description={L.intro}
     image={heroReady ? { src: hero!.src!, alt: hero!.alt! } : undefined}
     imageCaption={hero?.caption}
     imageBadge={hero?.illustration ? t.illustrationLabel : undefined}
@@ -99,7 +118,9 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
     <CtaGroup slot="actions" actions={cta.hero} />
   </PageHero>
 
-  <LandingSections lang={lang} L={L} />
+  <section class="section landing-overview" aria-labelledby="landing-overview-title"><div class="container narrow"><h2 class="t-h2" id="landing-overview-title"><Text value={L.headline} /></h2>{L.intro?.split(/\n\s*\n/).map(paragraph => <p><Text value={paragraph} /></p>)}{L.introImage?.src && L.introImage.alt && <div class="intro-media"><MediaSlot media={L.introImage} ratio="16 / 9" fallbackLabel={t.placeholders.hero} needPrefix={t.mediaNeed} badge={t.illustrationLabel} sizes="(max-width: 767px) 100vw, 860px" /></div>}</div></section>
+
+  <LandingSections lang={lang} L={L} entryFile={`src/content/solutions/${contentLocale(lang)}/${slug}.md`} />
 
   <RelatedCases lang={lang} cases={cases} description={L.casesIntro} alt={cases.length > 0 && n++ % 2 === 1} />
 
@@ -112,7 +133,7 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
             <li>
               <CardProduct
                 lang={lang} href={localePath(lang, "products", p.slug)} name={p.loc.data.hero.name}
-                englishName={known(p.loc.data.hero.englishName)} summary={known(p.loc.data.summary) ?? known(p.loc.data.hero.tagline)}
+                summary={known(p.loc.data.summary) ?? known(p.loc.data.hero.tagline)}
                 domains={p.base.data.domains}
                 image={p.base.data.hero.image && { src: p.base.data.hero.image.src, alt: p.loc.data.hero.image?.alt ?? p.base.data.hero.image.alt }}
               />
@@ -122,7 +143,7 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
             <li>
               <CardSolution
                 lang={lang} href={localePath(lang, "solutions", s.slug)} domain={s.base.data.domain}
-                name={s.loc.data.name} englishName={s.loc.data.englishName} summary={s.loc.data.summary}
+                name={s.loc.data.name} summary={s.loc.data.summary}
                 image={s.base.data.image && { src: s.base.data.image.src, alt: s.loc.data.image?.alt ?? s.base.data.image.alt }}
               />
             </li>
@@ -147,3 +168,5 @@ const ogImage = base.seo?.ogImage ?? (heroReady ? hero!.src : undefined);
   .back a { color: var(--ink); text-decoration: none; font-weight: 500; }
   .back a:hover { color: var(--bxr-text-red); }
 </style>
+
+<style>.landing-overview .narrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); } .landing-overview p { line-height: 1.8; } .landing-overview .intro-media { margin-top: var(--space-3); }</style>
