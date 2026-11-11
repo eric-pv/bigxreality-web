@@ -251,6 +251,7 @@ landing:
           content: The operation screen shows active flames and a 60-second timer
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
+            fit: contain
             alt: VR extinguisher test with active flames and a 60-second timer
             ratio: 16 / 9
         - title: Fire extinguished
@@ -259,6 +260,7 @@ landing:
             need: Test results screen (16:9)
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
+            fit: contain
             alt: VR training screen showing completion after the flames have been
               extinguished
 faq:

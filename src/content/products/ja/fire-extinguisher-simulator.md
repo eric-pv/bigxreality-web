@@ -176,6 +176,7 @@ landing:
           content: 炎と60秒のタイマーを表示した操作画面
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
+            fit: contain
             alt: 炎が残り、60秒のタイマーを表示しているVR消火テスト画面
             ratio: 16 / 9
         - title: 消火完了
@@ -184,6 +185,7 @@ landing:
             need: テスト結果の画面（16:9）
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
+            fit: contain
             alt: 炎が消え、「消火完了」を表示したVR訓練画面
 faq:
   - question: VR消火訓練はゲームですか、それとも本当に消火を学べるのですか？

@@ -174,6 +174,7 @@ landing:
           content: 操作畫面顯示火勢與 60 秒計時
           image:
             src: ../../../assets/images/products/fire-extinguisher-simulator-timed-test.png
+            fit: contain
             alt: VR 滅火測驗畫面，火勢仍在燃燒，上方顯示計時 60 秒
             ratio: 16 / 9
         - title: 火勢已撲滅
@@ -182,6 +183,7 @@ landing:
             need: 測驗成果畫面（16:9）
             ratio: 16 / 9
             src: ../../../assets/images/products/fire-extinguisher-simulator-test-complete.png
+            fit: contain
             alt: VR 訓練畫面顯示「滅火完成」，火勢已撲滅
 relatedProducts: []
 relatedSolutions:
