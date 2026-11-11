@@ -99,7 +99,7 @@ try {
   const ids = await page.$$eval("main section[id]", (ss) => ss.map((s) => "#" + s.id));
   check("in-page nav matches rendered sections", JSON.stringify(toc) === JSON.stringify(ids), toc.join(" "));
   // Product content only: the hidden inline inquiry form (InlineInquiry.astro) has its own heading and is checked separately.
-  check("landing sections in order", JSON.stringify(await page.$$eval("main h2:not([data-inline-inquiry] h2)", (hs) => hs.map((h) => h.id))) === JSON.stringify(["landing-overview-title", "h-challenge", "h-approach", "h-capabilities", "h-flow", "h-scenarios", "h-values", "h-related", "product-faq-title", "h-related-technologies", "product-cta"]));
+  check("landing sections in order", JSON.stringify(await page.$$eval("main h2:not([data-inline-inquiry] h2)", (hs) => hs.map((h) => h.id))) === JSON.stringify(["landing-overview-title", "h-challenge", "h-approach", "h-capabilities", "h-scenarios", "h-block-0", "h-block-1", "h-block-2", "h-values", "h-related", "product-faq-title", "h-related-technologies", "product-cta"]));
   check("inline inquiry form follows product content, hidden until opened", await page.$eval("[data-inline-inquiry]", (s) => s.hidden && !!s.querySelector("h2#inline-inquiry-title")));
   const related = await page.locator("section[aria-labelledby=h-related] .smart-grid a").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
   check("related products and solution link to existing pages", relatedOf(sut).every((h) => related.includes(h)), related.join(" "));
@@ -112,13 +112,15 @@ try {
   check("pillar text has no trailing full stop", (await page.locator(".pillar .text").allTextContents()).every((t) => !/[。.]$/.test(t.trim())));
   check("supplied Hero remains visible and missing body photos use text-led cards", (await page.locator('.page-hero img').count()) === 1 && (await page.locator('main .brand-default:visible').count()) === 0);
   check(`all ${sutCaps} capabilities remain present`, (await page.locator('.feature, .plain .cap').count()) === sutCaps);
-  check("approach only renders provided images", (await page.locator('.pair .media').count()) === 0);
+  check("approach renders every assigned image", (await page.locator('.pair .media').count()) === (S.approach?.images ?? []).filter(image => image.src && image.alt && image.status !== "withheld").length);
   check("flow steps carry an icon each", (await page.locator(".flow .node svg").count()) === sutFlow);
   const widths = await page.locator(".scenarios .card").evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().width)));
   check(`${sutScen} scenario cards, all the same width`, widths.length === sutScen && new Set(widths).size === 1, widths.join(","));
   const before = await page.locator(".scenarios .card").first().evaluate((e) => !e.querySelector("figure") || e.firstElementChild.classList.contains("media"));
   check("provided scenario images sit above text; missing images keep text cards", before);
-  check("flow steps, scenarios and values match the Git content", (await page.locator(".flow .step").count()) === sutFlow && (await page.locator(".scenarios .card").count()) === sutScen && (await page.locator(".values .value").count()) === sutValues);
+  check("flow steps, scenarios and values match the Git content", (await page.locator(".flow .step").count()) === sutFlow && (await page.locator(".scenarios .card").count()) === sutScen && (await page.locator("section[aria-labelledby=h-values] .values .value").count()) === sutValues);
+  check("review cards retain every training step", (await page.locator("section[aria-labelledby=h-block-0] .values .value").count()) === S.blocks[0].items.length);
+  check("every target has its assigned image", (await page.locator(".scenarios .card img").count()) === sutScen);
   check("no AIDA wording shown on the page", !/\bAIDA\b|Attention|Desire/.test(await page.locator("main").innerText()));
   check("no pending markers on the landing page body", (await page.locator("main section:not(.cta-band) mark.pending").count()) === 0);
 

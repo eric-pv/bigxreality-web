@@ -1,5 +1,6 @@
 ---
-# English localisation of the Traditional Chinese master (src/content/products/tw/sut.md), complete and section for section (2026-10-21). Replaces the earlier condensed English copy (owner authorisation 2026-10-21). Structural fields are read from the Traditional Chinese file.
+# SUT copy and layout updated per owner direction on 2026-11-11. Functions follow the supplied SUT BOX flyer; confirmed integration conditions are retained.
+
 translationStatus: translated
 draft: false
 publishDate: 2026-10-01
@@ -8,258 +9,356 @@ domains:
   - military
 hero:
   name: SUT Small Unit Tactical Training System
-  tagline: A tactical training system that extends from basic operation to squad
-    coordination and cross-system joint training
+  tagline: Build operating familiarity through repeated practice, then extend
+    individual skills to team and cross-system training
   image:
-    src: ../../../assets/images/products/sut-squad-vr-tactical-training.webp
-    alt: Four trainees wearing VR headsets and tactical gear practise with training firearms on a demonstration stage
-summary: Designed mainly for small-unit tactical training of approximately 1 to
-  4 personnel.
+    src: ../../../assets/images/products/sut-cqb-context-illustration.png
+    alt: Illustration of a small team coordinating in an indoor combat setting
+summary: XR scenarios, realistic training weapons and shared exercises support
+  handling practice, CQB applications and after-action review.
 landing:
-  headline: Real Tactical Cohesion Is Built Through Every Coordinated Action
-  subheadline: Tactical capability in fast-changing mission environments combines
-    individual skill with consistent squad decisions and coordinated action
-  intro: The SUT (Small Unit Tactical) Training System is built around tactical
-    teams of 1 to 4 personnel. It combines an immersive VR environment, XR
-    mission information and AI behaviour simulation to provide a safe,
-    repeatable squad coordination training environment with changing scenarios.
+  headline: Build operating familiarity so trainees can devote more attention to
+    the mission and their teammates
+  subheadline: Connect familiar handling with coordinated action
+  intro: >-
+    The SUT Small Unit Tactical Training System provides repeatable XR exercises
+    that help trainees become familiar with equipment handling and develop
+    consistent movements, then apply those skills in shared tactical scenarios.
+
+
+    Realistic training weapons, shooting exercises and tactical modules are
+    supported by live hit information, instructor observation and after-action
+    reports. SUT can be deployed independently or paired with other BXR training
+    products according to mission and interface requirements.
   heroImage:
-    need: Photo of actual SUT training (16:9)
-  ctaLabel: Enquire About SUT Training
+    need: CQB context cover illustration (16:9)
+    ratio: 16 / 9
+    src: ../../../assets/images/products/sut-cqb-context-illustration.png
+    alt: Illustration of a small team coordinating in an indoor combat setting
+    kind: illustration
+    caption: Illustration of a CQB training scenario
+  ctaLabel: Discuss SUT training options
   challenge:
-    title: Coordinating Squad Actions and Mission Execution
-    intro: 'In close-quarters combat and high-risk missions, every team member must
-      observe, decide, communicate and act within a limited time.
+    title: Familiar handling leaves more attention for the situation
+    intro: >-
+      Consistent holding, aiming and operation take practice. When targets,
+      spaces and mission conditions change, trainees also need to divide their
+      attention between observation, decisions and teamwork.
 
 
-      Individual reaction speed matters, but coordinating formation, cover,
-      movement, fire distribution and verbal commands is the core of squad
-      training that cannot be overlooked.'
+      Repeated simulation exercises help reduce unfamiliarity with operating
+      procedures before those movements are applied to a shared mission.
     cards:
-      - title: Training Facilities and Safety Constraints
-        description: Live tactical exercises must account for site layout, safety
-          management and training resources, and some high-risk situations are
-          difficult to recreate often.
-      - title: Developing Team Coordination through Shared Practice
-        description: Even when every trainee knows the basic procedures, a squad still
-          needs practice together to align formation, cover, movement and verbal
-          commands.
-      - title: Varied Scenarios for Changing Mission Requirements
-        description: When training content is too fixed, trainees may become familiar
-          with set procedures but lack practice in responding to different
-          situations.
-      - title: Training Outcomes Need Effective Assessment
-        description: Beyond seeing whether a mission was completed, instructors also
-          need to understand how the squad performed in decision-making,
-          communication and coordinated action, as a basis for adjusting later
-          training.
-    note: SUT is not intended to replace live tactical training. It provides another
-      form of simulation training that can be scheduled repeatedly and offers
-      varied scenarios.
+      - title: Handling needs repeated practice
+        description: Provide regular opportunities to practise holding, aiming and
+          operating procedures while developing consistent movements.
+      - title: Skills need a tactical context
+        description: Practise observation, identification and response as targets and
+          mission conditions change.
+      - title: Individual skills need teamwork
+        description: Rehearse roles, communication and mutual cover so team members can
+          coordinate their actions.
+      - title: Practice needs usable feedback
+        description: Use hit information, instructor observation and reports to identify
+          priorities for the next exercise.
+    note: Simulation supplements physical training. Familiarity with actual
+      equipment feel, recoil and on-site safety procedures still requires
+      appropriate physical training.
   approach:
-    title: Bringing Complex Tactical Situations into a Controlled, Immersive
-      Training Environment
-    intro: 'SUT is designed around real small-unit tactical procedures. It uses VR
-      to build indoor training scenes in which a squad of 1 to 4 personnel
-      conducts tactical exercises together.
+    title: Rehearse CQB scenarios and coordinated team action
+    intro: >-
+      Indoor combat and stronghold assault scenarios bring equipment operation,
+      spatial assessment and teamwork into the same exercise. SUT uses immersive
+      simulation to extend individual practice into shared tactical training.
 
 
-      The system combines XR mission information and AI behaviour simulation,
-      supporting mission interpretation, scenario variation and assessment of
-      training performance.'
+      Multiple trainees can exercise together, practising roles, communication
+      and coordinated action. Concurrent trainee numbers and available modules
+      depend on the system configuration.
     pillars:
-      - title: Immersive Tactical Training
-        description: VR is used to build virtual indoor scenes in which trainees
-          practise formation, movement, cover, corner clearing and
-          close-quarters tactical procedures in a controlled environment
-      - title: Mission Information and Spatial Awareness
-        description: XR integrates mission instructions, spatial layout, threat
-          locations and teammate status, helping trainees grasp mission
-          information and coordinate as a team
-      - title: Dynamic Scenarios and Response Training
-        description: AI behaviour simulation adjusts friendly and opposing behaviour and
-          the training pace according to trainee reactions and squad
-          performance, exposing trainees to a wider range of mission changes
+      - title: Familiar handling before application
+        description: Build operating familiarity through repetition, then apply aiming,
+          shooting and target response in a scenario
+      - title: Keep the tactical context of CQB
+        description: Practise spatial assessment, mutual cover and coordinated action in
+          indoor combat and stronghold assault scenarios
+      - title: Make teamwork part of practice
+        description: Work through shared mission conditions to develop communication,
+          role coordination and team timing
     images:
-      - need: Photo of actual operation (trainees wearing VR equipment and training
-          gear, 4:5)
-      - need: Virtual training scene (indoor scene from the trainee's point of view,
-          4:5)
+      - need: Actual CQB indoor combat screen (16:9)
+        ratio: 16 / 9
+        src: ../../../assets/images/products/sut-cqb-room-layout.png
+        alt: Overhead view of an SUT indoor combat scenario showing rooms and corridors
+      - need: Actual stronghold assault screen (16:9)
+        ratio: 16 / 9
+        src: ../../../assets/images/products/sut-criminal-hideout-simulation.png
+        alt: Overhead SUT stronghold assault screen showing containers, crates and
+          passageways
   capabilities:
-    title: From Individual Tactical Skills to Complete Squad Coordination
-    intro: SUT does more than present a virtual battlefield; it brings the different
-      training focuses of squad tactics into one shared exercise environment.
+    title: Combine exercises around your training objectives
+    intro: Choose individual exercises or complete scenarios to match the course
+      stage. Available content depends on configuration.
     items:
-      - title: Formation, Cover and Movement
-        content: Squad members can practise formation, covered movement, corner clearing
-          and the rhythm of advancing and withdrawing under different spatial
-          conditions in a virtual indoor environment.
-        value: Shared missions connect individual actions with team roles and provide
-          practice in coordinated operation.
+      - title: Shooting exercises and target variation
+        content: Exercises include fixed-position, multiple-target and barrier shooting,
+          with ring targets, moving silhouettes and rotating targets. Simulated
+          distances of 20, 40 and 60 metres support aiming and operation under
+          different conditions.
+        value: Structure repeated practice into exercises that build handling
+          familiarity and target response.
         image:
-          need: Training footage of formation, cover and movement (16:9)
-      - title: Squad Commands and Mission Communication
-        content: Tactical teams of 1 to 4 personnel practise task allocation, verbal
-          commands, fire distribution and the rhythm of team action.
-        value: Helps the squad establish a shared way of communicating and reduces
-          coordination problems caused by members working from out-of-sync
-          information.
-      - title: Dynamic Threats and Situational Judgement
-        content: AI behaviour simulation and scenario adjustment expose trainees to
-          different friendly and opposing behaviour and mission changes during
-          training.
-        value: Tactical training goes beyond becoming familiar with a set script and
-          includes practising judgement and response when the situation changes.
+          need: Actual fixed-position, multiple-target or barrier shooting screen (16:9)
+          ratio: 16 / 9
+      - title: CQB and stronghold assault
+        content: Indoor combat and criminal stronghold assault scenarios bring
+          individual handling into spatial assessment, mutual cover and shared
+          missions.
+        value: Connect handling practice with tactical scenarios and observe
+          communication and coordinated action.
         image:
-          need: Training footage of dynamic friendly/opposing behaviour and scenario
-            changes (4:3)
-      - title: XR Mission Information Support
-        content: Mission instructions, spatial layout, threat locations, teammate status
-          and similar information can be displayed during training to help
-          trainees understand the simulated mission conditions.
-        value: Combines receiving information, tactical interpretation and squad action,
-          so trainees practise using that information in a shared mission.
+          need: Actual indoor combat or stronghold assault screen (16:9)
+          ratio: 16 / 9
+      - title: Battlefield simulation and shared exercises
+        content: Multiple trainees can take part in battlefield scenarios to practise
+          target observation, task allocation and coordinated action. Moving and
+          randomly appearing targets add variation to exercise conditions.
+        value: Practise maintaining teamwork as targets and mission conditions change.
         image:
-          need: XR mission information screen (mission instructions, threat locations,
-            teammate status, 4:3)
-      - title: Training Review and Capability Assessment
-        content: The system helps instructors review tactical procedures and observe
-          squad coordination, and the training results serve as a reference for
-          tracking and comparison.
-        value: Training goes beyond completing an exercise and provides a basis for
-          planning later courses and developing team capability.
-  flow:
-    title: From Setting the Mission to Reviewing the Training, a Systematic Approach
-      to Squad Exercises
-    intro: SUT can arrange simulated scenarios to match different training
-      objectives, so instructors and trainees exercise and review around a
-      shared mission.
-    steps:
-      - title: Set Training Objectives
-        description: Based on course requirements, confirm the tactical focus of the
-          exercise, such as formation, corner clearing, team communication or
-          situational judgement.
-        icon: target
-      - title: Conduct a Coordinated Squad Exercise
-        description: A team of 1 to 4 personnel enters the virtual training environment
-          and practises tactical actions and team coordination under the mission
-          conditions.
-        icon: team
-      - title: Respond to Dynamic Scenario Changes
-        description: Through AI behaviour simulation and adjustment of training
-          parameters, trainees encounter different threat reactions and mission
-          changes during the exercise.
-        icon: variation
-      - title: Review Training Performance
-        description: Instructors review the exercise based on the training procedure and
-          team performance, as a reference for adjusting later courses and
-          tracking capability.
-        icon: review
-  scenarios:
-    title: Building Varied Small-Unit Tactical Training Scenarios for Different
-      Mission Needs
-    intro: From basic tactical skills to coordination in high-risk missions, SUT can
-      be applied at different stages of small-unit tactical training.
-    items:
-      - title: CQB Close-Quarters Combat Training
-        description: In a virtual indoor environment, exercises focus on formation,
-          corner clearing, covered movement and team communication.
-        focus: Indoor tactical procedures, spatial awareness, squad coordination
+          need: Actual battlefield simulation and shared training screen (16:9)
+          ratio: 16 / 9
+          src: ../../../assets/images/products/sut-battlefield-sandbag-simulation.png
+          alt: SUT battlefield simulation viewed beside virtual sandbag cover with a
+            training weapon aimed forward
+      - title: Training modes and weapon transitions
+        content: Switch between training and test modes to match the course stage. A
+          pistol can also be added for weapon-transition practice, subject to
+          equipment and module configuration.
+        value: Progress from familiarisation to assessment, with equipment practice
+          extended according to course needs.
         image:
-          need: CQB close-quarters combat training footage (indoor space, corner clearing,
-            16:9)
-      - title: Small-Unit Coordinated Tactical Training
-        description: For teams of 1 to 4 personnel, brings together task allocation,
-          verbal commands, fire distribution and the rhythm of action among team
-          members.
-        focus: Team cohesion, mission coordination, shared judgement
-        image:
-          need: Small-unit coordinated tactical training footage (multi-person team
-            coordination, 16:9)
-      - title: Base Protection Training
-        description: Using base protection mission requirements as the background, the
-          squad practises threat assessment and coordinated action in a
-          simulated environment.
-        focus: Threat identification, mission response, teamwork
-        image:
-          need: Base protection scenario footage (16:9)
-      - title: Key Facility Defence Training
-        description: For defence missions at important facilities and specific areas,
-          the squad practises small-unit tactical procedures and responses under
-          different situations.
-        focus: Situational judgement, tactical coordination, mission response
-        image:
-          need: Key facility defence scenario footage (16:9)
+          need: Actual training/test mode or rifle-to-pistol transition image (16:9)
+          ratio: 16 / 9
+  blocks:
+    - kind: checks
+      title: Review performance, then decide what to practise next
+      intro: Set an objective, run the exercise and review the outcome so instructors
+        and trainees can work on the same training priorities.
+      items:
+        - title: Set the training priority
+          content: Choose a shooting exercise or tactical scenario and identify the
+            handling, decision-making or teamwork skills to practise.
+        - title: Run individual or team exercises
+          content: Use individual practice or shared exercises to build handling
+            familiarity and teamwork within mission conditions.
+        - title: Observe performance
+          content: View shot impact and hit information in real time. Instructor viewpoint
+            switching supports observation during the exercise.
+        - title: Review the report and practise again
+          content: Use after-action reports and instructor observations to identify
+            improvements and plan the next exercise.
+    - kind: featured
+      title: Start with SUT and extend to further mission training
+      intro: SUT supports independent small-unit training and can be paired with other
+        BXR products according to mission, interface and equipment requirements.
+        Course pairing and connected simulation require separate planning;
+        direct interoperability is not assumed.
+      items:
+        - title: UAV and counter-drone training
+          content: UAV operation, counter-drone and drone harassment simulation can be
+            added according to configuration. Connections to the independent UAV
+            system and available functions depend on interfaces and project
+            requirements.
+          cta: Explore UAV training
+          product: uav
+        - title: USV information and coordination
+          content: A confirmed integration sends imagery from the USV system to the SUT
+            training environment. Other information exchange and shared
+            exercises depend on interfaces and project configuration.
+          cta: Explore USV training
+          product: usv
+    - kind: prose
+      title: From UAV operation to counter-drone training
+      body: |-
+        UAV operation and counter-drone training present different participant perspectives. Available modules and system connections depend on configuration.
+
+        <!-- bxr-image: {"src":"/src/assets/images/products/sut-uav-operation-training.png","alt":"UAV operation training screen with a forest flight view and flight instruments","approved":true} -->
+
+        <!-- bxr-image: {"src":"/src/assets/images/products/sut-counter-drone-training.png","alt":"Counter-drone training screen showing a weapon firing toward an airborne target","approved":true} -->
   values:
-    title: Getting More Value from Training Resources
-    intro: For training units, the purpose of introducing a simulation system is not
-      simply to add equipment, but to give existing training plans more ways to
-      arrange scenarios, practise repeatedly and assess performance.
+    title: Meet current course needs and plan the next stage
+    intro: Plan individual practice, team exercises and cross-system applications
+      around your unit's course, site and equipment requirements.
     cards:
-      - title: A Repeatable Training Environment
-        description: Tactical exercises can be scheduled repeatedly in a controlled
-          virtual environment, reducing some of the constraints of physical
-          sites and high-risk situations.
-      - title: More Flexible Scenario Arrangement
-        description: AI behaviour simulation and adjustment of training parameters
-          provide different threat reactions and mission conditions, adding
-          variation to scenario practice.
-      - title: From Individual Skills to Team Coordination
-        description: Formation, movement, communication and judgement are combined in
-          multi-person exercises so the squad can train for a shared mission.
-      - title: Supporting Training Review and Later Adjustment
-        description: Reviewing and comparing training performance helps instructors
-          understand how the team is performing, as a reference for planning
-          later training.
-    note: SUT supplements live exercises with simulation training, helping units
-      build a training approach that is more flexible, repeatable and focused on
-      team coordination.
+      - title: Make practice repeatable
+        description: Supplement physical training with repeated exercises in a safe,
+          controlled simulation environment.
+      - title: Build a course progression
+        description: Progress from handling familiarity to tactical application, shared
+          exercises and assessment.
+      - title: Give reviews a concrete basis
+        description: Combine hit information, instructor observations and after-action
+          reports to inform course adjustments.
+      - title: Plan for further training needs
+        description: Assess modules and product combinations according to mission and
+          interface requirements.
   related:
-    title: From Squad Tactical Training to More Mission Applications
-    intro: SUT is a tactical training product that can operate independently. In
-      specific integration scenarios it can also be combined with independent
-      training systems such as UAV and USV to extend simulation training to
-      different missions.
+    title: Pair training products around mission needs
+    intro: UAV, USV and SUT can each be deployed independently. Product
+      combinations, connections and equipment requirements are confirmed per
+      project.
   closing:
-    title: Helping Squads Build More Consistent Action in Every Training Session
-    description: Explore how SUT supports small-unit tactical training, base
-      protection and coordination exercises within existing courses and training
-      requirements.
+    title: Which part of your training needs attention next?
+    description: Discuss a SUT configuration that fits your courses, facilities and
+      equipment, from operating familiarity and teamwork to cross-system mission
+      training.
+  scenarios:
+    title: Six shooting exercises, each with a training focus
+    intro: Select fixed-position, multiple-target, barrier and target-type exercises
+      to practise operation and target response.
+    items:
+      - title: Fixed-position shooting
+        description: Practise aiming and operating procedures from a fixed shooting
+          position.
+        image:
+          src: ../../../assets/images/products/sut-stationary-shooting.png
+          alt: Fixed-position shooting — Practise aiming and operating procedures from a
+            fixed shooting position.
+          ratio: 16 / 9
+      - title: Multiple-target shooting
+        description: Practise observation, aiming and operation with multiple silhouette
+          targets.
+        image:
+          src: ../../../assets/images/products/sut-multiple-target-shooting.png
+          alt: Multiple-target shooting — Practise observation, aiming and operation with
+            multiple silhouette targets.
+          ratio: 16 / 9
+      - title: Barrier shooting
+        description: Practise shooting from behind barriers with different heights and
+          target positions.
+        image:
+          src: ../../../assets/images/products/sut-barrier-shooting.jpg
+          alt: Barrier shooting — Practise shooting from behind barriers with different
+            heights and target positions.
+          ratio: 16 / 9
+      - title: Ring target
+        description: Practise aiming and shooting at a ring target in a simulated range.
+        image:
+          src: ../../../assets/images/products/sut-circular-target.jpg
+          alt: Ring target — Practise aiming and shooting at a ring target in a simulated
+            range.
+          ratio: 16 / 9
+      - title: Moving silhouette target
+        description: Practise target observation and shooting in a silhouette-target
+          scenario.
+        image:
+          src: ../../../assets/images/products/sut-moving-human-target.jpg
+          alt: Moving silhouette target — Practise target observation and shooting in a
+            silhouette-target scenario.
+          ratio: 16 / 9
+      - title: Rotating target
+        description: Practise target identification and response with rotating targets.
+        image:
+          src: ../../../assets/images/products/sut-rotating-target.jpg
+          alt: Rotating target — Practise target identification and response with rotating
+            targets.
+          ratio: 16 / 9
 faq:
-  - question: Is SUT a game or professional tactical training?
-    answer: SUT is a simulation system designed for small-unit tactical training. It
-      applies the concept of serious games, combining mission objectives,
-      interactive scenarios and tactical operation so trainees can practise
-      repeatedly in a virtual environment. The game-based interaction is a
-      training method; the core remains tactical skills, team coordination and
-      situational judgement.
-  - question: What capabilities does SUT mainly train?
-    answer: SUT is centred on small-unit action and can be used to practise
-      communication between team members, tactical movement, covered
-      coordination, close-quarters combat scenarios and decision-making during
-      missions. Actual training content varies with the course and system
-      configuration.
-  - question: Can SUT replace live-fire shooting or field tactical exercises?
-    answer: Not completely. The value of SUT is in letting trainees first become
-      familiar with tactical procedures, teamwork and situational response, and
-      practise repeatedly in a controlled environment. Live-fire shooting,
-      operation of real equipment and field exercises still need to be arranged
-      according to training objectives.
-  - question: Can SUT be used together with drone or unmanned vessel training systems?
-    answer: Some cross-system integration can be achieved depending on the project
-      configuration. One integration application confirmed so far is that image
-      information from the USV system can be sent to the SUT training
-      environment. Connection methods for other drone, unmanned vessel or
-      external systems must be confirmed based on the actual interfaces and
-      project conditions.
-  - question: Which units is SUT suitable for?
-    answer: SUT is mainly suitable for military or related professional units that
-      need training in small-unit tactics, team coordination and situational
-      response. Adoption should be assessed based on the number of trainees,
-      training objectives, site conditions and equipment configuration.
+  - question: How does SUT support operating familiarity?
+    answer: Repeatable shooting exercises and tactical scenarios let trainees
+      practise holding, aiming and operating procedures before applying those
+      skills to target identification and teamwork. Simulation does not
+      automatically establish correct movements or replace physical equipment
+      and live-fire training.
+  - question: Can multiple trainees exercise together?
+    answer: Multiple trainees can practise roles, communication and coordinated
+      action together. Concurrent trainee numbers, equipment and available
+      modules depend on system configuration.
+  - question: What exercises are available?
+    answer: Content includes basic shooting, different target types, indoor combat,
+      stronghold assault and battlefield simulation, with training and test
+      modes. Pistol-transition practice depends on configuration. The 20, 40 and
+      60 metre distances are virtual shooting distances, not physical
+      site-length requirements.
+  - question: How can instructors observe and review training?
+    answer: The system displays shot impact and hit information in real time.
+      Instructor viewpoint switching supports observation, and after-action
+      reports assist review and analysis.
+  - question: Can SUT be paired with other training products?
+    answer: UAV operation, counter-drone and drone harassment simulation can be
+      added according to configuration. One integration application confirmed so
+      far is that image information from the USV system can be sent to the SUT
+      training environment. Other course combinations or connected functions
+      depend on mission, interface and project requirements.
 seo:
-  title: "SUT Small Unit Tactical Training System | VR Tactical Training"
-  description: "The SUT training system combines immersive VR environments, XR
-    mission information, and AI behavior simulation for 1–4-person tactical
-    teams to practice movement, cover, communication, and coordination."
+  title: SUT Tactical Training | XR Handling Practice and Teamwork
+  description: SUT combines repeatable XR exercises, CQB scenarios, shared
+    training, instructor viewpoints and after-action reports to support handling
+    familiarity and coordinated action.
+capabilities:
+  - title: Shooting exercises and target variation
+    description: Exercises include fixed-position, multiple-target and barrier
+      shooting, with ring targets, moving silhouettes and rotating targets.
+      Simulated distances of 20, 40 and 60 metres support aiming and operation
+      under different conditions.
+  - title: CQB and stronghold assault
+    description: Indoor combat and criminal stronghold assault scenarios bring
+      individual handling into spatial assessment, mutual cover and shared
+      missions.
+  - title: Battlefield simulation and shared exercises
+    description: Multiple trainees can take part in battlefield scenarios to
+      practise target observation, task allocation and coordinated action.
+      Moving and randomly appearing targets add variation to exercise
+      conditions.
+  - title: Training modes and weapon transitions
+    description: Switch between training and test modes to match the course stage. A
+      pistol can also be added for weapon-transition practice, subject to
+      equipment and module configuration.
+howItWorks:
+  - title: Set the training priority
+    description: Choose a shooting exercise or tactical scenario and identify the
+      handling, decision-making or teamwork skills to practise.
+  - title: Run individual or team exercises
+    description: Use individual practice or shared exercises to build handling
+      familiarity and teamwork within mission conditions.
+  - title: Observe performance
+    description: View shot impact and hit information in real time. Instructor
+      viewpoint switching supports observation during the exercise.
+  - title: Review the report and practise again
+    description: Use after-action reports and instructor observations to identify
+      improvements and plan the next exercise.
+scenarios:
+  - title: Shooting exercises and target variation
+    description: Exercises include fixed-position, multiple-target and barrier
+      shooting, with ring targets, moving silhouettes and rotating targets.
+      Simulated distances of 20, 40 and 60 metres support aiming and operation
+      under different conditions.
+  - title: CQB and stronghold assault
+    description: Indoor combat and criminal stronghold assault scenarios bring
+      individual handling into spatial assessment, mutual cover and shared
+      missions.
+  - title: Battlefield simulation and shared exercises
+    description: Multiple trainees can take part in battlefield scenarios to
+      practise target observation, task allocation and coordinated action.
+      Moving and randomly appearing targets add variation to exercise
+      conditions.
+components:
+  - name: Realistic training weapons
+    description: Support operation and shooting practice with XR equipment. Rifle
+      and pistol options depend on configuration.
+  - name: XR headset and training equipment
+    description: Provide an immersive training environment. Equipment models and
+      quantities depend on configuration.
+  - name: Instructor interface and reports
+    description: Support viewpoint switching, live hit information and after-action reports.
+cta:
+  title: Which part of your training needs attention next?
+  description: Discuss a SUT configuration that fits your courses, facilities and
+    equipment, from operating familiarity and teamwork to cross-system mission
+    training.
 ---
+XR scenarios, realistic training weapons and shared exercises support handling practice, CQB applications and after-action review.
+
+The SUT Small Unit Tactical Training System provides repeatable XR exercises that help trainees become familiar with equipment handling and develop consistent movements, then apply those skills in shared tactical scenarios.
+
+Realistic training weapons, shooting exercises and tactical modules are supported by live hit information, instructor observation and after-action reports. SUT can be deployed independently or paired with other BXR training products according to mission and interface requirements.

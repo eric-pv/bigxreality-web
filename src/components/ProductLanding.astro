@@ -58,7 +58,7 @@ const badge = t.illustrationLabel;
 const uploadedHero = primaryImage('products', slug, lang);
 // Explicit Git/CMS image wins; the approved catalogue remains the unchanged fallback.
 const assignedHero = base.landing?.heroImage?.src
-  ? { ...base.landing.heroImage, alt: L.heroImage?.alt ?? base.landing.heroImage.alt }
+  ? { ...base.landing.heroImage, alt: L.heroImage?.alt ?? base.landing.heroImage.alt, caption: L.heroImage?.caption ?? base.landing.heroImage.caption }
   : base.hero.image ? { ...L.heroImage, need: L.heroImage?.need, caption: L.heroImage?.caption, illustration: false, ...base.hero.image, alt: d.hero.image?.alt ?? base.hero.image.alt }
   : L.heroImage?.src ? L.heroImage : undefined;
 const hero = assignedHero ?? (uploadedHero ? { ...L.heroImage, ...uploadedHero } : L.heroImage);
