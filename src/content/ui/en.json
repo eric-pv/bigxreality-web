@@ -19,7 +19,8 @@
     "investors": "Investor Relations",
     "companyMenu": "About BXR menu",
     "planned": "(coming soon)",
-    "csr": "Corporate Social Responsibility"
+    "csr": "Corporate Social Responsibility",
+    "careers": "Careers"
   },
   "contact": "Contact BXR",
   "search": "Search",
@@ -520,17 +521,10 @@
   },
   "careers": {
     "title": "Careers at BXR",
-    "description": "View current openings, role requirements and application details on 104 Job Bank.",
+    "description": "Current openings from our 104 Job Bank page. Select a job to view details and apply.",
     "viewOpenings": "View jobs on 104",
-    "listDescription": "Current openings from our 104 Job Bank page. Select “Apply on 104” for full details and to apply.",
-    "apply": "Apply on 104",
-    "updated": "Openings synced from 104 on ",
-    "none": "There are no open positions right now. Follow our 104 company page for new openings.",
-    "experience": "Experience",
-    "education": "Education",
-    "salary": "Salary",
-    "headcount": "Openings",
-    "sourceLanguage": "Job details are shown as published on 104 (Traditional Chinese)."
+    "frameTitle": "BXR job openings on 104 Job Bank",
+    "about": "View careers"
   },
   "privacyNotice": {
     "title": "Privacy Policy",

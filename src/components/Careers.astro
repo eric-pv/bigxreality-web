@@ -1,77 +1,23 @@
 ---
 import type { Lang } from '../i18n';
-import { site } from '../lib/site';
-import { isPending } from '../lib/pending';
+import { localePath } from '../i18n';
 import { getUi } from '../lib/ui';
-import { careers } from '../lib/careers';
 import Text from './Text.astro';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const ui = getUi(lang);
-const t = ui.careers as typeof ui.careers & { sourceLanguage?: string };
-// Openings appear only from a validated 104 sync (docs/careers/104-INTEGRATION.md). Until the
-// first one, the section keeps the plain link to the 104 company page.
-const snapshot = careers();
-const synced = snapshot.status === 'ok';
-const jobs = synced ? snapshot.jobs : [];
-const locale = { tw: 'zh-TW', en: 'en-GB', jp: 'ja-JP' }[lang];
-const syncedOn = synced && snapshot.syncedAt ? new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeZone: 'Asia/Taipei' }).format(new Date(snapshot.syncedAt)) : '';
-const area = (job: (typeof jobs)[number]) => (lang === 'tw' ? job.area : job.areaEng || job.area);
+const t = getUi(lang).careers;
 ---
-{!isPending(site.careersUrl) && (
-  <section class="section careers" id="careers" aria-labelledby="careers-title" data-careers data-careers-status={snapshot.status}>
-    <div class="container">
-      <h2 class="t-h2" id="careers-title"><Text value={t.title} /></h2>
-      {!synced && <p><Text value={t.description} /></p>}
-      {synced && jobs.length > 0 && (
-        <>
-          <p><Text value={t.listDescription} /></p>
-          {t.sourceLanguage && <p class="t-caption note">{t.sourceLanguage}</p>}
-          <ul class="jobs balanced" data-careers-jobs>
-            {jobs.map((job) => (
-              <li class="job" data-job={job.jobNo}>
-                <h3 class="t-h4" lang="zh-Hant">{job.name}</h3>
-                <dl class="facts">
-                  {area(job) && <div><dt class="visually-hidden">{lang === 'tw' ? '地點' : lang === 'en' ? 'Location' : '勤務地'}</dt><dd>{area(job)}</dd></div>}
-                  {job.experience && <div><dt>{t.experience}</dt><dd lang="zh-Hant">{job.experience}</dd></div>}
-                  {job.education && <div><dt>{t.education}</dt><dd lang="zh-Hant">{job.education}</dd></div>}
-                  {job.headcount && <div><dt>{t.headcount}</dt><dd lang="zh-Hant">{job.headcount}</dd></div>}
-                  {job.salary && <div><dt>{t.salary}</dt><dd lang="zh-Hant">{job.salary}</dd></div>}
-                </dl>
-                <a class="btn btn--primary apply" href={job.url} target="_blank" rel="noopener noreferrer">
-                  <Text value={t.apply} />
-                  <span class="visually-hidden">{job.name} · <Text value={ui.buttons.opensInNewTab} /></span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-      {synced && jobs.length === 0 && <p data-careers-none><Text value={t.none} /></p>}
-      <div class="foot">
-        <a class={`btn ${synced && jobs.length > 0 ? 'btn--secondary' : 'btn--primary'}`} href={site.careersUrl} target="_blank" rel="noopener noreferrer" data-careers-company>
-          <Text value={t.viewOpenings} />
-          <span class="visually-hidden"><Text value={ui.buttons.opensInNewTab} /></span>
-        </a>
-        {syncedOn && <p class="t-caption updated" data-careers-updated>{t.updated}{syncedOn}</p>}
-      </div>
-    </div>
-  </section>
-)}
+<section class="section careers" id="careers" aria-labelledby="careers-title" data-careers>
+  <div class="container">
+    <h2 class="t-h2" id="careers-title"><Text value={t.title} /></h2>
+    <p><Text value={t.description} /></p>
+    <a class="btn btn--primary" href={localePath(lang, 'company', 'careers')} data-careers-page><Text value={t.about} /></a>
+  </div>
+</section>
 <style>
   .careers { border-top: 1px solid var(--divider); }
   .container { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
   .container > p { margin: 0; max-width: 72ch; }
-  .note { color: var(--ink-muted); }
-  .jobs { margin: var(--space-2) 0 0; padding: 0; list-style: none; }
-  .job { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3); background: var(--bxr-white); border: 1px solid var(--bxr-line); border-top: 2px solid var(--bxr-black); }
-  .job h3 { margin: 0; }
-  .facts { display: grid; gap: 4px; margin: 0; color: var(--ink-muted); }
-  .facts div { display: flex; flex-wrap: wrap; gap: 0 var(--space-1); }
-  .facts dt { color: var(--ink); }
-  .facts dd { margin: 0; min-width: 0; }
-  .apply { margin-top: auto; align-self: flex-start; }
-  .foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); margin-top: var(--space-2); }
-  .updated { margin: 0; color: var(--ink-muted); }
+  .btn { justify-self: start; }
 </style>

@@ -45,14 +45,9 @@
 6. 圖片比例：解決方案與產品落地頁的內容圖統一 16:9（LAYOUT-RULES §3）。
 7. 新聞封面：照片放 `src/assets/images/news/`（只支援 jpg／jpeg／png），在 `src/data/news-media.json` 該新聞的 `cover` 填 `filename`、三語 `alt`、`approved: true`。三語 alt 不齊或未核准就不會顯示。
 
-## 3. 104 職缺同步（等公司人資取得 API 憑證）
+## 3. 徵才頁（已改用 104 職缺小工具）
 
-- 已完成：`src/lib/careers-104.ts`（驗證規則）、`scripts/careers/sync-104.mjs`（呼叫官方「人力銀行 Open API」`GET https://apis.104api.com.tw/jobs/1.0/jobs?custNo=1a2x6bjhcz`，OAuth2 client credentials，scope `c_job`）、`ci.yml` 每月 1 日 10:17（台北）排程、`src/components/Careers.astro` 職缺卡片、測試。詳見 `docs/careers/104-INTEGRATION.md`；給人資的申請說明是 `docs/careers/HR-104-API-GUIDE.md`。
-- 憑證到了之後：
-  1. 業主在 GitHub → Settings → Secrets and variables → Actions 新增 `BXR_104_CLIENT_ID`、`BXR_104_CLIENT_SECRET`（憑證不可寫入版本庫、文件或對話）。
-  2. Actions → CI → Run workflow（main）手動執行一次，確認 `careers-sync` 成功並 commit `src/data/careers-104.json`。若實際回應格式與文件不同，驗證會失敗並保留原網站；依實際格式修 `parsePages()` 與測試。
-  3. **業主要求：職缺改成「關於 BXR」底下的獨立一頁**，例如 `/[lang]/company/careers/`（三語）。「關於 BXR」頁保留徵才區塊的簡短入口連到該頁；職缺卡片、零職缺文字與同步日期移到新頁。同步更新 `scripts/qa-company.mjs` 的徵才檢查、sitemap 與麵包屑，並遵守 LAYOUT-RULES 的排數規則（共用 class `balanced`）。
-- 零職缺規則不可改弱：網站已有職缺時，排程收到 0 筆不自動清空，須手動執行並勾選 `careers_allow_empty`。
+已完成，見 `docs/careers/104-INTEGRATION.md`。待業主確認：隱私權政策補充 104 第三方 cookie 說明。
 
 ## 4. 等業主提供的文字資料（拿到後填入）
 

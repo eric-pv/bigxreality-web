@@ -32,7 +32,7 @@ try {
         const sub = await page.$$eval("#sub-resources a", (as) => as.map((a) => [a.textContent.trim(), a.getAttribute("href")]));
         check(`${l}: Resources menu has three items in order`, JSON.stringify(sub.map((x) => x[0])) === JSON.stringify(want.sub) && JSON.stringify(sub.map((x) => x[1])) === JSON.stringify(SUB_HREFS(l)), JSON.stringify(sub));
         const about = await page.$$eval("#sub-company a", (as) => as.map((a) => [a.textContent.trim(), a.getAttribute("href")]));
-        check(`${l}: About BXR menu has six items including CSR in order`, JSON.stringify(about.map((x) => x[1])) === JSON.stringify([`/${l}/company/`, `/${l}/company/csr/`, `/${l}/company/team/`, `/${l}/company/partners/`, `/${l}/company/investors/`, `/${l}/contact/`]) && (l !== "tw" || JSON.stringify(about.map((x) => x[0])) === JSON.stringify(["公司簡介", "企業社會責任", "經營團隊", "合作夥伴", "投資人專區", "聯絡 BXR"])), JSON.stringify(about));
+        check(`${l}: About BXR menu has seven items including CSR and careers in order`, JSON.stringify(about.map((x) => x[1])) === JSON.stringify([`/${l}/company/`, `/${l}/company/csr/`, `/${l}/company/team/`, `/${l}/company/partners/`, `/${l}/company/careers/`, `/${l}/company/investors/`, `/${l}/contact/`]) && (l !== "tw" || JSON.stringify(about.map((x) => x[0])) === JSON.stringify(["公司簡介", "企業社會責任", "經營團隊", "合作夥伴", "徵才資訊", "投資人專區", "聯絡 BXR"])), JSON.stringify(about));
       }
       const m = await page.evaluate(() => {
         const bar = document.querySelector(".site-header .bar");
