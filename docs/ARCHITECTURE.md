@@ -15,7 +15,7 @@
 | 建置、驗證、發布 | GitHub Actions | `.github/workflows/ci.yml` 同一版本驗證後發布，不另開第二部署 |
 | 正式託管 | GitHub Pages | 開發期：`https://eric-pv.github.io/bigxreality-web/`（2026-11-05 帳號由 magician-eric 改名，舊網址已失效）。正式上線改用 `https://www.bigxreality.com/`（GitHub Pages 自訂網域），屆時 `site.json` url、Sveltia config、base 路徑一併改 |
 | 詢問收件 | Google Apps Script → Google 試算表 | 聯絡頁三語表單已實作，`site.json` `inquiry.endpoint` 設定後才出現；未設定時維持 mailto。見 [正式表單設定](inquiry/PRODUCTION-SETUP.md) |
-| 徵才職缺 | 104 人力銀行 Open API → `src/data/careers-104.json` | `ci.yml` 每月排程同步，驗證成功才 commit 快照並由同一次 CI 建置部署；憑證放 GitHub Secrets。見 [104 職缺同步](careers/104-INTEGRATION.md) |
+| 徵才職缺 | 104 官方職缺小工具（iframe） | `/[lang]/company/careers/` 嵌入 104 職缺清單，不使用 API 或憑證。見 [徵才頁](careers/104-INTEGRATION.md) |
 
 ```mermaid
 flowchart LR

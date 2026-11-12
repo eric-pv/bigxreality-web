@@ -1,0 +1,47 @@
+---
+/**
+ * /[lang]/company/careers/ — openings from 104 Job Bank's official job-list widget (qjob),
+ * embedded as a responsive iframe. HR maintains jobs on 104 only; the list updates on 104's side.
+ * The widget's own script (document.write, fixed 1143px width) is not loaded.
+ */
+import { LANGS, localePath, type Lang } from "../../../../i18n";
+import { getUi } from "../../../../lib/ui";
+import { site } from "../../../../lib/site";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import PageHero from "../../../../components/PageHero.astro";
+import Text from "../../../../components/Text.astro";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang;
+const ui = getUi(lang);
+const t = ui.careers;
+const qjob = "https://www.104.com.tw/jb/104i/joblist/qjob?c=5939416a33353d662f313962373d351862828286a3f35456795j57&order=8%2C0&hideList=";
+const breadcrumbs = [
+  { name: ui.home, path: localePath(lang) },
+  { name: ui.nav.aboutUs, path: localePath(lang, "company") },
+  { name: t.title, path: localePath(lang, "company", "careers") },
+];
+---
+<BaseLayout lang={lang} title={t.title} description={t.description} pathTemplate="/{lang}/company/careers/" alternates={[...LANGS]} headerTheme="dark" current="company" currentCompany="careers" breadcrumbs={breadcrumbs}>
+  <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={ui.nav.aboutUs} title={t.title} description={t.description} />
+  <section class="section" data-careers-page>
+    <div class="container">
+      <div class="frame">
+        <iframe src={qjob} title={t.frameTitle} loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-careers-frame></iframe>
+      </div>
+      <a class="btn btn--secondary" href={site.careersUrl} target="_blank" rel="noopener noreferrer" data-careers-company>
+        <Text value={t.viewOpenings} />
+        <span class="visually-hidden"><Text value={ui.buttons.opensInNewTab} /></span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .frame { width: 100%; border: 1px solid var(--bxr-line); background: var(--bxr-white); }
+  .frame iframe { display: block; width: 100%; height: 726px; border: 0; }
+  @media (max-width: 767px) { .frame iframe { height: 640px; } }
+  .btn { justify-self: start; }
+</style>

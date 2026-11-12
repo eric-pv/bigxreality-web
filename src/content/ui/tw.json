@@ -19,7 +19,8 @@
     "investors": "投資人專區",
     "companyMenu": "關於 BXR 選單",
     "planned": "（即將推出）",
-    "csr": "企業社會責任"
+    "csr": "企業社會責任",
+    "careers": "徵才資訊"
   },
   "contact": "聯絡 BXR",
   "search": "搜尋",
@@ -520,16 +521,10 @@
   },
   "careers": {
     "title": "徵才資訊",
-    "description": "最新職缺、工作條件與應徵方式，請至 104 人力銀行查看。",
-    "viewOpenings": "查看 104 職缺",
-    "listDescription": "以下為公司在 104 人力銀行的公開職缺，點選「前往 104 應徵」查看完整內容並應徵。",
-    "apply": "前往 104 應徵",
-    "updated": "職缺資料自 104 同步：",
-    "none": "目前沒有公開職缺，歡迎至 104 公司頁追蹤最新消息。",
-    "experience": "經歷",
-    "education": "學歷",
-    "salary": "待遇",
-    "headcount": "需求人數"
+    "description": "以下為全球動力科技在 104 人力銀行的最新職缺，點選職缺即可查看內容並應徵。",
+    "viewOpenings": "前往 104 查看職缺",
+    "frameTitle": "全球動力科技 104 職缺列表",
+    "about": "查看徵才資訊"
   },
   "privacyNotice": {
     "title": "隱私權政策",

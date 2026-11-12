@@ -3,59 +3,14 @@ on:
   pull_request:
   push:
     branches: [main]
-  # Monthly 104 openings sync (docs/careers/104-INTEGRATION.md): 1st of each month, 10:17 Taipei.
-  schedule:
-    - cron: "17 2 1 * *"
   workflow_dispatch:
-    inputs:
-      careers_allow_empty:
-        description: "Confirm that 0 openings on 104 is real and may empty the careers list"
-        type: boolean
-        default: false
 permissions:
   contents: read
 concurrency:
   group: website-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  # Scheduled / manual runs on main only. Commits src/data/careers-104.json when a fully validated
-  # 104 response changed it; the build below then tests and deploys that exact commit. Failure or
-  # a held empty result stops the run, so Pages keeps the last good deployment and snapshot.
-  careers-sync:
-    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    outputs:
-      changed: ${{ steps.sync.outputs.changed }}
-      sha: ${{ steps.commit.outputs.sha }}
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version-file: .node-version
-      - id: sync
-        name: Sync public openings from the 104 Open API
-        env:
-          BXR_104_CLIENT_ID: ${{ secrets.BXR_104_CLIENT_ID }}
-          BXR_104_CLIENT_SECRET: ${{ secrets.BXR_104_CLIENT_SECRET }}
-          BXR_104_ALLOW_EMPTY: ${{ inputs.careers_allow_empty && '1' || '0' }}
-        run: node scripts/careers/sync-104.mjs
-      - id: commit
-        if: steps.sync.outputs.changed == 'true'
-        name: Commit the validated snapshot
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/careers-104.json
-          git commit -m "Sync 104 openings ($(date -u +%Y-%m-%d))"
-          git push origin HEAD:main
-          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
   build-and-test:
-    needs: careers-sync
-    # Runs for PRs, pushes and manual runs; a scheduled run builds only when the sync published a change.
-    if: ${{ !cancelled() && needs.careers-sync.result != 'failure' && (github.event_name != 'schedule' || needs.careers-sync.outputs.changed == 'true') }}
     runs-on: ubuntu-latest
     env:
       BXR_CONTENT_SOURCE: markdown
@@ -64,8 +19,6 @@ jobs:
       # Shallow checkout: the build needs only HEAD. The CMS media guard (sveltia/check.mjs)
       # diffs against origin/main on cms/* branches, so only that ref is fetched (depth 1).
       - uses: actions/checkout@v7
-        with:
-          ref: ${{ needs.careers-sync.outputs.sha || github.sha }}
       - name: Fetch main for the CMS media guard
         if: github.ref != 'refs/heads/main'
         run: git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main

@@ -55,6 +55,7 @@ export const NAVIGATION = [
       { id: "csr", label: "nav.csr", route: ["company", "csr"], order: 15, enabled: true, status: "published" },
       { id: "team", label: "nav.team", route: ["company", "team"], order: 30, enabled: true, status: "published" },
       { id: "partners", label: "nav.partners", route: ["company", "partners"], order: 40, enabled: true, status: "published" },
+      { id: "careers", label: "nav.careers", route: ["company", "careers"], order: 45, enabled: true, status: "published" },
       { id: "investors", label: "nav.investors", route: ["company", "investors"], order: 50, enabled: true, status: "published" },
       { id: "contact", label: "contact", route: ["contact"], order: 60, enabled: true, status: "published" },
     ],
