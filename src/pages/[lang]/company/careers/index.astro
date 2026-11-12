@@ -29,7 +29,7 @@ const breadcrumbs = [
   <section class="section" data-careers-page>
     <div class="container">
       <div class="frame">
-        <iframe src={qjob} title={t.frameTitle} loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-careers-frame></iframe>
+        <iframe src={qjob} title={t.frameTitle} scrolling="no" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-careers-frame></iframe>
       </div>
       <a class="btn btn--secondary" href={site.careersUrl} target="_blank" rel="noopener noreferrer" data-careers-company>
         <Text value={t.viewOpenings} />
@@ -41,7 +41,9 @@ const breadcrumbs = [
 <style>
   .container { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
   .frame { width: 100%; border: 1px solid var(--bxr-line); background: var(--bxr-white); }
-  .frame iframe { display: block; width: 100%; height: 726px; border: 0; }
-  @media (max-width: 767px) { .frame iframe { height: 640px; } }
+  /* 104's list cannot report its height across origins: sized for the current 13 openings (2026-11-12). */
+  .frame iframe { display: block; width: 100%; height: 3400px; border: 0; }
+  @media (max-width: 1023px) { .frame iframe { height: 4400px; } }
+  @media (max-width: 767px) { .frame iframe { height: 6000px; } }
   .btn { justify-self: start; }
 </style>
