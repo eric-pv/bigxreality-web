@@ -59,8 +59,6 @@ try {
   // Careers (docs/careers/104-INTEGRATION.md): About links to the careers page, which embeds 104's job list.
   const companyUrl = JSON.parse(readFileSync("src/data/site.json", "utf8")).careersUrl;
   for (const lang of ["tw", "en", "jp"]) {
-    await page.goto(`${base}/${lang}/company/`, { waitUntil: "domcontentloaded" });
-    check(`${lang} careers: About BXR links to the careers page`, (await page.locator(`[data-careers] a[href="/${lang}/company/careers/"]`).count()) === 1);
     await page.goto(`${base}/${lang}/company/careers/`, { waitUntil: "domcontentloaded" });
     const src = await page.locator("iframe[data-careers-frame]").getAttribute("src");
     check(`${lang} careers: page embeds 104's job list and links to the 104 company page`, /^https:\/\/www\.104\.com\.tw\/jb\/104i\/joblist\/qjob\?/.test(src ?? "") && (await page.locator(`a[data-careers-company][href="${companyUrl}"][target=_blank][rel~=noopener]`).count()) === 1, src);

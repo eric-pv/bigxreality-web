@@ -224,8 +224,15 @@ const website = {
   .feature:has(h3 a:focus-visible) { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
   .more { font-weight: 500; margin-top: var(--space-1); }
   .side { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gutter); grid-auto-rows: 1fr; }
-  .feature--row { flex-direction: row; }
+  .feature--row { flex-direction: row; align-items: stretch; }
   .feature--row .feature-media { flex: 0 0 38%; aspect-ratio: auto; }
+  /* Fill the card height so there is no blank space above/below the picture or under the lead text. */
+  .feature--row .feature-media { position: relative; align-self: stretch; }
+  .feature--row .feature-media > :global(*) { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .feature--row .feature-media :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .feature--lead .feature-media { flex: 1 1 auto; aspect-ratio: auto; min-height: 280px; position: relative; }
+  .feature--lead .feature-media :global(picture), .feature--lead .feature-media :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; }
+  @media (max-width: 1023px) { .feature--lead .feature-media { flex: none; aspect-ratio: 16 / 9; min-height: 0; } }
   .feature--row .feature-media :global(.placeholder) { height: 100%; max-height: none; }
   .feature--row .feature-body { min-width: 0; padding: var(--space-2) var(--space-3); }
   .feature-body { overflow-wrap: anywhere; }
@@ -284,7 +291,7 @@ const website = {
 </style>
 
 <style>
-.feature--row .feature-media { flex:0 0 42%; aspect-ratio:16/9;align-self:center; }
+.feature--row .feature-media { flex:0 0 42%; align-self:stretch; min-height:150px; }
 .feature-media { background:#101722; }
 .tech .muted-dark,.tech-copy .eyebrow { color:#dce3ec; }
 @media(max-width:767px) {

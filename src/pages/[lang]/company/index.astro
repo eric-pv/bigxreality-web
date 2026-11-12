@@ -11,7 +11,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
 import CtaBand from "../../../components/CtaBand.astro";
 import Text from "../../../components/Text.astro";
-import Careers from "../../../components/Careers.astro";
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -30,7 +29,6 @@ const breadcrumbs = [
   pendingTranslation={copy.translationStatus === "pending"} headerTheme="dark" current="company" currentCompany="about" breadcrumbs={breadcrumbs}
 >
   <PageHero breadcrumbs={breadcrumbs} breadcrumbLabel={ui.breadcrumbLabel} eyebrow={copy.hero.eyebrow} title={isPending(copy.hero.title)?ui.nav.aboutUs:copy.hero.title} description={copy.hero.description && !isPending(copy.hero.description)?copy.hero.description:copy.seo.description} />
-  <Careers lang={lang} />
   {copy.closing && (
     <CtaBand id="company-slogan" stripes title={copy.closing.title}>
       <a class="btn btn--primary" href={localePath(lang, "contact")}><Text value={ui.contact} /></a>
