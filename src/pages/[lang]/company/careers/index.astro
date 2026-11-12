@@ -40,7 +40,7 @@ const breadcrumbs = [
 </BaseLayout>
 <style>
   .container { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
-  .frame { width: 100%; border: 1px solid var(--bxr-line); background: var(--bxr-white); }
+  .frame { width: 100%; }
   /* 104's list cannot report its height across origins: sized for the current 13 openings (2026-11-12). */
   .frame iframe { display: block; width: 100%; height: 2300px; border: 0; }
   @media (max-width: 1023px) { .frame iframe { height: 2950px; } }
