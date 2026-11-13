@@ -45,10 +45,10 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       description: "Big x Reality 全球動力科技立足台灣，整合 VR 虛擬實境、XR 延展實境、AI 與互動設備，提供軍事、警察、消防防災的模擬訓練，以及智慧城市數位應用與系統整合服務。",
     },
     hero: {
-      eyebrow: "Big x Reality",
+      eyebrow: "Turn Every Drill into Real",
       title: "虛擬訓練，真實應變",
-      subtitle: "讓演練更接近真實任務。",
-      description: "從軍事、警勤到消防防災，Big x Reality 結合沉浸式模擬、互動設備與系統整合技術，將專業訓練需求轉化為可實際操作、反覆演練的訓練環境。",
+      subtitle: "越接近真實的演練，越能在任務中從容。",
+      description: "真正考驗應變的情境，往往很難在平時重現。BXR 把軍事、警勤與消防防災的任務，轉化為可反覆操作的模擬環境。",
       primary: "探索解決方案",
       secondary: "了解 BXR",
       videoLabel: "BXR 沉浸式警勤與戰術訓練實況影片",
@@ -58,21 +58,21 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     value: {
       eyebrow: "為什麼需要模擬訓練",
-      title: "反覆演練，累積應變能力",
+      title: "最需要練的，往往最難安排",
       paragraphs: [
-        "面對複雜環境、突發狀況與高風險任務，專業訓練結合設備操作熟悉與持續的觀察、判斷及應變練習。",
-        "透過模擬技術與實體操作設備的結合，讓原本受到場地、資源或安全條件限制的訓練，擁有更多實施與練習的可能。",
+        "越關鍵的任務，越受場地、安全與成本限制，實地演練的機會也就越少。",
+        "把真實情境帶進模擬環境，練習次數不再只取決於場地與天候。",
       ],
       points: [
-        { title: "安全可控", description: "在可控的模擬環境中練習高風險情境，補充傳統實地訓練的限制。" },
-        { title: "反覆演練", description: "依照不同任務目標與情境條件，持續熟悉操作流程與應變方式。" },
-        { title: "彈性配置", description: "從個人操作、多人協同到大型系統整合，依實際需求規劃適合的訓練方式。" },
+        { title: "安全可控", description: "高風險情境，也能在零傷亡的條件下完整演練。" },
+        { title: "反覆演練", description: "同一個情境練到熟練，判斷自然變快。" },
+        { title: "彈性配置", description: "從單人操作到多單位協同，都能依規模調整。" },
       ],
     },
     products: {
       eyebrow: "精選產品",
-      title: "結合模擬情境與實體互動的專業訓練。",
-      description: "從戰術行動、警勤應變到無人系統與消防操作，BXR 結合模擬環境與實體互動，提供操作、判斷與任務練習。",
+      title: "每一種任務，都有能反覆練習的方法",
+      description: "戰術行動、警勤應變、無人系統、消防操作，每一項都需要親手操作與現場判斷。模擬情境搭配實體設備，讓這兩件事可以一起練。",
       viewAll: "探索所有產品",
       more: "了解產品",
       items: {
@@ -84,10 +84,10 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     technologies: {
       eyebrow: "核心技術",
-      title: "讓技術在實際應用中創造價值。",
+      title: "看到的是情境，背後是整套系統在配合",
       paragraphs: [
-        "沉浸式畫面只是開始。",
-        "從虛擬環境的建構、實體設備的互動，到訓練流程與系統資訊的整合，BXR 以不同技術能力相互配合，協助專業單位建立符合實際需求的模擬訓練應用。",
+        "沉浸式畫面只是表面。",
+        "場景建構、設備互動、流程與資訊整合同時運作，訓練才能貼近實際需求。",
       ],
       button: "探索核心技術",
       items: {
@@ -99,8 +99,8 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     solutions: {
       eyebrow: "解決方案",
-      title: "不同任務，同樣需要更好的準備。",
-      description: "每個專業領域都有不同的任務環境與訓練挑戰。BXR 從實際使用需求出發，將模擬技術與系統整合能力應用於不同場域，協助使用單位探索更合適的訓練與數位化應用方式。",
+      title: "任務不同，訓練也不該一樣",
+      description: "每個領域的環境、人力與挑戰都不相同。從實際需求出發規劃，訓練才能真正用在現場。",
       viewAll: "查看所有解決方案",
       items: {
         military: "從個人操作、戰術演練到跨系統整合，支援不同層級的軍事訓練需求。",
@@ -111,21 +111,21 @@ export const homeCopy: Record<Lang, HomeCopy> = {
     },
     cases: {
       eyebrow: "成功案例",
-      title: "從實際需求出發，讓技術走進應用現場。",
-      description: "每一項專業訓練與數位化應用，都始於不同的任務需求。透過實際專案與應用經驗，持續探索模擬技術在不同場域中的可能性。",
+      title: "相似的需求，已經有可行的做法",
+      description: "許多專業單位的訓練需求其實很接近。實際專案累積的經驗，能讓下一個規劃少走彎路。",
       viewAll: "查看所有成功案例",
       placeholder: "【開發用佔位】成功案例資料尚未建立，正式網站不顯示此卡片",
     },
     news: {
       eyebrow: "最新消息",
-      title: "持續探索，讓更多可能成為現實。",
-      description: "從技術發展、專業展會到最新應用，掌握 BXR 在沉浸式模擬與專業訓練領域的最新動態。",
+      title: "持續推進，讓更多訓練成為可能",
+      description: "新的技術、展會與應用，記錄模擬訓練一步步走進更多現場。",
       viewAll: "查看所有最新消息",
       placeholder: "【開發用佔位】最新消息資料尚未建立，正式網站不顯示此卡片",
     },
     cta: {
-      title: "下一次訓練，可以從更好的規劃開始。",
-      description: "無論是單一設備訓練、專業情境模擬，或跨系統整合需求，BXR 都能從實際應用目標出發，共同評估適合的規劃方向。",
+      title: "下一次訓練，可以從更完整的規劃開始",
+      description: "單一設備、專業情境或跨系統整合，都可以從一次討論開始，找出最適合的方向。",
       primary: "聯絡 BXR",
       secondary: "探索解決方案",
     },
@@ -136,7 +136,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       description: "Taiwan-based Big x Reality combines VR, XR, AI and interactive equipment for military, police and fire safety training, plus smart city simulation and system integration.",
     },
     hero: {
-      eyebrow: "Big x Reality",
+      eyebrow: "Turn Every Drill into Real",
       title: "Train Today. Protect Tomorrow.",
       subtitle: "Bringing every drill closer to the real mission.",
       description: "From military and police to fire and disaster response, Big x Reality combines immersive simulation, interactive equipment and system integration to turn professional training needs into training environments that can be operated hands-on and practiced again and again.",
@@ -227,7 +227,7 @@ export const homeCopy: Record<Lang, HomeCopy> = {
       description: "台湾を拠点とする Big x Reality は、VR・XR、AI、インタラクティブ機器を組み合わせ、軍事・警察・消防防災の模擬訓練と、スマートシティのデジタル活用・システム統合を支援します。",
     },
     hero: {
-      eyebrow: "Big x Reality",
+      eyebrow: "Turn Every Drill into Real",
       title: "仮想の訓練から、実際の対応力へ",
       subtitle: "演習を実際の任務に近づける。",
       description: "軍事・警察から消防防災まで、Big x Reality は没入型シミュレーション、インタラクティブ機器、システム統合技術を組み合わせ、専門訓練のニーズを、実際に操作し繰り返し演習できる訓練環境へと形にします。",
